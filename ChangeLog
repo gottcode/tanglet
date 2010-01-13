@@ -1,0 +1,99 @@
+2010-01-12 Graeme Gott <graeme@gottcode.org>
+	* Tag version 1.0.1.
+	* FIXED: Arrows were incorrect under Windows.
+
+2010-01-11 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Clicking on board took focus.
+
+2010-01-10 Graeme Gott <graeme@gottcode.org>
+	* Allow user to select language.
+
+2010-01-09 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Sometimes crashed at end of game.
+
+2009-12-17 Mehdi Yousfi-Monod <mehdi.yousfi@gmail.com>
+	* Add French translation.
+
+2009-12-15 Mehdi Yousfi-Monod <mehdi.yousfi@gmail.com>
+	* Add French dice and word list files.
+
+2009-12-06 Graeme Gott <graeme@gottcode.org>
+	* Store positions found by player.
+
+2009-12-05 Graeme Gott <graeme@gottcode.org>
+	* Use Google's dictionary.
+
+2009-11-28 Graeme Gott <graeme@gottcode.org>
+	* Tag version 1.0.0.
+
+2009-11-25 Graeme Gott <graeme@gottcode.org>
+	* Add controls dialog to help menu.
+
+2009-11-23 Graeme Gott <graeme@gottcode.org>
+	* Add desktop file.
+	* Add program icon.
+
+2009-11-22 Graeme Gott <graeme@gottcode.org>
+	* Stop hardcoding "Qu".
+
+2009-11-21 Graeme Gott <graeme@gottcode.org>
+	* Add settings dialog.
+	* Add definition lookup.
+	* Add background color to clock.
+
+2009-11-17 Graeme Gott <graeme@gottcode.org>
+	* Disable missed tab when playing.
+	* Switch to found tab when game starts.
+	* Add mouse play.
+
+2009-11-15 Graeme Gott <graeme@gottcode.org>
+	* Highlight guessed words.
+
+2009-11-12 Graeme Gott <graeme@gottcode.org>
+	* Add arrows for guesses.
+	* Add high scores dialog.
+
+2009-11-11 Graeme Gott <graeme@gottcode.org>
+	* Pause when focus is lost.
+	* Remember window geometry.
+
+2009-10-31 Graeme Gott <graeme@gottcode.org>
+	* Add arrows to letters.
+
+2009-10-06 Graeme Gott <graeme@gottcode.org>
+	* Switch to QGraphicsView.
+
+2009-10-05 Graeme Gott <graeme@gottcode.org>
+	* Use new timer method.
+
+2009-10-02 Graeme Gott <graeme@gottcode.org>
+	* Make guesses uppercase.
+	* Add pause.
+
+2009-09-29 Graeme Gott <graeme@gottcode.org>
+	* Speed up solver.
+
+2009-09-28 Graeme Gott <graeme@gottcode.org>
+	* Use new dice.
+	* Improve game interface.
+
+2009-09-27 Graeme Gott <graeme@gottcode.org>
+	* Add scores.
+	* Optimize word trie.
+
+2009-09-25 Graeme Gott <graeme@gottcode.org>
+	* Show missed words.
+	* Prevent impossible guesses.
+
+2009-09-24 Graeme Gott <graeme@gottcode.org>
+	* Add support for guessing.
+	* Show board.
+
+2009-09-23 Graeme Gott <graeme@gottcode.org>
+	* Add word trie.
+
+2009-09-21 Graeme Gott <graeme@gottcode.org>
+	* Add word list.
+	* Add solving a board.
+	* Add creating a board.
+	* Initial project layout.

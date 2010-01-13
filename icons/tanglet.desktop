@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tanglet
+GenericName=Word Finding Game
+Comment=Single player variant of Boggle
+Exec=tanglet
+Icon=tanglet
+Terminal=false
+Type=Application
+Categories=Qt;Game;
