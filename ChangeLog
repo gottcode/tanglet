@@ -1,3 +1,6 @@
+2010-01-17 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Keyboard guesses ignored mouse guesses.
+
 2010-01-12 Graeme Gott <graeme@gottcode.org>
 	* Tag version 1.0.1.
 	* FIXED: Arrows were incorrect under Windows.

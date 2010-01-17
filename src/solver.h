@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ class Solver {
 	public:
 		Solver(const Trie& words, const QStringList& letters);
 
-		QHash<QString, QList<QPoint> > solutions() const {
+		QHash<QString, QList<QList<QPoint> > > solutions() const {
 			return m_solutions;
 		}
 
@@ -41,7 +41,7 @@ class Solver {
 		const Trie* m_words;
 		QString m_word;
 		QList<QPoint> m_positions;
-		QHash<QString, QList<QPoint> > m_solutions;
+		QHash<QString, QList<QList<QPoint> > > m_solutions;
 
 		struct Cell {
 			QString text;

@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -102,7 +102,7 @@ void Solver::checkCell(Cell& cell) {
 	qSwap(m_words, words);
 
 	if (m_words->isWord()) {
-		m_solutions[m_word] = m_positions;
+		m_solutions[m_word].append(m_positions);
 	}
 	if (!m_words->isEmpty()) {
 		int count = cell.neighbors.count();

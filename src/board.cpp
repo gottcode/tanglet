@@ -50,7 +50,7 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -285,6 +285,7 @@ void Board::loadSettings() {
 //-----------------------------------------------------------------------------
 
 void Board::clearGuess() {
+	m_valid = true;
 	m_wrong = false;
 	m_positions.clear();
 	clearHighlight();
@@ -300,7 +301,7 @@ void Board::clearGuess() {
 void Board::guess() {
 	if (!isFinished() && !m_paused) {
 		QString text = m_guess->text().trimmed().toUpper();
-		if (text.isEmpty() || text.length() < 3 || text.length() > 16 || m_positions.isEmpty()) {
+		if (text.isEmpty() || text.length() < 3 || text.length() > 16 || !m_valid || m_positions.isEmpty()) {
 			return;
 		}
 		if (!m_solutions.contains(text)) {
@@ -322,7 +323,13 @@ void Board::guess() {
 			m_clock->addTime(score + 8);
 			updateScore();
 
-			m_solutions[text] = m_positions;
+			QList<QList<QPoint> >& solutions = m_solutions[text];
+			int index = solutions.indexOf(m_positions);
+			if (index != -1) {
+				solutions.move(index, 0);
+			} else {
+				solutions.prepend(m_positions);
+			}
 		}
 		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
 		m_found->clearSelection();
@@ -347,10 +354,9 @@ void Board::guess() {
 //-----------------------------------------------------------------------------
 
 void Board::guessChanged() {
+	m_valid = true;
 	m_wrong = false;
-	m_positions.clear();
 	clearHighlight();
-	updateClickableStatus();
 	m_found->clearSelection();
 
 	QString word = m_guess->text().trimmed().toUpper();
@@ -359,11 +365,57 @@ void Board::guessChanged() {
 		m_guess->setText(word);
 		m_guess->setCursorPosition(pos);
 
-		m_positions = m_solutions.value(word, Solver(word, m_letters).solutions().value(word));
+		QList<QList<QPoint> > solutions = m_solutions.value(word, Solver(word, m_letters).solutions().value(word));
+		m_valid = !solutions.isEmpty();
+		if (m_valid) {
+			int index = 0;
+			int matched = -1;
+			int difference = INT_MAX;
+
+			int count = solutions.count();
+			for (int i = 0; i < count; i++) {
+				bool order = true;
+				int match = 0;
+				int prev_pos = -1;
+				int deltas = INT_MAX;
+
+				// Find how many cells match and are in order between solution and m_positions
+				const QList<QPoint>& solution = solutions.at(i);
+				foreach (const QPoint& cell, solution) {
+					int pos = m_positions.indexOf(cell);
+					if (pos != -1) {
+						match++;
+						if (prev_pos != -1) {
+							int delta = pos - prev_pos;
+							if (delta < 0) {
+								order = false;
+								break;
+							} else {
+								deltas += delta;
+							}
+						} else {
+							deltas = pos;
+						}
+						prev_pos = pos;
+					}
+				}
+
+				// Figure out if current solution best matches m_positions
+				if (order == true && (match > matched || (match == matched && deltas < difference))) {
+					matched = match;
+					difference = deltas;
+					index = i;
+				}
+			}
+			m_positions = solutions.at(index);
+		}
 		updateClickableStatus();
 		highlightWord();
 
 		selectGuess();
+	} else {
+		m_positions.clear();
+		updateClickableStatus();
 	}
 }
 
@@ -402,7 +454,7 @@ void Board::wordSelected() {
 	QString word = items.first()->text(0);
 	if (!word.isEmpty() && word != m_guess->text()) {
 		m_guess->setText(word);
-		m_positions = m_solutions.value(word);
+		m_positions = m_solutions.value(word).value(0);
 		clearHighlight();
 		updateClickableStatus();
 		highlightWord();
@@ -485,7 +537,7 @@ void Board::highlightWord() {
 
 	QPalette p = palette();
 	if (!m_wrong) {
-		if (m_positions.isEmpty()) {
+		if (!m_valid) {
 			p.setColor(m_guess->foregroundRole(), Qt::white);
 			p.setColor(m_guess->backgroundRole(), Qt::red);
 		} else if (!m_found->findItems(guess, Qt::MatchExactly).isEmpty()) {
@@ -556,7 +608,7 @@ void Board::updateClickableStatus() {
 		}
 	}
 
-	if (has_word) {
+	if (has_word && m_valid) {
 		const QPoint& position = m_positions.last();
 		int min_x = qMax(position.x() - 1, 0);
 		int max_x = qMin(position.x() + 2, 4);

@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,11 +83,12 @@ class Board : public QWidget {
 
 		bool m_paused;
 		bool m_wrong;
+		bool m_valid;
 
 		QList<QStringList> m_dice;
 		Trie m_words;
 		QStringList m_letters;
-		QHash<QString, QList<QPoint> > m_solutions;
+		QHash<QString, QList<QList<QPoint> > > m_solutions;
 		QList<QPoint> m_positions;
 };
 
