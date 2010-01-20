@@ -4,8 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="60"/>
-        <location filename="../src/board.cpp" line="542"/>
+        <location filename="../src/board.cpp" line="601"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
@@ -33,30 +32,38 @@
         <translation>Ratés</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="257"/>
-        <location filename="../src/board.cpp" line="276"/>
+        <location filename="../src/board.cpp" line="261"/>
+        <location filename="../src/board.cpp" line="280"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="257"/>
+        <location filename="../src/board.cpp" line="261"/>
         <source>Unable to read dice from file.</source>
         <translation>Impossible de lire les dés du fichier.</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="276"/>
+        <location filename="../src/board.cpp" line="280"/>
         <source>Unable to read word list from file.</source>
         <translation>Impossible de lire la liste des mots du fichier.</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="373"/>
+        <location filename="../src/board.cpp" line="425"/>
         <source>Success</source>
         <translation>Succès</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="373"/>
+        <location filename="../src/board.cpp" line="425"/>
         <source>Game Over</source>
         <translation>Partie terminée</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/board.cpp" line="599"/>
+        <source>%1 of %n point(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -99,63 +106,78 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="36"/>
+        <location filename="../src/settings_dialog.cpp" line="40"/>
         <source>Settings</source>
         <translation>Préférences</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="41"/>
+        <location filename="../src/settings_dialog.cpp" line="45"/>
         <source>English</source>
         <translation>Anglais</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="42"/>
+        <location filename="../src/settings_dialog.cpp" line="46"/>
         <source>French</source>
         <translation>Français</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="43"/>
+        <location filename="../src/settings_dialog.cpp" line="47"/>
         <source>Custom</source>
         <translation>Personnalisé</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="49"/>
-        <location filename="../src/settings_dialog.cpp" line="54"/>
+        <location filename="../src/settings_dialog.cpp" line="53"/>
+        <location filename="../src/settings_dialog.cpp" line="58"/>
         <source>Choose...</source>
         <translation>Parcourir...</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="65"/>
+        <location filename="../src/settings_dialog.cpp" line="69"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; Changing these settings will start a new game.</source>
         <translation>&lt;b&gt;Note :&lt;/b&gt; Changer ce paramétrage crée une nouvelle partie.</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="85"/>
+        <location filename="../src/settings_dialog.cpp" line="77"/>
+        <source>Show maximum score:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings_dialog.cpp" line="80"/>
+        <source>At end of game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings_dialog.cpp" line="81"/>
+        <source>During game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings_dialog.cpp" line="111"/>
         <source>Language:</source>
         <translation>Langue :</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="88"/>
+        <location filename="../src/settings_dialog.cpp" line="114"/>
         <source>Dice:</source>
         <translation>Dés :</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="92"/>
+        <location filename="../src/settings_dialog.cpp" line="118"/>
         <source>Word list:</source>
         <translation>Liste des mots :</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="104"/>
+        <location filename="../src/settings_dialog.cpp" line="122"/>
         <source>Dictionary:</source>
         <translation>Dictionnaire :</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="199"/>
+        <location filename="../src/settings_dialog.cpp" line="237"/>
         <source>Choose Dice File</source>
         <translation>Choisir un fichier de dés</translation>
     </message>
     <message>
-        <location filename="../src/settings_dialog.cpp" line="208"/>
+        <location filename="../src/settings_dialog.cpp" line="246"/>
         <source>Choose Word List File</source>
         <translation>Choisir un fichier de liste des mots</translation>
     </message>

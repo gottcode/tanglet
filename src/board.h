@@ -84,6 +84,7 @@ class Board : public QWidget {
 		bool m_paused;
 		bool m_wrong;
 		bool m_valid;
+		int m_score_type;
 
 		QList<QStringList> m_dice;
 		Trie m_words;

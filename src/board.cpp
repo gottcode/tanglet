@@ -50,14 +50,14 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
 	m_clock = new Clock(this);
 	connect(m_clock, SIGNAL(finished()), this, SLOT(finish()));
 
-	m_score = new QLabel(tr("%n point(s)", "", 0), this);
+	m_score = new QLabel(this);
 
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
@@ -236,6 +236,10 @@ void Board::setPaused(bool pause) {
 void Board::loadSettings() {
 	QSettings settings;
 
+	// Load gameplay settings
+	m_score_type = settings.value("Gameplay/ScoreType", 1).toInt();
+	updateScore();
+
 	// Load dice
 	m_dice.clear();
 	QFile file(settings.value("Dice").toString());
@@ -314,13 +318,9 @@ void Board::guess() {
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly).value(0);
 		if (item == 0) {
 			item = m_found->addWord(text);
-
-			static int scores[16] = { 0,0,1,1,2,3,5,11,11,11,11,11,11,11,11,11 };
-			int score = scores[text.length() - 1];
-			item->setData(0, Qt::UserRole, score);
 			delete m_missed->findItems(text, Qt::MatchExactly, 0).first();
 
-			m_clock->addTime(score + 8);
+			m_clock->addTime(item->data(0, Qt::UserRole).toInt() + 8);
 			updateScore();
 
 			QList<QList<QPoint> >& solutions = m_solutions[text];
@@ -588,10 +588,18 @@ void Board::selectGuess() {
 int Board::updateScore() {
 	int score = 0;
 	for (int i = 0; i < m_found->topLevelItemCount(); ++i) {
-		QTreeWidgetItem* item = m_found->topLevelItem(i);
-		score += item->data(0, Qt::UserRole).toInt();
+		score += m_found->topLevelItem(i)->data(0, Qt::UserRole).toInt();
 	}
-	m_score->setText(tr("%n point(s)", "", score));
+
+	if (m_score_type == 2 || (m_score_type == 1 && isFinished())) {
+		int max_score = score;
+		for (int i = 0; i < m_missed->topLevelItemCount(); ++i) {
+			max_score += m_missed->topLevelItem(i)->data(0, Qt::UserRole).toInt();
+		}
+		m_score->setText(tr("%1 of %n point(s)", "", max_score).arg(score));
+	} else {
+		m_score->setText(tr("%n point(s)", "", score));
+	}
 	return score;
 }
 

@@ -21,6 +21,7 @@
 
 #include <QDialog>
 class QAbstractButton;
+class QCheckBox;
 class QComboBox;
 class QDialogButtonBox;
 class QLineEdit;
@@ -55,12 +56,16 @@ class SettingsDialog : public QDialog {
 		void setLanguage(int language);
 
 	private:
+		QCheckBox* m_show_score;
+		QComboBox* m_score_type;
+
 		QComboBox* m_language;
 		QLineEdit* m_dice;
 		QPushButton* m_choose_dice;
 		QLineEdit* m_words;
 		QPushButton* m_choose_words;
 		QLineEdit* m_dictionary;
+
 		QDialogButtonBox* m_buttons;
 		bool m_new;
 		bool m_changed;

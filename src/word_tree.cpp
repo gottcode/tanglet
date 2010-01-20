@@ -50,6 +50,8 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 	QTreeWidgetItem* item = new QTreeWidgetItem(this);
 	item->setText(0, word);
 	item->setIcon(1, QIcon(":/empty.png"));
+	static int scores[16] = { 0,0,1,1,2,3,5,11,11,11,11,11,11,11,11,11 };
+	item->setData(0, Qt::UserRole, scores[word.length() - 1]);
 	return item;
 }
 

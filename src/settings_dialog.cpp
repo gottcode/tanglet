@@ -20,14 +20,18 @@
 #include "settings_dialog.h"
 
 #include <QDialogButtonBox>
+#include <QCheckBox>
 #include <QComboBox>
 #include <QDir>
 #include <QGridLayout>
 #include <QFileDialog>
+#include <QFormLayout>
+#include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSettings>
+#include <QVBoxLayout>
 
 //-----------------------------------------------------------------------------
 
@@ -69,6 +73,27 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 	warning->addWidget(warning_text);
 	warning->addStretch();
 
+	// Create score option
+	m_show_score = new QCheckBox(tr("Show maximum score:"), this);
+
+	m_score_type = new QComboBox(this);
+	m_score_type->addItem(tr("At end of game"));
+	m_score_type->addItem(tr("During game"));
+	m_score_type->setEnabled(false);
+	connect(m_show_score, SIGNAL(toggled(bool)), m_score_type, SLOT(setEnabled(bool)));
+
+	int score_type = settings.value("Gameplay/ScoreType", 1).toInt();
+	if (score_type == 2) {
+		m_score_type->setCurrentIndex(1);
+	}
+	m_show_score->setChecked(score_type);
+
+	QHBoxLayout* score_layout = new QHBoxLayout;
+	score_layout->setMargin(0);
+	score_layout->addWidget(m_show_score);
+	score_layout->addWidget(m_score_type);
+	score_layout->addStretch();
+
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
 	connect(m_buttons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -78,33 +103,36 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 	// Lay out window
 	QGridLayout* layout = new QGridLayout(this);
 	layout->setColumnStretch(1, 1);
-	layout->setRowStretch(6, 1);
-	layout->setRowMinimumHeight(6, 12);
-	layout->setColumnMinimumWidth(1, warning->sizeHint().width());
 
-	layout->addWidget(new QLabel(tr("Language:"), this), 0, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_language, 0, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
+	layout->addLayout(score_layout, 0, 1, 1, 2);
 
-	layout->addWidget(new QLabel(tr("Dice:"), this), 1, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_dice, 1, 1);
-	layout->addWidget(m_choose_dice, 1, 2);
+	layout->setRowMinimumHeight(1, 18);
 
-	layout->addWidget(new QLabel(tr("Word list:"), this), 2, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_words, 2, 1);
-	layout->addWidget(m_choose_words, 2, 2);
+	layout->addWidget(new QLabel(tr("Language:"), this), 2, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_language, 2, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
 
-	layout->addLayout(warning, 3, 1);
-	if (show_warning) {
-		layout->setRowMinimumHeight(4, 12);
-	} else {
-		warning_img->hide();
-		warning_text->hide();
-	}
+	layout->addWidget(new QLabel(tr("Dice:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_dice, 3, 1);
+	layout->addWidget(m_choose_dice, 3, 2);
+
+	layout->addWidget(new QLabel(tr("Word list:"), this), 4, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_words, 4, 1);
+	layout->addWidget(m_choose_words, 4, 2);
 
 	layout->addWidget(new QLabel(tr("Dictionary:"), this), 5, 0, Qt::AlignRight | Qt::AlignVCenter);
 	layout->addWidget(m_dictionary, 5, 1, 1, 2);
 
-	layout->addWidget(m_buttons, 7, 0, 1, 3);
+	layout->addLayout(warning, 6, 1);
+	if (!show_warning) {
+		warning_img->hide();
+		warning_text->hide();
+	}
+	layout->setColumnMinimumWidth(1, warning->sizeHint().width());
+
+	layout->setRowStretch(7, 1);
+	layout->setRowMinimumHeight(7, 24);
+
+	layout->addWidget(m_buttons, 8, 0, 1, 3);
 }
 
 //-----------------------------------------------------------------------------
@@ -119,6 +147,13 @@ void SettingsDialog::restoreDefaults() {
 
 void SettingsDialog::accept() {
 	QSettings settings;
+
+	int score_type = m_show_score->isChecked() ? (m_score_type->currentIndex() + 1) : 0;
+	if (settings.value("Gameplay/ScoreType", 1).toInt() != score_type) {
+		settings.setValue("Gameplay/ScoreType", score_type);
+		m_changed = true;
+	}
+
 	int lang = m_language->itemData(m_language->currentIndex()).toInt();
 	if (settings.value("Language").toInt() != lang) {
 		settings.setValue("Language", lang);
@@ -152,6 +187,9 @@ void SettingsDialog::accept() {
 
 void SettingsDialog::clicked(QAbstractButton* button) {
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
+		m_show_score->setChecked(true);
+		m_score_type->setCurrentIndex(0);
+
 		QSettings settings;
 		settings.remove("CustomDice");
 		settings.remove("CustomWords");
