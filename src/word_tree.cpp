@@ -51,7 +51,9 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 	item->setText(0, word);
 	item->setIcon(1, QIcon(":/empty.png"));
 	static int scores[16] = { 0,0,1,1,2,3,5,11,11,11,11,11,11,11,11,11 };
-	item->setData(0, Qt::UserRole, scores[word.length() - 1]);
+	int score = scores[word.length() - 1];
+	item->setData(0, Qt::UserRole, score);
+	item->setToolTip(0, tr("%n point(s)", "", score));
 	return item;
 }
 

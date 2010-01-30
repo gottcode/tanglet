@@ -20,4 +20,15 @@
         </translation>
     </message>
 </context>
+<context>
+    <name>WordTree</name>
+    <message numerus="yes">
+        <location filename="../src/word_tree.cpp" line="56"/>
+        <source>%n point(s)</source>
+        <translation>
+            <numerusform>%n point</numerusform>
+            <numerusform>%n points</numerusform>
+        </translation>
+    </message>
+</context>
 </TS>
