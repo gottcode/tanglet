@@ -44,6 +44,7 @@ class Board : public QWidget {
 		Board(QWidget* parent = 0);
 
 		bool isFinished() const;
+		void abort();
 		void generate();
 		void setPaused(bool pause);
 

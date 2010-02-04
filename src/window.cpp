@@ -55,6 +55,7 @@ Window::Window()
 	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
 	menu->addAction(tr("&Settings"), this, SLOT(showSettings()));
 	menu->addSeparator();
+	QAction* abort_action = menu->addAction(tr("&Abort"), this, SLOT(abortGame()));
 	menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
 
 	menu = menuBar()->addMenu(tr("&Help"));
@@ -76,6 +77,7 @@ Window::Window()
 	m_contents->addWidget(m_board);
 	connect(m_board, SIGNAL(finished(int)), this, SLOT(gameFinished(int)));
 	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
+	connect(m_board, SIGNAL(pauseAvailable(bool)), abort_action, SLOT(setEnabled(bool)));
 
 	// Create pause screen
 	QWidget* pause_screen = new QWidget(this);
@@ -180,6 +182,20 @@ void Window::setPaused(bool paused) {
 
 //-----------------------------------------------------------------------------
 
+bool Window::abortGame() {
+	if (!m_board->isFinished()) {
+		if (QMessageBox::question(this, tr("Question"), tr("Abort game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
+			m_pause_action->setChecked(false);
+			m_board->abort();
+		} else {
+			return false;
+		}
+	}
+	return true;
+}
+
+//-----------------------------------------------------------------------------
+
 void Window::showScores() {
 	ScoresDialog scores(this);
 	scores.exec();
@@ -220,16 +236,6 @@ void Window::gameFinished(int score) {
 	ScoresDialog scores(this);
 	if (scores.addScore(score)) {
 		scores.exec();
-	}
-}
-
-//-----------------------------------------------------------------------------
-
-bool Window::abortGame() {
-	if (!m_board->isFinished()) {
-		return QMessageBox::question(this, tr("Question"), tr("Abort game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes;
-	} else {
-		return true;
 	}
 }
 

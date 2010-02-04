@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,13 +39,11 @@ class Window : public QMainWindow {
 		void aboutScowl();
 		void newGame();
 		void setPaused(bool paused);
+		bool abortGame();
 		void showScores();
 		void showSettings();
 		void showControls();
 		void gameFinished(int score);
-
-	private:
-		bool abortGame();
 
 	private:
 		Board* m_board;
