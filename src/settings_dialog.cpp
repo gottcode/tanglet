@@ -94,6 +94,10 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 	score_layout->addWidget(m_score_type);
 	score_layout->addStretch();
 
+	// Create gameplay options
+	m_higher_scores = new QCheckBox(tr("Prevent low scoring boards"), this);
+	m_higher_scores->setChecked(settings.value("Gameplay/HigherScores", false).toBool());
+
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
 	connect(m_buttons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -105,34 +109,35 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 	layout->setColumnStretch(1, 1);
 
 	layout->addLayout(score_layout, 0, 1, 1, 2);
+	layout->addWidget(m_higher_scores, 1, 1, 1, 2);
 
-	layout->setRowMinimumHeight(1, 18);
+	layout->setRowMinimumHeight(2, 18);
 
-	layout->addWidget(new QLabel(tr("Language:"), this), 2, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_language, 2, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
+	layout->addWidget(new QLabel(tr("Language:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_language, 3, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
 
-	layout->addWidget(new QLabel(tr("Dice:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_dice, 3, 1);
-	layout->addWidget(m_choose_dice, 3, 2);
+	layout->addWidget(new QLabel(tr("Dice:"), this), 4, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_dice, 4, 1);
+	layout->addWidget(m_choose_dice, 4, 2);
 
-	layout->addWidget(new QLabel(tr("Word list:"), this), 4, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_words, 4, 1);
-	layout->addWidget(m_choose_words, 4, 2);
+	layout->addWidget(new QLabel(tr("Word list:"), this), 5, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_words, 5, 1);
+	layout->addWidget(m_choose_words, 5, 2);
 
-	layout->addWidget(new QLabel(tr("Dictionary:"), this), 5, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_dictionary, 5, 1, 1, 2);
+	layout->addWidget(new QLabel(tr("Dictionary:"), this), 6, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_dictionary, 6, 1, 1, 2);
 
-	layout->addLayout(warning, 6, 1);
+	layout->addLayout(warning, 7, 1);
 	if (!show_warning) {
 		warning_img->hide();
 		warning_text->hide();
 	}
 	layout->setColumnMinimumWidth(1, warning->sizeHint().width());
 
-	layout->setRowStretch(7, 1);
-	layout->setRowMinimumHeight(7, 24);
+	layout->setRowStretch(8, 1);
+	layout->setRowMinimumHeight(8, 24);
 
-	layout->addWidget(m_buttons, 8, 0, 1, 3);
+	layout->addWidget(m_buttons, 9, 0, 1, 3);
 }
 
 //-----------------------------------------------------------------------------
@@ -151,6 +156,11 @@ void SettingsDialog::accept() {
 	int score_type = m_show_score->isChecked() ? (m_score_type->currentIndex() + 1) : 0;
 	if (settings.value("Gameplay/ScoreType", 1).toInt() != score_type) {
 		settings.setValue("Gameplay/ScoreType", score_type);
+		m_changed = true;
+	}
+
+	if (settings.value("GamePlay/HigherScores", false).toBool() != m_higher_scores->isChecked()) {
+		settings.setValue("Gameplay/HigherScores", m_higher_scores->isChecked());
 		m_changed = true;
 	}
 
@@ -189,6 +199,7 @@ void SettingsDialog::clicked(QAbstractButton* button) {
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
 		m_show_score->setChecked(true);
 		m_score_type->setCurrentIndex(0);
+		m_higher_scores->setChecked(false);
 
 		QSettings settings;
 		settings.remove("CustomDice");

@@ -50,7 +50,7 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_higher_scores(false) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -141,13 +141,21 @@ void Board::abort() {
 
 void Board::generate() {
 	// Roll dice
-	m_letters.clear();
-	srand(time(0));
-	std::random_shuffle(m_dice.begin(), m_dice.end());
-	for (int i = 0; i < m_dice.count(); ++i) {
-		QStringList& die = m_dice[i];
-		std::random_shuffle(die.begin(), die.end());
-		m_letters += die.at(0);
+	forever {
+		m_letters.clear();
+		srand(time(0));
+		std::random_shuffle(m_dice.begin(), m_dice.end());
+		for (int i = 0; i < m_dice.count(); ++i) {
+			QStringList& die = m_dice[i];
+			std::random_shuffle(die.begin(), die.end());
+			m_letters += die.at(0);
+		}
+
+		Solver solver(m_words, m_letters);
+		if (!m_higher_scores || (solver.score() >= 200)) {
+			m_solutions = solver.solutions();
+			break;
+		}
 	}
 
 	// Create cells
@@ -205,7 +213,6 @@ void Board::generate() {
 	clearHighlight();
 
 	// Add solutions
-	m_solutions = Solver(m_words, m_letters).solutions();
 	QList<QString> solutions = m_solutions.keys();
 	foreach (const QString& solution, solutions) {
 		m_missed->addWord(solution);
@@ -243,6 +250,7 @@ void Board::loadSettings() {
 	QSettings settings;
 
 	// Load gameplay settings
+	m_higher_scores = settings.value("Gameplay/HigherScores", false).toBool();
 	m_score_type = settings.value("Gameplay/ScoreType", 1).toInt();
 	updateScore();
 

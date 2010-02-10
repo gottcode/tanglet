@@ -33,6 +33,9 @@ class Solver {
 			return m_solutions;
 		}
 
+		int score() const;
+		static int score(const QString& word);
+
 	private:
 		struct Cell;
 		void checkCell(Cell& cell);

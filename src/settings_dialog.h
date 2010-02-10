@@ -58,6 +58,7 @@ class SettingsDialog : public QDialog {
 	private:
 		QCheckBox* m_show_score;
 		QComboBox* m_score_type;
+		QCheckBox* m_higher_scores;
 
 		QComboBox* m_language;
 		QLineEdit* m_dice;

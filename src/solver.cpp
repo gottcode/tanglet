@@ -86,6 +86,26 @@ Solver::Solver(const Trie& words, const QStringList& letters)
 
 //-----------------------------------------------------------------------------
 
+int Solver::score() const {
+	int result = 0;
+	QHashIterator<QString, QList<QList<QPoint> > > i(m_solutions);
+	while (i.hasNext()) {
+		i.next();
+		result += score(i.key());
+	}
+	return result;
+}
+
+//-----------------------------------------------------------------------------
+
+int Solver::score(const QString& word) {
+	Q_ASSERT(word.length() <= 16);
+	static int scores[16] = { 0,0,1,1,2,3,5,11,11,11,11,11,11,11,11,11 };
+	return scores[word.length() - 1];
+}
+
+//-----------------------------------------------------------------------------
+
 void Solver::checkCell(Cell& cell) {
 	const Trie* words = m_words;
 	int length = cell.text.length();

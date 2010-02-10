@@ -19,6 +19,8 @@
 
 #include "word_tree.h"
 
+#include "solver.h"
+
 #include <QDesktopServices>
 #include <QHeaderView>
 #include <QMouseEvent>
@@ -50,8 +52,7 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 	QTreeWidgetItem* item = new QTreeWidgetItem(this);
 	item->setText(0, word);
 	item->setIcon(1, QIcon(":/empty.png"));
-	static int scores[16] = { 0,0,1,1,2,3,5,11,11,11,11,11,11,11,11,11 };
-	int score = scores[word.length() - 1];
+	int score = Solver::score(word);
 	item->setData(0, Qt::UserRole, score);
 	item->setToolTip(0, tr("%n point(s)", "", score));
 	return item;
