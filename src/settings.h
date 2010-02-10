@@ -37,8 +37,10 @@ class Settings {
 
 		bool higherScores() const;
 		int scoreType() const;
+		bool showMissed() const;
 		void setHigherScores(bool higher);
 		void setScoreType(int type);
+		void setShowMissed(bool show);
 
 		int language() const;
 		QString dice() const;
@@ -52,6 +54,7 @@ class Settings {
 	private:
 		bool m_higher_scores;
 		int m_score_type;
+		bool m_show_missed;
 
 		int m_language;
 		QString m_dice;

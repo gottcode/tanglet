@@ -1,4 +1,5 @@
 2010-02-10 Graeme Gott <graeme@gottcode.org>
+	* Add option to not show missed words.
 	* Move settings code out of dialog class.
 	* Add option to prevent low scoring boards.
 

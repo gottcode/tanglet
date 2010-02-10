@@ -252,6 +252,18 @@ void Board::loadSettings(const Settings& settings) {
 	m_score_type = settings.scoreType();
 	updateScore();
 
+	if (settings.showMissed()) {
+		if (m_tabs->count() == 1) {
+			m_tabs->addTab(m_missed, tr("Missed"));
+			m_tabs->setTabEnabled(1, isFinished());
+		}
+	} else {
+		if (m_tabs->count() == 2) {
+			m_tabs->removeTab(1);
+			m_missed->hide();
+		}
+	}
+
 	// Load dice
 	m_dice.clear();
 	QFile file(settings.dice());

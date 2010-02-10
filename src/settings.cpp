@@ -30,6 +30,7 @@ Settings::Settings()
 
 	m_higher_scores = settings.value("Gameplay/HigherScores", false).toBool();
 	m_score_type = settings.value("Gameplay/ScoreType", 1).toInt();
+	m_show_missed = settings.value("Gameplay/ShowMissed", true).toBool();
 
 	m_language = settings.value("Language", QLocale::system().language()).toInt();
 	m_dice = settings.value("Dice").toString();
@@ -45,6 +46,7 @@ Settings::~Settings() {
 
 		settings.setValue("Gameplay/HigherScores", m_higher_scores);
 		settings.setValue("Gameplay/ScoreType", m_score_type);
+		settings.setValue("Gameplay/ShowMissed", m_show_missed);
 
 		settings.setValue("Language", m_language);
 		settings.setValue("Dice", m_dice);
@@ -73,6 +75,12 @@ int Settings::scoreType() const {
 
 //-----------------------------------------------------------------------------
 
+bool Settings::showMissed() const {
+	return m_show_missed;
+}
+
+//-----------------------------------------------------------------------------
+
 void Settings::setHigherScores(bool higher) {
 	if (m_higher_scores != higher) {
 		m_higher_scores = higher;
@@ -85,6 +93,15 @@ void Settings::setHigherScores(bool higher) {
 void Settings::setScoreType(int type) {
 	if (m_score_type != type) {
 		m_score_type = type;
+		m_changed = true;
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Settings::setShowMissed(bool show) {
+	if (m_show_missed != show) {
+		m_show_missed = show;
 		m_changed = true;
 	}
 }

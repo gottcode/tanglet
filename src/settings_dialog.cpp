@@ -98,6 +98,9 @@ SettingsDialog::SettingsDialog(Settings& settings, bool show_warning, QWidget* p
 	m_higher_scores = new QCheckBox(tr("Prevent low scoring boards"), this);
 	m_higher_scores->setChecked(m_settings.higherScores());
 
+	m_show_missed = new QCheckBox(tr("Show missed words"), this);
+	m_show_missed->setChecked(m_settings.showMissed());
+
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
 	connect(m_buttons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -109,35 +112,36 @@ SettingsDialog::SettingsDialog(Settings& settings, bool show_warning, QWidget* p
 	layout->setColumnStretch(1, 1);
 
 	layout->addLayout(score_layout, 0, 1, 1, 2);
-	layout->addWidget(m_higher_scores, 1, 1, 1, 2);
+	layout->addWidget(m_show_missed, 1, 1, 1, 2);
+	layout->addWidget(m_higher_scores, 2, 1, 1, 2);
 
-	layout->setRowMinimumHeight(2, 18);
+	layout->setRowMinimumHeight(3, 18);
 
-	layout->addWidget(new QLabel(tr("Language:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_language, 3, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
+	layout->addWidget(new QLabel(tr("Language:"), this), 4, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_language, 4, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
 
-	layout->addWidget(new QLabel(tr("Dice:"), this), 4, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_dice, 4, 1);
-	layout->addWidget(m_choose_dice, 4, 2);
+	layout->addWidget(new QLabel(tr("Dice:"), this), 5, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_dice, 5, 1);
+	layout->addWidget(m_choose_dice, 5, 2);
 
-	layout->addWidget(new QLabel(tr("Word list:"), this), 5, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_words, 5, 1);
-	layout->addWidget(m_choose_words, 5, 2);
+	layout->addWidget(new QLabel(tr("Word list:"), this), 6, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_words, 6, 1);
+	layout->addWidget(m_choose_words, 6, 2);
 
-	layout->addWidget(new QLabel(tr("Dictionary:"), this), 6, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_dictionary, 6, 1, 1, 2);
+	layout->addWidget(new QLabel(tr("Dictionary:"), this), 7, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_dictionary, 7, 1, 1, 2);
 
-	layout->addLayout(warning, 7, 1);
+	layout->addLayout(warning, 8, 1);
 	if (!show_warning) {
 		warning_img->hide();
 		warning_text->hide();
 	}
 	layout->setColumnMinimumWidth(1, warning->sizeHint().width());
 
-	layout->setRowStretch(8, 1);
-	layout->setRowMinimumHeight(8, 24);
+	layout->setRowStretch(9, 1);
+	layout->setRowMinimumHeight(9, 24);
 
-	layout->addWidget(m_buttons, 9, 0, 1, 3);
+	layout->addWidget(m_buttons, 10, 0, 1, 3);
 }
 
 //-----------------------------------------------------------------------------
@@ -154,6 +158,7 @@ void SettingsDialog::restoreDefaults() {
 void SettingsDialog::accept() {
 	m_settings.setScoreType(m_show_score->isChecked() ? (m_score_type->currentIndex() + 1) : 0);
 	m_settings.setHigherScores(m_higher_scores->isChecked());
+	m_settings.setShowMissed(m_show_missed->isChecked());
 
 	m_settings.setDice(m_dice->text());
 	m_settings.setWords(m_words->text());
@@ -173,6 +178,7 @@ void SettingsDialog::clicked(QAbstractButton* button) {
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
 		m_show_score->setChecked(true);
 		m_score_type->setCurrentIndex(0);
+		m_show_missed->setChecked(true);
 		m_higher_scores->setChecked(false);
 
 		QSettings settings;
