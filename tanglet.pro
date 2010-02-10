@@ -21,6 +21,7 @@ HEADERS += src/board.h \
 	src/clock.h \
 	src/letter.h \
 	src/scores_dialog.h \
+	src/settings.h \
 	src/settings_dialog.h \
 	src/solver.h \
 	src/trie.h \
@@ -33,6 +34,7 @@ SOURCES += src/board.cpp \
 	src/letter.cpp \
 	src/main.cpp \
 	src/scores_dialog.cpp \
+	src/settings.cpp \
 	src/settings_dialog.cpp \
 	src/solver.cpp \
 	src/trie.cpp \

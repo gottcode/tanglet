@@ -34,6 +34,7 @@ class QToolButton;
 class QTreeWidgetItem;
 class Clock;
 class Letter;
+class Settings;
 class View;
 class WordTree;
 
@@ -48,7 +49,7 @@ class Board : public QWidget {
 		void generate();
 		void setPaused(bool pause);
 
-		void loadSettings();
+		void loadSettings(const Settings& settings);
 
 	signals:
 		void finished(int score);

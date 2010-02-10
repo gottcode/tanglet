@@ -21,6 +21,7 @@
 
 #include "clock.h"
 #include "letter.h"
+#include "settings.h"
 #include "solver.h"
 #include "view.h"
 #include "word_tree.h"
@@ -38,7 +39,6 @@
 #include <QListWidget>
 #include <QMessageBox>
 #include <QPainterPath>
-#include <QSettings>
 #include <QTabWidget>
 #include <QTextStream>
 #include <QToolButton>
@@ -246,17 +246,15 @@ void Board::setPaused(bool pause) {
 
 //-----------------------------------------------------------------------------
 
-void Board::loadSettings() {
-	QSettings settings;
-
+void Board::loadSettings(const Settings& settings) {
 	// Load gameplay settings
-	m_higher_scores = settings.value("Gameplay/HigherScores", false).toBool();
-	m_score_type = settings.value("Gameplay/ScoreType", 1).toInt();
+	m_higher_scores = settings.higherScores();
+	m_score_type = settings.scoreType();
 	updateScore();
 
 	// Load dice
 	m_dice.clear();
-	QFile file(settings.value("Dice").toString());
+	QFile file(settings.dice());
 	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
 		QTextStream stream(&file);
 		while (!stream.atEnd()) {
@@ -278,7 +276,7 @@ void Board::loadSettings() {
 	// Load words
 	m_words = Trie();
 	int count = 0;
-	file.setFileName(settings.value("Words").toString());
+	file.setFileName(settings.words());
 	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
 		QTextStream stream(&file);
 		while (!stream.atEnd()) {
@@ -295,7 +293,7 @@ void Board::loadSettings() {
 	}
 
 	// Load dictionary
-	QString url = settings.value("Dictionary").toString();
+	QString url = settings.dictionary();
 	m_found->setDictionary(url);
 	m_missed->setDictionary(url);
 }

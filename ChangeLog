@@ -1,4 +1,5 @@
 2010-02-10 Graeme Gott <graeme@gottcode.org>
+	* Move settings code out of dialog class.
 	* Add option to prevent low scoring boards.
 
 2010-02-04 Graeme Gott <graeme@gottcode.org>

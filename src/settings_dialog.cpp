@@ -19,6 +19,8 @@
 
 #include "settings_dialog.h"
 
+#include "settings.h"
+
 #include <QDialogButtonBox>
 #include <QCheckBox>
 #include <QComboBox>
@@ -35,11 +37,9 @@
 
 //-----------------------------------------------------------------------------
 
-SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
-: QDialog(parent), m_new(false), m_changed(false) {
+SettingsDialog::SettingsDialog(Settings& settings, bool show_warning, QWidget* parent)
+: QDialog(parent), m_settings(settings) {
 	setWindowTitle(tr("Settings"));
-
-	QSettings settings;
 
 	m_language = new QComboBox(this);
 	m_language->addItem(tr("English"), QLocale::English);
@@ -49,19 +49,19 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 	connect(m_language, SIGNAL(currentIndexChanged(int)), this, SLOT(chooseLanguage(int)));
 
 	m_dice = new QLineEdit(this);
-	m_dice->setText(settings.value("Dice").toString());
+	m_dice->setText(m_settings.dice());
 	m_choose_dice = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_dice, SIGNAL(clicked()), this, SLOT(chooseDice()));
 
 	m_words = new QLineEdit(this);
-	m_words->setText(settings.value("Words").toString());
+	m_words->setText(m_settings.words());
 	m_choose_words = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_words, SIGNAL(clicked()), this, SLOT(chooseWords()));
 
 	m_dictionary = new QLineEdit(this);
-	m_dictionary->setText(settings.value("Dictionary").toString());
+	m_dictionary->setText(m_settings.dictionary());
 
-	setLanguage(settings.value("Language", QLocale::system().language()).toInt());
+	setLanguage(m_settings.language());
 
 	// Creat warning message
 	QLabel* warning_img = new QLabel(this);
@@ -82,7 +82,7 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 	m_score_type->setEnabled(false);
 	connect(m_show_score, SIGNAL(toggled(bool)), m_score_type, SLOT(setEnabled(bool)));
 
-	int score_type = settings.value("Gameplay/ScoreType", 1).toInt();
+	int score_type = m_settings.scoreType();
 	if (score_type == 2) {
 		m_score_type->setCurrentIndex(1);
 	}
@@ -96,7 +96,7 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 
 	// Create gameplay options
 	m_higher_scores = new QCheckBox(tr("Prevent low scoring boards"), this);
-	m_higher_scores->setChecked(settings.value("Gameplay/HigherScores", false).toBool());
+	m_higher_scores->setChecked(m_settings.higherScores());
 
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
@@ -143,7 +143,8 @@ SettingsDialog::SettingsDialog(bool show_warning, QWidget* parent)
 //-----------------------------------------------------------------------------
 
 void SettingsDialog::restoreDefaults() {
-	SettingsDialog dialog(false);
+	Settings settings;
+	SettingsDialog dialog(settings, false);
 	dialog.m_buttons->button(QDialogButtonBox::RestoreDefaults)->click();
 	dialog.accept();
 }
@@ -151,46 +152,19 @@ void SettingsDialog::restoreDefaults() {
 //-----------------------------------------------------------------------------
 
 void SettingsDialog::accept() {
-	QSettings settings;
+	m_settings.setScoreType(m_show_score->isChecked() ? (m_score_type->currentIndex() + 1) : 0);
+	m_settings.setHigherScores(m_higher_scores->isChecked());
 
-	int score_type = m_show_score->isChecked() ? (m_score_type->currentIndex() + 1) : 0;
-	if (settings.value("Gameplay/ScoreType", 1).toInt() != score_type) {
-		settings.setValue("Gameplay/ScoreType", score_type);
-		m_changed = true;
-	}
+	m_settings.setDice(m_dice->text());
+	m_settings.setWords(m_words->text());
+	m_settings.setDictionary(m_dictionary->text());
+	m_settings.setLanguage(m_language->itemData(m_language->currentIndex()).toInt());
 
-	if (settings.value("GamePlay/HigherScores", false).toBool() != m_higher_scores->isChecked()) {
-		settings.setValue("Gameplay/HigherScores", m_higher_scores->isChecked());
-		m_changed = true;
+	if (m_settings.isChanged()) {
+		QDialog::accept();
+	} else {
+		QDialog::reject();
 	}
-
-	int lang = m_language->itemData(m_language->currentIndex()).toInt();
-	if (settings.value("Language").toInt() != lang) {
-		settings.setValue("Language", lang);
-		m_new = true;
-		m_changed = true;
-		if (lang == 0) {
-			settings.setValue("CustomDice", m_dice->text());
-			settings.setValue("CustomWords", m_words->text());
-			settings.setValue("CustomDictionary", m_dictionary->text());
-		}
-	}
-	if (settings.value("Dice").toString() != m_dice->text()) {
-		settings.setValue("Dice", m_dice->text());
-		m_new = true;
-		m_changed = true;
-	}
-	if (settings.value("Words").toString() != m_words->text()) {
-		settings.setValue("Words", m_words->text());
-		m_new = true;
-		m_changed = true;
-	}
-	if (settings.value("Dictionary") != m_dictionary->text()) {
-		settings.setValue("Dictionary", m_dictionary->text());
-		m_changed = true;
-	}
-
-	QDialog::accept();
 }
 
 //-----------------------------------------------------------------------------

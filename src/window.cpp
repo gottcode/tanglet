@@ -21,6 +21,7 @@
 
 #include "board.h"
 #include "scores_dialog.h"
+#include "settings.h"
 #include "settings_dialog.h"
 
 #include <QAction>
@@ -96,7 +97,7 @@ Window::Window()
 
 	// Load settings
 	restoreGeometry(QSettings().value("Geometry").toByteArray());
-	m_board->loadSettings();
+	m_board->loadSettings(Settings());
 	m_board->generate();
 }
 
@@ -204,13 +205,14 @@ void Window::showScores() {
 //-----------------------------------------------------------------------------
 
 void Window::showSettings() {
-	SettingsDialog settings(!m_board->isFinished(), this);
-	if (settings.exec() == QDialog::Accepted && settings.settingsChanged()) {
-		m_board->loadSettings();
-	}
-	if (settings.startNewGame() && !m_board->isFinished()) {
-		m_pause_action->setChecked(false);
-		m_board->generate();
+	Settings settings;
+	SettingsDialog dialog(settings, !m_board->isFinished(), this);
+	if (dialog.exec() == QDialog::Accepted) {
+		m_board->loadSettings(settings);
+		if (settings.newGameRequired() && !m_board->isFinished()) {
+			m_pause_action->setChecked(false);
+			m_board->generate();
+		}
 	}
 }
 
