@@ -141,13 +141,13 @@ void Board::abort() {
 
 void Board::generate() {
 	// Roll dice
+	m_random.setSeed(time(0));
 	forever {
 		m_letters.clear();
-		srand(time(0));
-		std::random_shuffle(m_dice.begin(), m_dice.end());
+		std::random_shuffle(m_dice.begin(), m_dice.end(), m_random);
 		for (int i = 0; i < m_dice.count(); ++i) {
 			QStringList& die = m_dice[i];
-			std::random_shuffle(die.begin(), die.end());
+			std::random_shuffle(die.begin(), die.end(), m_random);
 			m_letters += die.at(0);
 		}
 

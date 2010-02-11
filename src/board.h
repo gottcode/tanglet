@@ -20,6 +20,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include "random.h"
 #include "trie.h"
 
 #include <QHash>
@@ -89,6 +90,7 @@ class Board : public QWidget {
 		int m_score_type;
 		bool m_higher_scores;
 
+		Random m_random;
 		QList<QStringList> m_dice;
 		Trie m_words;
 		QStringList m_letters;

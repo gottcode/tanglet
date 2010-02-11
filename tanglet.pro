@@ -20,6 +20,7 @@ unix: !macx {
 HEADERS += src/board.h \
 	src/clock.h \
 	src/letter.h \
+	src/random.h \
 	src/scores_dialog.h \
 	src/settings.h \
 	src/settings_dialog.h \
@@ -33,6 +34,7 @@ SOURCES += src/board.cpp \
 	src/clock.cpp \
 	src/letter.cpp \
 	src/main.cpp \
+	src/random.cpp \
 	src/scores_dialog.cpp \
 	src/settings.cpp \
 	src/settings_dialog.cpp \
