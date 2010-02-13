@@ -47,7 +47,7 @@ class Board : public QWidget {
 
 		bool isFinished() const;
 		void abort();
-		void generate();
+		void generate(int seed = 0);
 		void setPaused(bool pause);
 
 		void loadSettings(const Settings& settings);

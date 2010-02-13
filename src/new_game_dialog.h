@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,39 +17,22 @@
  *
  ***********************************************************************/
 
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef NEW_GAME_DIALOG_H
+#define NEW_GAME_DIALOG_H
 
-#include <QMainWindow>
-class QStackedWidget;
-class Board;
+#include <QDialog>
+class QSpinBox;
 
-class Window : public QMainWindow {
+class NewGameDialog : public QDialog {
 	Q_OBJECT
 
 	public:
-		Window();
+		NewGameDialog(QWidget* parent = 0);
 
-	protected:
-		virtual void closeEvent(QCloseEvent* event);
-		virtual bool event(QEvent* event);
-
-	private slots:
-		void about();
-		void aboutScowl();
-		void newGame();
-		void setPaused(bool paused);
-		bool abortGame();
-		void showDetails();
-		void showScores();
-		void showSettings();
-		void showControls();
-		void gameFinished(int score);
+		int seed() const;
 
 	private:
-		Board* m_board;
-		QStackedWidget* m_contents;
-		QAction* m_pause_action;
+		QSpinBox* m_seed;
 };
 
 #endif

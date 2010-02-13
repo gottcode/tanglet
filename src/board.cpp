@@ -39,6 +39,7 @@
 #include <QListWidget>
 #include <QMessageBox>
 #include <QPainterPath>
+#include <QSettings>
 #include <QTabWidget>
 #include <QTextStream>
 #include <QToolButton>
@@ -50,7 +51,7 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_higher_scores(false) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_higher_scores(false), m_random(time(0)) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -139,14 +140,19 @@ void Board::abort() {
 
 //-----------------------------------------------------------------------------
 
-void Board::generate() {
+void Board::generate(int seed) {
+	// Store seed
+	seed = (seed > 0) ? seed : m_random.nextInt(INT_MAX);
+	QSettings().setValue("Board/Seed", seed);
+
 	// Roll dice
-	m_random.setSeed(time(0));
+	m_random.setSeed(seed);
+	QList<QStringList> dice = m_dice;
 	forever {
 		m_letters.clear();
-		std::random_shuffle(m_dice.begin(), m_dice.end(), m_random);
-		for (int i = 0; i < m_dice.count(); ++i) {
-			QStringList& die = m_dice[i];
+		std::random_shuffle(dice.begin(), dice.end(), m_random);
+		for (int i = 0; i < dice.count(); ++i) {
+			QStringList& die = dice[i];
 			std::random_shuffle(die.begin(), die.end(), m_random);
 			m_letters += die.at(0);
 		}

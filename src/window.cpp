@@ -20,6 +20,7 @@
 #include "window.h"
 
 #include "board.h"
+#include "new_game_dialog.h"
 #include "scores_dialog.h"
 #include "settings.h"
 #include "settings_dialog.h"
@@ -53,6 +54,7 @@ Window::Window()
 	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
 	m_pause_action = menu->addAction(tr("&Pause"));
 	menu->addSeparator();
+	menu->addAction(tr("&Details"), this, SLOT(showDetails()));
 	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
 	menu->addAction(tr("&Settings"), this, SLOT(showSettings()));
 	menu->addSeparator();
@@ -168,9 +170,10 @@ void Window::aboutScowl() {
 //-----------------------------------------------------------------------------
 
 void Window::newGame() {
-	if (abortGame()) {
+	NewGameDialog dialog;
+	if (dialog.exec() == QDialog::Accepted) {
 		m_pause_action->setChecked(false);
-		m_board->generate();
+		m_board->generate(dialog.seed());
 	}
 }
 
@@ -193,6 +196,15 @@ bool Window::abortGame() {
 		}
 	}
 	return true;
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::showDetails() {
+	QSettings settings;
+	int seed = settings.value("Board/Seed").toInt();
+
+	QMessageBox::information(this, tr("Details"), tr("<p><b>Seed:</b> %L1").arg(seed));
 }
 
 //-----------------------------------------------------------------------------
