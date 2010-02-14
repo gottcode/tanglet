@@ -1,3 +1,6 @@
+2010-02-14 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Memory was leaked when changing languages.
+
 2010-02-13 Graeme Gott <graeme@gottcode.org>
 	* Allow player to choose game seed.
 

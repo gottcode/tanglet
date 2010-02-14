@@ -292,7 +292,7 @@ void Board::loadSettings(const Settings& settings) {
 	}
 
 	// Load words
-	m_words = Trie();
+	m_words.clear();
 	int count = 0;
 	file.setFileName(settings.words());
 	if (file.open(QFile::ReadOnly | QIODevice::Text)) {

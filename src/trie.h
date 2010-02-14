@@ -40,6 +40,7 @@ class Trie {
 		}
 
 		void addWord(const QString& word);
+		void clear();
 
 		bool isEmpty() const {
 			return m_children == 0;
