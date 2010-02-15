@@ -51,7 +51,7 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_higher_scores(false), m_random(time(0)) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_random(time(0)) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -141,9 +141,13 @@ void Board::abort() {
 //-----------------------------------------------------------------------------
 
 void Board::generate(int seed) {
+	QSettings settings;
+
 	// Store seed
 	seed = (seed > 0) ? seed : m_random.nextInt(INT_MAX);
-	QSettings().setValue("Board/Seed", seed);
+	settings.setValue("Board/Seed", seed);
+
+	bool higher_scores = settings.value("Board/HigherScores", true).toBool();
 
 	// Roll dice
 	m_random.setSeed(seed);
@@ -158,7 +162,7 @@ void Board::generate(int seed) {
 		}
 
 		Solver solver(m_words, m_letters);
-		if (!m_higher_scores || (solver.score() >= 200)) {
+		if (!higher_scores || (solver.score() >= 200)) {
 			m_solutions = solver.solutions();
 			break;
 		}
@@ -254,7 +258,6 @@ void Board::setPaused(bool pause) {
 
 void Board::loadSettings(const Settings& settings) {
 	// Load gameplay settings
-	m_higher_scores = settings.higherScores();
 	m_score_type = settings.scoreType();
 	updateScore();
 

@@ -21,6 +21,7 @@
 #define NEW_GAME_DIALOG_H
 
 #include <QDialog>
+class QCheckBox;
 class QSpinBox;
 
 class NewGameDialog : public QDialog {
@@ -31,8 +32,12 @@ class NewGameDialog : public QDialog {
 
 		int seed() const;
 
+	public slots:
+		virtual void accept();
+
 	private:
 		QSpinBox* m_seed;
+		QCheckBox* m_higher_scores;
 };
 
 #endif

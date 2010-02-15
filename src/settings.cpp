@@ -28,7 +28,6 @@ Settings::Settings()
 : m_changed(false), m_new(false) {
 	QSettings settings;
 
-	m_higher_scores = settings.value("Gameplay/HigherScores", false).toBool();
 	m_score_type = settings.value("Gameplay/ScoreType", 1).toInt();
 	m_show_missed = settings.value("Gameplay/ShowMissed", true).toBool();
 
@@ -44,7 +43,6 @@ Settings::~Settings() {
 	if (isChanged()) {
 		QSettings settings;
 
-		settings.setValue("Gameplay/HigherScores", m_higher_scores);
 		settings.setValue("Gameplay/ScoreType", m_score_type);
 		settings.setValue("Gameplay/ShowMissed", m_show_missed);
 
@@ -63,12 +61,6 @@ Settings::~Settings() {
 
 //-----------------------------------------------------------------------------
 
-bool Settings::higherScores() const {
-	return m_higher_scores;
-}
-
-//-----------------------------------------------------------------------------
-
 int Settings::scoreType() const {
 	return m_score_type;
 }
@@ -77,15 +69,6 @@ int Settings::scoreType() const {
 
 bool Settings::showMissed() const {
 	return m_show_missed;
-}
-
-//-----------------------------------------------------------------------------
-
-void Settings::setHigherScores(bool higher) {
-	if (m_higher_scores != higher) {
-		m_higher_scores = higher;
-		m_changed = true;
-	}
 }
 
 //-----------------------------------------------------------------------------

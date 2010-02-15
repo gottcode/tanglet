@@ -35,10 +35,8 @@ class Settings {
 			return m_new;
 		}
 
-		bool higherScores() const;
 		int scoreType() const;
 		bool showMissed() const;
-		void setHigherScores(bool higher);
 		void setScoreType(int type);
 		void setShowMissed(bool show);
 
@@ -52,7 +50,6 @@ class Settings {
 		void setDictionary(const QString& dictionary);
 
 	private:
-		bool m_higher_scores;
 		int m_score_type;
 		bool m_show_missed;
 

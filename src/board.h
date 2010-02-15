@@ -88,7 +88,6 @@ class Board : public QWidget {
 		bool m_wrong;
 		bool m_valid;
 		int m_score_type;
-		bool m_higher_scores;
 
 		Random m_random;
 		QList<QStringList> m_dice;

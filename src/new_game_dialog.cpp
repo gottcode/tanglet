@@ -19,9 +19,13 @@
 
 #include "new_game_dialog.h"
 
+#include <QCheckBox>
 #include <QDialogButtonBox>
 #include <QFormLayout>
+#include <QGroupBox>
+#include <QSettings>
 #include <QSpinBox>
+#include <QVBoxLayout>
 
 //-----------------------------------------------------------------------------
 
@@ -29,10 +33,17 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 : QDialog(parent) {
 	setWindowTitle(tr("New Game"));
 
-	// Create seed
-	m_seed = new QSpinBox(this);
+	QSettings settings;
+
+	// Create board settings
+	QGroupBox* board = new QGroupBox(tr("Board"), this);
+
+	m_seed = new QSpinBox(board);
 	m_seed->setRange(0, INT_MAX);
 	m_seed->setSpecialValueText(tr("Random"));
+
+	m_higher_scores = new QCheckBox(tr("Prevent low scoring boards"), board);
+	m_higher_scores->setChecked(settings.value("Board/HigherScores", true).toBool());
 
 	// Create buttons
 	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
@@ -40,15 +51,29 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
 
 	// Lay out window
-	QFormLayout* layout = new QFormLayout(this);
-	layout->addRow(tr("Seed:"), m_seed);
-	layout->addRow(buttons);
+	QFormLayout* board_layout = new QFormLayout(board);
+	board_layout->addRow(tr("Seed:"), m_seed);
+	board_layout->addRow(" ", m_higher_scores);
+
+	QVBoxLayout* layout = new QVBoxLayout(this);
+	layout->addWidget(board);
+	layout->addSpacerItem(new QSpacerItem(12, 12, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
+	layout->addWidget(buttons);
 }
 
 //-----------------------------------------------------------------------------
 
 int NewGameDialog::seed() const {
 	return m_seed->value();
+}
+
+//-----------------------------------------------------------------------------
+
+void NewGameDialog::accept() {
+	QSettings settings;
+	settings.setValue("Board/HigherScores", m_higher_scores->isChecked());
+
+	QDialog::accept();
 }
 
 //-----------------------------------------------------------------------------
