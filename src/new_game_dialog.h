@@ -22,6 +22,7 @@
 
 #include <QDialog>
 class QCheckBox;
+class QComboBox;
 class QSpinBox;
 
 class NewGameDialog : public QDialog {
@@ -37,6 +38,7 @@ class NewGameDialog : public QDialog {
 
 	private:
 		QSpinBox* m_seed;
+		QComboBox* m_timer;
 		QCheckBox* m_higher_scores;
 };
 

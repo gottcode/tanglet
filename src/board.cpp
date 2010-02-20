@@ -147,7 +147,10 @@ void Board::generate(int seed) {
 	seed = (seed > 0) ? seed : m_random.nextInt(INT_MAX);
 	settings.setValue("Board/Seed", seed);
 
+	// Load new game settings
 	bool higher_scores = settings.value("Board/HigherScores", true).toBool();
+	int mode = settings.value("Board/TimerMode", Clock::TangletMode).toInt();
+	m_clock->setMode(mode);
 
 	// Roll dice
 	m_random.setSeed(seed);
@@ -353,7 +356,7 @@ void Board::guess() {
 			item = m_found->addWord(text);
 			delete m_missed->findItems(text, Qt::MatchExactly, 0).first();
 
-			m_clock->addTime(item->data(0, Qt::UserRole).toInt() + 8);
+			m_clock->addWord(item->data(0, Qt::UserRole).toInt());
 			updateScore();
 
 			QList<QList<QPoint> >& solutions = m_solutions[text];

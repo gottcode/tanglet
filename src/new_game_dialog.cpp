@@ -19,13 +19,15 @@
 
 #include "new_game_dialog.h"
 
+#include "clock.h"
+
 #include <QCheckBox>
+#include <QComboBox>
 #include <QDialogButtonBox>
 #include <QFormLayout>
 #include <QGroupBox>
 #include <QSettings>
 #include <QSpinBox>
-#include <QVBoxLayout>
 
 //-----------------------------------------------------------------------------
 
@@ -35,14 +37,22 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 	QSettings settings;
 
-	// Create board settings
-	QGroupBox* board = new QGroupBox(tr("Board"), this);
+	// Create widgets
+	m_timer = new QComboBox(this);
+	m_timer->addItem(Clock::modeString(Clock::BoggleMode), Clock::BoggleMode);
+	m_timer->addItem(Clock::modeString(Clock::RefillMode), Clock::RefillMode);
+	m_timer->addItem(Clock::modeString(Clock::TangletMode), Clock::TangletMode);
+	int index = m_timer->findData(settings.value("Board/TimerMode", Clock::TangletMode).toInt());
+	if (index == -1) {
+		index = m_timer->findData(Clock::TangletMode);
+	}
+	m_timer->setCurrentIndex(index);
 
-	m_seed = new QSpinBox(board);
+	m_seed = new QSpinBox(this);
 	m_seed->setRange(0, INT_MAX);
 	m_seed->setSpecialValueText(tr("Random"));
 
-	m_higher_scores = new QCheckBox(tr("Prevent low scoring boards"), board);
+	m_higher_scores = new QCheckBox(tr("Prevent low scoring boards"), this);
 	m_higher_scores->setChecked(settings.value("Board/HigherScores", true).toBool());
 
 	// Create buttons
@@ -51,13 +61,11 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
 
 	// Lay out window
-	QFormLayout* board_layout = new QFormLayout(board);
-	board_layout->addRow(tr("Seed:"), m_seed);
-	board_layout->addRow(" ", m_higher_scores);
-
-	QVBoxLayout* layout = new QVBoxLayout(this);
-	layout->addWidget(board);
-	layout->addSpacerItem(new QSpacerItem(12, 12, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
+	QFormLayout* layout = new QFormLayout(this);
+	layout->addRow(tr("Timer:"), m_timer);
+	layout->addRow(tr("Seed:"), m_seed);
+	layout->addRow(" ", m_higher_scores);
+	layout->addItem(new QSpacerItem(12, 12, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
 	layout->addWidget(buttons);
 }
 
@@ -71,8 +79,8 @@ int NewGameDialog::seed() const {
 
 void NewGameDialog::accept() {
 	QSettings settings;
+	settings.setValue("Board/TimerMode", m_timer->itemData(m_timer->currentIndex()).toInt());
 	settings.setValue("Board/HigherScores", m_higher_scores->isChecked());
-
 	QDialog::accept();
 }
 

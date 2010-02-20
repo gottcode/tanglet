@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,8 @@
 //-----------------------------------------------------------------------------
 
 Clock::Clock(QWidget* parent)
-: QWidget(parent), m_time(0) {
+: QWidget(parent), m_time(0), m_type(0) {
+	setMode(TangletMode);
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
 	m_timer = new QTimer(this);
@@ -40,15 +41,43 @@ Clock::Clock(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
+Clock::~Clock() {
+	delete m_type;
+}
+
+//-----------------------------------------------------------------------------
+
 QSize Clock::sizeHint() const {
 	return QSize(186, fontMetrics().height() + 6);
 }
 
 //-----------------------------------------------------------------------------
 
-void Clock::addTime(int time) {
-	m_time += qMax(time, 0);
-	updateTime();
+void Clock::addWord(int score) {
+	if (m_type->addWord(score)) {
+		updateTime();
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::setMode(int mode) {
+	if (!m_type || m_type->type() != mode) {
+		delete m_type;
+
+		switch (mode) {
+		case TangletMode:
+			m_type = new TangletType(m_time);
+			break;
+		case BoggleMode:
+			m_type = new BoggleType(m_time);
+			break;
+		case RefillMode:
+		default:
+			m_type = new RefillType(m_time);
+			break;
+		}
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -71,7 +100,7 @@ void Clock::setText(const QString& text) {
 //-----------------------------------------------------------------------------
 
 void Clock::start() {
-	m_time = 31;
+	m_type->start();
 	updateTime();
 }
 
@@ -80,6 +109,16 @@ void Clock::start() {
 void Clock::stop() {
 	m_time = 0;
 	updateTime();
+}
+
+//-----------------------------------------------------------------------------
+
+QString Clock::modeString(int mode) {
+	static QStringList timers = QStringList() <<
+		tr("Tanglet") <<
+		tr("Boggle") <<
+		tr("Refill");
+	return timers.at(qBound(0, mode, timers.count() - 1));
 }
 
 //-----------------------------------------------------------------------------
@@ -135,6 +174,73 @@ void Clock::updateTime() {
 		m_timer->stop();
 		emit finished();
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+Clock::Type::Type(int& time)
+	: m_time(time) {
+}
+
+Clock::Type::~Type() {
+}
+
+//-----------------------------------------------------------------------------
+
+Clock::BoggleType::BoggleType(int& time)
+	: Type(time) {
+}
+
+bool Clock::BoggleType::addWord(int score) {
+	Q_UNUSED(score);
+	return false;
+}
+
+void Clock::BoggleType::start() {
+	m_time = 181;
+}
+
+int Clock::BoggleType::type() const {
+	return Clock::BoggleMode;
+}
+
+//-----------------------------------------------------------------------------
+
+Clock::RefillType::RefillType(int& time)
+	: Type(time) {
+}
+
+bool Clock::RefillType::addWord(int score) {
+	Q_UNUSED(score);
+	m_time = 31;
+	return true;
+}
+
+void Clock::RefillType::start() {
+	m_time = 31;
+}
+
+int Clock::RefillType::type() const {
+	return Clock::RefillMode;
+}
+
+//-----------------------------------------------------------------------------
+
+Clock::TangletType::TangletType(int& time)
+	: Type(time) {
+}
+
+bool Clock::TangletType::addWord(int score) {
+	m_time += score + 8;
+	return true;
+}
+
+void Clock::TangletType::start() {
+	m_time = 31;
+}
+
+int Clock::TangletType::type() const {
+	return Clock::TangletMode;
 }
 
 //-----------------------------------------------------------------------------

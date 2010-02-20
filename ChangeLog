@@ -1,3 +1,6 @@
+2010-02-20 Graeme Gott <graeme@gottcode.org>
+	* Add Boggle and Refill timer modes.
+
 2010-02-14 Graeme Gott <graeme@gottcode.org>
 	* FIXED: Memory was leaked when changing languages.
 

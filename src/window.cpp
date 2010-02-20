@@ -20,6 +20,7 @@
 #include "window.h"
 
 #include "board.h"
+#include "clock.h"
 #include "new_game_dialog.h"
 #include "scores_dialog.h"
 #include "settings.h"
@@ -202,9 +203,16 @@ bool Window::abortGame() {
 
 void Window::showDetails() {
 	QSettings settings;
+	QString timer = Clock::modeString(settings.value("Board/TimerMode", Clock::TangletMode).toInt());
 	int seed = settings.value("Board/Seed").toInt();
-
-	QMessageBox::information(this, tr("Details"), tr("<p><b>Seed:</b> %L1").arg(seed));
+	QString higher_scores = settings.value("Board/HigherScores", true).toBool() ? tr("Yes") : tr("No");
+	QMessageBox::information(this, tr("Details"), tr(
+		"<p><b>Timer:</b> %1<br>"
+		"<b>Seed:</b> %L2<br>"
+		"<b>Prevent low scoring boards:</b> %3</p>")
+			.arg(timer)
+			.arg(seed)
+			.arg(higher_scores));
 }
 
 //-----------------------------------------------------------------------------

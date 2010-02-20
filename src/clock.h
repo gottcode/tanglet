@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@ class Clock : public QWidget {
 
 	public:
 		Clock(QWidget* parent = 0);
+		~Clock();
 
 		virtual QSize sizeHint() const;
 
@@ -35,11 +36,19 @@ class Clock : public QWidget {
 			return m_time == 0;
 		}
 
-		void addTime(int time);
+		void addWord(int score);
+		void setMode(int mode);
 		void setPaused(bool paused);
 		void setText(const QString& text);
 		void start();
 		void stop();
+
+		enum Mode {
+			TangletMode,
+			BoggleMode,
+			RefillMode
+		};
+		static QString modeString(int mode);
 
 	signals:
 		void finished();
@@ -54,6 +63,43 @@ class Clock : public QWidget {
 		int m_time;
 		QString m_text;
 		QTimer* m_timer;
+
+		class Type {
+		public:
+			Type(int& time);
+			virtual ~Type();
+			virtual bool addWord(int score)=0;
+			virtual void start()=0;
+			virtual int type() const=0;
+
+		protected:
+			int& m_time;
+		};
+		Type* m_type;
+
+		class BoggleType : public Type {
+		public:
+			BoggleType(int& time);
+			bool addWord(int score);
+			void start();
+			int type() const;
+		};
+
+		class RefillType : public Type {
+		public:
+			RefillType(int& time);
+			bool addWord(int score);
+			void start();
+			int type() const;
+		};
+
+		class TangletType : public Type {
+		public:
+			TangletType(int& time);
+			bool addWord(int score);
+			void start();
+			int type() const;
+		};
 };
 
 #endif
