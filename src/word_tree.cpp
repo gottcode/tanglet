@@ -33,8 +33,9 @@ WordTree::WordTree(QWidget* parent)
 	setColumnCount(2);
 	header()->setStretchLastSection(false);
 	header()->setResizeMode(0, QHeaderView::Stretch);
-	header()->setResizeMode(1, QHeaderView::ResizeToContents);
+	header()->setResizeMode(1, QHeaderView::Fixed);
 	header()->hide();
+	setColumnWidth(1, 22);
 
 	setMouseTracking(true);
 	setRootIsDecorated(false);
