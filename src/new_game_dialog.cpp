@@ -19,6 +19,7 @@
 
 #include "new_game_dialog.h"
 
+#include "board.h"
 #include "clock.h"
 
 #include <QCheckBox>
@@ -38,6 +39,11 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	QSettings settings;
 
 	// Create widgets
+	m_size = new QComboBox(this);
+	m_size->addItem(Board::sizeString(4), 4);
+	m_size->addItem(Board::sizeString(5), 5);
+	m_size->setCurrentIndex(m_size->findData(qBound(4, settings.value("Board/Size", 4).toInt(), 5)));
+
 	m_timer = new QComboBox(this);
 	m_timer->addItem(Clock::modeString(Clock::BoggleMode), Clock::BoggleMode);
 	m_timer->addItem(Clock::modeString(Clock::RefillMode), Clock::RefillMode);
@@ -62,6 +68,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 	// Lay out window
 	QFormLayout* layout = new QFormLayout(this);
+	layout->addRow(tr("Size:"), m_size);
 	layout->addRow(tr("Timer:"), m_timer);
 	layout->addRow(tr("Seed:"), m_seed);
 	layout->addRow(" ", m_higher_scores);
@@ -79,6 +86,7 @@ int NewGameDialog::seed() const {
 
 void NewGameDialog::accept() {
 	QSettings settings;
+	settings.setValue("Board/Size", m_size->itemData(m_size->currentIndex()).toInt());
 	settings.setValue("Board/TimerMode", m_timer->itemData(m_timer->currentIndex()).toInt());
 	settings.setValue("Board/HigherScores", m_higher_scores->isChecked());
 	QDialog::accept();

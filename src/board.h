@@ -48,9 +48,10 @@ class Board : public QWidget {
 		bool isFinished() const;
 		void abort();
 		void generate(int seed = 0);
+		void loadSettings(const Settings& settings);
 		void setPaused(bool pause);
 
-		void loadSettings(const Settings& settings);
+		static QString sizeString(int size);
 
 	signals:
 		void finished(int score);
@@ -76,7 +77,7 @@ class Board : public QWidget {
 		Clock* m_clock;
 		View* m_view;
 		QLabel* m_score;
-		Letter* m_cells[4][4];
+		QVector<QVector<Letter*> > m_cells;
 		QLineEdit* m_guess;
 		QTabWidget* m_tabs;
 		WordTree* m_found;
@@ -91,6 +92,10 @@ class Board : public QWidget {
 
 		Random m_random;
 		QList<QStringList> m_dice;
+		QList<QStringList> m_dice_larger;
+		int m_size;
+		int m_minimum;
+		int m_maximum;
 		Trie m_words;
 		QStringList m_letters;
 		QHash<QString, QList<QList<QPoint> > > m_solutions;

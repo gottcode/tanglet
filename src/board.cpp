@@ -51,7 +51,7 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_random(time(0)) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_random(time(0)), m_size(0), m_minimum(0), m_maximum(0) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -148,13 +148,29 @@ void Board::generate(int seed) {
 	settings.setValue("Board/Seed", seed);
 
 	// Load new game settings
+	int old_size = m_size;
+	m_size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
+	if (old_size != m_size) {
+		m_cells = QVector<QVector<Letter*> >(m_size, QVector<Letter*>(m_size));
+	}
+	QList<QStringList> dice;
+	if (m_size == 4) {
+		m_minimum = 3;
+		m_maximum = 16;
+		m_guess->setMaxLength(m_maximum);
+		dice = m_dice;
+	} else {
+		m_minimum = 4;
+		m_maximum = 25;
+		m_guess->setMaxLength(m_maximum);
+		dice = m_dice_larger;
+	}
 	bool higher_scores = settings.value("Board/HigherScores", true).toBool();
 	int mode = settings.value("Board/TimerMode", Clock::TangletMode).toInt();
 	m_clock->setMode(mode);
 
 	// Roll dice
 	m_random.setSeed(seed);
-	QList<QStringList> dice = m_dice;
 	forever {
 		m_letters.clear();
 		std::random_shuffle(dice.begin(), dice.end(), m_random);
@@ -164,7 +180,7 @@ void Board::generate(int seed) {
 			m_letters += die.at(0);
 		}
 
-		Solver solver(m_words, m_letters);
+		Solver solver(m_words, m_letters, m_minimum);
 		if (!higher_scores || (solver.score() >= 200)) {
 			m_solutions = solver.solutions();
 			break;
@@ -184,7 +200,7 @@ void Board::generate(int seed) {
 	}
 	int cell_size = qMax(metrics.height(), letter_size) + 10;
 	int cell_padding_size = cell_size + 4;
-	int board_size = (4 * cell_padding_size) + 8;
+	int board_size = (m_size * cell_padding_size) + 8;
 
 	delete m_view->scene();
 	QGraphicsScene* scene = new QGraphicsScene(0, 0, board_size, board_size, this);
@@ -196,10 +212,10 @@ void Board::generate(int seed) {
 	path.addRoundedRect(0, 0, board_size, board_size, 5, 5);
 	scene->addPath(path, Qt::NoPen, QColor("#0057ae"));
 
-	for (int r = 0; r < 4; ++r) {
-		for (int c = 0; c < 4; ++c) {
+	for (int r = 0; r < m_size; ++r) {
+		for (int c = 0; c < m_size; ++c) {
 			Letter* cell = new Letter(f, cell_size, QPoint(c,r));
-			cell->setText(m_letters.at((r * 4) + c));
+			cell->setText(m_letters.at((r * m_size) + c));
 			cell->moveBy((c * cell_padding_size) + 6, (r * cell_padding_size) + 6);
 			scene->addItem(cell);
 			m_cells[c][r] = cell;
@@ -243,22 +259,6 @@ void Board::generate(int seed) {
 
 //-----------------------------------------------------------------------------
 
-void Board::setPaused(bool pause) {
-	if (isFinished()) {
-		return;
-	}
-
-	m_paused = pause;
-	m_guess->setDisabled(m_paused);
-	m_clock->setPaused(m_paused);
-
-	if (!m_paused) {
-		m_guess->setFocus();
-	}
-}
-
-//-----------------------------------------------------------------------------
-
 void Board::loadSettings(const Settings& settings) {
 	// Load gameplay settings
 	m_score_type = settings.scoreType();
@@ -277,23 +277,35 @@ void Board::loadSettings(const Settings& settings) {
 	}
 
 	// Load dice
-	m_dice.clear();
+	QList<QStringList> dice;
 	QFile file(settings.dice());
 	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
 		QTextStream stream(&file);
 		while (!stream.atEnd()) {
 			QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
 			if (line.count() == 6) {
-				m_dice.append(line);
+				dice.append(line);
 			}
 		}
 		file.close();
 	}
-	if (m_dice.count() != 16) {
+
+	if (dice.count() == 41) {
+		m_dice = dice.mid(0, 16);
+		m_dice_larger = dice.mid(16);
+	} else {
+		QStringList letters = QString("?,?,?,?,?,?").split(',');
+
 		m_dice.clear();
 		for (int i = 0; i < 16; ++i) {
-			m_dice.append(QString("?,?,?,?,?,?").split(','));
+			m_dice.append(letters);
 		}
+
+		m_dice_larger.clear();
+		for (int i = 0; i < 25; ++i) {
+			m_dice_larger.append(letters);
+		}
+
 		QMessageBox::warning(this, tr("Error"), tr("Unable to read dice from file."));
 	}
 
@@ -305,7 +317,7 @@ void Board::loadSettings(const Settings& settings) {
 		QTextStream stream(&file);
 		while (!stream.atEnd()) {
 			QString line = stream.readLine().toUpper();
-			if (line.length() >= 3 && line.length() <= 16) {
+			if (line.length() >= 3 && line.length() <= 25) {
 				count++;
 				m_words.addWord(line);
 			}
@@ -320,6 +332,28 @@ void Board::loadSettings(const Settings& settings) {
 	QString url = settings.dictionary();
 	m_found->setDictionary(url);
 	m_missed->setDictionary(url);
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::setPaused(bool pause) {
+	if (isFinished()) {
+		return;
+	}
+
+	m_paused = pause;
+	m_guess->setDisabled(m_paused);
+	m_clock->setPaused(m_paused);
+
+	if (!m_paused) {
+		m_guess->setFocus();
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+QString Board::sizeString(int size) {
+	return (size == 4) ? tr("Normal") : tr("Large");
 }
 
 //-----------------------------------------------------------------------------
@@ -341,7 +375,7 @@ void Board::clearGuess() {
 void Board::guess() {
 	if (!isFinished() && !m_paused) {
 		QString text = m_guess->text().trimmed().toUpper();
-		if (text.isEmpty() || text.length() < 3 || text.length() > 16 || !m_valid || m_positions.isEmpty()) {
+		if (text.isEmpty() || text.length() < m_minimum || text.length() > m_maximum || !m_valid || m_positions.isEmpty()) {
 			return;
 		}
 		if (!m_solutions.contains(text)) {
@@ -401,7 +435,7 @@ void Board::guessChanged() {
 		m_guess->setText(word);
 		m_guess->setCursorPosition(pos);
 
-		QList<QList<QPoint> > solutions = m_solutions.value(word, Solver(word, m_letters).solutions().value(word));
+		QList<QList<QPoint> > solutions = m_solutions.value(word, Solver(word, m_letters, 0).solutions().value(word));
 		m_valid = !solutions.isEmpty();
 		if (m_valid) {
 			int index = 0;
@@ -597,8 +631,8 @@ void Board::highlightWord() {
 
 void Board::clearHighlight() {
 	QColor color = !isFinished() ? Qt::white : QColor("#dddddd");
-	for (int c = 0; c < 4; ++c) {
-		for (int r = 0; r < 4; ++r) {
+	for (int c = 0; c < m_size; ++c) {
+		for (int r = 0; r < m_size; ++r) {
 			m_cells[c][r]->setBrush(color);
 			m_cells[c][r]->setPen(Qt::NoPen);
 			m_cells[c][r]->setArrow(-1, 0);
@@ -646,8 +680,8 @@ void Board::updateClickableStatus() {
 	bool has_word = !m_positions.isEmpty() && !finished;
 	bool clickable = !has_word && !finished;
 
-	for (int y = 0; y < 4; ++y) {
-		for (int x = 0; x < 4; ++x) {
+	for (int y = 0; y < m_size; ++y) {
+		for (int x = 0; x < m_size; ++x) {
 			m_cells[x][y]->setClickable(clickable);
 		}
 	}
@@ -655,9 +689,9 @@ void Board::updateClickableStatus() {
 	if (has_word && m_valid) {
 		const QPoint& position = m_positions.last();
 		int min_x = qMax(position.x() - 1, 0);
-		int max_x = qMin(position.x() + 2, 4);
+		int max_x = qMin(position.x() + 2, m_size);
 		int min_y = qMax(position.y() - 1, 0);
-		int max_y = qMin(position.y() + 2, 4);
+		int max_y = qMin(position.y() + 2, m_size);
 		for (int y = min_y; y < max_y; ++y) {
 			for (int x = min_x; x < max_x; ++x) {
 				m_cells[x][y]->setClickable(true);

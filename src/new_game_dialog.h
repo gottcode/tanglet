@@ -37,6 +37,7 @@ class NewGameDialog : public QDialog {
 		virtual void accept();
 
 	private:
+		QComboBox* m_size;
 		QSpinBox* m_seed;
 		QComboBox* m_timer;
 		QCheckBox* m_higher_scores;

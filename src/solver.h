@@ -23,11 +23,12 @@
 #include <QHash>
 #include <QList>
 #include <QPoint>
+#include <QVector>
 class Trie;
 
 class Solver {
 	public:
-		Solver(const Trie& words, const QStringList& letters);
+		Solver(const Trie& words, const QStringList& letters, int minimum);
 
 		QHash<QString, QList<QList<QPoint> > > solutions() const {
 			return m_solutions;
@@ -42,6 +43,7 @@ class Solver {
 
 	private:
 		const Trie* m_words;
+		int m_minimum;
 		QString m_word;
 		QList<QPoint> m_positions;
 		QHash<QString, QList<QList<QPoint> > > m_solutions;
@@ -52,7 +54,7 @@ class Solver {
 			QPoint position;
 			bool checked;
 		};
-		Cell m_cells[4][4];
+		QVector<QVector<Cell> > m_cells;
 };
 
 #endif
