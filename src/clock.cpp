@@ -69,8 +69,8 @@ void Clock::setMode(int mode) {
 		case TangletMode:
 			m_type = new TangletType(m_time);
 			break;
-		case BoggleMode:
-			m_type = new BoggleType(m_time);
+		case ClassicMode:
+			m_type = new ClassicType(m_time);
 			break;
 		case RefillMode:
 		default:
@@ -116,7 +116,7 @@ void Clock::stop() {
 QString Clock::modeString(int mode) {
 	static QStringList timers = QStringList() <<
 		tr("Tanglet") <<
-		tr("Boggle") <<
+		tr("Classic") <<
 		tr("Refill");
 	return timers.at(qBound(0, mode, timers.count() - 1));
 }
@@ -187,21 +187,21 @@ Clock::Type::~Type() {
 
 //-----------------------------------------------------------------------------
 
-Clock::BoggleType::BoggleType(int& time)
+Clock::ClassicType::ClassicType(int& time)
 	: Type(time) {
 }
 
-bool Clock::BoggleType::addWord(int score) {
+bool Clock::ClassicType::addWord(int score) {
 	Q_UNUSED(score);
 	return false;
 }
 
-void Clock::BoggleType::start() {
+void Clock::ClassicType::start() {
 	m_time = 181;
 }
 
-int Clock::BoggleType::type() const {
-	return Clock::BoggleMode;
+int Clock::ClassicType::type() const {
+	return Clock::ClassicMode;
 }
 
 //-----------------------------------------------------------------------------

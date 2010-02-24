@@ -45,8 +45,9 @@ class Clock : public QWidget {
 
 		enum Mode {
 			TangletMode,
-			BoggleMode,
-			RefillMode
+			ClassicMode,
+			RefillMode,
+			TotalModes
 		};
 		static QString modeString(int mode);
 
@@ -77,9 +78,9 @@ class Clock : public QWidget {
 		};
 		Type* m_type;
 
-		class BoggleType : public Type {
+		class ClassicType : public Type {
 		public:
-			BoggleType(int& time);
+			ClassicType(int& time);
 			bool addWord(int score);
 			void start();
 			int type() const;

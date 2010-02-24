@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="605"/>
+        <location filename="../src/board.cpp" line="669"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 of %n point</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="607"/>
+        <location filename="../src/board.cpp" line="671"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
@@ -23,7 +23,7 @@
 <context>
     <name>WordTree</name>
     <message numerus="yes">
-        <location filename="../src/word_tree.cpp" line="56"/>
+        <location filename="../src/word_tree.cpp" line="58"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
