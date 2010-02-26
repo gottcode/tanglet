@@ -23,7 +23,7 @@
 <context>
     <name>Clock</name>
     <message numerus="yes">
-        <location filename="../src/clock.cpp" line="259"/>
+        <location filename="../src/clock.cpp" line="121"/>
         <source>%n guesses(s)</source>
         <translation>
             <numerusform>%n guess</numerusform>
@@ -31,7 +31,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/clock.cpp" line="364"/>
+        <location filename="../src/clock.cpp" line="262"/>
         <source>%n strike(s)</source>
         <translation>
             <numerusform>%n strike</numerusform>

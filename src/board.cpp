@@ -166,8 +166,8 @@ void Board::generate(int seed) {
 		dice = m_dice_larger;
 	}
 	bool higher_scores = settings.value("Board/HigherScores", true).toBool();
-	int mode = settings.value("Board/TimerMode", Clock::TangletMode).toInt();
-	m_clock->setMode(mode);
+	int timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
+	m_clock->setTimer(timer);
 
 	// Roll dice
 	m_random.setSeed(seed);
@@ -181,7 +181,7 @@ void Board::generate(int seed) {
 		}
 
 		Solver solver(m_words, m_letters, m_minimum);
-		m_max_score = solver.score((mode != Clock::AllotmentMode) ? -1 : 30);
+		m_max_score = solver.score((timer != Clock::Allotment) ? -1 : 30);
 		if (!higher_scores || (m_max_score >= 200)) {
 			m_solutions = solver.solutions();
 			break;

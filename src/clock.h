@@ -36,22 +36,22 @@ class Clock : public QWidget {
 
 		void addWord(int score);
 		void addIncorrectWord(int score);
-		void setMode(int mode);
 		void setPaused(bool paused);
 		void setText(const QString& text);
 		void start();
 		void stop();
 
 		enum Mode {
-			TangletMode,
-			ClassicMode,
-			RefillMode,
-			StaminaMode,
-			StrikeoutMode,
-			AllotmentMode,
-			TotalModes
+			Tanglet,
+			Classic,
+			Refill,
+			Stamina,
+			Strikeout,
+			Allotment,
+			TotalTimers
 		};
-		static QString modeString(int mode);
+		void setTimer(int timer);
+		static QString timerToString(int timer);
 
 	signals:
 		void finished();
@@ -64,92 +64,16 @@ class Clock : public QWidget {
 
 	private:
 		QString m_text;
-		QTimer* m_timer;
+		QTimer* m_update;
 
-		class Type {
-		public:
-			Type();
-			virtual ~Type();
-
-			virtual bool isFinished() {
-				return m_time == 0;
-			}
-
-			virtual int time() const {
-				return m_time;
-			}
-
-			virtual bool addWord(int score)=0;
-			virtual bool addIncorrectWord(int score);
-			virtual void start()=0;
-			virtual void stop();
-			virtual QString update();
-
-			virtual QColor color();
-			virtual int type() const=0;
-
-		protected:
-			int m_time;
-		};
-		Type* m_type;
-
-		class AllotmentType : public Type {
-		public:
-			bool addWord(int score);
-			bool addIncorrectWord(int score);
-			void start();
-			int time() const;
-			int type() const;
-			QString update();
-		};
-
-		class ClassicType : public Type {
-		public:
-			bool addWord(int score);
-			void start();
-			int type() const;
-		};
-
-		class RefillType : public Type {
-		public:
-			bool addWord(int score);
-			void start();
-			int time() const;
-			int type() const;
-		};
-
-		class StaminaType : public Type {
-		public:
-			bool addWord(int score);
-			void start();
-			int time() const;
-			int type() const;
-			QString update();
-			QColor color();
-
-		private:
-			int m_freeze;
-		};
-
-		class StrikeoutType : public Type {
-		public:
-			bool addWord(int score);
-			bool addIncorrectWord(int score);
-			void start();
-			int time() const;
-			int type() const;
-			QString update();
-
-		private:
-			int m_strikes;
-		};
-
-		class TangletType : public Type {
-		public:
-			bool addWord(int score);
-			void start();
-			int type() const;
-		};
+		class Timer;
+		class AllotmentTimer;
+		class ClassicTimer;
+		class RefillTimer;
+		class StaminaTimer;
+		class StrikeoutTimer;
+		class TangletTimer;
+		Timer* m_timer;
 };
 
 #endif

@@ -26,196 +26,37 @@
 
 //-----------------------------------------------------------------------------
 
-Clock::Clock(QWidget* parent)
-: QWidget(parent), m_type(0) {
-	setMode(TangletMode);
-	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+class Clock::Timer {
+public:
+	Timer();
+	virtual ~Timer();
 
-	m_timer = new QTimer(this);
-	m_timer->setInterval(1000);
-	connect(m_timer, SIGNAL(timeout()), this, SLOT(updateTime()));
+	virtual bool addWord(int score)=0;
+	virtual bool addIncorrectWord(int score);
+	virtual QColor color();
+	virtual bool isFinished();
+	virtual void start()=0;
+	virtual void stop();
+	virtual int type() const=0;
+	virtual QString update();
+	virtual int width() const;
 
-	QFont f = font();
-	f.setBold(true);
-	setFont(f);
-}
+protected:
+	int m_time;
+};
 
-//-----------------------------------------------------------------------------
-
-Clock::~Clock() {
-	delete m_type;
-}
-
-//-----------------------------------------------------------------------------
-
-QSize Clock::sizeHint() const {
-	return QSize(186, fontMetrics().height() + 6);
-}
-
-//-----------------------------------------------------------------------------
-
-bool Clock::isFinished() const {
-	return m_type->isFinished();
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::addWord(int score) {
-	if (m_type->addWord(score)) {
-		updateTime();
-	}
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::addIncorrectWord(int score) {
-	if (m_type->addIncorrectWord(score)) {
-		updateTime();
-	}
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::setMode(int mode) {
-	if (!m_type || m_type->type() != mode) {
-		delete m_type;
-
-		switch (mode) {
-		case TangletMode:
-			m_type = new TangletType;
-			break;
-		case ClassicMode:
-			m_type = new ClassicType;
-			break;
-		case RefillMode:
-			m_type = new RefillType;
-			break;
-		case StaminaMode:
-			m_type = new StaminaType;
-			break;
-		case StrikeoutMode:
-			m_type = new StrikeoutType;
-			break;
-		case AllotmentMode:
-		default:
-			m_type = new AllotmentType;
-			break;
-		}
-	}
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::setPaused(bool paused) {
-	if (paused) {
-		m_timer->stop();
-	} else {
-		m_timer->start();
-	}
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::setText(const QString& text) {
-	m_text = text;
-	update();
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::start() {
-	m_type->start();
-	updateTime();
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::stop() {
-	m_type->stop();
-	updateTime();
-}
-
-//-----------------------------------------------------------------------------
-
-QString Clock::modeString(int mode) {
-	static QStringList timers = QStringList() <<
-		tr("Tanglet") <<
-		tr("Classic") <<
-		tr("Refill") <<
-		tr("Stamina") <<
-		tr("Strikeout") <<
-		tr("Allotment");
-	return timers.at(qBound(0, mode, timers.count() - 1));
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::paintEvent(QPaintEvent* event) {
-	QWidget::paintEvent(event);
-
-	QColor color = m_type->color();
-
-	QPainter painter(this);
-	painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
-	painter.setPen(Qt::NoPen);
-
-	painter.setBrush(color);
-	painter.drawRoundedRect(rect(), 5, 5);
-
-	int secs = qMin(180, m_type->time());
-	int width = 180 - secs;
-	if (width < 180) {
-		painter.setBrush(QColor(255, 255, 255, 160));
-		painter.drawRoundedRect(secs + 3, 3, width, rect().height() - 6, 2.5, 2.5);
-	}
-
-	QPainterPath path;
-	path.addText(93 - (fontMetrics().width(m_text) / 2), fontMetrics().ascent() + 3, font(), m_text);
-	painter.setBrush(Qt::white);
-	painter.setPen(QPen(Qt::black, 3));
-	painter.drawPath(path);
-	painter.fillPath(path, Qt::white);
-}
-
-//-----------------------------------------------------------------------------
-
-void Clock::updateTime() {
-	m_text = m_type->update();
-	update();
-
-	if (!isFinished()) {
-		m_timer->start();
-	} else {
-		m_timer->stop();
-		emit finished();
-	}
-}
-
-//-----------------------------------------------------------------------------
-
-Clock::Type::Type()
+Clock::Timer::Timer()
 	: m_time(0) {
 }
 
-Clock::Type::~Type() {
+Clock::Timer::~Timer() {
 }
 
-bool Clock::Type::addIncorrectWord(int score) {
-	Q_UNUSED(score);
+bool Clock::Timer::addIncorrectWord(int) {
 	return false;
 }
 
-void Clock::Type::stop() {
-	m_time = 0;
-}
-
-QString Clock::Type::update() {
-	m_time = qMax(m_time - 1, 0);
-	//: Format time for the clock
-	return QTime(0,0,0).addSecs(m_time).toString(tr("m:ss"));
-}
-
-QColor Clock::Type::color() {
+QColor Clock::Timer::color() {
 	QColor c;
 	if (m_time > 20) {
 		c = "#37a42b";
@@ -229,97 +70,143 @@ QColor Clock::Type::color() {
 	return c;
 }
 
+bool Clock::Timer::isFinished() {
+	return m_time == 0;
+}
+
+void Clock::Timer::stop() {
+	m_time = 0;
+}
+
+QString Clock::Timer::update() {
+	m_time = qMax(m_time - 1, 0);
+	return QTime(0,0,0).addSecs(m_time).toString(tr("m:ss"));
+}
+
+int Clock::Timer::width() const {
+	return m_time;
+}
+
 //-----------------------------------------------------------------------------
 
-bool Clock::AllotmentType::addWord(int score) {
-	Q_UNUSED(score);
+class Clock::AllotmentTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	bool addIncorrectWord(int score);
+	void start();
+	int type() const;
+	QString update();
+	int width() const;
+};
+
+bool Clock::AllotmentTimer::addWord(int) {
 	m_time = qMax(m_time - 1, 0);
 	return true;
 }
 
-bool Clock::AllotmentType::addIncorrectWord(int score) {
-	Q_UNUSED(score);
+bool Clock::AllotmentTimer::addIncorrectWord(int) {
 	m_time = qMax(m_time - 1, 0);
 	return true;
 }
 
-void Clock::AllotmentType::start() {
+void Clock::AllotmentTimer::start() {
 	m_time = 30;
 }
 
-int Clock::AllotmentType::time() const {
-	return m_time * 6;
+int Clock::AllotmentTimer::type() const {
+	return Clock::Allotment;
 }
 
-int Clock::AllotmentType::type() const {
-	return Clock::AllotmentMode;
-}
-
-QString Clock::AllotmentType::update() {
+QString Clock::AllotmentTimer::update() {
 	return tr("%n guesses(s)", "", m_time);
 }
 
+int Clock::AllotmentTimer::width() const {
+	return m_time * 6;
+}
+
 //-----------------------------------------------------------------------------
 
-bool Clock::ClassicType::addWord(int score) {
-	Q_UNUSED(score);
+class Clock::ClassicTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	void start();
+	int type() const;
+};
+
+bool Clock::ClassicTimer::addWord(int) {
 	return false;
 }
 
-void Clock::ClassicType::start() {
+void Clock::ClassicTimer::start() {
 	m_time = 181;
 }
 
-int Clock::ClassicType::type() const {
-	return Clock::ClassicMode;
+int Clock::ClassicTimer::type() const {
+	return Clock::Classic;
 }
 
 //-----------------------------------------------------------------------------
 
-bool Clock::RefillType::addWord(int score) {
-	Q_UNUSED(score);
+class Clock::RefillTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	void start();
+	int type() const;
+	int width() const;
+};
+
+bool Clock::RefillTimer::addWord(int) {
 	m_time = 31;
 	return true;
 }
 
-void Clock::RefillType::start() {
+void Clock::RefillTimer::start() {
 	m_time = 31;
 }
 
-int Clock::RefillType::time() const {
-	return m_time * 6;
+int Clock::RefillTimer::type() const {
+	return Clock::Refill;
 }
 
-int Clock::RefillType::type() const {
-	return Clock::RefillMode;
+int Clock::RefillTimer::width() const {
+	return m_time * 6;
 }
 
 //-----------------------------------------------------------------------------
 
-bool Clock::StaminaType::addWord(int score) {
-	Q_UNUSED(score);
+class Clock::StaminaTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	QColor color();
+	void start();
+	int type() const;
+	QString update();
+	int width() const;
+
+private:
+	int m_freeze;
+};
+
+bool Clock::StaminaTimer::addWord(int) {
 	m_freeze = 6;
 	return true;
 }
 
-void Clock::StaminaType::start() {
+QColor Clock::StaminaTimer::color() {
+	return (m_freeze) ? "#3389ea" : Timer::color();
+}
+
+void Clock::StaminaTimer::start() {
 	m_time = 46;
 	m_freeze = 0;
 }
 
-int Clock::StaminaType::time() const {
-	if (m_freeze) {
-		return 180;
-	} else {
-		return m_time * 4;
-	}
+int Clock::StaminaTimer::type() const {
+	return Clock::Stamina;
 }
 
-int Clock::StaminaType::type() const {
-	return Clock::StaminaMode;
-}
-
-QString Clock::StaminaType::update() {
+QString Clock::StaminaTimer::update() {
 	m_freeze = qMax(0, m_freeze - 1);
 	if (m_freeze) {
 		return tr("+%1").arg(m_freeze);
@@ -329,54 +216,243 @@ QString Clock::StaminaType::update() {
 	}
 }
 
-QColor Clock::StaminaType::color() {
-	return (m_freeze) ? "#3389ea" : Type::color();
+int Clock::StaminaTimer::width() const {
+	if (m_freeze) {
+		return 180;
+	} else {
+		return m_time * 4;
+	}
 }
 
 //-----------------------------------------------------------------------------
 
-bool Clock::StrikeoutType::addWord(int score) {
-	Q_UNUSED(score);
+class Clock::StrikeoutTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	bool addIncorrectWord(int score);
+	void start();
+	int type() const;
+	QString update();
+	int width() const;
+
+private:
+	int m_strikes;
+};
+
+bool Clock::StrikeoutTimer::addWord(int) {
 	return false;
 }
 
-bool Clock::StrikeoutType::addIncorrectWord(int score) {
-	Q_UNUSED(score);
+bool Clock::StrikeoutTimer::addIncorrectWord(int) {
 	m_strikes = qMin(m_strikes + 1, 3);
 	m_time = (3 - m_strikes) * 10;
 	return true;
 }
 
-void Clock::StrikeoutType::start() {
+void Clock::StrikeoutTimer::start() {
 	m_time = 30;
 	m_strikes = 0;
 }
 
-int Clock::StrikeoutType::time() const {
-	return (3 - m_strikes) * 60;
+int Clock::StrikeoutTimer::type() const {
+	return Clock::Strikeout;
 }
 
-int Clock::StrikeoutType::type() const {
-	return Clock::StrikeoutMode;
-}
-
-QString Clock::StrikeoutType::update() {
+QString Clock::StrikeoutTimer::update() {
 	return tr("%n strike(s)", "", m_strikes);
+}
+
+int Clock::StrikeoutTimer::width() const {
+	return (3 - m_strikes) * 60;
 }
 
 //-----------------------------------------------------------------------------
 
-bool Clock::TangletType::addWord(int score) {
+class Clock::TangletTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	void start();
+	int type() const;
+};
+
+bool Clock::TangletTimer::addWord(int score) {
 	m_time += score + 8;
 	return true;
 }
 
-void Clock::TangletType::start() {
+void Clock::TangletTimer::start() {
 	m_time = 31;
 }
 
-int Clock::TangletType::type() const {
-	return Clock::TangletMode;
+int Clock::TangletTimer::type() const {
+	return Clock::Tanglet;
+}
+
+//-----------------------------------------------------------------------------
+
+Clock::Clock(QWidget* parent)
+: QWidget(parent), m_timer(0) {
+	setTimer(Tanglet);
+	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+	m_update = new QTimer(this);
+	m_update->setInterval(1000);
+	connect(m_update, SIGNAL(timeout()), this, SLOT(updateTime()));
+
+	QFont f = font();
+	f.setBold(true);
+	setFont(f);
+}
+
+//-----------------------------------------------------------------------------
+
+Clock::~Clock() {
+	delete m_timer;
+}
+
+//-----------------------------------------------------------------------------
+
+QSize Clock::sizeHint() const {
+	return QSize(186, fontMetrics().height() + 6);
+}
+
+//-----------------------------------------------------------------------------
+
+bool Clock::isFinished() const {
+	return m_timer->isFinished();
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::addWord(int score) {
+	if (m_timer->addWord(score)) {
+		updateTime();
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::addIncorrectWord(int score) {
+	if (m_timer->addIncorrectWord(score)) {
+		updateTime();
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::setPaused(bool paused) {
+	if (paused) {
+		m_update->stop();
+	} else {
+		m_update->start();
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::setText(const QString& text) {
+	m_text = text;
+	update();
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::start() {
+	m_timer->start();
+	updateTime();
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::stop() {
+	m_timer->stop();
+	updateTime();
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::setTimer(int timer) {
+	if (!m_timer || m_timer->type() != timer) {
+		delete m_timer;
+
+		switch (timer) {
+		case Tanglet:
+			m_timer = new TangletTimer;
+			break;
+		case Classic:
+			m_timer = new ClassicTimer;
+			break;
+		case Refill:
+			m_timer = new RefillTimer;
+			break;
+		case Stamina:
+			m_timer = new StaminaTimer;
+			break;
+		case Strikeout:
+			m_timer = new StrikeoutTimer;
+			break;
+		case Allotment:
+		default:
+			m_timer = new AllotmentTimer;
+			break;
+		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+QString Clock::timerToString(int timer) {
+	static QStringList timers = QStringList() <<
+		tr("Tanglet") <<
+		tr("Classic") <<
+		tr("Refill") <<
+		tr("Stamina") <<
+		tr("Strikeout") <<
+		tr("Allotment");
+	return timers.at(qBound(0, timer, TotalTimers - 1));
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::paintEvent(QPaintEvent* event) {
+	QWidget::paintEvent(event);
+
+	QColor color = m_timer->color();
+
+	QPainter painter(this);
+	painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
+	painter.setPen(Qt::NoPen);
+
+	painter.setBrush(color);
+	painter.drawRoundedRect(rect(), 5, 5);
+
+	int x = m_timer->width();
+	int width = 180 - qMin(180, x);
+	if (width < 180) {
+		painter.setBrush(QColor(255, 255, 255, 160));
+		painter.drawRoundedRect(x + 3, 3, width, rect().height() - 6, 2.5, 2.5);
+	}
+
+	QPainterPath path;
+	path.addText(93 - (fontMetrics().width(m_text) / 2), fontMetrics().ascent() + 3, font(), m_text);
+	painter.setBrush(Qt::white);
+	painter.setPen(QPen(Qt::black, 3));
+	painter.drawPath(path);
+	painter.fillPath(path, Qt::white);
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::updateTime() {
+	m_text = m_timer->update();
+	update();
+
+	if (!isFinished()) {
+		m_update->start();
+	} else {
+		m_update->stop();
+		emit finished();
+	}
 }
 
 //-----------------------------------------------------------------------------

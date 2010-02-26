@@ -204,7 +204,7 @@ bool Window::abortGame() {
 void Window::showDetails() {
 	QSettings settings;
 	QString size = Board::sizeString(settings.value("Board/Size", 4).toInt());
-	QString timer = Clock::modeString(settings.value("Board/TimerMode", Clock::TangletMode).toInt());
+	QString timer = Clock::timerToString(settings.value("Board/TimerMode", Clock::Tanglet).toInt());
 	int seed = settings.value("Board/Seed").toInt();
 	QString higher_scores = settings.value("Board/HigherScores", true).toBool() ? tr("<p>Prevent low scoring boards is on.</p>") : "";
 	QMessageBox::information(this, tr("Details"), tr(

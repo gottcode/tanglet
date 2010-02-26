@@ -80,43 +80,42 @@
 <context>
     <name>Clock</name>
     <message>
-        <location filename="../src/clock.cpp" line="142"/>
+        <location filename="../src/clock.cpp" line="406"/>
         <source>Tanglet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="143"/>
+        <location filename="../src/clock.cpp" line="407"/>
         <source>Classic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="144"/>
+        <location filename="../src/clock.cpp" line="408"/>
         <source>Refill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="145"/>
+        <location filename="../src/clock.cpp" line="409"/>
         <source>Stamina</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="146"/>
+        <location filename="../src/clock.cpp" line="410"/>
         <source>Strikeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="147"/>
+        <location filename="../src/clock.cpp" line="411"/>
         <source>Allotment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="215"/>
+        <location filename="../src/clock.cpp" line="83"/>
         <source>m:ss</source>
-        <extracomment>Format time for the clock</extracomment>
         <translation></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/clock.cpp" line="259"/>
+        <location filename="../src/clock.cpp" line="121"/>
         <source>%n guesses(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -124,17 +123,17 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="325"/>
+        <location filename="../src/clock.cpp" line="212"/>
         <source>+%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="328"/>
+        <location filename="../src/clock.cpp" line="215"/>
         <source>0:%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/clock.cpp" line="364"/>
+        <location filename="../src/clock.cpp" line="262"/>
         <source>%n strike(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
