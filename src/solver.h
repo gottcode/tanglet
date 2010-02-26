@@ -34,7 +34,7 @@ class Solver {
 			return m_solutions;
 		}
 
-		int score() const;
+		int score(int max = -1) const;
 		static int score(const QString& word);
 
 	private:

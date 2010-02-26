@@ -45,9 +45,10 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_size->setCurrentIndex(m_size->findData(qBound(4, settings.value("Board/Size", 4).toInt(), 5)));
 
 	m_timer = new QComboBox(this);
-	for (int i = 0; i < Clock::TotalModes; ++i) {
+	for (int i = Clock::TangletMode; i < Clock::TotalModes; ++i) {
 		m_timer->addItem(Clock::modeString(i), i);
 	}
+	m_timer->model()->sort(0);
 	int index = m_timer->findData(settings.value("Board/TimerMode", Clock::TangletMode).toInt());
 	if (index == -1) {
 		index = m_timer->findData(Clock::TangletMode);

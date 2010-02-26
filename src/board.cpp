@@ -51,7 +51,7 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_random(time(0)), m_size(0), m_minimum(0), m_maximum(0) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_random(time(0)), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -181,7 +181,8 @@ void Board::generate(int seed) {
 		}
 
 		Solver solver(m_words, m_letters, m_minimum);
-		if (!higher_scores || (solver.score() >= 200)) {
+		m_max_score = solver.score((mode != Clock::AllotmentMode) ? -1 : 30);
+		if (!higher_scores || (m_max_score >= 200)) {
 			m_solutions = solver.solutions();
 			break;
 		}
@@ -381,6 +382,7 @@ void Board::guess() {
 		if (!m_solutions.contains(text)) {
 			m_wrong = true;
 			highlightWord();
+			m_clock->addIncorrectWord(Solver::score(text));
 			return;
 		}
 
@@ -662,11 +664,7 @@ int Board::updateScore() {
 	}
 
 	if (m_score_type == 2 || (m_score_type == 1 && isFinished())) {
-		int max_score = score;
-		for (int i = 0; i < m_missed->topLevelItemCount(); ++i) {
-			max_score += m_missed->topLevelItem(i)->data(0, Qt::UserRole).toInt();
-		}
-		m_score->setText(tr("%1 of %n point(s)", "", max_score).arg(score));
+		m_score->setText(tr("%1 of %n point(s)", "", m_max_score).arg(score));
 	} else {
 		m_score->setText(tr("%n point(s)", "", score));
 	}

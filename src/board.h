@@ -96,6 +96,7 @@ class Board : public QWidget {
 		int m_size;
 		int m_minimum;
 		int m_maximum;
+		int m_max_score;
 		Trie m_words;
 		QStringList m_letters;
 		QHash<QString, QList<QList<QPoint> > > m_solutions;

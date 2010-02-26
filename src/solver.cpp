@@ -94,12 +94,19 @@ Solver::Solver(const Trie& words, const QStringList& letters, int minimum)
 
 //-----------------------------------------------------------------------------
 
-int Solver::score() const {
-	int result = 0;
+int Solver::score(int max) const {
+	QList<int> scores;
 	QHashIterator<QString, QList<QList<QPoint> > > i(m_solutions);
 	while (i.hasNext()) {
 		i.next();
-		result += score(i.key());
+		scores += score(i.key());
+	}
+	qSort(scores.begin(), scores.end(), qGreater<int>());
+
+	int result = 0;
+	scores = (max == -1) ? scores : scores.mid(0, max);
+	foreach (int score, scores) {
+		result += score;
 	}
 	return result;
 }

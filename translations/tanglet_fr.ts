@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="671"/>
+        <location filename="../src/board.cpp" line="669"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
@@ -28,48 +28,48 @@
     </message>
     <message>
         <location filename="../src/board.cpp" line="112"/>
-        <location filename="../src/board.cpp" line="269"/>
+        <location filename="../src/board.cpp" line="270"/>
         <source>Missed</source>
         <translation>Ratés</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="309"/>
-        <location filename="../src/board.cpp" line="328"/>
+        <location filename="../src/board.cpp" line="310"/>
+        <location filename="../src/board.cpp" line="329"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="309"/>
+        <location filename="../src/board.cpp" line="310"/>
         <source>Unable to read dice from file.</source>
         <translation>Impossible de lire les dés du fichier.</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="328"/>
+        <location filename="../src/board.cpp" line="329"/>
         <source>Unable to read word list from file.</source>
         <translation>Impossible de lire la liste des mots du fichier.</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="356"/>
+        <location filename="../src/board.cpp" line="357"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="356"/>
+        <location filename="../src/board.cpp" line="357"/>
         <source>Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="495"/>
+        <location filename="../src/board.cpp" line="497"/>
         <source>Success</source>
         <translation>Succès</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="495"/>
+        <location filename="../src/board.cpp" line="497"/>
         <source>Game Over</source>
         <translation>Partie terminée</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="669"/>
+        <location filename="../src/board.cpp" line="667"/>
         <source>%1 of %n point(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -80,25 +80,66 @@
 <context>
     <name>Clock</name>
     <message>
-        <location filename="../src/clock.cpp" line="118"/>
+        <location filename="../src/clock.cpp" line="142"/>
         <source>Tanglet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="119"/>
+        <location filename="../src/clock.cpp" line="143"/>
         <source>Classic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="120"/>
+        <location filename="../src/clock.cpp" line="144"/>
         <source>Refill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="168"/>
+        <location filename="../src/clock.cpp" line="145"/>
+        <source>Stamina</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/clock.cpp" line="146"/>
+        <source>Strikeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/clock.cpp" line="147"/>
+        <source>Allotment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/clock.cpp" line="215"/>
         <source>m:ss</source>
         <extracomment>Format time for the clock</extracomment>
         <translation></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/clock.cpp" line="259"/>
+        <source>%n guesses(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../src/clock.cpp" line="325"/>
+        <source>+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/clock.cpp" line="328"/>
+        <source>0:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/clock.cpp" line="364"/>
+        <source>%n strike(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -109,27 +150,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="59"/>
+        <location filename="../src/new_game_dialog.cpp" line="60"/>
         <source>Random</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="61"/>
+        <location filename="../src/new_game_dialog.cpp" line="62"/>
         <source>Prevent low scoring boards</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="71"/>
+        <location filename="../src/new_game_dialog.cpp" line="72"/>
         <source>Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="72"/>
+        <location filename="../src/new_game_dialog.cpp" line="73"/>
         <source>Timer:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="73"/>
+        <location filename="../src/new_game_dialog.cpp" line="74"/>
         <source>Seed:</source>
         <translation type="unfinished"></translation>
     </message>
