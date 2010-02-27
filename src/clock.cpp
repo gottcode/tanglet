@@ -148,6 +148,34 @@ int Clock::ClassicTimer::type() const {
 
 //-----------------------------------------------------------------------------
 
+class Clock::DisciplineTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	bool addIncorrectWord(int score);
+	void start();
+	int type() const;
+};
+
+bool Clock::DisciplineTimer::addWord(int score) {
+	m_time += score + 8;
+	return true;
+}
+
+bool Clock::DisciplineTimer::addIncorrectWord(int score) {
+	m_time = qMax(0, m_time - (score + 8));
+	return true;
+}
+
+void Clock::DisciplineTimer::start() {
+	m_time = 31;
+}
+
+int Clock::DisciplineTimer::type() const {
+	return Clock::Discipline;
+}
+
+//-----------------------------------------------------------------------------
+
 class Clock::RefillTimer : public Clock::Timer {
 public:
 	bool addWord(int score);
@@ -392,8 +420,11 @@ void Clock::setTimer(int timer) {
 			m_timer = new StrikeoutTimer;
 			break;
 		case Allotment:
-		default:
 			m_timer = new AllotmentTimer;
+			break;
+		case Discipline:
+		default:
+			m_timer = new DisciplineTimer;
 			break;
 		}
 	}
@@ -408,7 +439,8 @@ QString Clock::timerToString(int timer) {
 		tr("Refill") <<
 		tr("Stamina") <<
 		tr("Strikeout") <<
-		tr("Allotment");
+		tr("Allotment") <<
+		tr("Discipline");
 	return timers.at(qBound(0, timer, TotalTimers - 1));
 }
 
