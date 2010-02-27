@@ -20,7 +20,6 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "random.h"
 #include "trie.h"
 
 #include <QHash>
@@ -47,17 +46,19 @@ class Board : public QWidget {
 
 		bool isFinished() const;
 		void abort();
-		void generate(int seed = 0);
+		void generate(int seed);
 		void loadSettings(const Settings& settings);
 		void setPaused(bool pause);
 
 		static QString sizeString(int size);
 
 	signals:
+		void started();
 		void finished(int score);
 		void pauseAvailable(bool available);
 
 	private slots:
+		void gameStarted();
 		void clearGuess();
 		void guess();
 		void guessChanged();
@@ -90,7 +91,6 @@ class Board : public QWidget {
 		bool m_valid;
 		int m_score_type;
 
-		Random m_random;
 		QList<QStringList> m_dice;
 		QList<QStringList> m_dice_larger;
 		int m_size;
@@ -101,6 +101,9 @@ class Board : public QWidget {
 		QStringList m_letters;
 		QHash<QString, QList<QList<QPoint> > > m_solutions;
 		QList<QPoint> m_positions;
+
+		class Generator;
+		Generator* m_generator;
 };
 
 #endif

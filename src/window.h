@@ -30,6 +30,8 @@ class Window : public QMainWindow {
 	public:
 		Window();
 
+		void startGame(int seed = 0);
+
 	protected:
 		virtual void closeEvent(QCloseEvent* event);
 		virtual bool event(QEvent* event);
@@ -44,6 +46,7 @@ class Window : public QMainWindow {
 		void showScores();
 		void showSettings();
 		void showControls();
+		void gameStarted();
 		void gameFinished(int score);
 
 	private:

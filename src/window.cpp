@@ -79,6 +79,7 @@ Window::Window()
 
 	m_board = new Board(this);
 	m_contents->addWidget(m_board);
+	connect(m_board, SIGNAL(started()), this, SLOT(gameStarted()));
 	connect(m_board, SIGNAL(finished(int)), this, SLOT(gameFinished(int)));
 	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
 	connect(m_board, SIGNAL(pauseAvailable(bool)), abort_action, SLOT(setEnabled(bool)));
@@ -98,10 +99,22 @@ Window::Window()
 	pause_layout->addWidget(resume_button, 0, Qt::AlignCenter);
 	pause_layout->addStretch();
 
+	// Create load screen
+	QLabel* load_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
+	load_screen->setAlignment(Qt::AlignCenter);
+	m_contents->addWidget(load_screen);
+
 	// Load settings
 	restoreGeometry(QSettings().value("Geometry").toByteArray());
 	m_board->loadSettings(Settings());
-	m_board->generate();
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::startGame(int seed) {
+	m_pause_action->setChecked(true);
+	m_contents->setCurrentIndex(2);
+	m_board->generate(seed);
 }
 
 //-----------------------------------------------------------------------------
@@ -173,8 +186,7 @@ void Window::aboutScowl() {
 void Window::newGame() {
 	NewGameDialog dialog;
 	if (dialog.exec() == QDialog::Accepted) {
-		m_pause_action->setChecked(false);
-		m_board->generate(dialog.seed());
+		startGame(dialog.seed());
 	}
 }
 
@@ -233,8 +245,7 @@ void Window::showSettings() {
 	if (dialog.exec() == QDialog::Accepted) {
 		m_board->loadSettings(settings);
 		if (settings.newGameRequired() && !m_board->isFinished()) {
-			m_pause_action->setChecked(false);
-			m_board->generate();
+			startGame();
 		}
 	}
 }
@@ -253,6 +264,16 @@ void Window::showControls() {
 		"<b>Make a guess:</b> Press Enter.<br>"
 		"<b>Clear the word:</b> Press Ctrl+Backspace.</p>"
 	));
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::gameStarted() {
+	if (isActiveWindow()) {
+		m_pause_action->setChecked(false);
+	} else {
+		m_contents->setCurrentIndex(1);
+	}
 }
 
 //-----------------------------------------------------------------------------

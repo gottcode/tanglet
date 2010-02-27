@@ -21,6 +21,7 @@
 
 #include "clock.h"
 #include "letter.h"
+#include "random.h"
 #include "settings.h"
 #include "solver.h"
 #include "view.h"
@@ -42,6 +43,7 @@
 #include <QSettings>
 #include <QTabWidget>
 #include <QTextStream>
+#include <QThread>
 #include <QToolButton>
 #include <QVBoxLayout>
 
@@ -50,8 +52,83 @@
 
 //-----------------------------------------------------------------------------
 
+class Board::Generator : public QThread {
+public:
+	Generator(QObject* parent = 0);
+	void cancel();
+	void create(int seed, int timer, int minimum, bool higher_scores, const QList<QStringList>& dice, const Trie* words);
+	void fetch(int& max_score, QStringList& letters, QHash<QString, QList<QList<QPoint> > >& solutions);
+
+protected:
+	void run();
+
+private:
+	int m_seed;
+	int m_max_words;
+	int m_minimum;
+	int m_max_score;
+	bool m_higher_scores;
+
+	QList<QStringList> m_dice;
+	const Trie* m_words;
+	QStringList m_letters;
+	QHash<QString, QList<QList<QPoint> > > m_solutions;
+
+	QAtomicInt m_cancelled;
+};
+
+Board::Generator::Generator(QObject* parent)
+	: QThread(parent), m_max_score(0) {
+}
+
+void Board::Generator::cancel() {
+	blockSignals(true);
+	m_cancelled = true;
+	wait();
+	deleteLater();
+}
+
+void Board::Generator::create(int seed, int timer, int minimum, bool higher_scores, const QList<QStringList>& dice, const Trie* words) {
+	m_seed = seed;
+	m_max_words = (timer != Clock::Allotment) ? -1 : 30;
+	m_minimum = minimum;
+	m_higher_scores = higher_scores;
+	m_dice = dice;
+	m_words = words;
+	start();
+}
+
+void Board::Generator::fetch(int& max_score, QStringList& letters, QHash<QString, QList<QList<QPoint> > >& solutions) {
+	max_score = m_max_score;
+	letters = m_letters;
+	solutions = m_solutions;
+	deleteLater();
+}
+
+void Board::Generator::run() {
+	Random random(m_seed);
+	while (!m_cancelled) {
+		m_letters.clear();
+		std::random_shuffle(m_dice.begin(), m_dice.end(), random);
+		for (int i = 0; i < m_dice.count(); ++i) {
+			QStringList& die = m_dice[i];
+			std::random_shuffle(die.begin(), die.end(), random);
+			m_letters += die.at(0);
+		}
+
+		Solver solver(*m_words, m_letters, m_minimum);
+		m_max_score = solver.score(m_max_words);
+		if (!m_higher_scores || (m_max_score >= 200)) {
+			m_solutions = solver.solutions();
+			break;
+		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_random(time(0)), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0) {
+: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0), m_generator(0) {
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -135,16 +212,26 @@ bool Board::isFinished() const {
 //-----------------------------------------------------------------------------
 
 void Board::abort() {
+	if (m_generator) {
+		m_generator->cancel();
+		m_generator = 0;
+	}
 	m_clock->stop();
 }
 
 //-----------------------------------------------------------------------------
 
 void Board::generate(int seed) {
+	// Stop any previous board creation
+	if (m_generator) {
+		m_generator->cancel();
+		m_generator = 0;
+	}
+
 	QSettings settings;
 
 	// Store seed
-	seed = (seed > 0) ? seed : m_random.nextInt(INT_MAX);
+	seed = (seed > 0) ? seed : Random(time(0)).nextInt(INT_MAX);
 	settings.setValue("Board/Seed", seed);
 
 	// Load new game settings
@@ -169,23 +256,124 @@ void Board::generate(int seed) {
 	int timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
 	m_clock->setTimer(timer);
 
-	// Roll dice
-	m_random.setSeed(seed);
-	forever {
-		m_letters.clear();
-		std::random_shuffle(dice.begin(), dice.end(), m_random);
-		for (int i = 0; i < dice.count(); ++i) {
-			QStringList& die = dice[i];
-			std::random_shuffle(die.begin(), die.end(), m_random);
-			m_letters += die.at(0);
+	// Create board
+	m_generator = new Generator(this);
+	connect(m_generator, SIGNAL(finished()), this, SLOT(gameStarted()));
+	m_generator->create(seed, timer, m_minimum, higher_scores, dice, &m_words);
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::loadSettings(const Settings& settings) {
+	// Load gameplay settings
+	m_score_type = settings.scoreType();
+	updateScore();
+
+	if (settings.showMissed()) {
+		if (m_tabs->count() == 1) {
+			m_tabs->addTab(m_missed, tr("Missed"));
+			m_tabs->setTabEnabled(1, isFinished());
+		}
+	} else {
+		if (m_tabs->count() == 2) {
+			m_tabs->removeTab(1);
+			m_missed->hide();
+		}
+	}
+
+	// Load dice
+	QList<QStringList> dice;
+	QFile file(settings.dice());
+	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
+		QTextStream stream(&file);
+		while (!stream.atEnd()) {
+			QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
+			if (line.count() == 6) {
+				dice.append(line);
+			}
+		}
+		file.close();
+	}
+
+	if (dice.count() == 41) {
+		m_dice = dice.mid(0, 16);
+		m_dice_larger = dice.mid(16);
+	} else {
+		QStringList letters = QString("?,?,?,?,?,?").split(',');
+
+		m_dice.clear();
+		for (int i = 0; i < 16; ++i) {
+			m_dice.append(letters);
 		}
 
-		Solver solver(m_words, m_letters, m_minimum);
-		m_max_score = solver.score((timer != Clock::Allotment) ? -1 : 30);
-		if (!higher_scores || (m_max_score >= 200)) {
-			m_solutions = solver.solutions();
-			break;
+		m_dice_larger.clear();
+		for (int i = 0; i < 25; ++i) {
+			m_dice_larger.append(letters);
 		}
+
+		QMessageBox::warning(this, tr("Error"), tr("Unable to read dice from file."));
+	}
+
+	// Load words
+	if (m_generator) {
+		m_generator->cancel();
+		m_generator = 0;
+	}
+	m_words.clear();
+	int count = 0;
+	file.setFileName(settings.words());
+	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
+		QTextStream stream(&file);
+		while (!stream.atEnd()) {
+			QString line = stream.readLine().toUpper();
+			if (line.length() >= 3 && line.length() <= 25) {
+				count++;
+				m_words.addWord(line);
+			}
+		}
+		file.close();
+	}
+	if (count == 0) {
+		QMessageBox::warning(this, tr("Error"), tr("Unable to read word list from file."));
+	}
+
+	// Load dictionary
+	QString url = settings.dictionary();
+	m_found->setDictionary(url);
+	m_missed->setDictionary(url);
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::setPaused(bool pause) {
+	if (isFinished()) {
+		return;
+	}
+
+	m_paused = pause;
+	m_guess->setDisabled(m_paused);
+	m_clock->setPaused(m_paused);
+
+	if (!m_paused) {
+		m_guess->setFocus();
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+QString Board::sizeString(int size) {
+	return (size == 4) ? tr("Normal") : tr("Large");
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::gameStarted() {
+	// Fetch letters and solutions
+	if (m_generator) {
+		m_generator->fetch(m_max_score, m_letters, m_solutions);
+		m_generator = 0;
+	} else {
+		return;
 	}
 
 	// Create cells
@@ -249,6 +437,7 @@ void Board::generate(int seed) {
 	}
 
 	// Start game
+	emit started();
 	if (m_missed->topLevelItemCount() > 0) {
 		m_clock->start();
 		updateScore();
@@ -256,105 +445,6 @@ void Board::generate(int seed) {
 	} else {
 		m_clock->stop();
 	}
-}
-
-//-----------------------------------------------------------------------------
-
-void Board::loadSettings(const Settings& settings) {
-	// Load gameplay settings
-	m_score_type = settings.scoreType();
-	updateScore();
-
-	if (settings.showMissed()) {
-		if (m_tabs->count() == 1) {
-			m_tabs->addTab(m_missed, tr("Missed"));
-			m_tabs->setTabEnabled(1, isFinished());
-		}
-	} else {
-		if (m_tabs->count() == 2) {
-			m_tabs->removeTab(1);
-			m_missed->hide();
-		}
-	}
-
-	// Load dice
-	QList<QStringList> dice;
-	QFile file(settings.dice());
-	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
-		QTextStream stream(&file);
-		while (!stream.atEnd()) {
-			QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
-			if (line.count() == 6) {
-				dice.append(line);
-			}
-		}
-		file.close();
-	}
-
-	if (dice.count() == 41) {
-		m_dice = dice.mid(0, 16);
-		m_dice_larger = dice.mid(16);
-	} else {
-		QStringList letters = QString("?,?,?,?,?,?").split(',');
-
-		m_dice.clear();
-		for (int i = 0; i < 16; ++i) {
-			m_dice.append(letters);
-		}
-
-		m_dice_larger.clear();
-		for (int i = 0; i < 25; ++i) {
-			m_dice_larger.append(letters);
-		}
-
-		QMessageBox::warning(this, tr("Error"), tr("Unable to read dice from file."));
-	}
-
-	// Load words
-	m_words.clear();
-	int count = 0;
-	file.setFileName(settings.words());
-	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
-		QTextStream stream(&file);
-		while (!stream.atEnd()) {
-			QString line = stream.readLine().toUpper();
-			if (line.length() >= 3 && line.length() <= 25) {
-				count++;
-				m_words.addWord(line);
-			}
-		}
-		file.close();
-	}
-	if (count == 0) {
-		QMessageBox::warning(this, tr("Error"), tr("Unable to read word list from file."));
-	}
-
-	// Load dictionary
-	QString url = settings.dictionary();
-	m_found->setDictionary(url);
-	m_missed->setDictionary(url);
-}
-
-//-----------------------------------------------------------------------------
-
-void Board::setPaused(bool pause) {
-	if (isFinished()) {
-		return;
-	}
-
-	m_paused = pause;
-	m_guess->setDisabled(m_paused);
-	m_clock->setPaused(m_paused);
-
-	if (!m_paused) {
-		m_guess->setFocus();
-	}
-}
-
-//-----------------------------------------------------------------------------
-
-QString Board::sizeString(int size) {
-	return (size == 4) ? tr("Normal") : tr("Large");
 }
 
 //-----------------------------------------------------------------------------
