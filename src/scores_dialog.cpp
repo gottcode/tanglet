@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QSettings>
+#include <QStyle>
 #include <QVBoxLayout>
 
 #if defined(Q_OS_UNIX)
@@ -88,8 +89,9 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	connect(m_username, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
 
 	// Lay out dialog
-	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close, Qt::Horizontal, this);
-	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
+	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
+	buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
+	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addLayout(m_scores_layout);

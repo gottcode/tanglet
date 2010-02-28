@@ -36,9 +36,9 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
-#include <QPushButton>
 #include <QSettings>
 #include <QStackedWidget>
+#include <QStyle>
 #include <QTextEdit>
 #include <QTextStream>
 #include <QVBoxLayout>
@@ -305,12 +305,8 @@ void Window::aboutScowl() {
 		text->setWordWrapMode(QTextOption::NoWrap);
 		text->setReadOnly(true);
 
-		QFont f = text->font();
-		f.setFamily("Monospace");
-		f.setFixedPitch(true);
-		text->setCurrentFont(f);
-
 		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, &dialog);
+		buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
 		connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
 
 		QVBoxLayout* layout = new QVBoxLayout(&dialog);
@@ -318,10 +314,10 @@ void Window::aboutScowl() {
 		layout->addWidget(buttons);
 
 		QTextStream stream(&file);
-		text->setPlainText(stream.readAll());
+		text->setHtml("<pre>" + stream.readAll() + "</pre>");
 		file.close();
 
-		dialog.resize(700, 600);
+		dialog.resize(700, 500);
 		dialog.exec();
 	}
 }
@@ -329,7 +325,7 @@ void Window::aboutScowl() {
 //-----------------------------------------------------------------------------
 
 void Window::newGame() {
-	NewGameDialog dialog;
+	NewGameDialog dialog(this);
 	if (dialog.exec() == QDialog::Accepted) {
 		startGame(dialog.seed());
 	}

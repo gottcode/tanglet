@@ -75,6 +75,8 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addRow(" ", m_higher_scores);
 	layout->addItem(new QSpacerItem(12, 12, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
 	layout->addWidget(buttons);
+
+	setFixedSize(sizeHint());
 }
 
 //-----------------------------------------------------------------------------
