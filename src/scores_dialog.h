@@ -38,7 +38,7 @@ class ScoresDialog : public QDialog {
 		void editingFinished();
 
 	private:
-		int addScore(const QString& name, int score, const QDateTime& date);
+		int addScore(const QString& name, int score, const QDateTime& date, int timer);
 		void load();
 		void updateItems();
 
@@ -47,6 +47,7 @@ class ScoresDialog : public QDialog {
 			QString name;
 			int score;
 			QDateTime date;
+			int timer;
 
 			bool operator<(const Score& s) const {
 				return score < s.score;
@@ -55,7 +56,7 @@ class ScoresDialog : public QDialog {
 		QList<Score> m_scores;
 		QString m_default_name;
 
-		QLabel* m_score_labels[10][4];
+		QLabel* m_score_labels[10][5];
 		QGridLayout* m_scores_layout;
 		QLineEdit* m_username;
 		int m_row;

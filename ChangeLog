@@ -1,4 +1,5 @@
 2010-02-27 Graeme Gott <graeme@gottcode.org>
+	* Add timer column to high scores dialog.
 	* Add Discipline timer mode.
 	* Generate boards in a separate thread.
 

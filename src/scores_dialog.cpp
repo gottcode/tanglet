@@ -19,6 +19,8 @@
 
 #include "scores_dialog.h"
 
+#include "clock.h"
+
 #include <QDialogButtonBox>
 #include <QGridLayout>
 #include <QLabel>
@@ -67,12 +69,13 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	m_scores_layout->addWidget(new QLabel(tr("<b>Name</b>"), this), 0, 1, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Score</b>"), this), 0, 2, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Date</b>"), this), 0, 3, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Timer</b>"), this), 0, 4, Qt::AlignCenter);
 
-	Qt::Alignment alignments[3] = { Qt::AlignLeft, Qt::AlignRight, Qt::AlignRight };
+	Qt::Alignment alignments[4] = { Qt::AlignLeft, Qt::AlignRight, Qt::AlignRight, Qt::AlignHCenter };
 	for (int r = 0; r < 10; ++r) {
 		m_score_labels[r][0] = new QLabel(tr("#%1").arg(r + 1), this);
 		m_scores_layout->addWidget(m_score_labels[r][0], r + 1, 0, Qt::AlignRight | Qt::AlignVCenter);
-		for (int c = 1; c < 4; ++c) {
+		for (int c = 1; c < 5; ++c) {
 			m_score_labels[r][c] = new QLabel("-", this);
 			m_scores_layout->addWidget(m_score_labels[r][c], r + 1, c, alignments[c - 1] | Qt::AlignVCenter);
 		}
@@ -97,11 +100,11 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 
 bool ScoresDialog::addScore(int score) {
 	// Add score
-	m_row = addScore(m_default_name, score, QDateTime::currentDateTime());
+	m_row = addScore(m_default_name, score, QDateTime::currentDateTime(), QSettings().value("Board/TimerMode", Clock::Tanglet).toInt());
 	if (m_row == -1) {
 		return false;
 	}
-	for (int c = 0; c < 4; ++c) {
+	for (int c = 0; c < 5; ++c) {
 		QFont f = m_score_labels[m_row][c]->font();
 		f.setWeight(QFont::Bold);
 		m_score_labels[m_row][c]->setFont(f);
@@ -130,7 +133,7 @@ void ScoresDialog::editingFinished() {
 	// Save scores
 	QStringList values;
 	foreach (const Score& s, m_scores) {
-		values += QString("%1:%2:%3") .arg(s.name) .arg(s.score) .arg(s.date.toString("yyyy.MM.dd-hh.mm.ss"));
+		values += QString("%1:%2:%3:%4") .arg(s.name) .arg(s.score) .arg(s.date.toString("yyyy.MM.dd-hh.mm.ss")) .arg(s.timer);
 	}
 	QSettings settings;
 	settings.setValue("Scores/DefaultName", m_username->text());
@@ -139,7 +142,7 @@ void ScoresDialog::editingFinished() {
 
 //-----------------------------------------------------------------------------
 
-int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date) {
+int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date, int timer) {
 	if (score == 0) {
 		return -1;
 	}
@@ -155,7 +158,7 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 		return -1;
 	}
 
-	Score s = { name, score, date };
+	Score s = { name, score, date, timer };
 	m_scores.insert(row, s);
 	if (m_scores.count() == 11) {
 		m_scores.removeLast();
@@ -170,8 +173,12 @@ void ScoresDialog::load() {
 	QStringList data = QSettings().value("Scores/Values").toStringList();
 	foreach (const QString& s, data) {
 		QStringList values = s.split(':');
-		if (values.size() == 3) {
-			addScore(values[0], values[1].toInt(), QDateTime::fromString(values[2], "yyyy.MM.dd-hh.mm.ss"));
+		if (values.size() == 3 || values.size() == 4) {
+			QString name = values[0];
+			int score = values[1].toInt();
+			QDateTime date = QDateTime::fromString(values[2], "yyyy.MM.dd-hh.mm.ss");
+			int timer = values.value(3, QString::number(Clock::Tanglet)).toInt();
+			addScore(name, score, date, timer);
 		}
 	}
 	updateItems();
@@ -186,9 +193,10 @@ void ScoresDialog::updateItems() {
 		m_score_labels[r][1]->setText(score.name);
 		m_score_labels[r][2]->setNum(score.score);
 		m_score_labels[r][3]->setText(score.date.toString(Qt::DefaultLocaleShortDate));
+		m_score_labels[r][4]->setText(Clock::timerToString(score.timer));
 	}
 	for (int r = count; r < 10; ++r) {
-		for (int c = 1; c < 4; ++c) {
+		for (int c = 1; c < 5; ++c) {
 			m_score_labels[r][c]->setText("-");
 		}
 	}
