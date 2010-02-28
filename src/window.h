@@ -40,8 +40,8 @@ class Window : public QMainWindow {
 		void about();
 		void aboutScowl();
 		void newGame();
+		bool endGame();
 		void setPaused(bool paused);
-		bool abortGame();
 		void showDetails();
 		void showScores();
 		void showSettings();

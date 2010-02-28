@@ -53,13 +53,15 @@ Window::Window()
 	// Create menus
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
 	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
+	menu->addSeparator();
+	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()), tr("Ctrl+End"));
+	menu->addSeparator();
 	m_pause_action = menu->addAction(tr("&Pause"));
 	menu->addSeparator();
 	menu->addAction(tr("&Details"), this, SLOT(showDetails()));
 	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
 	menu->addAction(tr("&Settings"), this, SLOT(showSettings()));
 	menu->addSeparator();
-	QAction* abort_action = menu->addAction(tr("&Abort"), this, SLOT(abortGame()));
 	menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
 
 	menu = menuBar()->addMenu(tr("&Help"));
@@ -82,7 +84,7 @@ Window::Window()
 	connect(m_board, SIGNAL(started()), this, SLOT(gameStarted()));
 	connect(m_board, SIGNAL(finished(int)), this, SLOT(gameFinished(int)));
 	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
-	connect(m_board, SIGNAL(pauseAvailable(bool)), abort_action, SLOT(setEnabled(bool)));
+	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
 
 	// Create pause screen
 	QWidget* pause_screen = new QWidget(this);
@@ -121,7 +123,7 @@ void Window::startGame(int seed) {
 
 void Window::closeEvent(QCloseEvent* event) {
 	QSettings().setValue("Geometry", saveGeometry());
-	if (!abortGame()) {
+	if (!endGame()) {
 		event->ignore();
 	}
 }
@@ -192,16 +194,9 @@ void Window::newGame() {
 
 //-----------------------------------------------------------------------------
 
-void Window::setPaused(bool paused) {
-	m_board->setPaused(paused);
-	m_contents->setCurrentIndex(paused);
-}
-
-//-----------------------------------------------------------------------------
-
-bool Window::abortGame() {
+bool Window::endGame() {
 	if (!m_board->isFinished()) {
-		if (QMessageBox::question(this, tr("Question"), tr("Abort game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
+		if (QMessageBox::question(this, tr("Question"), tr("End the current game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
 			m_pause_action->setChecked(false);
 			m_board->abort();
 		} else {
@@ -209,6 +204,13 @@ bool Window::abortGame() {
 		}
 	}
 	return true;
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::setPaused(bool paused) {
+	m_board->setPaused(paused);
+	m_contents->setCurrentIndex(paused);
 }
 
 //-----------------------------------------------------------------------------
