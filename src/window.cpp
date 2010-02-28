@@ -45,10 +45,137 @@
 
 //-----------------------------------------------------------------------------
 
+class Window::State {
+public:
+	State(Window* window)
+		: m_window(window) { }
+
+	virtual ~State() { }
+
+	virtual void enter() { }
+	virtual void start() { setState("Start"); }
+	virtual void play() { }
+	virtual void autoPause() { }
+	virtual void autoResume() { }
+	virtual void pause() { }
+	virtual void resume() { }
+	virtual void finish() { setState("Finish"); }
+
+protected:
+	void setPaused(bool paused) {
+		m_window->m_board->setPaused(paused);
+		m_window->m_pause_action->setChecked(paused);
+	}
+
+	void setContentsIndex(int index) {
+		m_window->m_contents->setCurrentIndex(index);
+	}
+
+	void setState(const QString& state) {
+		m_window->m_state = m_window->m_states.value(state);
+		m_window->m_state->enter();
+	}
+
+private:
+	Window* m_window;
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::StartState : public Window::State {
+public:
+	StartState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		m_next_state = "Play";
+		setPaused(true);
+		setContentsIndex(2);
+	}
+
+	void play() { setState(m_next_state); }
+	void autoPause() { m_next_state = "AutoPause"; }
+	void autoResume() { m_next_state = "Play"; }
+
+private:
+	QString m_next_state;
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::PlayState : public Window::State {
+public:
+	PlayState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		setPaused(false);
+		setContentsIndex(0);
+	}
+
+	void autoPause() { setState("AutoPause"); }
+	void pause() { setState("Pause"); }
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::AutoPauseState : public Window::State {
+public:
+	AutoPauseState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		setPaused(true);
+		setContentsIndex(1);
+	}
+
+	void autoResume() { setState("Play"); }
+	void pause() { setState("Pause"); }
+	void resume() { setState("Play"); }
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::PauseState : public Window::State {
+public:
+	PauseState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		setPaused(true);
+		setContentsIndex(1);
+	}
+
+	void resume() { setState("Play"); }
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::FinishState : public Window::State {
+public:
+	FinishState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		setPaused(false);
+		setContentsIndex(0);
+	}
+};
+
+//-----------------------------------------------------------------------------
+
 Window::Window()
 : m_pause_action(0) {
 	setWindowTitle(tr("Tanglet"));
 	setWindowIcon(QIcon(":/tanglet.png"));
+
+	// Create states
+	m_states.insert("Start", new StartState(this));
+	m_states.insert("Play", new PlayState(this));
+	m_states.insert("AutoPause", new AutoPauseState(this));
+	m_states.insert("Pause", new PauseState(this));
+	m_states.insert("Finish", new FinishState(this));
+	m_state = m_states.value("Start");
 
 	// Create menus
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
@@ -73,7 +200,7 @@ Window::Window()
 
 	m_pause_action->setCheckable(true);
 	m_pause_action->setShortcut(tr("Ctrl+P"));
-	connect(m_pause_action, SIGNAL(toggled(bool)), this, SLOT(setPaused(bool)));
+	connect(m_pause_action, SIGNAL(triggered(bool)), this, SLOT(setPaused(bool)));
 
 	// Create widgets
 	m_contents = new QStackedWidget(this);
@@ -87,24 +214,16 @@ Window::Window()
 	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
 
 	// Create pause screen
-	QWidget* pause_screen = new QWidget(this);
-	m_contents->addWidget(pause_screen);
-
-	QLabel* pause_label = new QLabel(tr("<b><big>Paused</big></b>"), pause_screen);
-	QPushButton* resume_button = new QPushButton(tr("Resume"), pause_screen);
-	resume_button->setDefault(true);
-	connect(resume_button, SIGNAL(clicked()), m_pause_action, SLOT(toggle()));
-
-	QVBoxLayout* pause_layout = new QVBoxLayout(pause_screen);
-	pause_layout->addStretch();
-	pause_layout->addWidget(pause_label, 0, Qt::AlignCenter);
-	pause_layout->addWidget(resume_button, 0, Qt::AlignCenter);
-	pause_layout->addStretch();
+	m_pause_screen = new QLabel(tr("<p><b><big>Paused</big></b><br>Click to resume playing.</p>"), this);
+	m_pause_screen->setAlignment(Qt::AlignCenter);
+	m_pause_screen->installEventFilter(this);
+	m_contents->addWidget(m_pause_screen);
 
 	// Create load screen
 	QLabel* load_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
 	load_screen->setAlignment(Qt::AlignCenter);
 	m_contents->addWidget(load_screen);
+	m_contents->setCurrentIndex(2);
 
 	// Load settings
 	restoreGeometry(QSettings().value("Geometry").toByteArray());
@@ -114,9 +233,23 @@ Window::Window()
 //-----------------------------------------------------------------------------
 
 void Window::startGame(int seed) {
-	m_pause_action->setChecked(true);
-	m_contents->setCurrentIndex(2);
+	m_state->start();
 	m_board->generate(seed);
+}
+
+//-----------------------------------------------------------------------------
+
+bool Window::eventFilter(QObject* watched, QEvent* event) {
+	if (watched == m_pause_screen) {
+		if (event->type() == QEvent::MouseButtonPress) {
+			m_state->resume();
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		return QMainWindow::eventFilter(watched, event);
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -131,8 +264,18 @@ void Window::closeEvent(QCloseEvent* event) {
 //-----------------------------------------------------------------------------
 
 bool Window::event(QEvent* event) {
-	if ((event->type() == QEvent::WindowBlocked || event->type() == QEvent::WindowDeactivate) && m_pause_action && m_pause_action->isEnabled()) {
-		m_pause_action->setChecked(true);
+	if (m_pause_action && m_pause_action->isEnabled()) {
+		switch (event->type()) {
+		case QEvent::WindowBlocked:
+		case QEvent::WindowDeactivate:
+			m_state->autoPause();
+			break;
+		case QEvent::WindowUnblocked:
+			m_state->autoResume();
+			break;
+		default:
+			break;
+		}
 	}
 	return QMainWindow::event(event);
 }
@@ -197,7 +340,6 @@ void Window::newGame() {
 bool Window::endGame() {
 	if (!m_board->isFinished()) {
 		if (QMessageBox::question(this, tr("Question"), tr("End the current game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
-			m_pause_action->setChecked(false);
 			m_board->abort();
 		} else {
 			return false;
@@ -209,8 +351,11 @@ bool Window::endGame() {
 //-----------------------------------------------------------------------------
 
 void Window::setPaused(bool paused) {
-	m_board->setPaused(paused);
-	m_contents->setCurrentIndex(paused);
+	if (paused) {
+		m_state->pause();
+	} else {
+		m_state->resume();
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -271,16 +416,13 @@ void Window::showControls() {
 //-----------------------------------------------------------------------------
 
 void Window::gameStarted() {
-	if (isActiveWindow()) {
-		m_pause_action->setChecked(false);
-	} else {
-		m_contents->setCurrentIndex(1);
-	}
+	m_state->play();
 }
 
 //-----------------------------------------------------------------------------
 
 void Window::gameFinished(int score) {
+	m_state->finish();
 	ScoresDialog scores(this);
 	if (scores.addScore(score)) {
 		scores.exec();

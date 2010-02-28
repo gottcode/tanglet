@@ -1,3 +1,6 @@
+2010-02-28 Graeme Gott <graeme@gottcode.org>
+	* Improve state management in window class.
+
 2010-02-27 Graeme Gott <graeme@gottcode.org>
 	* Add timer column to high scores dialog.
 	* Add Discipline timer mode.

@@ -79,6 +79,7 @@ int main(int argc, char** argv) {
 
 	Window window;
 	window.show();
+	app.processEvents();
 	window.startGame();
 
 	return app.exec();

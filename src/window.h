@@ -20,7 +20,9 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include <QHash>
 #include <QMainWindow>
+class QLabel;
 class QStackedWidget;
 class Board;
 
@@ -31,6 +33,7 @@ class Window : public QMainWindow {
 		Window();
 
 		void startGame(int seed = 0);
+		virtual bool eventFilter(QObject* watched, QEvent* event);
 
 	protected:
 		virtual void closeEvent(QCloseEvent* event);
@@ -53,6 +56,17 @@ class Window : public QMainWindow {
 		Board* m_board;
 		QStackedWidget* m_contents;
 		QAction* m_pause_action;
+		QLabel* m_pause_screen;
+
+		class State;
+		friend class State;
+		class StartState;
+		class PlayState;
+		class AutoPauseState;
+		class PauseState;
+		class FinishState;
+		State* m_state;
+		QHash<QString, State*> m_states;
 };
 
 #endif
