@@ -39,6 +39,11 @@
 
 //-----------------------------------------------------------------------------
 
+int ScoresDialog::m_max = -1;
+int ScoresDialog::m_min = 1;
+
+//-----------------------------------------------------------------------------
+
 ScoresDialog::ScoresDialog(QWidget* parent)
 : QDialog(parent), m_row(-1) {
 	setWindowTitle(tr("High Scores"));
@@ -124,6 +129,23 @@ bool ScoresDialog::addScore(int score) {
 
 //-----------------------------------------------------------------------------
 
+int ScoresDialog::isHighScore(int score) {
+	if (m_max == -1) {
+		m_max = 1;
+		ScoresDialog();
+	}
+
+	if (score >= m_max) {
+		return 2;
+	} else if (score >= m_min) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+//-----------------------------------------------------------------------------
+
 void ScoresDialog::editingFinished() {
 	// Hide lineedit
 	m_username->hide();
@@ -165,6 +187,9 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 	if (m_scores.count() == 11) {
 		m_scores.removeLast();
 	}
+
+	m_max = m_scores.first().score;
+	m_min = (m_scores.count() == 10) ? m_scores.last().score : 1;
 
 	return row;
 }

@@ -22,6 +22,7 @@
 #include "clock.h"
 #include "letter.h"
 #include "random.h"
+#include "scores_dialog.h"
 #include "settings.h"
 #include "solver.h"
 #include "view.h"
@@ -758,6 +759,23 @@ int Board::updateScore() {
 	} else {
 		m_score->setText(tr("%n point(s)", "", score));
 	}
+
+	QFont f = font();
+	QPalette p = palette();
+	switch (ScoresDialog::isHighScore(score)) {
+	case 2:
+		f.setBold(true);
+		p.setColor(m_score->foregroundRole(), Qt::blue);
+		break;
+	case 1:
+		f.setBold(true);
+		break;
+	default:
+		break;
+	}
+	m_score->setFont(f);
+	m_score->setPalette(p);
+
 	return score;
 }
 

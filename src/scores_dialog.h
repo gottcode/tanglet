@@ -33,6 +33,7 @@ class ScoresDialog : public QDialog {
 		ScoresDialog(QWidget* parent = 0);
 
 		bool addScore(int score);
+		static int isHighScore(int score);
 
 	private slots:
 		void editingFinished();
@@ -60,6 +61,9 @@ class ScoresDialog : public QDialog {
 		QGridLayout* m_scores_layout;
 		QLineEdit* m_username;
 		int m_row;
+
+		static int m_max;
+		static int m_min;
 };
 
 #endif

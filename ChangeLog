@@ -1,3 +1,6 @@
+2010-03-01 Graeme Gott <graeme@gottcode.org>
+	* Show when player has a high score.
+
 2010-02-28 Graeme Gott <graeme@gottcode.org>
 	* Make dialogs more consistent.
 	* Improve state management in window class.
