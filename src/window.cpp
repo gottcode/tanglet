@@ -21,10 +21,10 @@
 
 #include "board.h"
 #include "clock.h"
+#include "language_settings.h"
+#include "language_dialog.h"
 #include "new_game_dialog.h"
 #include "scores_dialog.h"
-#include "settings.h"
-#include "settings_dialog.h"
 
 #include <QAction>
 #include <QApplication>
@@ -177,31 +177,6 @@ Window::Window()
 	m_states.insert("Finish", new FinishState(this));
 	m_state = m_states.value("Start");
 
-	// Create menus
-	QMenu* menu = menuBar()->addMenu(tr("&Game"));
-	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
-	menu->addSeparator();
-	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()), tr("Ctrl+End"));
-	menu->addSeparator();
-	m_pause_action = menu->addAction(tr("&Pause"));
-	menu->addSeparator();
-	menu->addAction(tr("&Details"), this, SLOT(showDetails()));
-	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
-	menu->addAction(tr("&Settings"), this, SLOT(showSettings()));
-	menu->addSeparator();
-	menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
-
-	menu = menuBar()->addMenu(tr("&Help"));
-	menu->addAction(tr("&Controls"), this, SLOT(showControls()));
-	menu->addSeparator();
-	menu->addAction(tr("&About"), this, SLOT(about()));
-	menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
-	menu->addAction(tr("About &SCOWL"), this, SLOT(aboutScowl()));
-
-	m_pause_action->setCheckable(true);
-	m_pause_action->setShortcut(tr("Ctrl+P"));
-	connect(m_pause_action, SIGNAL(triggered(bool)), this, SLOT(setPaused(bool)));
-
 	// Create widgets
 	m_contents = new QStackedWidget(this);
 	setCentralWidget(m_contents);
@@ -210,8 +185,6 @@ Window::Window()
 	m_contents->addWidget(m_board);
 	connect(m_board, SIGNAL(started()), this, SLOT(gameStarted()));
 	connect(m_board, SIGNAL(finished(int)), this, SLOT(gameFinished(int)));
-	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
-	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
 
 	// Create pause screen
 	m_pause_screen = new QLabel(tr("<p><b><big>Paused</big></b><br>Click to resume playing.</p>"), this);
@@ -225,9 +198,64 @@ Window::Window()
 	m_contents->addWidget(load_screen);
 	m_contents->setCurrentIndex(2);
 
+	// Create game menu
+	QMenu* menu = menuBar()->addMenu(tr("&Game"));
+	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
+	menu->addSeparator();
+	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()), tr("Ctrl+End"));
+	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
+	menu->addSeparator();
+	m_pause_action = menu->addAction(tr("&Pause"));
+	m_pause_action->setCheckable(true);
+	m_pause_action->setShortcut(tr("Ctrl+P"));
+	connect(m_pause_action, SIGNAL(triggered(bool)), this, SLOT(setPaused(bool)));
+	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
+	menu->addSeparator();
+	menu->addAction(tr("&Details"), this, SLOT(showDetails()));
+	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
+	menu->addSeparator();
+	menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
+
+	// Create settings menu
+	menu = menuBar()->addMenu(tr("&Settings"));
+	QMenu* submenu = menu->addMenu(tr("Show &Maximum Score"));
+	QAction* score_actions[3];
+	score_actions[0] = submenu->addAction(tr("&Never"));
+	score_actions[1] = submenu->addAction(tr("&End Of Game"));
+	score_actions[2]  = submenu->addAction(tr("&Always"));
+	QActionGroup* group = new QActionGroup(this);
+	for (int i = 0; i < 3; ++i) {
+		score_actions[i]->setData(i);
+		score_actions[i]->setCheckable(true);
+		group->addAction(score_actions[i]);
+	}
+	connect(group, SIGNAL(triggered(QAction*)), m_board, SLOT(setShowMaximumScore(QAction*)));
+	QAction* missed_action = menu->addAction(tr("Show Missed &Words"));
+	missed_action->setCheckable(true);
+	connect(missed_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowMissedWords(bool)));
+	menu->addSeparator();
+	QAction* higher_action = menu->addAction(tr("&Higher Scoring Boards"));
+	higher_action->setCheckable(true);
+	connect(higher_action, SIGNAL(toggled(bool)), m_board, SLOT(setHigherScoringBoards(bool)));
+	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
+
+	// Create help menu
+	menu = menuBar()->addMenu(tr("&Help"));
+	menu->addAction(tr("&Controls"), this, SLOT(showControls()));
+	menu->addSeparator();
+	menu->addAction(tr("&About"), this, SLOT(about()));
+	menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
+	menu->addAction(tr("About &SCOWL"), this, SLOT(aboutScowl()));
+
 	// Load settings
-	restoreGeometry(QSettings().value("Geometry").toByteArray());
-	m_board->loadSettings(Settings());
+	QSettings settings;
+	QAction* score_action = score_actions[qBound(0, settings.value("ShowMaximumScore", 1).toInt(), 2)];
+	score_action->setChecked(true);
+	m_board->setShowMaximumScore(score_action);
+	missed_action->setChecked(settings.value("ShowMissed", true).toBool());
+	higher_action->setChecked(settings.value("Board/HigherScores", true).toBool());
+	restoreGeometry(settings.value("Geometry").toByteArray());
+	m_board->loadSettings(LanguageSettings());
 }
 
 //-----------------------------------------------------------------------------
@@ -358,7 +386,7 @@ void Window::setPaused(bool paused) {
 
 void Window::showDetails() {
 	QSettings settings;
-	QString size = Board::sizeString(settings.value("Board/Size", 4).toInt());
+	QString size = Board::sizeToString(settings.value("Board/Size", 4).toInt());
 	QString timer = Clock::timerToString(settings.value("Board/TimerMode", Clock::Tanglet).toInt());
 	int seed = settings.value("Board/Seed").toInt();
 	QString higher_scores = settings.value("Board/HigherScores", true).toBool() ? tr("<p>Prevent low scoring boards is on.</p>") : "";
@@ -382,9 +410,9 @@ void Window::showScores() {
 
 //-----------------------------------------------------------------------------
 
-void Window::showSettings() {
-	Settings settings;
-	SettingsDialog dialog(settings, !m_board->isFinished(), this);
+void Window::showLanguage() {
+	LanguageSettings settings;
+	LanguageDialog dialog(settings, !m_board->isFinished(), this);
 	if (dialog.exec() == QDialog::Accepted) {
 		m_board->loadSettings(settings);
 		if (settings.newGameRequired() && !m_board->isFinished()) {

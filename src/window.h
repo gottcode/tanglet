@@ -47,7 +47,7 @@ class Window : public QMainWindow {
 		void setPaused(bool paused);
 		void showDetails();
 		void showScores();
-		void showSettings();
+		void showLanguage();
 		void showControls();
 		void gameStarted();
 		void gameFinished(int score);

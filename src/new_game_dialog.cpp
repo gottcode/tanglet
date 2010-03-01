@@ -22,7 +22,6 @@
 #include "board.h"
 #include "clock.h"
 
-#include <QCheckBox>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QFormLayout>
@@ -40,8 +39,8 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 	// Create widgets
 	m_size = new QComboBox(this);
-	m_size->addItem(Board::sizeString(4), 4);
-	m_size->addItem(Board::sizeString(5), 5);
+	m_size->addItem(Board::sizeToString(4), 4);
+	m_size->addItem(Board::sizeToString(5), 5);
 	m_size->setCurrentIndex(m_size->findData(qBound(4, settings.value("Board/Size", 4).toInt(), 5)));
 
 	m_timer = new QComboBox(this);
@@ -59,9 +58,6 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_seed->setRange(0, INT_MAX);
 	m_seed->setSpecialValueText(tr("Random"));
 
-	m_higher_scores = new QCheckBox(tr("Prevent low scoring boards"), this);
-	m_higher_scores->setChecked(settings.value("Board/HigherScores", true).toBool());
-
 	// Create buttons
 	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
 	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -72,7 +68,6 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addRow(tr("Size:"), m_size);
 	layout->addRow(tr("Timer:"), m_timer);
 	layout->addRow(tr("Seed:"), m_seed);
-	layout->addRow(" ", m_higher_scores);
 	layout->addItem(new QSpacerItem(12, 12, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
 	layout->addWidget(buttons);
 
@@ -91,7 +86,6 @@ void NewGameDialog::accept() {
 	QSettings settings;
 	settings.setValue("Board/Size", m_size->itemData(m_size->currentIndex()).toInt());
 	settings.setValue("Board/TimerMode", m_timer->itemData(m_timer->currentIndex()).toInt());
-	settings.setValue("Board/HigherScores", m_higher_scores->isChecked());
 	QDialog::accept();
 }
 

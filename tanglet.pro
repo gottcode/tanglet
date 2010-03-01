@@ -19,12 +19,12 @@ unix: !macx {
 
 HEADERS += src/board.h \
 	src/clock.h \
+	src/language_dialog.h \
+	src/language_settings.h \
 	src/letter.h \
 	src/new_game_dialog.h \
 	src/random.h \
 	src/scores_dialog.h \
-	src/settings.h \
-	src/settings_dialog.h \
 	src/solver.h \
 	src/trie.h \
 	src/view.h \
@@ -33,13 +33,13 @@ HEADERS += src/board.h \
 
 SOURCES += src/board.cpp \
 	src/clock.cpp \
+	src/language_dialog.cpp \
+	src/language_settings.cpp \
 	src/letter.cpp \
 	src/new_game_dialog.cpp \
 	src/main.cpp \
 	src/random.cpp \
 	src/scores_dialog.cpp \
-	src/settings.cpp \
-	src/settings_dialog.cpp \
 	src/solver.cpp \
 	src/trie.cpp \
 	src/view.cpp \

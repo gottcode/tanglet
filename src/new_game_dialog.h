@@ -40,7 +40,6 @@ class NewGameDialog : public QDialog {
 		QComboBox* m_size;
 		QSpinBox* m_seed;
 		QComboBox* m_timer;
-		QCheckBox* m_higher_scores;
 };
 
 #endif

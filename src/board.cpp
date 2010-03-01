@@ -20,14 +20,15 @@
 #include "board.h"
 
 #include "clock.h"
+#include "language_settings.h"
 #include "letter.h"
 #include "random.h"
 #include "scores_dialog.h"
-#include "settings.h"
 #include "solver.h"
 #include "view.h"
 #include "word_tree.h"
 
+#include <QAction>
 #include <QEvent>
 #include <QFile>
 #include <QGridLayout>
@@ -176,6 +177,7 @@ Board::Board(QWidget* parent)
 
 	m_missed = new WordTree(this);
 	m_missed->setFocusPolicy(Qt::TabFocus);
+	m_missed->hide();
 	connect(m_missed, SIGNAL(itemSelectionChanged()), this, SLOT(wordSelected()));
 
 	QWidget* found_tab = new QWidget(this);
@@ -187,7 +189,6 @@ Board::Board(QWidget* parent)
 
 	m_tabs = new QTabWidget(this);
 	m_tabs->addTab(found_tab, tr("Found"));
-	m_tabs->addTab(m_missed, tr("Missed"));
 	connect(m_tabs, SIGNAL(currentChanged(int)), this, SLOT(clearGuess()));
 
 	int width = guess_layout->sizeHint().width();
@@ -265,23 +266,7 @@ void Board::generate(int seed) {
 
 //-----------------------------------------------------------------------------
 
-void Board::loadSettings(const Settings& settings) {
-	// Load gameplay settings
-	m_score_type = settings.scoreType();
-	updateScore();
-
-	if (settings.showMissed()) {
-		if (m_tabs->count() == 1) {
-			m_tabs->addTab(m_missed, tr("Missed"));
-			m_tabs->setTabEnabled(1, isFinished());
-		}
-	} else {
-		if (m_tabs->count() == 2) {
-			m_tabs->removeTab(1);
-			m_missed->hide();
-		}
-	}
-
+void Board::loadSettings(const LanguageSettings& settings) {
 	// Load dice
 	QList<QStringList> dice;
 	QFile file(settings.dice());
@@ -362,8 +347,40 @@ void Board::setPaused(bool pause) {
 
 //-----------------------------------------------------------------------------
 
-QString Board::sizeString(int size) {
+QString Board::sizeToString(int size) {
 	return (size == 4) ? tr("Normal") : tr("Large");
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::setHigherScoringBoards(bool higher) {
+	QSettings().setValue("Board/HigherScores", higher);
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::setShowMaximumScore(QAction* show) {
+	int score_type = show->data().toInt();
+	QSettings().setValue("ShowMaximumScore", score_type);
+	m_score_type = score_type;
+	updateScore();
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::setShowMissedWords(bool show) {
+	QSettings().setValue("ShowMissed", show);
+	if (show) {
+		if (m_tabs->count() == 1) {
+			m_tabs->addTab(m_missed, tr("Missed"));
+			m_tabs->setTabEnabled(1, isFinished());
+		}
+	} else {
+		if (m_tabs->count() == 2) {
+			m_tabs->removeTab(1);
+			m_missed->hide();
+		}
+	}
 }
 
 //-----------------------------------------------------------------------------

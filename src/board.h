@@ -34,7 +34,7 @@ class QToolButton;
 class QTreeWidgetItem;
 class Clock;
 class Letter;
-class Settings;
+class LanguageSettings;
 class View;
 class WordTree;
 
@@ -47,10 +47,15 @@ class Board : public QWidget {
 		bool isFinished() const;
 		void abort();
 		void generate(int seed);
-		void loadSettings(const Settings& settings);
+		void loadSettings(const LanguageSettings& settings);
 		void setPaused(bool pause);
 
-		static QString sizeString(int size);
+		static QString sizeToString(int size);
+
+	public slots:
+		void setHigherScoringBoards(bool higher);
+		void setShowMissedWords(bool show);
+		void setShowMaximumScore(QAction* show);
 
 	signals:
 		void started();

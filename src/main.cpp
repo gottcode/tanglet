@@ -17,7 +17,7 @@
  *
  ***********************************************************************/
 
-#include "settings_dialog.h"
+#include "language_dialog.h"
 #include "window.h"
 
 #include <QApplication>
@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
 			default_count++;
 		}
 		if (default_count == 3) {
-			SettingsDialog::restoreDefaults();
+			LanguageDialog::restoreDefaults();
 		} else {
 			settings.setValue("Language", 0);
 		}

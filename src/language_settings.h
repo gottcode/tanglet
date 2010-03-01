@@ -17,15 +17,15 @@
  *
  ***********************************************************************/
 
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef LANGUAGE_SETTINGS_H
+#define LANGUAGE_SETTINGS_H
 
 #include <QString>
 
-class Settings {
+class LanguageSettings {
 	public:
-		Settings();
-		~Settings();
+		LanguageSettings();
+		~LanguageSettings();
 
 		bool isChanged() const {
 			return m_changed;
@@ -34,11 +34,6 @@ class Settings {
 		bool newGameRequired() const {
 			return m_new;
 		}
-
-		int scoreType() const;
-		bool showMissed() const;
-		void setScoreType(int type);
-		void setShowMissed(bool show);
 
 		int language() const;
 		QString dice() const;
@@ -50,9 +45,6 @@ class Settings {
 		void setDictionary(const QString& dictionary);
 
 	private:
-		int m_score_type;
-		bool m_show_missed;
-
 		int m_language;
 		QString m_dice;
 		QString m_words;

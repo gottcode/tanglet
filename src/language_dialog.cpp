@@ -17,9 +17,9 @@
  *
  ***********************************************************************/
 
-#include "settings_dialog.h"
+#include "language_dialog.h"
 
-#include "settings.h"
+#include "language_settings.h"
 
 #include <QDialogButtonBox>
 #include <QCheckBox>
@@ -37,9 +37,9 @@
 
 //-----------------------------------------------------------------------------
 
-SettingsDialog::SettingsDialog(Settings& settings, bool show_warning, QWidget* parent)
+LanguageDialog::LanguageDialog(LanguageSettings& settings, bool show_warning, QWidget* parent)
 : QDialog(parent), m_settings(settings) {
-	setWindowTitle(tr("Settings"));
+	setWindowTitle(tr("Board Language"));
 
 	m_language = new QComboBox(this);
 	m_language->addItem(tr("English"), QLocale::English);
@@ -73,31 +73,6 @@ SettingsDialog::SettingsDialog(Settings& settings, bool show_warning, QWidget* p
 	warning->addWidget(warning_text);
 	warning->addStretch();
 
-	// Create score option
-	m_show_score = new QCheckBox(tr("Show maximum score:"), this);
-
-	m_score_type = new QComboBox(this);
-	m_score_type->addItem(tr("At end of game"));
-	m_score_type->addItem(tr("During game"));
-	m_score_type->setEnabled(false);
-	connect(m_show_score, SIGNAL(toggled(bool)), m_score_type, SLOT(setEnabled(bool)));
-
-	int score_type = m_settings.scoreType();
-	if (score_type == 2) {
-		m_score_type->setCurrentIndex(1);
-	}
-	m_show_score->setChecked(score_type);
-
-	QHBoxLayout* score_layout = new QHBoxLayout;
-	score_layout->setMargin(0);
-	score_layout->addWidget(m_show_score);
-	score_layout->addWidget(m_score_type);
-	score_layout->addStretch();
-
-	// Create gameplay options
-	m_show_missed = new QCheckBox(tr("Show missed words"), this);
-	m_show_missed->setChecked(m_settings.showMissed());
-
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
 	connect(m_buttons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -108,53 +83,45 @@ SettingsDialog::SettingsDialog(Settings& settings, bool show_warning, QWidget* p
 	QGridLayout* layout = new QGridLayout(this);
 	layout->setColumnStretch(1, 1);
 
-	layout->addLayout(score_layout, 0, 1, 1, 2);
-	layout->addWidget(m_show_missed, 1, 1, 1, 2);
+	layout->addWidget(new QLabel(tr("Language:"), this), 0, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_language, 0, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
 
-	layout->setRowMinimumHeight(2, 18);
+	layout->addWidget(new QLabel(tr("Dice:"), this), 1, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_dice, 1, 1);
+	layout->addWidget(m_choose_dice, 1, 2);
 
-	layout->addWidget(new QLabel(tr("Language:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_language, 3, 1, 1, 2, Qt::AlignLeft | Qt::AlignVCenter);
+	layout->addWidget(new QLabel(tr("Word list:"), this), 2, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_words, 2, 1);
+	layout->addWidget(m_choose_words, 2, 2);
 
-	layout->addWidget(new QLabel(tr("Dice:"), this), 4, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_dice, 4, 1);
-	layout->addWidget(m_choose_dice, 4, 2);
+	layout->addWidget(new QLabel(tr("Dictionary:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
+	layout->addWidget(m_dictionary, 3, 1, 1, 2);
 
-	layout->addWidget(new QLabel(tr("Word list:"), this), 5, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_words, 5, 1);
-	layout->addWidget(m_choose_words, 5, 2);
-
-	layout->addWidget(new QLabel(tr("Dictionary:"), this), 6, 0, Qt::AlignRight | Qt::AlignVCenter);
-	layout->addWidget(m_dictionary, 6, 1, 1, 2);
-
-	layout->addLayout(warning, 7, 1);
+	layout->addLayout(warning, 4, 1);
 	if (!show_warning) {
 		warning_img->hide();
 		warning_text->hide();
 	}
 	layout->setColumnMinimumWidth(1, warning->sizeHint().width());
 
-	layout->setRowStretch(8, 1);
-	layout->setRowMinimumHeight(8, 24);
+	layout->setRowStretch(5, 1);
+	layout->setRowMinimumHeight(5, 24);
 
-	layout->addWidget(m_buttons, 9, 0, 1, 3);
+	layout->addWidget(m_buttons, 6, 0, 1, 3);
 }
 
 //-----------------------------------------------------------------------------
 
-void SettingsDialog::restoreDefaults() {
-	Settings settings;
-	SettingsDialog dialog(settings, false);
+void LanguageDialog::restoreDefaults() {
+	LanguageSettings settings;
+	LanguageDialog dialog(settings, false);
 	dialog.m_buttons->button(QDialogButtonBox::RestoreDefaults)->click();
 	dialog.accept();
 }
 
 //-----------------------------------------------------------------------------
 
-void SettingsDialog::accept() {
-	m_settings.setScoreType(m_show_score->isChecked() ? (m_score_type->currentIndex() + 1) : 0);
-	m_settings.setShowMissed(m_show_missed->isChecked());
-
+void LanguageDialog::accept() {
 	m_settings.setDice(m_dice->text());
 	m_settings.setWords(m_words->text());
 	m_settings.setDictionary(m_dictionary->text());
@@ -169,12 +136,8 @@ void SettingsDialog::accept() {
 
 //-----------------------------------------------------------------------------
 
-void SettingsDialog::clicked(QAbstractButton* button) {
+void LanguageDialog::clicked(QAbstractButton* button) {
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
-		m_show_score->setChecked(true);
-		m_score_type->setCurrentIndex(0);
-		m_show_missed->setChecked(true);
-
 		QSettings settings;
 		settings.remove("CustomDice");
 		settings.remove("CustomWords");
@@ -185,7 +148,7 @@ void SettingsDialog::clicked(QAbstractButton* button) {
 
 //-----------------------------------------------------------------------------
 
-void SettingsDialog::chooseLanguage(int index) {
+void LanguageDialog::chooseLanguage(int index) {
 	QSettings settings;
 
 	bool enabled = false;
@@ -218,7 +181,7 @@ void SettingsDialog::chooseLanguage(int index) {
 
 //-----------------------------------------------------------------------------
 
-void SettingsDialog::chooseDice() {
+void LanguageDialog::chooseDice() {
 	QString path = QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
 	if (!path.isEmpty()) {
 		m_dice->setText(path);
@@ -227,7 +190,7 @@ void SettingsDialog::chooseDice() {
 
 //-----------------------------------------------------------------------------
 
-void SettingsDialog::chooseWords() {
+void LanguageDialog::chooseWords() {
 	QString path = QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
 	if (!path.isEmpty()) {
 		m_words->setText(path);
@@ -236,7 +199,7 @@ void SettingsDialog::chooseWords() {
 
 //-----------------------------------------------------------------------------
 
-void SettingsDialog::setLanguage(int language) {
+void LanguageDialog::setLanguage(int language) {
 	int index = m_language->findData(language);
 	if (index == -1) {
 		index = 0;
