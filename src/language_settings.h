@@ -27,14 +27,6 @@ class LanguageSettings {
 		LanguageSettings();
 		~LanguageSettings();
 
-		bool isChanged() const {
-			return m_changed;
-		}
-
-		bool newGameRequired() const {
-			return m_new;
-		}
-
 		int language() const;
 		QString dice() const;
 		QString words() const;
@@ -49,9 +41,7 @@ class LanguageSettings {
 		QString m_dice;
 		QString m_words;
 		QString m_dictionary;
-
 		bool m_changed;
-		bool m_new;
 };
 
 #endif

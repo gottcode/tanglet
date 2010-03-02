@@ -21,9 +21,9 @@
 
 #include "board.h"
 #include "clock.h"
-#include "language_settings.h"
 #include "language_dialog.h"
 #include "new_game_dialog.h"
+#include "random.h"
 #include "scores_dialog.h"
 
 #include <QAction>
@@ -42,6 +42,8 @@
 #include <QTextEdit>
 #include <QTextStream>
 #include <QVBoxLayout>
+
+#include <ctime>
 
 //-----------------------------------------------------------------------------
 
@@ -255,14 +257,19 @@ Window::Window()
 	missed_action->setChecked(settings.value("ShowMissed", true).toBool());
 	higher_action->setChecked(settings.value("Board/HigherScores", true).toBool());
 	restoreGeometry(settings.value("Geometry").toByteArray());
-	m_board->loadSettings(LanguageSettings());
 }
 
 //-----------------------------------------------------------------------------
 
 void Window::startGame(int seed) {
 	m_state->start();
-	m_board->generate(seed);
+	QSettings settings;
+	bool higher_scores = settings.value("Board/HigherScores", true).toBool();
+	int size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
+	int timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
+	seed = (seed > 0) ? seed : Random(time(0)).nextInt(INT_MAX);
+	settings.setValue("Board/Seed", seed);
+	m_board->generate(higher_scores, size, timer, seed);
 }
 
 //-----------------------------------------------------------------------------
@@ -411,14 +418,8 @@ void Window::showScores() {
 //-----------------------------------------------------------------------------
 
 void Window::showLanguage() {
-	LanguageSettings settings;
-	LanguageDialog dialog(settings, !m_board->isFinished(), this);
-	if (dialog.exec() == QDialog::Accepted) {
-		m_board->loadSettings(settings);
-		if (settings.newGameRequired() && !m_board->isFinished()) {
-			startGame();
-		}
-	}
+	LanguageDialog dialog(this);
+	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------

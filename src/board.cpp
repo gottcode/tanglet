@@ -20,9 +20,8 @@
 #include "board.h"
 
 #include "clock.h"
-#include "language_settings.h"
+#include "generator.h"
 #include "letter.h"
-#include "random.h"
 #include "scores_dialog.h"
 #include "solver.h"
 #include "view.h"
@@ -30,107 +29,27 @@
 
 #include <QAction>
 #include <QEvent>
-#include <QFile>
 #include <QGridLayout>
 #include <QGraphicsScene>
-#include <QGraphicsView>
 #include <QHBoxLayout>
 #include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QLineF>
-#include <QListWidget>
 #include <QMessageBox>
 #include <QPainterPath>
 #include <QSettings>
 #include <QTabWidget>
-#include <QTextStream>
-#include <QThread>
 #include <QToolButton>
 #include <QVBoxLayout>
-
-#include <algorithm>
-#include <ctime>
-
-//-----------------------------------------------------------------------------
-
-class Board::Generator : public QThread {
-public:
-	Generator(QObject* parent = 0);
-	void cancel();
-	void create(int seed, int timer, int minimum, bool higher_scores, const QList<QStringList>& dice, const Trie* words);
-	void fetch(int& max_score, QStringList& letters, QHash<QString, QList<QList<QPoint> > >& solutions);
-
-protected:
-	void run();
-
-private:
-	int m_seed;
-	int m_max_words;
-	int m_minimum;
-	int m_max_score;
-	bool m_higher_scores;
-
-	QList<QStringList> m_dice;
-	const Trie* m_words;
-	QStringList m_letters;
-	QHash<QString, QList<QList<QPoint> > > m_solutions;
-
-	QAtomicInt m_cancelled;
-};
-
-Board::Generator::Generator(QObject* parent)
-	: QThread(parent), m_max_score(0) {
-}
-
-void Board::Generator::cancel() {
-	blockSignals(true);
-	m_cancelled = true;
-	wait();
-	deleteLater();
-}
-
-void Board::Generator::create(int seed, int timer, int minimum, bool higher_scores, const QList<QStringList>& dice, const Trie* words) {
-	m_seed = seed;
-	m_max_words = (timer != Clock::Allotment) ? -1 : 30;
-	m_minimum = minimum;
-	m_higher_scores = higher_scores;
-	m_dice = dice;
-	m_words = words;
-	start();
-}
-
-void Board::Generator::fetch(int& max_score, QStringList& letters, QHash<QString, QList<QList<QPoint> > >& solutions) {
-	max_score = m_max_score;
-	letters = m_letters;
-	solutions = m_solutions;
-	deleteLater();
-}
-
-void Board::Generator::run() {
-	Random random(m_seed);
-	while (!m_cancelled) {
-		m_letters.clear();
-		std::random_shuffle(m_dice.begin(), m_dice.end(), random);
-		for (int i = 0; i < m_dice.count(); ++i) {
-			QStringList& die = m_dice[i];
-			std::random_shuffle(die.begin(), die.end(), random);
-			m_letters += die.at(0);
-		}
-
-		Solver solver(*m_words, m_letters, m_minimum);
-		m_max_score = solver.score(m_max_words);
-		if (!m_higher_scores || (m_max_score >= 200)) {
-			m_solutions = solver.solutions();
-			break;
-		}
-	}
-}
 
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
 : QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0), m_generator(0) {
+	m_generator = new Generator(this);
+	connect(m_generator, SIGNAL(finished()), this, SLOT(gameStarted()));
+
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
@@ -214,119 +133,15 @@ bool Board::isFinished() const {
 //-----------------------------------------------------------------------------
 
 void Board::abort() {
-	if (m_generator) {
-		m_generator->cancel();
-		m_generator = 0;
-	}
+	m_generator->cancel();
 	m_clock->stop();
 }
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(int seed) {
-	// Stop any previous board creation
-	if (m_generator) {
-		m_generator->cancel();
-		m_generator = 0;
-	}
-
-	QSettings settings;
-
-	// Store seed
-	seed = (seed > 0) ? seed : Random(time(0)).nextInt(INT_MAX);
-	settings.setValue("Board/Seed", seed);
-
-	// Load new game settings
-	int old_size = m_size;
-	m_size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
-	if (old_size != m_size) {
-		m_cells = QVector<QVector<Letter*> >(m_size, QVector<Letter*>(m_size));
-	}
-	QList<QStringList> dice;
-	if (m_size == 4) {
-		m_minimum = 3;
-		m_maximum = 16;
-		m_guess->setMaxLength(m_maximum);
-		dice = m_dice;
-	} else {
-		m_minimum = 4;
-		m_maximum = 25;
-		m_guess->setMaxLength(m_maximum);
-		dice = m_dice_larger;
-	}
-	bool higher_scores = settings.value("Board/HigherScores", true).toBool();
-	int timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
-	m_clock->setTimer(timer);
-
-	// Create board
-	m_generator = new Generator(this);
-	connect(m_generator, SIGNAL(finished()), this, SLOT(gameStarted()));
-	m_generator->create(seed, timer, m_minimum, higher_scores, dice, &m_words);
-}
-
-//-----------------------------------------------------------------------------
-
-void Board::loadSettings(const LanguageSettings& settings) {
-	// Load dice
-	QList<QStringList> dice;
-	QFile file(settings.dice());
-	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
-		QTextStream stream(&file);
-		while (!stream.atEnd()) {
-			QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
-			if (line.count() == 6) {
-				dice.append(line);
-			}
-		}
-		file.close();
-	}
-
-	if (dice.count() == 41) {
-		m_dice = dice.mid(0, 16);
-		m_dice_larger = dice.mid(16);
-	} else {
-		QStringList letters = QString("?,?,?,?,?,?").split(',');
-
-		m_dice.clear();
-		for (int i = 0; i < 16; ++i) {
-			m_dice.append(letters);
-		}
-
-		m_dice_larger.clear();
-		for (int i = 0; i < 25; ++i) {
-			m_dice_larger.append(letters);
-		}
-
-		QMessageBox::warning(this, tr("Error"), tr("Unable to read dice from file."));
-	}
-
-	// Load words
-	if (m_generator) {
-		m_generator->cancel();
-		m_generator = 0;
-	}
-	m_words.clear();
-	int count = 0;
-	file.setFileName(settings.words());
-	if (file.open(QFile::ReadOnly | QIODevice::Text)) {
-		QTextStream stream(&file);
-		while (!stream.atEnd()) {
-			QString line = stream.readLine().toUpper();
-			if (line.length() >= 3 && line.length() <= 25) {
-				count++;
-				m_words.addWord(line);
-			}
-		}
-		file.close();
-	}
-	if (count == 0) {
-		QMessageBox::warning(this, tr("Error"), tr("Unable to read word list from file."));
-	}
-
-	// Load dictionary
-	QString url = settings.dictionary();
-	m_found->setDictionary(url);
-	m_missed->setDictionary(url);
+void Board::generate(bool higher_scores, int size, int timer, unsigned int seed) {
+	m_generator->cancel();
+	m_generator->create(higher_scores, size, timer, seed);
 }
 
 //-----------------------------------------------------------------------------
@@ -386,13 +201,26 @@ void Board::setShowMissedWords(bool show) {
 //-----------------------------------------------------------------------------
 
 void Board::gameStarted() {
-	// Fetch letters and solutions
-	if (m_generator) {
-		m_generator->fetch(m_max_score, m_letters, m_solutions);
-		m_generator = 0;
-	} else {
+	QString error = m_generator->error();
+	if (!error.isEmpty()) {
+		QMessageBox::warning(this, tr("Error"), error);
 		return;
 	}
+
+	// Load settings
+	m_clock->setTimer(m_generator->timer());
+	if (m_generator->size() != m_size) {
+		m_size = m_generator->size();
+		m_cells = QVector<QVector<Letter*> >(m_size, QVector<Letter*>(m_size));
+		m_minimum = m_size - 1;
+		m_maximum = m_size * m_size;
+		m_guess->setMaxLength(m_maximum);
+	}
+	m_max_score = m_generator->maxScore();
+	m_letters = m_generator->letters();
+	m_solutions = m_generator->solutions();
+	m_found->setDictionary(m_generator->dictionary());
+	m_missed->setDictionary(m_generator->dictionary());
 
 	// Create cells
 	QFont f = font();
@@ -400,7 +228,7 @@ void Board::gameStarted() {
 	f.setPointSize(20);
 	QFontMetrics metrics(f);
 	int letter_size = 0;
-	foreach (const QStringList& die, m_dice) {
+	foreach (const QStringList& die, m_generator->dice(m_size)) {
 		foreach (const QString& side, die) {
 			letter_size = qMax(letter_size, metrics.width(side));
 		}

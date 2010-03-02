@@ -19,6 +19,7 @@ unix: !macx {
 
 HEADERS += src/board.h \
 	src/clock.h \
+	src/generator.h \
 	src/language_dialog.h \
 	src/language_settings.h \
 	src/letter.h \
@@ -33,6 +34,7 @@ HEADERS += src/board.h \
 
 SOURCES += src/board.cpp \
 	src/clock.cpp \
+	src/generator.cpp \
 	src/language_dialog.cpp \
 	src/language_settings.cpp \
 	src/letter.cpp \

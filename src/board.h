@@ -20,21 +20,17 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "trie.h"
-
 #include <QHash>
 #include <QList>
 #include <QPoint>
 #include <QWidget>
 class QLabel;
 class QLineEdit;
-class QMainWindow;
 class QTabWidget;
 class QToolButton;
-class QTreeWidgetItem;
 class Clock;
+class Generator;
 class Letter;
-class LanguageSettings;
 class View;
 class WordTree;
 
@@ -46,8 +42,7 @@ class Board : public QWidget {
 
 		bool isFinished() const;
 		void abort();
-		void generate(int seed);
-		void loadSettings(const LanguageSettings& settings);
+		void generate(bool higher_scores, int size, int timer, unsigned int seed);
 		void setPaused(bool pause);
 
 		static QString sizeToString(int size);
@@ -96,18 +91,14 @@ class Board : public QWidget {
 		bool m_valid;
 		int m_score_type;
 
-		QList<QStringList> m_dice;
-		QList<QStringList> m_dice_larger;
 		int m_size;
 		int m_minimum;
 		int m_maximum;
 		int m_max_score;
-		Trie m_words;
 		QStringList m_letters;
 		QHash<QString, QList<QList<QPoint> > > m_solutions;
 		QList<QPoint> m_positions;
 
-		class Generator;
 		Generator* m_generator;
 };
 

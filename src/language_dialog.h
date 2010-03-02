@@ -20,6 +20,8 @@
 #ifndef LANGUAGE_DIALOG_H
 #define LANGUAGE_DIALOG_H
 
+#include "language_settings.h"
+
 #include <QDialog>
 class QAbstractButton;
 class QCheckBox;
@@ -27,13 +29,12 @@ class QComboBox;
 class QDialogButtonBox;
 class QLineEdit;
 class QPushButton;
-class LanguageSettings;
 
 class LanguageDialog : public QDialog {
 	Q_OBJECT
 
 	public:
-		LanguageDialog(LanguageSettings& settings, bool show_warning, QWidget* parent = 0);
+		LanguageDialog(QWidget* parent = 0);
 
 		static void restoreDefaults();
 
@@ -50,7 +51,7 @@ class LanguageDialog : public QDialog {
 		void setLanguage(int language);
 
 	private:
-		LanguageSettings& m_settings;
+		LanguageSettings m_settings;
 
 		QComboBox* m_language;
 		QLineEdit* m_dice;

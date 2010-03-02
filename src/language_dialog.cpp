@@ -19,8 +19,6 @@
 
 #include "language_dialog.h"
 
-#include "language_settings.h"
-
 #include <QDialogButtonBox>
 #include <QCheckBox>
 #include <QComboBox>
@@ -37,8 +35,8 @@
 
 //-----------------------------------------------------------------------------
 
-LanguageDialog::LanguageDialog(LanguageSettings& settings, bool show_warning, QWidget* parent)
-: QDialog(parent), m_settings(settings) {
+LanguageDialog::LanguageDialog(QWidget* parent)
+: QDialog(parent) {
 	setWindowTitle(tr("Board Language"));
 
 	m_language = new QComboBox(this);
@@ -64,14 +62,7 @@ LanguageDialog::LanguageDialog(LanguageSettings& settings, bool show_warning, QW
 	setLanguage(m_settings.language());
 
 	// Creat warning message
-	QLabel* warning_img = new QLabel(this);
-	warning_img->setPixmap(QString(":/dialog-warning"));
-	QLabel* warning_text = new QLabel(tr("<b>Note:</b> Changing these settings will start a new game."), this);
-
-	QHBoxLayout* warning = new QHBoxLayout;
-	warning->addWidget(warning_img);
-	warning->addWidget(warning_text);
-	warning->addStretch();
+	QLabel* warning = new QLabel(tr("<b>Note:</b> These settings will take effect when you start a new game."), this);
 
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
@@ -97,12 +88,7 @@ LanguageDialog::LanguageDialog(LanguageSettings& settings, bool show_warning, QW
 	layout->addWidget(new QLabel(tr("Dictionary:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
 	layout->addWidget(m_dictionary, 3, 1, 1, 2);
 
-	layout->addLayout(warning, 4, 1);
-	if (!show_warning) {
-		warning_img->hide();
-		warning_text->hide();
-	}
-	layout->setColumnMinimumWidth(1, warning->sizeHint().width());
+	layout->addWidget(warning, 4, 1, 1, 2);
 
 	layout->setRowStretch(5, 1);
 	layout->setRowMinimumHeight(5, 24);
@@ -113,8 +99,7 @@ LanguageDialog::LanguageDialog(LanguageSettings& settings, bool show_warning, QW
 //-----------------------------------------------------------------------------
 
 void LanguageDialog::restoreDefaults() {
-	LanguageSettings settings;
-	LanguageDialog dialog(settings, false);
+	LanguageDialog dialog;
 	dialog.m_buttons->button(QDialogButtonBox::RestoreDefaults)->click();
 	dialog.accept();
 }
@@ -126,12 +111,7 @@ void LanguageDialog::accept() {
 	m_settings.setWords(m_words->text());
 	m_settings.setDictionary(m_dictionary->text());
 	m_settings.setLanguage(m_language->itemData(m_language->currentIndex()).toInt());
-
-	if (m_settings.isChanged()) {
-		QDialog::accept();
-	} else {
-		QDialog::reject();
-	}
+	QDialog::accept();
 }
 
 //-----------------------------------------------------------------------------

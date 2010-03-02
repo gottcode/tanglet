@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------
 
 LanguageSettings::LanguageSettings()
-: m_changed(false), m_new(false) {
+: m_changed(false) {
 	QSettings settings;
 
 	m_language = settings.value("Language", QLocale::system().language()).toInt();
@@ -37,7 +37,7 @@ LanguageSettings::LanguageSettings()
 //-----------------------------------------------------------------------------
 
 LanguageSettings::~LanguageSettings() {
-	if (isChanged()) {
+	if (m_changed) {
 		QSettings settings;
 
 		settings.setValue("Language", m_language);
@@ -83,7 +83,6 @@ void LanguageSettings::setLanguage(int language) {
 	if (m_language != language) {
 		m_language = language;
 		m_changed = true;
-		m_new = true;
 	}
 }
 
@@ -93,7 +92,6 @@ void LanguageSettings::setDice(const QString& dice) {
 	if (m_dice != dice) {
 		m_dice = dice;
 		m_changed = true;
-		m_new = true;
 	}
 }
 
@@ -103,7 +101,6 @@ void LanguageSettings::setWords(const QString& words) {
 	if (m_words != words) {
 		m_words = words;
 		m_changed = true;
-		m_new = true;
 	}
 }
 

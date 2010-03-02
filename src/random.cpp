@@ -25,7 +25,7 @@ const unsigned int Random::maximum = UINT_MAX;
 
 //-----------------------------------------------------------------------------
 
-Random::Random(unsigned int seed) {
+Random::Random(quint64 seed) {
 	setSeed(seed);
 }
 
@@ -46,13 +46,7 @@ unsigned int Random::nextInt(unsigned int max) {
 
 //-----------------------------------------------------------------------------
 
-unsigned int Random::operator()(unsigned int max) {
-	return nextInt(max);
-}
-
-//-----------------------------------------------------------------------------
-
-void Random::setSeed(unsigned int seed) {
+void Random::setSeed(quint64 seed) {
 	m_seed = (seed != 0) ? seed : 1;
 }
 

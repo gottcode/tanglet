@@ -2,7 +2,6 @@
 <qresource>
 	<file>tanglet.png</file>
 	<file>empty.png</file>
-	<file alias="dialog-warning.png">tango/dialog-warning.png</file>
 	<file alias="edit-clear.png">tango/edit-clear.png</file>
 	<file alias="help-browser.png">tango/help-browser.png</file>
 	<file alias="list-add.png">tango/list-add.png</file>

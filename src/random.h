@@ -20,17 +20,21 @@
 #ifndef RANDOM_H
 #define RANDOM_H
 
-#include <QtGlobal>
+#include <QList>
 
 class Random {
 public:
-	Random(unsigned int seed = 1);
+	Random(quint64 seed = 1);
 
 	double nextDouble();
 	unsigned int nextInt(unsigned int max = maximum);
-	unsigned int operator()(unsigned int max = maximum);
+	void setSeed(quint64 seed);
 
-	void setSeed(unsigned int seed);
+	template <typename T> void shuffle(QList<T>& list) {
+		for (int i = list.length(); i > 1; --i) {
+			list.swap(nextInt(i), i - 1);
+		}
+	}
 
 	static const unsigned int maximum;
 
