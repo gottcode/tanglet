@@ -360,9 +360,11 @@ void Window::aboutScowl() {
 //-----------------------------------------------------------------------------
 
 void Window::newGame() {
-	NewGameDialog dialog(this);
-	if (dialog.exec() == QDialog::Accepted) {
-		startGame(dialog.seed());
+	if (endGame()) {
+		NewGameDialog dialog(this);
+		if (dialog.exec() == QDialog::Accepted) {
+			startGame();
+		}
 	}
 }
 

@@ -5,5 +5,7 @@
 	<file alias="edit-clear.png">tango/edit-clear.png</file>
 	<file alias="help-browser.png">tango/help-browser.png</file>
 	<file alias="list-add.png">tango/list-add.png</file>
+	<file>preview/large.png</file>
+	<file>preview/normal.png</file>
 </qresource>
 </RCC>

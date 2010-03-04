@@ -446,6 +446,20 @@ QString Clock::timerToString(int timer) {
 
 //-----------------------------------------------------------------------------
 
+QString Clock::timerDescription(int timer) {
+	static QStringList timers = QStringList() <<
+		tr("Counts down from 30 seconds and increases on correct guesses.") <<
+		tr("Counts down from 3 minutes.") <<
+		tr("Counts down from 30 seconds and refills on correct guesses.") <<
+		tr("Counts down from 45 seconds and pauses on correct guesses.") <<
+		tr("Game ends after 3 incorrect guesses.") <<
+		tr("Game ends after 30 guesses.") <<
+		tr("Counts down from 30 seconds and increases or decreases on guesses.");
+	return timers.at(qBound(0, timer, TotalTimers - 1));
+}
+
+//-----------------------------------------------------------------------------
+
 void Clock::paintEvent(QPaintEvent* event) {
 	QWidget::paintEvent(event);
 

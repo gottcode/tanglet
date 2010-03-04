@@ -21,9 +21,7 @@
 #define NEW_GAME_DIALOG_H
 
 #include <QDialog>
-class QCheckBox;
-class QComboBox;
-class QSpinBox;
+class QToolButton;
 
 class NewGameDialog : public QDialog {
 	Q_OBJECT
@@ -31,15 +29,12 @@ class NewGameDialog : public QDialog {
 	public:
 		NewGameDialog(QWidget* parent = 0);
 
-		int seed() const;
-
-	public slots:
-		virtual void accept();
+	private slots:
+		void timerChosen(int timer);
 
 	private:
-		QComboBox* m_size;
-		QSpinBox* m_seed;
-		QComboBox* m_timer;
+		QToolButton* m_normal_size;
+		QToolButton* m_large_size;
 };
 
 #endif
