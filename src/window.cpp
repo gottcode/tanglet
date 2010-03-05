@@ -32,7 +32,9 @@
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFile>
+#include <QFormLayout>
 #include <QLabel>
+#include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -203,6 +205,7 @@ Window::Window()
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
 	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
+	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()));
 	menu->addSeparator();
 	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()), tr("Ctrl+End"));
 	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
@@ -261,14 +264,29 @@ Window::Window()
 
 //-----------------------------------------------------------------------------
 
-void Window::startGame(int seed) {
-	m_state->start();
+void Window::startGame(const QString& details) {
 	QSettings settings;
-	bool higher_scores = settings.value("Board/HigherScores", true).toBool();
-	int size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
-	int timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
-	seed = (seed > 0) ? seed : Random(time(0)).nextInt(INT_MAX);
-	settings.setValue("Board/Seed", seed);
+	bool higher_scores = false;
+	int size = 0;
+	int timer = 0;
+	unsigned int seed = 0;
+	if (details.isEmpty()) {
+		higher_scores = settings.value("Board/HigherScores", true).toBool();
+		size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
+		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
+		seed = Random(time(0)).nextInt();
+	} else if ((details.length() >= 5) && (details.at(0) == '1')) {
+		higher_scores = details.mid(1,1).toInt();
+		size = qBound(4, details.mid(2,1).toInt(), 5);
+		timer = qBound(0, details.mid(3,1).toInt(), Clock::TotalTimers - 1);
+		seed = details.mid(4).toUInt();
+	} else {
+		QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
+		return;
+	}
+
+	settings.setValue("Current", QString("1%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed));
+	m_state->start();
 	m_board->generate(higher_scores, size, timer, seed);
 }
 
@@ -370,6 +388,32 @@ void Window::newGame() {
 
 //-----------------------------------------------------------------------------
 
+void Window::chooseGame() {
+	if (endGame()) {
+		QDialog dialog(this, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
+		dialog.setWindowTitle(tr("Choose Game"));
+
+		QLineEdit* number = new QLineEdit(&dialog);
+		number->setInputMask("99999000000000");
+
+		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &dialog);
+		connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
+		connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
+
+		QFormLayout* layout = new QFormLayout(&dialog);
+		layout->addRow(tr("Game Number:"), number);
+		layout->addRow(buttons);
+
+		dialog.setFixedSize(dialog.sizeHint());
+
+		if (dialog.exec() == QDialog::Accepted) {
+			startGame(!number->text().isEmpty() ? number->text() : "0");
+		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+
 bool Window::endGame() {
 	if (!m_board->isFinished()) {
 		if (QMessageBox::question(this, tr("Question"), tr("End the current game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
@@ -394,20 +438,8 @@ void Window::setPaused(bool paused) {
 //-----------------------------------------------------------------------------
 
 void Window::showDetails() {
-	QSettings settings;
-	QString size = Board::sizeToString(settings.value("Board/Size", 4).toInt());
-	QString timer = Clock::timerToString(settings.value("Board/TimerMode", Clock::Tanglet).toInt());
-	int seed = settings.value("Board/Seed").toInt();
-	QString higher_scores = settings.value("Board/HigherScores", true).toBool() ? tr("<p>Prevent low scoring boards is on.</p>") : "";
-	QMessageBox::information(this, tr("Details"), tr(
-		"<p><b>Size:</b> %1<br>"
-		"<b>Timer:</b> %2<br>"
-		"<b>Seed:</b> %L3</p>"
-		"%4")
-			.arg(size)
-			.arg(timer)
-			.arg(seed)
-			.arg(higher_scores));
+	QString details = QSettings().value("Current").toString();
+	QMessageBox::information(this, tr("Details"), tr("<b>Game Number:</b> %1").arg(details));
 }
 
 //-----------------------------------------------------------------------------

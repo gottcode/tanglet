@@ -32,7 +32,7 @@ class Window : public QMainWindow {
 	public:
 		Window();
 
-		void startGame(int seed = 0);
+		void startGame(const QString& details = QString());
 		virtual bool eventFilter(QObject* watched, QEvent* event);
 
 	protected:
@@ -43,6 +43,7 @@ class Window : public QMainWindow {
 		void about();
 		void aboutScowl();
 		void newGame();
+		void chooseGame();
 		bool endGame();
 		void setPaused(bool paused);
 		void showDetails();
