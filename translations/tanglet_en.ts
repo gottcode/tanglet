@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="667"/>
+        <location filename="../src/board.cpp" line="603"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 of %n point</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="669"/>
+        <location filename="../src/board.cpp" line="605"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
@@ -31,7 +31,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/clock.cpp" line="262"/>
+        <location filename="../src/clock.cpp" line="296"/>
         <source>%n strike(s)</source>
         <translation>
             <numerusform>%n strike</numerusform>
