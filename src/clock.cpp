@@ -222,7 +222,7 @@ bool Clock::StaminaTimer::addWord(int) {
 }
 
 QColor Clock::StaminaTimer::color() {
-	return (m_freeze) ? "#3389ea" : Timer::color();
+	return (m_time && m_freeze) ? "#3389ea" : Timer::color();
 }
 
 void Clock::StaminaTimer::start() {
@@ -259,6 +259,7 @@ public:
 	bool addWord(int score);
 	bool addIncorrectWord(int score);
 	void start();
+	void stop();
 	int type() const;
 	QString update();
 	int width() const;
@@ -280,6 +281,11 @@ bool Clock::StrikeoutTimer::addIncorrectWord(int) {
 void Clock::StrikeoutTimer::start() {
 	m_time = 30;
 	m_strikes = 0;
+}
+
+void Clock::StrikeoutTimer::stop() {
+	m_time = 0;
+	m_strikes = 3;
 }
 
 int Clock::StrikeoutTimer::type() const {

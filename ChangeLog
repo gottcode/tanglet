@@ -1,4 +1,5 @@
 2010-03-04 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Timer issues when ending a game.
 	* Use a single number to define a game.
 	* Improve new game dialog.
 
