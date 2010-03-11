@@ -236,12 +236,7 @@ int Clock::StaminaTimer::type() const {
 
 QString Clock::StaminaTimer::update() {
 	m_freeze = qMax(0, m_freeze - 1);
-	if (m_freeze) {
-		return tr("+%1").arg(m_freeze);
-	} else {
-		m_time = qMax(m_time - 1, 0);
-		return tr("0:%1").arg(m_time, 2, 10, QLatin1Char('0'));
-	}
+	return (m_freeze) ? tr("+%1").arg(m_freeze) : Timer::update();
 }
 
 int Clock::StaminaTimer::width() const {

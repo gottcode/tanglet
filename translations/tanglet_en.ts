@@ -31,7 +31,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/clock.cpp" line="296"/>
+        <location filename="../src/clock.cpp" line="291"/>
         <source>%n strike(s)</source>
         <translation>
             <numerusform>%n strike</numerusform>

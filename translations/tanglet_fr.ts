@@ -61,78 +61,79 @@
         <source>%1 of %n point(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
 <context>
     <name>Clock</name>
     <message>
-        <location filename="../src/clock.cpp" line="443"/>
+        <location filename="../src/clock.cpp" line="438"/>
         <source>Tanglet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="444"/>
+        <location filename="../src/clock.cpp" line="439"/>
         <source>Classic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="445"/>
+        <location filename="../src/clock.cpp" line="440"/>
         <source>Refill</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="446"/>
+        <location filename="../src/clock.cpp" line="441"/>
         <source>Stamina</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="447"/>
+        <location filename="../src/clock.cpp" line="442"/>
         <source>Strikeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="448"/>
+        <location filename="../src/clock.cpp" line="443"/>
         <source>Allotment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="449"/>
+        <location filename="../src/clock.cpp" line="444"/>
         <source>Discipline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="457"/>
+        <location filename="../src/clock.cpp" line="452"/>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="458"/>
+        <location filename="../src/clock.cpp" line="453"/>
         <source>Counts down from 3 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="459"/>
+        <location filename="../src/clock.cpp" line="454"/>
         <source>Counts down from 30 seconds and refills on correct guesses.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="460"/>
+        <location filename="../src/clock.cpp" line="455"/>
         <source>Counts down from 45 seconds and pauses on correct guesses.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="461"/>
+        <location filename="../src/clock.cpp" line="456"/>
         <source>Game ends after 3 incorrect guesses.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="462"/>
+        <location filename="../src/clock.cpp" line="457"/>
         <source>Game ends after 30 guesses.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="463"/>
+        <location filename="../src/clock.cpp" line="458"/>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,22 +147,19 @@
         <source>%n guesses(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../src/clock.cpp" line="240"/>
+        <location filename="../src/clock.cpp" line="239"/>
         <source>+%1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../src/clock.cpp" line="243"/>
-        <source>0:%1</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
-        <location filename="../src/clock.cpp" line="296"/>
+        <location filename="../src/clock.cpp" line="291"/>
         <source>%n strike(s)</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -182,63 +180,63 @@
 <context>
     <name>LanguageDialog</name>
     <message>
-        <location filename="../src/language_dialog.cpp" line="40"/>
+        <location filename="../src/language_dialog.cpp" line="41"/>
         <source>Board Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="43"/>
+        <location filename="../src/language_dialog.cpp" line="44"/>
         <source>English</source>
         <translation>Anglais</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="44"/>
+        <location filename="../src/language_dialog.cpp" line="45"/>
         <source>French</source>
         <translation>Français</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="45"/>
+        <location filename="../src/language_dialog.cpp" line="46"/>
         <source>Custom</source>
         <translation>Personnalisé</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="51"/>
-        <location filename="../src/language_dialog.cpp" line="56"/>
+        <location filename="../src/language_dialog.cpp" line="53"/>
+        <location filename="../src/language_dialog.cpp" line="59"/>
         <source>Choose...</source>
         <translation>Parcourir...</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="65"/>
+        <location filename="../src/language_dialog.cpp" line="68"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; These settings will take effect when you start a new game.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="77"/>
+        <location filename="../src/language_dialog.cpp" line="80"/>
         <source>Language:</source>
         <translation>Langue :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="80"/>
+        <location filename="../src/language_dialog.cpp" line="83"/>
         <source>Dice:</source>
         <translation>Dés :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="84"/>
+        <location filename="../src/language_dialog.cpp" line="87"/>
         <source>Word list:</source>
         <translation>Liste des mots :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="88"/>
+        <location filename="../src/language_dialog.cpp" line="91"/>
         <source>Dictionary:</source>
         <translation>Dictionnaire :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="165"/>
+        <location filename="../src/language_dialog.cpp" line="172"/>
         <source>Choose Dice File</source>
         <translation>Choisir un fichier de dés</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="174"/>
+        <location filename="../src/language_dialog.cpp" line="182"/>
         <source>Choose Word List File</source>
         <translation>Choisir un fichier de liste des mots</translation>
     </message>
