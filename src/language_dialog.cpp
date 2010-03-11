@@ -25,6 +25,7 @@
 #include <QDir>
 #include <QGridLayout>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QFormLayout>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -47,12 +48,14 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	connect(m_language, SIGNAL(currentIndexChanged(int)), this, SLOT(chooseLanguage(int)));
 
 	m_dice = new QLineEdit(this);
-	m_dice->setText(m_settings.dice());
+	m_dice_path = m_settings.dice();
+	m_dice->setText(QFileInfo(m_dice_path).canonicalFilePath());
 	m_choose_dice = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_dice, SIGNAL(clicked()), this, SLOT(chooseDice()));
 
 	m_words = new QLineEdit(this);
-	m_words->setText(m_settings.words());
+	m_words_path = m_settings.words();
+	m_words->setText(QFileInfo(m_words_path).canonicalFilePath());
 	m_choose_words = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_words, SIGNAL(clicked()), this, SLOT(chooseWords()));
 
@@ -107,8 +110,8 @@ void LanguageDialog::restoreDefaults() {
 //-----------------------------------------------------------------------------
 
 void LanguageDialog::accept() {
-	m_settings.setDice(m_dice->text());
-	m_settings.setWords(m_words->text());
+	m_settings.setDice(m_dice_path);
+	m_settings.setWords(m_words_path);
 	m_settings.setDictionary(m_dictionary->text());
 	m_settings.setLanguage(m_language->itemData(m_language->currentIndex()).toInt());
 	QDialog::accept();
@@ -134,28 +137,32 @@ void LanguageDialog::chooseLanguage(int index) {
 	bool enabled = false;
 	switch (m_language->itemData(index).toInt()) {
 	case QLocale::English:
-		m_dice->setText("tanglet:en/dice");
-		m_words->setText("tanglet:en/words");
+		m_dice_path = "tanglet:en/dice";
+		m_words_path = "tanglet:en/words";
 		m_dictionary->setText("http://www.google.com/dictionary?langpair=en|en&q=%s");
 		break;
 	case QLocale::French:
-		m_dice->setText("tanglet:fr/dice");
-		m_words->setText("tanglet:fr/words");
+		m_dice_path = "tanglet:fr/dice";
+		m_words_path = "tanglet:fr/words";
 		m_dictionary->setText("http://www.google.com/dictionary?langpair=fr|fr&q=%s");
 		break;
 	case 0:
 	default:
-		m_dice->setText(settings.value("CustomDice", m_dice->text()).toString());
-		m_words->setText(settings.value("CustomWords", m_words->text()).toString());
+		m_dice_path = settings.value("CustomDice", m_dice_path).toString();
+		m_words_path = settings.value("CustomDice", m_words_path).toString();
 		m_dictionary->setText(settings.value("CustomDictionary", m_dictionary->text()).toString());
 		enabled = true;
 		break;
 	}
 
+	m_dice->setText(QFileInfo(m_dice_path).canonicalFilePath());
 	m_dice->setEnabled(enabled);
 	m_choose_dice->setEnabled(enabled);
+
+	m_words->setText(QFileInfo(m_words_path).canonicalFilePath());
 	m_words->setEnabled(enabled);
 	m_choose_words->setEnabled(enabled);
+
 	m_dictionary->setEnabled(enabled);
 }
 
@@ -164,7 +171,8 @@ void LanguageDialog::chooseLanguage(int index) {
 void LanguageDialog::chooseDice() {
 	QString path = QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
 	if (!path.isEmpty()) {
-		m_dice->setText(path);
+		m_dice_path = QFileInfo(path).canonicalFilePath();
+		m_dice->setText(m_dice_path);
 	}
 }
 
@@ -173,7 +181,8 @@ void LanguageDialog::chooseDice() {
 void LanguageDialog::chooseWords() {
 	QString path = QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
 	if (!path.isEmpty()) {
-		m_words->setText(path);
+		m_words_path = QFileInfo(path).canonicalFilePath();
+		m_words->setText(m_words_path);
 	}
 }
 

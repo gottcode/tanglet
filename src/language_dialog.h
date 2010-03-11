@@ -54,8 +54,10 @@ class LanguageDialog : public QDialog {
 		LanguageSettings m_settings;
 
 		QComboBox* m_language;
+		QString m_dice_path;
 		QLineEdit* m_dice;
 		QPushButton* m_choose_dice;
+		QString m_words_path;
 		QLineEdit* m_words;
 		QPushButton* m_choose_words;
 		QLineEdit* m_dictionary;
