@@ -200,7 +200,12 @@ Window::Window()
 	QLabel* load_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
 	load_screen->setAlignment(Qt::AlignCenter);
 	m_contents->addWidget(load_screen);
-	m_contents->setCurrentIndex(2);
+
+	// Create start screen
+	QLabel* start_screen = new QLabel(tr("Click to start a new game."), this);
+	start_screen->setAlignment(Qt::AlignCenter);
+	start_screen->installEventFilter(this);
+	m_contents->addWidget(start_screen);
 
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
@@ -208,11 +213,13 @@ Window::Window()
 	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()));
 	menu->addSeparator();
 	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()), tr("Ctrl+End"));
+	end_action->setEnabled(false);
 	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
 	menu->addSeparator();
 	m_pause_action = menu->addAction(tr("&Pause"));
 	m_pause_action->setCheckable(true);
 	m_pause_action->setShortcut(tr("Ctrl+P"));
+	m_pause_action->setEnabled(false);
 	connect(m_pause_action, SIGNAL(triggered(bool)), this, SLOT(setPaused(bool)));
 	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
 	menu->addSeparator();
@@ -260,34 +267,11 @@ Window::Window()
 	missed_action->setChecked(settings.value("ShowMissed", true).toBool());
 	higher_action->setChecked(settings.value("Board/HigherScores", true).toBool());
 	restoreGeometry(settings.value("Geometry").toByteArray());
-}
 
-//-----------------------------------------------------------------------------
-
-void Window::startGame(const QString& details) {
-	QSettings settings;
-	bool higher_scores = false;
-	int size = 0;
-	int timer = 0;
-	unsigned int seed = 0;
-	if (details.isEmpty()) {
-		higher_scores = settings.value("Board/HigherScores", true).toBool();
-		size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
-		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
-		seed = Random(time(0)).nextInt();
-	} else if ((details.length() >= 5) && (details.at(0) == '1')) {
-		higher_scores = details.mid(1,1).toInt();
-		size = qBound(4, details.mid(2,1).toInt(), 5);
-		timer = qBound(0, details.mid(3,1).toInt(), Clock::TotalTimers - 1);
-		seed = details.mid(4).toUInt();
-	} else {
-		QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
-		return;
-	}
-
-	settings.setValue("Current", QString("1%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed));
-	m_state->start();
-	m_board->generate(higher_scores, size, timer, seed);
+	// Start a new game
+	m_state->finish();
+	m_contents->setCurrentIndex(3);
+	newGame();
 }
 
 //-----------------------------------------------------------------------------
@@ -296,6 +280,13 @@ bool Window::eventFilter(QObject* watched, QEvent* event) {
 	if (watched == m_pause_screen) {
 		if (event->type() == QEvent::MouseButtonPress) {
 			m_state->resume();
+			return true;
+		} else {
+			return false;
+		}
+	} else if (watched == m_contents->widget(3)) {
+		if (event->type() == QEvent::MouseButtonPress) {
+			newGame();
 			return true;
 		} else {
 			return false;
@@ -453,7 +444,9 @@ void Window::showScores() {
 
 void Window::showLanguage() {
 	LanguageDialog dialog(this);
-	dialog.exec();
+	if (dialog.exec() == QDialog::Accepted) {
+		newGame();
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -486,6 +479,34 @@ void Window::gameFinished(int score) {
 	if (scores.addScore(score)) {
 		scores.exec();
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::startGame(const QString& details) {
+	QSettings settings;
+	bool higher_scores = false;
+	int size = 0;
+	int timer = 0;
+	unsigned int seed = 0;
+	if (details.isEmpty()) {
+		higher_scores = settings.value("Board/HigherScores", true).toBool();
+		size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
+		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
+		seed = Random(time(0)).nextInt();
+	} else if ((details.length() >= 5) && (details.at(0) == '1')) {
+		higher_scores = details.mid(1,1).toInt();
+		size = qBound(4, details.mid(2,1).toInt(), 5);
+		timer = qBound(0, details.mid(3,1).toInt(), Clock::TotalTimers - 1);
+		seed = details.mid(4).toUInt();
+	} else {
+		QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
+		return;
+	}
+
+	settings.setValue("Current", QString("1%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed));
+	m_state->start();
+	m_board->generate(higher_scores, size, timer, seed);
 }
 
 //-----------------------------------------------------------------------------

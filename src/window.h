@@ -32,7 +32,6 @@ class Window : public QMainWindow {
 	public:
 		Window();
 
-		void startGame(const QString& details = QString());
 		virtual bool eventFilter(QObject* watched, QEvent* event);
 
 	protected:
@@ -52,6 +51,9 @@ class Window : public QMainWindow {
 		void showControls();
 		void gameStarted();
 		void gameFinished(int score);
+
+	private:
+		void startGame(const QString& details = QString());
 
 	private:
 		Board* m_board;

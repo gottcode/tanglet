@@ -46,7 +46,7 @@ protected:
 };
 
 Clock::Timer::Timer()
-	: m_time(180) {
+	: m_time(0) {
 }
 
 Clock::Timer::~Timer() {
