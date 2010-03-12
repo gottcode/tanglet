@@ -52,6 +52,8 @@ void Generator::create(bool higher_scores, int size, int timer, unsigned int see
 	m_max_words = (m_timer != Clock::Allotment) ? -1 : 30;
 	m_seed = seed;
 	m_cancelled = false;
+	m_max_score = 0;
+	m_solutions.clear();
 	start();
 }
 
@@ -116,8 +118,8 @@ void Generator::update() {
 			m_dice = dice.mid(0, 16);
 			m_dice_large = dice.mid(16);
 		} else {
-			m_error = tr("Unable to read dice from file.");
-			return;
+			m_dice = m_dice_large = QList<QStringList>() << QStringList("?");
+			return setError(tr("Unable to read dice from file."));
 		}
 	}
 
@@ -144,9 +146,19 @@ void Generator::update() {
 		if (count > 0) {
 			m_words_path = words_path;
 		} else {
-			m_error = tr("Unable to read word list from file.");
-			return;
+			return setError(tr("Unable to read word list from file."));
 		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Generator::setError(const QString& error) {
+	m_error = error;
+	m_letters.clear();
+	int count = m_size * m_size;
+	for (int i = 0; i < count; ++i) {
+		m_letters.append("?");
 	}
 }
 

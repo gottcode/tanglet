@@ -1,4 +1,5 @@
 2010-03-12 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Did not update board on errors.
 	* Always show the new game dialog.
 
 2010-03-04 Graeme Gott <graeme@gottcode.org>

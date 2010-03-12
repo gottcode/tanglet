@@ -201,12 +201,6 @@ void Board::setShowMissedWords(bool show) {
 //-----------------------------------------------------------------------------
 
 void Board::gameStarted() {
-	QString error = m_generator->error();
-	if (!error.isEmpty()) {
-		QMessageBox::warning(this, tr("Error"), error);
-		return;
-	}
-
 	// Load settings
 	m_clock->setTimer(m_generator->timer());
 	if (m_generator->size() != m_size) {
@@ -280,6 +274,14 @@ void Board::gameStarted() {
 	QList<QString> solutions = m_solutions.keys();
 	foreach (const QString& solution, solutions) {
 		m_missed->addWord(solution);
+	}
+
+	// Show errors
+	QString error = m_generator->error();
+	if (!error.isEmpty()) {
+		abort();
+		QMessageBox::warning(this, tr("Error"), error);
+		return;
 	}
 
 	// Start game

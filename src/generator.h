@@ -74,6 +74,7 @@ signals:
 
 private:
 	void update();
+	void setError(const QString& error);
 
 protected:
 	void run();
