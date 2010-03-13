@@ -1,4 +1,5 @@
 2010-03-12 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Line edits were ignored when setting a custom language.
 	* FIXED: Did not update board on errors.
 	* Always show the new game dialog.
 

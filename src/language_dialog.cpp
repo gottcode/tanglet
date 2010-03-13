@@ -50,12 +50,14 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	m_dice = new QLineEdit(this);
 	m_dice_path = m_settings.dice();
 	m_dice->setText(QFileInfo(m_dice_path).canonicalFilePath());
+	connect(m_dice, SIGNAL(textEdited(const QString&)), this, SLOT(chooseDice(const QString&)));
 	m_choose_dice = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_dice, SIGNAL(clicked()), this, SLOT(chooseDice()));
 
 	m_words = new QLineEdit(this);
 	m_words_path = m_settings.words();
 	m_words->setText(QFileInfo(m_words_path).canonicalFilePath());
+	connect(m_words, SIGNAL(textEdited(const QString&)), this, SLOT(chooseWords(const QString&)));
 	m_choose_words = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_words, SIGNAL(clicked()), this, SLOT(chooseWords()));
 
@@ -149,7 +151,7 @@ void LanguageDialog::chooseLanguage(int index) {
 	case 0:
 	default:
 		m_dice_path = settings.value("CustomDice", m_dice_path).toString();
-		m_words_path = settings.value("CustomDice", m_words_path).toString();
+		m_words_path = settings.value("CustomWords", m_words_path).toString();
 		m_dictionary->setText(settings.value("CustomDictionary", m_dictionary->text()).toString());
 		enabled = true;
 		break;
@@ -168,8 +170,8 @@ void LanguageDialog::chooseLanguage(int index) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::chooseDice() {
-	QString path = QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
+void LanguageDialog::chooseDice(const QString& dice) {
+	QString path = !dice.isEmpty() ? dice : QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
 	if (!path.isEmpty()) {
 		m_dice_path = QFileInfo(path).canonicalFilePath();
 		m_dice->setText(m_dice_path);
@@ -178,8 +180,8 @@ void LanguageDialog::chooseDice() {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::chooseWords() {
-	QString path = QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
+void LanguageDialog::chooseWords(const QString& words) {
+	QString path = !words.isEmpty() ? words : QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
 	if (!path.isEmpty()) {
 		m_words_path = QFileInfo(path).canonicalFilePath();
 		m_words->setText(m_words_path);

@@ -44,8 +44,8 @@ class LanguageDialog : public QDialog {
 	private slots:
 		void clicked(QAbstractButton* button);
 		void chooseLanguage(int index);
-		void chooseDice();
-		void chooseWords();
+		void chooseDice(const QString& dice = QString());
+		void chooseWords(const QString& words = QString());
 
 	private:
 		void setLanguage(int language);
