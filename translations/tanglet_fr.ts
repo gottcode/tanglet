@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="605"/>
+        <location filename="../src/board.cpp" line="607"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
@@ -32,36 +32,36 @@
         <translation>Ratés</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="206"/>
+        <location filename="../src/board.cpp" line="283"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
         <location filename="../src/board.cpp" line="166"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/board.cpp" line="166"/>
         <source>Large</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="433"/>
+        <location filename="../src/board.cpp" line="435"/>
         <source>Success</source>
         <translation>Succès</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="433"/>
+        <location filename="../src/board.cpp" line="435"/>
         <source>Game Over</source>
         <translation>Partie terminée</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="603"/>
+        <location filename="../src/board.cpp" line="605"/>
         <source>%1 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 sur %n point</numerusform>
+            <numerusform>%1 sur %n points</numerusform>
         </translation>
     </message>
 </context>
@@ -70,72 +70,72 @@
     <message>
         <location filename="../src/clock.cpp" line="438"/>
         <source>Tanglet</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="439"/>
         <source>Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Classique</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="440"/>
         <source>Refill</source>
-        <translation type="unfinished"></translation>
+        <translation>Recharge</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="441"/>
         <source>Stamina</source>
-        <translation type="unfinished"></translation>
+        <translation>Endurance</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="442"/>
         <source>Strikeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Trois blâmes</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="443"/>
         <source>Allotment</source>
-        <translation type="unfinished"></translation>
+        <translation>Top 30</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="444"/>
         <source>Discipline</source>
-        <translation type="unfinished"></translation>
+        <translation>Discipline</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="452"/>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuterie de 30 secondes qui augmente pour chaque bonne proposition.</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="453"/>
         <source>Counts down from 3 minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuterie de 3 minutes.</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="454"/>
         <source>Counts down from 30 seconds and refills on correct guesses.</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuterie de 30 secondes qui se réinitialise à chaque bonne proposition.</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="455"/>
         <source>Counts down from 45 seconds and pauses on correct guesses.</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuterie de 45 secondes qui fait une pause à chaque bonne proposition.</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="456"/>
         <source>Game ends after 3 incorrect guesses.</source>
-        <translation type="unfinished"></translation>
+        <translation>La partie se termine après 3 mauvaises propositions.</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="457"/>
         <source>Game ends after 30 guesses.</source>
-        <translation type="unfinished"></translation>
+        <translation>La partie se termine après 30 propositions.</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="458"/>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuterie de 30 secondes qui augmente ou réduit selon la justesse des propositions.</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="83"/>
@@ -145,34 +145,34 @@
     <message numerus="yes">
         <location filename="../src/clock.cpp" line="121"/>
         <source>%n guesses(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n proposition</numerusform>
+            <numerusform>%n propositions</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="239"/>
         <source>+%1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message numerus="yes">
         <location filename="../src/clock.cpp" line="291"/>
         <source>%n strike(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n blâme</numerusform>
+            <numerusform>%n blâmes</numerusform>
         </translation>
     </message>
 </context>
 <context>
     <name>Generator</name>
     <message>
-        <location filename="../src/generator.cpp" line="119"/>
+        <location filename="../src/generator.cpp" line="122"/>
         <source>Unable to read dice from file.</source>
         <translation>Impossible de lire les dés du fichier.</translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="147"/>
+        <location filename="../src/generator.cpp" line="149"/>
         <source>Unable to read word list from file.</source>
         <translation>Impossible de lire la liste des mots du fichier.</translation>
     </message>
@@ -182,7 +182,7 @@
     <message>
         <location filename="../src/language_dialog.cpp" line="41"/>
         <source>Board Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue de la grille</translation>
     </message>
     <message>
         <location filename="../src/language_dialog.cpp" line="44"/>
@@ -200,43 +200,43 @@
         <translation>Personnalisé</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="53"/>
-        <location filename="../src/language_dialog.cpp" line="59"/>
+        <location filename="../src/language_dialog.cpp" line="54"/>
+        <location filename="../src/language_dialog.cpp" line="61"/>
         <source>Choose...</source>
         <translation>Parcourir...</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="68"/>
+        <location filename="../src/language_dialog.cpp" line="70"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; These settings will take effect when you start a new game.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Note :&lt;/b&gt; Ces paramétrages seront effectifs à la prochaine partie.</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="80"/>
+        <location filename="../src/language_dialog.cpp" line="82"/>
         <source>Language:</source>
         <translation>Langue :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="83"/>
+        <location filename="../src/language_dialog.cpp" line="85"/>
         <source>Dice:</source>
         <translation>Dés :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="87"/>
+        <location filename="../src/language_dialog.cpp" line="89"/>
         <source>Word list:</source>
         <translation>Liste des mots :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="91"/>
+        <location filename="../src/language_dialog.cpp" line="93"/>
         <source>Dictionary:</source>
         <translation>Dictionnaire :</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="172"/>
+        <location filename="../src/language_dialog.cpp" line="174"/>
         <source>Choose Dice File</source>
         <translation>Choisir un fichier de dés</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="182"/>
+        <location filename="../src/language_dialog.cpp" line="184"/>
         <source>Choose Word List File</source>
         <translation>Choisir un fichier de liste des mots</translation>
     </message>
@@ -246,7 +246,7 @@
     <message>
         <location filename="../src/new_game_dialog.cpp" line="68"/>
         <source>New Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelle partie</translation>
     </message>
 </context>
 <context>
@@ -274,7 +274,7 @@
     <message>
         <location filename="../src/scores_dialog.cpp" line="78"/>
         <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Minuterie&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/scores_dialog.cpp" line="82"/>
@@ -292,22 +292,22 @@
     <message>
         <location filename="../src/window.cpp" line="194"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Paused&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Click to resume playing.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Pause&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Cliquez pour reprendre la partie.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="200"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Veuillez patienter&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Génération d&apos;une nouvelle grille...&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="211"/>
         <source>&amp;Game</source>
-        <translation>&amp;Jeu</translation>
+        <translation>&amp;Partie</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="212"/>
         <source>&amp;New</source>
-        <translation>&amp;Nouveau</translation>
+        <translation>&amp;Nouvelle</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="212"/>
@@ -317,17 +317,17 @@
     <message>
         <location filename="../src/window.cpp" line="213"/>
         <source>&amp;Choose...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Choisir...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="215"/>
         <source>&amp;End</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Terminer</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="215"/>
         <source>Ctrl+End</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Fin</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="219"/>
@@ -337,17 +337,17 @@
     <message>
         <location filename="../src/window.cpp" line="226"/>
         <source>&amp;Details</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Détails</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="227"/>
         <source>&amp;High Scores</source>
-        <translation>&amp;Table des records</translation>
+        <translation>Table des &amp;records</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="232"/>
         <source>&amp;Settings</source>
-        <translation>&amp;Préférences</translation>
+        <translation>P&amp;références</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="229"/>
@@ -357,7 +357,7 @@
     <message>
         <location filename="../src/window.cpp" line="205"/>
         <source>Click to start a new game.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cliquez pour commencer une nouvelle partie.</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="229"/>
@@ -367,37 +367,37 @@
     <message>
         <location filename="../src/window.cpp" line="233"/>
         <source>Show &amp;Maximum Score</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher le score &amp;maximum</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="235"/>
         <source>&amp;Never</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Jamais</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="236"/>
         <source>&amp;End Of Game</source>
-        <translation type="unfinished"></translation>
+        <translation>En &amp;fin de partie</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="237"/>
         <source>&amp;Always</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Toujours</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="245"/>
         <source>Show Missed &amp;Words</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les mots &amp;ratés</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="249"/>
         <source>&amp;Higher Scoring Boards</source>
-        <translation type="unfinished"></translation>
+        <translation>Grilles à &amp;haut score</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="252"/>
         <source>&amp;Board Language...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Langue de la grille...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="255"/>
@@ -412,7 +412,7 @@
     <message>
         <location filename="../src/window.cpp" line="258"/>
         <source>&amp;About</source>
-        <translation>&amp;À propos</translation>
+        <translation>À &amp;propos</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="259"/>
@@ -432,27 +432,27 @@
     <message>
         <location filename="../src/window.cpp" line="503"/>
         <source>Unable to start requested game.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de lancer la partie demandée.</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="385"/>
         <source>Choose Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisissez la partie</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="395"/>
         <source>Game Number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Numéro de la partie :</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="410"/>
         <source>End the current game?</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminer la partie actuelle ?</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="433"/>
         <source>&lt;b&gt;Game Number:&lt;/b&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Partie numéro :&lt;/b&gt; %1</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="221"/>
@@ -502,7 +502,7 @@
     <message>
         <location filename="../src/window.cpp" line="433"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Détails</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="455"/>
