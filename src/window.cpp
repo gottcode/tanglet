@@ -461,7 +461,8 @@ void Window::setPaused(bool paused) {
 
 void Window::showDetails() {
 	QString details = QSettings().value("Current").toString();
-	QMessageBox::information(this, tr("Details"), tr("<b>Game Number:</b> %1").arg(details));
+	QString mode = Clock::timerToString(qBound(0, details.mid(3,1).toInt(), Clock::TotalTimers - 1));
+	QMessageBox::information(this, tr("Details"), tr("<p><b>Timer Mode:</b> %1<br><b>Game Number:</b> %2</p>").arg(mode).arg(details));
 }
 
 //-----------------------------------------------------------------------------
