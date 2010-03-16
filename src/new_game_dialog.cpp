@@ -81,6 +81,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_normal_size->setIcon(QPixmap(":/preview/normal.png"));
 	m_normal_size->setText(Board::sizeToString(4));
 	m_normal_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+	m_normal_size->setToolTip(tr("%1 or more letters").arg(3));
 
 	m_large_size = new QToolButton(this);
 	m_large_size->setAutoExclusive(true);
@@ -90,6 +91,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_large_size->setIcon(QPixmap(":/preview/large.png"));
 	m_large_size->setText(Board::sizeToString(5));
 	m_large_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+	m_large_size->setToolTip(tr("%1 or more letters").arg(4));
 
 	if (settings.value("Board/Size", 4).toInt() == 4) {
 		m_normal_size->setChecked(true);

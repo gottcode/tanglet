@@ -1,4 +1,5 @@
 2010-03-16 Graeme Gott <graeme@gottcode.org>
+	* Show minimum word size in details dialog.
 	* Show timer mode in details dialog.
 	* Pause when menus are open.
 
