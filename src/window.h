@@ -44,6 +44,8 @@ class Window : public QMainWindow {
 		void newGame();
 		void chooseGame();
 		bool endGame();
+		void autoPause();
+		void autoResume();
 		void setPaused(bool paused);
 		void showDetails();
 		void showScores();
@@ -53,6 +55,7 @@ class Window : public QMainWindow {
 		void gameFinished(int score);
 
 	private:
+		void monitorVisibility(QMenu* menu);
 		void startGame(const QString& details = QString());
 
 	private:

@@ -126,16 +126,33 @@ public:
 class Window::AutoPauseState : public Window::State {
 public:
 	AutoPauseState(Window* window)
-		: State(window) { }
+		: State(window), m_count(0) { }
 
 	void enter() {
 		setPaused(true);
 		setContentsIndex(1);
+		m_count++;
 	}
 
-	void autoResume() { setState("Play"); }
-	void pause() { setState("Pause"); }
-	void resume() { setState("Play"); }
+	void autoPause() {
+		m_count++;
+	}
+
+	void autoResume() {
+		m_count--;
+		if (m_count < 1) {
+			m_count = 0;
+			setState("Play");
+		}
+	}
+
+	void start() { m_count = 0; setState("Start"); }
+	void pause() { m_count = 0; setState("Pause"); }
+	void resume() { m_count = 0; setState("Play"); }
+	void finish() { m_count = 0; setState("Finish"); }
+
+private:
+	int m_count;
 };
 
 //-----------------------------------------------------------------------------
@@ -227,6 +244,7 @@ Window::Window()
 	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
 	menu->addSeparator();
 	menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
+	monitorVisibility(menu);
 
 	// Create settings menu
 	menu = menuBar()->addMenu(tr("&Settings"));
@@ -250,6 +268,7 @@ Window::Window()
 	higher_action->setCheckable(true);
 	connect(higher_action, SIGNAL(toggled(bool)), m_board, SLOT(setHigherScoringBoards(bool)));
 	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
+	monitorVisibility(menu);
 
 	// Create help menu
 	menu = menuBar()->addMenu(tr("&Help"));
@@ -258,6 +277,7 @@ Window::Window()
 	menu->addAction(tr("&About"), this, SLOT(about()));
 	menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
 	menu->addAction(tr("About &SCOWL"), this, SLOT(aboutScowl()));
+	monitorVisibility(menu);
 
 	// Load settings
 	QSettings settings;
@@ -310,7 +330,6 @@ void Window::closeEvent(QCloseEvent* event) {
 bool Window::event(QEvent* event) {
 	if (m_pause_action && m_pause_action->isEnabled()) {
 		switch (event->type()) {
-		case QEvent::WindowBlocked:
 		case QEvent::WindowDeactivate:
 			m_state->autoPause();
 			break;
@@ -418,6 +437,18 @@ bool Window::endGame() {
 
 //-----------------------------------------------------------------------------
 
+void Window::autoPause() {
+	m_state->autoPause();
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::autoResume() {
+	m_state->autoResume();
+}
+
+//-----------------------------------------------------------------------------
+
 void Window::setPaused(bool paused) {
 	if (paused) {
 		m_state->pause();
@@ -479,6 +510,15 @@ void Window::gameFinished(int score) {
 	if (scores.addScore(score)) {
 		scores.exec();
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::monitorVisibility(QMenu* menu) {
+#ifndef Q_WS_MAC
+	connect(menu, SIGNAL(aboutToShow()), this, SLOT(autoPause()));
+	connect(menu, SIGNAL(aboutToHide()), this, SLOT(autoResume()));
+#endif
 }
 
 //-----------------------------------------------------------------------------
