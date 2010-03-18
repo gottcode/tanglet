@@ -28,6 +28,8 @@
 #include "word_tree.h"
 
 #include <QAction>
+#include <QDialog>
+#include <QDialogButtonBox>
 #include <QEvent>
 #include <QGridLayout>
 #include <QGraphicsScene>
@@ -39,6 +41,7 @@
 #include <QMessageBox>
 #include <QPainterPath>
 #include <QSettings>
+#include <QStyle>
 #include <QTabWidget>
 #include <QToolButton>
 #include <QVBoxLayout>
@@ -57,6 +60,18 @@ Board::Board(QWidget* parent)
 	connect(m_clock, SIGNAL(finished()), this, SLOT(finish()));
 
 	m_score = new QLabel(this);
+
+	m_max_score_details = new QToolButton(this);
+	m_max_score_details->setAutoRaise(true);
+	m_max_score_details->setIconSize(QSize(16,16));
+	m_max_score_details->setIcon(QIcon(":/info.png"));
+	m_max_score_details->setToolTip(tr("Details"));
+	connect(m_max_score_details, SIGNAL(clicked()), this, SLOT(showMaximumWords()));
+
+	QHBoxLayout* score_layout = new QHBoxLayout;
+	score_layout->setMargin(0);
+	score_layout->addWidget(m_score);
+	score_layout->addWidget(m_max_score_details);
 
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
@@ -121,7 +136,7 @@ Board::Board(QWidget* parent)
 	layout->addWidget(m_tabs, 0, 0, 3, 1);
 	layout->addWidget(m_clock, 0, 1, Qt::AlignCenter);
 	layout->addWidget(m_view, 1, 1);
-	layout->addWidget(m_score, 2, 1, Qt::AlignCenter);
+	layout->addLayout(score_layout, 2, 1, Qt::AlignCenter);
 }
 
 //-----------------------------------------------------------------------------
@@ -178,6 +193,7 @@ void Board::setShowMaximumScore(QAction* show) {
 	int score_type = show->data().toInt();
 	QSettings().setValue("ShowMaximumScore", score_type);
 	m_score_type = score_type;
+	m_max_score_details->setVisible(isFinished() && m_score_type && m_clock->timer() == Clock::Allotment);
 	updateScore();
 }
 
@@ -211,6 +227,7 @@ void Board::gameStarted() {
 		m_guess->setMaxLength(m_maximum);
 	}
 	m_max_score = m_generator->maxScore();
+	m_max_score_details->hide();
 	m_letters = m_generator->letters();
 	m_solutions = m_generator->solutions();
 	m_found->setDictionary(m_generator->dictionary());
@@ -442,6 +459,7 @@ void Board::finish() {
 	m_guess->setEchoMode(QLineEdit::NoEcho);
 	m_guess->releaseKeyboard();
 	m_tabs->setTabEnabled(1, true);
+	m_max_score_details->setVisible(m_score_type && m_clock->timer() == Clock::Allotment);
 	emit pauseAvailable(false);
 
 	int score = updateScore();
@@ -655,6 +673,48 @@ void Board::updateClickableStatus() {
 			m_cells[position.x()][position.y()]->setClickable(true);
 		}
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::showMaximumWords() {
+	QDialog dialog(window(), Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
+	dialog.setWindowTitle(tr("Details"));
+
+	QList<int> scores;
+	foreach (const QString& word, m_solutions.keys()) {
+		scores.append(Solver::score(word));
+	}
+	qSort(scores.begin(), scores.end(), qGreater<int>());
+	scores = scores.mid(0, 30);
+
+	QLabel* message = new QLabel(tr("The maximum score was calculated from the following thirty words:"), this);
+	message->setWordWrap(true);
+
+	WordTree* words = new WordTree(this);
+	words->setDictionary(m_generator->dictionary());
+	QList<QTreeWidget*> trees = QList<QTreeWidget*>() << m_found << m_missed;
+	foreach (QTreeWidget* tree, trees) {
+		for (int i = 0; i < tree->topLevelItemCount(); ++i) {
+			QTreeWidgetItem* item = tree->topLevelItem(i);
+			int index = scores.indexOf(item->data(0, Qt::UserRole).toInt());
+			if (index != -1) {
+				words->addWord(item->text(0));
+				scores.removeAt(index);
+			}
+		}
+	}
+
+	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, &dialog);
+	buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
+	connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
+
+	QVBoxLayout* layout = new QVBoxLayout(&dialog);
+	layout->addWidget(message);
+	layout->addWidget(words);
+	layout->addWidget(buttons);
+
+	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------

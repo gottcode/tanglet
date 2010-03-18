@@ -52,6 +52,7 @@ class Clock : public QWidget {
 			TotalTimers
 		};
 		void setTimer(int timer);
+		int timer() const;
 		static QString timerToString(int timer);
 		static QString timerDescription(int timer);
 

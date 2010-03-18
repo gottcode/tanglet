@@ -433,6 +433,12 @@ void Clock::setTimer(int timer) {
 
 //-----------------------------------------------------------------------------
 
+int Clock::timer() const {
+	return m_timer->type();
+}
+
+//-----------------------------------------------------------------------------
+
 QString Clock::timerToString(int timer) {
 	static QStringList timers = QStringList() <<
 		tr("Tanglet") <<

@@ -65,6 +65,7 @@ class Board : public QWidget {
 		void finish();
 		void wordSelected();
 		void letterClicked(Letter* letter);
+		void showMaximumWords();
 
 	private:
 		void highlightWord(const QList<QPoint>& positions, const QColor& color);
@@ -85,6 +86,7 @@ class Board : public QWidget {
 		WordTree* m_missed;
 		QToolButton* m_clear_button;
 		QToolButton* m_guess_button;
+		QToolButton* m_max_score_details;
 
 		bool m_paused;
 		bool m_wrong;
