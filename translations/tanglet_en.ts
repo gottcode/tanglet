@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="605"/>
+        <location filename="../src/board.cpp" line="623"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 of %n point</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="607"/>
+        <location filename="../src/board.cpp" line="625"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>

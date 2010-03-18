@@ -229,7 +229,7 @@ Window::Window()
 	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
 	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()));
 	menu->addSeparator();
-	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()), tr("Ctrl+End"));
+	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()));
 	end_action->setEnabled(false);
 	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
 	menu->addSeparator();
