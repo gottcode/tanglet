@@ -331,6 +331,11 @@ bool Window::event(QEvent* event) {
 	if (m_pause_action && m_pause_action->isEnabled()) {
 		switch (event->type()) {
 		case QEvent::WindowDeactivate:
+			if (!QApplication::activeWindow() && !QApplication::activePopupWidget() && !QApplication::activeModalWidget()) {
+				m_state->pause();
+			}
+			break;
+		case QEvent::WindowBlocked:
 			m_state->autoPause();
 			break;
 		case QEvent::WindowUnblocked:

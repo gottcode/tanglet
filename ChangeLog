@@ -1,3 +1,6 @@
+2010-03-19 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Game briefly unpaused when showing dialogs.
+
 2010-03-18 Mehdi Yousfi-Monod <mehdi.yousfi@gmail.com>
 	* Updated French translation.
 
