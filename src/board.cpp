@@ -251,7 +251,7 @@ void Board::gameStarted() {
 	delete m_view->scene();
 	QGraphicsScene* scene = new QGraphicsScene(0, 0, board_size, board_size, this);
 	m_view->setScene(scene);
-	m_view->setMinimumSize(board_size, board_size);
+	m_view->setMinimumSize(board_size + 4, board_size + 4);
 	m_view->fitInView(m_view->sceneRect(), Qt::KeepAspectRatio);
 
 	QPainterPath path;
