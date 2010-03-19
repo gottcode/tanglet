@@ -55,7 +55,7 @@
     <message>
         <location filename="../src/board.cpp" line="181"/>
         <source>Large</source>
-        <translation></translation>
+        <translation>Grand</translation>
     </message>
     <message>
         <location filename="../src/board.cpp" line="452"/>
@@ -437,42 +437,42 @@
         <translation>À propos de &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="465"/>
+        <location filename="../src/window.cpp" line="470"/>
         <source>Normal</source>
-        <translation></translation>
+        <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="465"/>
+        <location filename="../src/window.cpp" line="470"/>
         <source>Large</source>
-        <translation></translation>
+        <translation>Grande</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="466"/>
+        <location filename="../src/window.cpp" line="471"/>
         <source>%1 or more letters</source>
         <translation>%1 lettres ou plus</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="547"/>
+        <location filename="../src/window.cpp" line="552"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="547"/>
+        <location filename="../src/window.cpp" line="552"/>
         <source>Unable to start requested game.</source>
         <translation>Impossible de lancer la partie demandée.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="404"/>
+        <location filename="../src/window.cpp" line="409"/>
         <source>Choose Game</source>
         <translation>Choisissez la partie</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="414"/>
+        <location filename="../src/window.cpp" line="419"/>
         <source>Game Number:</source>
         <translation>Numéro de la partie :</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="429"/>
+        <location filename="../src/window.cpp" line="434"/>
         <source>End the current game?</source>
         <translation>Terminer la partie actuelle ?</translation>
     </message>
@@ -482,67 +482,67 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="349"/>
+        <location filename="../src/window.cpp" line="354"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="351"/>
+        <location filename="../src/window.cpp" line="356"/>
         <source>Tanglet %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="352"/>
+        <location filename="../src/window.cpp" line="357"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Une variante du &lt;a href=&quot;http://fr.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt; à un joueur</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="353"/>
+        <location filename="../src/window.cpp" line="358"/>
         <source>Copyright &amp;copy; 2009, 2010 Graeme Gott</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="354"/>
+        <location filename="../src/window.cpp" line="359"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>Publié sous la licence &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="355"/>
+        <location filename="../src/window.cpp" line="360"/>
         <source>Includes &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; for list of words</source>
         <translation>Inclus &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; pour la liste des mots anglais</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="356"/>
+        <location filename="../src/window.cpp" line="361"/>
         <source>Copyright &amp;copy; 2000-2004 Kevin Atkinson</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="365"/>
+        <location filename="../src/window.cpp" line="370"/>
         <source>About SCOWL</source>
         <translation>À propos de SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="468"/>
+        <location filename="../src/window.cpp" line="473"/>
         <source>Details</source>
         <translation>Détails</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="468"/>
+        <location filename="../src/window.cpp" line="473"/>
         <source>&lt;p&gt;&lt;b&gt;Board Size:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Word Length:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Timer Mode:&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;Game Number:&lt;/b&gt; %4&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;Taille de la grille :&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Longueur des mots :&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Type de minuterie :&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;Numéro de la partie :&lt;/b&gt; %4&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="490"/>
+        <location filename="../src/window.cpp" line="495"/>
         <source>Controls</source>
         <translation>Contrôles</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="490"/>
+        <location filename="../src/window.cpp" line="495"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu à la souris :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Cliquer sur les lettres du mot.&lt;br&gt;&lt;b&gt;Proposer le mot :&lt;/b&gt; Cliquer sur la dernière lettre sélectionnée.&lt;br&gt;&lt;b&gt;Effacer des lettres :&lt;/b&gt; Cliquer sur une lettre précédemment sélectionnée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Cliquer deux fois sur la première lettre sélectionnée.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu au clavier :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Taper les lettres du mot.&lt;br&gt;&lt;b&gt;Proposer le mot :&lt;/b&gt; Presser Entrée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Presser Ctrl+Retour arrière.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="429"/>
+        <location filename="../src/window.cpp" line="434"/>
         <source>Question</source>
         <translation></translation>
     </message>
