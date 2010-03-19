@@ -20,7 +20,7 @@
         <location filename="../src/board.cpp" line="68"/>
         <location filename="../src/board.cpp" line="682"/>
         <source>Details</source>
-        <translation type="unfinished">Détails</translation>
+        <translation>Détails</translation>
     </message>
     <message>
         <location filename="../src/board.cpp" line="96"/>
@@ -45,7 +45,7 @@
     <message>
         <location filename="../src/board.cpp" line="691"/>
         <source>The maximum score was calculated from the following thirty words:</source>
-        <translation type="unfinished"></translation>
+        <translation>Le score maximum a été calculé à partir des 30 mots suivants :</translation>
     </message>
     <message>
         <location filename="../src/board.cpp" line="181"/>
@@ -263,7 +263,7 @@
         <location filename="../src/new_game_dialog.cpp" line="84"/>
         <location filename="../src/new_game_dialog.cpp" line="94"/>
         <source>%1 or more letters</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 lettres ou plus</translation>
     </message>
 </context>
 <context>
@@ -438,21 +438,26 @@
     </message>
     <message>
         <location filename="../src/window.cpp" line="465"/>
-        <source>%1 or more letters</source>
-        <translation type="unfinished"></translation>
+        <source>Normal</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="465"/>
+        <source>Large</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="466"/>
-        <source>&lt;p&gt;&lt;b&gt;Timer Mode:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Word Size:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Game Number:&lt;/b&gt; %3&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>%1 or more letters</source>
+        <translation>%1 lettres ou plus</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="545"/>
+        <location filename="../src/window.cpp" line="547"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="545"/>
+        <location filename="../src/window.cpp" line="547"/>
         <source>Unable to start requested game.</source>
         <translation>Impossible de lancer la partie demandée.</translation>
     </message>
@@ -517,17 +522,22 @@
         <translation>À propos de SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="466"/>
+        <location filename="../src/window.cpp" line="468"/>
         <source>Details</source>
         <translation>Détails</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="488"/>
+        <location filename="../src/window.cpp" line="468"/>
+        <source>&lt;p&gt;&lt;b&gt;Board Size:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Word Length:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Timer Mode:&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;Game Number:&lt;/b&gt; %4&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;b&gt;Taille de la grille :&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Longueur des mots :&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Type de minuterie :&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;Numéro de la partie :&lt;/b&gt; %4&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="490"/>
         <source>Controls</source>
         <translation>Contrôles</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="488"/>
+        <location filename="../src/window.cpp" line="490"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu à la souris :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Cliquer sur les lettres du mot.&lt;br&gt;&lt;b&gt;Proposer le mot :&lt;/b&gt; Cliquer sur la dernière lettre sélectionnée.&lt;br&gt;&lt;b&gt;Effacer des lettres :&lt;/b&gt; Cliquer sur une lettre précédemment sélectionnée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Cliquer deux fois sur la première lettre sélectionnée.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu au clavier :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Taper les lettres du mot.&lt;br&gt;&lt;b&gt;Proposer le mot :&lt;/b&gt; Presser Entrée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Presser Ctrl+Retour arrière.&lt;/p&gt;</translation>
     </message>
