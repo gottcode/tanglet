@@ -572,8 +572,10 @@ void Board::highlightWord() {
 			p.setColor(m_guess->foregroundRole(), Qt::white);
 			p.setColor(m_guess->backgroundRole(), "#ffaa00");
 			highlightWord(m_positions, "#ffaa00");
+		} else if (m_positions.count() < m_minimum) {
+			highlightWord(m_positions, "#bfd9ff");
 		} else {
-			highlightWord(m_positions, "#a5c1e4");
+			highlightWord(m_positions, "#80b3ff");
 		}
 	} else {
 		p.setColor(m_guess->foregroundRole(), Qt::white);
