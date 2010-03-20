@@ -1,3 +1,6 @@
+2010-03-20 Graeme Gott <graeme@gottcode.org>
+	* Tag version 1.1.0.
+
 2010-03-19 Graeme Gott <graeme@gottcode.org>
 	* Change letter colors when a word can be made.
 	* FIXED: Large boards were blurry at smallest size.
