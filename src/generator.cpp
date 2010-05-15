@@ -27,6 +27,32 @@
 #include <QFile>
 #include <QTextStream>
 
+#include <zlib.h>
+
+//-----------------------------------------------------------------------------
+
+namespace {
+	QByteArray gunzip(const QFile& file) {
+		QByteArray data;
+
+		gzFile gz = gzdopen(file.handle(), "rb");
+		if (gz == NULL) {
+			return data;
+		}
+
+		int read = 0;
+		char buffer[1024];
+		memset(buffer, 0, 1024);
+		do {
+			data.append(buffer, read);
+			read = qMin(gzread(gz, buffer, 1024), 1024);
+		} while (read > 0);
+		gzclose(gz);
+
+		return data;
+	}
+}
+
 //-----------------------------------------------------------------------------
 
 Generator::Generator(QObject* parent)
@@ -104,6 +130,7 @@ void Generator::update() {
 		QFile file(dice_path);
 		if (file.open(QFile::ReadOnly | QIODevice::Text)) {
 			QTextStream stream(&file);
+			stream.setCodec("UTF-8");
 			while (!stream.atEnd()) {
 				QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
 				if (line.count() == 6) {
@@ -131,8 +158,12 @@ void Generator::update() {
 
 		int count = 0;
 		QFile file(words_path);
-		if (file.open(QFile::ReadOnly | QIODevice::Text)) {
-			QTextStream stream(&file);
+		if (file.open(QFile::ReadOnly)) {
+			QByteArray data = gunzip(file);
+			file.close();
+
+			QTextStream stream(&data);
+			stream.setCodec("UTF-8");
 			while (!stream.atEnd()) {
 				QString line = stream.readLine().toUpper();
 				if (line.length() >= 3 && line.length() <= 25) {
@@ -140,7 +171,6 @@ void Generator::update() {
 					count++;
 				}
 			}
-			file.close();
 		}
 
 		if (count > 0) {
