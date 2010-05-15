@@ -240,7 +240,8 @@ Window::Window()
 	connect(m_pause_action, SIGNAL(triggered(bool)), this, SLOT(setPaused(bool)));
 	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
 	menu->addSeparator();
-	menu->addAction(tr("&Details"), this, SLOT(showDetails()));
+	m_details_action = menu->addAction(tr("&Details"), this, SLOT(showDetails()));
+	m_details_action->setEnabled(false);
 	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
 	menu->addSeparator();
 	menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
@@ -556,6 +557,7 @@ void Window::startGame(const QString& details) {
 	settings.setValue("Current", QString("1%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed));
 	m_state->start();
 	m_board->generate(higher_scores, size, timer, seed);
+	m_details_action->setEnabled(true);
 }
 
 //-----------------------------------------------------------------------------

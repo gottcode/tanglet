@@ -61,6 +61,7 @@ class Window : public QMainWindow {
 	private:
 		Board* m_board;
 		QStackedWidget* m_contents;
+		QAction* m_details_action;
 		QAction* m_pause_action;
 		QLabel* m_pause_screen;
 
