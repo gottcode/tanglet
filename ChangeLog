@@ -1,4 +1,5 @@
 2010-05-15 Graeme Gott <graeme@gottcode.org>
+	* Use native separators in language dialog.
 	* FIXED: Details dialog was enabled without a game.
 
 2010-03-20 Graeme Gott <graeme@gottcode.org>
