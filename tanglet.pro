@@ -48,7 +48,7 @@ SOURCES += src/board.cpp \
 	src/window.cpp \
 	src/word_tree.cpp
 
-TRANSLATIONS = translations/tanglet_en.ts translations/tanglet_fr.ts
+TRANSLATIONS = translations/tanglet_en.ts translations/tanglet_fr.ts translations/tanglet_cs.ts
 
 RESOURCES = icons/icons.qrc data.qrc translations/translations.qrc
 macx:ICON = icons/tanglet.icns
