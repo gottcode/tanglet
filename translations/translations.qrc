@@ -1,6 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 	<file>tanglet_en.qm</file>
-	<file>tanglet_fr.qm</file>
 </qresource>
 </RCC>

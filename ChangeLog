@@ -1,4 +1,5 @@
 2010-05-19 Graeme Gott <graeme@gottcode.org>
+	* Stop hardcoding supported languages.
 	* Replace provided dice.
 
 2010-05-15 Graeme Gott <graeme@gottcode.org>

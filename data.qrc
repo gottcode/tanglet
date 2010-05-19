@@ -1,5 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-	<file alias="scowl-readme">en/README</file>
+	<file alias="scowl-readme">data/en/README</file>
 </qresource>
 </RCC>

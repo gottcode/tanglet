@@ -41,8 +41,24 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	setWindowTitle(tr("Board Language"));
 
 	m_language = new QComboBox(this);
-	m_language->addItem(tr("English"), QLocale::English);
-	m_language->addItem(tr("French"), QLocale::French);
+	QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+	foreach (const QString& iso_code, languages) {
+		QLocale::Language language = QLocale(iso_code).language();
+		QString name = QLocale::languageToString(language);
+		QFile file("tanglet:/" + iso_code + "/name");
+		if (file.open(QFile::ReadOnly | QFile::Text)) {
+			QString localized = QString::fromUtf8(file.readAll()).simplified();
+			file.close();
+			name = !localized.isEmpty() ? localized : name;
+		}
+		int i;
+		for (i = 0; i < m_language->count(); ++i) {
+			if (m_language->itemText(i).localeAwareCompare(name) >= 0) {
+				break;
+			}
+		}
+		m_language->insertItem(i, name, language);
+	}
 	m_language->addItem(tr("Custom"), 0);
 	m_language->setCurrentIndex(m_language->count() - 1);
 	connect(m_language, SIGNAL(currentIndexChanged(int)), this, SLOT(chooseLanguage(int)));
@@ -137,24 +153,17 @@ void LanguageDialog::chooseLanguage(int index) {
 	QSettings settings;
 
 	bool enabled = false;
-	switch (m_language->itemData(index).toInt()) {
-	case QLocale::English:
-		m_dice_path = "tanglet:en/dice";
-		m_words_path = "tanglet:en/words";
-		m_dictionary->setText("http://www.google.com/dictionary?langpair=en|en&q=%s");
-		break;
-	case QLocale::French:
-		m_dice_path = "tanglet:fr/dice";
-		m_words_path = "tanglet:fr/words";
-		m_dictionary->setText("http://www.google.com/dictionary?langpair=fr|fr&q=%s");
-		break;
-	case 0:
-	default:
+	int language = m_language->itemData(index).toInt();
+	if (language != 0) {
+		QString iso_code = QLocale(static_cast<QLocale::Language>(language)).name().left(2);
+		m_dice_path = "tanglet:" + iso_code + "/dice";
+		m_words_path = "tanglet:" + iso_code + "/words";
+		m_dictionary->setText("http://www.google.com/dictionary?langpair=" + iso_code + "|" + iso_code + "&q=%s");
+	} else {
 		m_dice_path = settings.value("CustomDice", m_dice_path).toString();
 		m_words_path = settings.value("CustomWords", m_words_path).toString();
 		m_dictionary->setText(settings.value("CustomDictionary", m_dictionary->text()).toString());
 		enabled = true;
-		break;
 	}
 
 	m_dice->setText(QDir::toNativeSeparators(QFileInfo(m_dice_path).canonicalFilePath()));
@@ -193,7 +202,7 @@ void LanguageDialog::chooseWords(const QString& words) {
 void LanguageDialog::setLanguage(int language) {
 	int index = m_language->findData(language);
 	if (index == -1) {
-		index = 0;
+		index = m_language->findData(QLocale::English);
 	}
 	m_language->setCurrentIndex(index);
 }

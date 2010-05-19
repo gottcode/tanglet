@@ -47,12 +47,10 @@ int main(int argc, char** argv) {
 	qt_translator.load("qt_" + language, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 	app.installTranslator(&qt_translator);
 
-	QTranslator translator_en;
-	translator_en.load(":/tanglet_en");
-	app.installTranslator(&translator_en);
-
 	QTranslator translator;
-	translator.load(":/tanglet_" + language);
+	if (!translator.load(QFileInfo("tanglet:" + language + "/tanglet.qm").canonicalFilePath())) {
+		translator.load(":/tanglet_en");
+	}
 	app.installTranslator(&translator);
 
 	QSettings settings;

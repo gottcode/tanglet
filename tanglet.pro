@@ -50,7 +50,7 @@ SOURCES += src/board.cpp \
 
 TRANSLATIONS = translations/tanglet_en.ts translations/tanglet_fr.ts
 
-RESOURCES = icons/icons.qrc data/data.qrc translations/translations.qrc
+RESOURCES = icons/icons.qrc data.qrc translations/translations.qrc
 macx:ICON = icons/tanglet.icns
 win32:RC_FILE = icons/icon.rc
 
@@ -61,11 +61,8 @@ unix:!macx {
 
 	target.path = $$PREFIX/bin/
 
-	data_en.files = data/en/*
-	data_en.path = $$PREFIX/share/tanglet/data/en/
-
-	data_fr.files = data/fr/*
-	data_fr.path = $$PREFIX/share/tanglet/data/fr/
+	data.files = data/*
+	data.path = $$PREFIX/share/tanglet/data/
 
 	icon.files = icons/tanglet.png
 	icon.path = $$PREFIX/share/icons/hicolor/48x48/apps
@@ -73,5 +70,5 @@ unix:!macx {
 	desktop.files = icons/tanglet.desktop
 	desktop.path = $$PREFIX/share/applications/
 
-	INSTALLS += target icon desktop data_en data_fr
+	INSTALLS += target icon desktop data
 }
