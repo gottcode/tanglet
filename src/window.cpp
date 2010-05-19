@@ -410,7 +410,7 @@ void Window::chooseGame() {
 		dialog.setWindowTitle(tr("Choose Game"));
 
 		QLineEdit* number = new QLineEdit(&dialog);
-		number->setInputMask("99999000000000");
+		number->setInputMask("9NNNnnnnn");
 
 		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &dialog);
 		connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
@@ -544,17 +544,18 @@ void Window::startGame(const QString& details) {
 		size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
 		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
 		seed = Random(time(0)).nextInt();
-	} else if ((details.length() >= 5) && (details.at(0) == '1')) {
-		higher_scores = details.mid(1,1).toInt();
-		size = qBound(4, details.mid(2,1).toInt(), 5);
-		timer = qBound(0, details.mid(3,1).toInt(), Clock::TotalTimers - 1);
-		seed = details.mid(4).toUInt();
+	} else if ((details.length() >= 5) && (details.at(0) == '2')) {
+		QString unencoded = QString::number(details.mid(1).toLatin1().toULongLong(0, 36));
+		higher_scores = unencoded.mid(0,1).toInt();
+		size = qBound(4, unencoded.mid(1,1).toInt(), 5);
+		timer = qBound(0, unencoded.mid(2,1).toInt(), Clock::TotalTimers - 1);
+		seed = unencoded.mid(3).toUInt();
 	} else {
 		QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
 		return;
 	}
 
-	settings.setValue("Current", QString("1%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed));
+	settings.setValue("Current", "2" + QByteArray::number(QString("%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed).toULongLong(), 36));
 	m_state->start();
 	m_board->generate(higher_scores, size, timer, seed);
 	m_details_action->setEnabled(true);
