@@ -2,7 +2,7 @@
 
 APP='Tanglet'
 BUNDLE="$APP.app"
-VERSION='1.1.0'
+VERSION='1.1.1'
 
 DATA="$BUNDLE/Contents/Resources/"
 mkdir -p $DATA
