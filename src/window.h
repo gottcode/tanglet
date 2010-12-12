@@ -50,6 +50,7 @@ class Window : public QMainWindow {
 		void showDetails();
 		void showScores();
 		void showLanguage();
+		void showLocale();
 		void showControls();
 		void gameStarted();
 		void gameFinished(int score);

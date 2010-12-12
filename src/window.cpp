@@ -22,6 +22,7 @@
 #include "board.h"
 #include "clock.h"
 #include "language_dialog.h"
+#include "locale_dialog.h"
 #include "new_game_dialog.h"
 #include "random.h"
 #include "scores_dialog.h"
@@ -269,6 +270,8 @@ Window::Window()
 	higher_action->setCheckable(true);
 	connect(higher_action, SIGNAL(toggled(bool)), m_board, SLOT(setHigherScoringBoards(bool)));
 	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
+	menu->addSeparator();
+	menu->addAction(tr("Application &Language..."), this, SLOT(showLocale()));
 	monitorVisibility(menu);
 
 	// Create help menu
@@ -488,6 +491,13 @@ void Window::showLanguage() {
 	if (dialog.exec() == QDialog::Accepted) {
 		newGame();
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::showLocale() {
+	LocaleDialog dialog(this);
+	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------

@@ -22,6 +22,7 @@ HEADERS += src/board.h \
 	src/generator.h \
 	src/language_dialog.h \
 	src/language_settings.h \
+	src/locale_dialog.h \
 	src/letter.h \
 	src/new_game_dialog.h \
 	src/random.h \
@@ -37,6 +38,7 @@ SOURCES += src/board.cpp \
 	src/generator.cpp \
 	src/language_dialog.cpp \
 	src/language_settings.cpp \
+	src/locale_dialog.cpp \
 	src/letter.cpp \
 	src/new_game_dialog.cpp \
 	src/main.cpp \
@@ -48,9 +50,11 @@ SOURCES += src/board.cpp \
 	src/window.cpp \
 	src/word_tree.cpp
 
-TRANSLATIONS = translations/tanglet_en.ts translations/tanglet_fr.ts translations/tanglet_cs.ts
+TRANSLATIONS = translations/cs.ts \
+	translations/en_US.ts \
+	translations/fr.ts
 
-RESOURCES = icons/icons.qrc data.qrc translations/translations.qrc
+RESOURCES = icons/icons.qrc data.qrc
 macx:ICON = icons/tanglet.icns
 win32:RC_FILE = icons/icon.rc
 
@@ -58,8 +62,11 @@ unix:!macx {
 	isEmpty(PREFIX) {
 		PREFIX = /usr/local
 	}
+	isEmpty(BINDIR) {
+		BINDIR = bin
+	}
 
-	target.path = $$PREFIX/bin/
+	target.path = $$PREFIX/$$BINDIR/
 
 	data.files = data/*
 	data.path = $$PREFIX/share/tanglet/data/
@@ -70,5 +77,8 @@ unix:!macx {
 	desktop.files = icons/tanglet.desktop
 	desktop.path = $$PREFIX/share/applications/
 
-	INSTALLS += target icon desktop data
+	qm.files = translations/*.qm
+	qm.path = $$PREFIX/share/tanglet/translations
+
+	INSTALLS += target icon desktop data qm
 }

@@ -18,14 +18,12 @@
  ***********************************************************************/
 
 #include "language_dialog.h"
+#include "locale_dialog.h"
 #include "window.h"
 
 #include <QApplication>
 #include <QDir>
-#include <QLibraryInfo>
-#include <QLocale>
 #include <QSettings>
-#include <QTranslator>
 
 int main(int argc, char** argv) {
 	QApplication app(argc, argv);
@@ -41,17 +39,7 @@ int main(int argc, char** argv) {
 	paths.append(path + "/../Resources/");
 	QDir::setSearchPaths("tanglet", paths);
 
-	QString language = QLocale::system().name().left(2);
-
-	QTranslator qt_translator;
-	qt_translator.load("qt_" + language, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-	app.installTranslator(&qt_translator);
-
-	QTranslator translator;
-	if (!translator.load(QFileInfo("tanglet:" + language + "/tanglet.qm").canonicalFilePath())) {
-		translator.load(":/tanglet_en");
-	}
-	app.installTranslator(&translator);
+	LocaleDialog::loadTranslator();
 
 	QSettings settings;
 	if (settings.value("Language", -1).toInt() == -1) {

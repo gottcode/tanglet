@@ -6,7 +6,9 @@ Open a terminal and browse into the extracted folder.
 Linux:
     1.) Type 'qmake' to configure the program. If you would like to install the
         program somewhere other than /usr/local, pass a new value for PREFIX
-        during configuration: 'qmake PREFIX=/opt'.
+        during configuration: 'qmake PREFIX=/opt'. If you would like to place
+        the program under a different subfolder, pass a new value for BINDIR
+        during configuration: 'qmake PREFIX=/opt BINDIR=games'.
 
     2.) Type 'make' to compile the program.
 
@@ -24,5 +26,6 @@ Windows:
 
     2.) Type 'make' to compile the program.
 
-    3.) Type 'windows_deploy' to copy the program and its required libraries
-        into a subfolder.
+    3.) Type 'windows_deploy' to create a compressed image of the program. Note
+        that you must have the 7z executable from 7-zip.org in your %PATH% for
+        this to work.
