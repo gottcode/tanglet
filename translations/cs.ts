@@ -251,7 +251,7 @@
     <message>
         <location filename="../src/locale_dialog.cpp" line="48"/>
         <source>Select application language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat jazyk programu:</translation>
     </message>
     <message>
         <location filename="../src/locale_dialog.cpp" line="53"/>
@@ -276,7 +276,7 @@
     <message>
         <location filename="../src/locale_dialog.cpp" line="150"/>
         <source>Please restart this application for the change in language to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spusťte, prosí, tento program znovu, aby se změna jazyka projevila.</translation>
     </message>
 </context>
 <context>
@@ -576,7 +576,7 @@
     <message>
         <location filename="../src/window.cpp" line="274"/>
         <source>Application &amp;Language...</source>
-        <translation type="unfinished"></translation>
+        <translation>Jazyk &amp;programu...</translation>
     </message>
 </context>
 <context>
