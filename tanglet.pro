@@ -51,7 +51,7 @@ SOURCES += src/board.cpp \
 	src/word_tree.cpp
 
 TRANSLATIONS = translations/cs.ts \
-	translations/en_US.ts \
+	translations/en.ts \
 	translations/fr.ts
 
 RESOURCES = icons/icons.qrc data.qrc
