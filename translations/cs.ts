@@ -254,27 +254,12 @@
         <translation>Vybrat jazyk programu:</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="53"/>
-        <source>Czech</source>
-        <translation>Český</translation>
-    </message>
-    <message>
-        <location filename="../src/locale_dialog.cpp" line="54"/>
-        <source>American English</source>
-        <translation>Americká angličtina</translation>
-    </message>
-    <message>
-        <location filename="../src/locale_dialog.cpp" line="55"/>
-        <source>French</source>
-        <translation>Francouzský</translation>
-    </message>
-    <message>
-        <location filename="../src/locale_dialog.cpp" line="150"/>
+        <location filename="../src/locale_dialog.cpp" line="145"/>
         <source>Note</source>
         <translation>Notiz</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="150"/>
+        <location filename="../src/locale_dialog.cpp" line="145"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>Spusťte, prosí, tento program znovu, aby se změna jazyka projevila.</translation>
     </message>

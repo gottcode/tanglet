@@ -52,7 +52,8 @@ SOURCES += src/board.cpp \
 
 TRANSLATIONS = translations/cs.ts \
 	translations/en.ts \
-	translations/fr.ts
+	translations/fr.ts \
+	translations/he.ts
 
 RESOURCES = icons/icons.qrc data.qrc
 macx:ICON = icons/tanglet.icns

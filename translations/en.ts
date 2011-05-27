@@ -250,27 +250,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="53"/>
-        <source>Czech</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/locale_dialog.cpp" line="54"/>
-        <source>American English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/locale_dialog.cpp" line="55"/>
-        <source>French</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/locale_dialog.cpp" line="150"/>
+        <location filename="../src/locale_dialog.cpp" line="145"/>
         <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="150"/>
+        <location filename="../src/locale_dialog.cpp" line="145"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation type="unfinished"></translation>
     </message>
