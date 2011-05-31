@@ -45,7 +45,7 @@
     <message>
         <location filename="../src/board.cpp" line="693"/>
         <source>The maximum score was calculated from the following thirty words:</source>
-        <translation>הניקוד המקסימלי חושב  על פי שלושים המילים הבאות</translation>
+        <translation>הניקוד המקסימלי חושב על פי שלושים המילים הבאות</translation>
     </message>
     <message>
         <location filename="../src/board.cpp" line="181"/>
@@ -111,27 +111,27 @@
     <message>
         <location filename="../src/clock.cpp" line="450"/>
         <source>Discipline</source>
-        <translation>.משמעת</translation>
+        <translation>משמעת</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="458"/>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
-        <translation>סופר לאחור 30 שניות, ומוסיף זמן בניחושים נכונים</translation>
+        <translation>ספירה לאחור במשך 30 שניות, והוספת זמן בניחושים נכונים</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="459"/>
         <source>Counts down from 3 minutes.</source>
-        <translation>סופר לאחור שלוש דקות</translation>
+        <translation>ספירה לאחור במשך 3 דקות</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="460"/>
         <source>Counts down from 30 seconds and refills on correct guesses.</source>
-        <translation>סופר לאחור 30 שניות, ומתמלא מחדש בכל ניחוש נכון</translation>
+        <translation>ספירה לאחור במשך 30 שניות, ומילוי מחדש בכל ניחוש נכון</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="461"/>
         <source>Counts down from 45 seconds and pauses on correct guesses.</source>
-        <translation>סופר לאחור 45 שניות, ועוצר בכל ניחוש נכון</translation>
+        <translation>ספירה לאחור במשך 45 שניות, ועצירה בכל ניחוש נכון</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="462"/>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../src/clock.cpp" line="464"/>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
-        <translation>סופר לאחור 30 שניות, מוסיף זמן בניחוש נכון ומפחית בניחוש שגוי</translation>
+        <translation>ספירה לאחור במשך 30 שניות, הוספת זמן בניחוש נכון והפחתת זמן בניחוש שגוי</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="83"/>
@@ -209,7 +209,7 @@
     <message>
         <location filename="../src/language_dialog.cpp" line="86"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; These settings will take effect when you start a new game.</source>
-        <translation>&lt;b&gt;Note :&lt;/b&gt; הגדרות אלה יחולו בהתחלת משחק חדש</translation>
+        <translation>&lt;b&gt;הערה :&lt;/b&gt; הגדרות אלה יחולו בהתחלת משחק חדש</translation>
     </message>
     <message>
         <location filename="../src/language_dialog.cpp" line="98"/>
@@ -247,22 +247,22 @@
     <message>
         <location filename="../src/locale_dialog.cpp" line="98"/>
         <source>Select application language:</source>
-        <translation type="unfinished"></translation>
+        <translation>בחר שפת יישום</translation>
     </message>
     <message>
         <location filename="../src/locale_dialog.cpp" line="101"/>
         <source>&lt;System Language&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>שפת מערכת</translation>
     </message>
     <message>
         <location filename="../src/locale_dialog.cpp" line="195"/>
         <source>Note</source>
-        <translation type="unfinished"></translation>
+        <translation>הערה</translation>
     </message>
     <message>
         <location filename="../src/locale_dialog.cpp" line="195"/>
         <source>Please restart this application for the change in language to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>נא אתחל את היישום כדי להחיל את שינוי הגדרות השפה</translation>
     </message>
 </context>
 <context>
@@ -309,258 +309,268 @@
     <message>
         <location filename="../src/scores_dialog.cpp" line="82"/>
         <source>#%1</source>
-        <translation>n°%1</translation>
+        <translation>מס&apos; %1</translation>
     </message>
 </context>
 <context>
     <name>Window</name>
     <message>
-        <location filename="../src/window.cpp" line="191"/>
+        <location filename="../src/window.cpp" line="229"/>
         <source>Tanglet</source>
         <translation>פלונטר</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="212"/>
+        <location filename="../src/window.cpp" line="250"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Paused&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Click to resume playing.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;מושהה&lt;/big&gt;&lt;/b&gt;&lt;br&gt;הקלק להמשך המשחק&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;מושהה&lt;/big&gt;&lt;/b&gt;&lt;br&gt;לחץ להמשך המשחק&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="218"/>
+        <location filename="../src/window.cpp" line="256"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;אנא המתן&lt;/big&gt;&lt;/b&gt;&lt;br&gt;בונה לוח חדש...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="229"/>
+        <location filename="../src/window.cpp" line="267"/>
         <source>&amp;Game</source>
         <translation>משחק</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="230"/>
+        <location filename="../src/window.cpp" line="268"/>
         <source>&amp;New</source>
         <translation>חדש</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="230"/>
+        <location filename="../src/window.cpp" line="268"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="231"/>
+        <location filename="../src/window.cpp" line="269"/>
         <source>&amp;Choose...</source>
-        <translation>בחר...</translation>
+        <translation>בחירה...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="233"/>
+        <location filename="../src/window.cpp" line="271"/>
         <source>&amp;End</source>
-        <translation>סוף</translation>
+        <translation>סיום</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="237"/>
+        <location filename="../src/window.cpp" line="275"/>
         <source>&amp;Pause</source>
-        <translation>השהה</translation>
+        <translation>השהיה</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="244"/>
+        <location filename="../src/window.cpp" line="282"/>
         <source>&amp;Details</source>
         <translation>פרטים</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="246"/>
+        <location filename="../src/window.cpp" line="284"/>
         <source>&amp;High Scores</source>
         <translation>טבלת שיאים</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="252"/>
+        <location filename="../src/window.cpp" line="290"/>
         <source>&amp;Settings</source>
         <translation>הגדרות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="248"/>
+        <location filename="../src/window.cpp" line="286"/>
         <source>&amp;Quit</source>
         <translation>יציאה</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="223"/>
+        <location filename="../src/window.cpp" line="261"/>
         <source>Click to start a new game.</source>
         <translation>לחץ להתחלת משחק חדש</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="248"/>
+        <location filename="../src/window.cpp" line="286"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="253"/>
+        <location filename="../src/window.cpp" line="291"/>
         <source>Show &amp;Maximum Score</source>
-        <translation>הצג ניקוד מקסימלי</translation>
+        <translation>הצגת ניקוד מקסימלי</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="255"/>
+        <location filename="../src/window.cpp" line="293"/>
         <source>&amp;Never</source>
-        <translation>אף פעם לא</translation>
+        <translation>לעולם לא</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="256"/>
+        <location filename="../src/window.cpp" line="294"/>
         <source>&amp;End Of Game</source>
-        <translation>בסוף משחק</translation>
+        <translation>בסוף המשחק</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="257"/>
+        <location filename="../src/window.cpp" line="295"/>
         <source>&amp;Always</source>
         <translation>תמיד</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="265"/>
+        <location filename="../src/window.cpp" line="303"/>
         <source>Show Missed &amp;Words</source>
         <translation>הצג מילים שלא נמצאו</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="269"/>
+        <location filename="../src/window.cpp" line="307"/>
         <source>&amp;Higher Scoring Boards</source>
-        <translation></translation>
+        <translation>לוחות עם ניקוד מירבי</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="272"/>
+        <location filename="../src/window.cpp" line="310"/>
         <source>&amp;Board Language...</source>
         <translation>שפת הלוח...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="274"/>
+        <location filename="../src/window.cpp" line="312"/>
         <source>Application &amp;Language...</source>
-        <translation type="unfinished"></translation>
+        <translation>שפה...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="278"/>
+        <location filename="../src/window.cpp" line="316"/>
         <source>&amp;Help</source>
         <translation>עזרה</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="279"/>
+        <location filename="../src/window.cpp" line="317"/>
         <source>&amp;Controls</source>
         <translation>הוראות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="281"/>
+        <location filename="../src/window.cpp" line="319"/>
         <source>&amp;About</source>
         <translation>אודות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="282"/>
+        <location filename="../src/window.cpp" line="320"/>
+        <source>About &amp;Hspell</source>
+        <translation>אודות &amp;Hspell</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="321"/>
         <source>About &amp;Qt</source>
         <translation>אודות &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="283"/>
+        <location filename="../src/window.cpp" line="322"/>
         <source>About &amp;SCOWL</source>
         <translation>אודות &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="474"/>
+        <location filename="../src/window.cpp" line="401"/>
+        <source>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="403"/>
+        <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="404"/>
+        <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
+        <translation> רשימת המילים בעברית מבוססת על &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt;שנכתב ע&quot;י נדב הראל ודן קניגסברג  </translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="410"/>
+        <source>About Hspell</source>
+        <translation>אודות Hspell</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="498"/>
         <source>Normal</source>
         <translation>רגיל</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="474"/>
+        <location filename="../src/window.cpp" line="498"/>
         <source>Large</source>
         <translation>גדול</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="475"/>
+        <location filename="../src/window.cpp" line="499"/>
         <source>%1 or more letters</source>
         <translation>%1 אותיות או יותר</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="564"/>
+        <location filename="../src/window.cpp" line="588"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="564"/>
+        <location filename="../src/window.cpp" line="588"/>
         <source>Unable to start requested game.</source>
         <translation>אין אפשרות להתחיל את המשחק המבוקש</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="413"/>
+        <location filename="../src/window.cpp" line="437"/>
         <source>Choose Game</source>
         <translation>בחר משחק</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="423"/>
+        <location filename="../src/window.cpp" line="447"/>
         <source>Game Number:</source>
         <translation>משחק מספר:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="438"/>
+        <location filename="../src/window.cpp" line="462"/>
         <source>End the current game?</source>
         <translation>לסיים את המשחק הנוכחי?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="239"/>
+        <location filename="../src/window.cpp" line="277"/>
         <source>Ctrl+P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="358"/>
+        <location filename="../src/window.cpp" line="397"/>
         <source>About</source>
         <translation>אודות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="360"/>
+        <location filename="../src/window.cpp" line="399"/>
         <source>Tanglet %1</source>
         <translation>פלונטר %1</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="361"/>
+        <location filename="../src/window.cpp" line="400"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>גרסה לשחקן בודד של &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="362"/>
-        <source>Copyright &amp;copy; 2009, 2010 Graeme Gott</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="363"/>
+        <location filename="../src/window.cpp" line="402"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>מופץ בכפוף לרשיון &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="364"/>
-        <source>Includes &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; for list of words</source>
-        <translation>כולל href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; לרשימת המילים באנגלית</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="365"/>
-        <source>Copyright &amp;copy; 2000-2004 Kevin Atkinson</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="374"/>
+        <location filename="../src/window.cpp" line="417"/>
         <source>About SCOWL</source>
         <translation>אודות SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="477"/>
+        <location filename="../src/window.cpp" line="501"/>
         <source>Details</source>
         <translation>פרטים</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="477"/>
+        <location filename="../src/window.cpp" line="501"/>
         <source>&lt;p&gt;&lt;b&gt;Board Size:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Word Length:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Timer Mode:&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;Game Number:&lt;/b&gt; %4&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;גודל הלוח :&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;אורך המילים :&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;סוג שעון העצר :&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;מספר משחק :&lt;/b&gt; %4&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="506"/>
+        <location filename="../src/window.cpp" line="530"/>
         <source>Controls</source>
         <translation>הוראות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="506"/>
+        <location filename="../src/window.cpp" line="530"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;עכבר:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלק על אותיות של מילה&lt;br&gt;&lt;b&gt;נחש:&lt;/b&gt; הקלק על האות האחרונה שנבחרה&lt;br&gt;&lt;b&gt;מחק אותיות:&lt;/b&gt; הקלק על אות שנבחרה קודם&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; הקלק פעמיים על האות הראשונה שנבחרה&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;מקלדת:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלד אותיות של מילה&lt;br&gt;&lt;b&gt;נחש:&lt;/b&gt; הקלק Enter.&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ Ctrl+Backspace.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש בעכבר:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; לחץ על אותיות של מילה&lt;br&gt;&lt;b&gt;נחש:&lt;/b&gt; לחץ על האות האחרונה שנבחרה&lt;br&gt;&lt;b&gt;מחק אותיות:&lt;/b&gt; לחץ על אות שנבחרה קודם&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ פעמיים על האות הראשונה שנבחרה&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש במקלדת:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלד אותיות של מילה&lt;br&gt;&lt;b&gt;נחש:&lt;/b&gt; לחץ Enter&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ Ctrl+Backspace&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="438"/>
+        <location filename="../src/window.cpp" line="462"/>
         <source>Question</source>
         <translation>שאלה</translation>
     </message>
