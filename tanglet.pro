@@ -50,10 +50,10 @@ SOURCES += src/board.cpp \
 	src/window.cpp \
 	src/word_tree.cpp
 
-TRANSLATIONS = translations/cs.ts \
-	translations/en.ts \
-	translations/fr.ts \
-	translations/he.ts
+TRANSLATIONS = translations/tanglet_cs.ts \
+	translations/tanglet_en.ts \
+	translations/tanglet_fr.ts \
+	translations/tanglet_he.ts
 
 RESOURCES = icons/icons.qrc data.qrc
 macx:ICON = icons/tanglet.icns
