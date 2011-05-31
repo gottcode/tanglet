@@ -71,8 +71,8 @@
         <location filename="../src/board.cpp" line="625"/>
         <source>%1 of %n point(s)</source>
         <translation>
-            <numerusform>נקוזה %n מתוך %1</numerusform>
-            <numerusform>%n נקודות מתוך %1</numerusform>
+            <numerusform>נקודה %1 מתוך %n</numerusform>
+            <numerusform>%1 נקודות מתוך %n</numerusform>
         </translation>
     </message>
 </context>
@@ -332,12 +332,12 @@
     <message>
         <location filename="../src/window.cpp" line="229"/>
         <source>&amp;Game</source>
-        <translation>&amp;משחק</translation>
+        <translation>משחק</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="230"/>
         <source>&amp;New</source>
-        <translation>&amp;חדש</translation>
+        <translation>חדש</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="230"/>
@@ -347,17 +347,17 @@
     <message>
         <location filename="../src/window.cpp" line="231"/>
         <source>&amp;Choose...</source>
-        <translation>&amp;בחר...</translation>
+        <translation>בחר...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="233"/>
         <source>&amp;End</source>
-        <translation>&amp;סוף</translation>
+        <translation>סוף</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="237"/>
         <source>&amp;Pause</source>
-        <translation>&amp;השהה</translation>
+        <translation>השהה</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="244"/>
@@ -447,12 +447,12 @@
     <message>
         <location filename="../src/window.cpp" line="282"/>
         <source>About &amp;Qt</source>
-        <translation>אודות;Qt</translation>
+        <translation>אודות &amp;Qt</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="283"/>
         <source>About &amp;SCOWL</source>
-        <translation>אודות;SCOWL</translation>
+        <translation>אודות &amp;SCOWL</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="474"/>
