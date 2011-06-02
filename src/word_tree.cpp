@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 #include "word_tree.h"
 
+#include "language_settings.h"
 #include "solver.h"
 
 #include <QDesktopServices>
@@ -29,7 +30,7 @@
 //-----------------------------------------------------------------------------
 
 WordTree::WordTree(QWidget* parent)
-: QTreeWidget(parent), m_active_item(0) {
+: QTreeWidget(parent), m_active_item(0), m_hebrew(false) {
 	setColumnCount(2);
 	header()->setStretchLastSection(false);
 	header()->setResizeMode(0, QHeaderView::Stretch);
@@ -51,7 +52,32 @@ WordTree::WordTree(QWidget* parent)
 
 QTreeWidgetItem* WordTree::addWord(const QString& word) {
 	QTreeWidgetItem* item = new QTreeWidgetItem(this);
-	item->setText(0, word);
+	if (!m_hebrew) {
+		item->setText(0, word);
+	} else {
+		QString copy = word;
+		int end = copy.length() - 1;
+		switch (copy.at(end).unicode()) {
+		case 0x05db:
+			copy[end] = 0x05da;
+			break;
+		case 0x05de:
+			copy[end] = 0x05dd;
+			break;
+		case 0x05e0:
+			copy[end] = 0x05df;
+			break;
+		case 0x05e4:
+			copy[end] = 0x05e3;
+			break;
+		case 0x05e6:
+			copy[end] = 0x05e5;
+			break;
+		default:
+			break;
+		}
+		item->setText(0, copy);
+	}
 	item->setIcon(1, QIcon(":/empty.png"));
 	int score = Solver::score(word);
 	item->setData(0, Qt::UserRole, score);
@@ -64,6 +90,7 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 void WordTree::removeAll() {
 	m_active_item = 0;
 	clear();
+	m_hebrew = (LanguageSettings().language() == QLocale::Hebrew);
 }
 
 //-----------------------------------------------------------------------------

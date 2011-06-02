@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -345,7 +345,7 @@ void Board::guess() {
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly).value(0);
 		if (item == 0) {
 			item = m_found->addWord(text);
-			delete m_missed->findItems(text, Qt::MatchExactly, 0).first();
+			delete m_missed->findItems(item->text(0), Qt::MatchExactly, 0).first();
 
 			m_clock->addWord(item->data(0, Qt::UserRole).toInt());
 			updateScore();
