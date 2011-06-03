@@ -1,5 +1,4 @@
-This is version 1.1 of Hspell, the free Hebrew spellchecker and morphology
-engine.
+Hspell version 1.1, the free Hebrew spellchecker and morphology engine.
 
 You can get Hspell from:
 	http://hspell.ivrix.org.il/
@@ -30,7 +29,7 @@ because it encourages a *correct* and consistent spelling style throughout
 your writing. It is a disadvantage, because a few of the Academia's official
 spelling decisions are relatively unknown to the general public.
 
-Users of Hspell (and all Hebrew writers, for that matter) are encouraged to 
+Users of Hspell (and all Hebrew writers, for that matter) are encouraged to
 read the Academia's official niqqud-less spelling rules (which are printed at
 the end of most modern Hebrew dictionaries), and to refer to Hebrew
 dictionaries which use the niqqud-less spelling (such as Millon Ha-hove or

@@ -279,7 +279,7 @@
     <message>
         <location filename="../src/locale_dialog.cpp" line="99"/>
         <source>Select application language:</source>
-        <translation>בחר שפת יישום</translation>
+        <translation>בחר שפת ממשק</translation>
     </message>
     <message>
         <location filename="../src/locale_dialog.cpp" line="102"/>
@@ -459,7 +459,7 @@
     <message>
         <location filename="../src/window.cpp" line="312"/>
         <source>Application &amp;Language...</source>
-        <translation>שפה...</translation>
+        <translation>שפת ממשק...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="316"/>
@@ -504,7 +504,7 @@
     <message>
         <location filename="../src/window.cpp" line="404"/>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
-        <translation> רשימת המילים בעברית מבוססת על &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt;שנכתב ע&quot;י נדב הראל ודן קניגסברג  </translation>
+        <translation>רשימת המילים בעברית מבוססת על &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; שנכתב ע&quot;י נדב הראל ודן קניגסברג</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="410"/>
@@ -599,7 +599,7 @@
     <message>
         <location filename="../src/window.cpp" line="530"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש בעכבר:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; לחץ על אותיות של מילה&lt;br&gt;&lt;b&gt;נחש:&lt;/b&gt; לחץ על האות האחרונה שנבחרה&lt;br&gt;&lt;b&gt;מחק אותיות:&lt;/b&gt; לחץ על אות שנבחרה קודם&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ פעמיים על האות הראשונה שנבחרה&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש במקלדת:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלד אותיות של מילה&lt;br&gt;&lt;b&gt;נחש:&lt;/b&gt; לחץ Enter&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ Ctrl+Backspace&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש בעכבר:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; לחץ על אותיות של מילה&lt;br&gt;&lt;b&gt;הצע ניחוש:&lt;/b&gt; לחץ על האות האחרונה שנבחרה&lt;br&gt;&lt;b&gt;מחק אותיות:&lt;/b&gt; לחץ על אות שנבחרה קודם&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ פעמיים על האות הראשונה שנבחרה&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש במקלדת:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלד אותיות של מילה&lt;br&gt;&lt;b&gt;הצע ניחוש:&lt;/b&gt; לחץ Enter&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ Ctrl+Backspace&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="462"/>
