@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message>
-        <location filename="../src/board.cpp" line="693"/>
+        <location filename="../src/board.cpp" line="703"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>Nejlepší výsledek byl vypočítán z následujících třiceti slov:</translation>
     </message>
@@ -49,7 +49,43 @@
         <translation>Obvyklá</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="627"/>
+        <location filename="../src/board.cpp" line="628"/>
+        <source>3 of %n point(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/board.cpp" line="630"/>
+        <source>2 of %n point(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/board.cpp" line="632"/>
+        <source>1 of %n point(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/board.cpp" line="634"/>
+        <source>0 of %n point(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/board.cpp" line="637"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n bod</numerusform>
@@ -64,12 +100,12 @@
     </message>
     <message>
         <location filename="../src/board.cpp" line="68"/>
-        <location filename="../src/board.cpp" line="684"/>
+        <location filename="../src/board.cpp" line="694"/>
         <source>Details</source>
         <translation>Podrobnosti</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="625"/>
+        <location filename="../src/board.cpp" line="626"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 z %n bodu</numerusform>
@@ -249,22 +285,22 @@
 <context>
     <name>LocaleDialog</name>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="98"/>
+        <location filename="../src/locale_dialog.cpp" line="99"/>
         <source>Select application language:</source>
         <translation>Vybrat jazyk programu:</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="101"/>
+        <location filename="../src/locale_dialog.cpp" line="102"/>
         <source>&lt;System Language&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="195"/>
+        <location filename="../src/locale_dialog.cpp" line="196"/>
         <source>Note</source>
         <translation>Notiz</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="195"/>
+        <location filename="../src/locale_dialog.cpp" line="196"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>Spusťte, prosí, tento program znovu, aby se změna jazyka projevila.</translation>
     </message>
@@ -582,7 +618,7 @@
 <context>
     <name>WordTree</name>
     <message numerus="yes">
-        <location filename="../src/word_tree.cpp" line="58"/>
+        <location filename="../src/word_tree.cpp" line="84"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n bod</numerusform>

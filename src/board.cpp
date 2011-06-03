@@ -622,7 +622,17 @@ int Board::updateScore() {
 	}
 
 	if (m_score_type == 2 || (m_score_type == 1 && isFinished())) {
-		m_score->setText(tr("%1 of %n point(s)", "", m_max_score).arg(score));
+		if (score > 3) {
+			m_score->setText(tr("%1 of %n point(s)", "", m_max_score).arg(score));
+		} else if (score == 3) {
+			m_score->setText(tr("3 of %n point(s)", "", m_max_score));
+		} else if (score == 2) {
+			m_score->setText(tr("2 of %n point(s)", "", m_max_score));
+		} else if (score == 1) {
+			m_score->setText(tr("1 of %n point(s)", "", m_max_score));
+		} else {
+			m_score->setText(tr("0 of %n point(s)", "", m_max_score));
+		}
 	} else {
 		m_score->setText(tr("%n point(s)", "", score));
 	}
