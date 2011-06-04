@@ -118,6 +118,16 @@ void Generator::update() {
 
 	LanguageSettings settings;
 	m_dictionary_url = settings.dictionary();
+	m_dictionary_query.clear();
+	int index = m_dictionary_url.indexOf("%s");
+	if (index != -1) {
+		int start_index = m_dictionary_url.lastIndexOf('&', index);
+		if (start_index != -1) {
+			int length = index - start_index;
+			m_dictionary_query = m_dictionary_url.mid(start_index + 1, length - 2);
+			m_dictionary_url.remove(start_index, length + 2);
+		}
+	}
 
 	// Load dice
 	QString dice_path = settings.dice();

@@ -45,6 +45,10 @@ public:
 		return m_dictionary_url;
 	}
 
+	QString dictionaryQuery() const {
+		return m_dictionary_query;
+	}
+
 	QString error() const {
 		return m_error;
 	}
@@ -83,6 +87,7 @@ private:
 	QString m_dice_path;
 	QString m_words_path;
 	QString m_dictionary_url;
+	QString m_dictionary_query;
 	QList<QStringList> m_dice;
 	QList<QStringList> m_dice_large;
 	Trie m_words;

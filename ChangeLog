@@ -1,3 +1,6 @@
+2011-06-04 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Crashed when requested Hebrew dictionary definitions.
+
 2011-06-03 Bentzy Sagiv <bentzy.sagiv@gmail.com>
 	* Update Hebrew translation.
 
