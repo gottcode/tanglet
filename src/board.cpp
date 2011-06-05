@@ -342,10 +342,10 @@ void Board::guess() {
 		}
 
 		// Create found item
-		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly).value(0);
+		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly).value(2);
 		if (item == 0) {
 			item = m_found->addWord(text);
-			delete m_missed->findItems(item->text(0), Qt::MatchExactly, 0).first();
+			delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).first();
 
 			m_clock->addWord(item->data(0, Qt::UserRole).toInt());
 			updateScore();
@@ -479,7 +479,7 @@ void Board::wordSelected() {
 		return;
 	}
 
-	QString word = items.first()->text(0);
+	QString word = items.first()->text(2);
 	if (!word.isEmpty() && word != m_guess->text()) {
 		m_guess->setText(word);
 		m_positions = m_solutions.value(word).value(0);

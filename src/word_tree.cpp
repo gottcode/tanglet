@@ -31,7 +31,8 @@
 
 WordTree::WordTree(QWidget* parent)
 : QTreeWidget(parent), m_active_item(0), m_hebrew(false) {
-	setColumnCount(2);
+	setColumnCount(3);
+	hideColumn(2);
 	header()->setStretchLastSection(false);
 	header()->setResizeMode(0, QHeaderView::Stretch);
 	header()->setResizeMode(1, QHeaderView::Fixed);
@@ -52,6 +53,7 @@ WordTree::WordTree(QWidget* parent)
 
 QTreeWidgetItem* WordTree::addWord(const QString& word) {
 	QTreeWidgetItem* item = new QTreeWidgetItem(this);
+	item->setText(2, word);
 	if (!m_hebrew) {
 		item->setText(0, word);
 	} else {

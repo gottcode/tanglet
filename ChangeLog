@@ -1,4 +1,5 @@
 2011-06-05 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Did not properly highlight missed Hebrew words.
 	* FIXED: Details window had incorrect values.
 
 2011-06-05 Bentzy Sagiv <bentzy.sagiv@gmail.com>
