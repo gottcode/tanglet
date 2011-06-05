@@ -45,33 +45,33 @@
     <message numerus="yes">
         <location filename="../src/board.cpp" line="628"/>
         <source>3 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>3 מתוך %n נקודות</numerusform>
+            <numerusform>3 מתוך %n נקודות</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/board.cpp" line="630"/>
         <source>2 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>2 מתוך %n נקודות</numerusform>
+            <numerusform>2 מתוך %n נקודות</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/board.cpp" line="632"/>
         <source>1 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>נקודה 1 מתוך %n</numerusform>
+            <numerusform>נקודה 1 מתוך %n</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/board.cpp" line="634"/>
         <source>0 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>0 מתוך %n נקודות</numerusform>
+            <numerusform>0 מתוך %n נקודות</numerusform>
         </translation>
     </message>
     <message>
@@ -103,8 +103,8 @@
         <location filename="../src/board.cpp" line="626"/>
         <source>%1 of %n point(s)</source>
         <translation>
-            <numerusform>נקודה %1 מתוך %n</numerusform>
-            <numerusform>%1 נקודות מתוך %n</numerusform>
+            <numerusform>%1 מתוך %n נקודות</numerusform>
+            <numerusform>%1 מתוך %n נקודות</numerusform>
         </translation>
     </message>
 </context>
@@ -210,12 +210,12 @@
 <context>
     <name>Generator</name>
     <message>
-        <location filename="../src/generator.cpp" line="149"/>
+        <location filename="../src/generator.cpp" line="159"/>
         <source>Unable to read dice from file.</source>
         <translation>אין אפשרות לקרוא את נתוני הקוביה מהקובץ</translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="179"/>
+        <location filename="../src/generator.cpp" line="189"/>
         <source>Unable to read word list from file.</source>
         <translation>אין אפשרות לקרוא את רשימת המילים מהקובץ</translation>
     </message>
@@ -223,53 +223,53 @@
 <context>
     <name>LanguageDialog</name>
     <message>
-        <location filename="../src/language_dialog.cpp" line="41"/>
+        <location filename="../src/language_dialog.cpp" line="42"/>
         <source>Board Language</source>
         <translation>שפת הלוח</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="62"/>
+        <location filename="../src/language_dialog.cpp" line="63"/>
         <source>Custom</source>
         <translation>מותאם אישית</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="70"/>
-        <location filename="../src/language_dialog.cpp" line="77"/>
+        <location filename="../src/language_dialog.cpp" line="71"/>
+        <location filename="../src/language_dialog.cpp" line="78"/>
         <source>Choose...</source>
         <translation>בחר...</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="86"/>
+        <location filename="../src/language_dialog.cpp" line="87"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; These settings will take effect when you start a new game.</source>
         <translation>&lt;b&gt;הערה :&lt;/b&gt; הגדרות אלה יחולו בהתחלת משחק חדש</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="98"/>
+        <location filename="../src/language_dialog.cpp" line="99"/>
         <source>Language:</source>
         <translation>שפה:</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="101"/>
+        <location filename="../src/language_dialog.cpp" line="102"/>
         <source>Dice:</source>
         <translation>קוביה:</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="105"/>
+        <location filename="../src/language_dialog.cpp" line="106"/>
         <source>Word list:</source>
         <translation>רשימת מילים:</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="109"/>
+        <location filename="../src/language_dialog.cpp" line="110"/>
         <source>Dictionary:</source>
         <translation>מילון:</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="183"/>
+        <location filename="../src/language_dialog.cpp" line="192"/>
         <source>Choose Dice File</source>
         <translation>בחר קובץ קוביה</translation>
     </message>
     <message>
-        <location filename="../src/language_dialog.cpp" line="193"/>
+        <location filename="../src/language_dialog.cpp" line="202"/>
         <source>Choose Word List File</source>
         <translation>בחר קובץ רשימת מילים</translation>
     </message>
@@ -336,7 +336,7 @@
     <message>
         <location filename="../src/scores_dialog.cpp" line="78"/>
         <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation>&lt;b&gt;שעון עצר&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;סוג משחק&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/scores_dialog.cpp" line="82"/>
@@ -589,7 +589,7 @@
     <message>
         <location filename="../src/window.cpp" line="501"/>
         <source>&lt;p&gt;&lt;b&gt;Board Size:&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;Word Length:&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;Timer Mode:&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;Game Number:&lt;/b&gt; %4&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;גודל הלוח :&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;אורך המילים :&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;סוג שעון העצר :&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;מספר משחק :&lt;/b&gt; %4&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;גודל הלוח :&lt;/b&gt; %1&lt;br&gt;&lt;b&gt;אורך המילים :&lt;/b&gt; %2&lt;br&gt;&lt;b&gt;סוג משחק :&lt;/b&gt; %3&lt;br&gt;&lt;b&gt;מספר משחק :&lt;/b&gt; %4&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="530"/>
@@ -599,7 +599,7 @@
     <message>
         <location filename="../src/window.cpp" line="530"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש בעכבר:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; לחץ על אותיות של מילה&lt;br&gt;&lt;b&gt;הצע ניחוש:&lt;/b&gt; לחץ על האות האחרונה שנבחרה&lt;br&gt;&lt;b&gt;מחק אותיות:&lt;/b&gt; לחץ על אות שנבחרה קודם&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ פעמיים על האות הראשונה שנבחרה&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש במקלדת:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלד אותיות של מילה&lt;br&gt;&lt;b&gt;הצע ניחוש:&lt;/b&gt; לחץ Enter&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ Ctrl+Backspace&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש בעכבר:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; לחץ על אותיות של מילה&lt;br&gt;&lt;b&gt;הצע מילה:&lt;/b&gt; לחץ על האות האחרונה שנבחרה&lt;br&gt;&lt;b&gt;מחק אותיות:&lt;/b&gt; לחץ על אות שנבחרה קודם&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ פעמיים על האות הראשונה שנבחרה&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש במקלדת:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלד אותיות של מילה&lt;br&gt;&lt;b&gt;הצע מילה:&lt;/b&gt; לחץ Enter&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ Ctrl+Backspace&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="462"/>
