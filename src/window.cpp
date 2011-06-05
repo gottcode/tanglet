@@ -494,10 +494,11 @@ void Window::setPaused(bool paused) {
 
 void Window::showDetails() {
 	QString details = QSettings().value("Current").toString();
-	int size = qBound(4, details.mid(2,1).toInt(), 5);
+	QString unencoded = QString::number(details.mid(1).toLatin1().toULongLong(0, 36));
+	int size = qBound(4, unencoded.mid(1,1).toInt(), 5);
 	QString board = (size == 4) ? tr("Normal") : tr("Large");
 	QString length = tr("%1 or more letters").arg(size - 1);
-	QString mode = Clock::timerToString(qBound(0, details.mid(3,1).toInt(), Clock::TotalTimers - 1));
+	QString mode = Clock::timerToString(qBound(0, unencoded.mid(2,1).toInt(), Clock::TotalTimers - 1));
 	QMessageBox::information(this, tr("Details"), tr("<p><b>Board Size:</b> %1<br><b>Word Length:</b> %2<br><b>Timer Mode:</b> %3<br><b>Game Number:</b> %4</p>").arg(board).arg(length).arg(mode).arg(details));
 }
 
