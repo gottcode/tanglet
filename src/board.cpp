@@ -342,7 +342,7 @@ void Board::guess() {
 		}
 
 		// Create found item
-		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly).value(2);
+		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
 		if (item == 0) {
 			item = m_found->addWord(text);
 			delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).first();
