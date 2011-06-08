@@ -154,9 +154,9 @@ void Board::abort() {
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(bool higher_scores, int size, int timer, unsigned int seed) {
+void Board::generate(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed) {
 	m_generator->cancel();
-	m_generator->create(higher_scores, size, timer, seed);
+	m_generator->create(higher_scores, size, timer, letters, seed);
 }
 
 //-----------------------------------------------------------------------------
@@ -232,6 +232,7 @@ void Board::gameStarted() {
 	m_solutions = m_generator->solutions();
 	m_found->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
 	m_missed->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
+	QSettings().setValue("Current/Letters", m_letters);
 
 	// Create cells
 	QFont f = font();

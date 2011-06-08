@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,12 +70,13 @@ void Generator::cancel() {
 
 //-----------------------------------------------------------------------------
 
-void Generator::create(bool higher_scores, int size, int timer, unsigned int seed) {
+void Generator::create(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed) {
 	m_higher_scores = higher_scores;
 	m_size = size;
 	m_minimum = size - 1;
 	m_timer = timer;
 	m_max_words = (m_timer != Clock::Allotment) ? -1 : 30;
+	m_letters = letters;
 	m_seed = seed;
 	m_cancelled = false;
 	m_max_score = 0;
@@ -91,15 +92,18 @@ void Generator::run() {
 		return;
 	}
 
+	bool shuffle = m_letters.isEmpty();
 	Random random(m_seed);
 	QList<QStringList> dice = this->dice(m_size);
 	while (!m_cancelled) {
-		m_letters.clear();
-		random.shuffle(dice);
-		for (int i = 0; i < dice.count(); ++i) {
-			QStringList& die = dice[i];
-			random.shuffle(die);
-			m_letters += die.at(0);
+		if (shuffle) {
+			m_letters.clear();
+			random.shuffle(dice);
+			for (int i = 0; i < dice.count(); ++i) {
+				QStringList& die = dice[i];
+				random.shuffle(die);
+				m_letters += die.at(0);
+			}
 		}
 
 		Solver solver(m_words, m_letters, m_minimum);

@@ -44,6 +44,7 @@ class Window : public QMainWindow {
 		void aboutScowl();
 		void newGame();
 		void chooseGame();
+		void shareGame();
 		bool endGame();
 		void autoPause();
 		void autoResume();
@@ -58,7 +59,7 @@ class Window : public QMainWindow {
 
 	private:
 		void monitorVisibility(QMenu* menu);
-		void startGame(const QString& details = QString());
+		void startGame(const QString& filename = QString());
 
 	private:
 		Board* m_board;

@@ -30,9 +30,11 @@
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QDesktopServices>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFile>
+#include <QFileDialog>
 #include <QFormLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -265,8 +267,9 @@ Window::Window()
 
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
-	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
+	menu->addAction(tr("&New"), this, SLOT(newGame()), QKeySequence::New);
 	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()));
+	menu->addAction(tr("&Share..."), this, SLOT(shareGame()));
 	menu->addSeparator();
 	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()));
 	end_action->setEnabled(false);
@@ -429,29 +432,30 @@ void Window::newGame() {
 	}
 }
 
+
 //-----------------------------------------------------------------------------
 
 void Window::chooseGame() {
 	if (endGame()) {
-		QDialog dialog(this, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
-		dialog.setWindowTitle(tr("Choose Game"));
-
-		QLineEdit* number = new QLineEdit(&dialog);
-		number->setInputMask("9NNNnnnnn");
-
-		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &dialog);
-		connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
-		connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
-
-		QFormLayout* layout = new QFormLayout(&dialog);
-		layout->addRow(tr("Game Number:"), number);
-		layout->addRow(buttons);
-
-		dialog.setFixedSize(dialog.sizeHint());
-
-		if (dialog.exec() == QDialog::Accepted) {
-			startGame(!number->text().isEmpty() ? number->text() : "0");
+		QString filename = QFileDialog::getOpenFileName(window(), tr("Import Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
+		if (!filename.isEmpty()) {
+			startGame(filename);
 		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::shareGame() {
+	QString filename = QFileDialog::getSaveFileName(window(), tr("Export Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
+	if (!filename.isEmpty()) {
+		QSettings settings;
+		QSettings game(filename, QSettings::IniFormat);
+		game.setValue("Game/Version", 1);
+		game.setValue("Game/HigherScores", settings.value("Current/HigherScores"));
+		game.setValue("Game/Size", settings.value("Current/Size"));
+		game.setValue("Game/TimerMode", settings.value("Current/TimerMode"));
+		game.setValue("Game/Letters", settings.value("Current/Letters"));
 	}
 }
 
@@ -493,13 +497,13 @@ void Window::setPaused(bool paused) {
 //-----------------------------------------------------------------------------
 
 void Window::showDetails() {
-	QString details = QSettings().value("Current").toString();
-	QString unencoded = QString::number(details.mid(1).toLatin1().toULongLong(0, 36));
-	int size = qBound(4, unencoded.mid(1,1).toInt(), 5);
+	QSettings settings;
+	int size = qBound(4, settings.value("Current/Size").toInt(), 5);
+	int timer = qBound(0, settings.value("Current/TimerMode").toInt(), Clock::TotalTimers - 1);
 	QString board = (size == 4) ? tr("Normal") : tr("Large");
 	QString length = tr("%1 or more letters").arg(size - 1);
-	QString mode = Clock::timerToString(qBound(0, unencoded.mid(2,1).toInt(), Clock::TotalTimers - 1));
-	QMessageBox::information(this, tr("Details"), tr("<p><b>Board Size:</b> %1<br><b>Word Length:</b> %2<br><b>Timer Mode:</b> %3<br><b>Game Number:</b> %4</p>").arg(board).arg(length).arg(mode).arg(details));
+	QString mode = Clock::timerToString(timer);
+	QMessageBox::information(this, tr("Details"), tr("<p><b>Board Size:</b> %1<br><b>Word Length:</b> %2<br><b>Timer Mode:</b> %3</p>").arg(board, length, mode));
 }
 
 //-----------------------------------------------------------------------------
@@ -568,31 +572,46 @@ void Window::monitorVisibility(QMenu* menu) {
 
 //-----------------------------------------------------------------------------
 
-void Window::startGame(const QString& details) {
+void Window::startGame(const QString& filename) {
 	QSettings settings;
 	bool higher_scores = false;
 	int size = 0;
 	int timer = 0;
+	QStringList letters;
 	unsigned int seed = 0;
-	if (details.isEmpty()) {
+	bool loaded = false;
+
+	if (filename.isEmpty()) {
 		higher_scores = settings.value("Board/HigherScores", true).toBool();
-		size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
+		size = settings.value("Board/Size", 4).toInt();
 		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
 		seed = Random(time(0)).nextInt();
-	} else if ((details.length() >= 5) && (details.at(0) == '2')) {
-		QString unencoded = QString::number(details.mid(1).toLatin1().toULongLong(0, 36));
-		higher_scores = unencoded.mid(0,1).toInt();
-		size = qBound(4, unencoded.mid(1,1).toInt(), 5);
-		timer = qBound(0, unencoded.mid(2,1).toInt(), Clock::TotalTimers - 1);
-		seed = unencoded.mid(3).toUInt();
+		loaded = true;
 	} else {
+		QSettings game(filename, QSettings::IniFormat);
+		if (game.value("Game/Version").toInt() == 1) {
+			higher_scores = game.value("Game/HigherScores", true).toBool();
+			size = game.value("Game/Size", 4).toInt();
+			timer = game.value("Game/TimerMode", Clock::Tanglet).toInt();
+			letters = game.value("Game/Letters").toStringList();
+			loaded = !letters.isEmpty();
+		}
+	}
+
+	if (!loaded) {
 		QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
 		return;
 	}
 
-	settings.setValue("Current", "2" + QByteArray::number(QString("%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed).toULongLong(), 36));
+	size = qBound(4, size, 5);
+	timer = qBound(0, timer, Clock::TotalTimers - 1);
+	settings.setValue("Current/HigherScores", higher_scores);
+	settings.setValue("Current/Size", size);
+	settings.setValue("Current/TimerMode", timer);
+	settings.remove("Current/Letters");
+
 	m_state->start();
-	m_board->generate(higher_scores, size, timer, seed);
+	m_board->generate(higher_scores, size, timer, letters, seed);
 	m_details_action->setEnabled(true);
 }
 

@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ class Board : public QWidget {
 
 		bool isFinished() const;
 		void abort();
-		void generate(bool higher_scores, int size, int timer, unsigned int seed);
+		void generate(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed);
 		void setPaused(bool pause);
 
 		static QString sizeToString(int size);

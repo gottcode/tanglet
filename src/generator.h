@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ public:
 	Generator(QObject* parent = 0);
 
 	void cancel();
-	void create(bool higher_scores, int size, int timer, unsigned int seed);
+	void create(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed);
 
 	QList<QStringList> dice(int size) const {
 		return (size == 4) ? m_dice : m_dice_large;
