@@ -503,7 +503,13 @@ void Window::showDetails() {
 	QString board = (size == 4) ? tr("Normal") : tr("Large");
 	QString length = tr("%1 or more letters").arg(size - 1);
 	QString mode = Clock::timerToString(timer);
-	QMessageBox::information(this, tr("Details"), tr("<p><b>Board Size:</b> %1<br><b>Word Length:</b> %2<br><b>Timer Mode:</b> %3</p>").arg(board, length, mode));
+	QString description = Clock::timerDescription(timer);
+	QMessageBox::information(this, tr("Details"),
+		QString("<p><b>%1</b> %2<br>"
+			"<b>%3</b> %4<br>"
+			"<b>%5</b> %6<br>"
+			"<b>%7</b> %8</p>")
+		.arg(tr("Board Size:"), board, tr("Word Length:"), length, tr("Game Type:"), mode, tr("Description:"), description));
 }
 
 //-----------------------------------------------------------------------------
