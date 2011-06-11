@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,20 +21,23 @@
 #define NEW_GAME_DIALOG_H
 
 #include <QDialog>
+class QSlider;
 class QToolButton;
 
-class NewGameDialog : public QDialog {
+class NewGameDialog : public QDialog
+{
 	Q_OBJECT
 
-	public:
-		NewGameDialog(QWidget* parent = 0);
+public:
+	NewGameDialog(QWidget* parent = 0);
 
-	private slots:
-		void timerChosen(int timer);
+private slots:
+	void timerChosen(int timer);
 
-	private:
-		QToolButton* m_normal_size;
-		QToolButton* m_large_size;
+private:
+	QToolButton* m_normal_size;
+	QToolButton* m_large_size;
+	QSlider* m_difficulty;
 };
 
 #endif

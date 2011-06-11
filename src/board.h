@@ -42,13 +42,12 @@ class Board : public QWidget {
 
 		bool isFinished() const;
 		void abort();
-		void generate(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed);
+		void generate(int difficulty, int size, int timer, const QStringList& letters, unsigned int seed);
 		void setPaused(bool pause);
 
 		static QString sizeToString(int size);
 
 	public slots:
-		void setHigherScoringBoards(bool higher);
 		void setShowMissedWords(bool show);
 		void setShowMaximumScore(QAction* show);
 

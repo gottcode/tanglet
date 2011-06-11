@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,33 +24,42 @@
 
 #include <QCommandLinkButton>
 #include <QDialogButtonBox>
+#include <QLabel>
 #include <QSettings>
 #include <QSignalMapper>
+#include <QSlider>
 #include <QToolButton>
 #include <QVBoxLayout>
 
 //-----------------------------------------------------------------------------
 
-namespace {
-	class TimerDescription {
+namespace
+{
+	class TimerDescription
+	{
 	public:
 		TimerDescription(int id)
-			: m_name(Clock::timerToString(id)), m_description(Clock::timerDescription(id)), m_id(id) {
+			: m_name(Clock::timerToString(id)), m_description(Clock::timerDescription(id)), m_id(id)
+		{
 		}
 
-		QString name() const {
+		QString name() const
+		{
 			return m_name;
 		}
 
-		QString description() const {
+		QString description() const
+		{
 			return m_description;
 		}
 
-		int id() const {
+		int id() const
+		{
 			return m_id;
 		}
 
-		bool operator<(const TimerDescription& timer) const {
+		bool operator<(const TimerDescription& timer) const
+		{
 			return m_name.localeAwareCompare(timer.m_name) < 0;
 		}
 
@@ -64,7 +73,8 @@ namespace {
 //-----------------------------------------------------------------------------
 
 NewGameDialog::NewGameDialog(QWidget* parent)
-: QDialog(parent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint) {
+	: QDialog(parent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint)
+{
 	setWindowTitle(tr("New Game"));
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
@@ -108,6 +118,21 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addLayout(size_buttons);
 	layout->addSpacing(6);
 
+	// Create difficulty slider
+	m_difficulty = new QSlider(Qt::Horizontal, this);
+	m_difficulty->setRange(0, 4);
+	m_difficulty->setValue(settings.value("Board/Difficulty", 2).toInt());
+
+	QLabel* easy_label = new QLabel(tr("Easy"), this);
+	QLabel* hard_label = new QLabel(tr("Hard"), this);
+
+	QHBoxLayout* difficulty_slider = new QHBoxLayout;
+	difficulty_slider->addWidget(easy_label);
+	difficulty_slider->addWidget(m_difficulty, 1);
+	difficulty_slider->addWidget(hard_label);
+	layout->addLayout(difficulty_slider);
+	layout->addSpacing(6);
+
 	// Create timer buttons
 	QSignalMapper* mapper = new QSignalMapper(this);
 	connect(mapper, SIGNAL(mapped(int)), this, SLOT(timerChosen(int)));
@@ -141,9 +166,11 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-void NewGameDialog::timerChosen(int timer) {
+void NewGameDialog::timerChosen(int timer)
+{
 	QSettings settings;
 	settings.setValue("Board/Size", m_normal_size->isChecked() ? 4 : 5);
+	settings.setValue("Board/Difficulty", m_difficulty->value());
 	settings.setValue("Board/TimerMode", timer);
 	QDialog::accept();
 }

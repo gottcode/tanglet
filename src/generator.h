@@ -28,48 +28,58 @@
 #include <QStringList>
 #include <QThread>
 
-class Generator : public QThread {
+class Generator : public QThread
+{
 	Q_OBJECT
 
 public:
 	Generator(QObject* parent = 0);
 
 	void cancel();
-	void create(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed);
+	void create(int difficulty, int size, int timer, const QStringList& letters, unsigned int seed);
 
-	QList<QStringList> dice(int size) const {
+	QList<QStringList> dice(int size) const
+	{
 		return (size == 4) ? m_dice : m_dice_large;
 	}
 
-	QString dictionary() const {
+	QString dictionary() const
+	{
 		return m_dictionary_url;
 	}
 
-	QString dictionaryQuery() const {
+	QString dictionaryQuery() const
+	{
 		return m_dictionary_query;
 	}
 
-	QString error() const {
+	QString error() const
+	{
 		return m_error;
 	}
 
-	QStringList letters() const {
+	QStringList letters() const
+	{
 		return m_letters;
 	}
 
-	int maxScore() const {
+	int maxScore() const
+	{
 		return m_max_score;
 	}
 
-	QHash<QString, QList<QList<QPoint> > > solutions() const {
+	QHash<QString, QList<QList<QPoint> > > solutions() const
+	{
 		return m_solutions;
 	}
 
-	int size() const {
+	int size() const
+	{
 		return m_size;
 	}
 
-	int timer() const {
+	int timer() const
+	{
 		return m_timer;
 	}
 
@@ -93,7 +103,7 @@ private:
 	Trie m_words;
 	QString m_error;
 
-	bool m_higher_scores;
+	int m_difficulty;
 	int m_size;
 	int m_minimum;
 	int m_timer;

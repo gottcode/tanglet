@@ -154,9 +154,9 @@ void Board::abort() {
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed) {
+void Board::generate(int difficulty, int size, int timer, const QStringList& letters, unsigned int seed) {
 	m_generator->cancel();
-	m_generator->create(higher_scores, size, timer, letters, seed);
+	m_generator->create(difficulty, size, timer, letters, seed);
 }
 
 //-----------------------------------------------------------------------------
@@ -179,12 +179,6 @@ void Board::setPaused(bool pause) {
 
 QString Board::sizeToString(int size) {
 	return (size == 4) ? tr("Normal") : tr("Large");
-}
-
-//-----------------------------------------------------------------------------
-
-void Board::setHigherScoringBoards(bool higher) {
-	QSettings().setValue("Board/HigherScores", higher);
 }
 
 //-----------------------------------------------------------------------------
@@ -393,7 +387,9 @@ void Board::guessChanged() {
 		m_guess->setText(word);
 		m_guess->setCursorPosition(pos);
 
-		QList<QList<QPoint> > solutions = m_solutions.value(word, Solver(word, m_letters, 0).solutions().value(word));
+		Solver solver(word, m_size, 0);
+		solver.solve(m_letters);
+		QList<QList<QPoint> > solutions = m_solutions.value(word, solver.solutions().value(word));
 		m_valid = !solutions.isEmpty();
 		if (m_valid) {
 			int index = 0;

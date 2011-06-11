@@ -306,10 +306,6 @@ Window::Window()
 	QAction* missed_action = menu->addAction(tr("Show Missed &Words"));
 	missed_action->setCheckable(true);
 	connect(missed_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowMissedWords(bool)));
-	menu->addSeparator();
-	QAction* higher_action = menu->addAction(tr("&Higher Scoring Boards"));
-	higher_action->setCheckable(true);
-	connect(higher_action, SIGNAL(toggled(bool)), m_board, SLOT(setHigherScoringBoards(bool)));
 	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
 	menu->addSeparator();
 	menu->addAction(tr("Application &Language..."), this, SLOT(showLocale()));
@@ -331,7 +327,6 @@ Window::Window()
 	score_action->setChecked(true);
 	m_board->setShowMaximumScore(score_action);
 	missed_action->setChecked(settings.value("ShowMissed", true).toBool());
-	higher_action->setChecked(settings.value("Board/HigherScores", true).toBool());
 	restoreGeometry(settings.value("Geometry").toByteArray());
 
 	// Start a new game
@@ -452,8 +447,8 @@ void Window::shareGame() {
 		QSettings settings;
 		QSettings game(filename, QSettings::IniFormat);
 		game.setValue("Game/Version", 1);
-		game.setValue("Game/HigherScores", settings.value("Current/HigherScores"));
 		game.setValue("Game/Size", settings.value("Current/Size"));
+		game.setValue("Game/Difficulty", settings.value("Current/Difficulty"));
 		game.setValue("Game/TimerMode", settings.value("Current/TimerMode"));
 		game.setValue("Game/Letters", settings.value("Current/Letters"));
 	}
@@ -499,17 +494,20 @@ void Window::setPaused(bool paused) {
 void Window::showDetails() {
 	QSettings settings;
 	int size = qBound(4, settings.value("Current/Size").toInt(), 5);
+	int difficulty = qBound(0, settings.value("Current/Difficulty").toInt(), 4);
 	int timer = qBound(0, settings.value("Current/TimerMode").toInt(), Clock::TotalTimers - 1);
-	QString board = (size == 4) ? tr("Normal") : tr("Large");
-	QString length = tr("%1 or more letters").arg(size - 1);
-	QString mode = Clock::timerToString(timer);
-	QString description = Clock::timerDescription(timer);
+	QStringList hardness = QStringList() << tr("Easiest") << tr("Easy") << tr("Normal") << tr("Hard") << tr("Hardest");
 	QMessageBox::information(this, tr("Details"),
 		QString("<p><b>%1</b> %2<br>"
 			"<b>%3</b> %4<br>"
 			"<b>%5</b> %6<br>"
-			"<b>%7</b> %8</p>")
-		.arg(tr("Board Size:"), board, tr("Word Length:"), length, tr("Game Type:"), mode, tr("Description:"), description));
+			"<b>%7</b> %8<br>"
+			"<b>%9</b> %10</p>")
+		.arg(tr("Board Size:"), (size == 4) ? tr("Normal") : tr("Large"))
+		.arg(tr("Word Length:"), tr("%1 or more letters").arg(size - 1))
+		.arg(tr("Difficulty:"), hardness.value(difficulty))
+		.arg(tr("Game Type:"), Clock::timerToString(timer))
+		.arg(tr("Description:"), Clock::timerDescription(timer)));
 }
 
 //-----------------------------------------------------------------------------
@@ -580,7 +578,7 @@ void Window::monitorVisibility(QMenu* menu) {
 
 void Window::startGame(const QString& filename) {
 	QSettings settings;
-	bool higher_scores = false;
+	int difficulty = 0;
 	int size = 0;
 	int timer = 0;
 	QStringList letters;
@@ -588,16 +586,16 @@ void Window::startGame(const QString& filename) {
 	bool loaded = false;
 
 	if (filename.isEmpty()) {
-		higher_scores = settings.value("Board/HigherScores", true).toBool();
 		size = settings.value("Board/Size", 4).toInt();
+		difficulty = settings.value("Board/Difficulty", 2).toInt();
 		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
 		seed = Random(time(0)).nextInt();
 		loaded = true;
 	} else {
 		QSettings game(filename, QSettings::IniFormat);
 		if (game.value("Game/Version").toInt() == 1) {
-			higher_scores = game.value("Game/HigherScores", true).toBool();
 			size = game.value("Game/Size", 4).toInt();
+			difficulty = game.value("Game/Difficulty", 2).toInt();
 			timer = game.value("Game/TimerMode", Clock::Tanglet).toInt();
 			letters = game.value("Game/Letters").toStringList();
 			loaded = !letters.isEmpty();
@@ -611,13 +609,13 @@ void Window::startGame(const QString& filename) {
 
 	size = qBound(4, size, 5);
 	timer = qBound(0, timer, Clock::TotalTimers - 1);
-	settings.setValue("Current/HigherScores", higher_scores);
 	settings.setValue("Current/Size", size);
+	settings.setValue("Current/Difficulty", difficulty);
 	settings.setValue("Current/TimerMode", timer);
 	settings.remove("Current/Letters");
 
 	m_state->start();
-	m_board->generate(higher_scores, size, timer, letters, seed);
+	m_board->generate(difficulty, size, timer, letters, seed);
 	m_details_action->setEnabled(true);
 }
 

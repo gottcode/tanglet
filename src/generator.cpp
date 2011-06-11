@@ -31,8 +31,10 @@
 
 //-----------------------------------------------------------------------------
 
-namespace {
-	QByteArray gunzip(const QFile& file) {
+namespace
+{
+	QByteArray gunzip(const QFile& file)
+	{
 		QByteArray data;
 
 		gzFile gz = gzdopen(file.handle(), "rb");
@@ -51,17 +53,74 @@ namespace {
 
 		return data;
 	}
+
+	struct State
+	{
+		State(const QList<QStringList>& dice, Solver* solver, int target, Random* random)
+			: m_dice(dice), m_solver(solver), m_target(target), m_random(random)
+		{
+		}
+
+		int delta() const
+		{
+			return m_delta;
+		}
+
+		QStringList letters() const
+		{
+			return m_letters;
+		}
+
+		void permute()
+		{
+			int index = m_random->nextInt(m_dice.count());
+			m_random->shuffle(m_dice[index]);
+			m_letters[index] = m_dice.at(index).first();
+			solve();
+		}
+
+		void roll()
+		{
+			m_random->shuffle(m_dice);
+			m_letters.clear();
+			int count = m_dice.count();
+			for (int i = 0; i < count; ++i) {
+				QStringList& die = m_dice[i];
+				m_random->shuffle(die);
+				m_letters += die.first();
+			}
+			solve();
+		}
+
+	private:
+		void solve()
+		{
+			m_solver->solve(m_letters);
+			int words = m_solver->solutions().count();
+			m_delta = abs(words - m_target);
+		}
+
+	private:
+		QList<QStringList> m_dice;
+		QStringList m_letters;
+		int m_delta;
+		Solver* m_solver;
+		int m_target;
+		Random* m_random;
+	};
 }
 
 //-----------------------------------------------------------------------------
 
 Generator::Generator(QObject* parent)
-	: QThread(parent), m_max_score(0) {
+	: QThread(parent), m_max_score(0)
+{
 }
 
 //-----------------------------------------------------------------------------
 
-void Generator::cancel() {
+void Generator::cancel()
+{
 	blockSignals(true);
 	m_cancelled = true;
 	wait();
@@ -70,8 +129,9 @@ void Generator::cancel() {
 
 //-----------------------------------------------------------------------------
 
-void Generator::create(bool higher_scores, int size, int timer, const QStringList& letters, unsigned int seed) {
-	m_higher_scores = higher_scores;
+void Generator::create(int difficulty, int size, int timer, const QStringList& letters, unsigned int seed)
+{
+	m_difficulty = qBound(0, difficulty, 4);
 	m_size = size;
 	m_minimum = size - 1;
 	m_timer = timer;
@@ -86,38 +146,92 @@ void Generator::create(bool higher_scores, int size, int timer, const QStringLis
 
 //-----------------------------------------------------------------------------
 
-void Generator::run() {
+void Generator::run()
+{
 	update();
 	if (!m_error.isEmpty()) {
 		return;
 	}
 
-	bool shuffle = m_letters.isEmpty();
+	// Store solutions for loaded board
+	Solver solver(m_words, m_size, m_minimum);
+	if (!m_letters.isEmpty()) {
+		solver.solve(m_letters);
+		m_max_score = solver.score(m_max_words);
+		m_solutions = solver.solutions();
+		return;
+	}
+
+	// Find word range
+	int words_target = 450, words_range = 100;
+	switch (qBound(0, m_difficulty, 4)) {
+	case 0:
+		words_target = 450;
+		words_range = 100;
+		break;
+	case 1:
+		words_target = 275;
+		words_range = 75;
+		break;
+	case 2:
+		words_target = 150;
+		words_range = 50;
+		break;
+	case 3:
+		words_target = 75;
+		words_range = 25;
+		break;
+	case 4:
+		words_target = 37;
+		words_range = 13;
+		break;
+	default:
+		break;
+	}
+
+	// Create board state
 	Random random(m_seed);
-	QList<QStringList> dice = this->dice(m_size);
+	State current(dice(m_size), &solver, words_target, &random);
+	State next = current;
+
+	int max_tries = m_size * m_size * 2;
+	int tries = max_tries;
 	while (!m_cancelled) {
-		if (shuffle) {
-			m_letters.clear();
-			random.shuffle(dice);
-			for (int i = 0; i < dice.count(); ++i) {
-				QStringList& die = dice[i];
-				random.shuffle(die);
-				m_letters += die.at(0);
+		// Restart if stuck at local minimum
+		if (tries == max_tries) {
+			current.roll();
+			if (current.delta() < words_range) {
+				break;
 			}
+			tries = 0;
 		}
 
-		Solver solver(m_words, m_letters, m_minimum);
-		m_max_score = solver.score(m_max_words);
-		if (!m_higher_scores || (m_max_score >= 200)) {
-			m_solutions = solver.solutions();
-			break;
+		// Roll one of the dice
+		next = current;
+		next.permute();
+
+		// Check if this is a better board
+		if (next.delta() < current.delta()) {
+			current = next;
+			if (current.delta() < words_range) {
+				break;
+			}
+			tries = 0;
 		}
+
+		tries++;
 	}
+
+	// Store solutions for generated board
+	m_letters = current.letters();
+	m_max_score = solver.score(m_max_words);
+	m_solutions = solver.solutions();
 }
 
 //-----------------------------------------------------------------------------
 
-void Generator::update() {
+void Generator::update()
+{
 	m_error.clear();
 
 	LanguageSettings settings;
@@ -197,7 +311,8 @@ void Generator::update() {
 
 //-----------------------------------------------------------------------------
 
-void Generator::setError(const QString& error) {
+void Generator::setError(const QString& error)
+{
 	m_error = error;
 	m_letters.clear();
 	int count = m_size * m_size;

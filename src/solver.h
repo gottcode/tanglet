@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,40 +21,44 @@
 #define SOLVER_H
 
 #include <QHash>
-#include <QList>
 #include <QPoint>
 #include <QVector>
 class Trie;
 
-class Solver {
-	public:
-		Solver(const Trie& words, const QStringList& letters, int minimum);
+class Solver
+{
+public:
+	Solver(const Trie& words, int size, int minimum);
 
-		QHash<QString, QList<QList<QPoint> > > solutions() const {
-			return m_solutions;
-		}
+	void solve(const QStringList& letters);
 
-		int score(int max = -1) const;
-		static int score(const QString& word);
+	QHash<QString, QList<QList<QPoint> > > solutions() const
+	{
+		return m_solutions;
+	}
 
-	private:
-		struct Cell;
-		void checkCell(Cell& cell);
+	int score(int max = -1) const;
+	static int score(const QString& word);
 
-	private:
-		const Trie* m_words;
-		int m_minimum;
-		QString m_word;
-		QList<QPoint> m_positions;
-		QHash<QString, QList<QList<QPoint> > > m_solutions;
+private:
+	struct Cell;
+	void checkCell(Cell& cell);
 
-		struct Cell {
-			QString text;
-			QList<Cell*> neighbors;
-			QPoint position;
-			bool checked;
-		};
-		QVector<QVector<Cell> > m_cells;
+private:
+	const Trie* m_words;
+	int m_size;
+	int m_minimum;
+	QString m_word;
+	QList<QPoint> m_positions;
+	QHash<QString, QList<QList<QPoint> > > m_solutions;
+
+	struct Cell {
+		QString text;
+		QVector<Cell*> neighbors;
+		QPoint position;
+		bool checked;
+	};
+	QVector<QVector<Cell> > m_cells;
 };
 
 #endif
