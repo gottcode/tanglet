@@ -387,7 +387,8 @@ void Board::guessChanged() {
 		m_guess->setText(word);
 		m_guess->setCursorPosition(pos);
 
-		Solver solver(word, m_size, 0);
+		Trie trie(word);
+		Solver solver(trie, m_size, 0);
 		solver.solve(m_letters);
 		QList<QList<QPoint> > solutions = m_solutions.value(word, solver.solutions().value(word));
 		m_valid = !solutions.isEmpty();
