@@ -121,6 +121,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	// Create difficulty slider
 	m_difficulty = new QSlider(Qt::Horizontal, this);
 	m_difficulty->setRange(0, 4);
+	connect(m_difficulty, SIGNAL(valueChanged(int)), this, SLOT(difficultyChosen(int)));
 	m_difficulty->setValue(settings.value("Board/Difficulty", 2).toInt());
 
 	QLabel* easy_label = new QLabel(tr("Easy"), this);
@@ -166,10 +167,25 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
+void NewGameDialog::difficultyChosen(int difficulty)
+{
+	m_minimum = (difficulty < 4) ? 3 : 4;
+	m_normal_size->setToolTip(tr("%1 or more letters").arg(m_minimum));
+	m_large_size->setToolTip(tr("%1 or more letters").arg(m_minimum + 1));
+}
+
+//-----------------------------------------------------------------------------
+
 void NewGameDialog::timerChosen(int timer)
 {
 	QSettings settings;
-	settings.setValue("Board/Size", m_normal_size->isChecked() ? 4 : 5);
+	if (m_normal_size->isChecked()) {
+		settings.setValue("Board/Size", 4);
+		settings.setValue("Board/Minimum", m_minimum);
+	} else {
+		settings.setValue("Board/Size", 5);
+		settings.setValue("Board/Minimum", m_minimum + 1);
+	}
 	settings.setValue("Board/Difficulty", m_difficulty->value());
 	settings.setValue("Board/TimerMode", timer);
 	QDialog::accept();

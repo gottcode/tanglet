@@ -129,11 +129,11 @@ void Generator::cancel()
 
 //-----------------------------------------------------------------------------
 
-void Generator::create(int difficulty, int size, int timer, const QStringList& letters, unsigned int seed)
+void Generator::create(int difficulty, int size, int minimum, int timer, const QStringList& letters, unsigned int seed)
 {
-	m_difficulty = qBound(0, difficulty, 4);
+	m_difficulty = difficulty;
 	m_size = size;
-	m_minimum = size - 1;
+	m_minimum = minimum;
 	m_timer = timer;
 	m_max_words = (m_timer != Clock::Allotment) ? -1 : 30;
 	m_letters = letters;
@@ -183,7 +183,7 @@ void Generator::run()
 		break;
 	case 4:
 		words_target = 37;
-		words_range = 13;
+		words_range = 7;
 		break;
 	default:
 		break;

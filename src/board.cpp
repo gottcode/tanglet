@@ -154,9 +154,9 @@ void Board::abort() {
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(int difficulty, int size, int timer, const QStringList& letters, unsigned int seed) {
+void Board::generate(int difficulty, int size, int minimum, int timer, const QStringList& letters, unsigned int seed) {
 	m_generator->cancel();
-	m_generator->create(difficulty, size, timer, letters, seed);
+	m_generator->create(difficulty, size, minimum, timer, letters, seed);
 }
 
 //-----------------------------------------------------------------------------
@@ -216,10 +216,10 @@ void Board::gameStarted() {
 	if (m_generator->size() != m_size) {
 		m_size = m_generator->size();
 		m_cells = QVector<QVector<Letter*> >(m_size, QVector<Letter*>(m_size));
-		m_minimum = m_size - 1;
 		m_maximum = m_size * m_size;
 		m_guess->setMaxLength(m_maximum);
 	}
+	m_minimum = m_generator->minimum();
 	m_max_score = m_generator->maxScore();
 	m_max_score_details->hide();
 	m_letters = m_generator->letters();

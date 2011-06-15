@@ -1,3 +1,6 @@
+2011-06-15 Graeme Gott <graeme@gottcode.org>
+	* Increase minimum word length on hard boards.
+
 2011-06-14 Graeme Gott <graeme@gottcode.org>
 	* FIXED: Only showed correct guesses when typing.
 

@@ -36,7 +36,7 @@ public:
 	Generator(QObject* parent = 0);
 
 	void cancel();
-	void create(int difficulty, int size, int timer, const QStringList& letters, unsigned int seed);
+	void create(int difficulty, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);
 
 	QList<QStringList> dice(int size) const
 	{
@@ -66,6 +66,11 @@ public:
 	int maxScore() const
 	{
 		return m_max_score;
+	}
+
+	int minimum() const
+	{
+		return m_minimum;
 	}
 
 	QHash<QString, QList<QList<QPoint> > > solutions() const

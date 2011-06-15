@@ -32,12 +32,14 @@ public:
 	NewGameDialog(QWidget* parent = 0);
 
 private slots:
+	void difficultyChosen(int difficulty);
 	void timerChosen(int timer);
 
 private:
 	QToolButton* m_normal_size;
 	QToolButton* m_large_size;
 	QSlider* m_difficulty;
+	int m_minimum;
 };
 
 #endif
