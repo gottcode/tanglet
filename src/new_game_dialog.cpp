@@ -73,7 +73,7 @@ namespace
 //-----------------------------------------------------------------------------
 
 NewGameDialog::NewGameDialog(QWidget* parent)
-	: QDialog(parent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint)
+	: QDialog(parent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint), m_minimum(3)
 {
 	setWindowTitle(tr("New Game"));
 
