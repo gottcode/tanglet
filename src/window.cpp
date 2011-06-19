@@ -306,6 +306,10 @@ Window::Window()
 	QAction* missed_action = menu->addAction(tr("Show Missed &Words"));
 	missed_action->setCheckable(true);
 	connect(missed_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowMissedWords(bool)));
+	QAction* counts_action = menu->addAction(tr("Show Word &Counts"));
+	counts_action->setCheckable(true);
+	counts_action->setChecked(true);
+	connect(counts_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowWordCounts(bool)));
 	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
 	menu->addSeparator();
 	menu->addAction(tr("Application &Language..."), this, SLOT(showLocale()));
@@ -327,6 +331,7 @@ Window::Window()
 	score_action->setChecked(true);
 	m_board->setShowMaximumScore(score_action);
 	missed_action->setChecked(settings.value("ShowMissed", true).toBool());
+	counts_action->setChecked(settings.value("ShowWordCounts", true).toBool());
 	restoreGeometry(settings.value("Geometry").toByteArray());
 
 	// Start a new game

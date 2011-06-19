@@ -32,6 +32,7 @@ class Clock;
 class Generator;
 class Letter;
 class View;
+class WordCounts;
 class WordTree;
 
 class Board : public QWidget {
@@ -50,6 +51,7 @@ class Board : public QWidget {
 	public slots:
 		void setShowMissedWords(bool show);
 		void setShowMaximumScore(QAction* show);
+		void setShowWordCounts(bool show);
 
 	signals:
 		void started();
@@ -83,6 +85,7 @@ class Board : public QWidget {
 		QTabWidget* m_tabs;
 		WordTree* m_found;
 		WordTree* m_missed;
+		WordCounts* m_counts;
 		QToolButton* m_clear_button;
 		QToolButton* m_guess_button;
 		QToolButton* m_max_score_details;

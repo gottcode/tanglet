@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="634"/>
+        <location filename="../src/board.cpp" line="651"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>נקודה %n</numerusform>
@@ -12,38 +12,38 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="89"/>
+        <location filename="../src/board.cpp" line="90"/>
         <source>Clear</source>
         <translation>נקה</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="68"/>
-        <location filename="../src/board.cpp" line="691"/>
+        <location filename="../src/board.cpp" line="69"/>
+        <location filename="../src/board.cpp" line="709"/>
         <source>Details</source>
         <translation>פרטים</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="96"/>
+        <location filename="../src/board.cpp" line="97"/>
         <source>Guess</source>
         <translation>ניחוש</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="125"/>
+        <location filename="../src/board.cpp" line="126"/>
         <source>Found</source>
         <translation>נמצאו</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="200"/>
+        <location filename="../src/board.cpp" line="205"/>
         <source>Missed</source>
         <translation>לא נמצאו</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="295"/>
+        <location filename="../src/board.cpp" line="308"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="625"/>
+        <location filename="../src/board.cpp" line="641"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 מתוך %n נקודות</numerusform>
@@ -51,7 +51,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="627"/>
+        <location filename="../src/board.cpp" line="643"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2 מתוך %n נקודות</numerusform>
@@ -59,7 +59,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="629"/>
+        <location filename="../src/board.cpp" line="645"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>נקודה 1 מתוך %n</numerusform>
@@ -67,7 +67,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="631"/>
+        <location filename="../src/board.cpp" line="647"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0 מתוך %n נקודות</numerusform>
@@ -75,32 +75,32 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="700"/>
+        <location filename="../src/board.cpp" line="718"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>הניקוד המקסימלי חושב על פי שלושים המילים הבאות</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="181"/>
+        <location filename="../src/board.cpp" line="186"/>
         <source>Normal</source>
         <translation>רגיל</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="181"/>
+        <location filename="../src/board.cpp" line="186"/>
         <source>Large</source>
         <translation>גדול</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="449"/>
+        <location filename="../src/board.cpp" line="465"/>
         <source>Success</source>
         <translation>הצלחה</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="449"/>
+        <location filename="../src/board.cpp" line="465"/>
         <source>Game Over</source>
         <translation>זמנך עבר</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="623"/>
+        <location filename="../src/board.cpp" line="639"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 מתוך %n נקודות</numerusform>
@@ -307,16 +307,18 @@
     <message>
         <location filename="../src/new_game_dialog.cpp" line="94"/>
         <location filename="../src/new_game_dialog.cpp" line="104"/>
+        <location filename="../src/new_game_dialog.cpp" line="173"/>
+        <location filename="../src/new_game_dialog.cpp" line="174"/>
         <source>%1 or more letters</source>
         <translation>%1 או יותר אותיות</translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="126"/>
+        <location filename="../src/new_game_dialog.cpp" line="127"/>
         <source>Easy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="127"/>
+        <location filename="../src/new_game_dialog.cpp" line="128"/>
         <source>Hard</source>
         <translation type="unfinished"></translation>
     </message>
@@ -458,153 +460,158 @@
     </message>
     <message>
         <location filename="../src/window.cpp" line="309"/>
+        <source>Show Word &amp;Counts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="313"/>
         <source>&amp;Board Language...</source>
         <translation>שפת הלוח...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="311"/>
+        <location filename="../src/window.cpp" line="315"/>
         <source>Application &amp;Language...</source>
         <translation>שפת ממשק...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="315"/>
+        <location filename="../src/window.cpp" line="319"/>
         <source>&amp;Help</source>
         <translation>עזרה</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="316"/>
+        <location filename="../src/window.cpp" line="320"/>
         <source>&amp;Controls</source>
         <translation>הוראות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="318"/>
+        <location filename="../src/window.cpp" line="322"/>
         <source>&amp;About</source>
         <translation>אודות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="319"/>
+        <location filename="../src/window.cpp" line="323"/>
         <source>About &amp;Hspell</source>
         <translation>אודות &amp;Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="320"/>
+        <location filename="../src/window.cpp" line="324"/>
         <source>About &amp;Qt</source>
         <translation>אודות &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="321"/>
+        <location filename="../src/window.cpp" line="325"/>
         <source>About &amp;SCOWL</source>
         <translation>אודות &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="399"/>
+        <location filename="../src/window.cpp" line="404"/>
         <source>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="401"/>
+        <location filename="../src/window.cpp" line="406"/>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="402"/>
+        <location filename="../src/window.cpp" line="407"/>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>רשימת המילים בעברית מבוססת על &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; שנכתב ע&quot;י נדב הראל ודן קניגסברג</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="408"/>
+        <location filename="../src/window.cpp" line="413"/>
         <source>About Hspell</source>
         <translation>אודות Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="435"/>
+        <location filename="../src/window.cpp" line="440"/>
         <source>Import Game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="435"/>
-        <location filename="../src/window.cpp" line="445"/>
+        <location filename="../src/window.cpp" line="440"/>
+        <location filename="../src/window.cpp" line="450"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="445"/>
+        <location filename="../src/window.cpp" line="450"/>
         <source>Export Game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="499"/>
         <location filename="../src/window.cpp" line="506"/>
+        <location filename="../src/window.cpp" line="513"/>
         <source>Normal</source>
         <translation>רגיל</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="499"/>
+        <location filename="../src/window.cpp" line="506"/>
         <source>Easiest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="499"/>
+        <location filename="../src/window.cpp" line="506"/>
         <source>Easy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="499"/>
+        <location filename="../src/window.cpp" line="506"/>
         <source>Hard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="499"/>
+        <location filename="../src/window.cpp" line="506"/>
         <source>Hardest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="506"/>
+        <location filename="../src/window.cpp" line="513"/>
         <source>Large</source>
         <translation>גדול</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="506"/>
+        <location filename="../src/window.cpp" line="513"/>
         <source>Board Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="507"/>
+        <location filename="../src/window.cpp" line="514"/>
         <source>%1 or more letters</source>
         <translation>%1 אותיות או יותר</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="507"/>
+        <location filename="../src/window.cpp" line="514"/>
         <source>Word Length:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="508"/>
+        <location filename="../src/window.cpp" line="515"/>
         <source>Difficulty:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="509"/>
+        <location filename="../src/window.cpp" line="516"/>
         <source>Game Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="510"/>
+        <location filename="../src/window.cpp" line="517"/>
         <source>Description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="606"/>
+        <location filename="../src/window.cpp" line="616"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="606"/>
+        <location filename="../src/window.cpp" line="616"/>
         <source>Unable to start requested game.</source>
         <translation>אין אפשרות להתחיל את המשחק המבוקש</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="461"/>
+        <location filename="../src/window.cpp" line="467"/>
         <source>End the current game?</source>
         <translation>לסיים את המשחק הנוכחי?</translation>
     </message>
@@ -614,49 +621,77 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="395"/>
+        <location filename="../src/window.cpp" line="400"/>
         <source>About</source>
         <translation>אודות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="397"/>
+        <location filename="../src/window.cpp" line="402"/>
         <source>Tanglet %1</source>
         <translation>פלונטר %1</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="398"/>
+        <location filename="../src/window.cpp" line="403"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>גרסה לשחקן בודד של &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="400"/>
+        <location filename="../src/window.cpp" line="405"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>מופץ בכפוף לרשיון &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="415"/>
+        <location filename="../src/window.cpp" line="420"/>
         <source>About SCOWL</source>
         <translation>אודות SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="500"/>
+        <location filename="../src/window.cpp" line="507"/>
         <source>Details</source>
         <translation>פרטים</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="539"/>
+        <location filename="../src/window.cpp" line="546"/>
         <source>Controls</source>
         <translation>הוראות</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="539"/>
+        <location filename="../src/window.cpp" line="546"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש בעכבר:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; לחץ על אותיות של מילה&lt;br&gt;&lt;b&gt;הצע מילה:&lt;/b&gt; לחץ על האות האחרונה שנבחרה&lt;br&gt;&lt;b&gt;מחק אותיות:&lt;/b&gt; לחץ על אות שנבחרה קודם&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ פעמיים על האות הראשונה שנבחרה&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;שימוש במקלדת:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;בחר מילה:&lt;/b&gt; הקלד אותיות של מילה&lt;br&gt;&lt;b&gt;הצע מילה:&lt;/b&gt; לחץ Enter&lt;br&gt;&lt;b&gt;מחק את המילה:&lt;/b&gt; לחץ Ctrl+Backspace&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="461"/>
+        <location filename="../src/window.cpp" line="467"/>
         <source>Question</source>
         <translation>שאלה</translation>
+    </message>
+</context>
+<context>
+    <name>WordCounts</name>
+    <message>
+        <location filename="../src/word_counts.cpp" line="39"/>
+        <source>Letters:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/word_counts.cpp" line="39"/>
+        <source>Found:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/word_counts.cpp" line="115"/>
+        <source>%1&lt;br&gt;&lt;b&gt;%2&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/word_counts.cpp" line="120"/>
+        <source>%1&lt;br&gt;&lt;b&gt;%2/%3&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/word_counts.cpp" line="122"/>
+        <source>%1&lt;br&gt;%2/%3</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

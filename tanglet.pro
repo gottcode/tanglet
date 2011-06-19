@@ -31,6 +31,7 @@ HEADERS += src/board.h \
 	src/trie.h \
 	src/view.h \
 	src/window.h \
+	src/word_counts.h \
 	src/word_tree.h
 
 SOURCES += src/board.cpp \
@@ -48,6 +49,7 @@ SOURCES += src/board.cpp \
 	src/trie.cpp \
 	src/view.cpp \
 	src/window.cpp \
+	src/word_counts.cpp \
 	src/word_tree.cpp
 
 TRANSLATIONS = translations/tanglet_cs.ts \

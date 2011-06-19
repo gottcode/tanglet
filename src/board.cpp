@@ -25,6 +25,7 @@
 #include "scores_dialog.h"
 #include "solver.h"
 #include "view.h"
+#include "word_counts.h"
 #include "word_tree.h"
 
 #include <QAction>
@@ -128,6 +129,9 @@ Board::Board(QWidget* parent)
 	int width = guess_layout->sizeHint().width();
 	m_tabs->setFixedWidth(width);
 
+	m_counts = new WordCounts(this);
+	m_counts->setMinimumWidth(width);
+
 	// Lay out board
 	QGridLayout* layout = new QGridLayout(this);
 	layout->setColumnStretch(1, 1);
@@ -137,6 +141,7 @@ Board::Board(QWidget* parent)
 	layout->addWidget(m_clock, 0, 1, Qt::AlignCenter);
 	layout->addWidget(m_view, 1, 1);
 	layout->addLayout(score_layout, 2, 1, Qt::AlignCenter);
+	layout->addWidget(m_counts, 3, 0, 1, 2);
 }
 
 //-----------------------------------------------------------------------------
@@ -210,6 +215,13 @@ void Board::setShowMissedWords(bool show) {
 
 //-----------------------------------------------------------------------------
 
+void Board::setShowWordCounts(bool show) {
+	QSettings().setValue("ShowWordCounts", show);
+	m_counts->setVisible(show);
+}
+
+//-----------------------------------------------------------------------------
+
 void Board::gameStarted() {
 	// Load settings
 	m_clock->setTimer(m_generator->timer());
@@ -224,6 +236,7 @@ void Board::gameStarted() {
 	m_max_score_details->hide();
 	m_letters = m_generator->letters();
 	m_solutions = m_generator->solutions();
+	m_counts->setWords(m_solutions.keys());
 	m_found->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
 	m_missed->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
 	QSettings().setValue("Current/Letters", m_letters);
@@ -352,6 +365,8 @@ void Board::guess() {
 			} else {
 				solutions.prepend(m_positions);
 			}
+
+			m_counts->findWord(text);
 		}
 		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
 		m_found->clearSelection();
@@ -631,8 +646,10 @@ int Board::updateScore() {
 		} else {
 			m_score->setText(tr("0 of %n point(s)", "", m_max_score));
 		}
+		m_counts->setMaximumsVisible(true);
 	} else {
 		m_score->setText(tr("%n point(s)", "", score));
+		m_counts->setMaximumsVisible(false);
 	}
 
 	QFont f = font();
