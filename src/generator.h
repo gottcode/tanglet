@@ -36,7 +36,7 @@ public:
 	Generator(QObject* parent = 0);
 
 	void cancel();
-	void create(int difficulty, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);
+	void create(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);
 
 	QList<QStringList> dice(int size) const
 	{
@@ -108,7 +108,7 @@ private:
 	Trie m_words;
 	QString m_error;
 
-	int m_difficulty;
+	int m_density;
 	int m_size;
 	int m_minimum;
 	int m_timer;

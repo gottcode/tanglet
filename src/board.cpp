@@ -159,9 +159,9 @@ void Board::abort() {
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(int difficulty, int size, int minimum, int timer, const QStringList& letters, unsigned int seed) {
+void Board::generate(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed) {
 	m_generator->cancel();
-	m_generator->create(difficulty, size, minimum, timer, letters, seed);
+	m_generator->create(density, size, minimum, timer, letters, seed);
 }
 
 //-----------------------------------------------------------------------------

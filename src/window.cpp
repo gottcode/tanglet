@@ -453,7 +453,7 @@ void Window::shareGame() {
 		QSettings game(filename, QSettings::IniFormat);
 		game.setValue("Game/Version", 1);
 		game.setValue("Game/Size", settings.value("Current/Size"));
-		game.setValue("Game/Difficulty", settings.value("Current/Difficulty"));
+		game.setValue("Game/Density", settings.value("Current/Density"));
 		game.setValue("Game/Minimum", settings.value("Current/Minimum"));
 		game.setValue("Game/TimerMode", settings.value("Current/TimerMode"));
 		game.setValue("Game/Letters", settings.value("Current/Letters"));
@@ -500,10 +500,9 @@ void Window::setPaused(bool paused) {
 void Window::showDetails() {
 	QSettings settings;
 	int size = settings.value("Current/Size").toInt();
-	int difficulty = settings.value("Current/Difficulty").toInt();
+	int density = settings.value("Current/Density").toInt();
 	int minimum = settings.value("Current/Minimum").toInt();
 	int timer = settings.value("Current/TimerMode").toInt();
-	QStringList hardness = QStringList() << tr("Easiest") << tr("Easy") << tr("Normal") << tr("Hard") << tr("Hardest");
 	QMessageBox::information(this, tr("Details"),
 		QString("<p><b>%1</b> %2<br>"
 			"<b>%3</b> %4<br>"
@@ -511,8 +510,8 @@ void Window::showDetails() {
 			"<b>%7</b> %8<br>"
 			"<b>%9</b> %10</p>")
 		.arg(tr("Board Size:"), (size == 4) ? tr("Normal") : tr("Large"))
+		.arg(tr("Word Density:"), NewGameDialog::densityString(density))
 		.arg(tr("Word Length:"), tr("%1 or more letters").arg(minimum))
-		.arg(tr("Difficulty:"), hardness.value(difficulty))
 		.arg(tr("Game Type:"), Clock::timerToString(timer))
 		.arg(tr("Description:"), Clock::timerDescription(timer)));
 }
@@ -586,7 +585,7 @@ void Window::monitorVisibility(QMenu* menu) {
 void Window::startGame(const QString& filename) {
 	QSettings settings;
 	int size = 0;
-	int difficulty = 0;
+	int density = 0;
 	int minimum = 0;
 	int timer = 0;
 	QStringList letters;
@@ -595,7 +594,7 @@ void Window::startGame(const QString& filename) {
 
 	if (filename.isEmpty()) {
 		size = settings.value("Board/Size", 4).toInt();
-		difficulty = settings.value("Board/Difficulty", 2).toInt();
+		density = settings.value("Board/Density", 2).toInt();
 		minimum = settings.value("Board/Minimum", 3).toInt();
 		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
 		seed = Random(time(0)).nextInt();
@@ -604,7 +603,7 @@ void Window::startGame(const QString& filename) {
 		QSettings game(filename, QSettings::IniFormat);
 		if (game.value("Game/Version").toInt() == 1) {
 			size = game.value("Game/Size", 4).toInt();
-			difficulty = game.value("Game/Difficulty", 2).toInt();
+			density = game.value("Game/Density", 2).toInt();
 			minimum = game.value("Game/Minimum", 3).toInt();
 			timer = game.value("Game/TimerMode", Clock::Tanglet).toInt();
 			letters = game.value("Game/Letters").toStringList();
@@ -618,17 +617,17 @@ void Window::startGame(const QString& filename) {
 	}
 
 	size = qBound(4, size, 5);
-	difficulty = qBound(0, difficulty, 4);
+	density = qBound(0, density, 4);
 	minimum = qBound(3, minimum, 5);
 	timer = qBound(0, timer, Clock::TotalTimers - 1);
 	settings.setValue("Current/Size", size);
-	settings.setValue("Current/Difficulty", difficulty);
+	settings.setValue("Current/Density", density);
 	settings.setValue("Current/Minimum", minimum);
 	settings.setValue("Current/TimerMode", timer);
 	settings.remove("Current/Letters");
 
 	m_state->start();
-	m_board->generate(difficulty, size, minimum, timer, letters, seed);
+	m_board->generate(density, size, minimum, timer, letters, seed);
 	m_details_action->setEnabled(true);
 }
 

@@ -21,7 +21,7 @@
 #define NEW_GAME_DIALOG_H
 
 #include <QDialog>
-class QSlider;
+class QComboBox;
 class QToolButton;
 
 class NewGameDialog : public QDialog
@@ -31,14 +31,16 @@ class NewGameDialog : public QDialog
 public:
 	NewGameDialog(QWidget* parent = 0);
 
+	static QString densityString(int density);
+
 private slots:
-	void difficultyChosen(int difficulty);
+	void densityChanged(int density);
 	void timerChosen(int timer);
 
 private:
 	QToolButton* m_normal_size;
 	QToolButton* m_large_size;
-	QSlider* m_difficulty;
+	QComboBox* m_density;
 	int m_minimum;
 };
 

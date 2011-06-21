@@ -22,12 +22,13 @@
 #include "board.h"
 #include "clock.h"
 
+#include <QComboBox>
 #include <QCommandLinkButton>
 #include <QDialogButtonBox>
+#include <QFormLayout>
 #include <QLabel>
 #include <QSettings>
 #include <QSignalMapper>
-#include <QSlider>
 #include <QToolButton>
 #include <QVBoxLayout>
 
@@ -78,6 +79,9 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	setWindowTitle(tr("New Game"));
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
+	QFormLayout* options_layout = new QFormLayout;
+	options_layout->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
+	options_layout->setLabelAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
 	QSettings settings;
 	int previous_timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
@@ -118,20 +122,16 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addLayout(size_buttons);
 	layout->addSpacing(6);
 
-	// Create difficulty slider
-	m_difficulty = new QSlider(Qt::Horizontal, this);
-	m_difficulty->setRange(0, 4);
-	connect(m_difficulty, SIGNAL(valueChanged(int)), this, SLOT(difficultyChosen(int)));
-	m_difficulty->setValue(settings.value("Board/Difficulty", 2).toInt());
+	// Create density combobox
+	m_density = new QComboBox(this);
+	for (int i = 0; i < 5; ++i) {
+		m_density->addItem(densityString(i));
+	}
+	connect(m_density, SIGNAL(currentIndexChanged(int)), this, SLOT(densityChanged(int)));
+	m_density->setCurrentIndex(settings.value("Board/Density", 2).toInt());
 
-	QLabel* easy_label = new QLabel(tr("Easy"), this);
-	QLabel* hard_label = new QLabel(tr("Hard"), this);
-
-	QHBoxLayout* difficulty_slider = new QHBoxLayout;
-	difficulty_slider->addWidget(easy_label);
-	difficulty_slider->addWidget(m_difficulty, 1);
-	difficulty_slider->addWidget(hard_label);
-	layout->addLayout(difficulty_slider);
+	options_layout->addRow(tr("Word Density:"), m_density);
+	layout->addLayout(options_layout);
 	layout->addSpacing(6);
 
 	// Create timer buttons
@@ -167,9 +167,21 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-void NewGameDialog::difficultyChosen(int difficulty)
+QString NewGameDialog::densityString(int density) {
+	static QStringList densities = QStringList()
+		<< tr("Very Low")
+		<< tr("Low")
+		<< tr("Medium")
+		<< tr("High")
+		<< tr("Very High");
+	return densities.at(qBound(0, density, densities.count() - 1));
+}
+
+//-----------------------------------------------------------------------------
+
+void NewGameDialog::densityChanged(int density)
 {
-	m_minimum = (difficulty < 4) ? 3 : 4;
+	m_minimum = (density < 4) ? 3 : 4;
 	m_normal_size->setToolTip(tr("%1 or more letters").arg(m_minimum));
 	m_large_size->setToolTip(tr("%1 or more letters").arg(m_minimum + 1));
 }
@@ -186,7 +198,7 @@ void NewGameDialog::timerChosen(int timer)
 		settings.setValue("Board/Size", 5);
 		settings.setValue("Board/Minimum", m_minimum + 1);
 	}
-	settings.setValue("Board/Difficulty", m_difficulty->value());
+	settings.setValue("Board/Density", m_density->currentIndex());
 	settings.setValue("Board/TimerMode", timer);
 	QDialog::accept();
 }

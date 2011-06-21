@@ -43,7 +43,7 @@ class Board : public QWidget {
 
 		bool isFinished() const;
 		void abort();
-		void generate(int difficulty, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);
+		void generate(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);
 		void setPaused(bool pause);
 
 		static QString sizeToString(int size);

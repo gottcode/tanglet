@@ -129,9 +129,9 @@ void Generator::cancel()
 
 //-----------------------------------------------------------------------------
 
-void Generator::create(int difficulty, int size, int minimum, int timer, const QStringList& letters, unsigned int seed)
+void Generator::create(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed)
 {
-	m_difficulty = difficulty;
+	m_density = density;
 	m_size = size;
 	m_minimum = minimum;
 	m_timer = timer;
@@ -163,27 +163,27 @@ void Generator::run()
 	}
 
 	// Find word range
-	int words_target = 450, words_range = 100;
-	switch (qBound(0, m_difficulty, 4)) {
+	int words_target = 0, words_range = 0;
+	switch (m_density) {
 	case 0:
-		words_target = 450;
-		words_range = 100;
+		words_target = 37;
+		words_range = 7;
 		break;
 	case 1:
-		words_target = 275;
-		words_range = 75;
+		words_target = 75;
+		words_range = 25;
 		break;
 	case 2:
 		words_target = 150;
 		words_range = 50;
 		break;
 	case 3:
-		words_target = 75;
-		words_range = 25;
+		words_target = 275;
+		words_range = 75;
 		break;
 	case 4:
-		words_target = 37;
-		words_range = 7;
+		words_target = 450;
+		words_range = 100;
 		break;
 	default:
 		break;
