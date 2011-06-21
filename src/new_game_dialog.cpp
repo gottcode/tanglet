@@ -79,9 +79,6 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	setWindowTitle(tr("New Game"));
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
-	QFormLayout* options_layout = new QFormLayout;
-	options_layout->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
-	options_layout->setLabelAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
 	QSettings settings;
 	int previous_timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
@@ -122,15 +119,30 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addLayout(size_buttons);
 	layout->addSpacing(6);
 
-	// Create density combobox
+	// Create word options
 	m_density = new QComboBox(this);
 	for (int i = 0; i < 5; ++i) {
 		m_density->addItem(densityString(i));
 	}
-	connect(m_density, SIGNAL(currentIndexChanged(int)), this, SLOT(densityChanged(int)));
 	m_density->setCurrentIndex(settings.value("Board/Density", 2).toInt());
 
+	m_length = new QComboBox(this);
+	for (int i = 0; i < 4; ++i) {
+		m_length->addItem(lengthString(i));
+	}
+	connect(m_length, SIGNAL(currentIndexChanged(int)), this, SLOT(lengthChanged(int)));
+	m_minimum = settings.value("Board/Minimum", 3).toInt();
+	if (m_normal_size->isChecked()) {
+		m_length->setCurrentIndex(m_minimum - 3);
+	} else {
+		m_length->setCurrentIndex(m_minimum - 4);
+	}
+
+	QFormLayout* options_layout = new QFormLayout;
+	options_layout->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
+	options_layout->setLabelAlignment(Qt::AlignRight | Qt::AlignVCenter);
 	options_layout->addRow(tr("Word Density:"), m_density);
+	options_layout->addRow(tr("Word Length:"), m_length);
 	layout->addLayout(options_layout);
 	layout->addSpacing(6);
 
@@ -179,9 +191,20 @@ QString NewGameDialog::densityString(int density) {
 
 //-----------------------------------------------------------------------------
 
-void NewGameDialog::densityChanged(int density)
+QString NewGameDialog::lengthString(int length) {
+	static QStringList lengths = QStringList()
+		<< tr("Very Short")
+		<< tr("Short")
+		<< tr("Medium")
+		<< tr("Long");
+	return lengths.at(qBound(0, length, lengths.count() - 1));
+}
+
+//-----------------------------------------------------------------------------
+
+void NewGameDialog::lengthChanged(int length)
 {
-	m_minimum = (density < 4) ? 3 : 4;
+	m_minimum = length + 3;
 	m_normal_size->setToolTip(tr("%1 or more letters").arg(m_minimum));
 	m_large_size->setToolTip(tr("%1 or more letters").arg(m_minimum + 1));
 }

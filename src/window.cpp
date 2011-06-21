@@ -618,7 +618,11 @@ void Window::startGame(const QString& filename) {
 
 	size = qBound(4, size, 5);
 	density = qBound(0, density, 4);
-	minimum = qBound(3, minimum, 5);
+	if (size == 4) {
+		minimum = qBound(3, minimum, 6);
+	} else {
+		minimum = qBound(4, minimum, 7);
+	}
 	timer = qBound(0, timer, Clock::TotalTimers - 1);
 	settings.setValue("Current/Size", size);
 	settings.setValue("Current/Density", density);

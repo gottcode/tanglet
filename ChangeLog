@@ -1,4 +1,5 @@
 2011-06-21 Graeme Gott <graeme@gottcode.org>
+	* Allow player to specify minimum length of words.
 	* Replace difficulty with density.
 
 2011-06-19 Graeme Gott <graeme@gottcode.org>

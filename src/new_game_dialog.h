@@ -32,15 +32,17 @@ public:
 	NewGameDialog(QWidget* parent = 0);
 
 	static QString densityString(int density);
+	static QString lengthString(int length);
 
 private slots:
-	void densityChanged(int density);
+	void lengthChanged(int length);
 	void timerChosen(int timer);
 
 private:
 	QToolButton* m_normal_size;
 	QToolButton* m_large_size;
 	QComboBox* m_density;
+	QComboBox* m_length;
 	int m_minimum;
 };
 
