@@ -73,9 +73,16 @@ namespace
 
 		void permute()
 		{
-			int index = m_random->nextInt(m_dice.count());
-			m_random->shuffle(m_dice[index]);
-			m_letters[index] = m_dice.at(index).first();
+			if (m_random->nextInt(2) == 1) {
+				int index = m_random->nextInt(m_dice.count());
+				m_random->shuffle(m_dice[index]);
+				m_letters[index] = m_dice.at(index).first();
+			} else {
+				int index1 = m_random->nextInt(m_dice.count());
+				int index2 = m_random->nextInt(m_dice.count());
+				m_dice.swap(index1, index2);
+				m_letters.swap(index1, index2);
+			}
 			solve();
 		}
 
@@ -163,27 +170,20 @@ void Generator::run()
 	}
 
 	// Find word range
+	int offset = ((m_size == 4) ? 6 : 7) - m_minimum;
 	int words_target = 0, words_range = 0;
 	switch (m_density) {
 	case 0:
 		words_target = 37;
-		words_range = 7;
+		words_range = 5;
 		break;
 	case 1:
-		words_target = 75;
+		words_target = 150 + (25 * offset);
 		words_range = 25;
 		break;
 	case 2:
-		words_target = 150;
+		words_target = 250 + (75 * offset);
 		words_range = 50;
-		break;
-	case 3:
-		words_target = 275;
-		words_range = 75;
-		break;
-	case 4:
-		words_target = 450;
-		words_range = 100;
 		break;
 	default:
 		break;
@@ -192,35 +192,38 @@ void Generator::run()
 	// Create board state
 	Random random(m_seed);
 	State current(dice(m_size), &solver, words_target, &random);
+	current.roll();
 	State next = current;
 
 	int max_tries = m_size * m_size * 2;
-	int tries = max_tries;
-	while (!m_cancelled) {
-		// Restart if stuck at local minimum
-		if (tries == max_tries) {
-			current.roll();
-			if (current.delta() < words_range) {
-				break;
-			}
-			tries = 0;
-		}
-
-		// Roll one of the dice
+	int tries = 0;
+	int loops = 0;
+	do {
+		// Change the board
 		next = current;
 		next.permute();
 
 		// Check if this is a better board
 		if (next.delta() < current.delta()) {
 			current = next;
-			if (current.delta() < words_range) {
-				break;
-			}
 			tries = 0;
+			loops = 0;
 		}
 
+		// Prevent getting stuck at local minimum
 		tries++;
-	}
+		if (tries == max_tries) {
+			current = next;
+			tries = 0;
+			loops++;
+
+			// Restart if still stuck at local minimum
+			if (loops == m_size) {
+				current.roll();
+				loops = 0;
+			}
+		}
+	} while (!m_cancelled && (current.delta() > words_range));
 
 	// Store solutions for generated board
 	m_letters = current.letters();

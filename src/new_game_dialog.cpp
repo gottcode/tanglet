@@ -121,10 +121,10 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 	// Create word options
 	m_density = new QComboBox(this);
-	for (int i = 0; i < 5; ++i) {
+	for (int i = 0; i < 3; ++i) {
 		m_density->addItem(densityString(i));
 	}
-	m_density->setCurrentIndex(settings.value("Board/Density", 2).toInt());
+	m_density->setCurrentIndex(settings.value("Board/Density", 1).toInt());
 
 	m_length = new QComboBox(this);
 	for (int i = 0; i < 4; ++i) {
@@ -141,8 +141,8 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	QFormLayout* options_layout = new QFormLayout;
 	options_layout->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
 	options_layout->setLabelAlignment(Qt::AlignRight | Qt::AlignVCenter);
-	options_layout->addRow(tr("Word Density:"), m_density);
-	options_layout->addRow(tr("Word Length:"), m_length);
+	options_layout->addRow(tr("Amount of Words:"), m_density);
+	options_layout->addRow(tr("Minimum Word Length:"), m_length);
 	layout->addLayout(options_layout);
 	layout->addSpacing(6);
 
@@ -181,11 +181,9 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 QString NewGameDialog::densityString(int density) {
 	static QStringList densities = QStringList()
-		<< tr("Very Low")
 		<< tr("Low")
 		<< tr("Medium")
-		<< tr("High")
-		<< tr("Very High");
+		<< tr("High");
 	return densities.at(qBound(0, density, densities.count() - 1));
 }
 
@@ -193,10 +191,10 @@ QString NewGameDialog::densityString(int density) {
 
 QString NewGameDialog::lengthString(int length) {
 	static QStringList lengths = QStringList()
-		<< tr("Very Short")
 		<< tr("Short")
 		<< tr("Medium")
-		<< tr("Long");
+		<< tr("Long")
+		<< tr("Very Long");
 	return lengths.at(qBound(0, length, lengths.count() - 1));
 }
 

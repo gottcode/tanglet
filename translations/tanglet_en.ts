@@ -210,12 +210,12 @@
 <context>
     <name>Generator</name>
     <message>
-        <location filename="../src/generator.cpp" line="277"/>
+        <location filename="../src/generator.cpp" line="280"/>
         <source>Unable to read dice from file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="307"/>
+        <location filename="../src/generator.cpp" line="310"/>
         <source>Unable to read word list from file.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -300,26 +300,57 @@
 <context>
     <name>NewGameDialog</name>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="78"/>
+        <location filename="../src/new_game_dialog.cpp" line="79"/>
         <source>New Game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="94"/>
-        <location filename="../src/new_game_dialog.cpp" line="104"/>
-        <location filename="../src/new_game_dialog.cpp" line="173"/>
-        <location filename="../src/new_game_dialog.cpp" line="174"/>
+        <location filename="../src/new_game_dialog.cpp" line="95"/>
+        <location filename="../src/new_game_dialog.cpp" line="105"/>
+        <location filename="../src/new_game_dialog.cpp" line="206"/>
+        <location filename="../src/new_game_dialog.cpp" line="207"/>
         <source>%1 or more letters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="127"/>
-        <source>Easy</source>
+        <location filename="../src/new_game_dialog.cpp" line="144"/>
+        <source>Amount of Words:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="128"/>
-        <source>Hard</source>
+        <location filename="../src/new_game_dialog.cpp" line="145"/>
+        <source>Minimum Word Length:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/new_game_dialog.cpp" line="184"/>
+        <source>Low</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/new_game_dialog.cpp" line="185"/>
+        <location filename="../src/new_game_dialog.cpp" line="195"/>
+        <source>Medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/new_game_dialog.cpp" line="186"/>
+        <source>High</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/new_game_dialog.cpp" line="194"/>
+        <source>Short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/new_game_dialog.cpp" line="196"/>
+        <source>Long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/new_game_dialog.cpp" line="197"/>
+        <source>Very Long</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -485,22 +516,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/window.cpp" line="513"/>
+        <source>Word Density:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/window.cpp" line="514"/>
         <source>Word Length:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="515"/>
-        <source>Difficulty:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="516"/>
         <source>Game Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="517"/>
+        <location filename="../src/window.cpp" line="516"/>
         <source>Description:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -600,38 +631,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="506"/>
-        <location filename="../src/window.cpp" line="513"/>
+        <location filename="../src/window.cpp" line="512"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="506"/>
-        <source>Easiest</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="506"/>
-        <source>Easy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="506"/>
-        <source>Hard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="506"/>
-        <source>Hardest</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="513"/>
+        <location filename="../src/window.cpp" line="512"/>
         <source>Large</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="513"/>
+        <location filename="../src/window.cpp" line="512"/>
         <source>Board Size:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -641,27 +651,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="507"/>
+        <location filename="../src/window.cpp" line="506"/>
         <source>Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="546"/>
+        <location filename="../src/window.cpp" line="545"/>
         <source>Controls</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="546"/>
+        <location filename="../src/window.cpp" line="545"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="616"/>
+        <location filename="../src/window.cpp" line="615"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="616"/>
+        <location filename="../src/window.cpp" line="615"/>
         <source>Unable to start requested game.</source>
         <translation type="unfinished"></translation>
     </message>
