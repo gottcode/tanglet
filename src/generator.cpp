@@ -169,6 +169,11 @@ void Generator::run()
 		return;
 	}
 
+	Random random(m_seed);
+	if (m_density == 3) {
+		m_density = random.nextInt(3);
+	}
+
 	// Find word range
 	int offset = ((m_size == 4) ? 6 : 7) - m_minimum;
 	int words_target = 0, words_range = 0;
@@ -190,7 +195,6 @@ void Generator::run()
 	}
 
 	// Create board state
-	Random random(m_seed);
 	State current(dice(m_size), &solver, words_target, &random);
 	current.roll();
 	State next = current;

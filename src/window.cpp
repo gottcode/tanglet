@@ -617,7 +617,7 @@ void Window::startGame(const QString& filename) {
 	}
 
 	size = qBound(4, size, 5);
-	density = qBound(0, density, 2);
+	density = qBound(0, density, 3);
 	if (size == 4) {
 		minimum = qBound(3, minimum, 6);
 	} else {

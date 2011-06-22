@@ -218,12 +218,12 @@
 <context>
     <name>Generator</name>
     <message>
-        <location filename="../src/generator.cpp" line="310"/>
+        <location filename="../src/generator.cpp" line="314"/>
         <source>Unable to read word list from file.</source>
         <translation>Nelze přečíst seznam slov obsažených v souboru.</translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="280"/>
+        <location filename="../src/generator.cpp" line="284"/>
         <source>Unable to read dice from file.</source>
         <translation>Nelze přečíst kostky obsažené v souboru.</translation>
     </message>
@@ -310,8 +310,8 @@
     <message>
         <location filename="../src/new_game_dialog.cpp" line="95"/>
         <location filename="../src/new_game_dialog.cpp" line="105"/>
-        <location filename="../src/new_game_dialog.cpp" line="206"/>
         <location filename="../src/new_game_dialog.cpp" line="207"/>
+        <location filename="../src/new_game_dialog.cpp" line="208"/>
         <source>%1 or more letters</source>
         <translation>%1 nebo více písmen</translation>
     </message>
@@ -332,7 +332,7 @@
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="185"/>
-        <location filename="../src/new_game_dialog.cpp" line="195"/>
+        <location filename="../src/new_game_dialog.cpp" line="196"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
@@ -342,17 +342,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="194"/>
+        <location filename="../src/new_game_dialog.cpp" line="187"/>
+        <source>Random</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/new_game_dialog.cpp" line="195"/>
         <source>Short</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="196"/>
+        <location filename="../src/new_game_dialog.cpp" line="197"/>
         <source>Long</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="197"/>
+        <location filename="../src/new_game_dialog.cpp" line="198"/>
         <source>Very Long</source>
         <translation type="unfinished"></translation>
     </message>

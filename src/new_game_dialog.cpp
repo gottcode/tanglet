@@ -121,7 +121,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 	// Create word options
 	m_density = new QComboBox(this);
-	for (int i = 0; i < 3; ++i) {
+	for (int i = 0; i < 4; ++i) {
 		m_density->addItem(densityString(i));
 	}
 	m_density->setCurrentIndex(settings.value("Board/Density", 1).toInt());
@@ -183,7 +183,8 @@ QString NewGameDialog::densityString(int density) {
 	static QStringList densities = QStringList()
 		<< tr("Low")
 		<< tr("Medium")
-		<< tr("High");
+		<< tr("High")
+		<< tr("Random");
 	return densities.at(qBound(0, density, densities.count() - 1));
 }
 
