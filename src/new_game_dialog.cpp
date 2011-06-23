@@ -132,11 +132,10 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	}
 	connect(m_length, SIGNAL(currentIndexChanged(int)), this, SLOT(lengthChanged(int)));
 	m_minimum = settings.value("Board/Minimum", 3).toInt();
-	if (m_normal_size->isChecked()) {
-		m_length->setCurrentIndex(m_minimum - 3);
-	} else {
-		m_length->setCurrentIndex(m_minimum - 4);
+	if (m_large_size->isChecked()) {
+		--m_minimum;
 	}
+	m_length->setCurrentIndex(m_minimum - 3);
 
 	QFormLayout* options_layout = new QFormLayout;
 	options_layout->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
