@@ -308,14 +308,6 @@
 <context>
     <name>NewGameDialog</name>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="95"/>
-        <location filename="../src/new_game_dialog.cpp" line="105"/>
-        <location filename="../src/new_game_dialog.cpp" line="207"/>
-        <location filename="../src/new_game_dialog.cpp" line="208"/>
-        <source>%1 or more letters</source>
-        <translation>%1 nebo více písmen</translation>
-    </message>
-    <message>
         <location filename="../src/new_game_dialog.cpp" line="144"/>
         <source>Amount of Words:</source>
         <translation type="unfinished"></translation>
@@ -332,7 +324,6 @@
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="185"/>
-        <location filename="../src/new_game_dialog.cpp" line="196"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
@@ -346,20 +337,14 @@
         <source>Random</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../src/new_game_dialog.cpp" line="195"/>
-        <source>Short</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/new_game_dialog.cpp" line="197"/>
-        <source>Long</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/new_game_dialog.cpp" line="198"/>
-        <source>Very Long</source>
-        <translation type="unfinished"></translation>
+    <message numerus="yes">
+        <location filename="../src/new_game_dialog.cpp" line="204"/>
+        <source>%n letter(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="79"/>

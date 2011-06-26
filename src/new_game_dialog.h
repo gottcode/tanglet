@@ -32,10 +32,10 @@ public:
 	NewGameDialog(QWidget* parent = 0);
 
 	static QString densityString(int density);
-	static QString lengthString(int length);
 
 private slots:
 	void lengthChanged(int length);
+	void sizeChanged();
 	void timerChosen(int timer);
 
 private:

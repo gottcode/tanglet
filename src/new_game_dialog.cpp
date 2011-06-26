@@ -92,7 +92,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_normal_size->setIcon(QPixmap(":/preview/normal.png"));
 	m_normal_size->setText(Board::sizeToString(4));
 	m_normal_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	m_normal_size->setToolTip(tr("%1 or more letters").arg(3));
+	connect(m_normal_size, SIGNAL(clicked()), this, SLOT(sizeChanged()));
 
 	m_large_size = new QToolButton(this);
 	m_large_size->setAutoExclusive(true);
@@ -102,7 +102,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_large_size->setIcon(QPixmap(":/preview/large.png"));
 	m_large_size->setText(Board::sizeToString(5));
 	m_large_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	m_large_size->setToolTip(tr("%1 or more letters").arg(4));
+	connect(m_large_size, SIGNAL(clicked()), this, SLOT(sizeChanged()));
 
 	if (settings.value("Board/Size", 4).toInt() == 4) {
 		m_normal_size->setChecked(true);
@@ -128,14 +128,15 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 	m_length = new QComboBox(this);
 	for (int i = 0; i < 4; ++i) {
-		m_length->addItem(lengthString(i));
+		m_length->addItem("");
 	}
 	connect(m_length, SIGNAL(currentIndexChanged(int)), this, SLOT(lengthChanged(int)));
 	m_minimum = settings.value("Board/Minimum", 3).toInt();
 	if (m_large_size->isChecked()) {
 		--m_minimum;
 	}
-	m_length->setCurrentIndex(m_minimum - 3);
+	m_length->setCurrentIndex(qBound(0, m_minimum - 3, 4));
+	sizeChanged();
 
 	QFormLayout* options_layout = new QFormLayout;
 	options_layout->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -189,22 +190,19 @@ QString NewGameDialog::densityString(int density) {
 
 //-----------------------------------------------------------------------------
 
-QString NewGameDialog::lengthString(int length) {
-	static QStringList lengths = QStringList()
-		<< tr("Short")
-		<< tr("Medium")
-		<< tr("Long")
-		<< tr("Very Long");
-	return lengths.at(qBound(0, length, lengths.count() - 1));
+void NewGameDialog::lengthChanged(int length)
+{
+	m_minimum = length + 3;
 }
 
 //-----------------------------------------------------------------------------
 
-void NewGameDialog::lengthChanged(int length)
+void NewGameDialog::sizeChanged()
 {
-	m_minimum = length + 3;
-	m_normal_size->setToolTip(tr("%1 or more letters").arg(m_minimum));
-	m_large_size->setToolTip(tr("%1 or more letters").arg(m_minimum + 1));
+	int minimum = (m_normal_size->isChecked()) ? 3 : 4;
+	for (int i = 0; i < 4; ++i) {
+		m_length->setItemText(i, tr("%n letter(s)", "", i + minimum));
+	}
 }
 
 //-----------------------------------------------------------------------------
