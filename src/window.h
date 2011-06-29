@@ -42,6 +42,7 @@ class Window : public QMainWindow {
 		void about();
 		void aboutHspell();
 		void aboutScowl();
+		void newRoll();
 		void newGame();
 		void chooseGame();
 		void shareGame();
@@ -58,8 +59,8 @@ class Window : public QMainWindow {
 		void gameFinished(int score);
 
 	private:
-		void monitorVisibility(QMenu* menu);
 		void startGame(const QString& filename = QString());
+		void monitorVisibility(QMenu* menu);
 
 	private:
 		Board* m_board;

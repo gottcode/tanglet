@@ -267,7 +267,8 @@ Window::Window()
 
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
-	menu->addAction(tr("&New"), this, SLOT(newGame()), QKeySequence::New);
+	menu->addAction(tr("New &Game..."), this, SLOT(newGame()), tr("Ctrl+Shift+N"));
+	menu->addAction(tr("&New Roll"), this, SLOT(newRoll()), QKeySequence::New);
 	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()));
 	menu->addAction(tr("&Share..."), this, SLOT(shareGame()));
 	menu->addSeparator();
@@ -337,7 +338,7 @@ Window::Window()
 	// Start a new game
 	m_state->finish();
 	m_contents->setCurrentIndex(3);
-	newGame();
+	startGame();
 }
 
 //-----------------------------------------------------------------------------
@@ -419,6 +420,14 @@ void Window::aboutHspell() {
 void Window::aboutScowl() {
 	AboutDialog dialog(tr("About SCOWL"), ":/scowl-readme", this);
 	dialog.exec();
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::newRoll() {
+	if (endGame()) {
+		startGame();
+	}
 }
 
 //-----------------------------------------------------------------------------
