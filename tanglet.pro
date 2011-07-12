@@ -4,6 +4,9 @@ macx {
 	# Uncomment the following line to compile on PowerPC Macs
 	# QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.4u.sdk
 	CONFIG += x86 ppc
+}
+
+!win32 {
 	LIBS += -lz
 }
 
