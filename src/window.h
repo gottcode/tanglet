@@ -71,7 +71,8 @@ class Window : public QMainWindow {
 
 		class State;
 		friend class State;
-		class StartState;
+		class NewGameState;
+		class OpenGameState;
 		class PlayState;
 		class AutoPauseState;
 		class PauseState;

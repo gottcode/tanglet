@@ -59,7 +59,8 @@ public:
 	virtual ~State() { }
 
 	virtual void enter() { }
-	virtual void start() { setState("Start"); }
+	virtual void newGame() { setState("NewGame"); }
+	virtual void openGame() { setState("OpenGame"); }
 	virtual void play() { }
 	virtual void autoPause() { }
 	virtual void autoResume() { }
@@ -88,9 +89,30 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class Window::StartState : public Window::State {
+class Window::NewGameState : public Window::State {
 public:
-	StartState(Window* window)
+	NewGameState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		m_next_state = "Play";
+		setPaused(true);
+		setContentsIndex(4);
+	}
+
+	void play() { setState(m_next_state); }
+	void autoPause() { m_next_state = "AutoPause"; }
+	void autoResume() { m_next_state = "Play"; }
+
+private:
+	QString m_next_state;
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::OpenGameState : public Window::State {
+public:
+	OpenGameState(Window* window)
 		: State(window) { }
 
 	void enter() {
@@ -148,7 +170,8 @@ public:
 		}
 	}
 
-	void start() { m_count = 0; setState("Start"); }
+	void newGame() { m_count = 0; setState("NewGame"); }
+	void openGame() { m_count = 0; setState("OpenGame"); }
 	void pause() { m_count = 0; setState("Pause"); }
 	void resume() { m_count = 0; setState("Play"); }
 	void finish() { m_count = 0; setState("Finish"); }
@@ -231,12 +254,13 @@ Window::Window()
 	setWindowIcon(QIcon(":/tanglet.png"));
 
 	// Create states
-	m_states.insert("Start", new StartState(this));
+	m_states.insert("NewGame", new NewGameState(this));
+	m_states.insert("OpenGame", new OpenGameState(this));
 	m_states.insert("Play", new PlayState(this));
 	m_states.insert("AutoPause", new AutoPauseState(this));
 	m_states.insert("Pause", new PauseState(this));
 	m_states.insert("Finish", new FinishState(this));
-	m_state = m_states.value("Start");
+	m_state = m_states.value("NewGame");
 
 	// Create widgets
 	m_contents = new QStackedWidget(this);
@@ -253,16 +277,21 @@ Window::Window()
 	m_pause_screen->installEventFilter(this);
 	m_contents->addWidget(m_pause_screen);
 
-	// Create load screen
-	QLabel* load_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
-	load_screen->setAlignment(Qt::AlignCenter);
-	m_contents->addWidget(load_screen);
+	// Create open game screen
+	QLabel* open_game_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Loading game...</p>"), this);
+	open_game_screen->setAlignment(Qt::AlignCenter);
+	m_contents->addWidget(open_game_screen);
 
 	// Create start screen
 	QLabel* start_screen = new QLabel(tr("Click to start a new game."), this);
 	start_screen->setAlignment(Qt::AlignCenter);
 	start_screen->installEventFilter(this);
 	m_contents->addWidget(start_screen);
+
+	// Create new game screen
+	QLabel* new_game_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
+	new_game_screen->setAlignment(Qt::AlignCenter);
+	m_contents->addWidget(new_game_screen);
 
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
@@ -338,7 +367,7 @@ Window::Window()
 	m_state->finish();
 	m_contents->setCurrentIndex(3);
 	if (!settings.contains("Current/Version")) {
-		startGame();
+		newGame();
 	} else {
 		startGame(":saved:");
 	}
@@ -596,13 +625,13 @@ void Window::monitorVisibility(QMenu* menu) {
 void Window::startGame(const QString& filename) {
 	QSettings* game = 0;
 
-	bool loaded = true;
 	if (filename.isEmpty()) {
 		// Start a new game
 		game = new QSettings;
 		game->remove("Current");
 		game->sync();
 		game->beginGroup("Board");
+		m_state->newGame();
 	} else {
 		if (filename == ":saved:") {
 			// Continue previous game
@@ -615,21 +644,19 @@ void Window::startGame(const QString& filename) {
 			game->beginGroup("Game");
 		}
 
+		bool loaded = false;
 		if (game->value("Version").toInt() == 1) {
 			loaded = !game->value("Letters").toStringList().isEmpty();
-		} else {
-			loaded = false;
 		}
+		if (!loaded) {
+			QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
+			return;
+		}
+
+		m_state->openGame();
 	}
 
-	if (!loaded) {
-		QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
-		return;
-	}
-
-	m_state->start();
 	m_board->generate(*game);
-
 	delete game;
 }
 
