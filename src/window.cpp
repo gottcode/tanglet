@@ -24,7 +24,6 @@
 #include "language_dialog.h"
 #include "locale_dialog.h"
 #include "new_game_dialog.h"
-#include "random.h"
 #include "scores_dialog.h"
 
 #include <QAction>
@@ -338,7 +337,11 @@ Window::Window()
 	// Start a new game
 	m_state->finish();
 	m_contents->setCurrentIndex(3);
-	startGame();
+	if (!settings.contains("Current/Version")) {
+		startGame();
+	} else {
+		startGame(":saved:");
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -367,9 +370,7 @@ bool Window::eventFilter(QObject* watched, QEvent* event) {
 
 void Window::closeEvent(QCloseEvent* event) {
 	QSettings().setValue("Geometry", saveGeometry());
-	if (!endGame()) {
-		event->ignore();
-	}
+	QMainWindow::closeEvent(event);
 }
 
 //-----------------------------------------------------------------------------
@@ -568,6 +569,7 @@ void Window::showControls() {
 
 void Window::gameStarted() {
 	m_state->play();
+	m_details_action->setEnabled(true);
 }
 
 //-----------------------------------------------------------------------------
@@ -592,31 +594,31 @@ void Window::monitorVisibility(QMenu* menu) {
 //-----------------------------------------------------------------------------
 
 void Window::startGame(const QString& filename) {
-	QSettings settings;
-	int size = 0;
-	int density = 0;
-	int minimum = 0;
-	int timer = 0;
-	QStringList letters;
-	unsigned int seed = 0;
-	bool loaded = false;
+	QSettings* game = 0;
 
+	bool loaded = true;
 	if (filename.isEmpty()) {
-		size = settings.value("Board/Size", 4).toInt();
-		density = settings.value("Board/Density", 2).toInt();
-		minimum = settings.value("Board/Minimum", 3).toInt();
-		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
-		seed = Random(time(0)).nextInt();
-		loaded = true;
+		// Start a new game
+		game = new QSettings;
+		game->remove("Current");
+		game->sync();
+		game->beginGroup("Board");
 	} else {
-		QSettings game(filename, QSettings::IniFormat);
-		if (game.value("Game/Version").toInt() == 1) {
-			size = game.value("Game/Size", 4).toInt();
-			density = game.value("Game/Density", 2).toInt();
-			minimum = game.value("Game/Minimum", 3).toInt();
-			timer = game.value("Game/TimerMode", Clock::Tanglet).toInt();
-			letters = game.value("Game/Letters").toStringList();
-			loaded = !letters.isEmpty();
+		if (filename == ":saved:") {
+			// Continue previous game
+			game = new QSettings;
+			game->beginGroup("Current");
+		} else {
+			// Start requested game
+			QSettings().remove("Current");
+			game = new QSettings(filename, QSettings::IniFormat);
+			game->beginGroup("Game");
+		}
+
+		if (game->value("Version").toInt() == 1) {
+			loaded = !game->value("Letters").toStringList().isEmpty();
+		} else {
+			loaded = false;
 		}
 	}
 
@@ -625,23 +627,10 @@ void Window::startGame(const QString& filename) {
 		return;
 	}
 
-	size = qBound(4, size, 5);
-	density = qBound(0, density, 3);
-	if (size == 4) {
-		minimum = qBound(3, minimum, 6);
-	} else {
-		minimum = qBound(4, minimum, 7);
-	}
-	timer = qBound(0, timer, Clock::TotalTimers - 1);
-	settings.setValue("Current/Size", size);
-	settings.setValue("Current/Density", density);
-	settings.setValue("Current/Minimum", minimum);
-	settings.setValue("Current/TimerMode", timer);
-	settings.remove("Current/Letters");
-
 	m_state->start();
-	m_board->generate(density, size, minimum, timer, letters, seed);
-	m_details_action->setEnabled(true);
+	m_board->generate(*game);
+
+	delete game;
 }
 
 //-----------------------------------------------------------------------------

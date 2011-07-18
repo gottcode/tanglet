@@ -20,14 +20,6 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <QHash>
-#include <QList>
-#include <QPoint>
-#include <QWidget>
-class QLabel;
-class QLineEdit;
-class QTabWidget;
-class QToolButton;
 class Clock;
 class Generator;
 class Letter;
@@ -35,15 +27,26 @@ class View;
 class WordCounts;
 class WordTree;
 
+#include <QHash>
+#include <QList>
+#include <QPoint>
+#include <QWidget>
+class QLabel;
+class QLineEdit;
+class QSettings;
+class QTabWidget;
+class QToolButton;
+
 class Board : public QWidget {
 	Q_OBJECT
 
 	public:
 		Board(QWidget* parent = 0);
+		~Board();
 
 		bool isFinished() const;
 		void abort();
-		void generate(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);
+		void generate(const QSettings& game);
 		void setPaused(bool pause);
 
 		static QString sizeToString(int size);

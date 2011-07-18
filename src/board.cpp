@@ -22,6 +22,7 @@
 #include "clock.h"
 #include "generator.h"
 #include "letter.h"
+#include "random.h"
 #include "scores_dialog.h"
 #include "solver.h"
 #include "view.h"
@@ -146,6 +147,34 @@ Board::Board(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
+Board::~Board() {
+	QSettings game;
+	if (isFinished()) {
+		// Clear current game
+		game.remove("Current");
+	} else {
+		// Save current game
+		game.beginGroup("Current");
+
+		QStringList found;
+		for (int i = 0; i < m_found->topLevelItemCount(); ++i) {
+			found += m_found->topLevelItem(i)->text(2);
+		}
+		game.setValue("Found", found);
+
+		game.setValue("Guess", m_guess->text());
+		QVariantList positions;
+		foreach (const QPoint& position, m_positions) {
+			positions.append(position);
+		}
+		game.setValue("GuessPositions", positions);
+
+		m_clock->save(game);
+	}
+}
+
+//-----------------------------------------------------------------------------
+
 bool Board::isFinished() const {
 	return m_clock->isFinished();
 }
@@ -159,7 +188,35 @@ void Board::abort() {
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed) {
+void Board::generate(const QSettings& game) {
+	// Find values
+	int size = qBound(4, game.value("Size").toInt(), 5);
+	int density = qBound(0, game.value("Density").toInt(), 3);
+	int minimum = game.value("Minimum").toInt();
+	if (size == 4) {
+		minimum = qBound(3, minimum, 6);
+	} else {
+		minimum = qBound(4, minimum, 7);
+	}
+	int timer = qBound(0, game.value("TimerMode").toInt(), Clock::TotalTimers - 1);
+	QStringList letters = game.value("Letters").toStringList();
+	unsigned int seed = Random(time(0)).nextInt();
+
+	// Store values
+	{
+		QSettings settings;
+		settings.beginGroup("Current");
+		settings.setValue("Version", 1);
+		settings.setValue("Size", size);
+		settings.setValue("Density", density);
+		settings.setValue("Minimum", minimum);
+		settings.setValue("TimerMode", timer);
+		if (!letters.isEmpty()) {
+			settings.setValue("Letters", letters);
+		}
+	}
+
+	// Create new game
 	m_generator->cancel();
 	m_generator->create(density, size, minimum, timer, letters, seed);
 }
@@ -224,6 +281,9 @@ void Board::setShowWordCounts(bool show) {
 
 void Board::gameStarted() {
 	// Load settings
+	QSettings settings;
+	settings.beginGroup("Current");
+
 	m_clock->setTimer(m_generator->timer());
 	if (m_generator->size() != m_size) {
 		m_size = m_generator->size();
@@ -239,7 +299,7 @@ void Board::gameStarted() {
 	m_counts->setWords(m_solutions.keys());
 	m_found->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
 	m_missed->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
-	QSettings().setValue("Current/Letters", m_letters);
+	settings.setValue("Letters", m_letters);
 
 	// Create cells
 	QFont f = font();
@@ -301,6 +361,24 @@ void Board::gameStarted() {
 		m_missed->addWord(solution);
 	}
 
+	// Add found words
+	QStringList found = settings.value("Found").toStringList();
+	foreach (const QString& text, found) {
+		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
+		if (m_missed->findItems(text, Qt::MatchExactly, 2).value(0) && !item) {
+			item = m_found->addWord(text);
+			delete m_missed->findItems(text, Qt::MatchExactly, 2).first();
+			m_counts->findWord(text);
+		}
+	}
+
+	// Add guess
+	m_guess->setText(settings.value("Guess").toString());
+	QVariantList positions = settings.value("GuessPositions").toList();
+	foreach (const QVariant& position, positions) {
+		m_positions.append(position.toPoint());
+	}
+
 	// Show errors
 	QString error = m_generator->error();
 	if (!error.isEmpty()) {
@@ -313,8 +391,12 @@ void Board::gameStarted() {
 	emit started();
 	if (m_missed->topLevelItemCount() > 0) {
 		m_clock->start();
+		if (settings.contains("TimerDetails/Time")) {
+			m_clock->load(settings);
+		}
 		updateScore();
 		updateClickableStatus();
+		highlightWord();
 	} else {
 		m_clock->stop();
 	}

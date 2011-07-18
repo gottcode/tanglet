@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
 #define CLOCK_H
 
 #include <QWidget>
+class QSettings;
 class QTimer;
 
 class Clock : public QWidget {
@@ -40,6 +41,9 @@ class Clock : public QWidget {
 		void setText(const QString& text);
 		void start();
 		void stop();
+
+		void load(const QSettings& game);
+		void save(QSettings& game);
 
 		enum Mode {
 			Tanglet,
