@@ -4,6 +4,9 @@ macx {
 	# Uncomment the following line to compile on PowerPC Macs
 	# QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.4u.sdk
 	CONFIG += x86 ppc
+}
+
+!win32 {
 	LIBS += -lz
 }
 
@@ -31,6 +34,7 @@ HEADERS += src/board.h \
 	src/trie.h \
 	src/view.h \
 	src/window.h \
+	src/word_counts.h \
 	src/word_tree.h
 
 SOURCES += src/board.cpp \
@@ -48,11 +52,13 @@ SOURCES += src/board.cpp \
 	src/trie.cpp \
 	src/view.cpp \
 	src/window.cpp \
+	src/word_counts.cpp \
 	src/word_tree.cpp
 
-TRANSLATIONS = translations/cs.ts \
-	translations/en_US.ts \
-	translations/fr.ts
+TRANSLATIONS = translations/tanglet_cs.ts \
+	translations/tanglet_en.ts \
+	translations/tanglet_fr.ts \
+	translations/tanglet_he.ts
 
 RESOURCES = icons/icons.qrc data.qrc
 macx:ICON = icons/tanglet.icns

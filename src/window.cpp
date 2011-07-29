@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,15 +24,16 @@
 #include "language_dialog.h"
 #include "locale_dialog.h"
 #include "new_game_dialog.h"
-#include "random.h"
 #include "scores_dialog.h"
 
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QDesktopServices>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFile>
+#include <QFileDialog>
 #include <QFormLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -58,7 +59,8 @@ public:
 	virtual ~State() { }
 
 	virtual void enter() { }
-	virtual void start() { setState("Start"); }
+	virtual void newGame() { setState("NewGame"); }
+	virtual void openGame() { setState("OpenGame"); }
 	virtual void play() { }
 	virtual void autoPause() { }
 	virtual void autoResume() { }
@@ -87,9 +89,30 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class Window::StartState : public Window::State {
+class Window::NewGameState : public Window::State {
 public:
-	StartState(Window* window)
+	NewGameState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		m_next_state = "Play";
+		setPaused(true);
+		setContentsIndex(4);
+	}
+
+	void play() { setState(m_next_state); }
+	void autoPause() { m_next_state = "AutoPause"; }
+	void autoResume() { m_next_state = "Play"; }
+
+private:
+	QString m_next_state;
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::OpenGameState : public Window::State {
+public:
+	OpenGameState(Window* window)
 		: State(window) { }
 
 	void enter() {
@@ -147,7 +170,8 @@ public:
 		}
 	}
 
-	void start() { m_count = 0; setState("Start"); }
+	void newGame() { m_count = 0; setState("NewGame"); }
+	void openGame() { m_count = 0; setState("OpenGame"); }
 	void pause() { m_count = 0; setState("Pause"); }
 	void resume() { m_count = 0; setState("Play"); }
 	void finish() { m_count = 0; setState("Finish"); }
@@ -186,18 +210,57 @@ public:
 
 //-----------------------------------------------------------------------------
 
+namespace
+{
+	class AboutDialog : public QDialog
+	{
+	public:
+		AboutDialog(const QString& title, const QString& filename, QWidget* parent = 0);
+	};
+
+	AboutDialog::AboutDialog(const QString& title, const QString& filename, QWidget* parent)
+		: QDialog(parent)
+	{
+		setWindowTitle(title);
+
+		QTextEdit* text = new QTextEdit(this);
+		text->setWordWrapMode(QTextOption::NoWrap);
+		text->setReadOnly(true);
+
+		QFile file(filename);
+		if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+			QTextStream stream(&file);
+			text->setHtml("<pre>" + stream.readAll() + "</pre>");
+			file.close();
+		}
+
+		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
+		buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
+		connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
+
+		QVBoxLayout* layout = new QVBoxLayout(this);
+		layout->addWidget(text);
+		layout->addWidget(buttons);
+
+		resize(700, 500);
+	}
+}
+
+//-----------------------------------------------------------------------------
+
 Window::Window()
 : m_pause_action(0) {
 	setWindowTitle(tr("Tanglet"));
 	setWindowIcon(QIcon(":/tanglet.png"));
 
 	// Create states
-	m_states.insert("Start", new StartState(this));
+	m_states.insert("NewGame", new NewGameState(this));
+	m_states.insert("OpenGame", new OpenGameState(this));
 	m_states.insert("Play", new PlayState(this));
 	m_states.insert("AutoPause", new AutoPauseState(this));
 	m_states.insert("Pause", new PauseState(this));
 	m_states.insert("Finish", new FinishState(this));
-	m_state = m_states.value("Start");
+	m_state = m_states.value("NewGame");
 
 	// Create widgets
 	m_contents = new QStackedWidget(this);
@@ -214,10 +277,10 @@ Window::Window()
 	m_pause_screen->installEventFilter(this);
 	m_contents->addWidget(m_pause_screen);
 
-	// Create load screen
-	QLabel* load_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
-	load_screen->setAlignment(Qt::AlignCenter);
-	m_contents->addWidget(load_screen);
+	// Create open game screen
+	QLabel* open_game_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Loading game...</p>"), this);
+	open_game_screen->setAlignment(Qt::AlignCenter);
+	m_contents->addWidget(open_game_screen);
 
 	// Create start screen
 	QLabel* start_screen = new QLabel(tr("Click to start a new game."), this);
@@ -225,10 +288,17 @@ Window::Window()
 	start_screen->installEventFilter(this);
 	m_contents->addWidget(start_screen);
 
+	// Create new game screen
+	QLabel* new_game_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
+	new_game_screen->setAlignment(Qt::AlignCenter);
+	m_contents->addWidget(new_game_screen);
+
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
-	menu->addAction(tr("&New"), this, SLOT(newGame()), tr("Ctrl+N"));
+	menu->addAction(tr("New &Game..."), this, SLOT(newGame()), tr("Ctrl+Shift+N"));
+	menu->addAction(tr("&New Roll"), this, SLOT(newRoll()), QKeySequence::New);
 	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()));
+	menu->addAction(tr("&Share..."), this, SLOT(shareGame()));
 	menu->addSeparator();
 	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()));
 	end_action->setEnabled(false);
@@ -265,10 +335,10 @@ Window::Window()
 	QAction* missed_action = menu->addAction(tr("Show Missed &Words"));
 	missed_action->setCheckable(true);
 	connect(missed_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowMissedWords(bool)));
-	menu->addSeparator();
-	QAction* higher_action = menu->addAction(tr("&Higher Scoring Boards"));
-	higher_action->setCheckable(true);
-	connect(higher_action, SIGNAL(toggled(bool)), m_board, SLOT(setHigherScoringBoards(bool)));
+	QAction* counts_action = menu->addAction(tr("Show Word &Counts"));
+	counts_action->setCheckable(true);
+	counts_action->setChecked(true);
+	connect(counts_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowWordCounts(bool)));
 	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
 	menu->addSeparator();
 	menu->addAction(tr("Application &Language..."), this, SLOT(showLocale()));
@@ -279,6 +349,7 @@ Window::Window()
 	menu->addAction(tr("&Controls"), this, SLOT(showControls()));
 	menu->addSeparator();
 	menu->addAction(tr("&About"), this, SLOT(about()));
+	menu->addAction(tr("About &Hspell"), this, SLOT(aboutHspell()));
 	menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
 	menu->addAction(tr("About &SCOWL"), this, SLOT(aboutScowl()));
 	monitorVisibility(menu);
@@ -289,13 +360,17 @@ Window::Window()
 	score_action->setChecked(true);
 	m_board->setShowMaximumScore(score_action);
 	missed_action->setChecked(settings.value("ShowMissed", true).toBool());
-	higher_action->setChecked(settings.value("Board/HigherScores", true).toBool());
+	counts_action->setChecked(settings.value("ShowWordCounts", true).toBool());
 	restoreGeometry(settings.value("Geometry").toByteArray());
 
 	// Start a new game
 	m_state->finish();
 	m_contents->setCurrentIndex(3);
-	newGame();
+	if (!settings.contains("Current/Version")) {
+		newGame();
+	} else {
+		startGame(":saved:");
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -324,9 +399,7 @@ bool Window::eventFilter(QObject* watched, QEvent* event) {
 
 void Window::closeEvent(QCloseEvent* event) {
 	QSettings().setValue("Geometry", saveGeometry());
-	if (!endGame()) {
-		event->ignore();
-	}
+	QMainWindow::closeEvent(event);
 }
 
 //-----------------------------------------------------------------------------
@@ -356,41 +429,34 @@ bool Window::event(QEvent* event) {
 
 void Window::about() {
 	QMessageBox::about(this, tr("About"),
-		QString("<center><p><big><b>%1</b></big><br/>%2<br/><small>%3<br/>%4</small></p><p>%5<br/><small>%6</small></p></center>")
+		QString("<center><p><big><b>%1</b></big><br/>%2<br/><small>%3<br/>%4</small></p><p>%5</p><p>%6</p></center>")
 		.arg(tr("Tanglet %1").arg(QCoreApplication::applicationVersion()))
 		.arg(tr("A single player variant of <a href=\"http://en.wikipedia.org/wiki/Boggle\">Boggle</a>"))
-		.arg(tr("Copyright &copy; 2009, 2010 Graeme Gott"))
+		.arg(tr("Copyright &copy; 2009, 2010, 2011 Graeme Gott"))
 		.arg(tr("Released under the <a href=\"http://www.gnu.org/licenses/gpl.html\">GPL 3</a> license"))
-		.arg(tr("Includes <a href=\"http://wordlist.sourceforge.net/\">SCOWL</a> for list of words"))
-		.arg(tr("Copyright &copy; 2000-2004 Kevin Atkinson")));
+		.arg(tr("English word list is based on <a href=\"http://wordlist.sourceforge.net/\">SCOWL</a> by Kevin Atkinson"))
+		.arg(tr("Hebrew word list is based on <a href=\"http://hspell.ivrix.org.il/\">Hspell</a> by Nadav Har'El and Dan Kenigsberg")));
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::aboutHspell() {
+	AboutDialog dialog(tr("About Hspell"), ":/hspell-readme", this);
+	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------
 
 void Window::aboutScowl() {
-	QFile file(":/scowl-readme");
-	if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-		QDialog dialog(this);
-		dialog.setWindowTitle(tr("About SCOWL"));
+	AboutDialog dialog(tr("About SCOWL"), ":/scowl-readme", this);
+	dialog.exec();
+}
 
-		QTextEdit* text = new QTextEdit(&dialog);
-		text->setWordWrapMode(QTextOption::NoWrap);
-		text->setReadOnly(true);
+//-----------------------------------------------------------------------------
 
-		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, &dialog);
-		buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
-		connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
-
-		QVBoxLayout* layout = new QVBoxLayout(&dialog);
-		layout->addWidget(text);
-		layout->addWidget(buttons);
-
-		QTextStream stream(&file);
-		text->setHtml("<pre>" + stream.readAll() + "</pre>");
-		file.close();
-
-		dialog.resize(700, 500);
-		dialog.exec();
+void Window::newRoll() {
+	if (endGame()) {
+		startGame();
 	}
 }
 
@@ -405,29 +471,31 @@ void Window::newGame() {
 	}
 }
 
+
 //-----------------------------------------------------------------------------
 
 void Window::chooseGame() {
 	if (endGame()) {
-		QDialog dialog(this, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
-		dialog.setWindowTitle(tr("Choose Game"));
-
-		QLineEdit* number = new QLineEdit(&dialog);
-		number->setInputMask("9NNNnnnnn");
-
-		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, &dialog);
-		connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
-		connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
-
-		QFormLayout* layout = new QFormLayout(&dialog);
-		layout->addRow(tr("Game Number:"), number);
-		layout->addRow(buttons);
-
-		dialog.setFixedSize(dialog.sizeHint());
-
-		if (dialog.exec() == QDialog::Accepted) {
-			startGame(!number->text().isEmpty() ? number->text() : "0");
+		QString filename = QFileDialog::getOpenFileName(window(), tr("Import Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
+		if (!filename.isEmpty()) {
+			startGame(filename);
 		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::shareGame() {
+	QString filename = QFileDialog::getSaveFileName(window(), tr("Export Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
+	if (!filename.isEmpty()) {
+		QSettings settings;
+		QSettings game(filename, QSettings::IniFormat);
+		game.setValue("Game/Version", 1);
+		game.setValue("Game/Size", settings.value("Current/Size"));
+		game.setValue("Game/Density", settings.value("Current/Density"));
+		game.setValue("Game/Minimum", settings.value("Current/Minimum"));
+		game.setValue("Game/TimerMode", settings.value("Current/TimerMode"));
+		game.setValue("Game/Letters", settings.value("Current/Letters"));
 	}
 }
 
@@ -469,12 +537,22 @@ void Window::setPaused(bool paused) {
 //-----------------------------------------------------------------------------
 
 void Window::showDetails() {
-	QString details = QSettings().value("Current").toString();
-	int size = qBound(4, details.mid(2,1).toInt(), 5);
-	QString board = (size == 4) ? tr("Normal") : tr("Large");
-	QString length = tr("%1 or more letters").arg(size - 1);
-	QString mode = Clock::timerToString(qBound(0, details.mid(3,1).toInt(), Clock::TotalTimers - 1));
-	QMessageBox::information(this, tr("Details"), tr("<p><b>Board Size:</b> %1<br><b>Word Length:</b> %2<br><b>Timer Mode:</b> %3<br><b>Game Number:</b> %4</p>").arg(board).arg(length).arg(mode).arg(details));
+	QSettings settings;
+	int size = settings.value("Current/Size").toInt();
+	int density = settings.value("Current/Density").toInt();
+	int minimum = settings.value("Current/Minimum").toInt();
+	int timer = settings.value("Current/TimerMode").toInt();
+	QMessageBox::information(this, tr("Details"),
+		QString("<p><b>%1</b> %2<br>"
+			"<b>%3</b> %4<br>"
+			"<b>%5</b> %6<br>"
+			"<b>%7</b> %8<br>"
+			"<b>%9</b> %10</p>")
+		.arg(tr("Board Size:"), (size == 4) ? tr("Normal") : tr("Large"))
+		.arg(tr("Word Density:"), NewGameDialog::densityString(density))
+		.arg(tr("Word Length:"), tr("%1 or more letters").arg(minimum))
+		.arg(tr("Game Type:"), Clock::timerToString(timer))
+		.arg(tr("Description:"), Clock::timerDescription(timer)));
 }
 
 //-----------------------------------------------------------------------------
@@ -520,6 +598,7 @@ void Window::showControls() {
 
 void Window::gameStarted() {
 	m_state->play();
+	m_details_action->setEnabled(true);
 }
 
 //-----------------------------------------------------------------------------
@@ -543,32 +622,42 @@ void Window::monitorVisibility(QMenu* menu) {
 
 //-----------------------------------------------------------------------------
 
-void Window::startGame(const QString& details) {
-	QSettings settings;
-	bool higher_scores = false;
-	int size = 0;
-	int timer = 0;
-	unsigned int seed = 0;
-	if (details.isEmpty()) {
-		higher_scores = settings.value("Board/HigherScores", true).toBool();
-		size = qBound(4, settings.value("Board/Size", 4).toInt(), 5);
-		timer = settings.value("Board/TimerMode", Clock::Tanglet).toInt();
-		seed = Random(time(0)).nextInt();
-	} else if ((details.length() >= 5) && (details.at(0) == '2')) {
-		QString unencoded = QString::number(details.mid(1).toLatin1().toULongLong(0, 36));
-		higher_scores = unencoded.mid(0,1).toInt();
-		size = qBound(4, unencoded.mid(1,1).toInt(), 5);
-		timer = qBound(0, unencoded.mid(2,1).toInt(), Clock::TotalTimers - 1);
-		seed = unencoded.mid(3).toUInt();
+void Window::startGame(const QString& filename) {
+	QSettings* game = 0;
+
+	if (filename.isEmpty()) {
+		// Start a new game
+		game = new QSettings;
+		game->remove("Current");
+		game->sync();
+		game->beginGroup("Board");
+		m_state->newGame();
 	} else {
-		QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
-		return;
+		if (filename == ":saved:") {
+			// Continue previous game
+			game = new QSettings;
+			game->beginGroup("Current");
+		} else {
+			// Start requested game
+			QSettings().remove("Current");
+			game = new QSettings(filename, QSettings::IniFormat);
+			game->beginGroup("Game");
+		}
+
+		bool loaded = false;
+		if (game->value("Version").toInt() == 1) {
+			loaded = !game->value("Letters").toStringList().isEmpty();
+		}
+		if (!loaded) {
+			QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
+			return;
+		}
+
+		m_state->openGame();
 	}
 
-	settings.setValue("Current", "2" + QByteArray::number(QString("%1%2%3%4").arg(higher_scores).arg(size).arg(timer).arg(seed).toULongLong(), 36));
-	m_state->start();
-	m_board->generate(higher_scores, size, timer, seed);
-	m_details_action->setEnabled(true);
+	m_board->generate(*game);
+	delete game;
 }
 
 //-----------------------------------------------------------------------------

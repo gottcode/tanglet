@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,8 +22,11 @@
 #include "board.h"
 #include "clock.h"
 
+#include <QComboBox>
 #include <QCommandLinkButton>
 #include <QDialogButtonBox>
+#include <QFormLayout>
+#include <QLabel>
 #include <QSettings>
 #include <QSignalMapper>
 #include <QToolButton>
@@ -31,26 +34,33 @@
 
 //-----------------------------------------------------------------------------
 
-namespace {
-	class TimerDescription {
+namespace
+{
+	class TimerDescription
+	{
 	public:
 		TimerDescription(int id)
-			: m_name(Clock::timerToString(id)), m_description(Clock::timerDescription(id)), m_id(id) {
+			: m_name(Clock::timerToString(id)), m_description(Clock::timerDescription(id)), m_id(id)
+		{
 		}
 
-		QString name() const {
+		QString name() const
+		{
 			return m_name;
 		}
 
-		QString description() const {
+		QString description() const
+		{
 			return m_description;
 		}
 
-		int id() const {
+		int id() const
+		{
 			return m_id;
 		}
 
-		bool operator<(const TimerDescription& timer) const {
+		bool operator<(const TimerDescription& timer) const
+		{
 			return m_name.localeAwareCompare(timer.m_name) < 0;
 		}
 
@@ -64,7 +74,8 @@ namespace {
 //-----------------------------------------------------------------------------
 
 NewGameDialog::NewGameDialog(QWidget* parent)
-: QDialog(parent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint) {
+	: QDialog(parent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint), m_minimum(3)
+{
 	setWindowTitle(tr("New Game"));
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
@@ -81,7 +92,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_normal_size->setIcon(QPixmap(":/preview/normal.png"));
 	m_normal_size->setText(Board::sizeToString(4));
 	m_normal_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	m_normal_size->setToolTip(tr("%1 or more letters").arg(3));
+	connect(m_normal_size, SIGNAL(clicked()), this, SLOT(sizeChanged()));
 
 	m_large_size = new QToolButton(this);
 	m_large_size->setAutoExclusive(true);
@@ -91,7 +102,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_large_size->setIcon(QPixmap(":/preview/large.png"));
 	m_large_size->setText(Board::sizeToString(5));
 	m_large_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	m_large_size->setToolTip(tr("%1 or more letters").arg(4));
+	connect(m_large_size, SIGNAL(clicked()), this, SLOT(sizeChanged()));
 
 	if (settings.value("Board/Size", 4).toInt() == 4) {
 		m_normal_size->setChecked(true);
@@ -106,6 +117,33 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	size_buttons->addWidget(m_large_size);
 	size_buttons->addStretch();
 	layout->addLayout(size_buttons);
+	layout->addSpacing(6);
+
+	// Create word options
+	m_density = new QComboBox(this);
+	for (int i = 0; i < 4; ++i) {
+		m_density->addItem(densityString(i));
+	}
+	m_density->setCurrentIndex(settings.value("Board/Density", 1).toInt());
+
+	m_length = new QComboBox(this);
+	for (int i = 0; i < 4; ++i) {
+		m_length->addItem("");
+	}
+	connect(m_length, SIGNAL(currentIndexChanged(int)), this, SLOT(lengthChanged(int)));
+	m_minimum = settings.value("Board/Minimum", 3).toInt();
+	if (m_large_size->isChecked()) {
+		--m_minimum;
+	}
+	m_length->setCurrentIndex(qBound(0, m_minimum - 3, 4));
+	sizeChanged();
+
+	QFormLayout* options_layout = new QFormLayout;
+	options_layout->setFormAlignment(Qt::AlignHCenter | Qt::AlignTop);
+	options_layout->setLabelAlignment(Qt::AlignRight | Qt::AlignVCenter);
+	options_layout->addRow(tr("Amount of Words:"), m_density);
+	options_layout->addRow(tr("Minimum Word Length:"), m_length);
+	layout->addLayout(options_layout);
 	layout->addSpacing(6);
 
 	// Create timer buttons
@@ -141,9 +179,45 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-void NewGameDialog::timerChosen(int timer) {
+QString NewGameDialog::densityString(int density) {
+	static QStringList densities = QStringList()
+		<< tr("Low")
+		<< tr("Medium")
+		<< tr("High")
+		<< tr("Random");
+	return densities.at(qBound(0, density, densities.count() - 1));
+}
+
+//-----------------------------------------------------------------------------
+
+void NewGameDialog::lengthChanged(int length)
+{
+	m_minimum = length + 3;
+}
+
+//-----------------------------------------------------------------------------
+
+void NewGameDialog::sizeChanged()
+{
+	int minimum = (m_normal_size->isChecked()) ? 3 : 4;
+	for (int i = 0; i < 4; ++i) {
+		m_length->setItemText(i, tr("%n letter(s)", "", i + minimum));
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void NewGameDialog::timerChosen(int timer)
+{
 	QSettings settings;
-	settings.setValue("Board/Size", m_normal_size->isChecked() ? 4 : 5);
+	if (m_normal_size->isChecked()) {
+		settings.setValue("Board/Size", 4);
+		settings.setValue("Board/Minimum", m_minimum);
+	} else {
+		settings.setValue("Board/Size", 5);
+		settings.setValue("Board/Minimum", m_minimum + 1);
+	}
+	settings.setValue("Board/Density", m_density->currentIndex());
 	settings.setValue("Board/TimerMode", timer);
 	QDialog::accept();
 }

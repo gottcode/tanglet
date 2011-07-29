@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
 
 #include <QPainter>
 #include <QPainterPath>
+#include <QSettings>
 #include <QTime>
 #include <QTimer>
 
@@ -41,8 +42,15 @@ public:
 	virtual QString update();
 	virtual int width() const;
 
+	void load(const QSettings& game);
+	void save(QSettings& game);
+
 protected:
 	int m_time;
+
+private:
+	virtual void loadDetails(const QSettings& game);
+	virtual void saveDetails(QSettings& game);
 };
 
 Clock::Timer::Timer()
@@ -87,6 +95,26 @@ int Clock::Timer::width() const {
 	return m_time;
 }
 
+void Clock::Timer::load(const QSettings& game) {
+	m_time = qMax(0, game.value("TimerDetails/Time", m_time).toInt()) + 1;
+	loadDetails(game);
+}
+
+void Clock::Timer::save(QSettings& game) {
+	if (!isFinished()) {
+		game.setValue("TimerDetails/Time", m_time);
+		saveDetails(game);
+	} else {
+		stop();
+	}
+}
+
+void Clock::Timer::loadDetails(const QSettings&) {
+}
+
+void Clock::Timer::saveDetails(QSettings&) {
+}
+
 //-----------------------------------------------------------------------------
 
 class Clock::AllotmentTimer : public Clock::Timer {
@@ -97,6 +125,9 @@ public:
 	int type() const;
 	QString update();
 	int width() const;
+
+private:
+	void loadDetails(const QSettings&);
 };
 
 bool Clock::AllotmentTimer::addWord(int) {
@@ -123,6 +154,10 @@ QString Clock::AllotmentTimer::update() {
 
 int Clock::AllotmentTimer::width() const {
 	return m_time * 6;
+}
+
+void Clock::AllotmentTimer::loadDetails(const QSettings&) {
+	m_time--;
 }
 
 //-----------------------------------------------------------------------------
@@ -213,6 +248,10 @@ public:
 	int width() const;
 
 private:
+	void loadDetails(const QSettings& game);
+	void saveDetails(QSettings& game);
+
+private:
 	int m_freeze;
 };
 
@@ -247,6 +286,14 @@ int Clock::StaminaTimer::width() const {
 	}
 }
 
+void Clock::StaminaTimer::loadDetails(const QSettings& game) {
+	m_freeze = qBound(0, game.value("TimerDetails/Freeze").toInt(), 5) + 1;
+}
+
+void Clock::StaminaTimer::saveDetails(QSettings& game) {
+	game.setValue("TimerDetails/Freeze", m_freeze);
+}
+
 //-----------------------------------------------------------------------------
 
 class Clock::StrikeoutTimer : public Clock::Timer {
@@ -258,6 +305,10 @@ public:
 	int type() const;
 	QString update();
 	int width() const;
+
+private:
+	void loadDetails(const QSettings& game);
+	void saveDetails(QSettings& game);
 
 private:
 	int m_strikes;
@@ -293,6 +344,14 @@ QString Clock::StrikeoutTimer::update() {
 
 int Clock::StrikeoutTimer::width() const {
 	return (3 - m_strikes) * 60;
+}
+
+void Clock::StrikeoutTimer::loadDetails(const QSettings& game) {
+	m_strikes = qBound(0, game.value("TimerDetails/Strikes").toInt(), 3);
+}
+
+void Clock::StrikeoutTimer::saveDetails(QSettings& game) {
+	game.setValue("TimerDetails/Strikes", m_strikes);
 }
 
 //-----------------------------------------------------------------------------
@@ -396,6 +455,19 @@ void Clock::start() {
 void Clock::stop() {
 	m_timer->stop();
 	updateTime();
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::load(const QSettings& game) {
+	m_timer->load(game);
+	updateTime();
+}
+
+//-----------------------------------------------------------------------------
+
+void Clock::save(QSettings& game) {
+	m_timer->save(game);
 }
 
 //-----------------------------------------------------------------------------

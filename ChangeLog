@@ -1,3 +1,80 @@
+2011-07-18 Graeme Gott <graeme@gottcode.org>
+	* Add a load screen.
+	* Save game across program runs.
+
+2011-06-29 Graeme Gott <graeme@gottcode.org>
+	* Add new roll action.
+
+2011-06-26 Graeme Gott <graeme@gottcode.org>
+	* Change word length text.
+
+2011-06-22 Graeme Gott <graeme@gottcode.org>
+	* Add option for random board density.
+	* Reduce amount of board densities.
+
+2011-06-21 Graeme Gott <graeme@gottcode.org>
+	* Allow player to specify minimum length of words.
+	* Replace difficulty with density.
+
+2011-06-19 Graeme Gott <graeme@gottcode.org>
+	* Show counts of word lengths.
+
+2011-06-15 Graeme Gott <graeme@gottcode.org>
+	* Increase minimum word length on hard boards.
+
+2011-06-14 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Only showed correct guesses when typing.
+
+2011-06-11 Graeme Gott <graeme@gottcode.org>
+	* Add choosing board difficulty.
+
+2011-06-08 Graeme Gott <graeme@gottcode.org>
+	* Show game description in details window.
+	* Redesign choosing games.
+
+2011-06-07 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Crashed when guessing a word twice.
+
+2011-06-05 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Did not properly highlight missed Hebrew words.
+	* FIXED: Details window had incorrect values.
+
+2011-06-05 Bentzy Sagiv <bentzy.sagiv@gmail.com>
+	* Complete Hebrew translation.
+
+2011-06-04 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Crashed when requested Hebrew dictionary definitions.
+
+2011-06-03 Bentzy Sagiv <bentzy.sagiv@gmail.com>
+	* Update Hebrew translation.
+
+2011-06-03 Graeme Gott <graeme@gottcode.org>
+	* Allow different default dictionaries.
+	* Add support for some second plurals when showing max score.
+
+2011-06-02 Graeme Gott <graeme@gottcode.org>
+	* Replace final form letters of Hebrew words.
+
+2011-05-31 Bentzy Sagiv <bentzy.sagiv@gmail.com>
+	* Update Hebrew translation.
+
+2011-05-31 Graeme Gott <graeme@gottcode.org>
+	* Add credits.
+	* Rename translation files.
+	* Update locale dialog.
+
+2011-05-28 Bentzy Sagiv <bentzy.sagiv@gmail.com>
+	* Update Hebrew translation.
+
+2011-05-27 Bentzy Sagiv <bentzy.sagiv@gmail.com>
+	* Add Hebrew translation and data files.
+
+2011-04-08 Graeme Gott <graeme@gottcode.org>
+	* Rename base translation file.
+
+2010-12-13 Pavel Fric <pavelfric@seznam.cz>
+	* Update Czech translation.
+
 2010-12-12 Graeme Gott <graeme@gottcode.org>
 	* Add changing the program language.
 

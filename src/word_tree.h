@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ class WordTree : public QTreeWidget {
 
 		QTreeWidgetItem* addWord(const QString& word);
 		void removeAll();
-		void setDictionary(const QString& url);
+		void setDictionary(const QString& url, const QString& query);
 
 	protected:
 		virtual void leaveEvent(QEvent* event);
@@ -46,6 +46,8 @@ class WordTree : public QTreeWidget {
 	private:
 		QTreeWidgetItem* m_active_item;
 		QString m_url;
+		QString m_query;
+		bool m_hebrew;
 };
 
 #endif

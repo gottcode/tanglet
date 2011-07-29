@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,9 +40,12 @@ class Window : public QMainWindow {
 
 	private slots:
 		void about();
+		void aboutHspell();
 		void aboutScowl();
+		void newRoll();
 		void newGame();
 		void chooseGame();
+		void shareGame();
 		bool endGame();
 		void autoPause();
 		void autoResume();
@@ -56,8 +59,8 @@ class Window : public QMainWindow {
 		void gameFinished(int score);
 
 	private:
+		void startGame(const QString& filename = QString());
 		void monitorVisibility(QMenu* menu);
-		void startGame(const QString& details = QString());
 
 	private:
 		Board* m_board;
@@ -68,7 +71,8 @@ class Window : public QMainWindow {
 
 		class State;
 		friend class State;
-		class StartState;
+		class NewGameState;
+		class OpenGameState;
 		class PlayState;
 		class AutoPauseState;
 		class PauseState;

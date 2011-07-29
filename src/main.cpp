@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
 	paths.append(path + "/../Resources/");
 	QDir::setSearchPaths("tanglet", paths);
 
-	LocaleDialog::loadTranslator();
+	LocaleDialog::loadTranslator("tanglet_");
 
 	QSettings settings;
 	if (settings.value("Language", -1).toInt() == -1) {

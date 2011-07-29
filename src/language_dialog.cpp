@@ -32,6 +32,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QSettings>
+#include <QTextStream>
 #include <QVBoxLayout>
 
 //-----------------------------------------------------------------------------
@@ -158,7 +159,15 @@ void LanguageDialog::chooseLanguage(int index) {
 		QString iso_code = QLocale(static_cast<QLocale::Language>(language)).name().left(2);
 		m_dice_path = "tanglet:" + iso_code + "/dice";
 		m_words_path = "tanglet:" + iso_code + "/words";
-		m_dictionary->setText("http://www.google.com/dictionary?langpair=" + iso_code + "|" + iso_code + "&q=%s");
+		QString dictionary;
+		QFile file("tanglet:" + iso_code + "/dictionary");
+		if (file.open(QFile::ReadOnly | QFile::Text)) {
+			QTextStream stream(&file);
+			stream.setCodec("UTF-8");
+			dictionary = stream.readLine().simplified();
+			file.close();
+		}
+		m_dictionary->setText(!dictionary.isEmpty() ? dictionary : "http://www.google.com/dictionary?langpair=" + iso_code + "|" + iso_code + "&q=%s");
 	} else {
 		m_dice_path = settings.value("CustomDice", m_dice_path).toString();
 		m_words_path = settings.value("CustomWords", m_words_path).toString();

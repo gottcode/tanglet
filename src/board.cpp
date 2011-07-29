@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +22,11 @@
 #include "clock.h"
 #include "generator.h"
 #include "letter.h"
+#include "random.h"
 #include "scores_dialog.h"
 #include "solver.h"
 #include "view.h"
+#include "word_counts.h"
 #include "word_tree.h"
 
 #include <QAction>
@@ -128,6 +130,9 @@ Board::Board(QWidget* parent)
 	int width = guess_layout->sizeHint().width();
 	m_tabs->setFixedWidth(width);
 
+	m_counts = new WordCounts(this);
+	m_counts->setMinimumWidth(width);
+
 	// Lay out board
 	QGridLayout* layout = new QGridLayout(this);
 	layout->setColumnStretch(1, 1);
@@ -137,6 +142,35 @@ Board::Board(QWidget* parent)
 	layout->addWidget(m_clock, 0, 1, Qt::AlignCenter);
 	layout->addWidget(m_view, 1, 1);
 	layout->addLayout(score_layout, 2, 1, Qt::AlignCenter);
+	layout->addWidget(m_counts, 3, 0, 1, 2);
+}
+
+//-----------------------------------------------------------------------------
+
+Board::~Board() {
+	QSettings game;
+	if (isFinished()) {
+		// Clear current game
+		game.remove("Current");
+	} else {
+		// Save current game
+		game.beginGroup("Current");
+
+		QStringList found;
+		for (int i = 0; i < m_found->topLevelItemCount(); ++i) {
+			found += m_found->topLevelItem(i)->text(2);
+		}
+		game.setValue("Found", found);
+
+		game.setValue("Guess", m_guess->text());
+		QVariantList positions;
+		foreach (const QPoint& position, m_positions) {
+			positions.append(position);
+		}
+		game.setValue("GuessPositions", positions);
+
+		m_clock->save(game);
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -154,9 +188,37 @@ void Board::abort() {
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(bool higher_scores, int size, int timer, unsigned int seed) {
+void Board::generate(const QSettings& game) {
+	// Find values
+	int size = qBound(4, game.value("Size").toInt(), 5);
+	int density = qBound(0, game.value("Density").toInt(), 3);
+	int minimum = game.value("Minimum").toInt();
+	if (size == 4) {
+		minimum = qBound(3, minimum, 6);
+	} else {
+		minimum = qBound(4, minimum, 7);
+	}
+	int timer = qBound(0, game.value("TimerMode").toInt(), Clock::TotalTimers - 1);
+	QStringList letters = game.value("Letters").toStringList();
+	unsigned int seed = Random(time(0)).nextInt();
+
+	// Store values
+	{
+		QSettings settings;
+		settings.beginGroup("Current");
+		settings.setValue("Version", 1);
+		settings.setValue("Size", size);
+		settings.setValue("Density", density);
+		settings.setValue("Minimum", minimum);
+		settings.setValue("TimerMode", timer);
+		if (!letters.isEmpty()) {
+			settings.setValue("Letters", letters);
+		}
+	}
+
+	// Create new game
 	m_generator->cancel();
-	m_generator->create(higher_scores, size, timer, seed);
+	m_generator->create(density, size, minimum, timer, letters, seed);
 }
 
 //-----------------------------------------------------------------------------
@@ -179,12 +241,6 @@ void Board::setPaused(bool pause) {
 
 QString Board::sizeToString(int size) {
 	return (size == 4) ? tr("Normal") : tr("Large");
-}
-
-//-----------------------------------------------------------------------------
-
-void Board::setHigherScoringBoards(bool higher) {
-	QSettings().setValue("Board/HigherScores", higher);
 }
 
 //-----------------------------------------------------------------------------
@@ -216,22 +272,34 @@ void Board::setShowMissedWords(bool show) {
 
 //-----------------------------------------------------------------------------
 
+void Board::setShowWordCounts(bool show) {
+	QSettings().setValue("ShowWordCounts", show);
+	m_counts->setVisible(show);
+}
+
+//-----------------------------------------------------------------------------
+
 void Board::gameStarted() {
 	// Load settings
+	QSettings settings;
+	settings.beginGroup("Current");
+
 	m_clock->setTimer(m_generator->timer());
 	if (m_generator->size() != m_size) {
 		m_size = m_generator->size();
 		m_cells = QVector<QVector<Letter*> >(m_size, QVector<Letter*>(m_size));
-		m_minimum = m_size - 1;
 		m_maximum = m_size * m_size;
 		m_guess->setMaxLength(m_maximum);
 	}
+	m_minimum = m_generator->minimum();
 	m_max_score = m_generator->maxScore();
 	m_max_score_details->hide();
 	m_letters = m_generator->letters();
 	m_solutions = m_generator->solutions();
-	m_found->setDictionary(m_generator->dictionary());
-	m_missed->setDictionary(m_generator->dictionary());
+	m_counts->setWords(m_solutions.keys());
+	m_found->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
+	m_missed->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
+	settings.setValue("Letters", m_letters);
 
 	// Create cells
 	QFont f = font();
@@ -293,6 +361,24 @@ void Board::gameStarted() {
 		m_missed->addWord(solution);
 	}
 
+	// Add found words
+	QStringList found = settings.value("Found").toStringList();
+	foreach (const QString& text, found) {
+		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
+		if (m_missed->findItems(text, Qt::MatchExactly, 2).value(0) && !item) {
+			item = m_found->addWord(text);
+			delete m_missed->findItems(text, Qt::MatchExactly, 2).first();
+			m_counts->findWord(text);
+		}
+	}
+
+	// Add guess
+	m_guess->setText(settings.value("Guess").toString());
+	QVariantList positions = settings.value("GuessPositions").toList();
+	foreach (const QVariant& position, positions) {
+		m_positions.append(position.toPoint());
+	}
+
 	// Show errors
 	QString error = m_generator->error();
 	if (!error.isEmpty()) {
@@ -305,8 +391,12 @@ void Board::gameStarted() {
 	emit started();
 	if (m_missed->topLevelItemCount() > 0) {
 		m_clock->start();
+		if (settings.contains("TimerDetails/Time")) {
+			m_clock->load(settings);
+		}
 		updateScore();
 		updateClickableStatus();
+		highlightWord();
 	} else {
 		m_clock->stop();
 	}
@@ -342,10 +432,10 @@ void Board::guess() {
 		}
 
 		// Create found item
-		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly).value(0);
+		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
 		if (item == 0) {
 			item = m_found->addWord(text);
-			delete m_missed->findItems(text, Qt::MatchExactly, 0).first();
+			delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).first();
 
 			m_clock->addWord(item->data(0, Qt::UserRole).toInt());
 			updateScore();
@@ -357,6 +447,8 @@ void Board::guess() {
 			} else {
 				solutions.prepend(m_positions);
 			}
+
+			m_counts->findWord(text);
 		}
 		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
 		m_found->clearSelection();
@@ -392,7 +484,10 @@ void Board::guessChanged() {
 		m_guess->setText(word);
 		m_guess->setCursorPosition(pos);
 
-		QList<QList<QPoint> > solutions = m_solutions.value(word, Solver(word, m_letters, 0).solutions().value(word));
+		Trie trie(word);
+		Solver solver(trie, m_size, 0);
+		solver.solve(m_letters);
+		QList<QList<QPoint> > solutions = m_solutions.value(word, solver.solutions().value(word));
 		m_valid = !solutions.isEmpty();
 		if (m_valid) {
 			int index = 0;
@@ -479,7 +574,7 @@ void Board::wordSelected() {
 		return;
 	}
 
-	QString word = items.first()->text(0);
+	QString word = items.first()->text(2);
 	if (!word.isEmpty() && word != m_guess->text()) {
 		m_guess->setText(word);
 		m_positions = m_solutions.value(word).value(0);
@@ -622,9 +717,21 @@ int Board::updateScore() {
 	}
 
 	if (m_score_type == 2 || (m_score_type == 1 && isFinished())) {
-		m_score->setText(tr("%1 of %n point(s)", "", m_max_score).arg(score));
+		if (score > 3) {
+			m_score->setText(tr("%1 of %n point(s)", "", m_max_score).arg(score));
+		} else if (score == 3) {
+			m_score->setText(tr("3 of %n point(s)", "", m_max_score));
+		} else if (score == 2) {
+			m_score->setText(tr("2 of %n point(s)", "", m_max_score));
+		} else if (score == 1) {
+			m_score->setText(tr("1 of %n point(s)", "", m_max_score));
+		} else {
+			m_score->setText(tr("0 of %n point(s)", "", m_max_score));
+		}
+		m_counts->setMaximumsVisible(true);
 	} else {
 		m_score->setText(tr("%n point(s)", "", score));
+		m_counts->setMaximumsVisible(false);
 	}
 
 	QFont f = font();
@@ -694,7 +801,7 @@ void Board::showMaximumWords() {
 	message->setWordWrap(true);
 
 	WordTree* words = new WordTree(this);
-	words->setDictionary(m_generator->dictionary());
+	words->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
 	QList<QTreeWidget*> trees = QList<QTreeWidget*>() << m_found << m_missed;
 	foreach (QTreeWidget* tree, trees) {
 		for (int i = 0; i < tree->topLevelItemCount(); ++i) {

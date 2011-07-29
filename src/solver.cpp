@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,21 +25,9 @@
 
 //-----------------------------------------------------------------------------
 
-Solver::Solver(const Trie& words, const QStringList& letters, int minimum)
-: m_words(&words), m_minimum(minimum) {
-	// Find size
-	int size = 0;
-	switch (letters.count()) {
-	case 16:
-		size = 4;
-		break;
-	case 25:
-		size = 5;
-		break;
-	default:
-		return;
-	}
-
+Solver::Solver(const Trie& words, int size, int minimum)
+	: m_words(&words), m_size(size), m_minimum(minimum)
+{
 	// Create neighbors
 	QList<QList<QPoint> > neighbors;
 	const QPoint deltas[] = {
@@ -52,13 +40,13 @@ Solver::Solver(const Trie& words, const QStringList& letters, int minimum)
 		QPoint(0,1),
 		QPoint(1,1)
 	};
-	for (int r = 0; r < size; ++r) {
-		for (int c = 0; c < size; ++c) {
+	for (int r = 0; r < m_size; ++r) {
+		for (int c = 0; c < m_size; ++c) {
 			QList<QPoint> positions;
 			QPoint pos(c, r);
 			for (int i = 0; i < 8; ++i) {
 				QPoint n = pos + deltas[i];
-				if (n.x() > -1 && n.x() < size && n.y() > -1 && n.y() < size) {
+				if (n.x() > -1 && n.x() < m_size && n.y() > -1 && n.y() < m_size) {
 					positions.append(n);
 				}
 			}
@@ -67,12 +55,11 @@ Solver::Solver(const Trie& words, const QStringList& letters, int minimum)
 	}
 
 	// Create cells
-	m_cells = QVector<QVector<Cell> >(size, QVector<Cell>(size));
-	for (int r = 0; r < size; ++r) {
-		for (int c = 0; c < size; ++c) {
-			int index = (r * size) + c;
+	m_cells = QVector<QVector<Cell> >(m_size, QVector<Cell>(m_size));
+	for (int r = 0; r < m_size; ++r) {
+		for (int c = 0; c < m_size; ++c) {
+			int index = (r * m_size) + c;
 			Cell& cell = m_cells[c][r];
-			cell.text = letters.at(index).toUpper();
 			cell.position = QPoint(c,r);
 			cell.checked = false;
 
@@ -83,10 +70,26 @@ Solver::Solver(const Trie& words, const QStringList& letters, int minimum)
 			}
 		}
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Solver::solve(const QStringList& letters)
+{
+	m_solutions.clear();
+	m_positions.clear();
+	m_word.clear();
+
+	// Set cell contents
+	for (int r = 0; r < m_size; ++r) {
+		for (int c = 0; c < m_size; ++c) {
+			m_cells[c][r].text = letters.at((r * m_size) + c).toUpper();
+		}
+	}
 
 	// Solve board
-	for (int r = 0; r < size; ++r) {
-		for (int c = 0; c < size; ++c) {
+	for (int r = 0; r < m_size; ++r) {
+		for (int c = 0; c < m_size; ++c) {
 			checkCell(m_cells[c][r]);
 		}
 	}
@@ -94,39 +97,36 @@ Solver::Solver(const Trie& words, const QStringList& letters, int minimum)
 
 //-----------------------------------------------------------------------------
 
-int Solver::score(int max) const {
+int Solver::score(int max) const
+{
 	QList<int> scores;
 	QHashIterator<QString, QList<QList<QPoint> > > i(m_solutions);
 	while (i.hasNext()) {
-		i.next();
-		scores += score(i.key());
+		scores += score(i.next().key());
 	}
 	qSort(scores.begin(), scores.end(), qGreater<int>());
 
 	int result = 0;
-	scores = (max == -1) ? scores : scores.mid(0, max);
-	foreach (int score, scores) {
-		result += score;
+	int count = (max == -1) ? scores.count() : max;
+	for (int i = 0; i < count; ++i) {
+		result += scores.at(i);
 	}
 	return result;
 }
 
 //-----------------------------------------------------------------------------
 
-int Solver::score(const QString& word) {
-	int length = word.length();
-	Q_ASSERT(length <= 25);
-	if (length < 8) {
-		const int scores[7] = { 0,0,1,1,2,3,5 };
-		return scores[length - 1];
-	} else {
-		return 11;
-	}
+int Solver::score(const QString& word)
+{
+	Q_ASSERT(word.length() <= 25);
+	static const int scores[24] = { 0,0,1,1,2,3,5,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11 };
+	return scores[word.length() - 1];
 }
 
 //-----------------------------------------------------------------------------
 
-void Solver::checkCell(Cell& cell) {
+void Solver::checkCell(Cell& cell)
+{
 	const Trie* words = m_words;
 	int length = cell.text.length();
 	for (int i = 0; i < length; ++i) {

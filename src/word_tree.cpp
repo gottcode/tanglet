@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 #include "word_tree.h"
 
+#include "language_settings.h"
 #include "solver.h"
 
 #include <QDesktopServices>
@@ -29,8 +30,9 @@
 //-----------------------------------------------------------------------------
 
 WordTree::WordTree(QWidget* parent)
-: QTreeWidget(parent), m_active_item(0) {
-	setColumnCount(2);
+: QTreeWidget(parent), m_active_item(0), m_hebrew(false) {
+	setColumnCount(3);
+	hideColumn(2);
 	header()->setStretchLastSection(false);
 	header()->setResizeMode(0, QHeaderView::Stretch);
 	header()->setResizeMode(1, QHeaderView::Fixed);
@@ -51,7 +53,33 @@ WordTree::WordTree(QWidget* parent)
 
 QTreeWidgetItem* WordTree::addWord(const QString& word) {
 	QTreeWidgetItem* item = new QTreeWidgetItem(this);
-	item->setText(0, word);
+	item->setText(2, word);
+	if (!m_hebrew) {
+		item->setText(0, word);
+	} else {
+		QString copy = word;
+		int end = copy.length() - 1;
+		switch (copy.at(end).unicode()) {
+		case 0x05db:
+			copy[end] = 0x05da;
+			break;
+		case 0x05de:
+			copy[end] = 0x05dd;
+			break;
+		case 0x05e0:
+			copy[end] = 0x05df;
+			break;
+		case 0x05e4:
+			copy[end] = 0x05e3;
+			break;
+		case 0x05e6:
+			copy[end] = 0x05e5;
+			break;
+		default:
+			break;
+		}
+		item->setText(0, copy);
+	}
 	item->setIcon(1, QIcon(":/empty.png"));
 	int score = Solver::score(word);
 	item->setData(0, Qt::UserRole, score);
@@ -64,12 +92,14 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 void WordTree::removeAll() {
 	m_active_item = 0;
 	clear();
+	m_hebrew = (LanguageSettings().language() == QLocale::Hebrew);
 }
 
 //-----------------------------------------------------------------------------
 
-void WordTree::setDictionary(const QString& url) {
+void WordTree::setDictionary(const QString& url, const QString& query) {
 	m_url = url;
+	m_query = query;
 }
 
 //-----------------------------------------------------------------------------
@@ -97,8 +127,8 @@ void WordTree::wheelEvent(QWheelEvent* event) {
 
 void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
 	if (item && column == 1) {
-		QString url = m_url;
-		url.replace("%s", item->text(0).toLower());
+		QUrl url(m_url);
+		url.addQueryItem(m_query, item->text(0).toLower());
 		QDesktopServices::openUrl(url);
 	}
 }

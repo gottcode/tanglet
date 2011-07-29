@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,33 +17,37 @@
  *
  ***********************************************************************/
 
-#ifndef LOCALE_DIALOG_H
-#define LOCALE_DIALOG_H
+#ifndef WORD_COUNTS_H
+#define WORD_COUNTS_H
 
-#include <QDialog>
-class QComboBox;
+#include <QScrollArea>
+class QLabel;
 
-class LocaleDialog : public QDialog
+class WordCounts : public QScrollArea
 {
 	Q_OBJECT
 
 public:
-	LocaleDialog(QWidget* parent = 0);
+	WordCounts(QWidget* parent = 0);
 
-	static void loadTranslator(const QString& appname);
-
-public slots:
-	virtual void accept();
-
-private:
-	static QStringList findTranslations();
+	void findWord(const QString& word);
+	void setMaximumsVisible(bool visible);
+	void setWords(const QStringList& words);
 
 private:
-	QComboBox* m_translations;
+	struct Group;
+	void updateString();
 
-	static QString m_current;
-	static QString m_path;
-	static QString m_appname;
+private:
+	bool m_show_max;
+	struct Group
+	{
+		int length;
+		int count;
+		int max;
+		QLabel* label;
+	};
+	QVector<Group> m_groups;
 };
 
 #endif

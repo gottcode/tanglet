@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,37 +20,41 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+class Clock;
+class Generator;
+class Letter;
+class View;
+class WordCounts;
+class WordTree;
+
 #include <QHash>
 #include <QList>
 #include <QPoint>
 #include <QWidget>
 class QLabel;
 class QLineEdit;
+class QSettings;
 class QTabWidget;
 class QToolButton;
-class Clock;
-class Generator;
-class Letter;
-class View;
-class WordTree;
 
 class Board : public QWidget {
 	Q_OBJECT
 
 	public:
 		Board(QWidget* parent = 0);
+		~Board();
 
 		bool isFinished() const;
 		void abort();
-		void generate(bool higher_scores, int size, int timer, unsigned int seed);
+		void generate(const QSettings& game);
 		void setPaused(bool pause);
 
 		static QString sizeToString(int size);
 
 	public slots:
-		void setHigherScoringBoards(bool higher);
 		void setShowMissedWords(bool show);
 		void setShowMaximumScore(QAction* show);
+		void setShowWordCounts(bool show);
 
 	signals:
 		void started();
@@ -84,6 +88,7 @@ class Board : public QWidget {
 		QTabWidget* m_tabs;
 		WordTree* m_found;
 		WordTree* m_missed;
+		WordCounts* m_counts;
 		QToolButton* m_clear_button;
 		QToolButton* m_guess_button;
 		QToolButton* m_max_score_details;
