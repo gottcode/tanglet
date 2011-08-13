@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,8 @@
 
 #include <QDateTime>
 #include <QDialog>
+class QAbstractButton;
+class QDialogButtonBox;
 class QGridLayout;
 class QLabel;
 class QLineEdit;
@@ -37,6 +39,7 @@ class ScoresDialog : public QDialog {
 
 	private slots:
 		void editingFinished();
+		void resetClicked(QAbstractButton* button);
 
 	private:
 		int addScore(const QString& name, int score, const QDateTime& date, int timer);
@@ -44,6 +47,8 @@ class ScoresDialog : public QDialog {
 		void updateItems();
 
 	private:
+		QDialogButtonBox* m_buttons;
+
 		struct Score {
 			QString name;
 			int score;

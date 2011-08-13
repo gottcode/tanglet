@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,8 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include <QMessageBox>
+#include <QPushButton>
 #include <QSettings>
 #include <QStyle>
 #include <QVBoxLayout>
@@ -94,20 +96,22 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	connect(m_username, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
 
 	// Lay out dialog
-	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
-	buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
-	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
+	m_buttons = new QDialogButtonBox(QDialogButtonBox::Reset | QDialogButtonBox::Close, Qt::Horizontal, this);
+	m_buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
+	m_buttons->button(QDialogButtonBox::Close)->setFocus();
+	connect(m_buttons, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(m_buttons, SIGNAL(clicked(QAbstractButton*)), this, SLOT(resetClicked(QAbstractButton*)));
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addLayout(m_scores_layout);
-	layout->addWidget(buttons);
+	layout->addWidget(m_buttons);
 }
 
 //-----------------------------------------------------------------------------
 
 bool ScoresDialog::addScore(int score) {
 	// Add score
-	m_row = addScore(m_default_name, score, QDateTime::currentDateTime(), QSettings().value("Board/TimerMode", Clock::Tanglet).toInt());
+	m_row = addScore(m_default_name, score, QDateTime::currentDateTime(), QSettings().value("Current/TimerMode", Clock::Tanglet).toInt());
 	if (m_row == -1) {
 		return false;
 	}
@@ -162,6 +166,18 @@ void ScoresDialog::editingFinished() {
 	QSettings settings;
 	settings.setValue("Scores/DefaultName", m_username->text());
 	settings.setValue("Scores/Values", values);
+}
+
+//-----------------------------------------------------------------------------
+
+void ScoresDialog::resetClicked(QAbstractButton* button) {
+	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
+		if (QMessageBox::question(this, tr("Question"), tr("Clear high scores?"), QMessageBox::No | QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes) {
+			m_scores.clear();
+			updateItems();
+			QSettings().setValue("Scores/Values", QStringList());
+		}
+	}
 }
 
 //-----------------------------------------------------------------------------
