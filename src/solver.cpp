@@ -26,7 +26,7 @@
 //-----------------------------------------------------------------------------
 
 Solver::Solver(const Trie& words, int size, int minimum)
-	: m_words(&words), m_size(size), m_minimum(minimum)
+	: m_words(&words), m_size(size), m_minimum(minimum), m_track_positions(true), m_count(0)
 {
 	// Create neighbors
 	QList<QList<QPoint> > neighbors;
@@ -79,6 +79,7 @@ void Solver::solve(const QStringList& letters)
 	m_solutions.clear();
 	m_positions.clear();
 	m_word.clear();
+	m_count = 0;
 
 	// Set cell contents
 	for (int r = 0; r < m_size; ++r) {
@@ -125,6 +126,13 @@ int Solver::score(const QString& word)
 
 //-----------------------------------------------------------------------------
 
+void Solver::setTrackPositions(bool track_positions)
+{
+	m_track_positions = track_positions;
+}
+
+//-----------------------------------------------------------------------------
+
 void Solver::checkCell(Cell& cell)
 {
 	const Trie* words = m_words;
@@ -142,7 +150,10 @@ void Solver::checkCell(Cell& cell)
 	qSwap(m_words, words);
 
 	if (m_words->isWord() && (m_word.length() >= m_minimum)) {
-		m_solutions[m_word].append(m_positions);
+		m_count++;
+		if (m_track_positions) {
+			m_solutions[m_word].append(m_positions);
+		}
 	}
 	if (!m_words->isEmpty()) {
 		int count = cell.neighbors.count();

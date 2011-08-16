@@ -32,6 +32,11 @@ public:
 
 	void solve(const QStringList& letters);
 
+	int count() const
+	{
+		return m_count;
+	}
+
 	QHash<QString, QList<QList<QPoint> > > solutions() const
 	{
 		return m_solutions;
@@ -39,6 +44,8 @@ public:
 
 	int score(int max = -1) const;
 	static int score(const QString& word);
+
+	void setTrackPositions(bool track_positions);
 
 private:
 	struct Cell;
@@ -48,9 +55,11 @@ private:
 	const Trie* m_words;
 	int m_size;
 	int m_minimum;
+	bool m_track_positions;
 	QString m_word;
 	QList<QPoint> m_positions;
 	QHash<QString, QList<QList<QPoint> > > m_solutions;
+	int m_count;
 
 	struct Cell {
 		QString text;

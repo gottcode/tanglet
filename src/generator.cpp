@@ -103,7 +103,7 @@ namespace
 		void solve()
 		{
 			m_solver->solve(m_letters);
-			int words = m_solver->solutions().count();
+			int words = m_solver->count();
 			m_delta = abs(words - m_target);
 		}
 
@@ -195,6 +195,7 @@ void Generator::run()
 	}
 
 	// Create board state
+	solver.setTrackPositions(false);
 	State current(dice(m_size), &solver, words_target, &random);
 	current.roll();
 	State next = current;
@@ -231,6 +232,8 @@ void Generator::run()
 
 	// Store solutions for generated board
 	m_letters = current.letters();
+	solver.setTrackPositions(true);
+	solver.solve(m_letters);
 	m_max_score = solver.score(m_max_words);
 	m_solutions = solver.solutions();
 }

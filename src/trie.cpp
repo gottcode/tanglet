@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,22 +24,14 @@
 //-----------------------------------------------------------------------------
 
 Trie* Trie::addChild(const QChar& letter) {
-	if (!m_children) {
-		m_children = new Trie(letter);
-		return m_children;
+	std::vector<Trie>::iterator i = std::find(m_children.begin(), m_children.end(), letter);
+	if (i != m_children.end()) {
+		return &*i;
+	} else {
+		Trie trie(letter);
+		m_children.push_back(trie);
+		return &m_children.back();
 	}
-
-	Trie* previous = 0;
-	Trie* current = m_children;
-	while (current && current->m_key != letter) {
-		previous = current;
-		current = current->m_next;
-	}
-
-	if (!current) {
-		previous->m_next = current = new Trie(letter);
-	}
-	return current;
 }
 
 //-----------------------------------------------------------------------------
@@ -55,11 +47,7 @@ void Trie::addWord(const QString& word) {
 //-----------------------------------------------------------------------------
 
 void Trie::clear() {
-	delete m_children;
-	m_children = 0;
-
-	delete m_next;
-	m_next = 0;
+	m_children.clear();
 }
 
 //-----------------------------------------------------------------------------
