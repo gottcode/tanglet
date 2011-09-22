@@ -210,12 +210,12 @@
 <context>
     <name>Generator</name>
     <message>
-        <location filename="../src/generator.cpp" line="284"/>
+        <location filename="../src/generator.cpp" line="287"/>
         <source>Unable to read dice from file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="314"/>
+        <location filename="../src/generator.cpp" line="317"/>
         <source>Unable to read word list from file.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -277,22 +277,22 @@
 <context>
     <name>LocaleDialog</name>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="99"/>
+        <location filename="../src/locale_dialog.cpp" line="100"/>
         <source>Select application language:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="102"/>
+        <location filename="../src/locale_dialog.cpp" line="103"/>
         <source>&lt;System Language&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="196"/>
+        <location filename="../src/locale_dialog.cpp" line="197"/>
         <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="196"/>
+        <location filename="../src/locale_dialog.cpp" line="197"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation type="unfinished"></translation>
     </message>

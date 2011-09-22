@@ -58,7 +58,8 @@ SOURCES += src/board.cpp \
 TRANSLATIONS = translations/tanglet_cs.ts \
 	translations/tanglet_en.ts \
 	translations/tanglet_fr.ts \
-	translations/tanglet_he.ts
+	translations/tanglet_he.ts \
+	translations/tanglet_nl.ts
 
 RESOURCES = icons/icons.qrc data.qrc
 macx:ICON = icons/tanglet.icns
