@@ -45,33 +45,33 @@
     <message numerus="yes">
         <location filename="../src/board.cpp" line="723"/>
         <source>3 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>3 sur %n point</numerusform>
+            <numerusform>3 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/board.cpp" line="725"/>
         <source>2 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>2 sur %n point</numerusform>
+            <numerusform>2 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/board.cpp" line="727"/>
         <source>1 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>1 sur %n point</numerusform>
+            <numerusform>1 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/board.cpp" line="729"/>
         <source>0 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>0 sur %n point</numerusform>
+            <numerusform>0 sur %n points</numerusform>
         </translation>
     </message>
     <message>
@@ -133,7 +133,7 @@
     <message>
         <location filename="../src/clock.cpp" line="520"/>
         <source>Strikeout</source>
-        <translation>Trois blâmes</translation>
+        <translation>Trois Blâmes</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="521"/>
@@ -225,7 +225,7 @@
     <message>
         <location filename="../src/language_dialog.cpp" line="42"/>
         <source>Board Language</source>
-        <translation>Langue de la grille</translation>
+        <translation>Langue de la Grille</translation>
     </message>
     <message>
         <location filename="../src/language_dialog.cpp" line="63"/>
@@ -256,7 +256,7 @@
     <message>
         <location filename="../src/language_dialog.cpp" line="106"/>
         <source>Word list:</source>
-        <translation>Liste des mots :</translation>
+        <translation>Liste des Mots :</translation>
     </message>
     <message>
         <location filename="../src/language_dialog.cpp" line="110"/>
@@ -266,12 +266,12 @@
     <message>
         <location filename="../src/language_dialog.cpp" line="192"/>
         <source>Choose Dice File</source>
-        <translation>Choisir un fichier de dés</translation>
+        <translation>Choisir un Fichier de Dés</translation>
     </message>
     <message>
         <location filename="../src/language_dialog.cpp" line="202"/>
         <source>Choose Word List File</source>
-        <translation>Choisir un fichier de liste des mots</translation>
+        <translation>Choisir un Fichier de Liste des Mots</translation>
     </message>
 </context>
 <context>
@@ -279,12 +279,12 @@
     <message>
         <location filename="../src/locale_dialog.cpp" line="100"/>
         <source>Select application language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisissez la Langue de l&apos;Application :</translation>
     </message>
     <message>
         <location filename="../src/locale_dialog.cpp" line="103"/>
         <source>&lt;System Language&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Langue du Système&gt;</translation>
     </message>
     <message>
         <location filename="../src/locale_dialog.cpp" line="197"/>
@@ -294,7 +294,7 @@
     <message>
         <location filename="../src/locale_dialog.cpp" line="197"/>
         <source>Please restart this application for the change in language to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Veuillez redémarrer l&apos;application afin que les modifications soient prises en compte.</translation>
     </message>
 </context>
 <context>
@@ -302,44 +302,44 @@
     <message>
         <location filename="../src/new_game_dialog.cpp" line="79"/>
         <source>New Game</source>
-        <translation>Nouvelle partie</translation>
+        <translation>Nouvelle Partie</translation>
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="144"/>
         <source>Amount of Words:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abondance de Mots :</translation>
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="145"/>
         <source>Minimum Word Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Longueur Minimum des Mots :</translation>
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="184"/>
         <source>Low</source>
-        <translation type="unfinished"></translation>
+        <translation>Faible</translation>
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="185"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Moyenne</translation>
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="186"/>
         <source>High</source>
-        <translation type="unfinished"></translation>
+        <translation>Élevée</translation>
     </message>
     <message>
         <location filename="../src/new_game_dialog.cpp" line="187"/>
         <source>Random</source>
-        <translation type="unfinished"></translation>
+        <translation>Aléatoire</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/new_game_dialog.cpp" line="204"/>
         <source>%n letter(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n lettre</numerusform>
+            <numerusform>%n lettres</numerusform>
         </translation>
     </message>
 </context>
@@ -378,12 +378,12 @@
     <message>
         <location filename="../src/scores_dialog.cpp" line="175"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>Question</translation>
     </message>
     <message>
         <location filename="../src/scores_dialog.cpp" line="175"/>
         <source>Clear high scores?</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacer les scores ?</translation>
     </message>
 </context>
 <context>
@@ -431,7 +431,7 @@
     <message>
         <location filename="../src/window.cpp" line="316"/>
         <source>&amp;High Scores</source>
-        <translation>Table des &amp;records</translation>
+        <translation>Table des &amp;Records</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="322"/>
@@ -446,7 +446,7 @@
     <message>
         <location filename="../src/window.cpp" line="281"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Veuillez patienter&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Chargement de la partie...&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="286"/>
@@ -456,22 +456,22 @@
     <message>
         <location filename="../src/window.cpp" line="298"/>
         <source>New &amp;Game...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelle &amp;Partie...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="298"/>
         <source>Ctrl+Shift+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Maj+N</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="299"/>
         <source>&amp;New Roll</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelle &amp;Grille</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="301"/>
         <source>&amp;Share...</source>
-        <translation type="unfinished"></translation>
+        <translation>Parta&amp;ger...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="318"/>
@@ -501,22 +501,22 @@
     <message>
         <location filename="../src/window.cpp" line="335"/>
         <source>Show Missed &amp;Words</source>
-        <translation>Afficher les mots &amp;ratés</translation>
+        <translation>Afficher les Mots &amp;Ratés</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="338"/>
         <source>Show Word &amp;Counts</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher le &amp;Décompte des Mots</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="342"/>
         <source>&amp;Board Language...</source>
-        <translation>&amp;Langue de la grille...</translation>
+        <translation>Langue de la &amp;Grille...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="344"/>
         <source>Application &amp;Language...</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue de l&apos;&amp;Application...</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="348"/>
@@ -536,7 +536,7 @@
     <message>
         <location filename="../src/window.cpp" line="352"/>
         <source>About &amp;Hspell</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos de &amp;Hspell</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="353"/>
@@ -551,38 +551,38 @@
     <message>
         <location filename="../src/window.cpp" line="435"/>
         <source>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="437"/>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
-        <translation type="unfinished"></translation>
+        <translation>La liste des mots anglais a été construite à partir de &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; de Kevin Atkinson</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="438"/>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
-        <translation type="unfinished"></translation>
+        <translation>La liste des mots hébreux a été construite à partir de &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; de Nadav Har&apos;El et Dan Kenigsberg</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="444"/>
         <source>About Hspell</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos d&apos;Hspell</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="479"/>
         <source>Import Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer une Partie</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="479"/>
         <location filename="../src/window.cpp" line="489"/>
         <source>Tanglet Games (*.tanglet)</source>
-        <translation type="unfinished"></translation>
+        <translation>Parties Tanglet (*.tanglet)</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="489"/>
         <source>Export Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter une Partie</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="551"/>
@@ -597,7 +597,7 @@
     <message>
         <location filename="../src/window.cpp" line="551"/>
         <source>Board Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions de la Grille :</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="553"/>
@@ -607,17 +607,17 @@
     <message>
         <location filename="../src/window.cpp" line="553"/>
         <source>Word Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Longueur des Mots :</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="554"/>
         <source>Game Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Type de Partie :</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="555"/>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Description :</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="652"/>
@@ -672,7 +672,7 @@
     <message>
         <location filename="../src/window.cpp" line="552"/>
         <source>Word Density:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abondance de Mots :</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="584"/>
@@ -695,27 +695,27 @@
     <message>
         <location filename="../src/word_counts.cpp" line="39"/>
         <source>Letters:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettres :</translation>
     </message>
     <message>
         <location filename="../src/word_counts.cpp" line="39"/>
         <source>Found:</source>
-        <translation type="unfinished"></translation>
+        <translation>Trouvés :</translation>
     </message>
     <message>
         <location filename="../src/word_counts.cpp" line="115"/>
         <source>%1&lt;br&gt;&lt;b&gt;%2&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>%1&lt;br&gt;&lt;b&gt;%2&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/word_counts.cpp" line="120"/>
         <source>%1&lt;br&gt;&lt;b&gt;%2/%3&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>%1&lt;br&gt;&lt;b&gt;%2/%3&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/word_counts.cpp" line="122"/>
         <source>%1&lt;br&gt;%2/%3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1&lt;br&gt;%2/%3</translation>
     </message>
 </context>
 <context>
