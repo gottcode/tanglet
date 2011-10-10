@@ -48,6 +48,8 @@
 #include <QToolButton>
 #include <QVBoxLayout>
 
+#include <ctime>
+
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
