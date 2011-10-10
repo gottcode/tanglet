@@ -25,7 +25,7 @@ echo 'Done'
 echo -n 'Copying dice and word lists... '
 DATA="$APP/$BUNDLE/Contents/Resources/"
 mkdir -p "$DATA"
-cp -fr data/* "$DATA"
+cp -fr data "$DATA"
 echo 'Done'
 
 # Copy translations

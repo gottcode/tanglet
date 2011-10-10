@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
 	QStringList paths;
 	paths.append(path + "/data/");
 	paths.append(path + "/../share/tanglet/data/");
-	paths.append(path + "/../Resources/");
+	paths.append(path + "/../Resources/data/");
 	QDir::setSearchPaths("tanglet", paths);
 
 	LocaleDialog::loadTranslator("tanglet_");
