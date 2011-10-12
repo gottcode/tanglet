@@ -315,7 +315,8 @@ Window::Window()
 	m_details_action->setEnabled(false);
 	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
 	menu->addSeparator();
-	menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
+	QAction* action = menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
+	action->setMenuRole(QAction::QuitRole);
 	monitorVisibility(menu);
 
 	// Create settings menu
@@ -348,10 +349,14 @@ Window::Window()
 	menu = menuBar()->addMenu(tr("&Help"));
 	menu->addAction(tr("&Controls"), this, SLOT(showControls()));
 	menu->addSeparator();
-	menu->addAction(tr("&About"), this, SLOT(about()));
-	menu->addAction(tr("About &Hspell"), this, SLOT(aboutHspell()));
-	menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
-	menu->addAction(tr("About &SCOWL"), this, SLOT(aboutScowl()));
+	action = menu->addAction(tr("&About"), this, SLOT(about()));
+	action->setMenuRole(QAction::AboutRole);
+	action = menu->addAction(tr("About &Hspell"), this, SLOT(aboutHspell()));
+	action->setMenuRole(QAction::ApplicationSpecificRole);
+	action = menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
+	action->setMenuRole(QAction::AboutQtRole);
+	action = menu->addAction(tr("About &SCOWL"), this, SLOT(aboutScowl()));
+	action->setMenuRole(QAction::ApplicationSpecificRole);
 	monitorVisibility(menu);
 
 	// Load settings
