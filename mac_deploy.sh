@@ -21,13 +21,6 @@ cp COPYING "$APP/License.txt"
 cp CREDITS "$APP/Credits.txt"
 echo 'Done'
 
-# Copy dice and word lists
-echo -n 'Copying dice and word lists... '
-DATA="$APP/$BUNDLE/Contents/Resources/"
-mkdir -p "$DATA"
-cp -fr data "$DATA"
-echo 'Done'
-
 # Copy translations
 echo -n 'Copying translations... '
 TRANSLATIONS="$APP/$BUNDLE/Contents/Resources/translations"
@@ -43,12 +36,12 @@ do
 	mkdir "$LPROJ"
 	sed "s/????/${translation}/" < 'mac/locversion.plist' > "${LPROJ}/locversion.plist"
 
-	QT_TRANSLATION="/Developer/Applications/Qt/translations/qt_${translation}.qm"
+	QT_TRANSLATION="${QTDIR}/translations/qt_${translation}.qm"
 	if [ -e "$QT_TRANSLATION" ]; then
 		cp -f "$QT_TRANSLATION" "$TRANSLATIONS"
 	fi
 
-	QT_TRANSLATION="/Developer/Applications/Qt/translations/qt_${translation:0:2}.qm"
+	QT_TRANSLATION="${QTDIR}/translations/qt_${translation:0:2}.qm"
 	if [ -e "$QT_TRANSLATION" ]; then
 		cp -f "$QT_TRANSLATION" "$TRANSLATIONS"
 	fi

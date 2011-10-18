@@ -66,6 +66,13 @@ RESOURCES = icons/icons.qrc data.qrc
 macx:ICON = icons/tanglet.icns
 win32:RC_FILE = icons/icon.rc
 
+macx {
+	GAME_DATA.files = data
+	GAME_DATA.path = Contents/Resources
+
+	QMAKE_BUNDLE_DATA += GAME_DATA
+}
+
 unix:!macx {
 	isEmpty(PREFIX) {
 		PREFIX = /usr/local
