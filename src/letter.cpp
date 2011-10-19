@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,6 +44,12 @@ Letter::Letter(const QFont& font, int size, const QPoint& position)
 	m_item->setFont(font);
 	m_item->setBrush(Qt::black);
 	setText("?");
+
+	QPainterPath cell;
+	cell.addRoundedRect(-1.5, -1.5, size + 3, size + 3, 4, 4);
+	m_cell = new QGraphicsPathItem(cell, this);
+	m_cell->setFlag(QGraphicsItem::ItemStacksBehindParent);
+	m_cell->setPen(Qt::NoPen);
 }
 
 //-----------------------------------------------------------------------------
@@ -105,6 +111,16 @@ void Letter::setArrow(qreal angle, int z) {
 	};
 
 	m_arrow->setZValue(z + 2);
+}
+
+//-----------------------------------------------------------------------------
+
+void Letter::setCellColor(const QColor& color) {
+	if (color.isValid()) {
+		m_cell->setBrush(color);
+	} else {
+		m_cell->setBrush(QColor(0,0,0,96));
+	}
 }
 
 //-----------------------------------------------------------------------------

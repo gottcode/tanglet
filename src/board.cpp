@@ -647,7 +647,7 @@ void Board::highlightWord(const QList<QPoint>& positions, const QColor& color) {
 	QColor border = Qt::white;
 	for (int i = positions.count() - 1; i >= 0; --i) {
 		const QPoint& position = positions.at(i);
-		m_cells[position.x()][position.y()]->setPen(QPen(border, 2));
+		m_cells[position.x()][position.y()]->setCellColor(border);
 		border.setAlpha(border.alpha() - alpha);
 	}
 }
@@ -691,7 +691,7 @@ void Board::clearHighlight() {
 	for (int c = 0; c < m_size; ++c) {
 		for (int r = 0; r < m_size; ++r) {
 			m_cells[c][r]->setBrush(color);
-			m_cells[c][r]->setPen(Qt::NoPen);
+			m_cells[c][r]->setCellColor(QColor());
 			m_cells[c][r]->setArrow(-1, 0);
 		}
 	}

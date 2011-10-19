@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ class Letter : public QObject, public QGraphicsPathItem {
 		}
 
 		void setArrow(qreal angle, int z);
+		void setCellColor(const QColor& color);
 		void setClickable(bool clickable);
 		void setText(const QString& text);
 
@@ -55,6 +56,7 @@ class Letter : public QObject, public QGraphicsPathItem {
 	private:
 		QGraphicsSimpleTextItem* m_item;
 		QString m_text;
+		QGraphicsPathItem* m_cell;
 		QGraphicsItem* m_arrow;
 		bool m_clickable;
 		QPoint m_position;
