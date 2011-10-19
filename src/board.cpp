@@ -633,10 +633,10 @@ void Board::letterClicked(Letter* letter) {
 void Board::highlightWord(const QList<QPoint>& positions, const QColor& color) {
 	Q_ASSERT(!positions.isEmpty());
 
-	m_cells[positions.at(0).x()][positions.at(0).y()]->setBrush(color);
+	m_cells[positions.at(0).x()][positions.at(0).y()]->setColor(color);
 	for (int i = 1; i < positions.count(); ++i) {
 		const QPoint& pos1 = positions.at(i);
-		m_cells[pos1.x()][pos1.y()]->setBrush(color);
+		m_cells[pos1.x()][pos1.y()]->setColor(color);
 
 		const QPoint& pos0 = m_positions.at(i - 1);
 		QLineF line(pos0, pos1);
@@ -687,10 +687,10 @@ void Board::highlightWord() {
 //-----------------------------------------------------------------------------
 
 void Board::clearHighlight() {
-	QColor color = !isFinished() ? Qt::white : QColor("#dddddd");
+	QColor color = !isFinished() ? Qt::white : QColor("#aaa");
 	for (int c = 0; c < m_size; ++c) {
 		for (int r = 0; r < m_size; ++r) {
-			m_cells[c][r]->setBrush(color);
+			m_cells[c][r]->setColor(color);
 			m_cells[c][r]->setCellColor(QColor());
 			m_cells[c][r]->setArrow(-1, 0);
 		}

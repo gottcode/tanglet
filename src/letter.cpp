@@ -21,8 +21,11 @@
 
 #include <QBrush>
 #include <QCursor>
+#include <QGraphicsEllipseItem>
 #include <QGraphicsScene>
 #include <QGraphicsSimpleTextItem>
+#include <QLinearGradient>
+#include <QRadialGradient>
 #include <QPainterPath>
 #include <QPen>
 
@@ -35,10 +38,12 @@ Letter::Letter(const QFont& font, int size, const QPoint& position)
 	setPath(path);
 	setPen(Qt::NoPen);
 	setBrush(Qt::white);
+	setHandlesChildEvents(true);
 	setZValue(1);
 
-	setHandlesChildEvents(true);
-	setClickable(true);
+	m_face = new QGraphicsEllipseItem(0.5, 0.5, size - 1, size - 1, this);
+	m_face->setPen(QPen(Qt::white, 1));
+	m_face->setBrush(Qt::white);
 
 	m_item = new QGraphicsSimpleTextItem(this);
 	m_item->setFont(font);
@@ -125,14 +130,40 @@ void Letter::setCellColor(const QColor& color) {
 
 //-----------------------------------------------------------------------------
 
+void Letter::setColor(const QColor& color) {
+	QColor darker = color.darker(106);
+	QColor darkest = color.darker(160);
+
+	int height = boundingRect().height();
+
+	QLinearGradient sides(0, 0, 0, height);
+	sides.setColorAt(0, darker);
+	sides.setColorAt(1, darkest);
+	setBrush(sides);
+
+	QLinearGradient face_border(0, 0, 0, height);
+	face_border.setColorAt(0, color);
+	face_border.setColorAt(1, darker);
+	m_face->setPen(QPen(face_border, 1));
+
+	int radius = height / 2;
+	QRadialGradient face(radius, radius, radius);
+	face.setColorAt(0, color);
+	face.setColorAt(0.5, color);
+	face.setColorAt(1, darker);
+	m_face->setBrush(face);
+}
+
+//-----------------------------------------------------------------------------
+
 void Letter::setClickable(bool clickable) {
 	m_clickable = clickable;
 	if (m_clickable) {
 		setCursor(Qt::PointingHandCursor);
-		setBrush(Qt::white);
+		setColor(Qt::white);
 	} else {
 		unsetCursor();
-		setBrush(QColor("#dddddd"));
+		setColor(QColor("#aaa"));
 	}
 }
 

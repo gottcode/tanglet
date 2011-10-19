@@ -22,6 +22,7 @@
 
 #include <QGraphicsPathItem>
 #include <QObject>
+class QGraphicsEllipseItem;
 class QGraphicsSimpleTextItem;
 
 class Letter : public QObject, public QGraphicsPathItem {
@@ -40,6 +41,7 @@ class Letter : public QObject, public QGraphicsPathItem {
 
 		void setArrow(qreal angle, int z);
 		void setCellColor(const QColor& color);
+		void setColor(const QColor& color);
 		void setClickable(bool clickable);
 		void setText(const QString& text);
 
@@ -54,6 +56,7 @@ class Letter : public QObject, public QGraphicsPathItem {
 		void createSideArrow();
 
 	private:
+		QGraphicsEllipseItem* m_face;
 		QGraphicsSimpleTextItem* m_item;
 		QString m_text;
 		QGraphicsPathItem* m_cell;
