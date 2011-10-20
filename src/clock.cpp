@@ -401,7 +401,7 @@ Clock::~Clock() {
 //-----------------------------------------------------------------------------
 
 QSize Clock::sizeHint() const {
-	return QSize(186, fontMetrics().height() + 6);
+	return QSize(186, fontMetrics().height() + 8);
 }
 
 //-----------------------------------------------------------------------------
@@ -548,21 +548,59 @@ void Clock::paintEvent(QPaintEvent* event) {
 	painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
 	painter.setPen(Qt::NoPen);
 
-	painter.setBrush(color);
-	painter.drawRoundedRect(rect(), 5, 5);
+	// Draw indent
+	QLinearGradient indent_gradient(0, 0, 0, height());
+	QColor shadow = palette().color(QPalette::Shadow);
+	indent_gradient.setColorAt(0, QColor(shadow.red(),shadow.green(),shadow.blue(),64));
+	indent_gradient.setColorAt(1, QColor(shadow.red(),shadow.green(),shadow.blue(),0));
+	painter.setBrush(indent_gradient);
+	painter.drawRoundedRect(rect(), 4, 4);
+
+	// Draw outside border
+	painter.setBrush(color.darker());
+	painter.drawRoundedRect(rect().adjusted(1, 1, -1, -1), 3, 3);
+
+	// Draw filled background
+	QLinearGradient gradient(0, 2, 0, height() - 2);
+	gradient.setColorAt(0, color.lighter(115));
+	gradient.setColorAt(0.49, color.darker(125));
+	gradient.setColorAt(0.5, color.darker(150));
+	gradient.setColorAt(1, color.lighter(105));
+	painter.setBrush(gradient);
+	painter.drawRoundedRect(rect().adjusted(2, 2, -2, -2), 3, 3);
 
 	int x = m_timer->width();
 	int width = 180 - qMin(180, x);
-	if (width < 180) {
-		painter.setBrush(QColor(255, 255, 255, 160));
-		painter.drawRoundedRect(x + 3, 3, width, rect().height() - 6, 2.5, 2.5);
+	if ((width < 180) && (width > 0)) {
+		// Draw empty space
+		painter.setBrush(QColor(255,255,255,160));
+		painter.drawRoundedRect(x + 3, 2, width + 1, rect().height() - 4, 2, 2);
+
+		// Draw dividing line
+		painter.setRenderHint(QPainter::Antialiasing, false);
+		painter.setPen(color.darker(150));
+		painter.drawLine(x + 3, 1, x + 3, rect().height() - 2);
+		painter.setRenderHint(QPainter::Antialiasing, true);
 	}
 
+	// Draw text shadow
 	QPainterPath path;
 	path.addText(93 - (fontMetrics().width(m_text) / 2), fontMetrics().ascent() + 3, font(), m_text);
-	painter.setBrush(Qt::white);
-	painter.setPen(QPen(Qt::black, 3));
+	painter.setBrush(Qt::black);
+	painter.translate(0.6, 0.6);
+	painter.setPen(QPen(QColor(0,0,0,32), 3));
 	painter.drawPath(path);
+	painter.translate(-0.2, -0.2);
+	painter.setPen(QPen(QColor(0,0,0,64), 2));
+	painter.drawPath(path);
+	painter.translate(-0.2, -0.2);
+	painter.setPen(QPen(QColor(0,0,0,192), 1));
+	painter.drawPath(path);
+	painter.translate(-0.2, -0.2);
+
+	// Draw text
+	painter.setPen(Qt::NoPen);
+	painter.setBrush(Qt::white);
 	painter.fillPath(path, Qt::white);
 }
 
