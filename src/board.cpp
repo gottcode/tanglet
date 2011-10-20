@@ -19,6 +19,7 @@
 
 #include "board.h"
 
+#include "beveled_rect.h"
 #include "clock.h"
 #include "generator.h"
 #include "letter.h"
@@ -303,7 +304,7 @@ void Board::gameStarted() {
 	m_missed->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
 	settings.setValue("Letters", m_letters);
 
-	// Create cells
+	// Create board
 	QFont f = font();
 	f.setBold(true);
 	f.setPointSize(20);
@@ -324,10 +325,11 @@ void Board::gameStarted() {
 	m_view->setMinimumSize(board_size + 4, board_size + 4);
 	m_view->fitInView(m_view->sceneRect(), Qt::KeepAspectRatio);
 
-	QPainterPath path;
-	path.addRoundedRect(0, 0, board_size, board_size, 5, 5);
-	scene->addPath(path, Qt::NoPen, QColor("#0057ae"));
+	BeveledRect* rect = new BeveledRect(board_size);
+	rect->setColor("#0057ae");
+	scene->addItem(rect);
 
+	// Create cells
 	for (int r = 0; r < m_size; ++r) {
 		for (int c = 0; c < m_size; ++c) {
 			Letter* cell = new Letter(f, cell_size, QPoint(c,r));

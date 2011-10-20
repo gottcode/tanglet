@@ -20,6 +20,8 @@
 #ifndef LETTER_H
 #define LETTER_H
 
+class BeveledRect;
+
 #include <QGraphicsPathItem>
 #include <QObject>
 class QGraphicsEllipseItem;
@@ -59,7 +61,7 @@ class Letter : public QObject, public QGraphicsPathItem {
 		QGraphicsEllipseItem* m_face;
 		QGraphicsSimpleTextItem* m_item;
 		QString m_text;
-		QGraphicsPathItem* m_cell;
+		BeveledRect* m_cell;
 		QGraphicsItem* m_arrow;
 		bool m_clickable;
 		QPoint m_position;

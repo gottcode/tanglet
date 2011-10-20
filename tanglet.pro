@@ -21,7 +21,8 @@ unix: !macx {
 	TARGET = Tanglet
 }
 
-HEADERS += src/board.h \
+HEADERS += src/beveled_rect.h \
+	src/board.h \
 	src/clock.h \
 	src/generator.h \
 	src/language_dialog.h \
@@ -38,7 +39,8 @@ HEADERS += src/board.h \
 	src/word_counts.h \
 	src/word_tree.h
 
-SOURCES += src/board.cpp \
+SOURCES += src/beveled_rect.cpp \
+	src/board.cpp \
 	src/clock.cpp \
 	src/generator.cpp \
 	src/language_dialog.cpp \

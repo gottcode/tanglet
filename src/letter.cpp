@@ -19,6 +19,8 @@
 
 #include "letter.h"
 
+#include "beveled_rect.h"
+
 #include <QBrush>
 #include <QCursor>
 #include <QGraphicsEllipseItem>
@@ -50,11 +52,10 @@ Letter::Letter(const QFont& font, int size, const QPoint& position)
 	m_item->setBrush(Qt::black);
 	setText("?");
 
-	QPainterPath cell;
-	cell.addRoundedRect(-1.5, -1.5, size + 3, size + 3, 4, 4);
-	m_cell = new QGraphicsPathItem(cell, this);
+	m_cell = new BeveledRect(size + 3, this);
+	m_cell->setPos(-1.5, -1.5);
 	m_cell->setFlag(QGraphicsItem::ItemStacksBehindParent);
-	m_cell->setPen(Qt::NoPen);
+	m_cell->setColor("#0057ae");
 }
 
 //-----------------------------------------------------------------------------
@@ -122,9 +123,9 @@ void Letter::setArrow(qreal angle, int z) {
 
 void Letter::setCellColor(const QColor& color) {
 	if (color.isValid()) {
-		m_cell->setBrush(color);
+		m_cell->setColor(color, false);
 	} else {
-		m_cell->setBrush(QColor(0,0,0,96));
+		m_cell->setColor("#0057ae");
 	}
 }
 
