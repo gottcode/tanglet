@@ -348,6 +348,7 @@ int Clock::StrikeoutTimer::width() const {
 
 void Clock::StrikeoutTimer::loadDetails(const QSettings& game) {
 	m_strikes = qBound(0, game.value("TimerDetails/Strikes").toInt(), 3);
+	m_time = (3 - m_strikes) * 10;
 }
 
 void Clock::StrikeoutTimer::saveDetails(QSettings& game) {
