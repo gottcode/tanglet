@@ -165,12 +165,19 @@ Board::~Board() {
 		}
 		game.setValue("Found", found);
 
-		game.setValue("Guess", m_guess->text());
 		QVariantList positions;
+		QString word;
 		foreach (const QPoint& position, m_positions) {
 			positions.append(position);
+			word.append(m_cells[position.x()][position.y()]->text().toUpper());
 		}
-		game.setValue("GuessPositions", positions);
+		if (!m_wrong && (m_guess->text() == word)) {
+			game.setValue("Guess", m_guess->text());
+			game.setValue("GuessPositions", positions);
+		} else {
+			game.remove("Guess");
+			game.remove("GuessPositions");
+		}
 
 		m_clock->save(game);
 	}
