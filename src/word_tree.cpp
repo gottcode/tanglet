@@ -141,7 +141,7 @@ void WordTree::enterItem(QTreeWidgetItem* item) {
 	}
 	m_active_item = item;
 	if (m_active_item) {
-		m_active_item->setIcon(1, QIcon(":/help-browser.png"));
+		m_active_item->setIcon(1, QIcon::fromTheme("accessories-dictionary", QIcon(":/help-browser.png")));
 	}
 }
 

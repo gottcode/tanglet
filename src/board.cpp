@@ -69,7 +69,7 @@ Board::Board(QWidget* parent)
 	m_max_score_details = new QToolButton(this);
 	m_max_score_details->setAutoRaise(true);
 	m_max_score_details->setIconSize(QSize(16,16));
-	m_max_score_details->setIcon(QIcon(":/info.png"));
+	m_max_score_details->setIcon(QIcon::fromTheme("dialog-information", QIcon(":/dialog-information.png")));
 	m_max_score_details->setToolTip(tr("Details"));
 	connect(m_max_score_details, SIGNAL(clicked()), this, SLOT(showMaximumWords()));
 
@@ -87,17 +87,27 @@ Board::Board(QWidget* parent)
 	connect(m_guess, SIGNAL(returnPressed()), this, SLOT(guess()));
 	connect(m_view, SIGNAL(mousePressed()), m_guess, SLOT(setFocus()));
 
+	int size = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
+
 	m_clear_button = new QToolButton(this);
 	m_clear_button->setAutoRaise(true);
-	m_clear_button->setIconSize(QSize(24,24));
-	m_clear_button->setIcon(QIcon(":/edit-clear.png"));
+	m_clear_button->setIconSize(QSize(size,size));
+	QIcon clear_fallback(":/tango/32x32/actions/edit-clear.png");
+	clear_fallback.addFile(":/tango/24x24/actions/edit-clear.png");
+	clear_fallback.addFile(":/tango/22x22/actions/edit-clear.png");
+	clear_fallback.addFile(":/tango/16x16/actions/edit-clear.png");
+	m_clear_button->setIcon(QIcon::fromTheme("edit-clear", clear_fallback));
 	m_clear_button->setToolTip(tr("Clear"));
 	connect(m_clear_button, SIGNAL(clicked()), this, SLOT(clearGuess()));
 
 	m_guess_button = new QToolButton(this);
 	m_guess_button->setAutoRaise(true);
-	m_guess_button->setIconSize(QSize(24,24));
-	m_guess_button->setIcon(QIcon(":/list-add.png"));
+	m_guess_button->setIconSize(QSize(size,size));
+	QIcon guess_fallback(":/tango/32x32/actions/list-add.png");
+	guess_fallback.addFile(":/tango/24x24/actions/list-add.png");
+	guess_fallback.addFile(":/tango/22x22/actions/list-add.png");
+	guess_fallback.addFile(":/tango/16x16/actions/list-add.png");
+	m_guess_button->setIcon(QIcon::fromTheme("list-add", guess_fallback));
 	m_guess_button->setToolTip(tr("Guess"));
 	connect(m_guess_button, SIGNAL(clicked()), this, SLOT(guess()));
 
