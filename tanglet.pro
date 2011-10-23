@@ -88,8 +88,11 @@ unix:!macx {
 	data.files = data/*
 	data.path = $$PREFIX/share/tanglet/data/
 
-	icon.files = icons/tanglet.png
-	icon.path = $$PREFIX/share/icons/hicolor/48x48/apps
+	icon.files = icons/hicolor/*
+	icon.path = $$PREFIX/share/icons/hicolor/
+
+	pixmap.files = icons/tanglet.xpm
+	pixmap.path = $$PREFIX/share/pixmaps/
 
 	desktop.files = icons/tanglet.desktop
 	desktop.path = $$PREFIX/share/applications/
@@ -97,5 +100,5 @@ unix:!macx {
 	qm.files = translations/*.qm
 	qm.path = $$PREFIX/share/tanglet/translations
 
-	INSTALLS += target icon desktop data qm
+	INSTALLS += target icon pixmap desktop data qm
 }

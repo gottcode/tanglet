@@ -6,4 +6,4 @@ Exec=tanglet
 Icon=tanglet
 Terminal=false
 Type=Application
-Categories=Qt;Game;
+Categories=Qt;Game;LogicGame;

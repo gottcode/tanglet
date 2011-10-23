@@ -31,6 +31,17 @@ int main(int argc, char** argv) {
 	app.setApplicationVersion("1.1.1");
 	app.setOrganizationDomain("gottcode.org");
 	app.setOrganizationName("GottCode");
+	{
+		QIcon fallback(":/hicolor/256x256/apps/tanglet.png");
+		fallback.addFile(":/hicolor/128x128/apps/tanglet.png");
+		fallback.addFile(":/hicolor/64x64/apps/tanglet.png");
+		fallback.addFile(":/hicolor/48x48/apps/tanglet.png");
+		fallback.addFile(":/hicolor/32x32/apps/tanglet.png");
+		fallback.addFile(":/hicolor/24x24/apps/tanglet.png");
+		fallback.addFile(":/hicolor/22x22/apps/tanglet.png");
+		fallback.addFile(":/hicolor/16x16/apps/tanglet.png");
+		app.setWindowIcon(QIcon::fromTheme("tanglet", fallback));
+	}
 
 	QString path = app.applicationDirPath();
 	QStringList paths;

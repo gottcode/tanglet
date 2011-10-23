@@ -251,7 +251,6 @@ namespace
 Window::Window()
 : m_pause_action(0) {
 	setWindowTitle(tr("Tanglet"));
-	setWindowIcon(QIcon(":/tanglet.png"));
 
 	// Create states
 	m_states.insert("NewGame", new NewGameState(this));
