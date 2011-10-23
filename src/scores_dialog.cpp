@@ -23,6 +23,7 @@
 
 #include <QDialogButtonBox>
 #include <QGridLayout>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
@@ -98,6 +99,8 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	// Lay out dialog
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::Reset | QDialogButtonBox::Close, Qt::Horizontal, this);
 	m_buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
+	m_buttons->button(QDialogButtonBox::Reset)->setAutoDefault(false);
+	m_buttons->button(QDialogButtonBox::Close)->setDefault(true);
 	m_buttons->button(QDialogButtonBox::Close)->setFocus();
 	connect(m_buttons, SIGNAL(rejected()), this, SLOT(reject()));
 	connect(m_buttons, SIGNAL(clicked(QAbstractButton*)), this, SLOT(resetClicked(QAbstractButton*)));
@@ -129,6 +132,8 @@ bool ScoresDialog::addScore(int score) {
 	m_username->show();
 	m_username->setFocus();
 
+	m_buttons->button(QDialogButtonBox::Close)->setDefault(false);
+
 	return true;
 }
 
@@ -156,6 +161,18 @@ void ScoresDialog::hideEvent(QHideEvent* event) {
 		editingFinished();
 	}
 	QDialog::hideEvent(event);
+}
+
+//-----------------------------------------------------------------------------
+
+void ScoresDialog::keyPressEvent(QKeyEvent* event) {
+	if (!m_buttons->button(QDialogButtonBox::Close)->isDefault()) {
+		m_buttons->button(QDialogButtonBox::Close)->setDefault(true);
+		m_buttons->button(QDialogButtonBox::Close)->setFocus();
+		event->ignore();
+		return;
+	}
+	QDialog::keyPressEvent(event);
 }
 
 //-----------------------------------------------------------------------------
