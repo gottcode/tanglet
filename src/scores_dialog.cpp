@@ -127,6 +127,7 @@ bool ScoresDialog::addScore(int score) {
 	m_score_labels[m_row][1]->hide();
 	m_username->setText(m_default_name);
 	m_username->show();
+	m_username->setFocus();
 
 	return true;
 }
@@ -146,6 +147,15 @@ int ScoresDialog::isHighScore(int score) {
 	} else {
 		return 0;
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void ScoresDialog::hideEvent(QHideEvent* event) {
+	if (m_username->isVisible()) {
+		editingFinished();
+	}
+	QDialog::hideEvent(event);
 }
 
 //-----------------------------------------------------------------------------
