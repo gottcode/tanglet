@@ -37,6 +37,9 @@ class ScoresDialog : public QDialog {
 		bool addScore(int score);
 		static int isHighScore(int score);
 
+	signals:
+		void scoresReset();
+
 	protected:
 		void hideEvent(QHideEvent* event);
 		void keyPressEvent(QKeyEvent* event);

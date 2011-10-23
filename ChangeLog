@@ -1,4 +1,5 @@
 2011-10-23 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Resetting scores did not change score color.
 	* FIXED: Pressing enter in line edit closed scores dialog.
 	* FIXED: Was not storing new high scores.
 	* FIXED: Line edit was still shown when clearing high scores.

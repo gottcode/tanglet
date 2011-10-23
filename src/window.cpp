@@ -563,6 +563,7 @@ void Window::showDetails() {
 
 void Window::showScores() {
 	ScoresDialog scores(this);
+	connect(&scores, SIGNAL(scoresReset()), m_board, SLOT(updateScoreColor()));
 	scores.exec();
 }
 

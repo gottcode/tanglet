@@ -55,6 +55,7 @@ class Board : public QWidget {
 		void setShowMissedWords(bool show);
 		void setShowMaximumScore(QAction* show);
 		void setShowWordCounts(bool show);
+		void updateScoreColor();
 
 	signals:
 		void started();

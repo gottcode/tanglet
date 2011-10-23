@@ -299,6 +299,12 @@ void Board::setShowWordCounts(bool show) {
 
 //-----------------------------------------------------------------------------
 
+void Board::updateScoreColor() {
+	updateScore();
+}
+
+//-----------------------------------------------------------------------------
+
 void Board::gameStarted() {
 	// Load settings
 	QSettings settings;

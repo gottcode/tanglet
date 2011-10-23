@@ -204,6 +204,7 @@ void ScoresDialog::resetClicked(QAbstractButton* button) {
 				editingFinished();
 			}
 			m_scores.clear();
+			m_max = m_min = 1;
 			if (m_row > -1) {
 				for (int c = 0; c < 5; ++c) {
 					QFont f = m_score_labels[m_row][c]->font();
@@ -213,6 +214,7 @@ void ScoresDialog::resetClicked(QAbstractButton* button) {
 			}
 			updateItems();
 			QSettings().setValue("Scores/Values", QStringList());
+			emit scoresReset();
 		}
 	}
 }
