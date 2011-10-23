@@ -1,4 +1,5 @@
 2011-10-23 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Line edit was still shown when clearing high scores.
 	* Support Linux icon themes.
 
 2011-10-22 Graeme Gott <graeme@gottcode.org>

@@ -173,7 +173,17 @@ void ScoresDialog::editingFinished() {
 void ScoresDialog::resetClicked(QAbstractButton* button) {
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
 		if (QMessageBox::question(this, tr("Question"), tr("Clear high scores?"), QMessageBox::No | QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes) {
+			if (m_username->isVisible()) {
+				editingFinished();
+			}
 			m_scores.clear();
+			if (m_row > -1) {
+				for (int c = 0; c < 5; ++c) {
+					QFont f = m_score_labels[m_row][c]->font();
+					f.setWeight(QFont::Normal);
+					m_score_labels[m_row][c]->setFont(f);
+				}
+			}
 			updateItems();
 			QSettings().setValue("Scores/Values", QStringList());
 		}
