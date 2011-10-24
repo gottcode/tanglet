@@ -323,8 +323,8 @@ void Board::gameStarted() {
 	m_letters = m_generator->letters();
 	m_solutions = m_generator->solutions();
 	m_counts->setWords(m_solutions.keys());
-	m_found->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
-	m_missed->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
+	m_found->setDictionary(m_generator->dictionary());
+	m_missed->setDictionary(m_generator->dictionary());
 	settings.setValue("Letters", m_letters);
 
 	// Create board
@@ -828,7 +828,7 @@ void Board::showMaximumWords() {
 	message->setWordWrap(true);
 
 	WordTree* words = new WordTree(this);
-	words->setDictionary(m_generator->dictionary(), m_generator->dictionaryQuery());
+	words->setDictionary(m_generator->dictionary());
 	QList<QTreeWidget*> trees = QList<QTreeWidget*>() << m_found << m_missed;
 	foreach (QTreeWidget* tree, trees) {
 		for (int i = 0; i < tree->topLevelItemCount(); ++i) {

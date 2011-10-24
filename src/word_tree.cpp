@@ -97,9 +97,8 @@ void WordTree::removeAll() {
 
 //-----------------------------------------------------------------------------
 
-void WordTree::setDictionary(const QString& url, const QString& query) {
-	m_url = url;
-	m_query = query;
+void WordTree::setDictionary(const QString& url) {
+	m_url = QUrl::toPercentEncoding(url, "#$%&+,/:;=?@~");
 }
 
 //-----------------------------------------------------------------------------
@@ -127,9 +126,9 @@ void WordTree::wheelEvent(QWheelEvent* event) {
 
 void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
 	if (item && column == 1) {
-		QUrl url(m_url);
-		url.addQueryItem(m_query, item->text(0).toLower());
-		QDesktopServices::openUrl(url);
+		QByteArray url(m_url);
+		url.replace("%s", QUrl::toPercentEncoding(item->text(0).toLower()));
+		QDesktopServices::openUrl(QUrl::fromEncoded(url));
 	}
 }
 

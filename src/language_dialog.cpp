@@ -167,7 +167,7 @@ void LanguageDialog::chooseLanguage(int index) {
 			dictionary = stream.readLine().simplified();
 			file.close();
 		}
-		m_dictionary->setText(!dictionary.isEmpty() ? dictionary : "http://www.google.com/dictionary?langpair=" + iso_code + "|" + iso_code + "&q=%s");
+		m_dictionary->setText(!dictionary.isEmpty() ? dictionary : "http://" + iso_code + ".wiktionary.org/wiki/%s");
 	} else {
 		m_dice_path = settings.value("CustomDice", m_dice_path).toString();
 		m_words_path = settings.value("CustomWords", m_words_path).toString();

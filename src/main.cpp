@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
 			default_count++;
 		}
 		if (settings.value("Dictionary").toString().isEmpty()) {
-			settings.setValue("Dictionary", "http://www.google.com/dictionary?langpair=en|en&q=%s");
+			settings.setValue("Dictionary", "http://en.wiktionary.org/wiki/%s");
 			default_count++;
 		}
 		if (default_count == 3) {

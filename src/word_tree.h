@@ -30,7 +30,7 @@ class WordTree : public QTreeWidget {
 
 		QTreeWidgetItem* addWord(const QString& word);
 		void removeAll();
-		void setDictionary(const QString& url, const QString& query);
+		void setDictionary(const QString& url);
 
 	protected:
 		virtual void leaveEvent(QEvent* event);
@@ -45,8 +45,7 @@ class WordTree : public QTreeWidget {
 
 	private:
 		QTreeWidgetItem* m_active_item;
-		QString m_url;
-		QString m_query;
+		QByteArray m_url;
 		bool m_hebrew;
 };
 
