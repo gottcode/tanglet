@@ -302,7 +302,6 @@ Window::Window()
 	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()));
 	end_action->setEnabled(false);
 	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
-	menu->addSeparator();
 	m_pause_action = menu->addAction(tr("&Pause"));
 	m_pause_action->setCheckable(true);
 	m_pause_action->setShortcut(tr("Ctrl+P"));
