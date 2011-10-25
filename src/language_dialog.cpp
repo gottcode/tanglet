@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -121,6 +121,7 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 //-----------------------------------------------------------------------------
 
 void LanguageDialog::restoreDefaults() {
+	QSettings().setValue("Language", -1);
 	LanguageDialog dialog;
 	dialog.m_buttons->button(QDialogButtonBox::RestoreDefaults)->click();
 	dialog.accept();

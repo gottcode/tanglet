@@ -1,3 +1,6 @@
+2011-10-25 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Board language was getting set to Custom.
+
 2011-10-25 Bentzy Sagiv <bentzy.sagiv@gmail.com>
 	* Update Hebrew translation.
 
