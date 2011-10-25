@@ -24,7 +24,7 @@
 
 class LanguageSettings {
 	public:
-		LanguageSettings();
+		LanguageSettings(const QString& group = QString());
 		~LanguageSettings();
 
 		bool isChanged() const;

@@ -22,6 +22,7 @@
 #include "beveled_rect.h"
 #include "clock.h"
 #include "generator.h"
+#include "language_settings.h"
 #include "letter.h"
 #include "random.h"
 #include "scores_dialog.h"
@@ -222,15 +223,25 @@ void Board::generate(const QSettings& game) {
 	QStringList letters = game.value("Letters").toStringList();
 	unsigned int seed = Random(time(0)).nextInt();
 
+	LanguageSettings settings;
+	int language = game.value("Language", settings.language()).toInt();
+	QString dice = game.value("Dice", settings.dice()).toString();
+	QString words = game.value("Words", settings.words()).toString();
+	QString dictionary = game.value("Dictionary", settings.dictionary()).toString();
+
 	// Store values
 	{
 		QSettings settings;
 		settings.beginGroup("Current");
-		settings.setValue("Version", 1);
+		settings.setValue("Version", 2);
 		settings.setValue("Size", size);
 		settings.setValue("Density", density);
 		settings.setValue("Minimum", minimum);
 		settings.setValue("TimerMode", timer);
+		settings.setValue("Language", language);
+		settings.setValue("Dice", dice);
+		settings.setValue("Words", words);
+		settings.setValue("Dictionary", dictionary);
 		if (!letters.isEmpty()) {
 			settings.setValue("Letters", letters);
 		}

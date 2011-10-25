@@ -24,14 +24,28 @@
 
 //-----------------------------------------------------------------------------
 
-LanguageSettings::LanguageSettings()
+LanguageSettings::LanguageSettings(const QString& group)
 : m_changed(false) {
 	QSettings settings;
 
-	m_language = settings.value("Language", QLocale::system().language()).toInt();
-	m_dice = settings.value("Dice").toString();
-	m_words = settings.value("Words").toString();
-	m_dictionary = settings.value("Dictionary").toString();
+	int language = settings.value("Language", QLocale::system().language()).toInt();
+	QString dice = settings.value("Dice").toString();
+	QString words = settings.value("Words").toString();
+	QString dictionary = settings.value("Dictionary").toString();
+
+	if (!group.isEmpty()) {
+		settings.beginGroup(group);
+
+		m_language = settings.value("Language", language).toInt();
+		m_dice = settings.value("Dice", dice).toString();
+		m_words = settings.value("Words", words).toString();
+		m_dictionary = settings.value("Dictionary", dictionary).toString();
+	} else {
+		m_language = language;
+		m_dice = dice;
+		m_words = words;
+		m_dictionary = dictionary;
+	}
 }
 
 //-----------------------------------------------------------------------------

@@ -493,12 +493,16 @@ void Window::shareGame() {
 	if (!filename.isEmpty()) {
 		QSettings settings;
 		QSettings game(filename, QSettings::IniFormat);
-		game.setValue("Game/Version", 1);
+		game.setValue("Game/Version", 2);
 		game.setValue("Game/Size", settings.value("Current/Size"));
 		game.setValue("Game/Density", settings.value("Current/Density"));
 		game.setValue("Game/Minimum", settings.value("Current/Minimum"));
 		game.setValue("Game/TimerMode", settings.value("Current/TimerMode"));
 		game.setValue("Game/Letters", settings.value("Current/Letters"));
+		game.setValue("Game/Language", settings.value("Current/Language"));
+		game.setValue("Game/Dice", settings.value("Current/Dice"));
+		game.setValue("Game/Words", settings.value("Current/Words"));
+		game.setValue("Game/Dictionary", settings.value("Current/Dictionary"));
 	}
 }
 
@@ -649,7 +653,7 @@ void Window::startGame(const QString& filename) {
 		}
 
 		bool loaded = false;
-		if (game->value("Version").toInt() == 1) {
+		if (game->value("Version").toInt() <= 2) {
 			loaded = !game->value("Letters").toStringList().isEmpty();
 		}
 		if (!loaded) {

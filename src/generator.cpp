@@ -244,7 +244,7 @@ void Generator::update()
 {
 	m_error.clear();
 
-	LanguageSettings settings;
+	LanguageSettings settings("Current");
 	m_dictionary_url = settings.dictionary();
 
 	// Load dice
