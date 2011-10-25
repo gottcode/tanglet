@@ -19,6 +19,8 @@
 
 #include "language_dialog.h"
 
+#include "language_settings.h"
+
 #include <QDialogButtonBox>
 #include <QCheckBox>
 #include <QComboBox>
@@ -40,6 +42,8 @@
 LanguageDialog::LanguageDialog(QWidget* parent)
 : QDialog(parent) {
 	setWindowTitle(tr("Board Language"));
+
+	LanguageSettings settings;
 
 	m_language = new QComboBox(this);
 	QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -65,23 +69,23 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	connect(m_language, SIGNAL(currentIndexChanged(int)), this, SLOT(chooseLanguage(int)));
 
 	m_dice = new QLineEdit(this);
-	m_dice_path = m_settings.dice();
+	m_dice_path = settings.dice();
 	m_dice->setText(QDir::toNativeSeparators(QFileInfo(m_dice_path).canonicalFilePath()));
 	connect(m_dice, SIGNAL(textEdited(const QString&)), this, SLOT(chooseDice(const QString&)));
 	m_choose_dice = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_dice, SIGNAL(clicked()), this, SLOT(chooseDice()));
 
 	m_words = new QLineEdit(this);
-	m_words_path = m_settings.words();
+	m_words_path = settings.words();
 	m_words->setText(QDir::toNativeSeparators(QFileInfo(m_words_path).canonicalFilePath()));
 	connect(m_words, SIGNAL(textEdited(const QString&)), this, SLOT(chooseWords(const QString&)));
 	m_choose_words = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_words, SIGNAL(clicked()), this, SLOT(chooseWords()));
 
 	m_dictionary = new QLineEdit(this);
-	m_dictionary->setText(m_settings.dictionary());
+	m_dictionary->setText(settings.dictionary());
 
-	setLanguage(m_settings.language());
+	setLanguage(settings.language());
 
 	// Creat warning message
 	QLabel* warning = new QLabel(tr("<b>Note:</b> These settings will take effect when you start a new game."), this);
@@ -130,11 +134,16 @@ void LanguageDialog::restoreDefaults() {
 //-----------------------------------------------------------------------------
 
 void LanguageDialog::accept() {
-	m_settings.setDice(m_dice_path);
-	m_settings.setWords(m_words_path);
-	m_settings.setDictionary(m_dictionary->text());
-	m_settings.setLanguage(m_language->itemData(m_language->currentIndex()).toInt());
-	if (m_settings.isChanged()) {
+	bool changed = false;
+	{
+		LanguageSettings settings;
+		settings.setDice(m_dice_path);
+		settings.setWords(m_words_path);
+		settings.setDictionary(m_dictionary->text());
+		settings.setLanguage(m_language->itemData(m_language->currentIndex()).toInt());
+		changed = settings.isChanged();
+	}
+	if (changed) {
 		QDialog::accept();
 	} else {
 		QDialog::reject();
