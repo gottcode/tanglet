@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010, 2011 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ class LanguageSettings {
 		LanguageSettings();
 		~LanguageSettings();
 
+		bool isChanged() const;
 		int language() const;
 		QString dice() const;
 		QString words() const;

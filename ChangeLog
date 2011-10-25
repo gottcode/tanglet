@@ -1,4 +1,5 @@
 2011-10-25 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Was prompting to end game when no change in language was made.
 	* FIXED: Board language was getting set to Custom.
 
 2011-10-25 Bentzy Sagiv <bentzy.sagiv@gmail.com>

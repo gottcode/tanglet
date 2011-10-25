@@ -134,7 +134,11 @@ void LanguageDialog::accept() {
 	m_settings.setWords(m_words_path);
 	m_settings.setDictionary(m_dictionary->text());
 	m_settings.setLanguage(m_language->itemData(m_language->currentIndex()).toInt());
-	QDialog::accept();
+	if (m_settings.isChanged()) {
+		QDialog::accept();
+	} else {
+		QDialog::reject();
+	}
 }
 
 //-----------------------------------------------------------------------------
