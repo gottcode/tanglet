@@ -1,4 +1,5 @@
 2011-10-26 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Could share games without tanglet extension.
 	* Embed dice and words in shared games.
 
 2011-10-25 Graeme Gott <graeme@gottcode.org>
