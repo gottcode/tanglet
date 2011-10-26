@@ -481,7 +481,59 @@ void Window::chooseGame() {
 	if (endGame()) {
 		QString filename = QFileDialog::getOpenFileName(window(), tr("Import Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
 		if (!filename.isEmpty()) {
-			startGame(filename);
+			try
+			{
+				QString current = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+
+				// Uncompress shared game
+				{
+					QDir dir = QDir::home();
+					dir.mkpath(current);
+					current += "/current";
+
+					QFile file(filename);
+					if (!file.open(QFile::ReadOnly)) {
+						throw tr("Unable to start requested game.");
+					}
+					QByteArray data = file.readAll();
+					file.close();
+
+					data = qUncompress(data);
+					file.setFileName(current);
+					if (!file.open(QFile::WriteOnly)) {
+						throw tr("Unable to start requested game.");
+					}
+					file.write(data);
+					file.close();
+				}
+
+				// Extract words and dice
+				{
+					QSettings game(current, QSettings::IniFormat);
+
+					QByteArray dice = QByteArray::fromBase64(game.value("Game/Dice").toByteArray());
+					game.setValue("Game/Dice", current + "-dice");
+					QFile file(current + "-dice");
+					if (!file.open(QFile::WriteOnly)) {
+						throw tr("Unable to start requested game.");
+					}
+					file.write(dice);
+					file.close();
+
+					QByteArray words = QByteArray::fromBase64(game.value("Game/Words").toByteArray());
+					game.setValue("Game/Words", current + "-words");
+					file.setFileName(current + "-words");
+					if (!file.open(QFile::WriteOnly)) {
+						throw tr("Unable to start requested game.");
+					}
+					file.write(words);
+					file.close();
+				}
+
+				startGame(current);
+			} catch (const QString& error) {
+				QMessageBox::warning(this, tr("Error"), error);
+			}
 		}
 	}
 }
@@ -491,18 +543,50 @@ void Window::chooseGame() {
 void Window::shareGame() {
 	QString filename = QFileDialog::getSaveFileName(window(), tr("Export Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
 	if (!filename.isEmpty()) {
-		QSettings settings;
-		QSettings game(filename, QSettings::IniFormat);
-		game.setValue("Game/Version", 2);
-		game.setValue("Game/Size", settings.value("Current/Size"));
-		game.setValue("Game/Density", settings.value("Current/Density"));
-		game.setValue("Game/Minimum", settings.value("Current/Minimum"));
-		game.setValue("Game/TimerMode", settings.value("Current/TimerMode"));
-		game.setValue("Game/Letters", settings.value("Current/Letters"));
-		game.setValue("Game/Language", settings.value("Current/Language"));
-		game.setValue("Game/Dice", settings.value("Current/Dice"));
-		game.setValue("Game/Words", settings.value("Current/Words"));
-		game.setValue("Game/Dictionary", settings.value("Current/Dictionary"));
+		// Share game
+		{
+			QSettings settings;
+			QSettings game(filename, QSettings::IniFormat);
+			game.setValue("Game/Version", 2);
+			game.setValue("Game/Size", settings.value("Current/Size"));
+			game.setValue("Game/Density", settings.value("Current/Density"));
+			game.setValue("Game/Minimum", settings.value("Current/Minimum"));
+			game.setValue("Game/TimerMode", settings.value("Current/TimerMode"));
+			game.setValue("Game/Letters", settings.value("Current/Letters"));
+			game.setValue("Game/Language", settings.value("Current/Language"));
+			game.setValue("Game/Dictionary", settings.value("Current/Dictionary"));
+			game.setValue("Game/Dice", settings.value("Current/Dice"));
+			game.setValue("Game/Words", settings.value("Current/Words"));
+
+			QFile file(game.value("Game/Dice").toString());
+			if (file.open(QFile::ReadOnly)) {
+				QByteArray data = file.readAll();
+				file.close();
+				game.setValue("Game/Dice", data.toBase64());
+			}
+
+			file.setFileName(game.value("Game/Words").toString());
+			if (file.open(QFile::ReadOnly)) {
+				QByteArray data = file.readAll();
+				file.close();
+				game.setValue("Game/Words", data.toBase64());
+			}
+		}
+
+		// Compress shared game
+		QFile file(filename);
+		if (!file.open(QFile::ReadOnly | QFile::Text)) {
+			return;
+		}
+		QByteArray data = file.readAll();
+		file.close();
+
+		data = qCompress(data, 9);
+		if (!file.open(QFile::WriteOnly)) {
+			return;
+		}
+		file.write(data);
+		file.close();
 	}
 }
 
@@ -617,6 +701,11 @@ void Window::gameFinished(int score) {
 	if (scores.addScore(score)) {
 		scores.exec();
 	}
+
+	QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+	dir.remove("current");
+	dir.remove("current-dice");
+	dir.remove("current-words");
 }
 
 //-----------------------------------------------------------------------------

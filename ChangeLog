@@ -1,3 +1,6 @@
+2011-10-26 Graeme Gott <graeme@gottcode.org>
+	* Embed dice and words in shared games.
+
 2011-10-25 Graeme Gott <graeme@gottcode.org>
 	* Store board language in game settings.
 	* FIXED: Required two new games to change language.
