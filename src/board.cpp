@@ -231,6 +231,10 @@ void Board::generate(const QSettings& game) {
 	QString words = game.value("Words", settings.words()).toString();
 	QString dictionary = game.value("Dictionary", settings.dictionary()).toString();
 
+	bool is_hebrew = (language == QLocale::Hebrew);
+	m_found->setHebrew(is_hebrew);
+	m_missed->setHebrew(is_hebrew);
+
 	// Store values
 	{
 		QSettings settings;

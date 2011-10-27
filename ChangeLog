@@ -1,4 +1,5 @@
 2011-10-27 Graeme Gott <graeme@gottcode.org>
+	* Make Hebrew detection explicit.
 	* FIXED: Was not loading new default language settings.
 	* FIXED: Could make incorrect guess twice in a row.
 	* FIXED: Game buttons did not reflect game status.

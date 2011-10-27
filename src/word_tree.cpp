@@ -19,7 +19,6 @@
 
 #include "word_tree.h"
 
-#include "language_settings.h"
 #include "solver.h"
 
 #include <QDesktopServices>
@@ -93,13 +92,18 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 void WordTree::removeAll() {
 	m_active_item = 0;
 	clear();
-	m_hebrew = (LanguageSettings().language() == QLocale::Hebrew);
 }
 
 //-----------------------------------------------------------------------------
 
 void WordTree::setDictionary(const QString& url) {
 	m_url = QUrl::toPercentEncoding(url, "#$%&+,/:;=?@~");
+}
+
+//-----------------------------------------------------------------------------
+
+void WordTree::setHebrew(bool hebrew) {
+	m_hebrew = hebrew;
 }
 
 //-----------------------------------------------------------------------------
