@@ -99,6 +99,7 @@ Board::Board(QWidget* parent)
 	clear_fallback.addFile(":/tango/16x16/actions/edit-clear.png");
 	m_clear_button->setIcon(QIcon::fromTheme("edit-clear", clear_fallback));
 	m_clear_button->setToolTip(tr("Clear"));
+	m_clear_button->setEnabled(false);
 	connect(m_clear_button, SIGNAL(clicked()), this, SLOT(clearGuess()));
 
 	m_guess_button = new QToolButton(this);
@@ -110,6 +111,7 @@ Board::Board(QWidget* parent)
 	guess_fallback.addFile(":/tango/16x16/actions/list-add.png");
 	m_guess_button->setIcon(QIcon::fromTheme("list-add", guess_fallback));
 	m_guess_button->setToolTip(tr("Guess"));
+	m_guess_button->setEnabled(false);
 	connect(m_guess_button, SIGNAL(clicked()), this, SLOT(guess()));
 
 	QHBoxLayout* guess_layout = new QHBoxLayout;
@@ -434,6 +436,7 @@ void Board::gameStarted() {
 		}
 		updateScore();
 		updateClickableStatus();
+		updateButtons();
 		highlightWord();
 	} else {
 		m_clock->stop();
@@ -452,6 +455,7 @@ void Board::clearGuess() {
 	m_found->clearSelection();
 	m_missed->clearSelection();
 	m_guess->setFocus();
+	updateButtons();
 }
 
 //-----------------------------------------------------------------------------
@@ -465,6 +469,7 @@ void Board::guess() {
 		if (!m_solutions.contains(text)) {
 			m_wrong = true;
 			highlightWord();
+			updateButtons();
 			m_clock->addIncorrectWord(Solver::score(text));
 			return;
 		}
@@ -577,6 +582,8 @@ void Board::guessChanged() {
 		m_positions.clear();
 		updateClickableStatus();
 	}
+
+	updateButtons();
 }
 
 //-----------------------------------------------------------------------------
@@ -620,6 +627,8 @@ void Board::wordSelected() {
 		updateClickableStatus();
 		highlightWord();
 	}
+
+	updateButtons();
 }
 
 //-----------------------------------------------------------------------------
@@ -662,6 +671,8 @@ void Board::letterClicked(Letter* letter) {
 
 		selectGuess();
 	}
+
+	updateButtons();
 }
 
 //-----------------------------------------------------------------------------
@@ -820,6 +831,15 @@ void Board::updateClickableStatus() {
 			m_cells[position.x()][position.y()]->setClickable(true);
 		}
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::updateButtons() {
+	QString text = m_guess->text();
+	bool has_guess = !text.isEmpty();
+	m_clear_button->setEnabled(has_guess);
+	m_guess_button->setEnabled(has_guess && text.length() >= m_minimum && text.length() <= m_maximum && m_valid && !m_positions.isEmpty());
 }
 
 //-----------------------------------------------------------------------------

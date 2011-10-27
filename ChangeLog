@@ -1,3 +1,6 @@
+2011-10-27 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Game buttons did not reflect game status.
+
 2011-10-26 Graeme Gott <graeme@gottcode.org>
 	* FIXED: Changed word height when showing icons.
 	* FIXED: Could share games without tanglet extension.

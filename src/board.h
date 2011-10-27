@@ -79,6 +79,7 @@ class Board : public QWidget {
 		void selectGuess();
 		int updateScore();
 		void updateClickableStatus();
+		void updateButtons();
 
 	private:
 		Clock* m_clock;
