@@ -170,18 +170,10 @@ void LanguageDialog::chooseLanguage(int index) {
 	bool enabled = false;
 	int language = m_language->itemData(index).toInt();
 	if (language != 0) {
-		QString iso_code = QLocale(static_cast<QLocale::Language>(language)).name().left(2);
-		m_dice_path = "tanglet:" + iso_code + "/dice";
-		m_words_path = "tanglet:" + iso_code + "/words";
-		QString dictionary;
-		QFile file("tanglet:" + iso_code + "/dictionary");
-		if (file.open(QFile::ReadOnly | QFile::Text)) {
-			QTextStream stream(&file);
-			stream.setCodec("UTF-8");
-			dictionary = stream.readLine().simplified();
-			file.close();
-		}
-		m_dictionary->setText(!dictionary.isEmpty() ? dictionary : "http://" + iso_code + ".wiktionary.org/wiki/%s");
+		LanguageSettings settings(language);
+		m_dice_path = settings.dice();
+		m_words_path = settings.words();
+		m_dictionary->setText(settings.dictionary());
 	} else {
 		m_dice_path = settings.value("CustomDice", m_dice_path).toString();
 		m_words_path = settings.value("CustomWords", m_words_path).toString();

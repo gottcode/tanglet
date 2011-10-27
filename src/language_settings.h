@@ -25,6 +25,7 @@
 class LanguageSettings {
 	public:
 		LanguageSettings(const QString& group = QString());
+		LanguageSettings(int language);
 		~LanguageSettings();
 
 		bool isChanged() const;
@@ -36,6 +37,9 @@ class LanguageSettings {
 		void setDice(const QString& dice);
 		void setWords(const QString& words);
 		void setDictionary(const QString& dictionary);
+
+	private:
+		void loadDefault();
 
 	private:
 		int m_language;

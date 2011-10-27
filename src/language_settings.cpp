@@ -19,8 +19,10 @@
 
 #include "language_settings.h"
 
+#include <QFile>
 #include <QLocale>
 #include <QSettings>
+#include <QTextStream>
 
 //-----------------------------------------------------------------------------
 
@@ -42,10 +44,23 @@ LanguageSettings::LanguageSettings(const QString& group)
 		m_dictionary = settings.value("Dictionary", dictionary).toString();
 	} else {
 		m_language = language;
-		m_dice = dice;
-		m_words = words;
-		m_dictionary = dictionary;
+		if (language > 0) {
+			loadDefault();
+			m_changed = (m_dice != dice) || (m_words != words) || (m_dictionary != dictionary);
+		} else {
+			m_dice = dice;
+			m_words = words;
+			m_dictionary = dictionary;
+		}
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+LanguageSettings::LanguageSettings(int language)
+: m_changed(false) {
+	m_language = language;
+	loadDefault();
 }
 
 //-----------------------------------------------------------------------------
@@ -131,6 +146,23 @@ void LanguageSettings::setDictionary(const QString& dictionary) {
 		m_dictionary = dictionary;
 		m_changed = true;
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void LanguageSettings::loadDefault() {
+	QString iso_code = QLocale(static_cast<QLocale::Language>(m_language)).name().left(2);
+	m_dice = "tanglet:" + iso_code + "/dice";
+	m_words = "tanglet:" + iso_code + "/words";
+	QString dictionary;
+	QFile file("tanglet:" + iso_code + "/dictionary");
+	if (file.open(QFile::ReadOnly | QFile::Text)) {
+		QTextStream stream(&file);
+		stream.setCodec("UTF-8");
+		dictionary = stream.readLine().simplified();
+		file.close();
+	}
+	m_dictionary = !dictionary.isEmpty() ? dictionary : ("http://" + iso_code + ".wiktionary.org/wiki/%s");
 }
 
 //-----------------------------------------------------------------------------
