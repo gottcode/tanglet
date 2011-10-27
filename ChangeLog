@@ -1,4 +1,5 @@
 2011-10-26 Graeme Gott <graeme@gottcode.org>
+	* FIXED: Changed word height when showing icons.
 	* FIXED: Could share games without tanglet extension.
 	* Embed dice and words in shared games.
 
