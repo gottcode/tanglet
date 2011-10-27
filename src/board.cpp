@@ -463,7 +463,7 @@ void Board::clearGuess() {
 void Board::guess() {
 	if (!isFinished() && !m_paused) {
 		QString text = m_guess->text().trimmed().toUpper();
-		if (text.isEmpty() || text.length() < m_minimum || text.length() > m_maximum || !m_valid || m_positions.isEmpty()) {
+		if (text.isEmpty() || text.length() < m_minimum || text.length() > m_maximum || !m_valid || m_positions.isEmpty() || m_wrong) {
 			return;
 		}
 		if (!m_solutions.contains(text)) {
@@ -634,7 +634,6 @@ void Board::wordSelected() {
 //-----------------------------------------------------------------------------
 
 void Board::letterClicked(Letter* letter) {
-	m_wrong = false;
 
 	// Handle adding a letter to the guess
 	if (!m_positions.contains(letter->position())) {
@@ -642,6 +641,7 @@ void Board::letterClicked(Letter* letter) {
 		word.append(letter->text().toUpper());
 		m_guess->setText(word);
 
+		m_wrong = false;
 		m_positions.append(letter->position());
 		clearHighlight();
 		updateClickableStatus();
@@ -650,13 +650,14 @@ void Board::letterClicked(Letter* letter) {
 		selectGuess();
 	// Handle making or clearing a guess
 	} else if (letter->position() == m_positions.last()) {
-		if (m_positions.count() >= 3) {
-			guess();
-		} else if (m_positions.count() == 1) {
+		if (m_positions.count() == 1) {
 			clearGuess();
+		} else {
+			guess();
 		}
 	// Handle backing up in a guess
 	} else {
+		m_wrong = false;
 		m_guess->clear();
 		m_positions = m_positions.mid(0, m_positions.indexOf(letter->position()) + 1);
 		clearHighlight();
@@ -839,7 +840,7 @@ void Board::updateButtons() {
 	QString text = m_guess->text();
 	bool has_guess = !text.isEmpty();
 	m_clear_button->setEnabled(has_guess);
-	m_guess_button->setEnabled(has_guess && text.length() >= m_minimum && text.length() <= m_maximum && m_valid && !m_positions.isEmpty());
+	m_guess_button->setEnabled(has_guess && text.length() >= m_minimum && text.length() <= m_maximum && m_valid && !m_positions.isEmpty() && !m_wrong);
 }
 
 //-----------------------------------------------------------------------------
