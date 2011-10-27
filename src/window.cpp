@@ -481,10 +481,6 @@ void Window::chooseGame() {
 	if (endGame()) {
 		QString filename = QFileDialog::getOpenFileName(window(), tr("Import Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
 		if (!filename.isEmpty()) {
-			if (!filename.endsWith(".tanglet")) {
-				filename += ".tanglet";
-			}
-
 			try
 			{
 				QString current = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
@@ -547,6 +543,10 @@ void Window::chooseGame() {
 void Window::shareGame() {
 	QString filename = QFileDialog::getSaveFileName(window(), tr("Export Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
 	if (!filename.isEmpty()) {
+		if (!filename.endsWith(".tanglet")) {
+			filename += ".tanglet";
+		}
+
 		// Share game
 		{
 			QSettings settings;
