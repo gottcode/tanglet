@@ -91,7 +91,7 @@ unix:!macx {
 	icon.files = icons/hicolor/*
 	icon.path = $$PREFIX/share/icons/hicolor/
 
-	pixmap.files = icons/tanglet.xpm
+	pixmap.files = icons/tanglet_32.xpm
 	pixmap.path = $$PREFIX/share/pixmaps/
 
 	desktop.files = icons/tanglet.desktop
