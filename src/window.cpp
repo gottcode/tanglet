@@ -505,23 +505,25 @@ void Window::chooseGame() {
 				{
 					QSettings game(current, QSettings::IniFormat);
 
-					QByteArray dice = QByteArray::fromBase64(game.value("Game/Dice").toByteArray());
-					game.setValue("Game/Dice", current + "-dice");
-					QFile file(current + "-dice");
-					if (!file.open(QFile::WriteOnly)) {
-						throw tr("Unable to start requested game.");
-					}
-					file.write(dice);
-					file.close();
+					if (game.value("Game/Language", -1).toInt() == 0) {
+						QByteArray dice = QByteArray::fromBase64(game.value("Game/Dice").toByteArray());
+						game.setValue("Game/Dice", current + "-dice");
+						QFile file(current + "-dice");
+						if (!file.open(QFile::WriteOnly)) {
+							throw tr("Unable to start requested game.");
+						}
+						file.write(dice);
+						file.close();
 
-					QByteArray words = QByteArray::fromBase64(game.value("Game/Words").toByteArray());
-					game.setValue("Game/Words", current + "-words");
-					file.setFileName(current + "-words");
-					if (!file.open(QFile::WriteOnly)) {
-						throw tr("Unable to start requested game.");
+						QByteArray words = QByteArray::fromBase64(game.value("Game/Words").toByteArray());
+						game.setValue("Game/Words", current + "-words");
+						file.setFileName(current + "-words");
+						if (!file.open(QFile::WriteOnly)) {
+							throw tr("Unable to start requested game.");
+						}
+						file.write(words);
+						file.close();
 					}
-					file.write(words);
-					file.close();
 				}
 
 				startGame(current);
@@ -556,18 +558,20 @@ void Window::shareGame() {
 			game.setValue("Game/Dice", settings.value("Current/Dice"));
 			game.setValue("Game/Words", settings.value("Current/Words"));
 
-			QFile file(game.value("Game/Dice").toString());
-			if (file.open(QFile::ReadOnly)) {
-				QByteArray data = file.readAll();
-				file.close();
-				game.setValue("Game/Dice", data.toBase64());
-			}
+			if (game.value("Game/Language").toInt() == 0) {
+				QFile file(game.value("Game/Dice").toString());
+				if (file.open(QFile::ReadOnly)) {
+					QByteArray data = file.readAll();
+					file.close();
+					game.setValue("Game/Dice", data.toBase64());
+				}
 
-			file.setFileName(game.value("Game/Words").toString());
-			if (file.open(QFile::ReadOnly)) {
-				QByteArray data = file.readAll();
-				file.close();
-				game.setValue("Game/Words", data.toBase64());
+				file.setFileName(game.value("Game/Words").toString());
+				if (file.open(QFile::ReadOnly)) {
+					QByteArray data = file.readAll();
+					file.close();
+					game.setValue("Game/Words", data.toBase64());
+				}
 			}
 		}
 		gzip(filename);

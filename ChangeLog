@@ -1,4 +1,5 @@
 2011-10-28 Graeme Gott <graeme@gottcode.org>
+	* Only embed custom dice and words.
 	* Use gzip compression for shared games.
 
 2011-10-27 Graeme Gott <graeme@gottcode.org>
