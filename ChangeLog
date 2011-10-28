@@ -1,3 +1,6 @@
+2011-10-28 Graeme Gott <graeme@gottcode.org>
+	* Use gzip compression for shared games.
+
 2011-10-27 Graeme Gott <graeme@gottcode.org>
 	* Make Hebrew detection explicit.
 	* FIXED: Was not loading new default language settings.

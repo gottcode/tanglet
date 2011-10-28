@@ -21,6 +21,7 @@
 
 #include "board.h"
 #include "clock.h"
+#include "gzip.h"
 #include "language_dialog.h"
 #include "locale_dialog.h"
 #include "new_game_dialog.h"
@@ -491,15 +492,8 @@ void Window::chooseGame() {
 					dir.mkpath(current);
 					current += "/current";
 
-					QFile file(filename);
-					if (!file.open(QFile::ReadOnly)) {
-						throw tr("Unable to start requested game.");
-					}
-					QByteArray data = file.readAll();
-					file.close();
-
-					data = qUncompress(data);
-					file.setFileName(current);
+					QByteArray data = gunzip(filename);
+					QFile file(current);
 					if (!file.open(QFile::WriteOnly)) {
 						throw tr("Unable to start requested game.");
 					}
@@ -576,21 +570,7 @@ void Window::shareGame() {
 				game.setValue("Game/Words", data.toBase64());
 			}
 		}
-
-		// Compress shared game
-		QFile file(filename);
-		if (!file.open(QFile::ReadOnly | QFile::Text)) {
-			return;
-		}
-		QByteArray data = file.readAll();
-		file.close();
-
-		data = qCompress(data, 9);
-		if (!file.open(QFile::WriteOnly)) {
-			return;
-		}
-		file.write(data);
-		file.close();
+		gzip(filename);
 	}
 }
 

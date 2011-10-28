@@ -20,6 +20,7 @@
 #include "generator.h"
 
 #include "clock.h"
+#include "gzip.h"
 #include "language_settings.h"
 #include "random.h"
 #include "solver.h"
@@ -27,33 +28,10 @@
 #include <QFile>
 #include <QTextStream>
 
-#include <zlib.h>
-
 //-----------------------------------------------------------------------------
 
 namespace
 {
-	QByteArray gunzip(const QFile& file)
-	{
-		QByteArray data;
-
-		gzFile gz = gzdopen(file.handle(), "rb");
-		if (gz == NULL) {
-			return data;
-		}
-
-		int read = 0;
-		char buffer[1024];
-		memset(buffer, 0, 1024);
-		do {
-			data.append(buffer, read);
-			read = qMin(gzread(gz, buffer, 1024), 1024);
-		} while (read > 0);
-		gzclose(gz);
-
-		return data;
-	}
-
 	struct State
 	{
 		State(const QList<QStringList>& dice, Solver* solver, int target, Random* random)
@@ -285,19 +263,14 @@ void Generator::update()
 		m_words.clear();
 
 		int count = 0;
-		QFile file(words_path);
-		if (file.open(QFile::ReadOnly)) {
-			QByteArray data = gunzip(file);
-			file.close();
-
-			QTextStream stream(&data);
-			stream.setCodec("UTF-8");
-			while (!stream.atEnd()) {
-				QString line = stream.readLine().toUpper();
-				if (line.length() >= 3 && line.length() <= 25) {
-					m_words.addWord(line);
-					count++;
-				}
+		QByteArray data = gunzip(words_path);
+		QTextStream stream(&data);
+		stream.setCodec("UTF-8");
+		while (!stream.atEnd()) {
+			QString line = stream.readLine().toUpper();
+			if (line.length() >= 3 && line.length() <= 25) {
+				m_words.addWord(line);
+				count++;
 			}
 		}
 

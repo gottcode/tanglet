@@ -25,6 +25,7 @@ HEADERS += src/beveled_rect.h \
 	src/board.h \
 	src/clock.h \
 	src/generator.h \
+	src/gzip.h \
 	src/language_dialog.h \
 	src/language_settings.h \
 	src/locale_dialog.h \
@@ -43,6 +44,7 @@ SOURCES += src/beveled_rect.cpp \
 	src/board.cpp \
 	src/clock.cpp \
 	src/generator.cpp \
+	src/gzip.cpp \
 	src/language_dialog.cpp \
 	src/language_settings.cpp \
 	src/locale_dialog.cpp \
