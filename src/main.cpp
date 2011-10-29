@@ -28,7 +28,7 @@
 int main(int argc, char** argv) {
 	QApplication app(argc, argv);
 	app.setApplicationName("Tanglet");
-	app.setApplicationVersion("1.1.1");
+	app.setApplicationVersion("1.2.0");
 	app.setOrganizationDomain("gottcode.org");
 	app.setOrganizationName("GottCode");
 	{

@@ -1,7 +1,7 @@
 @ECHO OFF
 
 SET APP=Tanglet
-SET VERSION=1.1.1
+SET VERSION=1.2.0
 
 ECHO Copying executable
 MKDIR %APP%
