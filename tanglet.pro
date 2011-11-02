@@ -61,6 +61,7 @@ SOURCES += src/beveled_rect.cpp \
 	src/word_tree.cpp
 
 TRANSLATIONS = translations/tanglet_cs.ts \
+	translations/tanglet_de.ts \
 	translations/tanglet_en.ts \
 	translations/tanglet_fr.ts \
 	translations/tanglet_he.ts \
