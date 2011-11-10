@@ -23,6 +23,7 @@
 
 #include <QDesktopServices>
 #include <QHeaderView>
+#include <QMenu>
 #include <QMouseEvent>
 #include <QUrl>
 
@@ -108,6 +109,12 @@ void WordTree::setHebrew(bool hebrew) {
 
 //-----------------------------------------------------------------------------
 
+void WordTree::setSpelling(const QHash<QString, QStringList>& spelling) {
+	m_spelling = spelling;
+}
+
+//-----------------------------------------------------------------------------
+
 void WordTree::leaveEvent(QEvent* event) {
 	QTreeWidget::leaveEvent(event);
 	enterItem(0);
@@ -131,8 +138,24 @@ void WordTree::wheelEvent(QWheelEvent* event) {
 
 void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
 	if (item && column == 1) {
+		QStringList spellings = m_spelling.value(item->text(2), QStringList(item->text(0).toLower()));
+		QString word = spellings.first();
+
+		if (spellings.count() > 1) {
+			QMenu menu;
+			foreach (const QString& spelling, spellings) {
+				menu.addAction(spelling);
+			}
+			QAction* action = menu.exec(QCursor::pos());
+			if (action) {
+				word = action->text();
+			} else {
+				return;
+			}
+		}
+
 		QByteArray url(m_url);
-		url.replace("%s", QUrl::toPercentEncoding(item->text(0).toLower()));
+		url.replace("%s", QUrl::toPercentEncoding(word));
 		QDesktopServices::openUrl(QUrl::fromEncoded(url));
 	}
 }

@@ -341,7 +341,9 @@ void Board::gameStarted() {
 	m_solutions = m_generator->solutions();
 	m_counts->setWords(m_solutions.keys());
 	m_found->setDictionary(m_generator->dictionary());
+	m_found->setSpelling(m_generator->spelling());
 	m_missed->setDictionary(m_generator->dictionary());
+	m_missed->setSpelling(m_generator->spelling());
 	settings.setValue("Letters", m_letters);
 
 	// Create board

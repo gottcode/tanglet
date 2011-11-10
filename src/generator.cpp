@@ -261,15 +261,28 @@ void Generator::update()
 	if (words_path != m_words_path) {
 		m_words_path.clear();
 		m_words.clear();
+		m_spelling.clear();
 
 		int count = 0;
 		QByteArray data = gunzip(words_path);
 		QTextStream stream(&data);
 		stream.setCodec("UTF-8");
 		while (!stream.atEnd()) {
-			QString line = stream.readLine().toUpper();
-			if (line.length() >= 3 && line.length() <= 25) {
-				m_words.addWord(line);
+			QStringList words = stream.readLine().simplified().split(QChar(' '), QString::SkipEmptyParts);
+			if (words.isEmpty()) {
+				continue;
+			}
+
+			QString word = words.first().toUpper();
+			if (words.count() == 1) {
+				words[0] = word.toLower();
+			} else {
+				words.removeFirst();
+			}
+
+			if (word.length() >= 3 && word.length() <= 25) {
+				m_words.addWord(word);
+				m_spelling[word] = words;
 				count++;
 			}
 		}

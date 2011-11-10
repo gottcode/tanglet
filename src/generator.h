@@ -73,6 +73,11 @@ public:
 		return m_solutions;
 	}
 
+	QHash<QString, QStringList> spelling() const
+	{
+		return m_spelling;
+	}
+
 	int size() const
 	{
 		return m_size;
@@ -100,6 +105,7 @@ private:
 	QList<QStringList> m_dice;
 	QList<QStringList> m_dice_large;
 	Trie m_words;
+	QHash<QString, QStringList> m_spelling;
 	QString m_error;
 
 	int m_density;

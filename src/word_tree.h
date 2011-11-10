@@ -32,6 +32,7 @@ class WordTree : public QTreeWidget {
 		void removeAll();
 		void setDictionary(const QString& url);
 		void setHebrew(bool hebrew);
+		void setSpelling(const QHash<QString, QStringList>& spelling);
 
 	protected:
 		virtual void leaveEvent(QEvent* event);
@@ -48,6 +49,7 @@ class WordTree : public QTreeWidget {
 		QTreeWidgetItem* m_active_item;
 		QByteArray m_url;
 		bool m_hebrew;
+		QHash<QString, QStringList> m_spelling;
 };
 
 #endif
