@@ -12,6 +12,8 @@
    width="512"
    height="512"
    id="svg2">
+  <title
+     id="title3031">Tanglet icon</title>
   <defs
      id="defs4">
     <linearGradient
@@ -173,7 +175,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title>Tanglet icon</dc:title>
+        <dc:date>2011-10-22</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Graeme Gott</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://www.gnu.org/licenses/gpl-3.0.txt" />
       </cc:Work>
     </rdf:RDF>
   </metadata>
