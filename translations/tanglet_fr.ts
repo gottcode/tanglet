@@ -4,7 +4,7 @@
 <context>
     <name>Board</name>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="787"/>
+        <location filename="../src/board.cpp" line="789"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
@@ -18,7 +18,7 @@
     </message>
     <message>
         <location filename="../src/board.cpp" line="74"/>
-        <location filename="../src/board.cpp" line="854"/>
+        <location filename="../src/board.cpp" line="856"/>
         <source>Details</source>
         <translation>Détails</translation>
     </message>
@@ -38,12 +38,12 @@
         <translation>Ratés</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="430"/>
+        <location filename="../src/board.cpp" line="432"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="777"/>
+        <location filename="../src/board.cpp" line="779"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 sur %n point</numerusform>
@@ -51,7 +51,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="779"/>
+        <location filename="../src/board.cpp" line="781"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2 sur %n point</numerusform>
@@ -59,7 +59,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="781"/>
+        <location filename="../src/board.cpp" line="783"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 sur %n point</numerusform>
@@ -67,7 +67,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="783"/>
+        <location filename="../src/board.cpp" line="785"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0 sur %n point</numerusform>
@@ -75,7 +75,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="863"/>
+        <location filename="../src/board.cpp" line="865"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>Le score maximum a été calculé à partir des 30 mots suivants :</translation>
     </message>
@@ -90,17 +90,17 @@
         <translation>Grand</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="596"/>
+        <location filename="../src/board.cpp" line="598"/>
         <source>Success</source>
         <translation>Succès</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="596"/>
+        <location filename="../src/board.cpp" line="598"/>
         <source>Game Over</source>
         <translation>Partie terminée</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="775"/>
+        <location filename="../src/board.cpp" line="777"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 sur %n point</numerusform>
@@ -215,7 +215,7 @@
         <translation>Impossible de lire les dés du fichier.</translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="280"/>
+        <location filename="../src/generator.cpp" line="293"/>
         <source>Unable to read word list from file.</source>
         <translation>Impossible de lire la liste des mots du fichier.</translation>
     </message>
@@ -725,7 +725,7 @@
 <context>
     <name>WordTree</name>
     <message numerus="yes">
-        <location filename="../src/word_tree.cpp" line="86"/>
+        <location filename="../src/word_tree.cpp" line="87"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>

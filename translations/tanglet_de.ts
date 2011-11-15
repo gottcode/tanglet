@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.0" language="de" sourcelanguage="en">
 <context>
     <name>Board</name>
     <message>
         <location filename="../src/board.cpp" line="74"/>
-        <location filename="../src/board.cpp" line="854"/>
+        <location filename="../src/board.cpp" line="856"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
@@ -17,7 +17,7 @@
     <message>
         <location filename="../src/board.cpp" line="113"/>
         <source>Guess</source>
-        <translation>Einen Versuch machen</translation>
+        <translation>Versuchen</translation>
     </message>
     <message>
         <location filename="../src/board.cpp" line="143"/>
@@ -40,22 +40,22 @@
         <translation>Übersehen</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="430"/>
+        <location filename="../src/board.cpp" line="432"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="596"/>
+        <location filename="../src/board.cpp" line="598"/>
         <source>Success</source>
         <translation>Richtig</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="596"/>
+        <location filename="../src/board.cpp" line="598"/>
         <source>Game Over</source>
         <translation>Spiel beendet</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="775"/>
+        <location filename="../src/board.cpp" line="777"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 von %n Punkt</numerusform>
@@ -63,7 +63,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="777"/>
+        <location filename="../src/board.cpp" line="779"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 von %n Punkt</numerusform>
@@ -71,7 +71,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="779"/>
+        <location filename="../src/board.cpp" line="781"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2 von %n Punkt</numerusform>
@@ -79,7 +79,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="781"/>
+        <location filename="../src/board.cpp" line="783"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 von %n Punkt</numerusform>
@@ -87,7 +87,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="783"/>
+        <location filename="../src/board.cpp" line="785"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0 von %n Punkt</numerusform>
@@ -95,7 +95,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="787"/>
+        <location filename="../src/board.cpp" line="789"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n Punkt</numerusform>
@@ -103,7 +103,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="863"/>
+        <location filename="../src/board.cpp" line="865"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>Der Maximalscore wurde anhand der folgenden 30 Wörter berechnet:</translation>
     </message>
@@ -215,7 +215,7 @@
         <translation>Würfel konnte nicht aus Datei gelesen werden.</translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="280"/>
+        <location filename="../src/generator.cpp" line="293"/>
         <source>Unable to read word list from file.</source>
         <translation>Wörterliste konnte nicht aus Datei gelesen werden.</translation>
     </message>
@@ -358,7 +358,7 @@
     <message>
         <location filename="../src/scores_dialog.cpp" line="79"/>
         <source>&lt;b&gt;Score&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Punkte&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Score&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/scores_dialog.cpp" line="80"/>
@@ -368,7 +368,7 @@
     <message>
         <location filename="../src/scores_dialog.cpp" line="81"/>
         <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Uhr&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Zeitlimit&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/scores_dialog.cpp" line="85"/>
@@ -725,7 +725,7 @@
 <context>
     <name>WordTree</name>
     <message numerus="yes">
-        <location filename="../src/word_tree.cpp" line="86"/>
+        <location filename="../src/word_tree.cpp" line="87"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n Punkt</numerusform>
