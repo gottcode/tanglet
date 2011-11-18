@@ -24,8 +24,15 @@
 #include "language_settings.h"
 #include "random.h"
 #include "solver.h"
+#include "trie.h"
 
+#include <QCryptographicHash>
+#include <QDataStream>
+#include <QDateTime>
+#include <QDesktopServices>
+#include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QTextStream>
 
 //-----------------------------------------------------------------------------
@@ -263,27 +270,62 @@ void Generator::update()
 		m_words.clear();
 		m_spelling.clear();
 
+		QString cache_dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/cache";
+		QString cache_file = QCryptographicHash::hash(words_path.toUtf8(), QCryptographicHash::Sha1).toHex();
+		QFileInfo cache_info(cache_dir + "/" + cache_file);
+		bool cached = cache_info.exists() && (cache_info.lastModified() > QFileInfo(words_path).lastModified());
+
+		// Load spellings
+		QStringList words;
 		int count = 0;
-		QByteArray data = gunzip(words_path);
-		QTextStream stream(&data);
-		stream.setCodec("UTF-8");
-		while (!stream.atEnd()) {
-			QStringList words = stream.readLine().simplified().split(QChar(' '), QString::SkipEmptyParts);
-			if (words.isEmpty()) {
-				continue;
-			}
+		{
+			QByteArray data = gunzip(words_path);
+			QTextStream stream(data);
+			stream.setCodec("UTF-8");
+			while (!stream.atEnd()) {
+				QStringList spellings = stream.readLine().simplified().split(QChar(' '), QString::SkipEmptyParts);
+				if (spellings.isEmpty()) {
+					continue;
+				}
 
-			QString word = words.first().toUpper();
-			if (words.count() == 1) {
-				words[0] = word.toLower();
-			} else {
-				words.removeFirst();
-			}
+				QString word = spellings.first().toUpper();
+				if (spellings.count() == 1) {
+					spellings[0] = word.toLower();
+				} else {
+					spellings.removeFirst();
+				}
 
-			if (word.length() >= 3 && word.length() <= 25) {
-				m_words.addWord(word);
-				m_spelling[word] = words;
-				count++;
+				if (word.length() >= 3 && word.length() <= 25) {
+					if (!cached) {
+						words.append(word);
+					}
+					m_spelling[word] = spellings;
+					count++;
+				}
+			}
+		}
+
+		if (cached) {
+			// Load cached words
+			QFile file(cache_dir + "/" + cache_file);
+			if (file.open(QFile::ReadOnly)) {
+				QDataStream stream(&file);
+				stream.setVersion(QDataStream::Qt_4_6);
+				stream >> m_words;
+				file.close();
+			}
+		} else {
+			// Load uncached words
+			m_words = Trie(words);
+
+			// Cache words
+			QDir::home().mkpath(cache_dir);
+			QFile file(cache_info.absoluteFilePath());
+			if (file.open(QFile::WriteOnly)) {
+				QDataStream stream(&file);
+				stream.setVersion(QDataStream::Qt_4_6);
+				stream << m_words;
+				file.close();
 			}
 		}
 

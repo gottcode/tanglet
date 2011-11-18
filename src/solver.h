@@ -20,10 +20,11 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
+#include "trie.h"
+
 #include <QHash>
 #include <QPoint>
 #include <QVector>
-class Trie;
 
 class Solver
 {
@@ -53,6 +54,7 @@ private:
 
 private:
 	const Trie* m_words;
+	const Trie::Node* m_node;
 	int m_size;
 	int m_minimum;
 	bool m_track_positions;

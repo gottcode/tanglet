@@ -19,14 +19,12 @@
 
 #include "solver.h"
 
-#include "trie.h"
-
 #include <QStringList>
 
 //-----------------------------------------------------------------------------
 
 Solver::Solver(const Trie& words, int size, int minimum)
-	: m_words(&words), m_size(size), m_minimum(minimum), m_track_positions(true), m_count(0)
+	: m_words(&words), m_node(words.child()), m_size(size), m_minimum(minimum), m_track_positions(true), m_count(0)
 {
 	// Create neighbors
 	QList<QList<QPoint> > neighbors;
@@ -135,11 +133,11 @@ void Solver::setTrackPositions(bool track_positions)
 
 void Solver::checkCell(Cell& cell)
 {
-	const Trie* words = m_words;
+	const Trie::Node* node = m_node;
 	int length = cell.text.length();
 	for (int i = 0; i < length; ++i) {
-		words = words->child(cell.text.at(i));
-		if (words == 0) {
+		node = m_words->child(cell.text.at(i), node);
+		if (node == 0) {
 			return;
 		}
 	}
@@ -147,15 +145,15 @@ void Solver::checkCell(Cell& cell)
 	cell.checked = true;
 	m_word += cell.text;
 	m_positions.append(cell.position);
-	qSwap(m_words, words);
+	qSwap(m_node, node);
 
-	if (m_words->isWord() && (m_word.length() >= m_minimum)) {
+	if (m_node->isWord() && (m_word.length() >= m_minimum)) {
 		m_count++;
 		if (m_track_positions) {
 			m_solutions[m_word].append(m_positions);
 		}
 	}
-	if (!m_words->isEmpty()) {
+	if (!m_node->isEmpty()) {
 		int count = cell.neighbors.count();
 		for (int i = 0; i < count; ++i) {
 			Cell& next = *cell.neighbors.at(i);
@@ -168,7 +166,7 @@ void Solver::checkCell(Cell& cell)
 	cell.checked = false;
 	m_word.chop(length);
 	m_positions.removeLast();
-	m_words = words;
+	m_node = node;
 }
 
 //-----------------------------------------------------------------------------

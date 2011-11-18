@@ -21,54 +21,69 @@
 #define TRIE_H
 
 #include <QChar>
-class QString;
+#include <QStringList>
+#include <QVector>
+class QDataStream;
 
 class Trie
 {
 public:
-	Trie(const QChar& key = QChar())
-	: m_key(key), m_word(false), m_children(0), m_next(0)
+	struct Node
 	{
-	}
+		Node()
+			: m_letter(QChar()), m_word(false), m_children(0), m_child_count(0)
+		{
+		}
 
-	Trie(const QString& word)
-	: m_word(false), m_children(0), m_next(0)
-	{
-		addWord(word);
-	}
+		bool isEmpty() const
+		{
+			return !m_child_count;
+		}
 
-	~Trie()
-	{
-		clear();
-	}
+		bool isWord() const
+		{
+			return m_word;
+		}
 
-	void addWord(const QString& word);
+		bool operator==(const QChar& c) const
+		{
+			return c == m_letter;
+		}
+
+		QChar m_letter;
+		bool m_word;
+		quint32 m_children;
+		quint8 m_child_count;
+	};
+
+public:
+	Trie();
+	Trie(const QString& word);
+	Trie(const QStringList& words);
+	Trie(const QVector<Node>& nodes);
+
 	void clear();
 
-	bool isEmpty() const
+	const Node* child() const
 	{
-		return !m_children;
+		return &m_nodes[0];
 	}
 
-	bool isWord() const
-	{
-		return m_word;
-	}
+	const Node* child(const QChar& letter, const Node* node) const;
 
-	const Trie* child(const QChar& letter) const;
+	friend QDataStream& operator<<(QDataStream& stream, const Trie& trie);
+	friend QDataStream& operator>>(QDataStream& stream, Trie& trie);
 
 private:
-	Trie* addChild(const QChar& letter);
-
-	// Uncopyable
-	Trie(const Trie&);
-	Trie& operator=(const Trie&);
+	void setNodes(const QVector<Node>& nodes);
 
 private:
-	QChar m_key;
-	bool m_word;
-	Trie* m_children;
-	Trie* m_next;
+	QVector<Node> m_nodes;
 };
+
+QDataStream& operator<<(QDataStream& stream, const Trie& trie);
+QDataStream& operator>>(QDataStream& stream, Trie& trie);
+QDataStream& operator<<(QDataStream& stream, const Trie::Node& node);
+QDataStream& operator>>(QDataStream& stream, Trie::Node& node);
 
 #endif
