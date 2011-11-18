@@ -222,9 +222,22 @@ const Trie::Node* Trie::child(const QChar& letter, const Node* node) const
 
 //-----------------------------------------------------------------------------
 
-QStringList Trie::spellings(const Node* node) const
+QStringList Trie::spellings(const QString& word, const QStringList& default_value) const
 {
-	return m_spellings.mid(node->m_word, node->m_word_count);
+	const Trie::Node* node = &m_nodes[0];
+	int length = word.length();
+	for (int i = 0; i < length; ++i) {
+		node = child(word.at(i), node);
+		if (node == 0) {
+			break;
+		}
+	}
+
+	if (node) {
+		return m_spellings.mid(node->m_word, node->m_word_count);
+	} else {
+		return default_value;
+	}
 }
 
 //-----------------------------------------------------------------------------

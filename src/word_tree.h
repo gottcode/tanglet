@@ -20,6 +20,8 @@
 #ifndef WORD_TREE_H
 #define WORD_TREE_H
 
+class Trie;
+
 #include <QTreeWidget>
 
 class WordTree : public QTreeWidget {
@@ -32,7 +34,7 @@ class WordTree : public QTreeWidget {
 		void removeAll();
 		void setDictionary(const QString& url);
 		void setHebrew(bool hebrew);
-		void setSpelling(const QHash<QString, QStringList>& spelling);
+		void setTrie(const Trie* trie);
 
 	protected:
 		virtual void leaveEvent(QEvent* event);
@@ -49,7 +51,7 @@ class WordTree : public QTreeWidget {
 		QTreeWidgetItem* m_active_item;
 		QByteArray m_url;
 		bool m_hebrew;
-		QHash<QString, QStringList> m_spelling;
+		const Trie* m_trie;
 };
 
 #endif

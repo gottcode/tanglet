@@ -20,6 +20,7 @@
 #include "word_tree.h"
 
 #include "solver.h"
+#include "trie.h"
 
 #include <QDesktopServices>
 #include <QHeaderView>
@@ -30,7 +31,7 @@
 //-----------------------------------------------------------------------------
 
 WordTree::WordTree(QWidget* parent)
-: QTreeWidget(parent), m_active_item(0), m_hebrew(false) {
+: QTreeWidget(parent), m_active_item(0), m_hebrew(false), m_trie(0) {
 	setColumnCount(3);
 	hideColumn(2);
 	header()->setStretchLastSection(false);
@@ -109,8 +110,8 @@ void WordTree::setHebrew(bool hebrew) {
 
 //-----------------------------------------------------------------------------
 
-void WordTree::setSpelling(const QHash<QString, QStringList>& spelling) {
-	m_spelling = spelling;
+void WordTree::setTrie(const Trie* trie) {
+	m_trie = trie;
 }
 
 //-----------------------------------------------------------------------------
@@ -138,7 +139,7 @@ void WordTree::wheelEvent(QWheelEvent* event) {
 
 void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
 	if (item && column == 1) {
-		QStringList spellings = m_spelling.value(item->text(2), QStringList(item->text(0).toLower()));
+		QStringList spellings = m_trie->spellings(item->text(2), QStringList(item->text(0).toLower()));
 		QString word = spellings.first();
 
 		if (spellings.count() > 1) {

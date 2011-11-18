@@ -268,7 +268,6 @@ void Generator::update()
 	if (words_path != m_words_path) {
 		m_words_path.clear();
 		m_words.clear();
-		m_spelling.clear();
 		int count = 0;
 
 		// Load cached words
