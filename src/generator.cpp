@@ -279,10 +279,14 @@ void Generator::update()
 			QFile file(cache_info.absoluteFilePath());
 			if (file.open(QFile::ReadOnly)) {
 				QDataStream stream(&file);
-				stream.setVersion(QDataStream::Qt_4_6);
-				stream >> m_words;
+				quint32 magic, version;
+				stream >> magic >> version;
+				if ((magic == 0x54524945) && (version == 1)) {
+					stream.setVersion(QDataStream::Qt_4_6);
+					stream >> m_words;
+					count = -1;
+				}
 				file.close();
-				count = -1;
 			}
 		}
 
@@ -318,6 +322,8 @@ void Generator::update()
 				QFile file(cache_info.absoluteFilePath());
 				if (file.open(QFile::WriteOnly)) {
 					QDataStream stream(&file);
+					stream << (quint32)0x54524945;
+					stream << (quint32)1;
 					stream.setVersion(QDataStream::Qt_4_6);
 					stream << m_words;
 					file.close();
