@@ -41,15 +41,15 @@ public:
 		addWord(word);
 	}
 
-	TrieGenerator(const QStringList& words);
+	TrieGenerator(const QHash<QString, QStringList>& words);
 
 	~TrieGenerator();
 
-	QVector<Trie::Node> run() const;
+	void run(QVector<Trie::Node>& nodes, QStringList& spellings) const;
 
 private:
 	TrieGenerator* addChild(const QChar& letter);
-	void addWord(const QString& word);
+	void addWord(const QString& word, const QStringList& spellings = QStringList());
 
 	// Uncopyable
 	TrieGenerator(const TrieGenerator&);
@@ -61,15 +61,18 @@ private:
 	TrieGenerator* m_children;
 	TrieGenerator* m_next;
 	int m_count;
+	QStringList m_spellings;
 };
 
 //-----------------------------------------------------------------------------
 
-TrieGenerator::TrieGenerator(const QStringList& words)
+TrieGenerator::TrieGenerator(const QHash<QString, QStringList>& words)
 : m_word(false), m_children(0), m_next(0), m_count(0)
 {
-	foreach (const QString& word, words) {
-		addWord(word);
+	QHashIterator<QString, QStringList> i(words);
+	while (i.hasNext()) {
+		i.next();
+		addWord(i.key(), i.value());
 	}
 }
 
@@ -110,48 +113,47 @@ TrieGenerator* TrieGenerator::addChild(const QChar& letter)
 
 //-----------------------------------------------------------------------------
 
-void TrieGenerator::addWord(const QString& word)
+void TrieGenerator::addWord(const QString& word, const QStringList& spellings)
 {
 	TrieGenerator* node = this;
 	foreach (const QChar& c, word) {
 		node = node->addChild(c);
 	}
 	node->m_word = true;
+	node->m_spellings = spellings;
 }
 
 //-----------------------------------------------------------------------------
 
-QVector<Trie::Node> TrieGenerator::run() const
+void TrieGenerator::run(QVector<Trie::Node>& nodes, QStringList& spellings) const
 {
-	QVector<Trie::Node> result;
-
 	QList< QPair<const TrieGenerator*, int> > next;
-	result.append(Trie::Node());
+	nodes.append(Trie::Node());
 	next.append(qMakePair(this, 0));
 
 	while (!next.isEmpty()) {
 		QPair<const TrieGenerator*, int> item = next.takeFirst();
 
 		const TrieGenerator* trie = item.first;
-		Trie::Node& node = result[item.second];
+		Trie::Node& node = nodes[item.second];
 		node.m_letter = trie->m_key;
-		node.m_word = trie->m_word;
+		node.m_word = spellings.count();
+		spellings += trie->m_spellings;
+		node.m_word_count = trie->m_spellings.count();
 		node.m_child_count = trie->m_count;
 
 		if (node.m_child_count) {
-			node.m_children = result.count();
+			node.m_children = nodes.count();
 
 			trie = trie->m_children;
 			int count = node.m_child_count;
 			for (int i = 0; i < count; ++i) {
-				result.append(Trie::Node());
-				next.append(qMakePair(trie, result.count() - 1));
+				nodes.append(Trie::Node());
+				next.append(qMakePair(trie, nodes.count() - 1));
 				trie = trie->m_next;
 			}
 		}
 	}
-
-	return result;
 }
 
 }
@@ -166,21 +168,18 @@ Trie::Trie()
 
 Trie::Trie(const QString& word)
 {
-	setNodes(TrieGenerator(word).run());
+	TrieGenerator generator(word);
+	generator.run(m_nodes, m_spellings);
+	checkNodes();
 }
 
 //-----------------------------------------------------------------------------
 
-Trie::Trie(const QStringList& words)
+Trie::Trie(const QHash<QString, QStringList>& words)
 {
-	setNodes(TrieGenerator(words).run());
-}
-
-//-----------------------------------------------------------------------------
-
-Trie::Trie(const QVector<Node>& nodes)
-{
-	setNodes(nodes);
+	TrieGenerator generator(words);
+	generator.run(m_nodes, m_spellings);
+	checkNodes();
 }
 
 //-----------------------------------------------------------------------------
@@ -192,10 +191,8 @@ void Trie::clear()
 
 //-----------------------------------------------------------------------------
 
-void Trie::setNodes(const QVector<Node>& nodes)
+void Trie::checkNodes()
 {
-	m_nodes = nodes;
-
 	// Verify that no nodes reference outside list
 	int count = m_nodes.size();
 	int start, end;
@@ -204,6 +201,7 @@ void Trie::setNodes(const QVector<Node>& nodes)
 		end = start + m_nodes[i].m_child_count;
 		if ((start >= count) || (end > count)) {
 			m_nodes.clear();
+			m_spellings.clear();
 			break;
 		}
 	}
@@ -224,9 +222,17 @@ const Trie::Node* Trie::child(const QChar& letter, const Node* node) const
 
 //-----------------------------------------------------------------------------
 
+QStringList Trie::spellings(const Node* node) const
+{
+	return m_spellings.mid(node->m_word, node->m_word_count);
+}
+
+//-----------------------------------------------------------------------------
+
 QDataStream& operator<<(QDataStream& stream, const Trie& trie)
 {
 	stream << trie.m_nodes;
+	stream << trie.m_spellings;
 	return stream;
 }
 
@@ -234,9 +240,9 @@ QDataStream& operator<<(QDataStream& stream, const Trie& trie)
 
 QDataStream& operator>>(QDataStream& stream, Trie& trie)
 {
-	QVector<Trie::Node> nodes;
-	stream >> nodes;
-	trie.setNodes(nodes);
+	stream >> trie.m_nodes;
+	stream >> trie.m_spellings;
+	trie.checkNodes();
 	return stream;
 }
 
@@ -244,7 +250,7 @@ QDataStream& operator>>(QDataStream& stream, Trie& trie)
 
 QDataStream& operator<<(QDataStream& stream, const Trie::Node& node)
 {
-	stream << node.m_letter << node.m_word << node.m_children << node.m_child_count;
+	stream << node.m_letter << node.m_word << node.m_children << node.m_word_count << node.m_child_count;
 	return stream;
 }
 
@@ -252,7 +258,7 @@ QDataStream& operator<<(QDataStream& stream, const Trie::Node& node)
 
 QDataStream& operator>>(QDataStream& stream, Trie::Node& node)
 {
-	stream >> node.m_letter >> node.m_word >> node.m_children >> node.m_child_count;
+	stream >> node.m_letter >> node.m_word >> node.m_children >> node.m_word_count >> node.m_child_count;
 	return stream;
 }
 

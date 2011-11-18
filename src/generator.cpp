@@ -269,16 +269,26 @@ void Generator::update()
 		m_words_path.clear();
 		m_words.clear();
 		m_spelling.clear();
+		int count = 0;
 
+		// Load cached words
 		QString cache_dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/cache";
 		QString cache_file = QCryptographicHash::hash(words_path.toUtf8(), QCryptographicHash::Sha1).toHex();
 		QFileInfo cache_info(cache_dir + "/" + cache_file);
-		bool cached = cache_info.exists() && (cache_info.lastModified() > QFileInfo(words_path).lastModified());
+		if (cache_info.exists() && (cache_info.lastModified() > QFileInfo(words_path).lastModified())) {
+			QFile file(cache_info.absoluteFilePath());
+			if (file.open(QFile::ReadOnly)) {
+				QDataStream stream(&file);
+				stream.setVersion(QDataStream::Qt_4_6);
+				stream >> m_words;
+				file.close();
+				count = -1;
+			}
+		}
 
-		// Load spellings
-		QStringList words;
-		int count = 0;
-		{
+		// Load uncached words
+		if (count == 0) {
+			QHash<QString, QStringList> words;
 			QByteArray data = gunzip(words_path);
 			QTextStream stream(data);
 			stream.setCodec("UTF-8");
@@ -296,40 +306,26 @@ void Generator::update()
 				}
 
 				if (word.length() >= 3 && word.length() <= 25) {
-					if (!cached) {
-						words.append(word);
-					}
-					m_spelling[word] = spellings;
+					words[word] = spellings;
 					count++;
+				}
+			}
+			m_words = Trie(words);
+
+			// Cache words
+			if (count) {
+				QDir::home().mkpath(cache_dir);
+				QFile file(cache_info.absoluteFilePath());
+				if (file.open(QFile::WriteOnly)) {
+					QDataStream stream(&file);
+					stream.setVersion(QDataStream::Qt_4_6);
+					stream << m_words;
+					file.close();
 				}
 			}
 		}
 
-		if (cached) {
-			// Load cached words
-			QFile file(cache_dir + "/" + cache_file);
-			if (file.open(QFile::ReadOnly)) {
-				QDataStream stream(&file);
-				stream.setVersion(QDataStream::Qt_4_6);
-				stream >> m_words;
-				file.close();
-			}
-		} else {
-			// Load uncached words
-			m_words = Trie(words);
-
-			// Cache words
-			QDir::home().mkpath(cache_dir);
-			QFile file(cache_info.absoluteFilePath());
-			if (file.open(QFile::WriteOnly)) {
-				QDataStream stream(&file);
-				stream.setVersion(QDataStream::Qt_4_6);
-				stream << m_words;
-				file.close();
-			}
-		}
-
-		if (count > 0) {
+		if (count) {
 			m_words_path = words_path;
 		} else {
 			return setError(tr("Unable to read word list from file."));

@@ -21,6 +21,7 @@
 #define TRIE_H
 
 #include <QChar>
+#include <QHash>
 #include <QStringList>
 #include <QVector>
 class QDataStream;
@@ -31,7 +32,7 @@ public:
 	struct Node
 	{
 		Node()
-			: m_letter(QChar()), m_word(false), m_children(0), m_child_count(0)
+			: m_letter(QChar()), m_word(0), m_children(0), m_word_count(0), m_child_count(0)
 		{
 		}
 
@@ -42,7 +43,7 @@ public:
 
 		bool isWord() const
 		{
-			return m_word;
+			return m_word_count;
 		}
 
 		bool operator==(const QChar& c) const
@@ -51,16 +52,16 @@ public:
 		}
 
 		QChar m_letter;
-		bool m_word;
+		quint32 m_word;
 		quint32 m_children;
+		quint8 m_word_count;
 		quint8 m_child_count;
 	};
 
 public:
 	Trie();
 	Trie(const QString& word);
-	Trie(const QStringList& words);
-	Trie(const QVector<Node>& nodes);
+	Trie(const QHash<QString, QStringList>& words);
 
 	void clear();
 
@@ -70,15 +71,17 @@ public:
 	}
 
 	const Node* child(const QChar& letter, const Node* node) const;
+	QStringList spellings(const Node* node) const;
 
 	friend QDataStream& operator<<(QDataStream& stream, const Trie& trie);
 	friend QDataStream& operator>>(QDataStream& stream, Trie& trie);
 
 private:
-	void setNodes(const QVector<Node>& nodes);
+	void checkNodes();
 
 private:
 	QVector<Node> m_nodes;
+	QStringList m_spellings;
 };
 
 QDataStream& operator<<(QDataStream& stream, const Trie& trie);
