@@ -73,6 +73,11 @@ public:
 	const Node* child(const QChar& letter, const Node* node) const;
 	QStringList spellings(const QString& word, const QStringList& default_value = QStringList()) const;
 
+	bool isEmpty() const
+	{
+		return m_nodes.isEmpty();
+	}
+
 	friend QDataStream& operator<<(QDataStream& stream, const Trie& trie);
 	friend QDataStream& operator>>(QDataStream& stream, Trie& trie);
 

@@ -187,6 +187,7 @@ Trie::Trie(const QHash<QString, QStringList>& words)
 void Trie::clear()
 {
 	m_nodes.clear();
+	m_spellings.clear();
 }
 
 //-----------------------------------------------------------------------------
@@ -200,8 +201,7 @@ void Trie::checkNodes()
 		start = m_nodes[i].m_children;
 		end = start + m_nodes[i].m_child_count;
 		if ((start >= count) || (end > count)) {
-			m_nodes.clear();
-			m_spellings.clear();
+			clear();
 			break;
 		}
 	}
@@ -254,8 +254,10 @@ QDataStream& operator<<(QDataStream& stream, const Trie& trie)
 QDataStream& operator>>(QDataStream& stream, Trie& trie)
 {
 	stream >> trie.m_nodes;
-	stream >> trie.m_spellings;
 	trie.checkNodes();
+	if (!trie.isEmpty()) {
+		stream >> trie.m_spellings;
+	}
 	return stream;
 }
 

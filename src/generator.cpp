@@ -283,7 +283,7 @@ void Generator::update()
 				if ((magic == 0x54524945) && (version == 1)) {
 					stream.setVersion(QDataStream::Qt_4_6);
 					stream >> m_words;
-					count = -1;
+					count = !m_words.isEmpty() * -1;
 				}
 				file.close();
 			}
