@@ -60,6 +60,8 @@ class Board : public QWidget {
 	signals:
 		void started();
 		void finished(int score);
+		void optimizingStarted();
+		void optimizingFinished();
 		void pauseAvailable(bool available);
 
 	private slots:

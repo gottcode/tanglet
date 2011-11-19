@@ -89,6 +89,8 @@ public:
 	}
 
 signals:
+	void optimizingStarted();
+	void optimizingFinished();
 	void warning(const QString& warning);
 
 private:

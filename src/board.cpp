@@ -58,6 +58,8 @@ Board::Board(QWidget* parent)
 : QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0), m_generator(0) {
 	m_generator = new Generator(this);
 	connect(m_generator, SIGNAL(finished()), this, SLOT(gameStarted()));
+	connect(m_generator, SIGNAL(optimizingStarted()), this, SIGNAL(optimizingStarted()));
+	connect(m_generator, SIGNAL(optimizingFinished()), this, SIGNAL(optimizingFinished()));
 
 	m_view = new View(0, this);
 

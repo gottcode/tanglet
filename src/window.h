@@ -55,6 +55,8 @@ class Window : public QMainWindow {
 		void showLanguage();
 		void showLocale();
 		void showControls();
+		void optimizingStarted();
+		void optimizingFinished();
 		void gameStarted();
 		void gameFinished(int score);
 
@@ -73,11 +75,13 @@ class Window : public QMainWindow {
 		friend class State;
 		class NewGameState;
 		class OpenGameState;
+		class OptimizingState;
 		class PlayState;
 		class AutoPauseState;
 		class PauseState;
 		class FinishState;
 		State* m_state;
+		State* m_previous_state;
 		QHash<QString, State*> m_states;
 };
 

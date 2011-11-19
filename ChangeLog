@@ -1,3 +1,6 @@
+2011-11-19 Graeme Gott <graeme@gottcode.org>
+	* Inform player when optimizing word list.
+
 2011-11-18 Graeme Gott <graeme@gottcode.org>
 	* Prevent opening empty cache.
 	* Store extra spellings in trie.

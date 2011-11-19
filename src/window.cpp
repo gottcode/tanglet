@@ -62,6 +62,8 @@ public:
 	virtual void enter() { }
 	virtual void newGame() { setState("NewGame"); }
 	virtual void openGame() { setState("OpenGame"); }
+	virtual void optimizingStarted() { }
+	virtual void optimizingFinished() { }
 	virtual void play() { }
 	virtual void autoPause() { }
 	virtual void autoResume() { }
@@ -80,8 +82,15 @@ protected:
 	}
 
 	void setState(const QString& state) {
+		m_window->m_previous_state = m_window->m_state;
 		m_window->m_state = m_window->m_states.value(state);
 		m_window->m_state->enter();
+	}
+
+	void setPreviousState() {
+		m_window->m_state = m_window->m_previous_state;
+		m_window->m_state->enter();
+		m_window->m_previous_state = 0;
 	}
 
 private:
@@ -101,6 +110,7 @@ public:
 		setContentsIndex(4);
 	}
 
+	void optimizingStarted() { setState("Optimizing"); }
 	void play() { setState(m_next_state); }
 	void autoPause() { m_next_state = "AutoPause"; }
 	void autoResume() { m_next_state = "Play"; }
@@ -122,12 +132,27 @@ public:
 		setContentsIndex(2);
 	}
 
+	void optimizingStarted() { setState("Optimizing"); }
 	void play() { setState(m_next_state); }
 	void autoPause() { m_next_state = "AutoPause"; }
 	void autoResume() { m_next_state = "Play"; }
 
 private:
 	QString m_next_state;
+};
+
+//-----------------------------------------------------------------------------
+
+class Window::OptimizingState : public Window::State {
+public:
+	OptimizingState(Window* window)
+		: State(window) { }
+
+	void enter() {
+		setContentsIndex(5);
+	}
+
+	void optimizingFinished() { setPreviousState(); }
 };
 
 //-----------------------------------------------------------------------------
@@ -250,12 +275,13 @@ namespace
 //-----------------------------------------------------------------------------
 
 Window::Window()
-: m_pause_action(0) {
+: m_pause_action(0), m_previous_state(0) {
 	setWindowTitle(tr("Tanglet"));
 
 	// Create states
 	m_states.insert("NewGame", new NewGameState(this));
 	m_states.insert("OpenGame", new OpenGameState(this));
+	m_states.insert("Optimizing", new OptimizingState(this));
 	m_states.insert("Play", new PlayState(this));
 	m_states.insert("AutoPause", new AutoPauseState(this));
 	m_states.insert("Pause", new PauseState(this));
@@ -270,6 +296,8 @@ Window::Window()
 	m_contents->addWidget(m_board);
 	connect(m_board, SIGNAL(started()), this, SLOT(gameStarted()));
 	connect(m_board, SIGNAL(finished(int)), this, SLOT(gameFinished(int)));
+	connect(m_board, SIGNAL(optimizingStarted()), this, SLOT(optimizingStarted()));
+	connect(m_board, SIGNAL(optimizingFinished()), this, SLOT(optimizingFinished()));
 
 	// Create pause screen
 	m_pause_screen = new QLabel(tr("<p><b><big>Paused</big></b><br>Click to resume playing.</p>"), this);
@@ -292,6 +320,11 @@ Window::Window()
 	QLabel* new_game_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Generating a new board...</p>"), this);
 	new_game_screen->setAlignment(Qt::AlignCenter);
 	m_contents->addWidget(new_game_screen);
+
+	// Create optimizing screen
+	QLabel* optimizing_screen = new QLabel(tr("<p><b><big>Please wait</big></b><br>Optimizing word list...</p>"), this);
+	optimizing_screen->setAlignment(Qt::AlignCenter);
+	m_contents->addWidget(optimizing_screen);
 
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
@@ -672,6 +705,18 @@ void Window::showControls() {
 		"<b>Make a guess:</b> Press Enter.<br>"
 		"<b>Clear the word:</b> Press Ctrl+Backspace.</p>"
 	));
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::optimizingStarted() {
+	m_state->optimizingStarted();
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::optimizingFinished() {
+	m_state->optimizingFinished();
 }
 
 //-----------------------------------------------------------------------------

@@ -291,6 +291,8 @@ void Generator::update()
 
 		// Load uncached words
 		if (count == 0) {
+			emit optimizingStarted();
+
 			QHash<QString, QStringList> words;
 			QByteArray data = gunzip(words_path);
 			QTextStream stream(data);
@@ -328,6 +330,8 @@ void Generator::update()
 					file.close();
 				}
 			}
+
+			emit optimizingFinished();
 		}
 
 		if (count) {
