@@ -4,58 +4,58 @@
 <context>
     <name>Board</name>
     <message>
-        <location filename="../src/board.cpp" line="74"/>
-        <location filename="../src/board.cpp" line="856"/>
+        <location filename="../src/board.cpp" line="76"/>
+        <location filename="../src/board.cpp" line="858"/>
         <source>Details</source>
         <translation>Podrobnosti</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="101"/>
+        <location filename="../src/board.cpp" line="103"/>
         <source>Clear</source>
         <translation>Smazat</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="113"/>
+        <location filename="../src/board.cpp" line="115"/>
         <source>Guess</source>
         <translation>Návrh</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="143"/>
+        <location filename="../src/board.cpp" line="145"/>
         <source>Found</source>
         <translation>Nalezeno</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="280"/>
+        <location filename="../src/board.cpp" line="282"/>
         <source>Normal</source>
         <translation>Obvyklá</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="280"/>
+        <location filename="../src/board.cpp" line="282"/>
         <source>Large</source>
         <translation>Velká</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="299"/>
+        <location filename="../src/board.cpp" line="301"/>
         <source>Missed</source>
         <translation>Přehlédnuto</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="432"/>
+        <location filename="../src/board.cpp" line="434"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="598"/>
+        <location filename="../src/board.cpp" line="600"/>
         <source>Success</source>
         <translation>Úspěch</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="598"/>
+        <location filename="../src/board.cpp" line="600"/>
         <source>Game Over</source>
         <translation>Hra skončila</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="777"/>
+        <location filename="../src/board.cpp" line="779"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 z %n bodu</numerusform>
@@ -64,7 +64,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="779"/>
+        <location filename="../src/board.cpp" line="781"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 z %n bodu</numerusform>
@@ -73,7 +73,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="781"/>
+        <location filename="../src/board.cpp" line="783"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2 z %n bodu</numerusform>
@@ -82,7 +82,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="783"/>
+        <location filename="../src/board.cpp" line="785"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 z %n bodu</numerusform>
@@ -91,7 +91,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="785"/>
+        <location filename="../src/board.cpp" line="787"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0 z %n bodu</numerusform>
@@ -100,7 +100,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="789"/>
+        <location filename="../src/board.cpp" line="791"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n bod</numerusform>
@@ -109,7 +109,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="865"/>
+        <location filename="../src/board.cpp" line="867"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>Nejlepší výsledek byl vypočítán z následujících třiceti slov:</translation>
     </message>
@@ -218,12 +218,12 @@
 <context>
     <name>Generator</name>
     <message>
-        <location filename="../src/generator.cpp" line="255"/>
+        <location filename="../src/generator.cpp" line="262"/>
         <source>Unable to read dice from file.</source>
         <translation>Nelze přečíst kostky obsažené v souboru.</translation>
     </message>
     <message>
-        <location filename="../src/generator.cpp" line="293"/>
+        <location filename="../src/generator.cpp" line="340"/>
         <source>Unable to read word list from file.</source>
         <translation>Nelze přečíst seznam slov obsažených v souboru.</translation>
     </message>
@@ -398,307 +398,312 @@
 <context>
     <name>Window</name>
     <message>
-        <location filename="../src/window.cpp" line="254"/>
+        <location filename="../src/window.cpp" line="279"/>
         <source>Tanglet</source>
         <translation>Tanglet</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="275"/>
+        <location filename="../src/window.cpp" line="303"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Paused&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Click to resume playing.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Pozastaveno&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Klepněte pro návrat do hry.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="292"/>
+        <location filename="../src/window.cpp" line="320"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Prosím, počkejte&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Vytváří se nová deska...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="286"/>
+        <location filename="../src/window.cpp" line="314"/>
         <source>Click to start a new game.</source>
         <translation>Klepněte pro začátek nové hry.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="281"/>
+        <location filename="../src/window.cpp" line="309"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Čekejte, prosím,&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Nahrává se hra...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="297"/>
+        <location filename="../src/window.cpp" line="325"/>
+        <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="330"/>
         <source>&amp;Game</source>
         <translation>&amp;Hra</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="300"/>
+        <location filename="../src/window.cpp" line="333"/>
         <source>&amp;Choose...</source>
         <translation>&amp;Vybrat..</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="301"/>
+        <location filename="../src/window.cpp" line="334"/>
         <source>&amp;Share...</source>
         <translation>&amp;Sdílet...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="303"/>
+        <location filename="../src/window.cpp" line="336"/>
         <source>&amp;End</source>
         <translation>&amp;Skončit</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="306"/>
+        <location filename="../src/window.cpp" line="339"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pozastavit</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="308"/>
+        <location filename="../src/window.cpp" line="341"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="313"/>
+        <location filename="../src/window.cpp" line="346"/>
         <source>&amp;Details</source>
         <translation>&amp;Podrobnosti</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="315"/>
+        <location filename="../src/window.cpp" line="348"/>
         <source>&amp;High Scores</source>
         <translation>&amp;Nejlepší výsledky</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="317"/>
+        <location filename="../src/window.cpp" line="350"/>
         <source>&amp;Quit</source>
         <translation>&amp;Ukončit</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="317"/>
+        <location filename="../src/window.cpp" line="350"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="322"/>
+        <location filename="../src/window.cpp" line="355"/>
         <source>&amp;Settings</source>
         <translation>&amp;Nastavení</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="323"/>
+        <location filename="../src/window.cpp" line="356"/>
         <source>Show &amp;Maximum Score</source>
         <translation>Ukázat &amp;nejlepší možný dosažitelný výsledek</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="325"/>
+        <location filename="../src/window.cpp" line="358"/>
         <source>&amp;Never</source>
         <translation>&amp;Nikdy</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="326"/>
+        <location filename="../src/window.cpp" line="359"/>
         <source>&amp;End Of Game</source>
         <translation>&amp;Na konci hry</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="327"/>
+        <location filename="../src/window.cpp" line="360"/>
         <source>&amp;Always</source>
         <translation>&amp;Vždy</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="335"/>
+        <location filename="../src/window.cpp" line="368"/>
         <source>Show Missed &amp;Words</source>
         <translation>Ukázat přehlédnutá &amp;slova</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="338"/>
+        <location filename="../src/window.cpp" line="371"/>
         <source>Show Word &amp;Counts</source>
         <translation>Ukázat &amp;počty slov</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="483"/>
+        <location filename="../src/window.cpp" line="516"/>
         <source>Import Game</source>
         <translation>Zavést hru</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="483"/>
-        <location filename="../src/window.cpp" line="540"/>
+        <location filename="../src/window.cpp" line="516"/>
+        <location filename="../src/window.cpp" line="573"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation>Hry Tanglet (*.tanglet)</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="540"/>
+        <location filename="../src/window.cpp" line="573"/>
         <source>Export Game</source>
         <translation>Vyvést hru</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="631"/>
+        <location filename="../src/window.cpp" line="664"/>
         <source>Word Density:</source>
         <translation>Hustota slov:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="632"/>
+        <location filename="../src/window.cpp" line="665"/>
         <source>Word Length:</source>
         <translation>Délka slova:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="633"/>
+        <location filename="../src/window.cpp" line="666"/>
         <source>Game Type:</source>
         <translation>Typ hry:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="634"/>
+        <location filename="../src/window.cpp" line="667"/>
         <source>Description:</source>
         <translation>Popis:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="342"/>
+        <location filename="../src/window.cpp" line="375"/>
         <source>&amp;Board Language...</source>
         <translation>&amp;Jazyk desky...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="298"/>
+        <location filename="../src/window.cpp" line="331"/>
         <source>New &amp;Game...</source>
         <translation>Nová &amp;hra...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="298"/>
+        <location filename="../src/window.cpp" line="331"/>
         <source>Ctrl+Shift+N</source>
         <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="299"/>
+        <location filename="../src/window.cpp" line="332"/>
         <source>&amp;New Roll</source>
         <translation>&amp;Nové kutálení</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="344"/>
+        <location filename="../src/window.cpp" line="377"/>
         <source>Application &amp;Language...</source>
         <translation>Jazyk &amp;programu...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="348"/>
+        <location filename="../src/window.cpp" line="381"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="349"/>
+        <location filename="../src/window.cpp" line="382"/>
         <source>&amp;Controls</source>
         <translation>&amp;Ovládání</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="351"/>
+        <location filename="../src/window.cpp" line="384"/>
         <source>&amp;About</source>
         <translation>&amp;O programu</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="353"/>
+        <location filename="../src/window.cpp" line="386"/>
         <source>About &amp;Hspell</source>
         <translation>O &amp;Hspellu</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="355"/>
+        <location filename="../src/window.cpp" line="388"/>
         <source>About &amp;Qt</source>
         <translation>O &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="357"/>
+        <location filename="../src/window.cpp" line="390"/>
         <source>About &amp;SCOWL</source>
         <translation>O &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="435"/>
+        <location filename="../src/window.cpp" line="468"/>
         <source>About</source>
         <translation>O programu</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="437"/>
+        <location filename="../src/window.cpp" line="470"/>
         <source>Tanglet %1</source>
         <translation>Tanglet %1</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="438"/>
+        <location filename="../src/window.cpp" line="471"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Obměna hry &lt;a href=&quot;http://fr.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt; určená pro jednoho hráče</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="439"/>
+        <location filename="../src/window.cpp" line="472"/>
         <source>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</source>
         <translation>Autorské právo &amp;copy; 2009, 2010, 2011 Graeme Gott</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="441"/>
+        <location filename="../src/window.cpp" line="474"/>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
         <translation>Seznam anglických slov je založen na &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; od Kevina Atkinsona</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="442"/>
+        <location filename="../src/window.cpp" line="475"/>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>Seznam hebrejských slov je založen na &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; od Nadava Har&apos;Ela a Dana Kenigsberga</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="448"/>
+        <location filename="../src/window.cpp" line="481"/>
         <source>About Hspell</source>
         <translation>O Hspellu</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="440"/>
+        <location filename="../src/window.cpp" line="473"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>Vydáno pod licencí &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="455"/>
+        <location filename="../src/window.cpp" line="488"/>
         <source>About SCOWL</source>
         <translation>O SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="585"/>
+        <location filename="../src/window.cpp" line="618"/>
         <source>Question</source>
         <translation>Otázka</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="585"/>
+        <location filename="../src/window.cpp" line="618"/>
         <source>End the current game?</source>
         <translation>Skončit nynější hru?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="630"/>
+        <location filename="../src/window.cpp" line="663"/>
         <source>Normal</source>
         <translation>Obvyklá</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="630"/>
+        <location filename="../src/window.cpp" line="663"/>
         <source>Large</source>
         <translation>Velká</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="630"/>
+        <location filename="../src/window.cpp" line="663"/>
         <source>Board Size:</source>
         <translation>Velikost desky:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="632"/>
+        <location filename="../src/window.cpp" line="665"/>
         <source>%1 or more letters</source>
         <translation>%1 písmena nebo více</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="624"/>
+        <location filename="../src/window.cpp" line="657"/>
         <source>Details</source>
         <translation>Podrobnosti</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="664"/>
+        <location filename="../src/window.cpp" line="697"/>
         <source>Controls</source>
         <translation>Ovládání</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="664"/>
+        <location filename="../src/window.cpp" line="697"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Hra s pomocí myši:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Výběr slova:&lt;/b&gt; Klepněte na písmena slova, jak následují za sebou.&lt;br&gt;&lt;b&gt;Návrh slova:&lt;/b&gt; Klepněte na poslední vybrané písmeno.&lt;br&gt;&lt;b&gt;Vymazání písmen:&lt;/b&gt; Klepněte na dříve vybrané písmeno.&lt;br&gt;&lt;b&gt;Smazání slova:&lt;/b&gt; Dvakrát klepněte na písmeno, které bylo vybráno jako první.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Hra s pomocí klávesnice:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Výběr slova:&lt;/b&gt; Napište písmena slova.&lt;br&gt;&lt;b&gt;Návrh slova:&lt;/b&gt; Stiskněte klávesu Enter.&lt;br&gt;&lt;b&gt;Smazání slova:&lt;/b&gt; Stiskněte klávesy Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="531"/>
-        <location filename="../src/window.cpp" line="737"/>
+        <location filename="../src/window.cpp" line="564"/>
+        <location filename="../src/window.cpp" line="782"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="498"/>
-        <location filename="../src/window.cpp" line="513"/>
-        <location filename="../src/window.cpp" line="522"/>
-        <location filename="../src/window.cpp" line="737"/>
+        <location filename="../src/window.cpp" line="531"/>
+        <location filename="../src/window.cpp" line="546"/>
+        <location filename="../src/window.cpp" line="555"/>
+        <location filename="../src/window.cpp" line="782"/>
         <source>Unable to start requested game.</source>
         <translation>Požadovanou hru nelze spustit.</translation>
     </message>
@@ -734,7 +739,7 @@
 <context>
     <name>WordTree</name>
     <message numerus="yes">
-        <location filename="../src/word_tree.cpp" line="87"/>
+        <location filename="../src/word_tree.cpp" line="88"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n bod</numerusform>
