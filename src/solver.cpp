@@ -144,7 +144,9 @@ void Solver::checkCell(Cell& cell)
 
 	cell.checked = true;
 	m_word += cell.text;
-	m_positions.append(cell.position);
+	if (m_track_positions) {
+		m_positions.append(cell.position);
+	}
 	qSwap(m_node, node);
 
 	if (m_node->isWord() && (m_word.length() >= m_minimum)) {
@@ -165,7 +167,9 @@ void Solver::checkCell(Cell& cell)
 
 	cell.checked = false;
 	m_word.chop(length);
-	m_positions.removeLast();
+	if (m_track_positions) {
+		m_positions.removeLast();
+	}
 	m_node = node;
 }
 
