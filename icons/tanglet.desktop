@@ -2,6 +2,7 @@
 Name=Tanglet
 GenericName=Word Finding Game
 Comment=Single player variant of Boggle
+Comment[de]=Einzelspielervariante von Boggle
 Exec=tanglet
 Icon=tanglet
 Terminal=false
