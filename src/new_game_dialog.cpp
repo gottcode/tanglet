@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,8 @@
 #include <QDialogButtonBox>
 #include <QFormLayout>
 #include <QLabel>
+#include <QScrollArea>
+#include <QScrollBar>
 #include <QSettings>
 #include <QSignalMapper>
 #include <QToolButton>
@@ -74,7 +76,7 @@ namespace
 //-----------------------------------------------------------------------------
 
 NewGameDialog::NewGameDialog(QWidget* parent)
-	: QDialog(parent, Qt::MSWindowsFixedSizeDialogHint | Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint), m_minimum(3)
+	: QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint), m_minimum(3)
 {
 	setWindowTitle(tr("New Game"));
 
@@ -147,24 +149,34 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addSpacing(6);
 
 	// Create timer buttons
+	QScrollArea* area = new QScrollArea(this);
+	layout->addWidget(area);
+
+	QWidget* timers_widget = new QWidget(area);
+	QVBoxLayout* timers_layout = new QVBoxLayout(timers_widget);
+	area->setWidget(timers_widget);
+	area->setWidgetResizable(true);
+
 	QSignalMapper* mapper = new QSignalMapper(this);
 	connect(mapper, SIGNAL(mapped(int)), this, SLOT(timerChosen(int)));
 
+	QCommandLinkButton* active_timer = 0;
 	QList<TimerDescription> timers;
 	for (int i = Clock::Tanglet; i < Clock::TotalTimers; ++i) {
 		timers.append(i);
 	}
 	qSort(timers);
 	foreach (const TimerDescription& timer, timers) {
-		QCommandLinkButton* button = new QCommandLinkButton(timer.name(), timer.description(), this);
+		QCommandLinkButton* button = new QCommandLinkButton(timer.name(), timer.description(), timers_widget);
 		button->setMinimumWidth(500);
 		connect(button, SIGNAL(clicked()), mapper, SLOT(map()));
 		mapper->setMapping(button, timer.id());
-		layout->addWidget(button);
+		timers_layout->addWidget(button);
 
 		if (timer.id() == previous_timer) {
 			button->setDefault(true);
 			button->setFocus();
+			active_timer = button;
 		}
 	}
 
@@ -174,7 +186,13 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addSpacing(6);
 	layout->addWidget(buttons);
 
-	setFixedSize(sizeHint());
+	// Show contents
+	QSize size = sizeHint() + QSize(area->verticalScrollBar()->sizeHint().width(), area->frameWidth() * 2);
+	resize(QSettings().value("NewGameDialog/Size", size).toSize());
+	show();
+	if (active_timer) {
+		area->ensureWidgetVisible(active_timer);
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -219,6 +237,7 @@ void NewGameDialog::timerChosen(int timer)
 	}
 	settings.setValue("Board/Density", m_density->currentIndex());
 	settings.setValue("Board/TimerMode", timer);
+	settings.setValue("NewGameDialog/Size", size());
 	QDialog::accept();
 }
 
