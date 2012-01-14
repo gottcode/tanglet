@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -82,10 +82,17 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 		}
 		item->setText(0, copy);
 	}
+
+	QStringList spellings = m_trie->spellings(word, QStringList(item->text(0).toLower()));
+	item->setData(1, Qt::UserRole, spellings);
+
 	item->setIcon(1, QIcon(":/empty.png"));
 	int score = Solver::score(word);
 	item->setData(0, Qt::UserRole, score);
-	item->setToolTip(0, tr("%n point(s)", "", score));
+
+	spellings.append(tr("%n point(s)", "", score));
+	item->setToolTip(0, spellings.join("\n"));
+
 	return item;
 }
 
@@ -139,7 +146,7 @@ void WordTree::wheelEvent(QWheelEvent* event) {
 
 void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
 	if (item && column == 1) {
-		QStringList spellings = m_trie->spellings(item->text(2), QStringList(item->text(0).toLower()));
+		QStringList spellings = item->data(1, Qt::UserRole).toStringList();
 		QString word = spellings.first();
 
 		if (spellings.count() > 1) {
