@@ -416,7 +416,7 @@
     <message>
         <location filename="../src/window.cpp" line="325"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Wörterliste wird optimiert...&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="330"/>
@@ -541,7 +541,7 @@
     <message>
         <location filename="../src/window.cpp" line="384"/>
         <source>&amp;About</source>
-        <translation>&amp;Info</translation>
+        <translation>I&amp;nfo</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="386"/>
