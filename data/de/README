@@ -7,11 +7,10 @@ All words are legal apart from proper nouns and abbreviations. If in
 doubt, a word is legal only if it is listed (in its base form) in the
 Duden dictionary (http://www.duden.de), which is the most widely used
 source for the spelling of German, and the Duden says that the word type
-is not a proper noun or an abbreviation. For example, the Duden lists
-most city names as proper nouns and most country names as regular nouns.
-This rule is also applied to compound words: a compound word needs to be
-listed in the Duden to be legal (otherwise it is too easy in German to
-create an infinite number of new words by simple composition). 
+is not a proper noun or an abbreviation. This rule is also applied to
+compound words: a compound word needs to be listed in the Duden to be
+legal (otherwise it is too easy in German to create an infinite number
+of new words by simple composition).
 
 The original word list for German was created using igerman98-20110609
 (http://www.j3e.de/ispell/igerman98/index_en.html). Inflections were
