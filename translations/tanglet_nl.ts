@@ -399,9 +399,9 @@
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Gepauzeerd&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Klik om verder te spelen.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="320"/>
-        <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Even geduld&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Bezig met aanmaken van een nieuw bord...&lt;/p&gt;</translation>
+        <location filename="../src/window.cpp" line="309"/>
+        <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Even geduld&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Bezig met laden van het spel...&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="314"/>
@@ -409,19 +409,34 @@
         <translation>Klik om een nieuw spel te starten.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="309"/>
-        <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Even geduld&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Bezig met laden van het spel...&lt;/p&gt;</translation>
+        <location filename="../src/window.cpp" line="320"/>
+        <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Even geduld&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Bezig met aanmaken van een nieuw bord...&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="325"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Even geduld&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Bezig met optimaliseren van de woordenlijst...&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="330"/>
         <source>&amp;Game</source>
         <translation>&amp;Spel</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="331"/>
+        <source>New &amp;Game...</source>
+        <translation>&amp;Nieuw spel...</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="331"/>
+        <source>Ctrl+Shift+N</source>
+        <translation>Ctrl+Shift+N</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="332"/>
+        <source>&amp;New Roll</source>
+        <translation>&amp;Opnieuw dobbelen</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="333"/>
@@ -504,60 +519,9 @@
         <translation>&amp;Woordentelling tonen</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
-        <source>Import Game</source>
-        <translation>Spel importeren</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="516"/>
-        <location filename="../src/window.cpp" line="573"/>
-        <source>Tanglet Games (*.tanglet)</source>
-        <translation>Tanglet-spellen (*.tanglet)</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="573"/>
-        <source>Export Game</source>
-        <translation>Spel exporteren</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="664"/>
-        <source>Word Density:</source>
-        <translation>Woorddichtheid:</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="665"/>
-        <source>Word Length:</source>
-        <translation>Woordlengte:</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="666"/>
-        <source>Game Type:</source>
-        <translation>Speltype:</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="667"/>
-        <source>Description:</source>
-        <translation>Omschrijving:</translation>
-    </message>
-    <message>
         <location filename="../src/window.cpp" line="375"/>
         <source>&amp;Board Language...</source>
         <translation>&amp;Taal van het bord...</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="331"/>
-        <source>New &amp;Game...</source>
-        <translation>&amp;Nieuw spel...</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="331"/>
-        <source>Ctrl+Shift+N</source>
-        <translation>Ctrl+Shift+N</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="332"/>
-        <source>&amp;New Roll</source>
-        <translation>&amp;Opnieuw dobbelen</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="377"/>
@@ -615,6 +579,11 @@
         <translation>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</translation>
     </message>
     <message>
+        <location filename="../src/window.cpp" line="473"/>
+        <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
+        <translation>Beschikbaar onder de &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;-licentie</translation>
+    </message>
+    <message>
         <location filename="../src/window.cpp" line="474"/>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
         <translation>Engelse woordenlijst gebaseerd op &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; van Kevin Atkinson</translation>
@@ -630,14 +599,39 @@
         <translation>Info over Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="473"/>
-        <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
-        <translation>Beschikbaar onder de &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;-licentie</translation>
-    </message>
-    <message>
         <location filename="../src/window.cpp" line="488"/>
         <source>About SCOWL</source>
         <translation>Info over SCOWL</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="516"/>
+        <source>Import Game</source>
+        <translation>Spel importeren</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="516"/>
+        <location filename="../src/window.cpp" line="573"/>
+        <source>Tanglet Games (*.tanglet)</source>
+        <translation>Tanglet-spellen (*.tanglet)</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="531"/>
+        <location filename="../src/window.cpp" line="546"/>
+        <location filename="../src/window.cpp" line="555"/>
+        <location filename="../src/window.cpp" line="782"/>
+        <source>Unable to start requested game.</source>
+        <translation>Kan het gevraagde spel niet starten.</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="564"/>
+        <location filename="../src/window.cpp" line="782"/>
+        <source>Error</source>
+        <translation>Fout</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="573"/>
+        <source>Export Game</source>
+        <translation>Spel exporteren</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="618"/>
@@ -650,6 +644,16 @@
         <translation>Wilt u het huidige spel beëindigen?</translation>
     </message>
     <message>
+        <location filename="../src/window.cpp" line="657"/>
+        <source>Details</source>
+        <translation>Details</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="663"/>
+        <source>Board Size:</source>
+        <translation>Bordgrootte:</translation>
+    </message>
+    <message>
         <location filename="../src/window.cpp" line="663"/>
         <source>Normal</source>
         <translation>Normaal</translation>
@@ -660,9 +664,14 @@
         <translation>Groot</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="663"/>
-        <source>Board Size:</source>
-        <translation>Bordgrootte:</translation>
+        <location filename="../src/window.cpp" line="664"/>
+        <source>Word Density:</source>
+        <translation>Woorddichtheid:</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="665"/>
+        <source>Word Length:</source>
+        <translation>Woordlengte:</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="665"/>
@@ -670,9 +679,14 @@
         <translation>Minstens %1 letters</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="657"/>
-        <source>Details</source>
-        <translation>Details</translation>
+        <location filename="../src/window.cpp" line="666"/>
+        <source>Game Type:</source>
+        <translation>Speltype:</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="667"/>
+        <source>Description:</source>
+        <translation>Omschrijving:</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="697"/>
@@ -683,20 +697,6 @@
         <location filename="../src/window.cpp" line="697"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Met de muis spelen:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Een woord selecteren:&lt;/b&gt; Klik op de letters van het woord.&lt;br&gt;&lt;b&gt;Een woord raden:&lt;/b&gt; Klik op de laatste letter van het woord.&lt;br&gt;&lt;b&gt;Een letter wissen:&lt;/b&gt; Klik op een eerder geselecteerde letter.&lt;br&gt;&lt;b&gt;Een woord wissen:&lt;/b&gt; Dubbelklik op de eerste letter van het woord.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Met het toetsenbord spelen:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Een woord selecteren:&lt;/b&gt; Typ de letters van het woord.&lt;br&gt;&lt;b&gt;Een woord raden:&lt;/b&gt; Druk op Enter.&lt;br&gt;&lt;b&gt;Een woord wissen:&lt;/b&gt; Druk op Ctrl+Backspace.&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="564"/>
-        <location filename="../src/window.cpp" line="782"/>
-        <source>Error</source>
-        <translation>Fout</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="531"/>
-        <location filename="../src/window.cpp" line="546"/>
-        <location filename="../src/window.cpp" line="555"/>
-        <location filename="../src/window.cpp" line="782"/>
-        <source>Unable to start requested game.</source>
-        <translation>Kan het gevraagde spel niet starten.</translation>
     </message>
 </context>
 <context>

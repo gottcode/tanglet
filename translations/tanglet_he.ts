@@ -139,7 +139,7 @@
     <message>
         <location filename="../src/clock.cpp" line="517"/>
         <source>Tanglet</source>
-        <translation>פלונטר</translation>
+        <translation>טנגלט</translation>
     </message>
     <message>
         <location filename="../src/clock.cpp" line="518"/>
@@ -391,7 +391,7 @@
     <message>
         <location filename="../src/window.cpp" line="279"/>
         <source>Tanglet</source>
-        <translation>פלונטר</translation>
+        <translation>טנגלט</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="303"/>
@@ -416,7 +416,7 @@
     <message>
         <location filename="../src/window.cpp" line="325"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;אנא המתן&lt;/big&gt;&lt;/b&gt;&lt;br&gt;מטייב את רשימת המלים...&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="330"/>
@@ -566,7 +566,7 @@
     <message>
         <location filename="../src/window.cpp" line="470"/>
         <source>Tanglet %1</source>
-        <translation>פלונטר %1</translation>
+        <translation>טנגלט %1</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="471"/>
@@ -612,7 +612,7 @@
         <location filename="../src/window.cpp" line="516"/>
         <location filename="../src/window.cpp" line="573"/>
         <source>Tanglet Games (*.tanglet)</source>
-        <translation>משחקי פלונטר (*.tanglet)</translation>
+        <translation>משחקי טנגלט (*.tanglet)</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="531"/>
