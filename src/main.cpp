@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 int main(int argc, char** argv) {
 	QApplication app(argc, argv);
 	app.setApplicationName("Tanglet");
-	app.setApplicationVersion("1.2.0");
+	app.setApplicationVersion("1.2.1");
 	app.setOrganizationDomain("gottcode.org");
 	app.setOrganizationName("GottCode");
 	{
