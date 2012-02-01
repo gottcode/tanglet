@@ -300,42 +300,42 @@
 <context>
     <name>NewGameDialog</name>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="79"/>
+        <location filename="../src/new_game_dialog.cpp" line="81"/>
         <source>New Game</source>
         <translation>Nieuw spel</translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="144"/>
+        <location filename="../src/new_game_dialog.cpp" line="146"/>
         <source>Amount of Words:</source>
         <translation>Aantal woorden:</translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="145"/>
+        <location filename="../src/new_game_dialog.cpp" line="147"/>
         <source>Minimum Word Length:</source>
         <translation>Minimale woordlengte:</translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="184"/>
+        <location filename="../src/new_game_dialog.cpp" line="202"/>
         <source>Low</source>
         <translation>Laag</translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="185"/>
+        <location filename="../src/new_game_dialog.cpp" line="203"/>
         <source>Medium</source>
         <translation>Gemiddeld</translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="186"/>
+        <location filename="../src/new_game_dialog.cpp" line="204"/>
         <source>High</source>
         <translation>Hoog</translation>
     </message>
     <message>
-        <location filename="../src/new_game_dialog.cpp" line="187"/>
+        <location filename="../src/new_game_dialog.cpp" line="205"/>
         <source>Random</source>
         <translation>Willekeurig</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/new_game_dialog.cpp" line="204"/>
+        <location filename="../src/new_game_dialog.cpp" line="222"/>
         <source>%n letter(s)</source>
         <translation>
             <numerusform>%n letter</numerusform>
@@ -575,8 +575,8 @@
     </message>
     <message>
         <location filename="../src/window.cpp" line="472"/>
-        <source>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</source>
-        <translation>Copyright &amp;copy; 2009, 2010, 2011 Graeme Gott</translation>
+        <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
+        <translation>Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="473"/>
@@ -730,7 +730,7 @@
 <context>
     <name>WordTree</name>
     <message numerus="yes">
-        <location filename="../src/word_tree.cpp" line="88"/>
+        <location filename="../src/word_tree.cpp" line="93"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n punt</numerusform>
