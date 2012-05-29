@@ -277,22 +277,22 @@
 <context>
     <name>LocaleDialog</name>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="100"/>
+        <location filename="../src/locale_dialog.cpp" line="49"/>
         <source>Select application language:</source>
         <translation>Anwendungssprache auswählen:</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="103"/>
+        <location filename="../src/locale_dialog.cpp" line="52"/>
         <source>&lt;System Language&gt;</source>
         <translation>&lt;Systemeinstellung&gt;</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="197"/>
+        <location filename="../src/locale_dialog.cpp" line="177"/>
         <source>Note</source>
         <translation>Hinweis</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="197"/>
+        <location filename="../src/locale_dialog.cpp" line="177"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>Bitte starten Sie diese Anwendung neu um den Wechsel der Sprache auszuführen.</translation>
     </message>
@@ -560,8 +560,17 @@
     </message>
     <message>
         <location filename="../src/window.cpp" line="468"/>
+        <source>About Tanglet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="472"/>
+        <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
+        <translation type="unfinished">Copyright &amp;copy; 2009-2012 Graeme Gott {2009-%1 ?}</translation>
+    </message>
+    <message>
         <source>About</source>
-        <translation>Info</translation>
+        <translation type="obsolete">Info</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="470"/>
@@ -574,9 +583,8 @@
         <translation>Eine Einzelspielervariante von &lt;a href=&quot;http://de.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
         <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
-        <translation>Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
+        <translation type="obsolete">Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="473"/>
@@ -594,107 +602,107 @@
         <translation>Hebräische Wörterliste basiert auf &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; von Nadav Har&apos;El und Dan Kenigsberg</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="481"/>
+        <location filename="../src/window.cpp" line="482"/>
         <source>About Hspell</source>
         <translation>Info über Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="488"/>
+        <location filename="../src/window.cpp" line="489"/>
         <source>About SCOWL</source>
         <translation>Info über SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
+        <location filename="../src/window.cpp" line="517"/>
         <source>Import Game</source>
         <translation>Spiel importieren</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
-        <location filename="../src/window.cpp" line="573"/>
+        <location filename="../src/window.cpp" line="517"/>
+        <location filename="../src/window.cpp" line="574"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation>Tanglet-Spiele (*.tanglet)</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="531"/>
-        <location filename="../src/window.cpp" line="546"/>
-        <location filename="../src/window.cpp" line="555"/>
-        <location filename="../src/window.cpp" line="782"/>
+        <location filename="../src/window.cpp" line="532"/>
+        <location filename="../src/window.cpp" line="547"/>
+        <location filename="../src/window.cpp" line="556"/>
+        <location filename="../src/window.cpp" line="783"/>
         <source>Unable to start requested game.</source>
         <translation>Gewähltes Spiel konnte nicht gestartet werden.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="564"/>
-        <location filename="../src/window.cpp" line="782"/>
+        <location filename="../src/window.cpp" line="565"/>
+        <location filename="../src/window.cpp" line="783"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="573"/>
+        <location filename="../src/window.cpp" line="574"/>
         <source>Export Game</source>
         <translation>Spiel exportieren</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="618"/>
+        <location filename="../src/window.cpp" line="619"/>
         <source>Question</source>
         <translation>Frage</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="618"/>
+        <location filename="../src/window.cpp" line="619"/>
         <source>End the current game?</source>
         <translation>Gegenwärtiges Spiel abbrechen?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="657"/>
+        <location filename="../src/window.cpp" line="658"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="663"/>
+        <location filename="../src/window.cpp" line="664"/>
         <source>Board Size:</source>
         <translation>Spielfeldgröße:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="663"/>
+        <location filename="../src/window.cpp" line="664"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="663"/>
+        <location filename="../src/window.cpp" line="664"/>
         <source>Large</source>
         <translation>Groß</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="664"/>
+        <location filename="../src/window.cpp" line="665"/>
         <source>Word Density:</source>
         <translation>Wörterdichte:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="665"/>
+        <location filename="../src/window.cpp" line="666"/>
         <source>Word Length:</source>
         <translation>Wortlänge:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="665"/>
+        <location filename="../src/window.cpp" line="666"/>
         <source>%1 or more letters</source>
         <translation>%1 oder mehr Buchstaben</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="666"/>
+        <location filename="../src/window.cpp" line="667"/>
         <source>Game Type:</source>
         <translation>Spieltyp:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="667"/>
+        <location filename="../src/window.cpp" line="668"/>
         <source>Description:</source>
         <translation>Beschreibung:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="697"/>
+        <location filename="../src/window.cpp" line="698"/>
         <source>Controls</source>
         <translation>Steuerung</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="697"/>
+        <location filename="../src/window.cpp" line="698"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mit der Maus:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Wort auswählen:&lt;/b&gt; Auf die Buchstaben eines Worts klicken.&lt;br&gt;&lt;b&gt;Einen Versuch machen:&lt;/b&gt; Auf den zuletzt ausgewählten Buchstaben klicken.&lt;br&gt;&lt;b&gt;Buchstaben entfernen:&lt;/b&gt; Auf einen vorher ausgewählten Buchstaben klicken.&lt;br&gt;&lt;b&gt;Wort löschen:&lt;/b&gt; Zweimal auf den ersten ausgewählten Buchstaben klicken.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Mit der Tastatur:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Wort auswählen:&lt;/b&gt; Die Buchstaben eines Worts tippen.&lt;br&gt;&lt;b&gt;Einen Versuch machen:&lt;/b&gt; Eingabetaste drücken.&lt;br&gt;&lt;b&gt;Wort löschen:&lt;/b&gt; Strg+Backspace drücken.&lt;/p&gt;</translation>
     </message>

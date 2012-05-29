@@ -277,22 +277,22 @@
 <context>
     <name>LocaleDialog</name>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="100"/>
+        <location filename="../src/locale_dialog.cpp" line="49"/>
         <source>Select application language:</source>
         <translation>Choisissez la Langue de l&apos;Application :</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="103"/>
+        <location filename="../src/locale_dialog.cpp" line="52"/>
         <source>&lt;System Language&gt;</source>
         <translation>&lt;Langue du Système&gt;</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="197"/>
+        <location filename="../src/locale_dialog.cpp" line="177"/>
         <source>Note</source>
         <translation>Note</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="197"/>
+        <location filename="../src/locale_dialog.cpp" line="177"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>Veuillez redémarrer l&apos;application afin que les modifications soient prises en compte.</translation>
     </message>
@@ -554,9 +554,8 @@
         <translation>À propos de &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
         <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
-        <translation>Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
+        <translation type="obsolete">Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="474"/>
@@ -569,77 +568,82 @@
         <translation>La liste des mots hébreux a été construite à partir de &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; de Nadav Har&apos;El et Dan Kenigsberg</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="481"/>
+        <location filename="../src/window.cpp" line="482"/>
         <source>About Hspell</source>
         <translation>À propos d&apos;Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
+        <location filename="../src/window.cpp" line="517"/>
         <source>Import Game</source>
         <translation>Importer une Partie</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
-        <location filename="../src/window.cpp" line="573"/>
+        <location filename="../src/window.cpp" line="517"/>
+        <location filename="../src/window.cpp" line="574"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation>Parties Tanglet (*.tanglet)</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="573"/>
+        <location filename="../src/window.cpp" line="574"/>
         <source>Export Game</source>
         <translation>Exporter une Partie</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="663"/>
+        <location filename="../src/window.cpp" line="664"/>
         <source>Normal</source>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="663"/>
+        <location filename="../src/window.cpp" line="664"/>
         <source>Large</source>
         <translation>Grande</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="663"/>
+        <location filename="../src/window.cpp" line="664"/>
         <source>Board Size:</source>
         <translation>Dimensions de la Grille :</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="665"/>
+        <location filename="../src/window.cpp" line="666"/>
         <source>%1 or more letters</source>
         <translation>%1 lettres ou plus</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="665"/>
+        <location filename="../src/window.cpp" line="666"/>
         <source>Word Length:</source>
         <translation>Longueur des Mots :</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="666"/>
+        <location filename="../src/window.cpp" line="667"/>
         <source>Game Type:</source>
         <translation>Type de Partie :</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="667"/>
+        <location filename="../src/window.cpp" line="668"/>
         <source>Description:</source>
         <translation>Description :</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="564"/>
-        <location filename="../src/window.cpp" line="782"/>
+        <location filename="../src/window.cpp" line="565"/>
+        <location filename="../src/window.cpp" line="783"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="531"/>
-        <location filename="../src/window.cpp" line="546"/>
-        <location filename="../src/window.cpp" line="555"/>
-        <location filename="../src/window.cpp" line="782"/>
+        <location filename="../src/window.cpp" line="468"/>
+        <source>About Tanglet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="532"/>
+        <location filename="../src/window.cpp" line="547"/>
+        <location filename="../src/window.cpp" line="556"/>
+        <location filename="../src/window.cpp" line="783"/>
         <source>Unable to start requested game.</source>
         <translation>Impossible de lancer la partie demandée.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="618"/>
+        <location filename="../src/window.cpp" line="619"/>
         <source>End the current game?</source>
         <translation>Terminer la partie actuelle ?</translation>
     </message>
@@ -649,9 +653,8 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="468"/>
         <source>About</source>
-        <translation>À propos</translation>
+        <translation type="obsolete">À propos</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="470"/>
@@ -664,37 +667,42 @@
         <translation>Une variante du &lt;a href=&quot;http://fr.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt; à un joueur</translation>
     </message>
     <message>
+        <location filename="../src/window.cpp" line="472"/>
+        <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
+        <translation type="unfinished">Copyright &amp;copy; 2009-2012 Graeme Gott {2009-%1 ?}</translation>
+    </message>
+    <message>
         <location filename="../src/window.cpp" line="473"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>Publié sous la licence &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="488"/>
+        <location filename="../src/window.cpp" line="489"/>
         <source>About SCOWL</source>
         <translation>À propos de SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="657"/>
+        <location filename="../src/window.cpp" line="658"/>
         <source>Details</source>
         <translation>Détails</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="664"/>
+        <location filename="../src/window.cpp" line="665"/>
         <source>Word Density:</source>
         <translation>Abondance de Mots :</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="697"/>
+        <location filename="../src/window.cpp" line="698"/>
         <source>Controls</source>
         <translation>Contrôles</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="697"/>
+        <location filename="../src/window.cpp" line="698"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu à la souris :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Cliquer sur les lettres du mot.&lt;br&gt;&lt;b&gt;Proposer le mot :&lt;/b&gt; Cliquer sur la dernière lettre sélectionnée.&lt;br&gt;&lt;b&gt;Effacer des lettres :&lt;/b&gt; Cliquer sur une lettre précédemment sélectionnée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Cliquer deux fois sur la première lettre sélectionnée.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu au clavier :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Taper les lettres du mot.&lt;br&gt;&lt;b&gt;Proposer le mot :&lt;/b&gt; Presser Entrée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Presser Ctrl+Retour arrière.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="618"/>
+        <location filename="../src/window.cpp" line="619"/>
         <source>Question</source>
         <translation></translation>
     </message>
