@@ -277,22 +277,22 @@
 <context>
     <name>LocaleDialog</name>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="49"/>
+        <location filename="../src/locale_dialog.cpp" line="50"/>
         <source>Select application language:</source>
         <translation>בחר שפת ממשק</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="52"/>
+        <location filename="../src/locale_dialog.cpp" line="53"/>
         <source>&lt;System Language&gt;</source>
         <translation>שפת מערכת</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="177"/>
+        <location filename="../src/locale_dialog.cpp" line="181"/>
         <source>Note</source>
         <translation>הערה</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="177"/>
+        <location filename="../src/locale_dialog.cpp" line="181"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>נא אתחל את היישום כדי להחיל את שינוי הגדרות השפה</translation>
     </message>
@@ -566,11 +566,7 @@
     <message>
         <location filename="../src/window.cpp" line="472"/>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
-        <translation type="unfinished">Copyright &amp;copy; 2009-2012 Graeme Gott {2009-%1 ?}</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">אודות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="470"/>
@@ -581,10 +577,6 @@
         <location filename="../src/window.cpp" line="471"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>גרסה לשחקן בודד של &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
-    </message>
-    <message>
-        <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
-        <translation type="obsolete">Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="473"/>

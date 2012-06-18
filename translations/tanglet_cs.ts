@@ -285,22 +285,22 @@
 <context>
     <name>LocaleDialog</name>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="49"/>
+        <location filename="../src/locale_dialog.cpp" line="50"/>
         <source>Select application language:</source>
         <translation>Vybrat jazyk programu:</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="52"/>
+        <location filename="../src/locale_dialog.cpp" line="53"/>
         <source>&lt;System Language&gt;</source>
         <translation>&lt;Jazyk systému&gt;</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="177"/>
+        <location filename="../src/locale_dialog.cpp" line="181"/>
         <source>Note</source>
         <translation>Notiz</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="177"/>
+        <location filename="../src/locale_dialog.cpp" line="181"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>Spusťte, prosí, tento program znovu, aby se změna jazyka projevila.</translation>
     </message>
@@ -575,11 +575,7 @@
     <message>
         <location filename="../src/window.cpp" line="472"/>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
-        <translation type="unfinished">Autorské právo &amp;copy; 2009-2012 Graeme Gott {2009-%1 ?}</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">O programu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="470"/>
@@ -590,10 +586,6 @@
         <location filename="../src/window.cpp" line="471"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Obměna hry &lt;a href=&quot;http://fr.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt; určená pro jednoho hráče</translation>
-    </message>
-    <message>
-        <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
-        <translation type="obsolete">Autorské právo &amp;copy; 2009-2012 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="473"/>

@@ -277,22 +277,22 @@
 <context>
     <name>LocaleDialog</name>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="49"/>
+        <location filename="../src/locale_dialog.cpp" line="50"/>
         <source>Select application language:</source>
         <translation>Programmataal selecteren:</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="52"/>
+        <location filename="../src/locale_dialog.cpp" line="53"/>
         <source>&lt;System Language&gt;</source>
         <translation>&lt;Systeemtaal&gt;</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="177"/>
+        <location filename="../src/locale_dialog.cpp" line="181"/>
         <source>Note</source>
         <translation>Opmerking</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="177"/>
+        <location filename="../src/locale_dialog.cpp" line="181"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>U dient het programma opnieuw te starten om de taalwijziging toe te passen.</translation>
     </message>
@@ -561,16 +561,12 @@
     <message>
         <location filename="../src/window.cpp" line="468"/>
         <source>About Tanglet</source>
-        <translation type="unfinished"></translation>
+        <translation>Info over Tanglet</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="472"/>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
-        <translation type="unfinished">Copyright &amp;copy; 2009-2012 Graeme Gott {2009-%1 ?}</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">Info</translation>
+        <translation>Copyright &amp;copy; 2009-%1 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="470"/>
@@ -581,10 +577,6 @@
         <location filename="../src/window.cpp" line="471"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Een variant van &lt;a href=&quot;http://nl.wikipedia.org/wiki/Boggle_(spel)&quot;&gt;Boggle&lt;/a&gt; voor één speler</translation>
-    </message>
-    <message>
-        <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
-        <translation type="obsolete">Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="473"/>
