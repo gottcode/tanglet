@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,10 +29,14 @@
 #include <QCryptographicHash>
 #include <QDataStream>
 #include <QDateTime>
-#include <QDesktopServices>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
+#include <QStandardPaths>
+#else
+#include <QDesktopServices>
+#endif
 #include <QTextStream>
 
 //-----------------------------------------------------------------------------
@@ -104,8 +108,10 @@ namespace
 
 //-----------------------------------------------------------------------------
 
-Generator::Generator(QObject* parent)
-	: QThread(parent), m_max_score(0)
+Generator::Generator(QObject* parent) :
+	QThread(parent),
+	m_max_score(0),
+	m_canceled(false)
 {
 }
 
@@ -114,7 +120,7 @@ Generator::Generator(QObject* parent)
 void Generator::cancel()
 {
 	blockSignals(true);
-	m_cancelled = true;
+	m_canceled = true;
 	wait();
 	blockSignals(false);
 }
@@ -130,7 +136,7 @@ void Generator::create(int density, int size, int minimum, int timer, const QStr
 	m_max_words = (m_timer != Clock::Allotment) ? -1 : 30;
 	m_letters = letters;
 	m_seed = seed;
-	m_cancelled = false;
+	m_canceled = false;
 	m_max_score = 0;
 	m_solutions.clear();
 	start();
@@ -213,7 +219,7 @@ void Generator::run()
 				loops = 0;
 			}
 		}
-	} while (!m_cancelled && (current.delta() > words_range));
+	} while (!m_canceled && (current.delta() > words_range));
 
 	// Store solutions for generated board
 	m_letters = current.letters();
@@ -271,7 +277,11 @@ void Generator::update()
 		int count = 0;
 
 		// Load cached words
+#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
+		QString cache_dir = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/cache";
+#else
 		QString cache_dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/cache";
+#endif
 		QString cache_file = QCryptographicHash::hash(words_path.toUtf8(), QCryptographicHash::Sha1).toHex();
 		QFileInfo cache_info(cache_dir + "/" + cache_file);
 		if (cache_info.exists() && (cache_info.lastModified() > QFileInfo(words_path).lastModified())) {

@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -120,7 +120,7 @@ private:
 	QStringList m_letters;
 	QHash<QString, QList<QList<QPoint> > > m_solutions;
 
-	QAtomicInt m_cancelled;
+	bool m_canceled;
 };
 
 #endif
