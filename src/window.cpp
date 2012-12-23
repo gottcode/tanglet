@@ -30,7 +30,6 @@
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
-#include <QDesktopServices>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFile>
@@ -43,6 +42,11 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QStackedWidget>
+#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
+#include <QStandardPaths>
+#else
+#include <QDesktopServices>
+#endif
 #include <QStyle>
 #include <QTextEdit>
 #include <QTextStream>
@@ -513,11 +517,22 @@ void Window::newGame() {
 
 void Window::chooseGame() {
 	if (endGame()) {
-		QString filename = QFileDialog::getOpenFileName(window(), tr("Import Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
+		QString filename = QFileDialog::getOpenFileName(window(),
+				tr("Import Game"),
+#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
+				QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+#else
+				QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation),
+#endif
+				tr("Tanglet Games (*.tanglet)"));
 		if (!filename.isEmpty()) {
 			try
 			{
+#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
+				QString current = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+#else
 				QString current = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+#endif
 
 				// Uncompress shared game
 				{
@@ -570,7 +585,14 @@ void Window::chooseGame() {
 //-----------------------------------------------------------------------------
 
 void Window::shareGame() {
-	QString filename = QFileDialog::getSaveFileName(window(), tr("Export Game"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Tanglet Games (*.tanglet)"));
+	QString filename = QFileDialog::getSaveFileName(window(),
+			tr("Export Game"),
+#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
+			QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+#else
+			QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation),
+#endif
+			tr("Tanglet Games (*.tanglet)"));
 	if (!filename.isEmpty()) {
 		if (!filename.endsWith(".tanglet")) {
 			filename += ".tanglet";
@@ -735,7 +757,11 @@ void Window::gameFinished(int score) {
 		scores.exec();
 	}
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
+	QDir dir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+#else
 	QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+#endif
 	dir.remove("current");
 	dir.remove("current-dice");
 	dir.remove("current-words");

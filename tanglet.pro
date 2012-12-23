@@ -1,5 +1,8 @@
 TEMPLATE = app
-CONFIG += warn_on release
+CONFIG += warn_on
+greaterThan(QT_MAJOR_VERSION, 4) {
+	QT += widgets
+}
 macx {
 	CONFIG += x86_64
 	# Comment the above line and uncomment the following lines to compile Universal for 10.4+

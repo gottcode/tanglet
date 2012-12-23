@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -77,37 +77,37 @@ void Letter::setArrow(qreal angle, int z) {
 		case 1: // top right
 			createCornerArrow();
 			m_arrow->moveBy(rect.right() - 8.5, rect.top() + 8.5);
-			m_arrow->rotate(270);
+			m_arrow->setRotation(270);
 			break;
 
 		case 2: // top
 			createSideArrow();
 			m_arrow->moveBy(rect.center().x(), rect.top() + 8);
-			m_arrow->rotate(270);
+			m_arrow->setRotation(270);
 			break;
 
 		case 3: // top left
 			createCornerArrow();
 			m_arrow->moveBy(rect.left() + 8.5, rect.top() + 8.5);
-			m_arrow->rotate(180);
+			m_arrow->setRotation(180);
 			break;
 
 		case 4: // left
 			createSideArrow();
 			m_arrow->moveBy(rect.left() + 8, rect.center().y());
-			m_arrow->rotate(180);
+			m_arrow->setRotation(180);
 			break;
 
 		case 5: // bottom left
 			createCornerArrow();
 			m_arrow->moveBy(rect.left() + 8.5, rect.bottom() - 8.5);
-			m_arrow->rotate(90);
+			m_arrow->setRotation(90);
 			break;
 
 		case 6: // bottom
 			createSideArrow();
 			m_arrow->moveBy(rect.center().x(), rect.bottom() - 8);
-			m_arrow->rotate(90);
+			m_arrow->setRotation(90);
 			break;
 
 		case 7: // bottom right
