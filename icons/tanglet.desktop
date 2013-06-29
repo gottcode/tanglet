@@ -1,8 +1,12 @@
 [Desktop Entry]
 Name=Tanglet
 GenericName=Word Finding Game
+GenericName[hu]=Szókereső játék
+GenericName[ro]=Joc de găsire a cuvintelor
 Comment=Single player variant of Boggle
 Comment[de]=Einzelspielervariante von Boggle
+Comment[hu]=A Boggle egyjátékos változata
+Comment[ro]=Boggle - Variantă de joc într-un singur jucător
 Exec=tanglet
 Icon=tanglet
 Terminal=false
