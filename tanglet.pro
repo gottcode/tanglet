@@ -60,15 +60,7 @@ SOURCES += src/beveled_rect.cpp \
 	src/word_counts.cpp \
 	src/word_tree.cpp
 
-TRANSLATIONS = translations/tanglet_cs.ts \
-	translations/tanglet_de.ts \
-	translations/tanglet_en.ts \
-	translations/tanglet_es.ts \
-	translations/tanglet_es_CL.ts \
-	translations/tanglet_fr.ts \
-	translations/tanglet_he.ts \
-	translations/tanglet_nl.ts \
-	translations/tanglet_uk.ts
+TRANSLATIONS = $$files(translations/tanglet_*.ts)
 
 RESOURCES = icons/icons.qrc data.qrc
 macx:ICON = icons/tanglet.icns
