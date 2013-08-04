@@ -53,6 +53,7 @@ class Clock : public QWidget {
 			Strikeout,
 			Allotment,
 			Discipline,
+			Untimed,
 			TotalTimers
 		};
 		void setTimer(int timer);
@@ -81,6 +82,7 @@ class Clock : public QWidget {
 		class StaminaTimer;
 		class StrikeoutTimer;
 		class TangletTimer;
+		class UntimedTimer;
 		Timer* m_timer;
 };
 

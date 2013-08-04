@@ -379,6 +379,54 @@ int Clock::TangletTimer::type() const {
 
 //-----------------------------------------------------------------------------
 
+// Lets the user keep adding words until game is manually ended
+// TODO: Should end automatically if user has found all the possible words
+class Clock::UntimedTimer : public Clock::Timer {
+public:
+	bool addWord(int score);
+	QColor color();
+	bool isFinished();
+	void start();
+	void stop();
+	int type() const;
+	QString update();
+	int width() const;
+};
+
+bool Clock::UntimedTimer::addWord(int) {
+	return false;
+}
+
+QColor Clock::UntimedTimer::color() {
+	return "#3389ea";
+}
+
+bool Clock::UntimedTimer::isFinished() {
+	return !m_time;
+}
+
+void Clock::UntimedTimer::start() {
+	m_time = true;
+}
+
+void Clock::UntimedTimer::stop() {
+	m_time = false;
+}
+
+int Clock::UntimedTimer::type() const {
+	return Clock::Untimed;
+}
+
+QString Clock::UntimedTimer::update() {
+	return tr("Untimed");
+}
+
+int Clock::UntimedTimer::width() const {
+	return 180; // full width
+}
+
+//-----------------------------------------------------------------------------
+
 Clock::Clock(QWidget* parent)
 : QWidget(parent), m_timer(0) {
 	setTimer(Tanglet);
@@ -496,6 +544,9 @@ void Clock::setTimer(int timer) {
 		case Allotment:
 			m_timer = new AllotmentTimer;
 			break;
+		case Untimed:
+			m_timer = new UntimedTimer;
+			break;
 		case Discipline:
 		default:
 			m_timer = new DisciplineTimer;
@@ -520,7 +571,8 @@ QString Clock::timerToString(int timer) {
 		tr("Stamina") <<
 		tr("Strikeout") <<
 		tr("Allotment") <<
-		tr("Discipline");
+		tr("Discipline") <<
+		tr("Untimed");
 	return timers.at(qBound(0, timer, TotalTimers - 1));
 }
 
@@ -534,7 +586,8 @@ QString Clock::timerDescription(int timer) {
 		tr("Counts down from 45 seconds and pauses on correct guesses.") <<
 		tr("Game ends after 3 incorrect guesses.") <<
 		tr("Game ends after 30 guesses.") <<
-		tr("Counts down from 30 seconds and increases or decreases on guesses.");
+		tr("Counts down from 30 seconds and increases or decreases on guesses.") <<
+		tr("Unlimited time (press Game > End to finish).");
 	return timers.at(qBound(0, timer, TotalTimers - 1));
 }
 
