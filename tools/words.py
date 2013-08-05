@@ -48,6 +48,22 @@ def replacement_map(language):
                 ord('Ü'): 'UE',
                 ord('Ñ'): 'N',
                 ord('ß'): 'SS'}
+    elif language == 'en':
+        return {ord('À'): 'A',
+                ord('Á'): 'A',
+                ord('Â'): 'A',
+                ord('Ä'): 'A',
+                ord('Å'): 'A',
+                ord('Ç'): 'C',
+                ord('È'): 'E',
+                ord('É'): 'E',
+                ord('Ê'): 'E',
+                ord('Ï'): 'I',
+                ord('Ñ'): 'N',
+                ord('Ó'): 'O',
+                ord('Ö'): 'O',
+                ord('Û'): 'U',
+                ord('Ü'): 'U'}
     elif language == 'fr':
         return {ord('À'): 'A',
                 ord('Â'): 'A',
@@ -97,7 +113,7 @@ def main():
             help='file containing list of words')
     parser.add_argument('--language',
             help='specify language', type=str,
-            choices=['cs', 'de', 'fr', 'he', 'nl'])
+            choices=['cs', 'de', 'en', 'fr', 'he', 'nl'])
     parser.add_argument('-o', '--out', type=str,
             help='place words in file OUT instead of default file')
     args = parser.parse_args()
@@ -112,7 +128,7 @@ def main():
                 continue
             key = word.upper().translate(replacements)
             if not word in words[key]:
-			    words[key].append(word)
+                words[key].append(word)
 
     # Join words into lines
     lines = []
