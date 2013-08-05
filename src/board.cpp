@@ -390,6 +390,7 @@ void Board::gameStarted() {
 	m_tabs->setTabEnabled(1, false);
 
 	// Clear previous words
+	m_paused = false;
 	emit pauseAvailable(true);
 	m_clear_button->setEnabled(true);
 	m_guess_button->setEnabled(true);
