@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2011, 2013 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ public:
 	TrieGenerator(const QString& word)
 	: m_word(false), m_children(0), m_next(0), m_count(0)
 	{
-		addWord(word);
+		addWord(word, QStringList(word));
 	}
 
 	TrieGenerator(const QHash<QString, QStringList>& words);
@@ -49,7 +49,7 @@ public:
 
 private:
 	TrieGenerator* addChild(const QChar& letter);
-	void addWord(const QString& word, const QStringList& spellings = QStringList());
+	void addWord(const QString& word, const QStringList& spellings);
 
 	// Uncopyable
 	TrieGenerator(const TrieGenerator&);
