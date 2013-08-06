@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012, 2013 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@
 #include <QCursor>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSimpleTextItem>
 #include <QLinearGradient>
 #include <QRadialGradient>
@@ -183,6 +184,12 @@ void Letter::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 	if (m_clickable) {
 		emit clicked(this);
 	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Letter::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) {
+	event->ignore();
 }
 
 //-----------------------------------------------------------------------------
