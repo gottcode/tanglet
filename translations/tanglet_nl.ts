@@ -5,7 +5,7 @@
     <name>Board</name>
     <message>
         <location filename="../src/board.cpp" line="76"/>
-        <location filename="../src/board.cpp" line="858"/>
+        <location filename="../src/board.cpp" line="859"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
@@ -40,22 +40,22 @@
         <translation>Gemist</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="434"/>
+        <location filename="../src/board.cpp" line="435"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="600"/>
+        <location filename="../src/board.cpp" line="601"/>
         <source>Success</source>
         <translation>Het spel is voltooid</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="600"/>
+        <location filename="../src/board.cpp" line="601"/>
         <source>Game Over</source>
         <translation>Het spel is afgelopen</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="779"/>
+        <location filename="../src/board.cpp" line="780"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 van %n punt</numerusform>
@@ -63,7 +63,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="781"/>
+        <location filename="../src/board.cpp" line="782"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 van %n punt</numerusform>
@@ -71,7 +71,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="783"/>
+        <location filename="../src/board.cpp" line="784"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2 van %n punt</numerusform>
@@ -79,7 +79,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="785"/>
+        <location filename="../src/board.cpp" line="786"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 van %n punt</numerusform>
@@ -87,7 +87,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="787"/>
+        <location filename="../src/board.cpp" line="788"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0 van %n punt</numerusform>
@@ -95,7 +95,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="791"/>
+        <location filename="../src/board.cpp" line="792"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n punt</numerusform>
@@ -103,7 +103,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="867"/>
+        <location filename="../src/board.cpp" line="868"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>De maximumscore is gebaseerd op de volgende dertig woorden:</translation>
     </message>
@@ -559,9 +559,9 @@
         <translation>Info over &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
-        <source>About</source>
-        <translation>Info</translation>
+        <location filename="../src/window.cpp" line="476"/>
+        <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
+        <translation>Copyright &amp;copy; 2009-%1 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="474"/>
@@ -569,14 +569,14 @@
         <translation>Tanglet %1</translation>
     </message>
     <message>
+        <location filename="../src/window.cpp" line="472"/>
+        <source>About</source>
+        <translation>Info</translation>
+    </message>
+    <message>
         <location filename="../src/window.cpp" line="475"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Een variant van &lt;a href=&quot;http://nl.wikipedia.org/wiki/Boggle_(spel)&quot;&gt;Boggle&lt;/a&gt; voor één speler</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="476"/>
-        <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
-        <translation>Copyright &amp;copy; 2009-2012 Graeme Gott</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="477"/>
@@ -594,107 +594,107 @@
         <translation>Hebreeuwse woordenlijst gebaseerd op &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; van Nadav Har&apos;El en Dan Kenigsberg</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="485"/>
+        <location filename="../src/window.cpp" line="486"/>
         <source>About Hspell</source>
         <translation>Info over Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="492"/>
+        <location filename="../src/window.cpp" line="493"/>
         <source>About SCOWL</source>
         <translation>Info over SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="521"/>
+        <location filename="../src/window.cpp" line="522"/>
         <source>Import Game</source>
         <translation>Spel importeren</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="527"/>
-        <location filename="../src/window.cpp" line="595"/>
+        <location filename="../src/window.cpp" line="528"/>
+        <location filename="../src/window.cpp" line="596"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation>Tanglet-spellen (*.tanglet)</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="546"/>
-        <location filename="../src/window.cpp" line="561"/>
-        <location filename="../src/window.cpp" line="570"/>
-        <location filename="../src/window.cpp" line="808"/>
+        <location filename="../src/window.cpp" line="547"/>
+        <location filename="../src/window.cpp" line="562"/>
+        <location filename="../src/window.cpp" line="571"/>
+        <location filename="../src/window.cpp" line="809"/>
         <source>Unable to start requested game.</source>
         <translation>Kan het gevraagde spel niet starten.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="579"/>
-        <location filename="../src/window.cpp" line="808"/>
+        <location filename="../src/window.cpp" line="580"/>
+        <location filename="../src/window.cpp" line="809"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="589"/>
+        <location filename="../src/window.cpp" line="590"/>
         <source>Export Game</source>
         <translation>Spel exporteren</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="640"/>
+        <location filename="../src/window.cpp" line="641"/>
         <source>Question</source>
         <translation>Vraag</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="640"/>
+        <location filename="../src/window.cpp" line="641"/>
         <source>End the current game?</source>
         <translation>Wilt u het huidige spel beëindigen?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="679"/>
+        <location filename="../src/window.cpp" line="680"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="685"/>
+        <location filename="../src/window.cpp" line="686"/>
         <source>Board Size:</source>
         <translation>Bordgrootte:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="685"/>
+        <location filename="../src/window.cpp" line="686"/>
         <source>Normal</source>
         <translation>Normaal</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="685"/>
+        <location filename="../src/window.cpp" line="686"/>
         <source>Large</source>
         <translation>Groot</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="686"/>
+        <location filename="../src/window.cpp" line="687"/>
         <source>Word Density:</source>
         <translation>Woorddichtheid:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="687"/>
+        <location filename="../src/window.cpp" line="688"/>
         <source>Word Length:</source>
         <translation>Woordlengte:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="687"/>
+        <location filename="../src/window.cpp" line="688"/>
         <source>%1 or more letters</source>
         <translation>Minstens %1 letters</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="688"/>
+        <location filename="../src/window.cpp" line="689"/>
         <source>Game Type:</source>
         <translation>Speltype:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="689"/>
+        <location filename="../src/window.cpp" line="690"/>
         <source>Description:</source>
         <translation>Omschrijving:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="719"/>
+        <location filename="../src/window.cpp" line="720"/>
         <source>Controls</source>
         <translation>Bediening</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="719"/>
+        <location filename="../src/window.cpp" line="720"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Met de muis spelen:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Een woord selecteren:&lt;/b&gt; Klik op de letters van het woord.&lt;br&gt;&lt;b&gt;Een woord raden:&lt;/b&gt; Klik op de laatste letter van het woord.&lt;br&gt;&lt;b&gt;Een letter wissen:&lt;/b&gt; Klik op een eerder geselecteerde letter.&lt;br&gt;&lt;b&gt;Een woord wissen:&lt;/b&gt; Dubbelklik op de eerste letter van het woord.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Met het toetsenbord spelen:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Een woord selecteren:&lt;/b&gt; Typ de letters van het woord.&lt;br&gt;&lt;b&gt;Een woord raden:&lt;/b&gt; Druk op Enter.&lt;br&gt;&lt;b&gt;Een woord wissen:&lt;/b&gt; Druk op Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>

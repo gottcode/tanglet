@@ -5,7 +5,7 @@
     <name>Board</name>
     <message>
         <location filename="../src/board.cpp" line="76"/>
-        <location filename="../src/board.cpp" line="858"/>
+        <location filename="../src/board.cpp" line="859"/>
         <source>Details</source>
         <translation>Подробиці</translation>
     </message>
@@ -40,22 +40,22 @@
         <translation>Невдача</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="434"/>
+        <location filename="../src/board.cpp" line="435"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="600"/>
+        <location filename="../src/board.cpp" line="601"/>
         <source>Success</source>
         <translation>Успішно</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="600"/>
+        <location filename="../src/board.cpp" line="601"/>
         <source>Game Over</source>
         <translation>Гру завершено</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="779"/>
+        <location filename="../src/board.cpp" line="780"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 з %n очка</numerusform>
@@ -64,7 +64,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="781"/>
+        <location filename="../src/board.cpp" line="782"/>
         <source>3 of %n point(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -73,7 +73,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="783"/>
+        <location filename="../src/board.cpp" line="784"/>
         <source>2 of %n point(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -82,7 +82,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="785"/>
+        <location filename="../src/board.cpp" line="786"/>
         <source>1 of %n point(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -91,7 +91,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="787"/>
+        <location filename="../src/board.cpp" line="788"/>
         <source>0 of %n point(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -100,7 +100,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="791"/>
+        <location filename="../src/board.cpp" line="792"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n очко</numerusform>
@@ -109,7 +109,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="867"/>
+        <location filename="../src/board.cpp" line="868"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>Максимальна оцінка вирахувана з наступних тридцяти слів:</translation>
     </message>
@@ -387,7 +387,7 @@
     <message>
         <location filename="../src/scores_dialog.cpp" line="202"/>
         <source>Question</source>
-        <translation type="unfinished">Запитання</translation>
+        <translation>Запитання</translation>
     </message>
     <message>
         <location filename="../src/scores_dialog.cpp" line="202"/>
@@ -568,8 +568,8 @@
         <translation>Про &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
-        <source>About</source>
+        <location filename="../src/window.cpp" line="476"/>
+        <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -578,14 +578,14 @@
         <translation>Tanglet %1</translation>
     </message>
     <message>
+        <location filename="../src/window.cpp" line="472"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/window.cpp" line="475"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Варіант гри для одного гравця &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
-    </message>
-    <message>
-        <location filename="../src/window.cpp" line="476"/>
-        <source>Copyright &amp;copy; 2009-2012 Graeme Gott</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="477"/>
@@ -603,107 +603,107 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="485"/>
+        <location filename="../src/window.cpp" line="486"/>
         <source>About Hspell</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="492"/>
+        <location filename="../src/window.cpp" line="493"/>
         <source>About SCOWL</source>
         <translation>Про SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="521"/>
+        <location filename="../src/window.cpp" line="522"/>
         <source>Import Game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="527"/>
-        <location filename="../src/window.cpp" line="595"/>
+        <location filename="../src/window.cpp" line="528"/>
+        <location filename="../src/window.cpp" line="596"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="546"/>
-        <location filename="../src/window.cpp" line="561"/>
-        <location filename="../src/window.cpp" line="570"/>
-        <location filename="../src/window.cpp" line="808"/>
+        <location filename="../src/window.cpp" line="547"/>
+        <location filename="../src/window.cpp" line="562"/>
+        <location filename="../src/window.cpp" line="571"/>
+        <location filename="../src/window.cpp" line="809"/>
         <source>Unable to start requested game.</source>
         <translation>Не вдалось запустити запитану гру.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="579"/>
-        <location filename="../src/window.cpp" line="808"/>
+        <location filename="../src/window.cpp" line="580"/>
+        <location filename="../src/window.cpp" line="809"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="589"/>
+        <location filename="../src/window.cpp" line="590"/>
         <source>Export Game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="640"/>
+        <location filename="../src/window.cpp" line="641"/>
         <source>Question</source>
         <translation>Запитання</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="640"/>
+        <location filename="../src/window.cpp" line="641"/>
         <source>End the current game?</source>
         <translation>Завершити поточну гру?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="679"/>
+        <location filename="../src/window.cpp" line="680"/>
         <source>Details</source>
         <translation>Подробиці</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="685"/>
+        <location filename="../src/window.cpp" line="686"/>
         <source>Board Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="685"/>
+        <location filename="../src/window.cpp" line="686"/>
         <source>Normal</source>
         <translation>Звичайна</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="685"/>
+        <location filename="../src/window.cpp" line="686"/>
         <source>Large</source>
         <translation>Велика</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="686"/>
+        <location filename="../src/window.cpp" line="687"/>
         <source>Word Density:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="687"/>
+        <location filename="../src/window.cpp" line="688"/>
         <source>Word Length:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="687"/>
+        <location filename="../src/window.cpp" line="688"/>
         <source>%1 or more letters</source>
         <translation>%1 або більше букв</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="688"/>
+        <location filename="../src/window.cpp" line="689"/>
         <source>Game Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="689"/>
+        <location filename="../src/window.cpp" line="690"/>
         <source>Description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="719"/>
+        <location filename="../src/window.cpp" line="720"/>
         <source>Controls</source>
         <translation>Керування</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="719"/>
+        <location filename="../src/window.cpp" line="720"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Гра мишею:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Вибрати слово:&lt;/b&gt; Клацання на буквах слова.&lt;br&gt;&lt;b&gt;Зробити припущення:&lt;/b&gt; Клацнути на останній вибраній букві.&lt;br&gt;&lt;b&gt;Викреслити букви:&lt;/b&gt; Клацнути на раніше вибраній букві.&lt;br&gt;&lt;b&gt;Очистити слово:&lt;/b&gt; Двічі клацнути на першій букві.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Гра з клавіатури:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Вибрати слово:&lt;/b&gt; Ввести букви слова.&lt;br&gt;&lt;b&gt;Зробити припущення:&lt;/b&gt; Натиснути клавішу «Enter».&lt;br&gt;&lt;b&gt;Очистити слово:&lt;/b&gt; Натиснути «Ctrl+Backspace».&lt;/p&gt;</translation>
     </message>
