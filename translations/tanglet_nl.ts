@@ -5,7 +5,7 @@
     <name>Board</name>
     <message>
         <location filename="../src/board.cpp" line="76"/>
-        <location filename="../src/board.cpp" line="858"/>
+        <location filename="../src/board.cpp" line="859"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
@@ -40,22 +40,22 @@
         <translation>Gemist</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="434"/>
+        <location filename="../src/board.cpp" line="435"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="600"/>
+        <location filename="../src/board.cpp" line="601"/>
         <source>Success</source>
         <translation>Het spel is voltooid</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="600"/>
+        <location filename="../src/board.cpp" line="601"/>
         <source>Game Over</source>
         <translation>Het spel is afgelopen</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="779"/>
+        <location filename="../src/board.cpp" line="780"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 van %n punt</numerusform>
@@ -63,7 +63,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="781"/>
+        <location filename="../src/board.cpp" line="782"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 van %n punt</numerusform>
@@ -71,7 +71,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="783"/>
+        <location filename="../src/board.cpp" line="784"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2 van %n punt</numerusform>
@@ -79,7 +79,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="785"/>
+        <location filename="../src/board.cpp" line="786"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 van %n punt</numerusform>
@@ -87,7 +87,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="787"/>
+        <location filename="../src/board.cpp" line="788"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0 van %n punt</numerusform>
@@ -95,7 +95,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="791"/>
+        <location filename="../src/board.cpp" line="792"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n punt</numerusform>
@@ -103,7 +103,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="867"/>
+        <location filename="../src/board.cpp" line="868"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>De maximumscore is gebaseerd op de volgende dertig woorden:</translation>
     </message>
@@ -559,11 +559,6 @@
         <translation>Info over &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
-        <source>About Tanglet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/window.cpp" line="476"/>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
         <translation>Copyright &amp;copy; 2009-%1 Graeme Gott</translation>
@@ -572,6 +567,11 @@
         <location filename="../src/window.cpp" line="474"/>
         <source>Tanglet %1</source>
         <translation>Tanglet %1</translation>
+    </message>
+    <message>
+        <location filename="../src/window.cpp" line="472"/>
+        <source>About</source>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="475"/>

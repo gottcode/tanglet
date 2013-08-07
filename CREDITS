@@ -2,20 +2,44 @@ Developers
 ----------
 * Graeme Gott
 
-Translators
------------
-* Pavel Fric (cs)
-* Markus Enzenberger (de)
-* Edgar Carballo (es)
-* Santi Serrano (es)
-* Mehdi Yousfi-Monod (fr)
-* Stéphane Aulery (fr)
-* Dániel Lévai (hu)
-* Bentzy Sagiv (he)
-* Lorenzo Fascì (it)
-* Bas Duineveld (nl)
-* Jaff (Oprea Nicolae) (ro)
-* Özcan Zafer AYAN (tr)
+
+Translations
+------------
+Czech:
+* Pavel Fric
+
+Dutch:
+* Bas Duineveld
+
+German:
+* Markus Enzenberger
+
+French:
+* Mehdi Yousfi-Monod
+* Stéphane Aulery
+
+Hebrew:
+* Bentzy Sagiv
+
+Hungarian:
+* Dániel Lévai
+
+Italian:
+* Lorenzo Fascì
+
+Romainian:
+* Jaff (Oprea Nicolae)
+
+Spanish:
+* Edgar Carballo
+* Santi Serrano
+
+Turkish:
+* Özcan Zafer AYAN
+
+Ukrainian:
+* Sergiy Gavrylov
+
 
 Word lists
 ----------
@@ -23,10 +47,12 @@ Word lists
 * OpenTaal, http://www.opentaal.org/
 * SCOWL, http://wordlist.sourceforge.net/
 
+
 Icons
 -----
 * Tango, http://tango.freedesktop.org/Tango_Icon_Library
 
+
 Libraries
 ---------
-* Qt, http://qt.nokia.com/
+* Qt, http://qt-project.org/
