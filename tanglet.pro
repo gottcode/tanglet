@@ -1,32 +1,39 @@
+lessThan(QT_VERSION, 4.6) {
+	error("Tanglet requires Qt 4.6 or greater")
+}
+
 TEMPLATE = app
-greaterThan(QT_MAJOR_VERSION, 4) {
-	QT += widgets
-}
+greaterThan(QT_MAJOR_VERSION, 4):QT += widgets
 CONFIG += warn_on
+
+# Add dependencies
 macx {
-	CONFIG += x86_64
-}
-
-!win32 {
 	LIBS += -lz
+} else:unix {
+	CONFIG += link_pkgconfig
+	PKGCONFIG += zlib
 }
 
+# Allow in-tree builds
 MOC_DIR = build
 OBJECTS_DIR = build
 RCC_DIR = build
 
+# Set program version
 VERSION = $$system(git rev-parse --short HEAD)
 isEmpty(VERSION) {
 	VERSION = 0
 }
 DEFINES += VERSIONSTR=\\\"git.$${VERSION}\\\"
 
-unix: !macx {
+# Set program name
+unix:!macx {
 	TARGET = tanglet
 } else {
 	TARGET = Tanglet
 }
 
+# Specify program sources
 HEADERS += src/beveled_rect.h \
 	src/board.h \
 	src/clock.h \
@@ -66,20 +73,22 @@ SOURCES += src/beveled_rect.cpp \
 	src/word_counts.cpp \
 	src/word_tree.cpp
 
+# Allow for updating translations
 TRANSLATIONS = $$files(translations/tanglet_*.ts)
 
+# Install program data
 RESOURCES = icons/icons.qrc data.qrc
-macx:ICON = icons/tanglet.icns
-win32:RC_FILE = icons/icon.rc
 
 macx {
+	ICON = icons/tanglet.icns
+
 	GAME_DATA.files = data
 	GAME_DATA.path = Contents/Resources
 
 	QMAKE_BUNDLE_DATA += GAME_DATA
-}
-
-unix:!macx {
+} else:win32 {
+	RC_FILE = icons/icon.rc
+} else:unix {
 	isEmpty(PREFIX) {
 		PREFIX = /usr/local
 	}
