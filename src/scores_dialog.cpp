@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2013 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@
 #if defined(Q_OS_UNIX)
   #include <pwd.h>
   #include <unistd.h>
-#elif defined(Q_OS_WIN32)
+#elif defined(Q_OS_WIN)
   #include <lmcons.h>
   #include <windows.h>
 #endif
@@ -57,16 +57,16 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 #if defined(Q_OS_UNIX)
 		passwd* pws = getpwuid(geteuid());
 		if (pws) {
-			m_default_name = pws->pw_gecos;
+			m_default_name = QString::fromLocal8Bit(pws->pw_gecos).section(QLatin1Char(','), 0, 0);
 			if (m_default_name.isEmpty()) {
-				m_default_name = pws->pw_name;
+				m_default_name = QString::fromLocal8Bit(pws->pw_name);
 			}
 		}
-#elif defined(Q_OS_WIN32)
-		WCHAR buffer[UNLEN + 1];
-		DWORD count = sizeof(buffer);
+#elif defined(Q_OS_WIN)
+		TCHAR buffer[UNLEN + 1];
+		DWORD count = UNLEN + 1;
 		if (GetUserName(buffer, &count)) {
-			m_default_name = QString::fromStdWString(buffer);
+			m_default_name = QString::fromWCharArray(buffer, count);
 		}
 #endif
 	}
