@@ -1,3 +1,15 @@
+1.2.2
+=====
+- Added support for Qt 5.
+- Improved fetching player namer.
+- Improved build system.
+- Renamed XPM icon.
+- FIXED: Sometimes reselected last letter.
+- FIXED: Could not make a guess after new roll.
+- FIXED: Letters on board were not highlighted after keyboard input.
+- Translation updates: French, Hungarian, Italian, Spanish, Spanish (Chile), Turkish, Ukrainian.
+- Word list updates: English, Hungarian
+
 1.2.1
 =====
 - Added extra spellings of definitions.
@@ -6,6 +18,7 @@
 - Optimized language loading.
 - Made new game dialog resizable.
 - Translation updates: Dutch, German.
+- Word list updates: Dutch, German.
 
 1.2.0
 =====
@@ -37,6 +50,7 @@
 - FIXED: Crashed when guessing a word twice.
 - FIXED: Details window had incorrect values.
 - Translation updates: Czech, Dutch, French, Hebrew.
+- Word list updates: Dutch, Hebrew.
 
 1.1.1
 =====
@@ -45,6 +59,7 @@
 - Stopped hardcoding supported languages.
 - FIXED: Details dialog was enabled without a game.
 - Translation updates: Czech.
+- Word list updates: Czech.
 
 1.1.0
 =====
@@ -70,6 +85,7 @@
 - FIXED: Memory was leaked when changing languages.
 - FIXED: Keyboard guesses ignored mouse guesses.
 - Translation updates: French.
+- Word list updates: French.
 
 1.0.1
 =====
@@ -78,3 +94,4 @@
 - FIXED: Clicking on board took focus.
 - FIXED: Sometimes crashed at end of game.
 - Translation updates: French.
+- Word list updates: French.
