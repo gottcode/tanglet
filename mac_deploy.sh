@@ -2,7 +2,7 @@
 
 APP='Tanglet'
 BUNDLE="$APP.app"
-VERSION='1.2.1'
+VERSION='1.2.2'
 
 # Remove any previous disk folder or DMG
 echo -n 'Preparing... '
