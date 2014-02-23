@@ -1,97 +1,97 @@
 1.2.2
-=====
-- Added support for Qt 5.
-- Improved fetching player namer.
-- Improved build system.
-- Renamed XPM icon.
-- FIXED: Sometimes reselected last letter.
-- FIXED: Could not make a guess after new roll.
-- FIXED: Letters on board were not highlighted after keyboard input.
-- Translation updates: French, Hungarian, Italian, Spanish, Spanish (Chile), Turkish, Ukrainian.
-- Word list updates: English, Hungarian
+-----
+* Added support for Qt 5.
+* Improved fetching player namer.
+* Improved build system.
+* Renamed XPM icon.
+* FIXED: Sometimes reselected last letter.
+* FIXED: Could not make a guess after new roll.
+* FIXED: Letters on board were not highlighted after keyboard input.
+* Translation updates: French, Hungarian, Italian, Spanish, Spanish (Chile), Turkish, Ukrainian.
+* Word list updates: English, Hungarian
 
 1.2.1
-=====
-- Added extra spellings of definitions.
-- Added all spellings of words in tooltip.
-- Added scalable icon.
-- Optimized language loading.
-- Made new game dialog resizable.
-- Translation updates: Dutch, German.
-- Word list updates: Dutch, German.
+-----
+* Added extra spellings of definitions.
+* Added all spellings of words in tooltip.
+* Added scalable icon.
+* Optimized language loading.
+* Made new game dialog resizable.
+* Translation updates: Dutch, German.
+* Word list updates: Dutch, German.
 
 1.2.0
-=====
-- Added more difficulty options.
-- Added importing and exporting games.
-- Added showing word counts.
-- Added option to clear high scores.
-- Added a load screen.
-- Added new roll action.
-- Added support for Linux icon themes.
-- Added saving games across program runs.
-- Added changing the program language.
-- Added option to specify minimum length of words.
-- Added showing counts of word lengths.
-- Added showing game description in details window.
-- Improved icon and game graphics.
-- Improved layout of new game dialog.
-- Stopped restoring incorrect guesses.
-- Store board language in game settings.
-- Switched to Wiktionary.
-- FIXED: Could make incorrect guess twice in a row.
-- FIXED: Game buttons did not reflect game status.
-- FIXED: Changed word height when showing icons.
-- FIXED: Pressing enter in line edit closed scores dialog.
-- FIXED: Was not storing new high scores.
-- FIXED: Line edit was still shown when clearing high scores.
-- FIXED: Restoring strikeout timer didn't color timer correctly.
-- FIXED: Only showed correct guesses when typing.
-- FIXED: Crashed when guessing a word twice.
-- FIXED: Details window had incorrect values.
-- Translation updates: Czech, Dutch, French, Hebrew.
-- Word list updates: Dutch, Hebrew.
+-----
+* Added more difficulty options.
+* Added importing and exporting games.
+* Added showing word counts.
+* Added option to clear high scores.
+* Added a load screen.
+* Added new roll action.
+* Added support for Linux icon themes.
+* Added saving games across program runs.
+* Added changing the program language.
+* Added option to specify minimum length of words.
+* Added showing counts of word lengths.
+* Added showing game description in details window.
+* Improved icon and game graphics.
+* Improved layout of new game dialog.
+* Stopped restoring incorrect guesses.
+* Store board language in game settings.
+* Switched to Wiktionary.
+* FIXED: Could make incorrect guess twice in a row.
+* FIXED: Game buttons did not reflect game status.
+* FIXED: Changed word height when showing icons.
+* FIXED: Pressing enter in line edit closed scores dialog.
+* FIXED: Was not storing new high scores.
+* FIXED: Line edit was still shown when clearing high scores.
+* FIXED: Restoring strikeout timer didn't color timer correctly.
+* FIXED: Only showed correct guesses when typing.
+* FIXED: Crashed when guessing a word twice.
+* FIXED: Details window had incorrect values.
+* Translation updates: Czech, Dutch, French, Hebrew.
+* Word list updates: Dutch, Hebrew.
 
 1.1.1
-=====
-- New default dice.
-- Compressed word lists.
-- Stopped hardcoding supported languages.
-- FIXED: Details dialog was enabled without a game.
-- Translation updates: Czech.
-- Word list updates: Czech.
+-----
+* New default dice.
+* Compressed word lists.
+* Stopped hardcoding supported languages.
+* FIXED: Details dialog was enabled without a game.
+* Translation updates: Czech.
+* Word list updates: Czech.
 
 1.1.0
-=====
-- Added more timer modes.
-- Added larger board size.
-- Added new game dialog.
-- Added hiding missed words.
-- Added showing maximum score.
-- Added showing when player has a high score.
-- Added showing score in a tooltip for each word.
-- Added changing letter colors when a word can be made.
-- Added choosing game seed.
-- Added option to prevent low scoring boards.
-- Improved new game dialog.
-- Improved generating boards.
-- Allow player to abort a game.
-- List the highest scoring words in Allotment mode.
-- Pause when menus are open.
-- FIXED: Game briefly unpaused when showing dialogs.
-- FIXED: Line edits were ignored when setting a custom language.
-- FIXED: Did not update board on errors.
-- FIXED: Timer issues when ending a game.
-- FIXED: Memory was leaked when changing languages.
-- FIXED: Keyboard guesses ignored mouse guesses.
-- Translation updates: French.
-- Word list updates: French.
+-----
+* Added more timer modes.
+* Added larger board size.
+* Added new game dialog.
+* Added hiding missed words.
+* Added showing maximum score.
+* Added showing when player has a high score.
+* Added showing score in a tooltip for each word.
+* Added changing letter colors when a word can be made.
+* Added choosing game seed.
+* Added option to prevent low scoring boards.
+* Improved new game dialog.
+* Improved generating boards.
+* Allow player to abort a game.
+* List the highest scoring words in Allotment mode.
+* Pause when menus are open.
+* FIXED: Game briefly unpaused when showing dialogs.
+* FIXED: Line edits were ignored when setting a custom language.
+* FIXED: Did not update board on errors.
+* FIXED: Timer issues when ending a game.
+* FIXED: Memory was leaked when changing languages.
+* FIXED: Keyboard guesses ignored mouse guesses.
+* Translation updates: French.
+* Word list updates: French.
 
 1.0.1
-=====
-- Switched to Google dictionary.
-- FIXED: Arrows were incorrect under Windows.
-- FIXED: Clicking on board took focus.
-- FIXED: Sometimes crashed at end of game.
-- Translation updates: French.
-- Word list updates: French.
+-----
+* Switched to Google dictionary.
+* FIXED: Arrows were incorrect under Windows.
+* FIXED: Clicking on board took focus.
+* FIXED: Sometimes crashed at end of game.
+* Translation updates: French.
+* Word list updates: French.
