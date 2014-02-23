@@ -9,6 +9,10 @@ CONFIG += warn_on
 # Add dependencies
 macx {
 	LIBS += -lz
+} else:win32 {
+	greaterThan(QT_MAJOR_VERSION, 4) {
+		LIBS += -lz
+	}
 } else:unix {
 	CONFIG += link_pkgconfig
 	PKGCONFIG += zlib
