@@ -20,11 +20,8 @@ OBJECTS_DIR = build
 RCC_DIR = build
 
 # Set program version
-VERSION = $$system(git rev-parse --short HEAD)
-isEmpty(VERSION) {
-	VERSION = 0
-}
-DEFINES += VERSIONSTR=\\\"git.$${VERSION}\\\"
+VERSION = 1.2.2
+DEFINES += VERSIONSTR=\\\"$${VERSION}\\\"
 
 # Set program name
 unix:!macx {

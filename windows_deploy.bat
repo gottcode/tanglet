@@ -1,7 +1,7 @@
 @ECHO OFF
 
 SET APP=Tanglet
-FOR /f %%i IN ('git rev-parse --short HEAD') DO SET VERSION=%%i
+SET VERSION=1.2.2
 
 ECHO Copying executable
 MKDIR %APP%
