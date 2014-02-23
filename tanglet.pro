@@ -110,5 +110,8 @@ macx {
 	qm.files = translations/*.qm
 	qm.path = $$PREFIX/share/tanglet/translations
 
-	INSTALLS += target icon pixmap desktop data qm
+	man.files = doc/tanglet.6
+	man.path = $$PREFIX/share/man/man6
+
+	INSTALLS += target icon pixmap desktop data qm man
 }
