@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de" sourcelanguage="en">
+<TS version="2.1" language="de" sourcelanguage="en">
 <context>
     <name>Board</name>
     <message>
@@ -541,22 +541,22 @@
     <message>
         <location filename="../src/window.cpp" line="388"/>
         <source>&amp;About</source>
-        <translation>I&amp;nfo</translation>
+        <translation>Ü&amp;ber</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="390"/>
         <source>About &amp;Hspell</source>
-        <translation>Info über &amp;Hspell</translation>
+        <translation>Über &amp;Hspell</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="392"/>
         <source>About &amp;Qt</source>
-        <translation>Info über &amp;Qt</translation>
+        <translation>Über &amp;Qt</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="394"/>
         <source>About &amp;SCOWL</source>
-        <translation>Info über &amp;SCOWL</translation>
+        <translation>Über &amp;SCOWL</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="476"/>
@@ -571,7 +571,7 @@
     <message>
         <location filename="../src/window.cpp" line="472"/>
         <source>About</source>
-        <translation>Info</translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="475"/>
@@ -596,12 +596,12 @@
     <message>
         <location filename="../src/window.cpp" line="486"/>
         <source>About Hspell</source>
-        <translation>Info über Hspell</translation>
+        <translation>Über Hspell</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="493"/>
         <source>About SCOWL</source>
-        <translation>Info über SCOWL</translation>
+        <translation>Über SCOWL</translation>
     </message>
     <message>
         <location filename="../src/window.cpp" line="522"/>
