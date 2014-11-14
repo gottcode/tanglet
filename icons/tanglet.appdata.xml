@@ -4,6 +4,14 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Tanglet</name>
+  <name xml:lang="cs">Tanglet</name>
+  <name xml:lang="de">Tanglet</name>
+  <name xml:lang="fr">Tanglet</name>
+  <name xml:lang="hu">Tanglet</name>
+  <name xml:lang="ms">Tanglet</name>
+  <name xml:lang="nl">Tanglet</name>
+  <name xml:lang="pl">Tanglet</name>
+  <name xml:lang="ro">Tanglet</name>
   <summary>Single player variant of Boggle</summary>
   <summary xml:lang="cs">Varianta hry Boggle pro jednoho hráče</summary>
   <summary xml:lang="de">Einzelspielervariante von Boggle</summary>

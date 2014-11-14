@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-14 17:29+0000\n"
+"POT-Creation-Date: 2014-11-14 20:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
+msgid "Tanglet"
+msgstr ""
+
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr ""
 
-#: ../tanglet.appdata.xml.in.h:2
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
 "the game is to list as many words as you can before the time runs out. There "
@@ -29,17 +33,13 @@ msgid ""
 "you get extra time when you find a word."
 msgstr ""
 
-#: ../tanglet.appdata.xml.in.h:3
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
 "on the board. However, you can not reuse the same letter cells in a single "
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
-msgstr ""
-
-#: ../tanglet.desktop.in.h:1
-msgid "Tanglet"
 msgstr ""
 
 #: ../tanglet.desktop.in.h:2

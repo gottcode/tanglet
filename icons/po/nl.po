@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-14 17:29+0000\n"
+"POT-Creation-Date: 2014-11-14 20:56+0000\n"
 "PO-Revision-Date: 2014-11-14 17:37+0000\n"
 "Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/tanglet/language/"
@@ -18,11 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
+msgid "Tanglet"
+msgstr "Tanglet"
+
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr "Eenpersoonsversie van Boggle"
 
-#: ../tanglet.appdata.xml.in.h:2
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
 "the game is to list as many words as you can before the time runs out. There "
@@ -30,7 +34,7 @@ msgid ""
 "you get extra time when you find a word."
 msgstr ""
 
-#: ../tanglet.appdata.xml.in.h:3
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
@@ -38,10 +42,6 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
-
-#: ../tanglet.desktop.in.h:1
-msgid "Tanglet"
-msgstr "Tanglet"
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
