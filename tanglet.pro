@@ -111,11 +111,14 @@ macx {
 	desktop.files = icons/tanglet.desktop
 	desktop.path = $$PREFIX/share/applications/
 
+	appdata.files = icons/tanglet.appdata.xml
+	appdata.path = $$PREFIX/share/appdata/
+
 	qm.files = translations/*.qm
 	qm.path = $$PREFIX/share/tanglet/translations
 
 	man.files = doc/tanglet.6
 	man.path = $$PREFIX/share/man/man6
 
-	INSTALLS += target icon pixmap desktop data qm man
+	INSTALLS += target icon pixmap desktop appdata data qm man
 }
