@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,17 +31,9 @@ int main(int argc, char** argv) {
 	app.setApplicationVersion(VERSIONSTR);
 	app.setOrganizationDomain("gottcode.org");
 	app.setOrganizationName("GottCode");
-	{
-		QIcon fallback(":/hicolor/256x256/apps/tanglet.png");
-		fallback.addFile(":/hicolor/128x128/apps/tanglet.png");
-		fallback.addFile(":/hicolor/64x64/apps/tanglet.png");
-		fallback.addFile(":/hicolor/48x48/apps/tanglet.png");
-		fallback.addFile(":/hicolor/32x32/apps/tanglet.png");
-		fallback.addFile(":/hicolor/24x24/apps/tanglet.png");
-		fallback.addFile(":/hicolor/22x22/apps/tanglet.png");
-		fallback.addFile(":/hicolor/16x16/apps/tanglet.png");
-		app.setWindowIcon(QIcon::fromTheme("tanglet", fallback));
-	}
+#if !defined(Q_OS_WIN) && !defined(Q_OS_MAC)
+	app.setWindowIcon(QIcon::fromTheme("tanglet", QIcon(":/tanglet.png")));
+#endif
 
 	QString path = app.applicationDirPath();
 	QStringList paths;

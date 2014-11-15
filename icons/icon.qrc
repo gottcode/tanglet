@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<file alias="tanglet.png">hicolor/128x128/apps/tanglet.png</file>
+</qresource>
+</RCC>

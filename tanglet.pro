@@ -90,6 +90,8 @@ macx {
 } else:win32 {
 	RC_FILE = icons/icon.rc
 } else:unix {
+	RESOURCES += icons/icon.qrc
+
 	isEmpty(PREFIX) {
 		PREFIX = /usr/local
 	}
