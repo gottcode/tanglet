@@ -46,7 +46,6 @@ HEADERS += src/beveled_rect.h \
 	src/locale_dialog.h \
 	src/letter.h \
 	src/new_game_dialog.h \
-	src/random.h \
 	src/scores_dialog.h \
 	src/solver.h \
 	src/trie.h \
@@ -66,7 +65,6 @@ SOURCES += src/beveled_rect.cpp \
 	src/letter.cpp \
 	src/new_game_dialog.cpp \
 	src/main.cpp \
-	src/random.cpp \
 	src/scores_dialog.cpp \
 	src/solver.cpp \
 	src/trie.cpp \

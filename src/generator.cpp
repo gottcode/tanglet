@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,6 @@
 #include "clock.h"
 #include "gzip.h"
 #include "language_settings.h"
-#include "random.h"
 #include "solver.h"
 #include "trie.h"
 
@@ -39,13 +38,15 @@
 #endif
 #include <QTextStream>
 
+#include <random>
+
 //-----------------------------------------------------------------------------
 
 namespace
 {
 	struct State
 	{
-		State(const QList<QStringList>& dice, Solver* solver, int target, Random* random)
+		State(const QList<QStringList>& dice, Solver* solver, int target, std::mt19937* random)
 			: m_dice(dice), m_solver(solver), m_target(target), m_random(random)
 		{
 		}
@@ -62,13 +63,14 @@ namespace
 
 		void permute()
 		{
-			if (m_random->nextInt(2) == 1) {
-				int index = m_random->nextInt(m_dice.count());
-				m_random->shuffle(m_dice[index]);
+			if (randomInt(2)) {
+				int index = randomInt(m_dice.count());
+				QStringList& die = m_dice[index];
+				std::shuffle(die.begin(), die.end(), *m_random);
 				m_letters[index] = m_dice.at(index).first();
 			} else {
-				int index1 = m_random->nextInt(m_dice.count());
-				int index2 = m_random->nextInt(m_dice.count());
+				int index1 = randomInt(m_dice.count());
+				int index2 = randomInt(m_dice.count());
 				m_dice.swap(index1, index2);
 				m_letters.swap(index1, index2);
 			}
@@ -77,12 +79,12 @@ namespace
 
 		void roll()
 		{
-			m_random->shuffle(m_dice);
+			std::shuffle(m_dice.begin(), m_dice.end(), *m_random);
 			m_letters.clear();
 			int count = m_dice.count();
 			for (int i = 0; i < count; ++i) {
 				QStringList& die = m_dice[i];
-				m_random->shuffle(die);
+				std::shuffle(die.begin(), die.end(), *m_random);
 				m_letters += die.first();
 			}
 			solve();
@@ -96,13 +98,19 @@ namespace
 			m_delta = abs(words - m_target);
 		}
 
+		int randomInt(int max)
+		{
+			std::uniform_int_distribution<> dis(0, max - 1);
+			return dis(*m_random);
+		}
+
 	private:
 		QList<QStringList> m_dice;
 		QStringList m_letters;
 		int m_delta;
 		Solver* m_solver;
 		int m_target;
-		Random* m_random;
+		std::mt19937* m_random;
 	};
 }
 
@@ -160,9 +168,10 @@ void Generator::run()
 		return;
 	}
 
-	Random random(m_seed);
+	std::mt19937 random(m_seed);
 	if (m_density == 3) {
-		m_density = random.nextInt(3);
+		std::uniform_int_distribution<> gen(0,2);
+		m_density = gen(random);
 	}
 
 	// Find word range

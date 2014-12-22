@@ -24,7 +24,6 @@
 #include "generator.h"
 #include "language_settings.h"
 #include "letter.h"
-#include "random.h"
 #include "scores_dialog.h"
 #include "solver.h"
 #include "view.h"
@@ -51,7 +50,7 @@
 #include <QVBoxLayout>
 
 #include <algorithm>
-#include <ctime>
+#include <random>
 
 //-----------------------------------------------------------------------------
 
@@ -226,7 +225,8 @@ void Board::generate(const QSettings& game) {
 	}
 	int timer = qBound(0, game.value("TimerMode").toInt(), Clock::TotalTimers - 1);
 	QStringList letters = game.value("Letters").toStringList();
-	unsigned int seed = Random(time(0)).nextInt();
+	std::random_device rd;
+	unsigned int seed = rd();
 
 	LanguageSettings settings;
 	int language = game.value("Language", settings.language()).toInt();
