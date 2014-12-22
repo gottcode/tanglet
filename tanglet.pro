@@ -1,19 +1,16 @@
-lessThan(QT_VERSION, 4.6) {
-	error("Tanglet requires Qt 4.6 or greater")
+lessThan(QT_VERSION, 5.2) {
+	error("Tanglet requires Qt 5.2 or greater")
 }
 
 TEMPLATE = app
-greaterThan(QT_MAJOR_VERSION, 4):QT += widgets
-CONFIG += warn_on
-QMAKE_CXXFLAGS += -std=c++11
+QT += widgets
+CONFIG += warn_on c++11
 
 # Add dependencies
 macx {
 	LIBS += -lz
 } else:win32 {
-	greaterThan(QT_MAJOR_VERSION, 4) {
-		LIBS += -lz
-	}
+	LIBS += -lz
 } else:unix {
 	CONFIG += link_pkgconfig
 	PKGCONFIG += zlib

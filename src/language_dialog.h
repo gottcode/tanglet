@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,8 +42,10 @@ class LanguageDialog : public QDialog {
 	private slots:
 		void clicked(QAbstractButton* button);
 		void chooseLanguage(int index);
-		void chooseDice(const QString& dice = QString());
-		void chooseWords(const QString& words = QString());
+		void browseDice();
+		void chooseDice(const QString& dice);
+		void browseWords();
+		void chooseWords(const QString& words);
 
 	private:
 		void setLanguage(int language);

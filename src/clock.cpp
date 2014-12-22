@@ -388,7 +388,7 @@ Clock::Clock(QWidget* parent)
 
 	m_update = new QTimer(this);
 	m_update->setInterval(1000);
-	connect(m_update, SIGNAL(timeout()), this, SLOT(updateTime()));
+	connect(m_update, &QTimer::timeout, this, &Clock::updateTime);
 
 	QFont f = font();
 	f.setBold(true);

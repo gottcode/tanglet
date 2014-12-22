@@ -94,7 +94,7 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 
 	m_username = new QLineEdit(this);
 	m_username->hide();
-	connect(m_username, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+	connect(m_username, &QLineEdit::editingFinished, this, &ScoresDialog::editingFinished);
 
 	// Lay out dialog
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::Reset | QDialogButtonBox::Close, Qt::Horizontal, this);
@@ -102,8 +102,8 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	m_buttons->button(QDialogButtonBox::Reset)->setAutoDefault(false);
 	m_buttons->button(QDialogButtonBox::Close)->setDefault(true);
 	m_buttons->button(QDialogButtonBox::Close)->setFocus();
-	connect(m_buttons, SIGNAL(rejected()), this, SLOT(reject()));
-	connect(m_buttons, SIGNAL(clicked(QAbstractButton*)), this, SLOT(resetClicked(QAbstractButton*)));
+	connect(m_buttons, &QDialogButtonBox::rejected, this, &ScoresDialog::reject);
+	connect(m_buttons, &QDialogButtonBox::clicked, this, &ScoresDialog::resetClicked);
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addLayout(m_scores_layout);

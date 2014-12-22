@@ -31,11 +31,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 #include <QStandardPaths>
-#else
-#include <QDesktopServices>
-#endif
 #include <QTextStream>
 
 #include <random>
@@ -286,11 +282,7 @@ void Generator::update()
 		int count = 0;
 
 		// Load cached words
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 		QString cache_dir = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/cache";
-#else
-		QString cache_dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/cache";
-#endif
 		QString cache_file = QCryptographicHash::hash(words_path.toUtf8(), QCryptographicHash::Sha1).toHex();
 		QFileInfo cache_info(cache_dir + "/" + cache_file);
 		if (cache_info.exists() && (cache_info.lastModified() > QFileInfo(words_path).lastModified())) {

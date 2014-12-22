@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,13 +35,8 @@ WordTree::WordTree(QWidget* parent)
 	setColumnCount(3);
 	hideColumn(2);
 	header()->setStretchLastSection(false);
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 	header()->setSectionResizeMode(0, QHeaderView::Stretch);
 	header()->setSectionResizeMode(1, QHeaderView::Fixed);
-#else
-	header()->setResizeMode(0, QHeaderView::Stretch);
-	header()->setResizeMode(1, QHeaderView::Fixed);
-#endif
 	header()->hide();
 	setColumnWidth(1, 22);
 
@@ -53,7 +48,7 @@ WordTree::WordTree(QWidget* parent)
 	setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
-	connect(this, SIGNAL(itemClicked(QTreeWidgetItem*, int)), this, SLOT(onItemClicked(QTreeWidgetItem*, int)));
+	connect(this, &QTreeWidget::itemClicked, this, &WordTree::onItemClicked);
 }
 
 //-----------------------------------------------------------------------------

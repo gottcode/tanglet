@@ -42,11 +42,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QStackedWidget>
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 #include <QStandardPaths>
-#else
-#include <QDesktopServices>
-#endif
 #include <QStyle>
 #include <QTextEdit>
 #include <QTextStream>
@@ -266,7 +262,7 @@ namespace
 
 		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
 		buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
-		connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
+		connect(buttons, &QDialogButtonBox::accepted, this, &AboutDialog::accept);
 
 		QVBoxLayout* layout = new QVBoxLayout(this);
 		layout->addWidget(text);
@@ -298,10 +294,10 @@ Window::Window()
 
 	m_board = new Board(this);
 	m_contents->addWidget(m_board);
-	connect(m_board, SIGNAL(started()), this, SLOT(gameStarted()));
-	connect(m_board, SIGNAL(finished(int)), this, SLOT(gameFinished(int)));
-	connect(m_board, SIGNAL(optimizingStarted()), this, SLOT(optimizingStarted()));
-	connect(m_board, SIGNAL(optimizingFinished()), this, SLOT(optimizingFinished()));
+	connect(m_board, &Board::started, this, &Window::gameStarted);
+	connect(m_board, &Board::finished, this, &Window::gameFinished);
+	connect(m_board, &Board::optimizingStarted, this, &Window::optimizingStarted);
+	connect(m_board, &Board::optimizingFinished, this, &Window::optimizingFinished);
 
 	// Create pause screen
 	m_pause_screen = new QLabel(tr("<p><b><big>Paused</big></b><br>Click to resume playing.</p>"), this);
@@ -339,13 +335,13 @@ Window::Window()
 	menu->addSeparator();
 	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()));
 	end_action->setEnabled(false);
-	connect(m_board, SIGNAL(pauseAvailable(bool)), end_action, SLOT(setEnabled(bool)));
+	connect(m_board, &Board::pauseAvailable, end_action, &QAction::setEnabled);
 	m_pause_action = menu->addAction(tr("&Pause"));
 	m_pause_action->setCheckable(true);
 	m_pause_action->setShortcut(tr("Ctrl+P"));
 	m_pause_action->setEnabled(false);
-	connect(m_pause_action, SIGNAL(triggered(bool)), this, SLOT(setPaused(bool)));
-	connect(m_board, SIGNAL(pauseAvailable(bool)), m_pause_action, SLOT(setEnabled(bool)));
+	connect(m_pause_action, &QAction::triggered, this, &Window::setPaused);
+	connect(m_board, &Board::pauseAvailable, m_pause_action, &QAction::setEnabled);
 	menu->addSeparator();
 	m_details_action = menu->addAction(tr("&Details"), this, SLOT(showDetails()));
 	m_details_action->setEnabled(false);
@@ -368,14 +364,14 @@ Window::Window()
 		score_actions[i]->setCheckable(true);
 		group->addAction(score_actions[i]);
 	}
-	connect(group, SIGNAL(triggered(QAction*)), m_board, SLOT(setShowMaximumScore(QAction*)));
+	connect(group, &QActionGroup::triggered, m_board, &Board::setShowMaximumScore);
 	QAction* missed_action = menu->addAction(tr("Show Missed &Words"));
 	missed_action->setCheckable(true);
-	connect(missed_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowMissedWords(bool)));
+	connect(missed_action, &QAction::toggled, m_board, &Board::setShowMissedWords);
 	QAction* counts_action = menu->addAction(tr("Show Word &Counts"));
 	counts_action->setCheckable(true);
 	counts_action->setChecked(true);
-	connect(counts_action, SIGNAL(toggled(bool)), m_board, SLOT(setShowWordCounts(bool)));
+	connect(counts_action, &QAction::toggled, m_board, &Board::setShowWordCounts);
 	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
 	menu->addSeparator();
 	menu->addAction(tr("Application &Language..."), this, SLOT(showLocale()));
@@ -520,20 +516,12 @@ void Window::chooseGame() {
 	if (endGame()) {
 		QString filename = QFileDialog::getOpenFileName(window(),
 				tr("Import Game"),
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 				QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-#else
-				QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation),
-#endif
 				tr("Tanglet Games (*.tanglet)"));
 		if (!filename.isEmpty()) {
 			try
 			{
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 				QString current = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
-#else
-				QString current = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
-#endif
 
 				// Uncompress shared game
 				{
@@ -588,11 +576,7 @@ void Window::chooseGame() {
 void Window::shareGame() {
 	QString filename = QFileDialog::getSaveFileName(window(),
 			tr("Export Game"),
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 			QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-#else
-			QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation),
-#endif
 			tr("Tanglet Games (*.tanglet)"));
 	if (!filename.isEmpty()) {
 		if (!filename.endsWith(".tanglet")) {
@@ -694,7 +678,7 @@ void Window::showDetails() {
 
 void Window::showScores() {
 	ScoresDialog scores(this);
-	connect(&scores, SIGNAL(scoresReset()), m_board, SLOT(updateScoreColor()));
+	connect(&scores, &ScoresDialog::scoresReset, m_board, &Board::updateScoreColor);
 	scores.exec();
 }
 
@@ -758,11 +742,7 @@ void Window::gameFinished(int score) {
 		scores.exec();
 	}
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5,0,0))
 	QDir dir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
-#else
-	QDir dir(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
-#endif
 	dir.remove("current");
 	dir.remove("current-dice");
 	dir.remove("current-words");
@@ -772,8 +752,8 @@ void Window::gameFinished(int score) {
 
 void Window::monitorVisibility(QMenu* menu) {
 #ifndef Q_WS_MAC
-	connect(menu, SIGNAL(aboutToShow()), this, SLOT(autoPause()));
-	connect(menu, SIGNAL(aboutToHide()), this, SLOT(autoResume()));
+	connect(menu, &QMenu::aboutToShow, this, &Window::autoPause);
+	connect(menu, &QMenu::aboutToHide, this, &Window::autoResume);
 #endif
 }
 

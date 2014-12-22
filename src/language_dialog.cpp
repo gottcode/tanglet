@@ -66,21 +66,21 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	}
 	m_language->addItem(tr("Custom"), 0);
 	m_language->setCurrentIndex(m_language->count() - 1);
-	connect(m_language, SIGNAL(currentIndexChanged(int)), this, SLOT(chooseLanguage(int)));
+	connect(m_language, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &LanguageDialog::chooseLanguage);
 
 	m_dice = new QLineEdit(this);
 	m_dice_path = settings.dice();
 	m_dice->setText(QDir::toNativeSeparators(QFileInfo(m_dice_path).canonicalFilePath()));
-	connect(m_dice, SIGNAL(textEdited(const QString&)), this, SLOT(chooseDice(const QString&)));
+	connect(m_dice, &QLineEdit::textEdited, this, &LanguageDialog::chooseDice);
 	m_choose_dice = new QPushButton(tr("Choose..."), this);
-	connect(m_choose_dice, SIGNAL(clicked()), this, SLOT(chooseDice()));
+	connect(m_choose_dice, &QPushButton::clicked, this, &LanguageDialog::browseDice);
 
 	m_words = new QLineEdit(this);
 	m_words_path = settings.words();
 	m_words->setText(QDir::toNativeSeparators(QFileInfo(m_words_path).canonicalFilePath()));
-	connect(m_words, SIGNAL(textEdited(const QString&)), this, SLOT(chooseWords(const QString&)));
+	connect(m_words, &QLineEdit::textEdited, this, &LanguageDialog::chooseWords);
 	m_choose_words = new QPushButton(tr("Choose..."), this);
-	connect(m_choose_words, SIGNAL(clicked()), this, SLOT(chooseWords()));
+	connect(m_choose_words, &QPushButton::clicked, this, &LanguageDialog::browseWords);
 
 	m_dictionary = new QLineEdit(this);
 	m_dictionary->setText(settings.dictionary());
@@ -92,9 +92,9 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
-	connect(m_buttons, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(m_buttons, SIGNAL(rejected()), this, SLOT(reject()));
-	connect(m_buttons, SIGNAL(clicked(QAbstractButton*)), this, SLOT(clicked(QAbstractButton*)));
+	connect(m_buttons, &QDialogButtonBox::accepted, this, &LanguageDialog::accept);
+	connect(m_buttons, &QDialogButtonBox::rejected, this, &LanguageDialog::reject);
+	connect(m_buttons, &QDialogButtonBox::clicked, this, &LanguageDialog::clicked);
 
 	// Lay out window
 	QGridLayout* layout = new QGridLayout(this);
@@ -194,8 +194,14 @@ void LanguageDialog::chooseLanguage(int index) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::chooseDice(const QString& dice) {
-	QString path = !dice.isEmpty() ? dice : QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
+void LanguageDialog::browseDice() {
+	QString path = QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
+	chooseDice(path);
+}
+
+//-----------------------------------------------------------------------------
+
+void LanguageDialog::chooseDice(const QString& path) {
 	if (!path.isEmpty()) {
 		m_dice_path = QFileInfo(path).canonicalFilePath();
 		m_dice->setText(QDir::toNativeSeparators(m_dice_path));
@@ -204,8 +210,14 @@ void LanguageDialog::chooseDice(const QString& dice) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::chooseWords(const QString& words) {
-	QString path = !words.isEmpty() ? words : QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
+void LanguageDialog::browseWords() {
+	QString path = QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
+	chooseWords(path);
+}
+
+//-----------------------------------------------------------------------------
+
+void LanguageDialog::chooseWords(const QString& path) {
 	if (!path.isEmpty()) {
 		m_words_path = QFileInfo(path).canonicalFilePath();
 		m_words->setText(QDir::toNativeSeparators(m_words_path));

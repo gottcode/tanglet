@@ -57,15 +57,15 @@
 Board::Board(QWidget* parent)
 : QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0), m_generator(0) {
 	m_generator = new Generator(this);
-	connect(m_generator, SIGNAL(finished()), this, SLOT(gameStarted()));
-	connect(m_generator, SIGNAL(optimizingStarted()), this, SIGNAL(optimizingStarted()));
-	connect(m_generator, SIGNAL(optimizingFinished()), this, SIGNAL(optimizingFinished()));
+	connect(m_generator, &Generator::finished, this, &Board::gameStarted);
+	connect(m_generator, &Generator::optimizingStarted, this, &Board::optimizingStarted);
+	connect(m_generator, &Generator::optimizingFinished, this, &Board::optimizingFinished);
 
 	m_view = new View(0, this);
 
 	// Create clock and score widgets
 	m_clock = new Clock(this);
-	connect(m_clock, SIGNAL(finished()), this, SLOT(finish()));
+	connect(m_clock, &Clock::finished, this, &Board::finish);
 
 	m_score = new QLabel(this);
 
@@ -74,7 +74,7 @@ Board::Board(QWidget* parent)
 	m_max_score_details->setIconSize(QSize(16,16));
 	m_max_score_details->setIcon(QIcon::fromTheme("dialog-information", QIcon(":/dialog-information.png")));
 	m_max_score_details->setToolTip(tr("Details"));
-	connect(m_max_score_details, SIGNAL(clicked()), this, SLOT(showMaximumWords()));
+	connect(m_max_score_details, &QToolButton::clicked, this, &Board::showMaximumWords);
 
 	QHBoxLayout* score_layout = new QHBoxLayout;
 	score_layout->setMargin(0);
@@ -86,9 +86,9 @@ Board::Board(QWidget* parent)
 	m_guess->setDisabled(true);
 	m_guess->setMaxLength(16);
 	m_guess->installEventFilter(this);
-	connect(m_guess, SIGNAL(textEdited(const QString&)), this, SLOT(guessChanged()));
-	connect(m_guess, SIGNAL(returnPressed()), this, SLOT(guess()));
-	connect(m_view, SIGNAL(mousePressed()), m_guess, SLOT(setFocus()));
+	connect(m_guess, &QLineEdit::textEdited, this, &Board::guessChanged);
+	connect(m_guess, &QLineEdit::returnPressed, this, &Board::guess);
+	connect(m_view, &View::mousePressed, m_guess, static_cast<void (QLineEdit::*)()>(&QLineEdit::setFocus));
 
 	int size = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
 
@@ -102,7 +102,7 @@ Board::Board(QWidget* parent)
 	m_clear_button->setIcon(QIcon::fromTheme("edit-clear", clear_fallback));
 	m_clear_button->setToolTip(tr("Clear"));
 	m_clear_button->setEnabled(false);
-	connect(m_clear_button, SIGNAL(clicked()), this, SLOT(clearGuess()));
+	connect(m_clear_button, &QToolButton::clicked, this, &Board::clearGuess);
 
 	m_guess_button = new QToolButton(this);
 	m_guess_button->setAutoRaise(true);
@@ -114,7 +114,7 @@ Board::Board(QWidget* parent)
 	m_guess_button->setIcon(QIcon::fromTheme("list-add", guess_fallback));
 	m_guess_button->setToolTip(tr("Guess"));
 	m_guess_button->setEnabled(false);
-	connect(m_guess_button, SIGNAL(clicked()), this, SLOT(guess()));
+	connect(m_guess_button, &QToolButton::clicked, this, &Board::guess);
 
 	QHBoxLayout* guess_layout = new QHBoxLayout;
 	guess_layout->setSpacing(0);
@@ -127,12 +127,12 @@ Board::Board(QWidget* parent)
 	// Create word lists
 	m_found = new WordTree(this);
 	m_found->setFocusPolicy(Qt::TabFocus);
-	connect(m_found, SIGNAL(itemSelectionChanged()), this, SLOT(wordSelected()));
+	connect(m_found, &WordTree::itemSelectionChanged, this, &Board::wordSelected);
 
 	m_missed = new WordTree(this);
 	m_missed->setFocusPolicy(Qt::TabFocus);
 	m_missed->hide();
-	connect(m_missed, SIGNAL(itemSelectionChanged()), this, SLOT(wordSelected()));
+	connect(m_missed, &WordTree::itemSelectionChanged, this, &Board::wordSelected);
 
 	QWidget* found_tab = new QWidget(this);
 	QVBoxLayout* found_layout = new QVBoxLayout(found_tab);
@@ -143,7 +143,7 @@ Board::Board(QWidget* parent)
 
 	m_tabs = new QTabWidget(this);
 	m_tabs->addTab(found_tab, tr("Found"));
-	connect(m_tabs, SIGNAL(currentChanged(int)), this, SLOT(clearGuess()));
+	connect(m_tabs, &QTabWidget::currentChanged, this, &Board::clearGuess);
 
 	int width = guess_layout->sizeHint().width();
 	m_tabs->setFixedWidth(width);
@@ -382,7 +382,7 @@ void Board::gameStarted() {
 			cell->moveBy((c * cell_padding_size) + 6, (r * cell_padding_size) + 6);
 			scene->addItem(cell);
 			m_cells[c][r] = cell;
-			connect(cell, SIGNAL(clicked(Letter*)), this, SLOT(letterClicked(Letter*)));
+			connect(cell, &Letter::clicked, this, &Board::letterClicked);
 		}
 	}
 
@@ -885,7 +885,7 @@ void Board::showMaximumWords() {
 
 	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, &dialog);
 	buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
-	connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
 
 	QVBoxLayout* layout = new QVBoxLayout(&dialog);
 	layout->addWidget(message);

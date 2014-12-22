@@ -65,8 +65,8 @@ LocaleDialog::LocaleDialog(QWidget* parent) :
 	m_translations->setCurrentIndex(index);
 
 	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
-	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(buttons, &QDialogButtonBox::accepted, this, &LocaleDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, this, &LocaleDialog::reject);
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->setSizeConstraint(QLayout::SetFixedSize);
@@ -133,7 +133,6 @@ QString LocaleDialog::languageName(const QString& language)
 	QString lang_code = language.left(5);
 	QLocale locale(lang_code);
 	QString name;
-#if (QT_VERSION >= QT_VERSION_CHECK(4,8,0))
 	if (lang_code.length() < 5) {
 		name = locale.nativeLanguageName();
 	} else {
@@ -146,17 +145,6 @@ QString LocaleDialog::languageName(const QString& language)
 	if (locale.textDirection() == Qt::RightToLeft) {
 		name.prepend(QChar(0x202b));
 	}
-#else
-	if (lang_code.length() < 5) {
-		name = QLocale::languageToString(locale.language());
-	} else {
-		if (locale.name() == lang_code) {
-			name = QLocale::languageToString(locale.language()) + " (" + QLocale::countryToString(locale.country()) + ")";
-		} else {
-			name = QLocale::languageToString(locale.language()) + " (" + language + ")";
-		}
-	}
-#endif
 	return name;
 }
 

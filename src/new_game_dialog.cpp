@@ -94,7 +94,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_normal_size->setIcon(QPixmap(":/preview/normal.png"));
 	m_normal_size->setText(Board::sizeToString(4));
 	m_normal_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	connect(m_normal_size, SIGNAL(clicked()), this, SLOT(sizeChanged()));
+	connect(m_normal_size, &QToolButton::clicked, this, &NewGameDialog::sizeChanged);
 
 	m_large_size = new QToolButton(this);
 	m_large_size->setAutoExclusive(true);
@@ -104,7 +104,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_large_size->setIcon(QPixmap(":/preview/large.png"));
 	m_large_size->setText(Board::sizeToString(5));
 	m_large_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	connect(m_large_size, SIGNAL(clicked()), this, SLOT(sizeChanged()));
+	connect(m_large_size, &QToolButton::clicked, this, &NewGameDialog::sizeChanged);
 
 	if (settings.value("Board/Size", 4).toInt() == 4) {
 		m_normal_size->setChecked(true);
@@ -132,7 +132,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	for (int i = 0; i < 4; ++i) {
 		m_length->addItem("");
 	}
-	connect(m_length, SIGNAL(currentIndexChanged(int)), this, SLOT(lengthChanged(int)));
+	connect(m_length, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &NewGameDialog::lengthChanged);
 	m_minimum = settings.value("Board/Minimum", 3).toInt();
 	if (m_large_size->isChecked()) {
 		--m_minimum;
@@ -158,7 +158,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	area->setWidgetResizable(true);
 
 	QSignalMapper* mapper = new QSignalMapper(this);
-	connect(mapper, SIGNAL(mapped(int)), this, SLOT(timerChosen(int)));
+	connect(mapper, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mapped), this, &NewGameDialog::timerChosen);
 
 	QCommandLinkButton* active_timer = 0;
 	QList<TimerDescription> timers;
@@ -169,7 +169,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	for (const TimerDescription& timer : timers) {
 		QCommandLinkButton* button = new QCommandLinkButton(timer.name(), timer.description(), timers_widget);
 		button->setMinimumWidth(500);
-		connect(button, SIGNAL(clicked()), mapper, SLOT(map()));
+		connect(button, &QCommandLinkButton::clicked, mapper, static_cast<void (QSignalMapper::*)()>(&QSignalMapper::map));
 		mapper->setMapping(button, timer.id());
 		timers_layout->addWidget(button);
 
@@ -182,7 +182,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 	// Create cancel button
 	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Cancel, Qt::Horizontal, this);
-	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(buttons, &QDialogButtonBox::rejected, this, &NewGameDialog::reject);
 	layout->addSpacing(6);
 	layout->addWidget(buttons);
 
