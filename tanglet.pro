@@ -5,6 +5,7 @@ lessThan(QT_VERSION, 4.6) {
 TEMPLATE = app
 greaterThan(QT_MAJOR_VERSION, 4):QT += widgets
 CONFIG += warn_on
+QMAKE_CXXFLAGS += -std=c++11
 
 # Add dependencies
 macx {

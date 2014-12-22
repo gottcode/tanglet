@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 
 	m_language = new QComboBox(this);
 	QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
-	foreach (const QString& iso_code, languages) {
+	for (const QString& iso_code : languages) {
 		QLocale::Language language = QLocale(iso_code).language();
 		QString name = QLocale::languageToString(language);
 		QFile file("tanglet:/" + iso_code + "/name");

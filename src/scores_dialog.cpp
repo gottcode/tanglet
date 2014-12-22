@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2013 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2013, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -187,7 +187,7 @@ void ScoresDialog::editingFinished() {
 
 	// Save scores
 	QStringList values;
-	foreach (const Score& s, m_scores) {
+	for (const Score& s : m_scores) {
 		values += QString("%1:%2:%3:%4") .arg(s.name) .arg(s.score) .arg(s.date.toString("yyyy.MM.dd-hh.mm.ss")) .arg(s.timer);
 	}
 	QSettings settings;
@@ -227,7 +227,7 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 	}
 
 	int row = 0;
-	foreach (const Score& s, m_scores) {
+	for (const Score& s : m_scores) {
 		if (score >= s.score && date >= s.date) {
 			break;
 		}
@@ -253,7 +253,7 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 
 void ScoresDialog::load() {
 	QStringList data = QSettings().value("Scores/Values").toStringList();
-	foreach (const QString& s, data) {
+	for (const QString& s : data) {
 		QStringList values = s.split(':');
 		if (values.size() == 3 || values.size() == 4) {
 			QString name = values[0];

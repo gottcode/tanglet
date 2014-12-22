@@ -156,7 +156,7 @@ void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
 
 		if (spellings.count() > 1) {
 			QMenu menu;
-			foreach (const QString& spelling, spellings) {
+			for (const QString& spelling : spellings) {
 				menu.addAction(spelling);
 			}
 			QAction* action = menu.exec(QCursor::pos());

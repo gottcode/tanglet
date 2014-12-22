@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2011, 2013 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2011, 2013, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -116,7 +116,7 @@ TrieGenerator* TrieGenerator::addChild(const QChar& letter)
 void TrieGenerator::addWord(const QString& word, const QStringList& spellings)
 {
 	TrieGenerator* node = this;
-	foreach (const QChar& c, word) {
+	for (const QChar& c : word) {
 		node = node->addChild(c);
 	}
 	node->m_word = true;

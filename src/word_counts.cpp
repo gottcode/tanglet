@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2011, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,8 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QScrollBar>
+
+#include <algorithm>
 
 //-----------------------------------------------------------------------------
 
@@ -88,7 +90,7 @@ void WordCounts::setWords(const QStringList& words)
 		group.max = 0;
 	}
 
-	foreach (const QString& word, words) {
+	for (const QString& word : words) {
 		Q_ASSERT(word.length() < 26);
 		Group& group = m_groups[word.length()];
 		group.max++;
@@ -106,8 +108,8 @@ void WordCounts::updateString()
 	int max = 0;
 	for (int i = 0; i < 26; ++i) {
 		Group& group = m_groups[i];
-		max = qMax(max, group.max);
-		max_count = qMax(max_count, group.count);
+		max = std::max(max, group.max);
+		max_count = std::max(max_count, group.count);
 
 		QString text;
 		if (!m_show_max) {

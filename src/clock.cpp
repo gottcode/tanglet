@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,8 @@
 #include <QSettings>
 #include <QTime>
 #include <QTimer>
+
+#include <algorithm>
 
 //-----------------------------------------------------------------------------
 
@@ -87,7 +89,7 @@ void Clock::Timer::stop() {
 }
 
 QString Clock::Timer::update() {
-	m_time = qMax(m_time - 1, 0);
+	m_time = std::max(m_time - 1, 0);
 	return QTime(0,0,0).addSecs(m_time).toString(tr("m:ss"));
 }
 
@@ -96,7 +98,7 @@ int Clock::Timer::width() const {
 }
 
 void Clock::Timer::load(const QSettings& game) {
-	m_time = qMax(0, game.value("TimerDetails/Time", m_time).toInt()) + 1;
+	m_time = std::max(0, game.value("TimerDetails/Time", m_time).toInt()) + 1;
 	loadDetails(game);
 }
 
@@ -131,12 +133,12 @@ private:
 };
 
 bool Clock::AllotmentTimer::addWord(int) {
-	m_time = qMax(m_time - 1, 0);
+	m_time = std::max(m_time - 1, 0);
 	return true;
 }
 
 bool Clock::AllotmentTimer::addIncorrectWord(int) {
-	m_time = qMax(m_time - 1, 0);
+	m_time = std::max(m_time - 1, 0);
 	return true;
 }
 
@@ -197,7 +199,7 @@ bool Clock::DisciplineTimer::addWord(int score) {
 }
 
 bool Clock::DisciplineTimer::addIncorrectWord(int score) {
-	m_time = qMax(0, m_time - (score + 8));
+	m_time = std::max(0, m_time - (score + 8));
 	return true;
 }
 
@@ -274,7 +276,7 @@ int Clock::StaminaTimer::type() const {
 }
 
 QString Clock::StaminaTimer::update() {
-	m_freeze = qMax(0, m_freeze - 1);
+	m_freeze = std::max(0, m_freeze - 1);
 	return (m_freeze) ? tr("+%1").arg(m_freeze) : Timer::update();
 }
 
@@ -319,7 +321,7 @@ bool Clock::StrikeoutTimer::addWord(int) {
 }
 
 bool Clock::StrikeoutTimer::addIncorrectWord(int) {
-	m_strikes = qMin(m_strikes + 1, 3);
+	m_strikes = std::min(m_strikes + 1, 3);
 	m_time = (3 - m_strikes) * 10;
 	return true;
 }
@@ -571,7 +573,7 @@ void Clock::paintEvent(QPaintEvent* event) {
 	painter.drawRoundedRect(rect().adjusted(2, 2, -2, -2), 3, 3);
 
 	int x = m_timer->width();
-	int width = 180 - qMin(180, x);
+	int width = 180 - std::min(180, x);
 	if ((width < 180) && (width > 0)) {
 		// Draw empty space
 		painter.setBrush(QColor(255,255,255,160));

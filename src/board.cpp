@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,6 +50,7 @@
 #include <QToolButton>
 #include <QVBoxLayout>
 
+#include <algorithm>
 #include <ctime>
 
 //-----------------------------------------------------------------------------
@@ -182,7 +183,7 @@ Board::~Board() {
 
 		QVariantList positions;
 		QString word;
-		foreach (const QPoint& position, m_positions) {
+		for (const QPoint& position : m_positions) {
 			positions.append(position);
 			word.append(m_cells[position.x()][position.y()]->text().toUpper());
 		}
@@ -354,12 +355,12 @@ void Board::gameStarted() {
 	f.setPointSize(20);
 	QFontMetrics metrics(f);
 	int letter_size = 0;
-	foreach (const QStringList& die, m_generator->dice(m_size)) {
-		foreach (const QString& side, die) {
-			letter_size = qMax(letter_size, metrics.width(side));
+	for (const QStringList& die : m_generator->dice(m_size)) {
+		for (const QString& side : die) {
+			letter_size = std::max(letter_size, metrics.width(side));
 		}
 	}
-	int cell_size = qMax(metrics.height(), letter_size) + 10;
+	int cell_size = std::max(metrics.height(), letter_size) + 10;
 	int cell_padding_size = cell_size + 4;
 	int board_size = (m_size * cell_padding_size) + 8;
 
@@ -406,13 +407,13 @@ void Board::gameStarted() {
 
 	// Add solutions
 	QList<QString> solutions = m_solutions.keys();
-	foreach (const QString& solution, solutions) {
+	for (const QString& solution : solutions) {
 		m_missed->addWord(solution);
 	}
 
 	// Add found words
 	QStringList found = settings.value("Found").toStringList();
-	foreach (const QString& text, found) {
+	for (const QString& text : found) {
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
 		if (m_missed->findItems(text, Qt::MatchExactly, 2).value(0) && !item) {
 			item = m_found->addWord(text);
@@ -424,7 +425,7 @@ void Board::gameStarted() {
 	// Add guess
 	m_guess->setText(settings.value("Guess").toString());
 	QVariantList positions = settings.value("GuessPositions").toList();
-	foreach (const QVariant& position, positions) {
+	for (const QVariant& position : positions) {
 		m_positions.append(position.toPoint());
 	}
 
@@ -555,7 +556,7 @@ void Board::guessChanged() {
 
 				// Find how many cells match and are in order between solution and m_positions
 				const QList<QPoint>& solution = solutions.at(i);
-				foreach (const QPoint& cell, solution) {
+				for (const QPoint& cell : solution) {
 					int pos = m_positions.indexOf(cell);
 					if (pos != -1) {
 						match++;
@@ -673,7 +674,7 @@ void Board::letterClicked(Letter* letter) {
 		updateClickableStatus();
 
 		QString word;
-		foreach (const QPoint& position, m_positions) {
+		for (const QPoint& position : m_positions) {
 			word.append(m_cells[position.x()][position.y()]->text().toUpper());
 		}
 		m_guess->setText(word);
@@ -827,17 +828,17 @@ void Board::updateClickableStatus() {
 
 	if (has_word && m_valid) {
 		const QPoint& position = m_positions.last();
-		int min_x = qMax(position.x() - 1, 0);
-		int max_x = qMin(position.x() + 2, m_size);
-		int min_y = qMax(position.y() - 1, 0);
-		int max_y = qMin(position.y() + 2, m_size);
+		int min_x = std::max(position.x() - 1, 0);
+		int max_x = std::min(position.x() + 2, m_size);
+		int min_y = std::max(position.y() - 1, 0);
+		int max_y = std::min(position.y() + 2, m_size);
 		for (int y = min_y; y < max_y; ++y) {
 			for (int x = min_x; x < max_x; ++x) {
 				m_cells[x][y]->setClickable(true);
 			}
 		}
 
-		foreach (const QPoint& position, m_positions) {
+		for (const QPoint& position : m_positions) {
 			m_cells[position.x()][position.y()]->setClickable(true);
 		}
 	}
@@ -859,7 +860,7 @@ void Board::showMaximumWords() {
 	dialog.setWindowTitle(tr("Details"));
 
 	QList<int> scores;
-	foreach (const QString& word, m_solutions.keys()) {
+	for (const QString& word : m_solutions.keys()) {
 		scores.append(Solver::score(word));
 	}
 	qSort(scores.begin(), scores.end(), qGreater<int>());
@@ -871,7 +872,7 @@ void Board::showMaximumWords() {
 	WordTree* words = new WordTree(this);
 	words->setDictionary(m_generator->dictionary());
 	QList<QTreeWidget*> trees = QList<QTreeWidget*>() << m_found << m_missed;
-	foreach (QTreeWidget* tree, trees) {
+	for (QTreeWidget* tree : trees) {
 		for (int i = 0; i < tree->topLevelItemCount(); ++i) {
 			QTreeWidgetItem* item = tree->topLevelItem(i);
 			int index = scores.indexOf(item->data(0, Qt::UserRole).toInt());
