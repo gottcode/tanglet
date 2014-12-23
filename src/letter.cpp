@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012, 2013 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,8 @@
 #include <QRadialGradient>
 #include <QPainterPath>
 #include <QPen>
+
+#include <cmath>
 
 //-----------------------------------------------------------------------------
 
@@ -69,7 +71,7 @@ void Letter::setArrow(qreal angle, int z) {
 	}
 
 	QRect rect = sceneBoundingRect().toRect();
-	switch (qRound(angle / 45.0)) {
+	switch (std::lround(angle / 45.0)) {
 		case 0: // right
 			createSideArrow();
 			m_arrow->moveBy(rect.right() - 8, rect.center().y());
