@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010, 2011, 2012, 2014 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010, 2011, 2012, 2014, 2015 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -91,7 +91,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_normal_size->setAutoRaise(true);
 	m_normal_size->setCheckable(true);
 	m_normal_size->setIconSize(QSize(64, 64));
-	m_normal_size->setIcon(QPixmap(":/preview/normal.png"));
+	m_normal_size->setIcon(QIcon(":/preview/normal.png"));
 	m_normal_size->setText(Board::sizeToString(4));
 	m_normal_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 	connect(m_normal_size, &QToolButton::clicked, this, &NewGameDialog::sizeChanged);
@@ -101,7 +101,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	m_large_size->setAutoRaise(true);
 	m_large_size->setCheckable(true);
 	m_large_size->setIconSize(QSize(64, 64));
-	m_large_size->setIcon(QPixmap(":/preview/large.png"));
+	m_large_size->setIcon(QIcon(":/preview/large.png"));
 	m_large_size->setText(Board::sizeToString(5));
 	m_large_size->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 	connect(m_large_size, &QToolButton::clicked, this, &NewGameDialog::sizeChanged);

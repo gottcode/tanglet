@@ -95,7 +95,9 @@ Board::Board(QWidget* parent)
 	m_clear_button = new QToolButton(this);
 	m_clear_button->setAutoRaise(true);
 	m_clear_button->setIconSize(QSize(size,size));
-	QIcon clear_fallback(":/tango/32x32/actions/edit-clear.png");
+	QIcon clear_fallback(":/tango/64x64/actions/edit-clear.png");
+	clear_fallback.addFile(":/tango/48x48/actions/edit-clear.png");
+	clear_fallback.addFile(":/tango/32x32/actions/edit-clear.png");
 	clear_fallback.addFile(":/tango/24x24/actions/edit-clear.png");
 	clear_fallback.addFile(":/tango/22x22/actions/edit-clear.png");
 	clear_fallback.addFile(":/tango/16x16/actions/edit-clear.png");
@@ -107,7 +109,9 @@ Board::Board(QWidget* parent)
 	m_guess_button = new QToolButton(this);
 	m_guess_button->setAutoRaise(true);
 	m_guess_button->setIconSize(QSize(size,size));
-	QIcon guess_fallback(":/tango/32x32/actions/list-add.png");
+	QIcon guess_fallback(":/tango/64x64/actions/list-add.png");
+	guess_fallback.addFile(":/tango/48x48/actions/list-add.png");
+	guess_fallback.addFile(":/tango/32x32/actions/list-add.png");
 	guess_fallback.addFile(":/tango/24x24/actions/list-add.png");
 	guess_fallback.addFile(":/tango/22x22/actions/list-add.png");
 	guess_fallback.addFile(":/tango/16x16/actions/list-add.png");
