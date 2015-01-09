@@ -749,7 +749,7 @@ void Window::gameFinished(int score) {
 //-----------------------------------------------------------------------------
 
 void Window::monitorVisibility(QMenu* menu) {
-#ifndef Q_WS_MAC
+#ifndef Q_OS_MAC
 	connect(menu, &QMenu::aboutToShow, this, &Window::autoPause);
 	connect(menu, &QMenu::aboutToHide, this, &Window::autoResume);
 #endif
