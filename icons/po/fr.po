@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Guillaume Gay <guillaume.gay@bigfoot.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-14 20:56+0000\n"
-"PO-Revision-Date: 2014-11-14 17:37+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
+"PO-Revision-Date: 2014-11-17 08:58+0000\n"
+"Last-Translator: Guillaume Gay <guillaume.gay@bigfoot.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/tanglet/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -24,7 +25,7 @@ msgstr "Tanglet"
 
 #: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
-msgstr "Variante de Boogle en mode simple joueur"
+msgstr "Variante de Boggle en mode simple joueur"
 
 #: ../tanglet.appdata.xml.in.h:3
 msgid ""
@@ -33,6 +34,11 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet est un jeu de recherche de mots, en mode simple joueur, basé sur le "
+"fameux Boggle. L'objectif de ce jeu est de lister autant de mots que "
+"possible avant la fin du temps imparti. Plusieurs modes de minuterie sont "
+"proposés. Ils déterminent le temps de départ et le temps supplémentaire "
+"accordé lorsqu'un mot a été trouvé. "
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -42,6 +48,12 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Vous pouvez relier des lettres horizontalement, verticalement ou en "
+"diagonale dans n'importe quelle direction pour former un mot, du moment que "
+"les lettres soient à côté l'une de l'autre sur le plateau. Cependant, vous "
+"ne pouvez pas réutiliser les mêmes cellules de lettres en un seul mot. En "
+"outre, chaque mot doit être composé d'au moins trois lettres pour un plateau "
+"normal, et de quatre lettres pour un grand plateau."
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"

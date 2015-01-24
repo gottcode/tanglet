@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# fri, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-14 20:56+0000\n"
-"PO-Revision-Date: 2014-11-14 17:37+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
+"PO-Revision-Date: 2014-12-28 09:06+0000\n"
+"Last-Translator: fri\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/tanglet/language/"
 "cs/)\n"
 "Language: cs\n"
@@ -33,6 +34,10 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet je hra o hledání slov postavená na Boogle. Předmětem hry je "
+"sestavení seznamu tolika slov, kolik můžete, předtím než uplyne čas. Pro "
+"časomíru je tu několik režimů, jež určují, kolik času máte na začátku, a "
+"jestli dostanete, když najdete slovo, nějaký čas navíc. "
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -42,6 +47,11 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Písmena můžete v kterémkoli směru, abyste udělali slovo, spojovat vodorovně, "
+"svisle nebo úhlopříčně tak dlouho, dokud jsou písmena na hrací desce vedle "
+"sebe. Nicméně nemůžete v jednom slově znovu použít to samé písmeno, když už "
+"jste je použili. Každé slovo také musí sestávat z alespoň tří písmen na "
+"obyčejné desce a ze čtyř na velké desce."
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"

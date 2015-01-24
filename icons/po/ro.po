@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Oprea Nicolae <jaff2002@yahoo.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-14 20:56+0000\n"
-"PO-Revision-Date: 2014-11-14 17:37+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
+"PO-Revision-Date: 2015-01-21 23:51+0000\n"
+"Last-Translator: Oprea Nicolae <jaff2002@yahoo.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/projects/p/tanglet/"
 "language/ro/)\n"
 "Language: ro\n"
@@ -25,7 +26,7 @@ msgstr "Tanglet"
 
 #: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
-msgstr "Boggle - Variantă de joc într-un singur jucător"
+msgstr "Variantă de joc Boggle într-un singur jucător"
 
 #: ../tanglet.appdata.xml.in.h:3
 msgid ""
@@ -34,6 +35,11 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet este un joc de găsit cuvinte, într-un singur jucător, bazat pe "
+"Boggle. Obiectivul jocului este de a lista cît mai multe cuvinte înainte de "
+"expirarea timpului. Există mai multe moduri de temporizare care determină cu "
+"cît de mult timp începeţi, şi dacă aveţi timp suplimentar atunci cînd găsiţi "
+"un cuvînt."
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -43,6 +49,12 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Puteţi alătura litere orizontal, vertical, sau în diagonală, în orice "
+"direcţie pentru a face un cuvînt, atîta timp cît literele sînt una lîngă "
+"alta pe tablă. Cu toate acestea, nu aveţi posibilitatea să reutilizaţi "
+"aceleaşi celule literă într-un singur cuvînt. De asemenea, fiecare cuvînt "
+"trebuie să fie de cel puţin trei litere pe o tablă obişnuită şi patru litere "
+"pe o tablă mare."
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"

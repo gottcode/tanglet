@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# abuyop <abuyop@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-14 20:56+0000\n"
-"PO-Revision-Date: 2014-11-14 17:37+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
+"POT-Creation-Date: 2015-01-24 10:23+0000\n"
+"PO-Revision-Date: 2014-11-29 05:26+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Malay (http://www.transifex.com/projects/p/tanglet/language/"
 "ms/)\n"
 "Language: ms\n"
@@ -24,7 +25,7 @@ msgstr "Tanglet"
 
 #: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
-msgstr "Varian Boggle untuk seorang pemain"
+msgstr "Varian pemain tunggal Boggle"
 
 #: ../tanglet.appdata.xml.in.h:3
 msgid ""
@@ -33,6 +34,11 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet merupakan permainan mencari perkataan seorang pemain berasaskan "
+"Boggle. Objektif permainan adalah untuk menyenaraikan sebanyak mungkin "
+"perkataan sebelum masa tamat. Terdapat beberapa mod pemasa yang menentukan "
+"berapakah masa mula anda, dan jika anda mendapat masa tambahan bila anda "
+"berjaya mencari perkataan."
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -42,6 +48,12 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Anda boleh gabungkan huruf secara menegak, melintang, atau mengikut "
+"pepenjuru pada mana-mana arah untuk membentuk perkataan, selagi huruf "
+"bersebelahan diantara satu sama lain. Akan tetapi, anda tidak boleh guna sel "
+"huruf yang sama dalam satu perkataan. Selain itu, setiap perkataan mesti "
+"sekurang-kurangnya tiga huruf dalam papan biasa, dan empat huruf dalam papan "
+"besar."
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"

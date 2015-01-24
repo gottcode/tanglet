@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# enz <markus.enzenberger@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-14 20:56+0000\n"
-"PO-Revision-Date: 2014-11-14 17:37+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
+"PO-Revision-Date: 2014-12-21 11:38+0000\n"
+"Last-Translator: enz <markus.enzenberger@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/tanglet/language/"
 "de/)\n"
 "Language: de\n"
@@ -33,6 +34,11 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet ist ein Buchstabenrätsel für eine Person, das auf Boggle basiert. "
+"Ziel des Spiels ist es, so viele Wörter wie möglich zu finden bevor die Zeit "
+"abläuft. Es gibt mehrere Spielmodi, die bestimmen, wieviel Bedenkzeit Sie am "
+"Spielanfang haben und ob die Bedenkzeit verlängert wird, wenn Sie ein Wort "
+"finden."
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -42,7 +48,13 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Sie können Buchstaben senkrecht, waagrecht, oder diagonal in beliebiger "
+"Richtung verbinden, um ein Wort zu bilden, solange die Buchstaben auf dem "
+"Spielbrett aneinander angrenzen. Sie dürfen aber nicht dasselbe "
+"Buchstabenfeld mehrmals in einem Wort verwenden. Außerdem muss jedes Wort "
+"auf einem normalgroßen Spielbrett mindestens aus drei Buchstaben bestehen, "
+"und auf einem großen Spielbrett mindestens aus vier Buchstaben."
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
-msgstr "Wortfindungsspiel"
+msgstr "Buchstabenrätsel"
