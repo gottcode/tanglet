@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2014 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2014, 2015 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,11 +50,19 @@
 #include <QVBoxLayout>
 
 #include <algorithm>
+#include <ctime>
 
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
 : QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0), m_generator(0) {
+#ifndef Q_OS_WIN
+	std::random_device rd;
+	m_seed.seed(rd());
+#else
+	m_seed.seed(time(0));
+#endif
+
 	m_generator = new Generator(this);
 	connect(m_generator, &Generator::finished, this, &Board::gameStarted);
 	connect(m_generator, &Generator::optimizingStarted, this, &Board::optimizingStarted);
@@ -228,7 +236,9 @@ void Board::generate(const QSettings& game) {
 	}
 	int timer = qBound(0, game.value("TimerMode").toInt(), Clock::TotalTimers - 1);
 	QStringList letters = game.value("Letters").toStringList();
-	unsigned int seed = m_rd();
+
+	std::uniform_int_distribution<unsigned int> dist;
+	unsigned int seed = dist(m_seed);
 
 	LanguageSettings settings;
 	int language = game.value("Language", settings.language()).toInt();

@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2015 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -112,7 +112,7 @@ class Board : public QWidget {
 		QHash<QString, QList<QList<QPoint> > > m_solutions;
 		QList<QPoint> m_positions;
 
-		std::random_device m_rd;
+		std::mt19937 m_seed;
 		Generator* m_generator;
 };
 
