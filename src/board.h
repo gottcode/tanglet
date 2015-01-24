@@ -37,6 +37,8 @@ class QSettings;
 class QTabWidget;
 class QToolButton;
 
+#include <random>
+
 class Board : public QWidget {
 	Q_OBJECT
 
@@ -110,6 +112,7 @@ class Board : public QWidget {
 		QHash<QString, QList<QList<QPoint> > > m_solutions;
 		QList<QPoint> m_positions;
 
+		std::random_device m_rd;
 		Generator* m_generator;
 };
 

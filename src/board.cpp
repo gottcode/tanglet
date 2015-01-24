@@ -50,7 +50,6 @@
 #include <QVBoxLayout>
 
 #include <algorithm>
-#include <random>
 
 //-----------------------------------------------------------------------------
 
@@ -229,8 +228,7 @@ void Board::generate(const QSettings& game) {
 	}
 	int timer = qBound(0, game.value("TimerMode").toInt(), Clock::TotalTimers - 1);
 	QStringList letters = game.value("Letters").toStringList();
-	std::random_device rd;
-	unsigned int seed = rd();
+	unsigned int seed = m_rd();
 
 	LanguageSettings settings;
 	int language = game.value("Language", settings.language()).toInt();
