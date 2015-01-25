@@ -4,100 +4,100 @@
 <context>
     <name>Board</name>
     <message>
-        <location filename="../src/board.cpp" line="76"/>
-        <location filename="../src/board.cpp" line="864"/>
+        <location filename="../src/board.cpp" line="83"/>
+        <location filename="../src/board.cpp" line="872"/>
         <source>Details</source>
         <translation>Ayrıntılar</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="105"/>
+        <location filename="../src/board.cpp" line="112"/>
         <source>Clear</source>
         <translation>Temizle</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="119"/>
+        <location filename="../src/board.cpp" line="126"/>
         <source>Guess</source>
         <translation>Tahmin</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="149"/>
+        <location filename="../src/board.cpp" line="156"/>
         <source>Found</source>
         <translation>Doğru</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="287"/>
+        <location filename="../src/board.cpp" line="295"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="287"/>
+        <location filename="../src/board.cpp" line="295"/>
         <source>Large</source>
         <translation>Büyük</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="306"/>
+        <location filename="../src/board.cpp" line="314"/>
         <source>Missed</source>
         <translation>Yanlış</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="440"/>
+        <location filename="../src/board.cpp" line="448"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="606"/>
+        <location filename="../src/board.cpp" line="614"/>
         <source>Success</source>
         <translation>Başarılı</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="606"/>
+        <location filename="../src/board.cpp" line="614"/>
         <source>Game Over</source>
         <translation>Oyun Bitti</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="785"/>
+        <location filename="../src/board.cpp" line="793"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1/%n puan</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="787"/>
+        <location filename="../src/board.cpp" line="795"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3/%n puan</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="789"/>
+        <location filename="../src/board.cpp" line="797"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2/%n puan</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="791"/>
+        <location filename="../src/board.cpp" line="799"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1/%n puan</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="793"/>
+        <location filename="../src/board.cpp" line="801"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0/%n puan</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="797"/>
+        <location filename="../src/board.cpp" line="805"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n puan</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="873"/>
+        <location filename="../src/board.cpp" line="881"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>Maksinum skor devam eden 30 kelime sonrasında hesaplandı</translation>
     </message>
@@ -279,12 +279,12 @@
         <translation>&lt;Sistem Dili&gt;</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="172"/>
+        <location filename="../src/locale_dialog.cpp" line="175"/>
         <source>Note</source>
         <translation>Not</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="172"/>
+        <location filename="../src/locale_dialog.cpp" line="175"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>Değişikliklerin geçerli olması için lütfen bu uygulamayı tekrar başlatınız.</translation>
     </message>

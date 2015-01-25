@@ -4,58 +4,58 @@
 <context>
     <name>Board</name>
     <message>
-        <location filename="../src/board.cpp" line="76"/>
-        <location filename="../src/board.cpp" line="864"/>
+        <location filename="../src/board.cpp" line="83"/>
+        <location filename="../src/board.cpp" line="872"/>
         <source>Details</source>
         <translation>Dettagli</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="105"/>
+        <location filename="../src/board.cpp" line="112"/>
         <source>Clear</source>
         <translation>Azzera</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="119"/>
+        <location filename="../src/board.cpp" line="126"/>
         <source>Guess</source>
         <translation>Risposta</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="149"/>
+        <location filename="../src/board.cpp" line="156"/>
         <source>Found</source>
         <translation>Trovato</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="287"/>
+        <location filename="../src/board.cpp" line="295"/>
         <source>Normal</source>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="287"/>
+        <location filename="../src/board.cpp" line="295"/>
         <source>Large</source>
         <translation>Grande</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="306"/>
+        <location filename="../src/board.cpp" line="314"/>
         <source>Missed</source>
         <translation>Perso</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="440"/>
+        <location filename="../src/board.cpp" line="448"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="606"/>
+        <location filename="../src/board.cpp" line="614"/>
         <source>Success</source>
         <translation>Successo</translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="606"/>
+        <location filename="../src/board.cpp" line="614"/>
         <source>Game Over</source>
         <translation>Fine partita</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="785"/>
+        <location filename="../src/board.cpp" line="793"/>
         <source>%1 of %n point(s)</source>
         <translation>
             <numerusform>%1 di %n punto</numerusform>
@@ -63,7 +63,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="787"/>
+        <location filename="../src/board.cpp" line="795"/>
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 di %n punto</numerusform>
@@ -71,7 +71,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="789"/>
+        <location filename="../src/board.cpp" line="797"/>
         <source>2 of %n point(s)</source>
         <translation>
             <numerusform>2 di %n punto</numerusform>
@@ -79,7 +79,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="791"/>
+        <location filename="../src/board.cpp" line="799"/>
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 di %n punto</numerusform>
@@ -87,7 +87,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="793"/>
+        <location filename="../src/board.cpp" line="801"/>
         <source>0 of %n point(s)</source>
         <translation>
             <numerusform>0 di %n punto</numerusform>
@@ -95,7 +95,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/board.cpp" line="797"/>
+        <location filename="../src/board.cpp" line="805"/>
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n punti</numerusform>
@@ -103,7 +103,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/board.cpp" line="873"/>
+        <location filename="../src/board.cpp" line="881"/>
         <source>The maximum score was calculated from the following thirty words:</source>
         <translation>Il punteggio massimo è stato calcolato dalle seguenti trenta parole;</translation>
     </message>
@@ -287,12 +287,12 @@
         <translation>&lt;Lingua di sistema&gt;</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="172"/>
+        <location filename="../src/locale_dialog.cpp" line="175"/>
         <source>Note</source>
         <translation>Note</translation>
     </message>
     <message>
-        <location filename="../src/locale_dialog.cpp" line="172"/>
+        <location filename="../src/locale_dialog.cpp" line="175"/>
         <source>Please restart this application for the change in language to take effect.</source>
         <translation>Si prega di riavviare l&apos;appicazione per rendere effetivo il cambio di lingua.</translation>
     </message>
