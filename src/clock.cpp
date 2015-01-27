@@ -582,7 +582,7 @@ void Clock::paintEvent(QPaintEvent* event) {
 		// Draw dividing line
 		painter.setRenderHint(QPainter::Antialiasing, false);
 		painter.setPen(color.darker(150));
-		painter.drawLine(x + 3, 1, x + 3, rect().height() - 2);
+		painter.drawLine(x + 3, 2, x + 3, rect().height() - 2);
 		painter.setRenderHint(QPainter::Antialiasing, true);
 	}
 
