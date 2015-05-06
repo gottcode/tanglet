@@ -31,6 +31,15 @@ sed -e '/p xml:lang/ d' \
 	-i tanglet.appdata.xml.in
 intltool-extract --quiet --type=gettext/xml tanglet.appdata.xml.in
 
+rm -f tanglet.xml.in.h
+rm -f tanglet.xml.in
+cp tanglet.xml tanglet.xml.in
+sed -e '/comment xml:lang/ d' \
+	-e 's/<comment>/<_comment>/' \
+	-e 's/<\/comment>/<\/_comment>/' \
+	-i tanglet.xml.in
+intltool-extract --quiet --type=gettext/xml tanglet.xml.in
+
 cd po
 echo ' DONE'
 
@@ -62,5 +71,9 @@ rm -f tanglet.desktop.in
 intltool-merge --quiet --xml-style po tanglet.appdata.xml.in tanglet.appdata.xml
 rm -f tanglet.appdata.xml.in.h
 rm -f tanglet.appdata.xml.in
+
+intltool-merge --quiet --xml-style po tanglet.xml.in tanglet.xml
+rm -f tanglet.xml.in.h
+rm -f tanglet.xml.in
 
 echo ' DONE'

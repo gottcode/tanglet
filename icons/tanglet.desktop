@@ -34,3 +34,4 @@ Icon=tanglet
 Terminal=false
 Type=Application
 Categories=Qt;Game;LogicGame;
+MimeType=application/x-tanglet;
