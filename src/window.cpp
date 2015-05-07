@@ -32,6 +32,8 @@
 #include <QCloseEvent>
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QDragEnterEvent>
+#include <QDropEvent>
 #include <QFile>
 #include <QFileDialog>
 #include <QFormLayout>
@@ -40,10 +42,12 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QMimeData>
 #include <QSettings>
 #include <QStackedWidget>
 #include <QStandardPaths>
 #include <QStyle>
+#include <QTemporaryFile>
 #include <QTextEdit>
 #include <QTextStream>
 #include <QVBoxLayout>
@@ -276,6 +280,8 @@ namespace
 
 Window::Window(const QString& file)
 : m_pause_action(0), m_previous_state(0) {
+	setAcceptDrops(true);
+
 	// Create states
 	m_states.insert("NewGame", new NewGameState(this));
 	m_states.insert("OpenGame", new OpenGameState(this));
@@ -443,6 +449,75 @@ bool Window::eventFilter(QObject* watched, QEvent* event) {
 void Window::closeEvent(QCloseEvent* event) {
 	QSettings().setValue("Geometry", saveGeometry());
 	QMainWindow::closeEvent(event);
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::dragEnterEvent(QDragEnterEvent* event) {
+	if (!(event->possibleActions() & Qt::CopyAction)) {
+		return;
+	}
+
+	// Handle dragged file
+	if (event->mimeData()->hasUrls()) {
+		const QList<QUrl> urls = event->mimeData()->urls();
+		if (urls.size() != 1) {
+			return;
+		}
+		const QUrl url = urls.first();
+		if (!url.isLocalFile()) {
+			return;
+		}
+		const QString filename = url.toLocalFile();
+		if (!filename.endsWith(".tanglet")) {
+			return;
+		}
+	// Handle dragged game data
+	} else if (!event->mimeData()->hasFormat("application/x-tanglet")) {
+		return;
+	}
+
+	event->setDropAction(Qt::CopyAction);
+	event->acceptProposedAction();
+}
+
+//-----------------------------------------------------------------------------
+
+void Window::dropEvent(QDropEvent* event) {
+	if (!(event->possibleActions() & Qt::CopyAction)) {
+		return;
+	}
+
+	// Handle dropped file
+	if (event->mimeData()->hasUrls()) {
+		const QList<QUrl> urls = event->mimeData()->urls();
+		if (urls.size() != 1) {
+			return;
+		}
+		const QUrl url = urls.first();
+		if (!url.isLocalFile()) {
+			return;
+		}
+		const QString filename = url.toLocalFile();
+		if (!filename.endsWith(".tanglet")) {
+			return;
+		}
+		if (endGame()) {
+			startGame(filename);
+		}
+	// Handle dropped game data
+	} else if (event->mimeData()->hasFormat("application/x-tanglet")) {
+		QTemporaryFile file;
+		if (file.open()) {
+			file.write(event->mimeData()->data("application/x-tanglet"));
+		}
+		if (endGame()) {
+			startGame(file.fileName());
+		}
+	}
+
+	event->setDropAction(Qt::CopyAction);
+	event->acceptProposedAction();
 }
 
 //-----------------------------------------------------------------------------

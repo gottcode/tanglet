@@ -36,6 +36,8 @@ class Window : public QMainWindow {
 
 	protected:
 		virtual void closeEvent(QCloseEvent* event);
+		virtual void dragEnterEvent(QDragEnterEvent* event);
+		virtual void dropEvent(QDropEvent* event);
 		virtual bool event(QEvent* event);
 
 	private slots:
