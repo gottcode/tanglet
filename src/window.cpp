@@ -517,54 +517,7 @@ void Window::chooseGame() {
 				QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
 				tr("Tanglet Games (*.tanglet)"));
 		if (!filename.isEmpty()) {
-			try
-			{
-				QString current = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
-
-				// Uncompress shared game
-				{
-					QDir dir = QDir::home();
-					dir.mkpath(current);
-					current += "/current";
-
-					QByteArray data = gunzip(filename);
-					QFile file(current);
-					if (!file.open(QFile::WriteOnly)) {
-						throw tr("Unable to start requested game.");
-					}
-					file.write(data);
-					file.close();
-				}
-
-				// Extract words and dice
-				{
-					QSettings game(current, QSettings::IniFormat);
-
-					if (game.value("Game/Language", -1).toInt() == 0) {
-						QByteArray dice = QByteArray::fromBase64(game.value("Game/Dice").toByteArray());
-						game.setValue("Game/Dice", current + "-dice");
-						QFile file(current + "-dice");
-						if (!file.open(QFile::WriteOnly)) {
-							throw tr("Unable to start requested game.");
-						}
-						file.write(dice);
-						file.close();
-
-						QByteArray words = QByteArray::fromBase64(game.value("Game/Words").toByteArray());
-						game.setValue("Game/Words", current + "-words");
-						file.setFileName(current + "-words");
-						if (!file.open(QFile::WriteOnly)) {
-							throw tr("Unable to start requested game.");
-						}
-						file.write(words);
-						file.close();
-					}
-				}
-
-				startGame(current);
-			} catch (const QString& error) {
-				QMessageBox::warning(this, tr("Error"), error);
-			}
+			startGame(filename);
 		}
 	}
 }
@@ -773,9 +726,15 @@ void Window::startGame(const QString& filename) {
 			game = new QSettings;
 			game->beginGroup("Current");
 		} else {
+			QString file = extractGame(filename);
+			if (file.isEmpty()) {
+				QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
+				return;
+			}
+
 			// Start requested game
 			QSettings().remove("Current");
-			game = new QSettings(filename, QSettings::IniFormat);
+			game = new QSettings(file, QSettings::IniFormat);
 			game->beginGroup("Game");
 		}
 
@@ -793,6 +752,50 @@ void Window::startGame(const QString& filename) {
 
 	m_board->generate(*game);
 	delete game;
+}
+
+//-----------------------------------------------------------------------------
+
+QString Window::extractGame(const QString& filename) const {
+	QString current = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+
+	// Uncompress shared game
+	const QDir dir = QDir::home();
+	dir.mkpath(current);
+	current += "/current";
+
+	const QByteArray data = gunzip(filename);
+	QFile file(current);
+	if (!file.open(QFile::WriteOnly)) {
+		return QString();
+	}
+	file.write(data);
+	file.close();
+
+	// Extract words and dice
+	QSettings game(current, QSettings::IniFormat);
+
+	if (game.value("Game/Language", -1).toInt() == 0) {
+		const QByteArray dice = QByteArray::fromBase64(game.value("Game/Dice").toByteArray());
+		game.setValue("Game/Dice", current + "-dice");
+		file.setFileName(current + "-dice");
+		if (!file.open(QFile::WriteOnly)) {
+			return QString();
+		}
+		file.write(dice);
+		file.close();
+
+		const QByteArray words = QByteArray::fromBase64(game.value("Game/Words").toByteArray());
+		game.setValue("Game/Words", current + "-words");
+		file.setFileName(current + "-words");
+		if (!file.open(QFile::WriteOnly)) {
+			return QString();
+		}
+		file.write(words);
+		file.close();
+	}
+
+	return current;
 }
 
 //-----------------------------------------------------------------------------
