@@ -30,7 +30,7 @@ class Window : public QMainWindow {
 	Q_OBJECT
 
 	public:
-		Window();
+		Window(const QString& file = QString());
 
 		virtual bool eventFilter(QObject* watched, QEvent* event);
 

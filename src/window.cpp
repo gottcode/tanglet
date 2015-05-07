@@ -274,7 +274,7 @@ namespace
 
 //-----------------------------------------------------------------------------
 
-Window::Window()
+Window::Window(const QString& file)
 : m_pause_action(0), m_previous_state(0) {
 	// Create states
 	m_states.insert("NewGame", new NewGameState(this));
@@ -398,13 +398,21 @@ Window::Window()
 	counts_action->setChecked(settings.value("ShowWordCounts", true).toBool());
 	restoreGeometry(settings.value("Geometry").toByteArray());
 
-	// Start a new game
+	// Start game
+	QString current = file;
+	if (settings.contains("Current/Version")) {
+		if (current.isEmpty() ||
+				QMessageBox::question(this, tr("Question"), tr("End the current game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::No) {
+			current = ":saved:";
+		}
+	}
+
 	m_state->finish();
 	m_contents->setCurrentIndex(3);
-	if (!settings.contains("Current/Version")) {
+	if (current.isEmpty()) {
 		newGame();
 	} else {
-		startGame(":saved:");
+		startGame(current);
 	}
 }
 

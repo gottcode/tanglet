@@ -22,6 +22,7 @@
 #include "window.h"
 
 #include <QApplication>
+#include <QCommandLineParser>
 #include <QDir>
 #include <QSettings>
 
@@ -68,7 +69,15 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	Window window;
+	QCommandLineParser parser;
+	parser.setApplicationDescription(QCoreApplication::translate("main", "Word finding game"));
+	parser.addHelpOption();
+	parser.addVersionOption();
+	parser.addPositionalArgument("file", QCoreApplication::translate("main", "A game file to play."), "[file]");
+	parser.process(app);
+
+	QStringList files = parser.positionalArguments();
+	Window window(files.isEmpty() ? QString() : files.front());
 	window.show();
 
 	return app.exec();
