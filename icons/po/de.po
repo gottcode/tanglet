@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-14 20:56+0000\n"
+"POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2014-12-21 11:38+0000\n"
 "Last-Translator: enz <markus.enzenberger@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/tanglet/language/"
@@ -58,3 +58,7 @@ msgstr ""
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Buchstabenrätsel"
+
+#: ../tanglet.xml.in.h:1
+msgid "Tanglet Game File"
+msgstr ""

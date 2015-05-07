@@ -389,312 +389,312 @@
 <context>
     <name>Window</name>
     <message>
-        <location filename="../src/main.cpp" line="32"/>
+        <location filename="../src/main.cpp" line="33"/>
         <source>Tanglet</source>
         <translation>Tanglet</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="301"/>
+        <location filename="../src/window.cpp" line="307"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Paused&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Click to resume playing.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;In pausa&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Clicca per riprendere il gioco.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="307"/>
+        <location filename="../src/window.cpp" line="313"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Attendere prego&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Sto caricando una partita...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="312"/>
+        <location filename="../src/window.cpp" line="318"/>
         <source>Click to start a new game.</source>
         <translation>Clicca per avviare una nuova partita</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="318"/>
+        <location filename="../src/window.cpp" line="324"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Attendere prego&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Sto generando una nuova scheda...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="323"/>
+        <location filename="../src/window.cpp" line="329"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Attendere prego&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Sto ottimizzando l&apos;elenco di parole...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="328"/>
+        <location filename="../src/window.cpp" line="334"/>
         <source>&amp;Game</source>
         <translation>&amp;Partita</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="329"/>
+        <location filename="../src/window.cpp" line="335"/>
         <source>New &amp;Game...</source>
         <translation>Nuova &amp;Partita...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="329"/>
+        <location filename="../src/window.cpp" line="335"/>
         <source>Ctrl+Shift+N</source>
         <translation>Ctrl+Maiscolo+N</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="330"/>
+        <location filename="../src/window.cpp" line="336"/>
         <source>&amp;New Roll</source>
         <translation>&amp;Nuova Scheda</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="331"/>
+        <location filename="../src/window.cpp" line="337"/>
         <source>&amp;Choose...</source>
         <translation>&amp;Scegli...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="332"/>
+        <location filename="../src/window.cpp" line="338"/>
         <source>&amp;Share...</source>
         <translation>&amp;Condividi...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="334"/>
+        <location filename="../src/window.cpp" line="340"/>
         <source>&amp;End</source>
         <translation>&amp;Termina</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="337"/>
+        <location filename="../src/window.cpp" line="343"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pausa</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="339"/>
+        <location filename="../src/window.cpp" line="345"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="344"/>
+        <location filename="../src/window.cpp" line="350"/>
         <source>&amp;Details</source>
         <translation>&amp;Dettagli</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="346"/>
+        <location filename="../src/window.cpp" line="352"/>
         <source>&amp;High Scores</source>
         <translation>&amp;Punteggi massimi</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="348"/>
+        <location filename="../src/window.cpp" line="354"/>
         <source>&amp;Quit</source>
         <translation>&amp;Termina</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="348"/>
+        <location filename="../src/window.cpp" line="354"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="353"/>
+        <location filename="../src/window.cpp" line="359"/>
         <source>&amp;Settings</source>
         <translation>&amp;Impostazioni</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="354"/>
+        <location filename="../src/window.cpp" line="360"/>
         <source>Show &amp;Maximum Score</source>
         <translation>Mostra &amp;Punteggio Massimo</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="356"/>
+        <location filename="../src/window.cpp" line="362"/>
         <source>&amp;Never</source>
         <translation>&amp;Mai</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="357"/>
+        <location filename="../src/window.cpp" line="363"/>
         <source>&amp;End Of Game</source>
         <translation>&amp;Fine partita</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="358"/>
+        <location filename="../src/window.cpp" line="364"/>
         <source>&amp;Always</source>
         <translation>&amp;Sempre</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="366"/>
+        <location filename="../src/window.cpp" line="372"/>
         <source>Show Missed &amp;Words</source>
         <translation>Mosta &amp;parole perse</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="369"/>
+        <location filename="../src/window.cpp" line="375"/>
         <source>Show Word &amp;Counts</source>
         <translation>Mostra &amp;contatore parole</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="373"/>
+        <location filename="../src/window.cpp" line="379"/>
         <source>&amp;Board Language...</source>
         <translation>&amp;Lingua scheda</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="375"/>
+        <location filename="../src/window.cpp" line="381"/>
         <source>Application &amp;Language...</source>
         <translation>Lingua &amp;Applicazione...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="379"/>
+        <location filename="../src/window.cpp" line="385"/>
         <source>&amp;Help</source>
         <translation>&amp;Aiuto</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="380"/>
+        <location filename="../src/window.cpp" line="386"/>
         <source>&amp;Controls</source>
         <translation>&amp;Controlli</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="382"/>
+        <location filename="../src/window.cpp" line="388"/>
         <source>&amp;About</source>
         <translation>&amp;Informazioni su</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="384"/>
+        <location filename="../src/window.cpp" line="390"/>
         <source>About &amp;Hspell</source>
         <translation>Informazioni su &amp;Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="386"/>
+        <location filename="../src/window.cpp" line="392"/>
         <source>About &amp;Qt</source>
         <translation>Informazioni su &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="388"/>
+        <location filename="../src/window.cpp" line="394"/>
         <source>About &amp;SCOWL</source>
         <translation>Informazioni su &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="470"/>
+        <location filename="../src/window.cpp" line="553"/>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
         <translation>Copyright &amp;copy; 2009-%1 Graeme Gott</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="468"/>
+        <location filename="../src/window.cpp" line="551"/>
         <source>Tanglet %1</source>
         <translation>Tanglet %1</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="466"/>
+        <location filename="../src/window.cpp" line="549"/>
         <source>About</source>
         <translation>Informazioni su </translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="469"/>
+        <location filename="../src/window.cpp" line="552"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Una variante a singolo giocatore di  &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="471"/>
+        <location filename="../src/window.cpp" line="554"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>Rilasciato sotto licenza  &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
+        <location filename="../src/window.cpp" line="555"/>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
         <translation>La lista di parole inglesi è basata su  &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; di Kevin Atkinson</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="473"/>
+        <location filename="../src/window.cpp" line="556"/>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>La lista  di parole ebraiche è basata su &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; di Nadav Har&apos;El and Dan Kenigsberg</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="480"/>
+        <location filename="../src/window.cpp" line="563"/>
         <source>About Hspell</source>
         <translation>Informazioni su Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="487"/>
+        <location filename="../src/window.cpp" line="570"/>
         <source>About SCOWL</source>
         <translation>Informazioni su SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
+        <location filename="../src/window.cpp" line="599"/>
         <source>Import Game</source>
         <translation>Importa partita</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="518"/>
-        <location filename="../src/window.cpp" line="578"/>
+        <location filename="../src/window.cpp" line="601"/>
+        <location filename="../src/window.cpp" line="614"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation>Partita Tanglet (*.tanglet)</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="533"/>
-        <location filename="../src/window.cpp" line="548"/>
-        <location filename="../src/window.cpp" line="557"/>
-        <location filename="../src/window.cpp" line="787"/>
+        <location filename="../src/window.cpp" line="814"/>
+        <location filename="../src/window.cpp" line="829"/>
         <source>Unable to start requested game.</source>
         <translation>Impossibile avviare la partita richiesta</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="566"/>
-        <location filename="../src/window.cpp" line="787"/>
+        <location filename="../src/window.cpp" line="814"/>
+        <location filename="../src/window.cpp" line="829"/>
         <source>Error</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="576"/>
+        <location filename="../src/window.cpp" line="612"/>
         <source>Export Game</source>
         <translation>Esporta partita</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="623"/>
+        <location filename="../src/window.cpp" line="411"/>
+        <location filename="../src/window.cpp" line="659"/>
         <source>Question</source>
         <translation>Domanda</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="623"/>
+        <location filename="../src/window.cpp" line="411"/>
+        <location filename="../src/window.cpp" line="659"/>
         <source>End the current game?</source>
         <translation>Termina la partita ?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="662"/>
+        <location filename="../src/window.cpp" line="698"/>
         <source>Details</source>
         <translation>Dettagli</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Board Size:</source>
         <translation>Dimensioni Scheda:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Normal</source>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Large</source>
         <translation>Largo</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="669"/>
+        <location filename="../src/window.cpp" line="705"/>
         <source>Word Density:</source>
         <translation>Densità parole:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="670"/>
+        <location filename="../src/window.cpp" line="706"/>
         <source>Word Length:</source>
         <translation>Lunghezza parola:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="670"/>
+        <location filename="../src/window.cpp" line="706"/>
         <source>%1 or more letters</source>
         <translation>%1 o più lettere</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="671"/>
+        <location filename="../src/window.cpp" line="707"/>
         <source>Game Type:</source>
         <translation>Tipo di gioco:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="672"/>
+        <location filename="../src/window.cpp" line="708"/>
         <source>Description:</source>
         <translation>Descrizione:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="702"/>
+        <location filename="../src/window.cpp" line="738"/>
         <source>Controls</source>
         <translation>Controlli</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="702"/>
+        <location filename="../src/window.cpp" line="738"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Gioca col mouse:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Seleziona una parola:&lt;/b&gt; Clicca sulle lettere di una parola.&lt;br&gt;&lt;b&gt;Crea una risposta:&lt;/b&gt; Clicca sull&apos;ultima lettera selezionata.&lt;br&gt;&lt;b&gt;Cancella le  lettere:&lt;/b&gt; Clicca sulla prima lettera selezionata.&lt;br&gt;&lt;b&gt;Cancella la parola:&lt;/b&gt; Clicca due volte sulla prima lettera selezionata.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Gioca con la tastiera:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Seleziona una parola:&lt;/b&gt; Scrivi le lettere di una palora.&lt;br&gt;&lt;b&gt;Dai una risposta:&lt;/b&gt; Premi invio.&lt;br&gt;&lt;b&gt;Cancella la word:&lt;/b&gt; Premi Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
@@ -736,6 +736,19 @@
             <numerusform>%n punto</numerusform>
             <numerusform>%n punti</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../src/main.cpp" line="73"/>
+        <source>Word finding game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="76"/>
+        <source>A game file to play.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

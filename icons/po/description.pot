@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-14 20:56+0000\n"
+"POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,4 +44,8 @@ msgstr ""
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
+msgstr ""
+
+#: ../tanglet.xml.in.h:1
+msgid "Tanglet Game File"
 msgstr ""

@@ -6,6 +6,7 @@
   <name>Tanglet</name>
   <name xml:lang="cs">Tanglet</name>
   <name xml:lang="de">Tanglet</name>
+  <name xml:lang="es">Tanglet</name>
   <name xml:lang="fr">Tanglet</name>
   <name xml:lang="hu">Tanglet</name>
   <name xml:lang="lt">Tanglet</name>
@@ -16,6 +17,7 @@
   <summary>Single player variant of Boggle</summary>
   <summary xml:lang="cs">Varianta hry Boggle pro jednoho hráče</summary>
   <summary xml:lang="de">Einzelspielervariante von Boggle</summary>
+  <summary xml:lang="es">Variante de un jugador de Boggle</summary>
   <summary xml:lang="fr">Variante de Boggle en mode simple joueur</summary>
   <summary xml:lang="hu">A Boggle egyjátékos változata</summary>
   <summary xml:lang="lt">Boggle žaidimo variantas vienam žaidėjui</summary>
@@ -27,6 +29,7 @@
     <p>Tanglet is a single player word finding game based on Boggle. The object of the game is to list as many words as you can before the time runs out. There are several timer modes that determine how much time you start with, and if you get extra time when you find a word.</p>
     <p xml:lang="cs">Tanglet je hra o hledání slov postavená na Boogle. Předmětem hry je sestavení seznamu tolika slov, kolik můžete, předtím než uplyne čas. Pro časomíru je tu několik režimů, jež určují, kolik času máte na začátku, a jestli dostanete, když najdete slovo, nějaký čas navíc. </p>
     <p xml:lang="de">Tanglet ist ein Buchstabenrätsel für eine Person, das auf Boggle basiert. Ziel des Spiels ist es, so viele Wörter wie möglich zu finden bevor die Zeit abläuft. Es gibt mehrere Spielmodi, die bestimmen, wieviel Bedenkzeit Sie am Spielanfang haben und ob die Bedenkzeit verlängert wird, wenn Sie ein Wort finden.</p>
+    <p xml:lang="es">Tanglet es un juego de buscar palabras de un sólo jugador basado en Boggle. El objeto del juego es listar tantas palabras como puedas antes de que se acabe el tiempo. Hay distintos modos que determinan con cuánto tiempo inicias, y si obtienes tiempo extra por cada palabra encontrada.</p>
     <p xml:lang="fr">Tanglet est un jeu de recherche de mots, en mode simple joueur, basé sur le fameux Boggle. L'objectif de ce jeu est de lister autant de mots que possible avant la fin du temps imparti. Plusieurs modes de minuterie sont proposés. Ils déterminent le temps de départ et le temps supplémentaire accordé lorsqu'un mot a été trouvé. </p>
     <p xml:lang="lt">Tanglet yra žodžių ieškojimo žaidimas paremtas Boggle. Žaidimo tikslas yra, prieš pasibaigiant laikui, išvardinti kuo daugiau žodžių. Yra kelios laikmačio veiksenos, kurios nustato, kiek laiko duota žaidimo pradžioje, ir ar bus pridedamas laikas, esant teisingam spėjimui.</p>
     <p xml:lang="ms">Tanglet merupakan permainan mencari perkataan seorang pemain berasaskan Boggle. Objektif permainan adalah untuk menyenaraikan sebanyak mungkin perkataan sebelum masa tamat. Terdapat beberapa mod pemasa yang menentukan berapakah masa mula anda, dan jika anda mendapat masa tambahan bila anda berjaya mencari perkataan.</p>
@@ -35,6 +38,7 @@
     <p>You can join letters horizontally, vertically, or diagonally in any direction to make a word, so as long as the letters are next to each other on the board. However, you can not reuse the same letter cells in a single word. Also, each word must be at least three letters on a normal board, and four letters on a large board.</p>
     <p xml:lang="cs">Písmena můžete v kterémkoli směru, abyste udělali slovo, spojovat vodorovně, svisle nebo úhlopříčně tak dlouho, dokud jsou písmena na hrací desce vedle sebe. Nicméně nemůžete v jednom slově znovu použít to samé písmeno, když už jste je použili. Každé slovo také musí sestávat z alespoň tří písmen na obyčejné desce a ze čtyř na velké desce.</p>
     <p xml:lang="de">Sie können Buchstaben senkrecht, waagrecht, oder diagonal in beliebiger Richtung verbinden, um ein Wort zu bilden, solange die Buchstaben auf dem Spielbrett aneinander angrenzen. Sie dürfen aber nicht dasselbe Buchstabenfeld mehrmals in einem Wort verwenden. Außerdem muss jedes Wort auf einem normalgroßen Spielbrett mindestens aus drei Buchstaben bestehen, und auf einem großen Spielbrett mindestens aus vier Buchstaben.</p>
+    <p xml:lang="es">Puedes unir letras horizontalmente, verticalmente, o diagonalmente en cualquier dirección para formar una palabra, siempre y cuando las letras están contiguas en el tablero. Sin embargo, no puedes reusar una misma celda en una sola palabra. También, cada palabra debe contener al menos tres letras en un tablero normal, o cuatro letras en un tablero grande. </p>
     <p xml:lang="fr">Vous pouvez relier des lettres horizontalement, verticalement ou en diagonale dans n'importe quelle direction pour former un mot, du moment que les lettres soient à côté l'une de l'autre sur le plateau. Cependant, vous ne pouvez pas réutiliser les mêmes cellules de lettres en un seul mot. En outre, chaque mot doit être composé d'au moins trois lettres pour un plateau normal, et de quatre lettres pour un grand plateau.</p>
     <p xml:lang="lt">Kad atspėtumėte žodį, galite jungti raides horizontaliai, vertikaliai, arba pagal įstrižainę bet kuria kryptimi, tol, kol raidės yra viena šalia kitos. Tačiau negalite naudoti to pačio raidės langelio vienam žodžiui. Be to, normalioje plokštėje kiekviename žodyje turi būti bent trys raidės, o didelėje plokštėje bent keturios raidės.</p>
     <p xml:lang="ms">Anda boleh gabungkan huruf secara menegak, melintang, atau mengikut pepenjuru pada mana-mana arah untuk membentuk perkataan, selagi huruf bersebelahan diantara satu sama lain. Akan tetapi, anda tidak boleh guna sel huruf yang sama dalam satu perkataan. Selain itu, setiap perkataan mesti sekurang-kurangnya tiga huruf dalam papan biasa, dan empat huruf dalam papan besar.</p>

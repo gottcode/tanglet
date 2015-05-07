@@ -380,312 +380,312 @@
 <context>
     <name>Window</name>
     <message>
-        <location filename="../src/main.cpp" line="32"/>
+        <location filename="../src/main.cpp" line="33"/>
         <source>Tanglet</source>
         <translation>Tanglet</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="301"/>
+        <location filename="../src/window.cpp" line="307"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Paused&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Click to resume playing.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Dijeda&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Klik untuk sambung semula permainan.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="307"/>
+        <location filename="../src/window.cpp" line="313"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Tunggu sebentar&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Memuatkan permainan...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="312"/>
+        <location filename="../src/window.cpp" line="318"/>
         <source>Click to start a new game.</source>
         <translation>Klik untuk mulakan permainan baru.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="318"/>
+        <location filename="../src/window.cpp" line="324"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Tunggu sebentar&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Menjana papan baru...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="323"/>
+        <location filename="../src/window.cpp" line="329"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Tunggu sebentar&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Mengoptimumkan senarai perkataan...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="328"/>
+        <location filename="../src/window.cpp" line="334"/>
         <source>&amp;Game</source>
         <translation>&amp;Permainan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="329"/>
+        <location filename="../src/window.cpp" line="335"/>
         <source>New &amp;Game...</source>
         <translation>&amp;Permainan Baru...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="329"/>
+        <location filename="../src/window.cpp" line="335"/>
         <source>Ctrl+Shift+N</source>
         <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="330"/>
+        <location filename="../src/window.cpp" line="336"/>
         <source>&amp;New Roll</source>
         <translation>Lempar &amp;Baru</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="331"/>
+        <location filename="../src/window.cpp" line="337"/>
         <source>&amp;Choose...</source>
         <translation>P&amp;ilih...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="332"/>
+        <location filename="../src/window.cpp" line="338"/>
         <source>&amp;Share...</source>
         <translation>&amp;Kongsi...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="334"/>
+        <location filename="../src/window.cpp" line="340"/>
         <source>&amp;End</source>
         <translation>&amp;Tamat</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="337"/>
+        <location filename="../src/window.cpp" line="343"/>
         <source>&amp;Pause</source>
         <translation>&amp;Jeda</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="339"/>
+        <location filename="../src/window.cpp" line="345"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="344"/>
+        <location filename="../src/window.cpp" line="350"/>
         <source>&amp;Details</source>
         <translation>Perin&amp;cian</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="346"/>
+        <location filename="../src/window.cpp" line="352"/>
         <source>&amp;High Scores</source>
         <translation>Skor &amp;Tertinggi</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="348"/>
+        <location filename="../src/window.cpp" line="354"/>
         <source>&amp;Quit</source>
         <translation>&amp;Keluar</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="348"/>
+        <location filename="../src/window.cpp" line="354"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="353"/>
+        <location filename="../src/window.cpp" line="359"/>
         <source>&amp;Settings</source>
         <translation>T&amp;etapan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="354"/>
+        <location filename="../src/window.cpp" line="360"/>
         <source>Show &amp;Maximum Score</source>
         <translation>Tunjuk Skor &amp;Maksimum</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="356"/>
+        <location filename="../src/window.cpp" line="362"/>
         <source>&amp;Never</source>
         <translation>Jan&amp;gan Sesekali</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="357"/>
+        <location filename="../src/window.cpp" line="363"/>
         <source>&amp;End Of Game</source>
         <translation>&amp;Tamatkan Permainan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="358"/>
+        <location filename="../src/window.cpp" line="364"/>
         <source>&amp;Always</source>
         <translation>&amp;Sentiasa</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="366"/>
+        <location filename="../src/window.cpp" line="372"/>
         <source>Show Missed &amp;Words</source>
         <translation>Tunjuk Pe&amp;rkataan Terlepas</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="369"/>
+        <location filename="../src/window.cpp" line="375"/>
         <source>Show Word &amp;Counts</source>
         <translation>Tunjuk K&amp;iraan Perkataan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="373"/>
+        <location filename="../src/window.cpp" line="379"/>
         <source>&amp;Board Language...</source>
         <translation>Bahasa &amp;Papan...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="375"/>
+        <location filename="../src/window.cpp" line="381"/>
         <source>Application &amp;Language...</source>
         <translation>&amp;Bahasa Aplikasi...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="379"/>
+        <location filename="../src/window.cpp" line="385"/>
         <source>&amp;Help</source>
         <translation>Ba&amp;ntuan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="380"/>
+        <location filename="../src/window.cpp" line="386"/>
         <source>&amp;Controls</source>
         <translation>Ka&amp;walan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="382"/>
+        <location filename="../src/window.cpp" line="388"/>
         <source>&amp;About</source>
         <translation>Perih&amp;al</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="384"/>
+        <location filename="../src/window.cpp" line="390"/>
         <source>About &amp;Hspell</source>
         <translation>Perihal &amp;Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="386"/>
+        <location filename="../src/window.cpp" line="392"/>
         <source>About &amp;Qt</source>
         <translation>Perihal &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="388"/>
+        <location filename="../src/window.cpp" line="394"/>
         <source>About &amp;SCOWL</source>
         <translation>Perihal </translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="470"/>
+        <location filename="../src/window.cpp" line="553"/>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
         <translation>Hakcipta &amp;copy; 2009-%1 Graeme Gott</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="468"/>
+        <location filename="../src/window.cpp" line="551"/>
         <source>Tanglet %1</source>
         <translation>Tanglet %1</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="466"/>
+        <location filename="../src/window.cpp" line="549"/>
         <source>About</source>
         <translation>Perihal</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="469"/>
+        <location filename="../src/window.cpp" line="552"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>Varian seorang pemain bagi permainan &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="471"/>
+        <location filename="../src/window.cpp" line="554"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>Dikeluarkan dibawah lesen &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
+        <location filename="../src/window.cpp" line="555"/>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
         <translation>Senarai perkataan Bahasa Inggeris berasaskan pada &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; oleh Kevin Atkinson</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="473"/>
+        <location filename="../src/window.cpp" line="556"/>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>Senarai perkataan Bahasa Ibrani berasaskan pada &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; oleh Nadav Har&apos;El dan Dan Kenigsberg</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="480"/>
+        <location filename="../src/window.cpp" line="563"/>
         <source>About Hspell</source>
         <translation>Perihal Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="487"/>
+        <location filename="../src/window.cpp" line="570"/>
         <source>About SCOWL</source>
         <translation>Perihal SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
+        <location filename="../src/window.cpp" line="599"/>
         <source>Import Game</source>
         <translation>Import Permainan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="518"/>
-        <location filename="../src/window.cpp" line="578"/>
+        <location filename="../src/window.cpp" line="601"/>
+        <location filename="../src/window.cpp" line="614"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation>Permaina Tanglet (*.tanglet)</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="533"/>
-        <location filename="../src/window.cpp" line="548"/>
-        <location filename="../src/window.cpp" line="557"/>
-        <location filename="../src/window.cpp" line="787"/>
+        <location filename="../src/window.cpp" line="814"/>
+        <location filename="../src/window.cpp" line="829"/>
         <source>Unable to start requested game.</source>
         <translation>Tidak boleh mulakan permainan yang diminta.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="566"/>
-        <location filename="../src/window.cpp" line="787"/>
+        <location filename="../src/window.cpp" line="814"/>
+        <location filename="../src/window.cpp" line="829"/>
         <source>Error</source>
         <translation>Ralat</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="576"/>
+        <location filename="../src/window.cpp" line="612"/>
         <source>Export Game</source>
         <translation>Eksport Permainan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="623"/>
+        <location filename="../src/window.cpp" line="411"/>
+        <location filename="../src/window.cpp" line="659"/>
         <source>Question</source>
         <translation>Soalan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="623"/>
+        <location filename="../src/window.cpp" line="411"/>
+        <location filename="../src/window.cpp" line="659"/>
         <source>End the current game?</source>
         <translation>Tamatkan permainan semasa?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="662"/>
+        <location filename="../src/window.cpp" line="698"/>
         <source>Details</source>
         <translation>Perincian</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Board Size:</source>
         <translation>Saiz Papan:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Normal</source>
         <translation>Biasa</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Large</source>
         <translation>Besar</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="669"/>
+        <location filename="../src/window.cpp" line="705"/>
         <source>Word Density:</source>
         <translation>Kepadatan Perkataan:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="670"/>
+        <location filename="../src/window.cpp" line="706"/>
         <source>Word Length:</source>
         <translation>Panjang Perkataan:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="670"/>
+        <location filename="../src/window.cpp" line="706"/>
         <source>%1 or more letters</source>
         <translation>%1 atau lebih abjad</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="671"/>
+        <location filename="../src/window.cpp" line="707"/>
         <source>Game Type:</source>
         <translation>Jenis Permainan:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="672"/>
+        <location filename="../src/window.cpp" line="708"/>
         <source>Description:</source>
         <translation>Keterangan:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="702"/>
+        <location filename="../src/window.cpp" line="738"/>
         <source>Controls</source>
         <translation>Kawalan</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="702"/>
+        <location filename="../src/window.cpp" line="738"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Main Menggunakan Tetikus:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pilih perkataan:&lt;/b&gt; Klik pada abjad perkataan.&lt;br&gt;&lt;b&gt;Buat tekaan:&lt;/b&gt; Klik pada abjad terpilih yang terakhir.&lt;br&gt;&lt;b&gt;Padam abjad:&lt;/b&gt; Klik pada abjad terpilih yang awal.&lt;br&gt;&lt;b&gt;Kosongkan perkataan:&lt;/b&gt; Klik dua kali pada abjad terpilih yang pertama.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Main Menggunakan Papan Kekunci:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pilih perkataan:&lt;/b&gt; Taip abjad perkataan tersebut.&lt;br&gt;&lt;b&gt;Buat tekaan:&lt;/b&gt; Tekan Enter.&lt;br&gt;&lt;b&gt;Kosongkan perkataan:&lt;/b&gt; Tekan Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
@@ -726,6 +726,19 @@
         <translation>
             <numerusform>%n mata</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../src/main.cpp" line="73"/>
+        <source>Word finding game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="76"/>
+        <source>A game file to play.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

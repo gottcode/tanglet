@@ -398,312 +398,312 @@
 <context>
     <name>Window</name>
     <message>
-        <location filename="../src/main.cpp" line="32"/>
+        <location filename="../src/main.cpp" line="33"/>
         <source>Tanglet</source>
         <translation>Tanglet</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="301"/>
+        <location filename="../src/window.cpp" line="307"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Paused&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Click to resume playing.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Pauzė&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Spustelėkite, norėdami tęsti žaidimą.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="307"/>
+        <location filename="../src/window.cpp" line="313"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Prašome palaukti&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Įkeliamas žaidimas...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="312"/>
+        <location filename="../src/window.cpp" line="318"/>
         <source>Click to start a new game.</source>
         <translation>Spustelėkite, norėdami pradėti naują žaidimą.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="318"/>
+        <location filename="../src/window.cpp" line="324"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Prašome palaukti&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Kuriama nauja plokštė...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="323"/>
+        <location filename="../src/window.cpp" line="329"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Prašome palaukti&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizuojamas žodžių sąrašas...&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="328"/>
+        <location filename="../src/window.cpp" line="334"/>
         <source>&amp;Game</source>
         <translation>Žai&amp;dimas</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="329"/>
+        <location filename="../src/window.cpp" line="335"/>
         <source>New &amp;Game...</source>
         <translation>&amp;Naujas Žaidimas</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="329"/>
+        <location filename="../src/window.cpp" line="335"/>
         <source>Ctrl+Shift+N</source>
         <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="330"/>
+        <location filename="../src/window.cpp" line="336"/>
         <source>&amp;New Roll</source>
         <translation>Naujas &amp;Metimas</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="331"/>
+        <location filename="../src/window.cpp" line="337"/>
         <source>&amp;Choose...</source>
         <translation>&amp;Pasirinkti...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="332"/>
+        <location filename="../src/window.cpp" line="338"/>
         <source>&amp;Share...</source>
         <translation>Da&amp;lintis...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="334"/>
+        <location filename="../src/window.cpp" line="340"/>
         <source>&amp;End</source>
         <translation>&amp;Užbaigti</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="337"/>
+        <location filename="../src/window.cpp" line="343"/>
         <source>&amp;Pause</source>
         <translation>Pau&amp;zė</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="339"/>
+        <location filename="../src/window.cpp" line="345"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="344"/>
+        <location filename="../src/window.cpp" line="350"/>
         <source>&amp;Details</source>
         <translation>&amp;Išsamiau</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="346"/>
+        <location filename="../src/window.cpp" line="352"/>
         <source>&amp;High Scores</source>
         <translation>&amp;Rekordai</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="348"/>
+        <location filename="../src/window.cpp" line="354"/>
         <source>&amp;Quit</source>
         <translation>&amp;Baigti</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="348"/>
+        <location filename="../src/window.cpp" line="354"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="353"/>
+        <location filename="../src/window.cpp" line="359"/>
         <source>&amp;Settings</source>
         <translation>&amp;Nustatymai</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="354"/>
+        <location filename="../src/window.cpp" line="360"/>
         <source>Show &amp;Maximum Score</source>
         <translation>Rodyti &amp;Maksimalų Taškų Skaičių</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="356"/>
+        <location filename="../src/window.cpp" line="362"/>
         <source>&amp;Never</source>
         <translation>&amp;Niekada</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="357"/>
+        <location filename="../src/window.cpp" line="363"/>
         <source>&amp;End Of Game</source>
         <translation>Žaidimo &amp;Pabaigoje</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="358"/>
+        <location filename="../src/window.cpp" line="364"/>
         <source>&amp;Always</source>
         <translation>Vis&amp;ada</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="366"/>
+        <location filename="../src/window.cpp" line="372"/>
         <source>Show Missed &amp;Words</source>
         <translation>Rodyti Pra&amp;leistus Žodžius</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="369"/>
+        <location filename="../src/window.cpp" line="375"/>
         <source>Show Word &amp;Counts</source>
         <translation>Rodyti Žodžių &amp;Skaičiuoklę</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="373"/>
+        <location filename="../src/window.cpp" line="379"/>
         <source>&amp;Board Language...</source>
         <translation>Plo&amp;kštės Kalba...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="375"/>
+        <location filename="../src/window.cpp" line="381"/>
         <source>Application &amp;Language...</source>
         <translation>Programos Ka&amp;lba...</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="379"/>
+        <location filename="../src/window.cpp" line="385"/>
         <source>&amp;Help</source>
         <translation>&amp;Pagalba</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="380"/>
+        <location filename="../src/window.cpp" line="386"/>
         <source>&amp;Controls</source>
         <translation>&amp;Valdymas</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="382"/>
+        <location filename="../src/window.cpp" line="388"/>
         <source>&amp;About</source>
         <translation>&amp;Apie</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="384"/>
+        <location filename="../src/window.cpp" line="390"/>
         <source>About &amp;Hspell</source>
         <translation>Apie &amp;Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="386"/>
+        <location filename="../src/window.cpp" line="392"/>
         <source>About &amp;Qt</source>
         <translation>Apie &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="388"/>
+        <location filename="../src/window.cpp" line="394"/>
         <source>About &amp;SCOWL</source>
         <translation>Apie &amp;SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="470"/>
+        <location filename="../src/window.cpp" line="553"/>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
         <translation>Autorinės Teisės &amp;copy; 2009-%1 Graeme Gott</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="468"/>
+        <location filename="../src/window.cpp" line="551"/>
         <source>Tanglet %1</source>
         <translation>Tanglet %1</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="466"/>
+        <location filename="../src/window.cpp" line="549"/>
         <source>About</source>
         <translation>Apie</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="469"/>
+        <location filename="../src/window.cpp" line="552"/>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt; žaidimo variantas vienam žaidėjui</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="471"/>
+        <location filename="../src/window.cpp" line="554"/>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
         <translation>Išleista pagal &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; licenciją</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="472"/>
+        <location filename="../src/window.cpp" line="555"/>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
         <translation>Žodžių sąrašas anglų kalba yra paremtas &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; pagal Kevin Atkinson</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="473"/>
+        <location filename="../src/window.cpp" line="556"/>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>Žodžių sąrašas hebrajų kalba yra paremtas &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; pagal Nadav Har&apos;El ir Dan Kenigsberg</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="480"/>
+        <location filename="../src/window.cpp" line="563"/>
         <source>About Hspell</source>
         <translation>Apie Hspell</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="487"/>
+        <location filename="../src/window.cpp" line="570"/>
         <source>About SCOWL</source>
         <translation>Apie SCOWL</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="516"/>
+        <location filename="../src/window.cpp" line="599"/>
         <source>Import Game</source>
         <translation>Importuoti Žaidimą</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="518"/>
-        <location filename="../src/window.cpp" line="578"/>
+        <location filename="../src/window.cpp" line="601"/>
+        <location filename="../src/window.cpp" line="614"/>
         <source>Tanglet Games (*.tanglet)</source>
         <translation>Tanglet Žaidimai (*.tanglet)</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="533"/>
-        <location filename="../src/window.cpp" line="548"/>
-        <location filename="../src/window.cpp" line="557"/>
-        <location filename="../src/window.cpp" line="787"/>
+        <location filename="../src/window.cpp" line="814"/>
+        <location filename="../src/window.cpp" line="829"/>
         <source>Unable to start requested game.</source>
         <translation>Nepavyko pradėti užklausto žaidimo.</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="566"/>
-        <location filename="../src/window.cpp" line="787"/>
+        <location filename="../src/window.cpp" line="814"/>
+        <location filename="../src/window.cpp" line="829"/>
         <source>Error</source>
         <translation>Klaida</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="576"/>
+        <location filename="../src/window.cpp" line="612"/>
         <source>Export Game</source>
         <translation>Eksportuoti Žaidimą</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="623"/>
+        <location filename="../src/window.cpp" line="411"/>
+        <location filename="../src/window.cpp" line="659"/>
         <source>Question</source>
         <translation>Klausimas</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="623"/>
+        <location filename="../src/window.cpp" line="411"/>
+        <location filename="../src/window.cpp" line="659"/>
         <source>End the current game?</source>
         <translation>Užbaigti dabartinį žaidimą?</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="662"/>
+        <location filename="../src/window.cpp" line="698"/>
         <source>Details</source>
         <translation>Išsamiau</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Board Size:</source>
         <translation>Plokštės Dydis:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Normal</source>
         <translation>Normali</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="668"/>
+        <location filename="../src/window.cpp" line="704"/>
         <source>Large</source>
         <translation>Didelė</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="669"/>
+        <location filename="../src/window.cpp" line="705"/>
         <source>Word Density:</source>
         <translation>Žodžių Tankumas:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="670"/>
+        <location filename="../src/window.cpp" line="706"/>
         <source>Word Length:</source>
         <translation>Žodžių Ilgis:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="670"/>
+        <location filename="../src/window.cpp" line="706"/>
         <source>%1 or more letters</source>
         <translation>%1 ar daugiau raidžių</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="671"/>
+        <location filename="../src/window.cpp" line="707"/>
         <source>Game Type:</source>
         <translation>Žaidimo Tipas:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="672"/>
+        <location filename="../src/window.cpp" line="708"/>
         <source>Description:</source>
         <translation>Aprašas:</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="702"/>
+        <location filename="../src/window.cpp" line="738"/>
         <source>Controls</source>
         <translation>Valdymas</translation>
     </message>
     <message>
-        <location filename="../src/window.cpp" line="702"/>
+        <location filename="../src/window.cpp" line="738"/>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas Pėle:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti Žodį:&lt;/b&gt; Spustelėti ant žodžio raidžių.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spustelėti ant paskutinės pasirinktos raidės.&lt;br&gt;&lt;b&gt;Ištrinti raides:&lt;/b&gt; Spustelėti ant anksčiau pasirinktos raidės.&lt;br&gt;&lt;b&gt;Išvalyti žodį:&lt;/b&gt; Du kartus spustelėti ant pirmos pasirinktos raidės.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas Klaviatūra:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti Žodį:&lt;/b&gt; Rinkti žodžio raides.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spausti įvedimo (Enter) klavišą.&lt;br&gt;&lt;b&gt;Išvalyti Žodį:&lt;/b&gt; Spausti Valdymo+Naikinimo (Ctrl+Backspace) klavišą.&lt;/p&gt;</translation>
     </message>
@@ -746,6 +746,19 @@
             <numerusform>%n taškai</numerusform>
             <numerusform>%n taškų</numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../src/main.cpp" line="73"/>
+        <source>Word finding game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="76"/>
+        <source>A game file to play.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

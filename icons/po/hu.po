@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-14 20:56+0000\n"
+"POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2014-11-14 17:37+0000\n"
 "Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/tanglet/"
@@ -46,3 +46,7 @@ msgstr ""
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Szókereső játék"
+
+#: ../tanglet.xml.in.h:1
+msgid "Tanglet Game File"
+msgstr ""
