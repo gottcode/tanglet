@@ -70,8 +70,14 @@ SOURCES += src/beveled_rect.cpp \
 	src/word_counts.cpp \
 	src/word_tree.cpp
 
-# Allow for updating translations
+# Generate translations
 TRANSLATIONS = $$files(translations/tanglet_*.ts)
+qtPrepareTool(LRELEASE, lrelease)
+updateqm.input = TRANSLATIONS
+updateqm.output = ${QMAKE_FILE_PATH}/${QMAKE_FILE_BASE}.qm
+updateqm.commands = $$LRELEASE -silent ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_OUT}
+updateqm.CONFIG += no_link target_predeps
+QMAKE_EXTRA_COMPILERS += updateqm
 
 # Install program data
 RESOURCES = icons/icons.qrc data.qrc

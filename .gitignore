@@ -1,3 +1,5 @@
-/Makefile
-/build/
-/tanglet
+Makefile
+build
+tanglet
+*.qm
+*~
