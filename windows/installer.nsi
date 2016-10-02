@@ -6,7 +6,7 @@
 !define VERSIONMINOR 3
 !define VERSIONPATCH 1
 !define APPVERSION "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONPATCH}"
-!define ABOUTURL "http://gottcode.org/tanglet/"
+!define ABOUTURL "https://gottcode.org/tanglet/"
 
 ;--------------------------------
 ;Includes
@@ -162,6 +162,19 @@ Section "install"
 	;Copy files
 	SetOutPath $INSTDIR
 	File ..\release\Tanglet.exe
+	File $%QTDIR%\bin\libgcc_s_dw2-1.dll
+	File $%QTDIR%\bin\libstdc++-6.dll
+	File $%QTDIR%\bin\libwinpthread-1.dll
+	File $%QTDIR%\bin\Qt5Core.dll
+	File $%QTDIR%\bin\Qt5Gui.dll
+	File $%QTDIR%\bin\Qt5Widgets.dll
+
+	SetOutPath $INSTDIR\platforms
+	File $%QTDIR%\plugins\platforms\qwindows.dll
+
+	SetOutPath $INSTDIR\translations
+	File ..\translations\*.qm
+	File $%QTDIR%\translations\qtbase_*.qm
 
 	SetOutPath $INSTDIR\data\cs
 	File ..\data\cs\*
@@ -177,10 +190,6 @@ Section "install"
 	File ..\data\hu\*
 	SetOutPath $INSTDIR\data\nl
 	File ..\data\nl\*
-
-	SetOutPath $INSTDIR\translations
-	File ..\translations\*.qm
-	File $%QTDIR%\translations\qtbase_*.qm
 
 	;Create ReadMe file
 	SetOutPath $INSTDIR
@@ -250,12 +259,15 @@ Section "Uninstall"
 	;Remove files
 	Delete $INSTDIR\Tanglet.exe
 	Delete $INSTDIR\ReadMe.txt
+	Delete $INSTDIR\*.dll
+	Delete $INSTDIR\platforms\*.dll
 	Delete $INSTDIR\data\*\*
 	Delete $INSTDIR\translations\*.qm
 	Delete $INSTDIR\Uninstall.exe
 
 	;Remove directories
 	RMDir /r $INSTDIR\data
+	RMDir $INSTDIR\platforms
 	RMDir $INSTDIR\translations
 	RMDir $INSTDIR
 
