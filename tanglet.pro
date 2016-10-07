@@ -123,6 +123,7 @@ macx {
 
 	qm.files = translations/*.qm
 	qm.path = $$PREFIX/share/tanglet/translations
+	qm.CONFIG += no_check_exist
 
 	man.files = doc/tanglet.6
 	man.path = $$PREFIX/share/man/man6
