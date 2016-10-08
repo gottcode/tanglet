@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>Błąd</translation>
     </message>
     <message>
         <source>Success</source>
@@ -478,7 +478,7 @@
     </message>
     <message>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
-        <translation>Gra wariantu &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt; dla jednego gracza</translation>
+        <translation>Wariant gry &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt; dla jednego gracza</translation>
     </message>
     <message>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
@@ -611,11 +611,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Gra wyszukiwania słów</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Plik gry.</translation>
     </message>
 </context>
 </TS>

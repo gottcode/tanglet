@@ -591,11 +591,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Permainan mencari perkataan</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fail permainan untuk main.</translation>
     </message>
 </context>
 </TS>

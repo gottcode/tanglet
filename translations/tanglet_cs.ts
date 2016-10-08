@@ -611,11 +611,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Hra o hledání slov</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor se hrou k přehrání.</translation>
     </message>
 </context>
 </TS>

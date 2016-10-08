@@ -611,11 +611,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Joc de găsire a cuvintelor</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un fişier al jocului de jucat.</translation>
     </message>
 </context>
 </TS>

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# RobertBorst <webmaster@fam-borst.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2014-11-14 17:37+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/tanglet/language/"
+"PO-Revision-Date: 2016-08-21 13:42+0000\n"
+"Last-Translator: RobertBorst <webmaster@fam-borst.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/gottcode/tanglet/language/"
 "nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +34,10 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet is een eenpersoonsversie van een woordzoekspel gebaseerd op Boggle. "
+"Het doel van het spel is om zo veel mogelijk woorden op te schrijven voordat "
+"de tijd voorbij is. Er zijn verschillende tijdmodi die bepalen met hoe veel "
+"tijd je begint of wat voor een tijdbonus je krijgt als je een woord vind."
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -42,11 +47,15 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Je kunt letters horizontaal, verticaal of diagonaal met elkaar verbinden om "
+"een woord te maken mits de letters naast elkaar liggen op het bord. Je kunt "
+"het letterblokje niet meer dan een keer gebruiken. Verder moet ieder woord "
+"minstens 3 letters zijn op een normaal bord en 4 op een groot bord"
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
-msgstr "Woordzoekspel"
+msgstr "Woordzoek spel"
 
 #: ../tanglet.xml.in.h:1
 msgid "Tanglet Game File"
-msgstr ""
+msgstr "Tanglet spel bestand"

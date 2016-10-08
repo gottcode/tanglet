@@ -23,7 +23,7 @@
   <summary xml:lang="lt">Boggle žaidimo variantas vienam žaidėjui</summary>
   <summary xml:lang="ms">Varian pemain tunggal Boggle</summary>
   <summary xml:lang="nl">Eenpersoonsversie van Boggle</summary>
-  <summary xml:lang="pl">Gra wariantu Boggle dla jednego gracza</summary>
+  <summary xml:lang="pl">Jednoosobowa wersja gry Boggle.</summary>
   <summary xml:lang="ro">Variantă de joc Boggle într-un singur jucător</summary>
 
   <description>
@@ -34,6 +34,8 @@
     <p xml:lang="fr">Tanglet est un jeu de recherche de mots, en mode simple joueur, basé sur le fameux Boggle. L'objectif de ce jeu est de lister autant de mots que possible avant la fin du temps imparti. Plusieurs modes de minuterie sont proposés. Ils déterminent le temps de départ et le temps supplémentaire accordé lorsqu'un mot a été trouvé. </p>
     <p xml:lang="lt">Tanglet yra žodžių ieškojimo žaidimas paremtas Boggle. Žaidimo tikslas yra, prieš pasibaigiant laikui, išvardinti kuo daugiau žodžių. Yra kelios laikmačio veiksenos, kurios nustato, kiek laiko duota žaidimo pradžioje, ir ar bus pridedamas laikas, esant teisingam spėjimui.</p>
     <p xml:lang="ms">Tanglet merupakan permainan mencari perkataan seorang pemain berasaskan Boggle. Objektif permainan adalah untuk menyenaraikan sebanyak mungkin perkataan sebelum masa tamat. Terdapat beberapa mod pemasa yang menentukan berapakah masa mula anda, dan jika anda mendapat masa tambahan bila anda berjaya mencari perkataan.</p>
+    <p xml:lang="nl">Tanglet is een eenpersoonsversie van een woordzoekspel gebaseerd op Boggle. Het doel van het spel is om zo veel mogelijk woorden op te schrijven voordat de tijd voorbij is. Er zijn verschillende tijdmodi die bepalen met hoe veel tijd je begint of wat voor een tijdbonus je krijgt als je een woord vind.</p>
+    <p xml:lang="pl">Tanglet jest jednosobową grą polegająca na wyszukiwaniu słów, opartą na grze Boggle. Celem gry jest wyszukanie tak wielu słów jak to możliwe przed upływem czasu. Istnieje kilka trybów gry, które determinują to z jaką ilością czasu zaczynasz i czy uzyskujesz dodatkowy czas za znalezienie słowa.</p>
     <p xml:lang="ro">Tanglet este un joc de găsit cuvinte, într-un singur jucător, bazat pe Boggle. Obiectivul jocului este de a lista cît mai multe cuvinte înainte de expirarea timpului. Există mai multe moduri de temporizare care determină cu cît de mult timp începeţi, şi dacă aveţi timp suplimentar atunci cînd găsiţi un cuvînt.</p>
 
     <p>You can join letters horizontally, vertically, or diagonally in any direction to make a word, so as long as the letters are next to each other on the board. However, you can not reuse the same letter cells in a single word. Also, each word must be at least three letters on a normal board, and four letters on a large board.</p>
@@ -43,6 +45,8 @@
     <p xml:lang="fr">Vous pouvez relier des lettres horizontalement, verticalement ou en diagonale dans n'importe quelle direction pour former un mot, du moment que les lettres soient à côté l'une de l'autre sur le plateau. Cependant, vous ne pouvez pas réutiliser les mêmes cellules de lettres en un seul mot. En outre, chaque mot doit être composé d'au moins trois lettres pour un plateau normal, et de quatre lettres pour un grand plateau.</p>
     <p xml:lang="lt">Kad atspėtumėte žodį, galite jungti raides horizontaliai, vertikaliai, arba pagal įstrižainę bet kuria kryptimi, tol, kol raidės yra viena šalia kitos. Tačiau negalite naudoti to pačio raidės langelio vienam žodžiui. Be to, normalioje plokštėje kiekviename žodyje turi būti bent trys raidės, o didelėje plokštėje bent keturios raidės.</p>
     <p xml:lang="ms">Anda boleh gabungkan huruf secara menegak, melintang, atau mengikut pepenjuru pada mana-mana arah untuk membentuk perkataan, selagi huruf bersebelahan diantara satu sama lain. Akan tetapi, anda tidak boleh guna sel huruf yang sama dalam satu perkataan. Selain itu, setiap perkataan mesti sekurang-kurangnya tiga huruf dalam papan biasa, dan empat huruf dalam papan besar.</p>
+    <p xml:lang="nl">Je kunt letters horizontaal, verticaal of diagonaal met elkaar verbinden om een woord te maken mits de letters naast elkaar liggen op het bord. Je kunt het letterblokje niet meer dan een keer gebruiken. Verder moet ieder woord minstens 3 letters zijn op een normaal bord en 4 op een groot bord</p>
+    <p xml:lang="pl">Litery możesz łączyć w słowa; pionowo, posiomo, lub po skosie, w dowolnym kierunku, dopóty dopóki litery na planszy występują obok siebie. Aczkolwiek nie możesz użyć dwa razy tej samej komórki z literą. Dodatkowo każde słowo musi się składać z co najmniej trzech liter na planszy o normalnych rozmiarach i czterech liter na dużej planszy.</p>
     <p xml:lang="ro">Puteţi alătura litere orizontal, vertical, sau în diagonală, în orice direcţie pentru a face un cuvînt, atîta timp cît literele sînt una lîngă alta pe tablă. Cu toate acestea, nu aveţi posibilitatea să reutilizaţi aceleaşi celule literă într-un singur cuvînt. De asemenea, fiecare cuvînt trebuie să fie de cel puţin trei litere pe o tablă obişnuită şi patru litere pe o tablă mare.</p>
   </description>
 

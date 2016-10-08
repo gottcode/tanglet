@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Moo, 2014
+# Moo, 2014-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2014-11-27 21:57+0000\n"
+"PO-Revision-Date: 2016-04-15 21:56+0000\n"
 "Last-Translator: Moo\n"
-"Language-Team: Lithuanian (http://www.transifex.com/projects/p/tanglet/"
+"Language-Team: Lithuanian (http://www.transifex.com/gottcode/tanglet/"
 "language/lt/)\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -56,8 +56,8 @@ msgstr ""
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
-msgstr "Žodžių Ieškojimo Žaidimas"
+msgstr "Žodžių ieškojimo žaidimas"
 
 #: ../tanglet.xml.in.h:1
 msgid "Tanglet Game File"
-msgstr ""
+msgstr "Tanglet žaidimo failas"

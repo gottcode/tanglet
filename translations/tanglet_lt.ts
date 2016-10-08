@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>Game Over</source>
-        <translation>Žaidimas Baigtas</translation>
+        <translation>Žaidimas baigtas</translation>
     </message>
     <message numerus="yes">
         <source>%1 of %n point(s)</source>
@@ -194,7 +194,7 @@
     <name>LanguageDialog</name>
     <message>
         <source>Board Language</source>
-        <translation>Plokštės Kalba</translation>
+        <translation>Plokštės kalba</translation>
     </message>
     <message>
         <source>Custom</source>
@@ -226,11 +226,11 @@
     </message>
     <message>
         <source>Choose Dice File</source>
-        <translation>Pasirinkite Kauliuko Failą</translation>
+        <translation>Pasirinkite kauliuko failą</translation>
     </message>
     <message>
         <source>Choose Word List File</source>
-        <translation>Pasirinkite Žodžių Sąrašo Failą</translation>
+        <translation>Pasirinkite žodžių sąrašo failą</translation>
     </message>
 </context>
 <context>
@@ -241,7 +241,7 @@
     </message>
     <message>
         <source>&lt;System Language&gt;</source>
-        <translation>&lt;Sistemos Kalba&gt;</translation>
+        <translation>&lt;Sistemos kalba&gt;</translation>
     </message>
     <message>
         <source>Note</source>
@@ -256,15 +256,15 @@
     <name>NewGameDialog</name>
     <message>
         <source>New Game</source>
-        <translation>Naujas Žaidimas</translation>
+        <translation>Naujas žaidimas</translation>
     </message>
     <message>
         <source>Amount of Words:</source>
-        <translation>Žodžių Kiekis:</translation>
+        <translation>Žodžių kiekis:</translation>
     </message>
     <message>
         <source>Minimum Word Length:</source>
-        <translation>Minimalus Žodžio Ilgis:</translation>
+        <translation>Minimalus žodžio ilgis:</translation>
     </message>
     <message>
         <source>Low</source>
@@ -358,7 +358,7 @@
     </message>
     <message>
         <source>New &amp;Game...</source>
-        <translation>&amp;Naujas Žaidimas</translation>
+        <translation>&amp;Naujas žaidimas</translation>
     </message>
     <message>
         <source>Ctrl+Shift+N</source>
@@ -366,7 +366,7 @@
     </message>
     <message>
         <source>&amp;New Roll</source>
-        <translation>Naujas &amp;Metimas</translation>
+        <translation>Naujas &amp;metimas</translation>
     </message>
     <message>
         <source>&amp;Choose...</source>
@@ -410,7 +410,7 @@
     </message>
     <message>
         <source>Show &amp;Maximum Score</source>
-        <translation>Rodyti &amp;Maksimalų Taškų Skaičių</translation>
+        <translation>Rodyti &amp;maksimalų taškų skaičių</translation>
     </message>
     <message>
         <source>&amp;Never</source>
@@ -418,7 +418,7 @@
     </message>
     <message>
         <source>&amp;End Of Game</source>
-        <translation>Žaidimo &amp;Pabaigoje</translation>
+        <translation>Žaidimo &amp;pabaigoje</translation>
     </message>
     <message>
         <source>&amp;Always</source>
@@ -426,19 +426,19 @@
     </message>
     <message>
         <source>Show Missed &amp;Words</source>
-        <translation>Rodyti Pra&amp;leistus Žodžius</translation>
+        <translation>Rodyti pra&amp;leistus žodžius</translation>
     </message>
     <message>
         <source>Show Word &amp;Counts</source>
-        <translation>Rodyti Žodžių &amp;Skaičiuoklę</translation>
+        <translation>Rodyti žodžių &amp;skaičiuoklę</translation>
     </message>
     <message>
         <source>&amp;Board Language...</source>
-        <translation>Plo&amp;kštės Kalba...</translation>
+        <translation>Plo&amp;kštės kalba...</translation>
     </message>
     <message>
         <source>Application &amp;Language...</source>
-        <translation>Programos Ka&amp;lba...</translation>
+        <translation>Programos ka&amp;lba...</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -466,7 +466,7 @@
     </message>
     <message>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
-        <translation>Autorinės Teisės &amp;copy; 2009-%1 Graeme Gott</translation>
+        <translation>Autorių Teisės &amp;copy; 2009-%1 Graeme Gott</translation>
     </message>
     <message>
         <source>Tanglet %1</source>
@@ -502,11 +502,11 @@
     </message>
     <message>
         <source>Import Game</source>
-        <translation>Importuoti Žaidimą</translation>
+        <translation>Importuoti žaidimą</translation>
     </message>
     <message>
         <source>Tanglet Games (*.tanglet)</source>
-        <translation>Tanglet Žaidimai (*.tanglet)</translation>
+        <translation>Tanglet žaidimai (*.tanglet)</translation>
     </message>
     <message>
         <source>Unable to start requested game.</source>
@@ -518,7 +518,7 @@
     </message>
     <message>
         <source>Export Game</source>
-        <translation>Eksportuoti Žaidimą</translation>
+        <translation>Eksportuoti žaidimą</translation>
     </message>
     <message>
         <source>Question</source>
@@ -534,7 +534,7 @@
     </message>
     <message>
         <source>Board Size:</source>
-        <translation>Plokštės Dydis:</translation>
+        <translation>Plokštės dydis:</translation>
     </message>
     <message>
         <source>Normal</source>
@@ -546,11 +546,11 @@
     </message>
     <message>
         <source>Word Density:</source>
-        <translation>Žodžių Tankumas:</translation>
+        <translation>Žodžių tankumas:</translation>
     </message>
     <message>
         <source>Word Length:</source>
-        <translation>Žodžių Ilgis:</translation>
+        <translation>Žodžių ilgis:</translation>
     </message>
     <message>
         <source>%1 or more letters</source>
@@ -558,7 +558,7 @@
     </message>
     <message>
         <source>Game Type:</source>
-        <translation>Žaidimo Tipas:</translation>
+        <translation>Žaidimo tipas:</translation>
     </message>
     <message>
         <source>Description:</source>
@@ -570,7 +570,7 @@
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas Pėle:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti Žodį:&lt;/b&gt; Spustelėti ant žodžio raidžių.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spustelėti ant paskutinės pasirinktos raidės.&lt;br&gt;&lt;b&gt;Ištrinti raides:&lt;/b&gt; Spustelėti ant anksčiau pasirinktos raidės.&lt;br&gt;&lt;b&gt;Išvalyti žodį:&lt;/b&gt; Du kartus spustelėti ant pirmos pasirinktos raidės.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas Klaviatūra:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti Žodį:&lt;/b&gt; Rinkti žodžio raides.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spausti įvedimo (Enter) klavišą.&lt;br&gt;&lt;b&gt;Išvalyti Žodį:&lt;/b&gt; Spausti Valdymo+Naikinimo (Ctrl+Backspace) klavišą.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas pele:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti žodį:&lt;/b&gt; Spustelėti ant žodžio raidžių.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spustelėti ant paskutinės pasirinktos raidės.&lt;br&gt;&lt;b&gt;Ištrinti raides:&lt;/b&gt; Spustelėti ant anksčiau pasirinktos raidės.&lt;br&gt;&lt;b&gt;Išvalyti žodį:&lt;/b&gt; Du kartus spustelėti ant pirmos pasirinktos raidės.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas klaviatūra:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti žodį:&lt;/b&gt; Rinkti žodžio raides.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spausti įvedimo (Enter) klavišą.&lt;br&gt;&lt;b&gt;Išvalyti žodį:&lt;/b&gt; Spausti Valdymo+Naikinimo (Ctrl+Backspace) klavišą.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -611,11 +611,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Žodžių ieškojimo žaidimas</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Norimas žaisti žaidimo failas.</translation>
     </message>
 </context>
 </TS>

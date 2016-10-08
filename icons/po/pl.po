@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# emen6 <emen6@o2.pl>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2014-11-14 17:37+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/tanglet/language/"
+"PO-Revision-Date: 2015-10-25 21:24+0000\n"
+"Last-Translator: emen6 <emen6@o2.pl>\n"
+"Language-Team: Polish (http://www.transifex.com/gottcode/tanglet/language/"
 "pl/)\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +26,7 @@ msgstr "Tanglet"
 
 #: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
-msgstr "Gra wariantu Boggle dla jednego gracza"
+msgstr "Jednoosobowa wersja gry Boggle."
 
 #: ../tanglet.appdata.xml.in.h:3
 msgid ""
@@ -34,6 +35,10 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet jest jednosobową grą polegająca na wyszukiwaniu słów, opartą na grze "
+"Boggle. Celem gry jest wyszukanie tak wielu słów jak to możliwe przed "
+"upływem czasu. Istnieje kilka trybów gry, które determinują to z jaką "
+"ilością czasu zaczynasz i czy uzyskujesz dodatkowy czas za znalezienie słowa."
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -43,11 +48,16 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Litery możesz łączyć w słowa; pionowo, posiomo, lub po skosie, w dowolnym "
+"kierunku, dopóty dopóki litery na planszy występują obok siebie. Aczkolwiek "
+"nie możesz użyć dwa razy tej samej komórki z literą. Dodatkowo każde słowo "
+"musi się składać z co najmniej trzech liter na planszy o normalnych "
+"rozmiarach i czterech liter na dużej planszy."
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
-msgstr "Gra wyszukiwania słów"
+msgstr "Gra słowna"
 
 #: ../tanglet.xml.in.h:1
 msgid "Tanglet Game File"
-msgstr ""
+msgstr "Plik gry Tanglet"

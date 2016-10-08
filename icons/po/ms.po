@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# abuyop <abuyop@gmail.com>, 2014
+# abuyop <abuyop@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2014-11-29 05:26+0000\n"
+"PO-Revision-Date: 2015-08-28 06:40+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>\n"
-"Language-Team: Malay (http://www.transifex.com/projects/p/tanglet/language/"
+"Language-Team: Malay (http://www.transifex.com/gottcode/tanglet/language/"
 "ms/)\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
@@ -61,4 +61,4 @@ msgstr "Permainan Mencari Perkataan"
 
 #: ../tanglet.xml.in.h:1
 msgid "Tanglet Game File"
-msgstr ""
+msgstr "Fail Permainan Tanglet"

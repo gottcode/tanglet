@@ -2,6 +2,14 @@
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
   <mime-type type="application/x-tanglet">
     <comment>Tanglet Game File</comment>
+    <comment xml:lang="cs">Soubor hry Tanglet</comment>
+    <comment xml:lang="de">Tanglet-Spieldatei</comment>
+    <comment xml:lang="fr">Fichier du jeu Tanglet</comment>
+    <comment xml:lang="lt">Tanglet žaidimo failas</comment>
+    <comment xml:lang="ms">Fail Permainan Tanglet</comment>
+    <comment xml:lang="nl">Tanglet spel bestand</comment>
+    <comment xml:lang="pl">Plik gry Tanglet</comment>
+    <comment xml:lang="ro">Fişier joc Tanglet</comment>
     <glob pattern="*.tanglet"/>
   </mime-type>
 </mime-info>

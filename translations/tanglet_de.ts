@@ -194,7 +194,7 @@
     </message>
     <message>
         <source>Choose...</source>
-        <translation>Auswählen...</translation>
+        <translation>Auswählen ...</translation>
     </message>
     <message>
         <source>&lt;b&gt;Note:&lt;/b&gt; These settings will take effect when you start a new game.</source>
@@ -329,7 +329,7 @@
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Spiel wird geladen...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Spiel wird geladen ...&lt;/p&gt;</translation>
     </message>
     <message>
         <source>Click to start a new game.</source>
@@ -337,11 +337,11 @@
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Neues Spielfeld wird generiert...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Neues Spielfeld wird generiert ...&lt;/p&gt;</translation>
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Wörterliste wird optimiert...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Wörterliste wird optimiert ...&lt;/p&gt;</translation>
     </message>
     <message>
         <source>&amp;Game</source>
@@ -349,7 +349,7 @@
     </message>
     <message>
         <source>New &amp;Game...</source>
-        <translation>Ne&amp;ues Spiel...</translation>
+        <translation>Ne&amp;ues Spiel ...</translation>
     </message>
     <message>
         <source>Ctrl+Shift+N</source>
@@ -361,11 +361,11 @@
     </message>
     <message>
         <source>&amp;Choose...</source>
-        <translation>I&amp;mportieren...</translation>
+        <translation>I&amp;mportieren ...</translation>
     </message>
     <message>
         <source>&amp;Share...</source>
-        <translation>&amp;Exportieren...</translation>
+        <translation>&amp;Exportieren ...</translation>
     </message>
     <message>
         <source>&amp;End</source>
@@ -425,11 +425,11 @@
     </message>
     <message>
         <source>&amp;Board Language...</source>
-        <translation>&amp;Spielfeldsprache...</translation>
+        <translation>&amp;Spielfeldsprache ...</translation>
     </message>
     <message>
         <source>Application &amp;Language...</source>
-        <translation>&amp;Anwendungssprache...</translation>
+        <translation>&amp;Anwendungssprache ...</translation>
     </message>
     <message>
         <source>&amp;Help</source>
@@ -601,11 +601,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Buchstabenrätsel</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spieldatei zum Spielen.</translation>
     </message>
 </context>
 </TS>
