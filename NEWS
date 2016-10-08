@@ -1,3 +1,14 @@
+1.4.0
+-----
+* Added opening game files at launch.
+* Added opening game files by drag-and-drop.
+* Added MIME definition in Linux for game file.
+* Added words to English dictionary.
+* Generate binary translations at build time.
+* FIXED: Was not properly loading Qt translations.
+* FIXED: Dividing line on clock was too tall.
+* Translation updates: Czech, Dutch, French, German, Lithuanian, Malay, Polish, Romanian.
+
 1.3.1
 -----
 * FIXED: Application layout did not respect RTL languages.
