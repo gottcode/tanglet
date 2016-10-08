@@ -112,7 +112,7 @@ macx {
 	pixmap.files = icons/tanglet.xpm
 	pixmap.path = $$PREFIX/share/pixmaps/
 
-	mime.files = icons/x-tanglet.xml
+	mime.files = icons/tanglet.xml
 	mime.path = $$PREFIX/share/mime/packages/
 
 	desktop.files = icons/tanglet.desktop
