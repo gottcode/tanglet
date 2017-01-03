@@ -241,7 +241,7 @@
     </message>
     <message>
         <source>Please restart this application for the change in language to take effect.</source>
-        <translation>Bitte starten Sie diese Anwendung neu um den Wechsel der Sprache auszuführen.</translation>
+        <translation>Bitte starten Sie diese Anwendung neu, um den Wechsel der Sprache auszuführen.</translation>
     </message>
 </context>
 <context>
