@@ -101,6 +101,7 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 void WordTree::removeAll() {
 	m_active_item = 0;
 	clear();
+	scrollToTop();
 }
 
 //-----------------------------------------------------------------------------
