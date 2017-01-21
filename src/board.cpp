@@ -475,7 +475,9 @@ void Board::clearGuess() {
 	updateClickableStatus();
 	m_guess->clear();
 	m_found->clearSelection();
+	m_found->setCurrentItem(0);
 	m_missed->clearSelection();
+	m_missed->setCurrentItem(0);
 	m_guess->setFocus();
 	updateButtons();
 }
@@ -777,6 +779,7 @@ void Board::selectGuess() {
 		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
 	} else {
 		m_found->clearSelection();
+		m_found->setCurrentItem(0);
 	}
 }
 
