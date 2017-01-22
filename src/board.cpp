@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2014, 2015 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2014, 2015, 2017 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -474,8 +474,8 @@ void Board::clearGuess() {
 	clearHighlight();
 	updateClickableStatus();
 	m_guess->clear();
-	m_found->clearSelection();
-	m_missed->clearSelection();
+	m_found->setCurrentItem(nullptr);
+	m_missed->setCurrentItem(nullptr);
 	m_guess->setFocus();
 	updateButtons();
 }
@@ -516,7 +516,7 @@ void Board::guess() {
 			m_counts->findWord(text);
 		}
 		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
-		m_found->clearSelection();
+		m_found->setCurrentItem(nullptr);
 
 		// Clear guess
 		clearGuess();
@@ -541,7 +541,7 @@ void Board::guessChanged() {
 	m_valid = true;
 	m_wrong = false;
 	clearHighlight();
-	m_found->clearSelection();
+	m_found->setCurrentItem(nullptr);
 
 	QString word = m_guess->text().trimmed().toUpper();
 	if (!word.isEmpty()) {
@@ -776,7 +776,7 @@ void Board::selectGuess() {
 		m_found->setCurrentItem(item);
 		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
 	} else {
-		m_found->clearSelection();
+		m_found->setCurrentItem(nullptr);
 	}
 }
 
