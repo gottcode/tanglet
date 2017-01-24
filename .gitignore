@@ -1,5 +1,7 @@
 Makefile
 build
 tanglet
+/data/*/dice
+/data/*/words
 *.qm
 *~
