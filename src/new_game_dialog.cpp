@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2010, 2011, 2012, 2014, 2015 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2010, 2011, 2012, 2014, 2015, 2017 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -165,7 +165,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	for (int i = Clock::Tanglet; i < Clock::TotalTimers; ++i) {
 		timers.append(i);
 	}
-	qSort(timers);
+	std::sort(timers.begin(), timers.end());
 	for (const TimerDescription& timer : timers) {
 		QCommandLinkButton* button = new QCommandLinkButton(timer.name(), timer.description(), timers_widget);
 		button->setMinimumWidth(500);

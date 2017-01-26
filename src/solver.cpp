@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2017 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,9 @@
 #include "solver.h"
 
 #include <QStringList>
+
+#include <algorithm>
+#include <functional>
 
 //-----------------------------------------------------------------------------
 
@@ -103,7 +106,7 @@ int Solver::score(int max) const
 	while (i.hasNext()) {
 		scores += score(i.next().key());
 	}
-	qSort(scores.begin(), scores.end(), qGreater<int>());
+	std::sort(scores.begin(), scores.end(), std::greater<int>());
 
 	int result = 0;
 	int count = (max == -1) ? scores.count() : max;

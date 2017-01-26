@@ -875,7 +875,7 @@ void Board::showMaximumWords() {
 	for (const QString& word : m_solutions.keys()) {
 		scores.append(Solver::score(word));
 	}
-	qSort(scores.begin(), scores.end(), qGreater<int>());
+	std::sort(scores.begin(), scores.end(), std::greater<int>());
 	scores = scores.mid(0, 30);
 
 	QLabel* message = new QLabel(tr("The maximum score was calculated from the following thirty words:"), this);
