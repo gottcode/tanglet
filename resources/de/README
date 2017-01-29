@@ -1,0 +1,16 @@
+The letters used for German are the ASCII letters. German umlauts and eszett
+are replaced by their two-letter substitutions (ae, oe, ue, ss). Diacritics in
+words derived from foreign languages are dropped.
+
+The rules what words are legal should roughly follow the rules in Scrabble,
+which means that names, proper nouns, toponyms, abbreviations and archaic
+words are not allowed. Dated words are ok, also regional words as long as
+they are known to some extent outside the region. Extreme cases of obscenities
+should be omitted. If in doubt, it is better to include words, because false
+positives are better for Tanglet's gameplay than false negatives.
+
+For easier maintenance, there is a blacklist file that can be used to filter
+out unwanted words from a file with new word candidates.
+
+The word list and blacklist are far from being complete and still contain
+a lot of mistakes. Any help for improving them is appreciated.
