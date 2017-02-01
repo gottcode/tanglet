@@ -187,16 +187,11 @@ std::map<QString, std::vector<QString>> readWords(const QString& filename, const
 	while (!stream.atEnd()) {
 		const QString word = stream.readLine().trimmed();
 
-		// Discard too-short words
-		if (word.length() < 3) {
-			continue;
-		}
-
 		// Replace letters
 		const QString solution = generateSolution(word.toUpper());
 
-		// Discard too-long words
-		if (solution.length() > 25) {
+		// Discard words that are too short or too long
+		if ((solution.length() < 3) || (solution.length() > 25)) {
 			continue;
 		}
 
