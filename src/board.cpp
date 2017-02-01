@@ -548,6 +548,8 @@ void Board::guessChanged() {
 		int pos = m_guess->cursorPosition();
 		m_guess->setText(word);
 		m_guess->setCursorPosition(pos);
+		QTreeWidgetItem* item = m_found->findItems(word, Qt::MatchStartsWith, 2).value(0);
+		m_found->scrollToItem(item, QAbstractItemView::PositionAtTop);
 
 		Trie trie(word);
 		Solver solver(trie, m_size, 0);
@@ -662,6 +664,8 @@ void Board::letterClicked(Letter* letter) {
 		QString word = m_guess->text().trimmed().toUpper();
 		word.append(letter->text().toUpper());
 		m_guess->setText(word);
+		QTreeWidgetItem* item = m_found->findItems(word, Qt::MatchStartsWith, 2).value(0);
+		m_found->scrollToItem(item, QAbstractItemView::PositionAtTop);
 
 		m_wrong = false;
 		m_positions.append(letter->position());
