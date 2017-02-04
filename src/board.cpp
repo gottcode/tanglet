@@ -886,6 +886,7 @@ void Board::showMaximumWords() {
 	message->setWordWrap(true);
 
 	WordTree* words = new WordTree(this);
+	words->setTrie(m_generator->trie());
 	words->setDictionary(m_generator->dictionary());
 	QList<QTreeWidget*> trees = QList<QTreeWidget*>() << m_found << m_missed;
 	for (QTreeWidget* tree : trees) {
