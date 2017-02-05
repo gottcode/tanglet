@@ -515,7 +515,7 @@ void Board::guess() {
 
 			m_counts->findWord(text);
 		}
-		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
+		m_found->scrollToItem(item);
 		m_found->setCurrentItem(nullptr);
 
 		// Clear guess
@@ -778,7 +778,7 @@ void Board::selectGuess() {
 	QTreeWidgetItem* item = m_found->findItems(m_guess->text(), Qt::MatchExactly, 0).value(0);
 	if (item != 0) {
 		m_found->setCurrentItem(item);
-		m_found->scrollToItem(item, QAbstractItemView::PositionAtCenter);
+		m_found->scrollToItem(item);
 	} else {
 		m_found->setCurrentItem(nullptr);
 	}
