@@ -65,6 +65,7 @@ QString generateSolutionDe(QString string)
 	string.replace(u'Ī', 'I');
 	string.replace(u'Í', 'I');
 	string.replace(u'Ï', 'I');
+	string.replace(u'Î', 'I');
 	string.replace(u'Ł', 'L');
 	string.replace(u'Ñ', 'N');
 	string.replace(u'Ō', 'O');
