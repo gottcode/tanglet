@@ -52,6 +52,7 @@ QString generateSolutionDe(QString string)
 	string.replace(u'Ä', "AE");
 	string.replace(u'Ö', "OE");
 	string.replace(u'Ü', "UE");
+	string.replace(u'Œ', "OE");
 	string.replace(u'À', 'A');
 	string.replace(u'Á', 'A');
 	string.replace(u'Â', 'A');
@@ -62,6 +63,7 @@ QString generateSolutionDe(QString string)
 	string.replace(u'È', 'E');
 	string.replace(u'Ê', 'E');
 	string.replace(u'Ē', 'E');
+	string.replace(u'Ë', 'E');
 	string.replace(u'Ī', 'I');
 	string.replace(u'Í', 'I');
 	string.replace(u'Ï', 'I');
