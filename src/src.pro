@@ -122,7 +122,7 @@ macx {
 	appdata.files = ../icons/tanglet.appdata.xml
 	appdata.path = $$PREFIX/share/metainfo/
 
-	qm.files = ../translations/*.qm
+	qm.files = $$replace(TRANSLATIONS, .ts, .qm)
 	qm.path = $$PREFIX/share/tanglet/translations
 	qm.CONFIG += no_check_exist
 
