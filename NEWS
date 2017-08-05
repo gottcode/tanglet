@@ -1,3 +1,16 @@
+1.5.0
+-----
+* Automatically scroll found words to words matching selected letters.
+* Avoid unnecessary scrolling if item is already visible.
+* Generate word lists and dice at compile time.
+* Use HTTPS for dictionary lookups.
+* FIXED: Did not always install translations in Linux.
+* FIXED: Crash when showing words used for maximum score in allotment game.
+* FIXED: Current item in word list was not cleared with selection.
+* FIXED: Arbitrary position of missed words in subsequent games.
+* Translation updates: German.
+* Word list updates: German.
+
 1.4.0
 -----
 * Added opening game files at launch.
