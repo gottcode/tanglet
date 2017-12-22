@@ -30,7 +30,6 @@
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QSettings>
-#include <QSignalMapper>
 #include <QToolButton>
 #include <QVBoxLayout>
 
@@ -157,9 +156,6 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	area->setWidget(timers_widget);
 	area->setWidgetResizable(true);
 
-	QSignalMapper* mapper = new QSignalMapper(this);
-	connect(mapper, static_cast<void (QSignalMapper::*)(int)>(&QSignalMapper::mapped), this, &NewGameDialog::timerChosen);
-
 	QCommandLinkButton* active_timer = 0;
 	QList<TimerDescription> timers;
 	for (int i = Clock::Tanglet; i < Clock::TotalTimers; ++i) {
@@ -169,8 +165,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	for (const TimerDescription& timer : timers) {
 		QCommandLinkButton* button = new QCommandLinkButton(timer.name(), timer.description(), timers_widget);
 		button->setMinimumWidth(500);
-		connect(button, &QCommandLinkButton::clicked, mapper, static_cast<void (QSignalMapper::*)()>(&QSignalMapper::map));
-		mapper->setMapping(button, timer.id());
+		connect(button, &QCommandLinkButton::clicked, [=] { timerChosen(timer.id()); });
 		timers_layout->addWidget(button);
 
 		if (timer.id() == previous_timer) {
