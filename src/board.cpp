@@ -177,6 +177,8 @@ Board::Board(QWidget* parent)
 //-----------------------------------------------------------------------------
 
 Board::~Board() {
+	m_generator->cancel();
+
 	QSettings game;
 	if (isFinished()) {
 		// Clear current game
