@@ -1,3 +1,9 @@
+1.5.1
+-----
+* Optimized word list generation.
+* FIXED: Could not compile with Qt 5.10.
+* Word list updates: German.
+
 1.5.0
 -----
 * Automatically scroll found words to words matching selected letters.
