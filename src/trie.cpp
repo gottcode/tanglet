@@ -19,8 +19,9 @@
 
 #include "trie.h"
 
+#include <queue>
+#include <utility>
 #include <QDataStream>
-#include <QPair>
 
 //-----------------------------------------------------------------------------
 
@@ -127,12 +128,13 @@ void TrieGenerator::addWord(const QString& word, const QStringList& spellings)
 
 void TrieGenerator::run(QVector<Trie::Node>& nodes, QStringList& spellings) const
 {
-	QList< QPair<const TrieGenerator*, int> > next;
+	std::queue< std::pair<const TrieGenerator*, int> > next;
 	nodes.append(Trie::Node());
-	next.append(qMakePair(this, 0));
+	next.emplace(this, 0);
 
-	while (!next.isEmpty()) {
-		QPair<const TrieGenerator*, int> item = next.takeFirst();
+	while (!next.empty()) {
+		auto item = next.front();
+		next.pop();
 
 		const TrieGenerator* trie = item.first;
 		Trie::Node& node = nodes[item.second];
@@ -149,7 +151,7 @@ void TrieGenerator::run(QVector<Trie::Node>& nodes, QStringList& spellings) cons
 			int count = node.m_child_count;
 			for (int i = 0; i < count; ++i) {
 				nodes.append(Trie::Node());
-				next.append(qMakePair(trie, nodes.count() - 1));
+				next.emplace(trie, nodes.count() - 1);
 				trie = trie->m_next;
 			}
 		}
