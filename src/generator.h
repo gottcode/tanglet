@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012, 2017 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,8 @@
 #include <QPoint>
 #include <QStringList>
 #include <QThread>
+
+#include <atomic>
 
 class Generator : public QThread
 {
@@ -120,7 +122,7 @@ private:
 	QStringList m_letters;
 	QHash<QString, QList<QList<QPoint> > > m_solutions;
 
-	bool m_canceled;
+	std::atomic<bool> m_canceled;
 };
 
 #endif
