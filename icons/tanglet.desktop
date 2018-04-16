@@ -44,3 +44,4 @@ Terminal=false
 Type=Application
 Categories=Qt;Game;LogicGame;
 MimeType=application/x-tanglet;
+Keywords=Game;LogicGame;
