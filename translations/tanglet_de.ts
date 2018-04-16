@@ -179,7 +179,7 @@
     </message>
     <message>
         <source>Unable to read word list from file.</source>
-        <translation>Wörterliste konnte nicht aus Datei gelesen werden.</translation>
+        <translation>Wortliste konnte nicht aus Datei gelesen werden.</translation>
     </message>
 </context>
 <context>
@@ -210,7 +210,7 @@
     </message>
     <message>
         <source>Word list:</source>
-        <translation>Wörterliste:</translation>
+        <translation>Wortliste:</translation>
     </message>
     <message>
         <source>Dictionary:</source>
@@ -218,11 +218,11 @@
     </message>
     <message>
         <source>Choose Dice File</source>
-        <translation>Würfel-Datei auswählen</translation>
+        <translation>Würfeldatei auswählen</translation>
     </message>
     <message>
         <source>Choose Word List File</source>
-        <translation>Wörterlisten-Datei auswählen</translation>
+        <translation>Wortlistendatei auswählen</translation>
     </message>
 </context>
 <context>
@@ -341,7 +341,7 @@
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Wörterliste wird optimiert ...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Bitte warten&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Wortliste wird optimiert ...&lt;/p&gt;</translation>
     </message>
     <message>
         <source>&amp;Game</source>
@@ -477,11 +477,11 @@
     </message>
     <message>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
-        <translation>Englische Wörterliste basiert auf &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; von Kevin Atkinson</translation>
+        <translation>Englische Wortliste basiert auf &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; von Kevin Atkinson</translation>
     </message>
     <message>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
-        <translation>Hebräische Wörterliste basiert auf &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; von Nadav Har&apos;El und Dan Kenigsberg</translation>
+        <translation>Hebräische Wortliste basiert auf &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; von Nadav Har&apos;El und Dan Kenigsberg</translation>
     </message>
     <message>
         <source>About Hspell</source>

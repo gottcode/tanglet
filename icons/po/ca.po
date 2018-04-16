@@ -3,22 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Dianiel García <jdangarr@gmail.com>, 2018
 # Edgar Carballo <karvayoEdgar@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2018-03-23 19:50+0000\n"
-"Last-Translator: Dianiel García <jdangarr@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/gottcode/tanglet/language/"
-"es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2018-04-15 19:12+0200\n"
+"Last-Translator: Innocent De Marchi <tangram.peces@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
 msgid "Tanglet"
@@ -26,7 +25,7 @@ msgstr "Tanglet"
 
 #: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
-msgstr "Variante de un jugador de Boggle"
+msgstr "Variant d'un jugador de Boggle"
 
 #: ../tanglet.appdata.xml.in.h:3
 msgid ""
@@ -35,10 +34,10 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
-"Tanglet es un juego de buscar palabras de un sólo jugador basado en Boggle. "
-"El objeto del juego es listar tantas palabras como puedas antes de que se "
-"acabe el tiempo. Hay distintos modos que determinan con cuánto tiempo "
-"inicias, y si obtienes tiempo extra por cada palabra encontrada."
+"Tanglet és un joc de recerca de paraules per a un jugador basat en Boggle. "
+"L'objectiu del joc és llistar tantes paraula com pugueu abans de que s'acabi "
+"el temps. Hi ha distintes modalitats que determinen el temps que disposes, i "
+"si aconsegueixes temps extra per a cada paraula trobada."
 
 #: ../tanglet.appdata.xml.in.h:4
 msgid ""
@@ -48,16 +47,16 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
-"Puedes unir letras horizontalmente, verticalmente, o diagonalmente en "
-"cualquier dirección para formar una palabra, siempre y cuando las letras "
-"están contiguas en el tablero. Sin embargo, no puedes reusar una misma celda "
-"en una sola palabra. También, cada palabra debe contener al menos tres "
-"letras en un tablero normal, o cuatro letras en un tablero grande. "
+"Podeu unir lletres horitzontalment, verticalment o en diagonal en qualsevol "
+"direcció per a formar una paraula, sempre i quan les lletres estiguin "
+"contigües en el tauler. Però no podeu fer servir més d'una vegada la mateixa "
+"cel·la en una paraula. També, cada paraula ha de tenir tres lletres en el "
+"tauler normal o quatre lletres en el tauler gran."
 
 #: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
-msgstr "Juego de Encontrar Palabras"
+msgstr "Joc de Recerca de Paraules"
 
 #: ../tanglet.xml.in.h:1
 msgid "Tanglet Game File"
-msgstr "Archivo de juego Tanglet"
+msgstr "Fitxer de joc Tanglet"
