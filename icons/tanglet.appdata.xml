@@ -105,4 +105,16 @@
     <content_attribute id="money-purchasing">none</content_attribute>
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
+
+  <releases>
+    <release version="1.5.1" date="2017-12-28">
+      <description>
+        <ul>
+          <li>Optimized word list generation</li>
+          <li>FIXED: Could not compile with Qt 5.10</li>
+          <li>Word list updates: German</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
 </component>
