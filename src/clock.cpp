@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2014 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2014, 2018 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -588,7 +588,7 @@ void Clock::paintEvent(QPaintEvent* event) {
 
 	// Draw text shadow
 	QPainterPath path;
-	path.addText(93 - (fontMetrics().width(m_text) / 2), fontMetrics().ascent() + 3, font(), m_text);
+	path.addText(93 - (fontMetrics().boundingRect(m_text).width() / 2), fontMetrics().ascent() + 3, font(), m_text);
 	painter.setBrush(Qt::black);
 	painter.translate(0.6, 0.6);
 	painter.setPen(QPen(QColor(0,0,0,32), 3));

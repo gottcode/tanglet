@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2011, 2014 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2011, 2014, 2018 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -128,7 +128,7 @@ void WordCounts::updateString()
 		group.label->setText("<small>" + text + "</small>");
 		group.label->setVisible(!text.isEmpty());
 	}
-	int width = fontMetrics().width(m_show_max ? QString("%1/%2").arg(max_count).arg(max) : QString::number(max));
+	int width = fontMetrics().boundingRect(m_show_max ? QString("%1/%2").arg(max_count).arg(max) : QString::number(max)).width();
 
 	// Resize columns
 	for (int i = 0; i < 26; ++i) {

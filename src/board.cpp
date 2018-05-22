@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2014, 2015, 2017 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2014, 2015, 2017, 2018 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -371,7 +371,7 @@ void Board::gameStarted() {
 	int letter_size = 0;
 	for (const QStringList& die : m_generator->dice(m_size)) {
 		for (const QString& side : die) {
-			letter_size = std::max(letter_size, metrics.width(side));
+			letter_size = std::max(letter_size, metrics.boundingRect(side).width());
 		}
 	}
 	int cell_size = std::max(metrics.height(), letter_size) + 10;
