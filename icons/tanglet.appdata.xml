@@ -15,6 +15,7 @@
   <name xml:lang="ms">Tanglet</name>
   <name xml:lang="nl">Tanglet</name>
   <name xml:lang="pl">Tanglet</name>
+  <name xml:lang="pt">Tanglet</name>
   <name xml:lang="ro">Tanglet</name>
   <summary>Single player variant of Boggle</summary>
   <summary xml:lang="ca">Variant d'un jugador de Boggle</summary>
@@ -28,6 +29,7 @@
   <summary xml:lang="ms">Varian pemain tunggal Boggle</summary>
   <summary xml:lang="nl">Eenpersoonsversie van Boggle</summary>
   <summary xml:lang="pl">Jednoosobowa wersja gry Boggle.</summary>
+  <summary xml:lang="pt">Uma variante do jogo Parole</summary>
   <summary xml:lang="ro">Variantă de joc Boggle într-un singur jucător</summary>
 
   <description>
@@ -42,6 +44,7 @@
     <p xml:lang="ms">Tanglet merupakan permainan mencari perkataan seorang pemain berasaskan Boggle. Objektif permainan adalah untuk menyenaraikan sebanyak mungkin perkataan sebelum masa tamat. Terdapat beberapa mod pemasa yang menentukan berapakah masa mula anda, dan jika anda mendapat masa tambahan bila anda berjaya mencari perkataan.</p>
     <p xml:lang="nl">Tanglet is een eenpersoonsversie van een woordzoekspel gebaseerd op Boggle. Het doel van het spel is om zo veel mogelijk woorden op te schrijven voordat de tijd voorbij is. Er zijn verschillende tijdmodi die bepalen met hoe veel tijd je begint of wat voor een tijdbonus je krijgt als je een woord vind.</p>
     <p xml:lang="pl">Tanglet jest jednosobową grą polegająca na wyszukiwaniu słów, opartą na grze Boggle. Celem gry jest wyszukanie tak wielu słów jak to możliwe przed upływem czasu. Istnieje kilka trybów gry, które determinują to z jaką ilością czasu zaczynasz i czy uzyskujesz dodatkowy czas za znalezienie słowa.</p>
+    <p xml:lang="pt">O Tanglet é um jogo de um só jogador para encontrar palavras, baseado no jogo Parole. O objetivo do jogo é encontrar o máximo de palavras possível antes do tempo se esgotar. Existem vários modos de temporizador que determinam o tempo com que se começa e se se obtém tempo extra quando se encontra uma palavra.</p>
     <p xml:lang="ro">Tanglet este un joc de găsit cuvinte, într-un singur jucător, bazat pe Boggle. Obiectivul jocului este de a lista cît mai multe cuvinte înainte de expirarea timpului. Există mai multe moduri de temporizare care determină cu cît de mult timp începeţi, şi dacă aveţi timp suplimentar atunci cînd găsiţi un cuvînt.</p>
 
     <p>You can join letters horizontally, vertically, or diagonally in any direction to make a word, so as long as the letters are next to each other on the board. However, you can not reuse the same letter cells in a single word. Also, each word must be at least three letters on a normal board, and four letters on a large board.</p>
@@ -55,6 +58,7 @@
     <p xml:lang="ms">Anda boleh gabungkan huruf secara menegak, melintang, atau mengikut pepenjuru pada mana-mana arah untuk membentuk perkataan, selagi huruf bersebelahan diantara satu sama lain. Akan tetapi, anda tidak boleh guna sel huruf yang sama dalam satu perkataan. Selain itu, setiap perkataan mesti sekurang-kurangnya tiga huruf dalam papan biasa, dan empat huruf dalam papan besar.</p>
     <p xml:lang="nl">Je kunt letters horizontaal, verticaal of diagonaal met elkaar verbinden om een woord te maken mits de letters naast elkaar liggen op het bord. Je kunt het letterblokje niet meer dan een keer gebruiken. Verder moet ieder woord minstens 3 letters zijn op een normaal bord en 4 op een groot bord</p>
     <p xml:lang="pl">Litery możesz łączyć w słowa; pionowo, posiomo, lub po skosie, w dowolnym kierunku, dopóty dopóki litery na planszy występują obok siebie. Aczkolwiek nie możesz użyć dwa razy tej samej komórki z literą. Dodatkowo każde słowo musi się składać z co najmniej trzech liter na planszy o normalnych rozmiarach i czterech liter na dużej planszy.</p>
+    <p xml:lang="pt">Pode-se juntar letras na horizontal, vertical e diagonal em qualquer direção para formar uma palavra, desde que as letras estejam logo na casa seguinte do tabuleiro. No entanto, não se pode tornar a usar uma letra de uma casa já selecionada numa só palavra. Além disso, cada palavra tem de ter pelo menos 3 letras num tabuleiro normal, e 4 letras num tabuleiro grande.</p>
     <p xml:lang="ro">Puteţi alătura litere orizontal, vertical, sau în diagonală, în orice direcţie pentru a face un cuvînt, atîta timp cît literele sînt una lîngă alta pe tablă. Cu toate acestea, nu aveţi posibilitatea să reutilizaţi aceleaşi celule literă într-un singur cuvînt. De asemenea, fiecare cuvînt trebuie să fie de cel puţin trei litere pe o tablă obişnuită şi patru litere pe o tablă mare.</p>
   </description>
 

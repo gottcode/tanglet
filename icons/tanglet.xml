@@ -12,6 +12,7 @@
     <comment xml:lang="ms">Fail Permainan Tanglet</comment>
     <comment xml:lang="nl">Tanglet spel bestand</comment>
     <comment xml:lang="pl">Plik gry Tanglet</comment>
+    <comment xml:lang="pt">Ficheiro de Jogo Tanglet</comment>
     <comment xml:lang="ro">Fişier joc Tanglet</comment>
     <glob pattern="*.tanglet"/>
   </mime-type>
