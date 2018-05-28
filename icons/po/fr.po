@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2015-05-11 06:27+0000\n"
+"PO-Revision-Date: 2017-09-23 20:29+0000\n"
 "Last-Translator: Guillaume Gay <guillaume.gay@bigfoot.com>\n"
 "Language-Team: French (http://www.transifex.com/gottcode/tanglet/language/"
 "fr/)\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
+#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
+#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
 msgid "Single player variant of Boggle"
 msgstr "Variante de Boggle en mode simple joueur"
 
-#: ../tanglet.appdata.xml.in.h:3
+#: ../tanglet.appdata.xml.in:10
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
 "the game is to list as many words as you can before the time runs out. There "
@@ -40,7 +40,7 @@ msgstr ""
 "proposés. Ils déterminent le temps de départ et le temps supplémentaire "
 "accordé lorsqu'un mot a été trouvé. "
 
-#: ../tanglet.appdata.xml.in.h:4
+#: ../tanglet.appdata.xml.in:12
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
@@ -55,7 +55,7 @@ msgstr ""
 "outre, chaque mot doit être composé d'au moins trois lettres pour un plateau "
 "normal, et de quatre lettres pour un grand plateau."
 
-#: ../tanglet.desktop.in.h:2
+#: ../tanglet.desktop.in:4
 msgid "Word Finding Game"
 msgstr "Jeu de recherche de mots"
 

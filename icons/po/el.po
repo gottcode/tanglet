@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
+#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
+#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
 msgid "Single player variant of Boggle"
 msgstr "Single player παραλλαγή του Boggle"
 
-#: ../tanglet.appdata.xml.in.h:3
+#: ../tanglet.appdata.xml.in:10
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
 "the game is to list as many words as you can before the time runs out. There "
@@ -40,7 +40,7 @@ msgstr ""
 "χρονοδιακόπτη που καθορίζουν με πόσο χρόνο μπορείτε να ξεκινήσετε  και αν "
 "μπορείτε να πάρετε επιπλέον χρόνο όταν βρείτε μια λέξη."
 
-#: ../tanglet.appdata.xml.in.h:4
+#: ../tanglet.appdata.xml.in:12
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
@@ -54,7 +54,7 @@ msgstr ""
 "κάθε λέξη πρέπει να αποτελείται από τουλάχιστον τρία γράμματα σε έναν μικρό "
 "και τέσσερα γράμματα σε ένα μεγάλο πίνακα."
 
-#: ../tanglet.desktop.in.h:2
+#: ../tanglet.desktop.in:4
 msgid "Word Finding Game"
 msgstr "Παιχνίδι έυρεσης λέξεων"
 

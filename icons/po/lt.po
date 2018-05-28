@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2016-04-15 21:56+0000\n"
+"PO-Revision-Date: 2017-09-21 13:56+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/gottcode/tanglet/"
 "language/lt/)\n"
@@ -20,15 +20,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
+#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
+#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
 msgid "Single player variant of Boggle"
 msgstr "Boggle žaidimo variantas vienam žaidėjui"
 
-#: ../tanglet.appdata.xml.in.h:3
+#: ../tanglet.appdata.xml.in:10
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
 "the game is to list as many words as you can before the time runs out. There "
@@ -40,7 +40,7 @@ msgstr ""
 "laikmačio veiksenos, kurios nustato, kiek laiko duota žaidimo pradžioje, ir "
 "ar bus pridedamas laikas, esant teisingam spėjimui."
 
-#: ../tanglet.appdata.xml.in.h:4
+#: ../tanglet.appdata.xml.in:12
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
@@ -54,7 +54,7 @@ msgstr ""
 "normalioje plokštėje kiekviename žodyje turi būti bent trys raidės, o "
 "didelėje plokštėje bent keturios raidės."
 
-#: ../tanglet.desktop.in.h:2
+#: ../tanglet.desktop.in:4
 msgid "Word Finding Game"
 msgstr "Žodžių ieškojimo žaidimas"
 
