@@ -111,12 +111,17 @@
   </content_rating>
 
   <releases>
-    <release version="1.5.1" date="2017-12-28">
+    <release version="1.5.2" date="2018-05-29">
       <description>
         <ul>
-          <li>Optimized word list generation</li>
-          <li>FIXED: Could not compile with Qt 5.10</li>
-          <li>Word list updates: German</li>
+          <li>FIXED: Race condition when checking for canceled games</li>
+          <li>FIXED: Crash if window closed while optimizing word list</li>
+          <li>Replaced deprecated code</li>
+          <li>Extra warnings only shown in debug build</li>
+          <li>Improved Linux deployment</li>
+          <li>Improved macOS deployment</li>
+          <li>Improved Windows deployment</li>
+          <li>Translation updates: Portuguese</li>
         </ul>
       </description>
     </release>

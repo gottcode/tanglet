@@ -1,3 +1,14 @@
+1.5.2
+-----
+* FIXED: Race condition when checking for canceled games.
+* FIXED: Crash if window closed while optimizing word list.
+* Replaced deprecated code.
+* Extra warnings only shown in debug build.
+* Improved Linux deployment.
+* Improved macOS deployment.
+* Improved Windows deployment.
+* Translation updates: Portuguese.
+
 1.5.1
 -----
 * Optimized word list generation.
