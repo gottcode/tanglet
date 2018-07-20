@@ -111,6 +111,13 @@
   </content_rating>
 
   <releases>
+    <release version="1.5.3" date="2018-07-20">
+      <description>
+        <ul>
+          <li>FIXED: Automatic high DPI support</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.5.2" date="2018-05-29">
       <description>
         <ul>
