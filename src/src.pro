@@ -94,7 +94,9 @@ macx {
 
 	QMAKE_BUNDLE_DATA += GAME_DATA
 } else:win32 {
-	RC_FILE = ../icons/icon.rc
+	RC_ICONS = ../icons/tanglet.ico
+	QMAKE_TARGET_DESCRIPTION = "Word finding game"
+	QMAKE_TARGET_COPYRIGHT = "Copyright (C) 2018 Graeme Gott"
 } else:unix {
 	RESOURCES += ../icons/icon.qrc
 
