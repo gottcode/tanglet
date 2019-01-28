@@ -64,7 +64,7 @@ Solver::Solver(const Trie& words, int size, int minimum)
 			cell.position = QPoint(c,r);
 			cell.checked = false;
 
-			QList<QPoint> n = neighbors.at(index);
+			const auto& n = neighbors.at(index);
 			for (int i = 0; i < n.count(); ++i) {
 				const QPoint& neighbor = n.at(i);
 				cell.neighbors.append(&m_cells[neighbor.x()][neighbor.y()]);
