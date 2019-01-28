@@ -138,7 +138,7 @@ void Letter::setColor(const QColor& color) {
 	QColor darker = color.darker(106);
 	QColor darkest = color.darker(160);
 
-	int height = boundingRect().height();
+	auto height = boundingRect().height();
 
 	QLinearGradient sides(0, 0, 0, height);
 	sides.setColorAt(0, darker);
@@ -150,7 +150,7 @@ void Letter::setColor(const QColor& color) {
 	face_border.setColorAt(1, darker);
 	m_face->setPen(QPen(face_border, 1));
 
-	int radius = height / 2;
+	auto radius = height / 2;
 	QRadialGradient face(radius, radius, radius);
 	face.setColorAt(0, color);
 	face.setColorAt(0.5, color);
