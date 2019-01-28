@@ -43,6 +43,7 @@ int main(int argc, char** argv) {
 	app.setOrganizationName("GottCode");
 #if !defined(Q_OS_WIN) && !defined(Q_OS_MAC)
 	app.setWindowIcon(QIcon::fromTheme("tanglet", QIcon(":/tanglet.png")));
+	QGuiApplication::setDesktopFileName("tanglet");
 #endif
 	app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
