@@ -45,6 +45,8 @@ int main(int argc, char** argv) {
 	app.setWindowIcon(QIcon::fromTheme("tanglet", QIcon(":/tanglet.png")));
 #if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
 	QGuiApplication::setDesktopFileName("tanglet");
+#else
+	app.setProperty("desktopFileName", "tanglet");
 #endif
 #endif
 	app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
