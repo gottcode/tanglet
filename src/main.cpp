@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2018 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009, 2010, 2011, 2012, 2014, 2015, 2018, 2019 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 #include <QSettings>
 
 int main(int argc, char** argv) {
-#if !defined(Q_OS_MAC) && (QT_VERSION >= QT_VERSION_CHECK(5,6,0))
+#if !defined(Q_OS_MAC)
 	if (!qEnvironmentVariableIsSet("QT_DEVICE_PIXEL_RATIO")
 			&& !qEnvironmentVariableIsSet("QT_AUTO_SCREEN_SCALE_FACTOR")
 			&& !qEnvironmentVariableIsSet("QT_SCALE_FACTOR")
@@ -43,11 +43,7 @@ int main(int argc, char** argv) {
 	app.setOrganizationName("GottCode");
 #if !defined(Q_OS_WIN) && !defined(Q_OS_MAC)
 	app.setWindowIcon(QIcon::fromTheme("tanglet", QIcon(":/tanglet.png")));
-#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
-	QGuiApplication::setDesktopFileName("tanglet");
-#else
-	app.setProperty("desktopFileName", "tanglet");
-#endif
+	app.setDesktopFileName("tanglet");
 #endif
 	app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
