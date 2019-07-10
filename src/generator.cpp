@@ -67,8 +67,13 @@ namespace
 			} else {
 				int index1 = randomInt(m_dice.count());
 				int index2 = randomInt(m_dice.count());
+#if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
+				m_dice.swapItemsAt(index1, index2);
+				m_letters.swapItemsAt(index1, index2);
+#else
 				m_dice.swap(index1, index2);
 				m_letters.swap(index1, index2);
+#endif
 			}
 			solve();
 		}

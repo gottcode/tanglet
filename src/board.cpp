@@ -84,7 +84,7 @@ Board::Board(QWidget* parent)
 	connect(m_max_score_details, &QToolButton::clicked, this, &Board::showMaximumWords);
 
 	QHBoxLayout* score_layout = new QHBoxLayout;
-	score_layout->setMargin(0);
+	score_layout->setContentsMargins(0, 0, 0, 0);
 	score_layout->addWidget(m_score);
 	score_layout->addWidget(m_max_score_details);
 
@@ -148,7 +148,7 @@ Board::Board(QWidget* parent)
 	QWidget* found_tab = new QWidget(this);
 	QVBoxLayout* found_layout = new QVBoxLayout(found_tab);
 	found_layout->setSpacing(0);
-	found_layout->setMargin(0);
+	found_layout->setContentsMargins(0, 0, 0, 0);
 	found_layout->addLayout(guess_layout);
 	found_layout->addWidget(m_found);
 

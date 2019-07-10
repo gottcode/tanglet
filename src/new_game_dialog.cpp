@@ -112,7 +112,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	}
 
 	QHBoxLayout* size_buttons = new QHBoxLayout;
-	size_buttons->setMargin(0);
+	size_buttons->setContentsMargins(0, 0, 0, 0);
 	size_buttons->addStretch();
 	size_buttons->addWidget(m_normal_size);
 	size_buttons->addWidget(m_large_size);
