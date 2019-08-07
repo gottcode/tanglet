@@ -601,11 +601,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeu de recherche de mots</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un fichier de jeu à lire.</translation>
     </message>
 </context>
 </TS>

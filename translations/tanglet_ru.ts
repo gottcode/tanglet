@@ -1,65 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="el" sourcelanguage="en">
+<TS version="2.1" language="ru" sourcelanguage="en">
 <context>
     <name>Board</name>
     <message>
         <source>Details</source>
-        <translation>Λεπτομέρειες</translation>
+        <translation>Подробности</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>Εκκαθάριση</translation>
+        <translation>Очистить</translation>
     </message>
     <message>
         <source>Guess</source>
-        <translation>Εικασία</translation>
+        <translation>Угадать</translation>
     </message>
     <message>
         <source>Found</source>
-        <translation>Βρέθηκαν</translation>
+        <translation>Найдено</translation>
     </message>
     <message>
         <source>Normal</source>
-        <translation>Κανονικά</translation>
+        <translation>Нормально</translation>
     </message>
     <message>
         <source>Large</source>
-        <translation>Μεγάλα</translation>
+        <translation>Большое</translation>
     </message>
     <message>
         <source>Missed</source>
-        <translation>Ελλειπής</translation>
+        <translation>Пропустить</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation>Σφάλμα</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <source>Success</source>
-        <translation>Επιτυχία</translation>
+        <translation>Победа</translation>
     </message>
     <message>
         <source>Game Over</source>
-        <translation>Το παιχνίδι τελείωσε</translation>
+        <translation>Игра окончена</translation>
     </message>
     <message numerus="yes">
         <source>%1 of %n point(s)</source>
-        <translation>
-            <numerusform>%1 of %n πόντοι</numerusform>
-            <numerusform>%1 από %n πόντοι</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>3 of %n point(s)</source>
-        <translation>
-            <numerusform>3 of %n πόντοι</numerusform>
-            <numerusform>3 από %n πόντοι</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>2 of %n point(s)</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -69,11 +72,13 @@
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>0 of %n point(s)</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -83,11 +88,12 @@
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <source>The maximum score was calculated from the following thirty words:</source>
-        <translation>Το παιχνίδι που συγκέντρωσε τη μέγιστη βαθμολογία υπολογίζεται απ&apos; τις ακόλουθες τριάντα λέξεις:</translation>
+        <translation>Максимальная оценка была рассчитана из следующих тридцати слов:</translation>
     </message>
 </context>
 <context>
@@ -101,6 +107,7 @@
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -112,6 +119,7 @@
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -120,163 +128,164 @@
     </message>
     <message>
         <source>Classic</source>
-        <translation>Κλασσικό</translation>
+        <translation>Классический</translation>
     </message>
     <message>
         <source>Refill</source>
-        <translation>Αναπλήρωση</translation>
+        <translation>Пополнение</translation>
     </message>
     <message>
         <source>Stamina</source>
-        <translation>Σθένος</translation>
+        <translation>Выносливость</translation>
     </message>
     <message>
         <source>Strikeout</source>
-        <translation>Εξάλειψη</translation>
+        <translation>Выбывание</translation>
     </message>
     <message>
         <source>Allotment</source>
-        <translation>Μερίδιο</translation>
+        <translation>Распределение</translation>
     </message>
     <message>
         <source>Discipline</source>
-        <translation>Πειθαρχία</translation>
+        <translation>Тренировочный</translation>
     </message>
     <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
-        <translation>Αντίστροφη μέτρηση 30&apos;&apos; κι αύξηση σε περίπτωση σωστής πρόβλεψης.</translation>
+        <translation>Отсчитывает 30 секунд и увеличивается, если отгадано правильно</translation>
     </message>
     <message>
         <source>Counts down from 3 minutes.</source>
-        <translation>Αντίστροφη μέτρηση 3&apos;.</translation>
+        <translation>Отсчет от 3 минут.</translation>
     </message>
     <message>
         <source>Counts down from 30 seconds and refills on correct guesses.</source>
-        <translation>Αντίστροφη μέτρηση 30&apos;&apos; κι αναπλήρωση σε περίπτωση σωστής πρόβλεψης.</translation>
+        <translation>Отсчитывает 30 секунд и добавляет к правильно отгаданным</translation>
     </message>
     <message>
         <source>Counts down from 45 seconds and pauses on correct guesses.</source>
-        <translation>Αντίστροφη μέτρηση  45&apos;&apos; και παύση  σε περίπτωση σωστής πρόβλεψης.</translation>
+        <translation>Отсчитывает 45 секунд и делает паузу на правильные отгадки.</translation>
     </message>
     <message>
         <source>Game ends after 3 incorrect guesses.</source>
-        <translation>Λήξη παιχνιδιού, μετά από 3 λάθος προβλέψεις.</translation>
+        <translation>Игра заканчивается после 3 неверных отгадках.</translation>
     </message>
     <message>
         <source>Game ends after 30 guesses.</source>
-        <translation>Λήξη παιχνιδιού, μετά από 30 προβλέψεις.</translation>
+        <translation>Игра заканчивается после 30 отгадок.</translation>
     </message>
     <message>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
-        <translation>Αντίστροφη μέτρηση 30&apos;&apos; κι αύξηση ή μείωση, μετά τη πρόβλεψη.</translation>
+        <translation>Отсчитывает 30 секунд и увеличивается или уменьшается по отгадкам.</translation>
     </message>
 </context>
 <context>
     <name>Generator</name>
     <message>
         <source>Unable to read dice from file.</source>
-        <translation>Αδυναμία ανάγνωσης ζαριού, από αρχείο.</translation>
+        <translation>Невозможно прочитать кости из файла.</translation>
     </message>
     <message>
         <source>Unable to read word list from file.</source>
-        <translation>Αδυναμία ανάγνωσης καταλόγου λέξεων, από αρχείο.</translation>
+        <translation>Невозможно прочитать список слов из файла.</translation>
     </message>
 </context>
 <context>
     <name>LanguageDialog</name>
     <message>
         <source>Board Language</source>
-        <translation>Γλώσσα Ταμπλό</translation>
+        <translation>Язык поля</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation>Συμπεριφορά</translation>
+        <translation>Изменить</translation>
     </message>
     <message>
         <source>Choose...</source>
-        <translation>Επιλογή...</translation>
+        <translation>Выбрать...</translation>
     </message>
     <message>
         <source>&lt;b&gt;Note:&lt;/b&gt; These settings will take effect when you start a new game.</source>
-        <translation>&lt;b&gt;Σημείωση:&lt;/b&gt; Οι ρυθμίσεις θα εφαρμοστούν μετά την επανέναρξη του παιχνιδιού.</translation>
+        <translation>&lt;b&gt;Примечание:&lt;/b&gt; Эти настройки вступят в силу при запуске новой игры.</translation>
     </message>
     <message>
         <source>Language:</source>
-        <translation>Γλώσσα:</translation>
+        <translation>Язык:</translation>
     </message>
     <message>
         <source>Dice:</source>
-        <translation>Ζάρι:</translation>
+        <translation>Кость:</translation>
     </message>
     <message>
         <source>Word list:</source>
-        <translation>Κατάλογος λέξεων:</translation>
+        <translation>Список слов:</translation>
     </message>
     <message>
         <source>Dictionary:</source>
-        <translation>Λεξικό:</translation>
+        <translation>Словарь:</translation>
     </message>
     <message>
         <source>Choose Dice File</source>
-        <translation>Επιλογή Αρχείου Ζαριού</translation>
+        <translation>Выбрать кости</translation>
     </message>
     <message>
         <source>Choose Word List File</source>
-        <translation>Επιλογή Αρχείου Καταλόγου Λέξεων</translation>
+        <translation>Выбрать файл со Списком слов</translation>
     </message>
 </context>
 <context>
     <name>LocaleDialog</name>
     <message>
         <source>Select application language:</source>
-        <translation>Επιλογή γλώσσας εφαρμογής:</translation>
+        <translation>Выберите язык приложения:</translation>
     </message>
     <message>
         <source>&lt;System Language&gt;</source>
-        <translation>&lt;Γλώσσα Συστήματος&gt;</translation>
+        <translation>&lt;System Language&gt;</translation>
     </message>
     <message>
         <source>Note</source>
-        <translation>Σημείωση</translation>
+        <translation>Заметка</translation>
     </message>
     <message>
         <source>Please restart this application for the change in language to take effect.</source>
-        <translation>Παρακαλώ επανεκκινήστε την εφαρμογή, για να εφαρμοστούν οι αλλαγές.</translation>
+        <translation>Пожалуйста, перезапустите приложение, чтобы изменение языка вступило в силу.</translation>
     </message>
 </context>
 <context>
     <name>NewGameDialog</name>
     <message>
         <source>New Game</source>
-        <translation>Νέο Παιχνίδι</translation>
+        <translation>Новая Игра</translation>
     </message>
     <message>
         <source>Amount of Words:</source>
-        <translation>Αριθμός Λέξεων:</translation>
+        <translation>Количество слов:</translation>
     </message>
     <message>
         <source>Minimum Word Length:</source>
-        <translation>Ελάχιστο Μήκος Λέξης</translation>
+        <translation>Минимальная длина слова:</translation>
     </message>
     <message>
         <source>Low</source>
-        <translation>Χαμηλό</translation>
+        <translation>Легкий</translation>
     </message>
     <message>
         <source>Medium</source>
-        <translation>Μέτριο</translation>
+        <translation>Средний</translation>
     </message>
     <message>
         <source>High</source>
-        <translation>Ψηλό</translation>
+        <translation>Сложный</translation>
     </message>
     <message>
         <source>Random</source>
-        <translation>Τυχαίο</translation>
+        <translation>Случайный</translation>
     </message>
     <message numerus="yes">
         <source>%n letter(s)</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -286,23 +295,23 @@
     <name>ScoresDialog</name>
     <message>
         <source>High Scores</source>
-        <translation>Μεγαλύτερες Βαθμολογίες</translation>
+        <translation>Лучшие результаты</translation>
     </message>
     <message>
         <source>&lt;b&gt;Name&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Όνομα&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Имя&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Score&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Βαθμολογία&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Результат&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Date&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Ημερομηνία&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Дата&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Χρόνος&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;Таймер&lt;/b&gt;</translation>
     </message>
     <message>
         <source>#%1</source>
@@ -310,11 +319,11 @@
     </message>
     <message>
         <source>Question</source>
-        <translation>Ερώτηση</translation>
+        <translation>Вопрос</translation>
     </message>
     <message>
         <source>Clear high scores?</source>
-        <translation>Καθαρισμός Μεγαλύτερων Βαθμολογιών</translation>
+        <translation>Очистить Лучшие результаты?</translation>
     </message>
 </context>
 <context>
@@ -325,31 +334,31 @@
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Paused&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Click to resume playing.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Παύση&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Κλικ για συνέχεια παιχνιδιού.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Пауза&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Нажмите, чтобы возобновить игру.&lt;/p&gt;</translation>
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Loading game...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Παρακαλώ περιμένετε&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Φόρτωση παιχνιδιού...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Пожалуйста, подождите&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Загрузка игры...&lt;/p&gt;</translation>
     </message>
     <message>
         <source>Click to start a new game.</source>
-        <translation>Κλικ για έναρξη νέου παιχνιδιού.</translation>
+        <translation>Нажмите, чтобы начать новую игру.</translation>
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Generating a new board...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Παρακαλώ περιμένετε&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Σχεδιασμός νέου ταμπλό...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Пожалуйста, подождите&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Создание нового поля...&lt;/p&gt;</translation>
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Please wait&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Optimizing word list...&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Παρακαλώ περιμένετε&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Βελτιστοποίηση καταλόγου λέξεων ...&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Пожалуйста, подождите&lt;/big&gt;&lt;/b&gt;&lt;br&gt;Оптимизация списка слов...&lt;/p&gt;</translation>
     </message>
     <message>
         <source>&amp;Game</source>
-        <translation>&amp;Παιχνίδι</translation>
+        <translation>&amp;Игра</translation>
     </message>
     <message>
         <source>New &amp;Game...</source>
-        <translation>Νέο &amp;Παιχνίδι...</translation>
+        <translation>Новая &amp;Игра...</translation>
     </message>
     <message>
         <source>Ctrl+Shift+N</source>
@@ -357,23 +366,23 @@
     </message>
     <message>
         <source>&amp;New Roll</source>
-        <translation>&amp;Νέο ρίξιμο</translation>
+        <translation>&amp;Заново</translation>
     </message>
     <message>
         <source>&amp;Choose...</source>
-        <translation>&amp;Επιλογή...</translation>
+        <translation>&amp;Выбрать...</translation>
     </message>
     <message>
         <source>&amp;Share...</source>
-        <translation>&amp;Μοίρασμα...</translation>
+        <translation>&amp;Поделиться...</translation>
     </message>
     <message>
         <source>&amp;End</source>
-        <translation>&amp;Τέλος</translation>
+        <translation>&amp;Конец</translation>
     </message>
     <message>
         <source>&amp;Pause</source>
-        <translation>&amp;Παύση</translation>
+        <translation>&amp;Пауза</translation>
     </message>
     <message>
         <source>Ctrl+P</source>
@@ -381,15 +390,15 @@
     </message>
     <message>
         <source>&amp;Details</source>
-        <translation>&amp;Λεπτομέρειες</translation>
+        <translation>&amp;Детали</translation>
     </message>
     <message>
         <source>&amp;High Scores</source>
-        <translation>&amp;Μεγαλύτερες Βαθμολογίες</translation>
+        <translation>&amp;Лучшие результаты</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation>&amp;Εγκατάλειψη</translation>
+        <translation>&amp;Выход</translation>
     </message>
     <message>
         <source>Ctrl+Q</source>
@@ -397,67 +406,67 @@
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;Ρυθμίσεις</translation>
+        <translation>&amp;Настройки</translation>
     </message>
     <message>
         <source>Show &amp;Maximum Score</source>
-        <translation>Προβολή &amp;Μεγαλύτερων Βαθμολογιών</translation>
+        <translation>Показать &amp;Максимальный счет</translation>
     </message>
     <message>
         <source>&amp;Never</source>
-        <translation>&amp;Ποτέ</translation>
+        <translation>&amp;Никогда</translation>
     </message>
     <message>
         <source>&amp;End Of Game</source>
-        <translation>&amp;Τέλος Παιχνιδιού</translation>
+        <translation>&amp;Конец игры</translation>
     </message>
     <message>
         <source>&amp;Always</source>
-        <translation>&amp;Πάντα</translation>
+        <translation>&amp;Всегда</translation>
     </message>
     <message>
         <source>Show Missed &amp;Words</source>
-        <translation>Προβολή Παραληφθέντων &amp;Λέξεων</translation>
+        <translation>Показать пропущенные &amp;Слова</translation>
     </message>
     <message>
         <source>Show Word &amp;Counts</source>
-        <translation>Προβολή Μετρητή &amp;Λέξεων</translation>
+        <translation>Показать слово &amp;Счет</translation>
     </message>
     <message>
         <source>&amp;Board Language...</source>
-        <translation>&amp;Γλώσσα Ταμπλό...</translation>
+        <translation>&amp;Язык Доски...</translation>
     </message>
     <message>
         <source>Application &amp;Language...</source>
-        <translation>Γλώσσα &amp;Εφαρμογής</translation>
+        <translation>Приложение &amp;Язык..</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Βοήθεια</translation>
+        <translation>&amp;Помощь</translation>
     </message>
     <message>
         <source>&amp;Controls</source>
-        <translation>&amp;Έλεγχοι</translation>
+        <translation>&amp;Управление</translation>
     </message>
     <message>
         <source>&amp;About</source>
-        <translation>&amp;Σχετικά</translation>
+        <translation>&amp;Информация</translation>
     </message>
     <message>
         <source>About &amp;Hspell</source>
-        <translation>Σχετικά &amp;με το HSpell</translation>
+        <translation>О &amp;Hspell</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
-        <translation>Σχετικά &amp;με το Qt</translation>
+        <translation>О &amp;Qt</translation>
     </message>
     <message>
         <source>About &amp;SCOWL</source>
-        <translation>Σχετικά &amp;με το SCOWL</translation>
+        <translation>О &amp;SCOWL</translation>
     </message>
     <message>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
-        <translation>Συγγραφέας &amp;δικαιώματα; 2009-%1 Graeme Gott</translation>
+        <translation>Copyright &amp;copy; 2009-%1 Graeme Gott</translation>
     </message>
     <message>
         <source>Tanglet %1</source>
@@ -465,114 +474,114 @@
     </message>
     <message>
         <source>About</source>
-        <translation>Σχετικά</translation>
+        <translation>О приложении</translation>
     </message>
     <message>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
-        <translation>Μια παραλλαγή για ένα παίχτη, του &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</translation>
+        <translation>Однопользовательский вариант &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Боггл&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Released under the &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; license</source>
-        <translation>Έκδοση υπό &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; άδεια</translation>
+        <translation>Релиз представлен на &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;GPL 3&lt;/a&gt; лицензии</translation>
     </message>
     <message>
         <source>English word list is based on &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; by Kevin Atkinson</source>
-        <translation>Ο Αγγλικός κατάλογος λέξεων, βασίστηκε στο &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; του Kevin Atkinson</translation>
+        <translation>Список слов на Английском основан на &lt;a href=&quot;http://wordlist.sourceforge.net/&quot;&gt;SCOWL&lt;/a&gt; от Kevin Atkinson</translation>
     </message>
     <message>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
-        <translation>Ο Εβραϊκός κατάλογος λέξεων, βασίστηκε στο &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; των Nadav Har&apos;El και Dan Kenigsberg</translation>
+        <translation>Список слов на Иврите основан на &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; от Nadav Har&apos;El и Dan Kenigsberg</translation>
     </message>
     <message>
         <source>About Hspell</source>
-        <translation>Σχετικά με το Hspell</translation>
+        <translation>О Hspell</translation>
     </message>
     <message>
         <source>About SCOWL</source>
-        <translation>Σχετικά με το SCOWL</translation>
+        <translation>О SCOWL</translation>
     </message>
     <message>
         <source>Import Game</source>
-        <translation>Εισαγωγή παιχνιδιού</translation>
+        <translation>Выбрать Игру</translation>
     </message>
     <message>
         <source>Tanglet Games (*.tanglet)</source>
-        <translation>Παιχνίδια Tanglet (*.tanglet)</translation>
+        <translation>Игры Tanglet (*.tanglet)</translation>
     </message>
     <message>
         <source>Unable to start requested game.</source>
-        <translation>Αδυναμία έναρξης του ζητουμένου παιχνιδιού.</translation>
+        <translation>Невозможно запустить запрошенную игру.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation>Σφάλμα</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <source>Export Game</source>
-        <translation>Εξαγωγή παιχνιδιού</translation>
+        <translation>Сохранить Игру</translation>
     </message>
     <message>
         <source>Question</source>
-        <translation>Ερώτηση</translation>
+        <translation>Вопрос</translation>
     </message>
     <message>
         <source>End the current game?</source>
-        <translation>Λήξη παιχνιδιού;</translation>
+        <translation>Завершить текущую игру?</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>Λεπτομέρειες</translation>
+        <translation>Детали</translation>
     </message>
     <message>
         <source>Board Size:</source>
-        <translation>Μέγεθος Ταμπλό:</translation>
+        <translation>Размер поля:</translation>
     </message>
     <message>
         <source>Normal</source>
-        <translation>Κανονικό</translation>
+        <translation>Нормальный</translation>
     </message>
     <message>
         <source>Large</source>
-        <translation>Μεγάλο</translation>
+        <translation>Большой</translation>
     </message>
     <message>
         <source>Word Density:</source>
-        <translation>Πυκνότητα Λέξης:</translation>
+        <translation>Количество слов:</translation>
     </message>
     <message>
         <source>Word Length:</source>
-        <translation>Μήκος Λέξης:</translation>
+        <translation>Длина слов:</translation>
     </message>
     <message>
         <source>%1 or more letters</source>
-        <translation>%1 ή περισσότερα γράμματα</translation>
+        <translation>%1 или больше символов</translation>
     </message>
     <message>
         <source>Game Type:</source>
-        <translation>Τύπος Παιχνιδιού:</translation>
+        <translation>Тип игры:</translation>
     </message>
     <message>
         <source>Description:</source>
-        <translation>Περιγραφή:</translation>
+        <translation>Описание:</translation>
     </message>
     <message>
         <source>Controls</source>
-        <translation>Έλεγχοι:</translation>
+        <translation>Управление</translation>
     </message>
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Παιχνίδι Ποντικιού:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Επιλέξτε λέξη:&lt;/b&gt; Κλικ στα γράμματα της λέξης.&lt;br&gt;&lt;b&gt;Κάντε μια πρόβλεψη:&lt;/b&gt; Κλικ στο τελευταίο επιλεγμένο γράμμα.&lt;br&gt;&lt;b&gt;Διαγράψτε γράμματα:&lt;/b&gt;Κλικ σε προηγουμένως επιλεγμέν γράμμα.&lt;br&gt;&lt;b&gt;Καθαρισμός λέξης:&lt;/b&gt;Διπλό κλικ στο πρώτο επιλεγμένο γράμμα.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Παιχνίδι Πληκτρολογίου:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Επιλέξτε λέξη:&lt;/b&gt; Πληκτρολογήστε τα γράμματα της λέξης.&lt;br&gt;&lt;b&gt;Κάντε μια πρόβλεψη:&lt;/b&gt; Πατήστε Enter.&lt;br&gt;&lt;b&gt;Καθαρισμός λέξης:&lt;/b&gt; Πατήστε Ctrl+Backspace.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Игра мышкой:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Выберите слово:&lt;/b&gt; Нажмите на буквы слова.&lt;br&gt;&lt;b&gt;Угадать:&lt;/b&gt; Нажмите на последнюю выбранную букву.&lt;br&gt;&lt;b&gt;Стереть буквы:&lt;/b&gt; Нажмите на ранее выбранную букву.&lt;br&gt;&lt;b&gt;Очистить слово:&lt;/b&gt; Нажмите дважды на первую выбранную букву.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Игра на клавиатуре:&lt;/b&gt;&lt;br&gt;&lt;b&gt;Выберите слово:&lt;/b&gt; Введите буквы слова.&lt;br&gt;&lt;b&gt;Угадать:&lt;/b&gt; Нажмите Enter.&lt;br&gt;&lt;b&gt;Очистить слово:&lt;/b&gt; Нажмите Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
     <name>WordCounts</name>
     <message>
         <source>Letters:</source>
-        <translation>Γράμματα:</translation>
+        <translation>Буквы:</translation>
     </message>
     <message>
         <source>Found:</source>
-        <translation>Βρέθηκαν:</translation>
+        <translation>Найти:</translation>
     </message>
     <message>
         <source>%1&lt;br&gt;&lt;b&gt;%2&lt;/b&gt;</source>
@@ -594,6 +603,7 @@
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -601,11 +611,11 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation>Παιχνίδι εύρεσης λέξεων</translation>
+        <translation>Игра в поиск слов</translation>
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation>Αρχείο παιχνιδιού.</translation>
+        <translation>Файл игры.</translation>
     </message>
 </context>
 </TS>

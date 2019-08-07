@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Graeme Gott
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Виктор Ерухин <official159ru@mail.ru>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Tanglet\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-07 13:46+0000\n"
+"PO-Revision-Date: 2019-04-27 16:55+0000\n"
+"Last-Translator: Виктор Ерухин <official159ru@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.com/gottcode/tanglet/language/"
+"ru/)\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
+msgid "Tanglet"
+msgstr "Tanglet"
+
+#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
+msgid "Single player variant of Boggle"
+msgstr "Вариант игры в Боггл"
+
+#: ../tanglet.appdata.xml.in:10
+msgid ""
+"Tanglet is a single player word finding game based on Boggle. The object of "
+"the game is to list as many words as you can before the time runs out. There "
+"are several timer modes that determine how much time you start with, and if "
+"you get extra time when you find a word."
+msgstr ""
+"Tanglet - игра для поиска слов для одного игрока, основанная на Боггл. Цель "
+"игры - перечислить как можно больше слов, прежде чем истечет время. Есть "
+"несколько режимов таймера, которые определяют ваш ход, и ваше дополнительное "
+"время, когда вы находите слово."
+
+#: ../tanglet.appdata.xml.in:12
+msgid ""
+"You can join letters horizontally, vertically, or diagonally in any "
+"direction to make a word, so as long as the letters are next to each other "
+"on the board. However, you can not reuse the same letter cells in a single "
+"word. Also, each word must be at least three letters on a normal board, and "
+"four letters on a large board."
+msgstr ""
+"Вы можете соединять буквы по горизонтали, вертикали или диагонали в любом "
+"направлении, чтобы составить слово, если буквы находятся рядом друг с другом "
+"на доске. Однако вы не можете повторно использовать одинаковые буквенные "
+"ячейки в одном слове. Кроме того, каждое слово должно содержать не менее "
+"трех букв на обычной доске и четырех букв на большой доске."
+
+#: ../tanglet.desktop.in:4
+msgid "Word Finding Game"
+msgstr "Игра в поиск слов"
+
+#: ../tanglet.xml.in.h:1
+msgid "Tanglet Game File"
+msgstr "Файл Игры Tanglet"
