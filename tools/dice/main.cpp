@@ -55,6 +55,7 @@ namespace std
 		}
 	};
 
+#if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
 	template <>
 	struct hash<QString>
 	{
@@ -63,6 +64,7 @@ namespace std
 			return qHash(k);
 		}
 	};
+#endif
 }
 
 //-----------------------------------------------------------------------------
