@@ -1,3 +1,9 @@
+1.5.5
+-----
+* FIXED: Compile failure with Qt 5.14
+* Replaced deprecated code.
+* Updated German word list.
+
 1.5.4
 -----
 * FIXED: Window icon didn't work in Wayland.
