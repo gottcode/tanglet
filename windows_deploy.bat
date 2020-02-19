@@ -8,7 +8,6 @@ SET VERSION=1.5.5
 ECHO Copying executable
 MKDIR %APP%
 COPY %APP%.exe %APP% >nul
-strip %APP%\%APP%.exe
 
 ECHO Copying data
 MKDIR %APP%\data
@@ -20,7 +19,7 @@ MKDIR %TRANSLATIONS%
 COPY translations\*.qm %TRANSLATIONS% >nul
 
 ECHO Copying Qt
-%QTDIR%\bin\windeployqt.exe --verbose 0 --release --no-angle --no-opengl-sw --no-svg %APP%\%APP%.exe
+%QTDIR%\bin\windeployqt.exe --verbose 0 --no-angle --no-opengl-sw --no-svg %APP%\%APP%.exe
 RMDIR /S /Q %APP%\imageformats
 
 ECHO Creating ReadMe
