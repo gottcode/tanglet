@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# albanobattistella <albano_battistella@hotmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2015-05-07 13:59+0000\n"
-"Last-Translator: Graeme Gott <graeme@gottcode.org>\n"
+"PO-Revision-Date: 2020-03-29 07:55+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/gottcode/tanglet/"
 "language/it_IT/)\n"
 "Language: it\n"
@@ -20,11 +21,11 @@ msgstr ""
 
 #: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
 msgid "Tanglet"
-msgstr ""
+msgstr "Tanglet"
 
 #: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
 msgid "Single player variant of Boggle"
-msgstr ""
+msgstr "Variante per giocatore singolo di Boggle"
 
 #: ../tanglet.appdata.xml.in:10
 msgid ""
@@ -33,6 +34,10 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet è un gioco per trovare parole per giocatore singolo basato su "
+"Boggle. Lo scopo del gioco è elencare quante più parole possibile prima che "
+"finisca il tempo. Esistono diverse modalità timer che determinano daquanto "
+"tempo hai iniziato e se ottieni tempo extra quando trovi una parola."
 
 #: ../tanglet.appdata.xml.in:12
 msgid ""
@@ -42,10 +47,16 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Puoi unire le lettere in senso orizzontale, verticale o diagonale in "
+"qualsiasi direzione per creare una parola, a patto che le lettere siano una "
+"accanto all'altra sulla lavagna. Tuttavia, non è possibile riutilizzare le "
+"stesse celle di lettere in una sola parola. Inoltre, ogni parola deve "
+"contenere almeno tre lettere su una lavagna normale e quattro lettere su una "
+"lavagna grande."
 
 #: ../tanglet.desktop.in:4
 msgid "Word Finding Game"
-msgstr ""
+msgstr "Gioco di ricerca parole"
 
 #: ../tanglet.xml.in.h:1
 msgid "Tanglet Game File"
