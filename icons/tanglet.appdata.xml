@@ -98,6 +98,15 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.5.6" date="2020-04-20">
+      <description>
+        <ul>
+          <li>FIXED: Did not load locales with underscores</li>
+          <li>Added Russian word list</li>
+          <li>Translation updates: Italian</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.5.5" date="2020-02-19">
       <description>
         <ul>

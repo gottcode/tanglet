@@ -1,3 +1,9 @@
+1.5.6
+-----
+* FIXED: Did not load locales with underscores.
+* Added Russian word list.
+* Translation updates: Italian.
+
 1.5.5
 -----
 * FIXED: Compile failure with Qt 5.14
