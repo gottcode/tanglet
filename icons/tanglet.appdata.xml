@@ -11,6 +11,7 @@
   <name xml:lang="es">Tanglet</name>
   <name xml:lang="fr">Tanglet</name>
   <name xml:lang="hu">Tanglet</name>
+  <name xml:lang="id">Tanglet</name>
   <name xml:lang="it">Tanglet</name>
   <name xml:lang="lt">Tanglet</name>
   <name xml:lang="ms">Tanglet</name>
@@ -19,6 +20,7 @@
   <name xml:lang="pt">Tanglet</name>
   <name xml:lang="ro">Tanglet</name>
   <name xml:lang="ru">Tanglet</name>
+  <name xml:lang="tr">Tanglet</name>
   <summary>Single player variant of Boggle</summary>
   <summary xml:lang="ca">Variant d'un jugador de Boggle</summary>
   <summary xml:lang="cs">Varianta hry Boggle pro jednoho hráče</summary>
@@ -27,6 +29,7 @@
   <summary xml:lang="es">Variante de un jugador de Boggle</summary>
   <summary xml:lang="fr">Variante de Boggle en mode simple joueur</summary>
   <summary xml:lang="hu">A Boggle egyjátékos változata</summary>
+  <summary xml:lang="id">Varian pemain tunggal dari permainan Boggle</summary>
   <summary xml:lang="it">Variante per giocatore singolo di Boggle</summary>
   <summary xml:lang="lt">Boggle žaidimo variantas vienam žaidėjui</summary>
   <summary xml:lang="ms">Varian pemain tunggal Boggle</summary>
@@ -35,6 +38,7 @@
   <summary xml:lang="pt">Uma variante do jogo Parole</summary>
   <summary xml:lang="ro">Variantă de joc Boggle într-un singur jucător</summary>
   <summary xml:lang="ru">Вариант игры в Боггл</summary>
+  <summary xml:lang="tr">Boggle'ın tek oyuncu çeştilemesidir</summary>
 
   <description>
     <p>Tanglet is a single player word finding game based on Boggle. The object of the game is to list as many words as you can before the time runs out. There are several timer modes that determine how much time you start with, and if you get extra time when you find a word.</p>
@@ -44,6 +48,7 @@
     <p xml:lang="el">Το Tanglet είναι ένα single player παιχνίδι εύρεσης λέξεων πού βασίζεται στο Boggle. Το αντικείμενο του παιχνιδιού είναι η δημιουργία λιστών με όσες λέξεις γίνεται, πριν τελειώσει ο χρόνος. Υπάρχουν αρκετές λειτουργίες χρονοδιακόπτη που καθορίζουν με πόσο χρόνο μπορείτε να ξεκινήσετε  και αν μπορείτε να πάρετε επιπλέον χρόνο όταν βρείτε μια λέξη.</p>
     <p xml:lang="es">Tanglet es un juego de buscar palabras de un sólo jugador basado en Boggle. El objeto del juego es listar tantas palabras como puedas antes de que se acabe el tiempo. Hay distintos modos que determinan con cuánto tiempo inicias, y si obtienes tiempo extra por cada palabra encontrada.</p>
     <p xml:lang="fr">Tanglet est un jeu de recherche de mots, en mode simple joueur, basé sur le fameux Boggle. L'objectif de ce jeu est de lister autant de mots que possible avant la fin du temps imparti. Plusieurs modes de minuterie sont proposés. Ils déterminent le temps de départ et le temps supplémentaire accordé lorsqu'un mot a été trouvé. </p>
+    <p xml:lang="id">Tanglet adalah game pencarian kata pemain tunggal berdasarkan Boggle.Tujuan permainan ini adalah untuk membuat daftar kata-kata sebanyak yang Anda bisa sebelum waktu habis. Ada beberapa mode pengatur waktu yang menentukan berapa banyak waktu Anda memulai, dan jika Anda mendapatkan waktu tambahan saat Anda menemukan kata.</p>
     <p xml:lang="it">Tanglet è un gioco per trovare parole per giocatore singolo basato su Boggle. Lo scopo del gioco è elencare quante più parole possibile prima che finisca il tempo. Esistono diverse modalità timer che determinano daquanto tempo hai iniziato e se ottieni tempo extra quando trovi una parola.</p>
     <p xml:lang="lt">Tanglet yra žodžių ieškojimo žaidimas paremtas Boggle. Žaidimo tikslas yra, prieš pasibaigiant laikui, išvardinti kuo daugiau žodžių. Yra kelios laikmačio veiksenos, kurios nustato, kiek laiko duota žaidimo pradžioje, ir ar bus pridedamas laikas, esant teisingam spėjimui.</p>
     <p xml:lang="ms">Tanglet merupakan permainan mencari perkataan seorang pemain berasaskan Boggle. Objektif permainan adalah untuk menyenaraikan sebanyak mungkin perkataan sebelum masa tamat. Terdapat beberapa mod pemasa yang menentukan berapakah masa mula anda, dan jika anda mendapat masa tambahan bila anda berjaya mencari perkataan.</p>
@@ -52,6 +57,7 @@
     <p xml:lang="pt">O Tanglet é um jogo de um só jogador para encontrar palavras, baseado no jogo Parole. O objetivo do jogo é encontrar o máximo de palavras possível antes do tempo se esgotar. Existem vários modos de temporizador que determinam o tempo com que se começa e se se obtém tempo extra quando se encontra uma palavra.</p>
     <p xml:lang="ro">Tanglet este un joc de găsit cuvinte, într-un singur jucător, bazat pe Boggle. Obiectivul jocului este de a lista cît mai multe cuvinte înainte de expirarea timpului. Există mai multe moduri de temporizare care determină cu cît de mult timp începeţi, şi dacă aveţi timp suplimentar atunci cînd găsiţi un cuvînt.</p>
     <p xml:lang="ru">Tanglet - игра для поиска слов для одного игрока, основанная на Боггл. Цель игры - перечислить как можно больше слов, прежде чем истечет время. Есть несколько режимов таймера, которые определяют ваш ход, и ваше дополнительное время, когда вы находите слово.</p>
+    <p xml:lang="tr">Tanglet, Boggle tabanlı tek oyuncu kelime bulma oyunudur. Oyunun amacı, süre dolmadan önce olabildiğince fazla kelime listelemektir. Ne kadar zamanla başlayacağınızı ve bir kelime bulduğunuzda fazladan zamanınız olup olmadığını belirleyen birkaç zamanlayıcı modları vardır.</p>
 
     <p>You can join letters horizontally, vertically, or diagonally in any direction to make a word, so as long as the letters are next to each other on the board. However, you can not reuse the same letter cells in a single word. Also, each word must be at least three letters on a normal board, and four letters on a large board.</p>
     <p xml:lang="ca">Podeu unir lletres horitzontalment, verticalment o en diagonal en qualsevol direcció per a formar una paraula, sempre i quan les lletres estiguin contigües en el tauler. Però no podeu fer servir més d'una vegada la mateixa cel·la en una paraula. També, cada paraula ha de tenir tres lletres en el tauler normal o quatre lletres en el tauler gran.</p>
@@ -60,6 +66,7 @@
     <p xml:lang="el">Μπορείτε να συντάψετε γράμματα οριζόντια, κάθετα, ή διαγώνια σε οποιαδήποτε κατεύθυνση , μόσο όσο τα γράμματα είναι δίπλα το ένα στο άλλο. Ωστόσο, δεν μπορείτε να χρησιμοποιήσετε ξανά το ίδιο γράμμα σε μια ενιαία λέξη. Επίσης, κάθε λέξη πρέπει να αποτελείται από τουλάχιστον τρία γράμματα σε έναν μικρό και τέσσερα γράμματα σε ένα μεγάλο πίνακα.</p>
     <p xml:lang="es">Puedes unir letras horizontalmente, verticalmente, o diagonalmente en cualquier dirección para formar una palabra, siempre y cuando las letras están contiguas en el tablero. Sin embargo, no puedes reusar una misma celda en una sola palabra. También, cada palabra debe contener al menos tres letras en un tablero normal, o cuatro letras en un tablero grande. </p>
     <p xml:lang="fr">Vous pouvez relier des lettres horizontalement, verticalement ou en diagonale dans n'importe quelle direction pour former un mot, du moment que les lettres soient à côté l'une de l'autre sur le plateau. Cependant, vous ne pouvez pas réutiliser les mêmes cellules de lettres en un seul mot. En outre, chaque mot doit être composé d'au moins trois lettres pour un plateau normal, et de quatre lettres pour un grand plateau.</p>
+    <p xml:lang="id">Anda dapat menggabungkan huruf secara horizontal, vertikal, atau diagonal ke arah mana pun untuk membuat kata, sehingga selama huruf-huruf tersebut bersebelahan di papan tulis. Namun, Anda tidak dapat menggunakan kembali sel huruf yang sama dalam satu kata. Juga, setiap kata harus setidaknya tiga huruf pada papan normal, dan empat huruf pada papan besar.</p>
     <p xml:lang="it">Puoi unire le lettere in senso orizzontale, verticale o diagonale in qualsiasi direzione per creare una parola, a patto che le lettere siano una accanto all'altra sulla lavagna. Tuttavia, non è possibile riutilizzare le stesse celle di lettere in una sola parola. Inoltre, ogni parola deve contenere almeno tre lettere su una lavagna normale e quattro lettere su una lavagna grande.</p>
     <p xml:lang="lt">Kad atspėtumėte žodį, galite jungti raides horizontaliai, vertikaliai, arba pagal įstrižainę bet kuria kryptimi, tol, kol raidės yra viena šalia kitos. Tačiau negalite naudoti to pačio raidės langelio vienam žodžiui. Be to, normalioje plokštėje kiekviename žodyje turi būti bent trys raidės, o didelėje plokštėje bent keturios raidės.</p>
     <p xml:lang="ms">Anda boleh gabungkan huruf secara menegak, melintang, atau mengikut pepenjuru pada mana-mana arah untuk membentuk perkataan, selagi huruf bersebelahan diantara satu sama lain. Akan tetapi, anda tidak boleh guna sel huruf yang sama dalam satu perkataan. Selain itu, setiap perkataan mesti sekurang-kurangnya tiga huruf dalam papan biasa, dan empat huruf dalam papan besar.</p>
@@ -68,6 +75,7 @@
     <p xml:lang="pt">Pode-se juntar letras na horizontal, vertical e diagonal em qualquer direção para formar uma palavra, desde que as letras estejam logo na casa seguinte do tabuleiro. No entanto, não se pode tornar a usar uma letra de uma casa já selecionada numa só palavra. Além disso, cada palavra tem de ter pelo menos 3 letras num tabuleiro normal, e 4 letras num tabuleiro grande.</p>
     <p xml:lang="ro">Puteţi alătura litere orizontal, vertical, sau în diagonală, în orice direcţie pentru a face un cuvînt, atîta timp cît literele sînt una lîngă alta pe tablă. Cu toate acestea, nu aveţi posibilitatea să reutilizaţi aceleaşi celule literă într-un singur cuvînt. De asemenea, fiecare cuvînt trebuie să fie de cel puţin trei litere pe o tablă obişnuită şi patru litere pe o tablă mare.</p>
     <p xml:lang="ru">Вы можете соединять буквы по горизонтали, вертикали или диагонали в любом направлении, чтобы составить слово, если буквы находятся рядом друг с другом на доске. Однако вы не можете повторно использовать одинаковые буквенные ячейки в одном слове. Кроме того, каждое слово должно содержать не менее трех букв на обычной доске и четырех букв на большой доске.</p>
+    <p xml:lang="tr">Harfler tahtada yan yana olduğu sürece, sözcük oluşturmak için harfleri yatay, dikey veya çapraz olarak herhangi bir yönde birleştirebilirsiniz. Ancak, aynı harf hücrelerini tek bir sözcükte yeniden kullanamazsınız. Ayrıca, her kelime normal bir tahtada en az üç harf ve büyük bir tahtada dört harf olmalıdır. </p>
   </description>
 
   <screenshots>
