@@ -26,6 +26,7 @@
 #include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
+#include <QLocale>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QSettings>
@@ -274,7 +275,7 @@ void ScoresDialog::updateItems() {
 		const Score& score = m_scores.at(r);
 		m_score_labels[r][1]->setText(score.name);
 		m_score_labels[r][2]->setNum(score.score);
-		m_score_labels[r][3]->setText(score.date.toString(Qt::DefaultLocaleShortDate));
+		m_score_labels[r][3]->setText(QLocale().toString(score.date, QLocale::ShortFormat));
 		m_score_labels[r][4]->setText(Clock::timerToString(score.timer));
 	}
 	for (int r = count; r < 10; ++r) {

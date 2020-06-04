@@ -261,7 +261,11 @@ void Generator::update()
 			QTextStream stream(&file);
 			stream.setCodec("UTF-8");
 			while (!stream.atEnd()) {
-				QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+				const QStringList line = stream.readLine().split(',', Qt::SkipEmptyParts);
+#else
+				const QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
+#endif
 				if (line.count() == 6) {
 					dice.append(line);
 				}
@@ -314,7 +318,11 @@ void Generator::update()
 			QTextStream stream(data);
 			stream.setCodec("UTF-8");
 			while (!stream.atEnd()) {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+				QStringList spellings = stream.readLine().simplified().split(QChar(' '), Qt::SkipEmptyParts);
+#else
 				QStringList spellings = stream.readLine().simplified().split(QChar(' '), QString::SkipEmptyParts);
+#endif
 				if (spellings.isEmpty()) {
 					continue;
 				}
