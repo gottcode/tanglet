@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012, 2014 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009-2020 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -259,7 +259,9 @@ void Generator::update()
 		QFile file(dice_path);
 		if (file.open(QFile::ReadOnly | QIODevice::Text)) {
 			QTextStream stream(&file);
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 			stream.setCodec("UTF-8");
+#endif
 			while (!stream.atEnd()) {
 #if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
 				const QStringList line = stream.readLine().split(',', Qt::SkipEmptyParts);
@@ -291,7 +293,7 @@ void Generator::update()
 		int count = 0;
 
 		// Load cached words
-		QString cache_dir = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/cache";
+		QString cache_dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/cache";
 		QString cache_file = QCryptographicHash::hash(words_path.toUtf8(), QCryptographicHash::Sha1).toHex();
 		QFileInfo cache_info(cache_dir + "/" + cache_file);
 		if (cache_info.exists() && (cache_info.lastModified() > QFileInfo(words_path).lastModified())) {
@@ -316,7 +318,9 @@ void Generator::update()
 			QHash<QString, QStringList> words;
 			QByteArray data = gunzip(words_path);
 			QTextStream stream(data);
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 			stream.setCodec("UTF-8");
+#endif
 			while (!stream.atEnd()) {
 #if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
 				QStringList spellings = stream.readLine().simplified().split(QChar(' '), Qt::SkipEmptyParts);

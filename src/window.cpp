@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009-2020 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@
 #include "scores_dialog.h"
 
 #include <QAction>
+#include <QActionGroup>
 #include <QApplication>
 #include <QCloseEvent>
 #include <QDialog>
@@ -776,7 +777,7 @@ void Window::gameFinished(int score) {
 		scores.exec();
 	}
 
-	QDir dir(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+	QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
 	dir.remove("current");
 	dir.remove("current-dice");
 	dir.remove("current-words");
@@ -840,7 +841,7 @@ void Window::startGame(const QString& filename) {
 //-----------------------------------------------------------------------------
 
 QString Window::extractGame(const QString& filename) const {
-	QString current = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+	QString current = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 
 	// Uncompress shared game
 	const QDir dir = QDir::home();

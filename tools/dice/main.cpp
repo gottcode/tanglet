@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2012, 2017 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2012-2020 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,6 +46,7 @@ public:
 
 namespace std
 {
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 	template <>
 	struct hash<QChar>
 	{
@@ -54,6 +55,7 @@ namespace std
 			return qHash(k);
 		}
 	};
+#endif
 
 #if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
 	template <>
@@ -98,7 +100,9 @@ std::vector<QString> readWords(const QString& path)
 	// Find words
 	std::vector<QString> words;
 	QTextStream stream(&data);
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 	stream.setCodec("UTF-8");
+#endif
 	while (!stream.atEnd()) {
 		words.push_back(stream.readLine().trimmed().split(' ').first().toUpper());
 	}
@@ -116,7 +120,9 @@ void saveDice(const QString& path, const std::vector<QString>& small, const std:
 	}
 
 	QTextStream stream(&out);
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 	stream.setCodec("UTF-8");
+#endif
 
 	for (const QString& line : small) {
 		stream << line << '\n';

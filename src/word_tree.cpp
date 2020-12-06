@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2009, 2010, 2011, 2012, 2014, 2019 Graeme Gott <graeme@gottcode.org>
+ * Copyright (C) 2009-2020 Graeme Gott <graeme@gottcode.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,19 +63,19 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 		int end = copy.length() - 1;
 		switch (copy.at(end).unicode()) {
 		case 0x05db:
-			copy[end] = 0x05da;
+			copy[end] = QChar(0x05da);
 			break;
 		case 0x05de:
-			copy[end] = 0x05dd;
+			copy[end] = QChar(0x05dd);
 			break;
 		case 0x05e0:
-			copy[end] = 0x05df;
+			copy[end] = QChar(0x05df);
 			break;
 		case 0x05e4:
-			copy[end] = 0x05e3;
+			copy[end] = QChar(0x05e3);
 			break;
 		case 0x05e6:
-			copy[end] = 0x05e5;
+			copy[end] = QChar(0x05e5);
 			break;
 		default:
 			break;
