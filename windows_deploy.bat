@@ -1,13 +1,15 @@
-@ECHO ON>windows\dirs.nsh
-@ECHO ON>windows\files.nsh
+@ECHO ON>..\tanglet\windows\dirs.nsh
+@ECHO ON>..\tanglet\windows\files.nsh
 @ECHO OFF
 
+SET SRCDIR=..\tanglet
 SET APP=Tanglet
 SET VERSION=1.5.6
 
 ECHO Copying executable
-MKDIR %APP%
-COPY %APP%.exe %APP% >nul
+MKDIR %SRCDIR%\%APP%
+COPY %APP%.exe %SRCDIR%\%APP% >nul
+CD %SRCDIR%
 
 ECHO Copying data
 MKDIR %APP%\data
@@ -19,7 +21,7 @@ MKDIR %TRANSLATIONS%
 COPY translations\*.qm %TRANSLATIONS% >nul
 
 ECHO Copying Qt
-%QTDIR%\bin\windeployqt.exe --verbose 0 --no-angle --no-opengl-sw --no-svg %APP%\%APP%.exe
+%QTDIR%\bin\windeployqt.exe --verbose 0 --no-opengl-sw --no-system-d3d-compiler --no-svg %APP%\%APP%.exe
 RMDIR /S /Q %APP%\imageformats
 
 ECHO Creating ReadMe
