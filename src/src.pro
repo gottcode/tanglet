@@ -95,7 +95,7 @@ macx {
 } else:win32 {
 	RC_ICONS = ../icons/tanglet.ico
 	QMAKE_TARGET_DESCRIPTION = "Word finding game"
-	QMAKE_TARGET_COPYRIGHT = "Copyright (C) 2020 Graeme Gott"
+	QMAKE_TARGET_COPYRIGHT = "Copyright (C) 2021 Graeme Gott"
 } else:unix {
 	RESOURCES += ../icons/icon.qrc
 
