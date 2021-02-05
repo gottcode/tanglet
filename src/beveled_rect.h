@@ -27,8 +27,8 @@ class BeveledRect: public QGraphicsItem
 public:
 	BeveledRect(int size, QGraphicsItem* parent = nullptr);
 
-	QRectF boundingRect() const;
-	void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
+	QRectF boundingRect() const override;
+	void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
 
 	void setColor(const QColor& color, bool bevel = true);
 

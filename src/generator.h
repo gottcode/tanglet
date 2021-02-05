@@ -100,7 +100,7 @@ private:
 	void setError(const QString& error);
 
 protected:
-	void run();
+	void run() override;
 
 private:
 	QString m_dice_path;

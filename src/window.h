@@ -33,13 +33,13 @@ class Window : public QMainWindow
 public:
 	Window(const QString& file = QString());
 
-	virtual bool eventFilter(QObject* watched, QEvent* event);
+	bool eventFilter(QObject* watched, QEvent* event) override;
 
 protected:
-	virtual void closeEvent(QCloseEvent* event);
-	virtual void dragEnterEvent(QDragEnterEvent* event);
-	virtual void dropEvent(QDropEvent* event);
-	virtual bool event(QEvent* event);
+	void closeEvent(QCloseEvent* event) override;
+	void dragEnterEvent(QDragEnterEvent* event) override;
+	void dropEvent(QDropEvent* event) override;
+	bool event(QEvent* event) override;
 
 private slots:
 	void about();

@@ -42,8 +42,8 @@ signals:
 	void scoresReset();
 
 protected:
-	void hideEvent(QHideEvent* event);
-	void keyPressEvent(QKeyEvent* event);
+	void hideEvent(QHideEvent* event) override;
+	void keyPressEvent(QKeyEvent* event) override;
 
 private slots:
 	void editingFinished();

@@ -128,29 +128,29 @@ public:
 	{
 	}
 
-	void enter()
+	void enter() override
 	{
 		m_next_state = "Play";
 		setPaused(true);
 		setContentsIndex(4);
 	}
 
-	void optimizingStarted()
+	void optimizingStarted() override
 	{
 		setState("Optimizing");
 	}
 
-	void play()
+	void play() override
 	{
 		setState(m_next_state);
 	}
 
-	void autoPause()
+	void autoPause() override
 	{
 		m_next_state = "AutoPause";
 	}
 
-	void autoResume()
+	void autoResume() override
 	{
 		m_next_state = "Play";
 	}
@@ -169,29 +169,29 @@ public:
 	{
 	}
 
-	void enter()
+	void enter() override
 	{
 		m_next_state = "Play";
 		setPaused(true);
 		setContentsIndex(2);
 	}
 
-	void optimizingStarted()
+	void optimizingStarted() override
 	{
 		setState("Optimizing");
 	}
 
-	void play()
+	void play() override
 	{
 		setState(m_next_state);
 	}
 
-	void autoPause()
+	void autoPause() override
 	{
 		m_next_state = "AutoPause";
 	}
 
-	void autoResume()
+	void autoResume() override
 	{
 		m_next_state = "Play";
 	}
@@ -210,12 +210,12 @@ public:
 	{
 	}
 
-	void enter()
+	void enter() override
 	{
 		setContentsIndex(5);
 	}
 
-	void optimizingFinished()
+	void optimizingFinished() override
 	{
 		setPreviousState();
 	}
@@ -231,18 +231,18 @@ public:
 	{
 	}
 
-	void enter()
+	void enter() override
 	{
 		setPaused(false);
 		setContentsIndex(0);
 	}
 
-	void autoPause()
+	void autoPause() override
 	{
 		setState("AutoPause");
 	}
 
-	void pause()
+	void pause() override
 	{
 		setState("Pause");
 	}
@@ -259,19 +259,19 @@ public:
 	{
 	}
 
-	void enter()
+	void enter() override
 	{
 		setPaused(true);
 		setContentsIndex(1);
 		m_count++;
 	}
 
-	void autoPause()
+	void autoPause() override
 	{
 		m_count++;
 	}
 
-	void autoResume()
+	void autoResume() override
 	{
 		m_count--;
 		if (m_count < 1) {
@@ -280,31 +280,31 @@ public:
 		}
 	}
 
-	void newGame()
+	void newGame() override
 	{
 		m_count = 0;
 		setState("NewGame");
 	}
 
-	void openGame()
+	void openGame() override
 	{
 		m_count = 0;
 		setState("OpenGame");
 	}
 
-	void pause()
+	void pause() override
 	{
 		m_count = 0;
 		setState("Pause");
 	}
 
-	void resume()
+	void resume() override
 	{
 		m_count = 0;
 		setState("Play");
 	}
 
-	void finish()
+	void finish() override
 	{
 		m_count = 0;
 		setState("Finish");
@@ -324,13 +324,13 @@ public:
 	{
 	}
 
-	void enter()
+	void enter() override
 	{
 		setPaused(true);
 		setContentsIndex(1);
 	}
 
-	void resume()
+	void resume() override
 	{
 		setState("Play");
 	}
@@ -346,7 +346,7 @@ public:
 	{
 	}
 
-	void enter()
+	void enter() override
 	{
 		setPaused(false);
 		setContentsIndex(0);

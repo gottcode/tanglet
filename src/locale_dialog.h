@@ -60,7 +60,7 @@ public:
 
 public slots:
 	/** Override parent function to store application language. */
-	void accept();
+	void accept() override;
 
 private:
 	/**

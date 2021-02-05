@@ -135,15 +135,15 @@ void Clock::Timer::saveDetails(QSettings&)
 class Clock::AllotmentTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score);
-	bool addIncorrectWord(int score);
-	void start();
-	int type() const;
-	QString update();
-	int width() const;
+	bool addWord(int score) override;
+	bool addIncorrectWord(int score) override;
+	void start() override;
+	int type() const override;
+	QString update() override;
+	int width() const override;
 
 private:
-	void loadDetails(const QSettings&);
+	void loadDetails(const QSettings&) override;
 };
 
 bool Clock::AllotmentTimer::addWord(int)
@@ -188,9 +188,9 @@ void Clock::AllotmentTimer::loadDetails(const QSettings&)
 class Clock::ClassicTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score);
-	void start();
-	int type() const;
+	bool addWord(int score) override;
+	void start() override;
+	int type() const override;
 };
 
 bool Clock::ClassicTimer::addWord(int)
@@ -213,10 +213,10 @@ int Clock::ClassicTimer::type() const
 class Clock::DisciplineTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score);
-	bool addIncorrectWord(int score);
-	void start();
-	int type() const;
+	bool addWord(int score) override;
+	bool addIncorrectWord(int score) override;
+	void start() override;
+	int type() const override;
 };
 
 bool Clock::DisciplineTimer::addWord(int score)
@@ -246,10 +246,10 @@ int Clock::DisciplineTimer::type() const
 class Clock::RefillTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score);
-	void start();
-	int type() const;
-	int width() const;
+	bool addWord(int score) override;
+	void start() override;
+	int type() const override;
+	int width() const override;
 };
 
 bool Clock::RefillTimer::addWord(int)
@@ -278,16 +278,16 @@ int Clock::RefillTimer::width() const
 class Clock::StaminaTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score);
-	QColor color();
-	void start();
-	int type() const;
-	QString update();
-	int width() const;
+	bool addWord(int score) override;
+	QColor color() override;
+	void start() override;
+	int type() const override;
+	QString update() override;
+	int width() const override;
 
 private:
-	void loadDetails(const QSettings& game);
-	void saveDetails(QSettings& game);
+	void loadDetails(const QSettings& game) override;
+	void saveDetails(QSettings& game) override;
 
 private:
 	int m_freeze;
@@ -345,17 +345,17 @@ void Clock::StaminaTimer::saveDetails(QSettings& game)
 class Clock::StrikeoutTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score);
-	bool addIncorrectWord(int score);
-	void start();
-	void stop();
-	int type() const;
-	QString update();
-	int width() const;
+	bool addWord(int score) override;
+	bool addIncorrectWord(int score) override;
+	void start() override;
+	void stop() override;
+	int type() const override;
+	QString update() override;
+	int width() const override;
 
 private:
-	void loadDetails(const QSettings& game);
-	void saveDetails(QSettings& game);
+	void loadDetails(const QSettings& game) override;
+	void saveDetails(QSettings& game) override;
 
 private:
 	int m_strikes;
@@ -416,9 +416,9 @@ void Clock::StrikeoutTimer::saveDetails(QSettings& game)
 class Clock::TangletTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score);
-	void start();
-	int type() const;
+	bool addWord(int score) override;
+	void start() override;
+	int type() const override;
 };
 
 bool Clock::TangletTimer::addWord(int score)

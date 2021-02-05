@@ -33,8 +33,8 @@ signals:
 	void mousePressed();
 
 protected:
-	virtual void mousePressEvent(QMouseEvent* event);
-	virtual void resizeEvent(QResizeEvent* event);
+	void mousePressEvent(QMouseEvent* event) override;
+	void resizeEvent(QResizeEvent* event) override;
 };
 
 #endif

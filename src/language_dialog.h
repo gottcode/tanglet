@@ -38,7 +38,7 @@ public:
 	static void restoreDefaults();
 
 public slots:
-	virtual void accept();
+	void accept() override;
 
 private slots:
 	void clicked(QAbstractButton* button);

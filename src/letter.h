@@ -54,8 +54,8 @@ signals:
 	void clicked(Letter* letter);
 
 protected:
-	void mousePressEvent(QGraphicsSceneMouseEvent* event);
-	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event);
+	void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) override;
 
 private:
 	void createCornerArrow();

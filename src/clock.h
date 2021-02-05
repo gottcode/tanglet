@@ -32,7 +32,7 @@ public:
 	Clock(QWidget* parent = nullptr);
 	~Clock();
 
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 
 	bool isFinished() const;
 
@@ -66,7 +66,7 @@ signals:
 	void finished();
 
 protected:
-	virtual void paintEvent(QPaintEvent* event);
+	void paintEvent(QPaintEvent* event) override;
 
 private slots:
 	void updateTime();

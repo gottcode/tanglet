@@ -38,9 +38,9 @@ public:
 	void setTrie(const Trie* trie);
 
 protected:
-	virtual void leaveEvent(QEvent* event);
-	virtual void mouseMoveEvent(QMouseEvent* event);
-	virtual void wheelEvent(QWheelEvent* event);
+	void leaveEvent(QEvent* event) override;
+	void mouseMoveEvent(QMouseEvent* event) override;
+	void wheelEvent(QWheelEvent* event) override;
 
 private slots:
 	void onItemClicked(QTreeWidgetItem* item, int column);
