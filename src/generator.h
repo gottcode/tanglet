@@ -70,7 +70,7 @@ public:
 		return m_minimum;
 	}
 
-	QHash<QString, QList<QList<QPoint> > > solutions() const
+	QHash<QString, QList<QList<QPoint>>> solutions() const
 	{
 		return m_solutions;
 	}
@@ -120,7 +120,7 @@ private:
 	int m_max_score;
 
 	QStringList m_letters;
-	QHash<QString, QList<QList<QPoint> > > m_solutions;
+	QHash<QString, QList<QList<QPoint>>> m_solutions;
 
 	std::atomic<bool> m_canceled;
 };

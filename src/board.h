@@ -90,7 +90,7 @@ private:
 	Clock* m_clock;
 	View* m_view;
 	QLabel* m_score;
-	QVector<QVector<Letter*> > m_cells;
+	QVector<QVector<Letter*>> m_cells;
 	QLineEdit* m_guess;
 	QTabWidget* m_tabs;
 	WordTree* m_found;
@@ -110,7 +110,7 @@ private:
 	int m_maximum;
 	int m_max_score;
 	QStringList m_letters;
-	QHash<QString, QList<QList<QPoint> > > m_solutions;
+	QHash<QString, QList<QList<QPoint>>> m_solutions;
 	QList<QPoint> m_positions;
 
 	std::mt19937 m_seed;

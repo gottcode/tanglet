@@ -368,7 +368,7 @@ void Board::gameStarted()
 	m_clock->setTimer(m_generator->timer());
 	if (m_generator->size() != m_size) {
 		m_size = m_generator->size();
-		m_cells = QVector<QVector<Letter*> >(m_size, QVector<Letter*>(m_size));
+		m_cells = QVector<QVector<Letter*>>(m_size, QVector<Letter*>(m_size));
 		m_maximum = m_size * m_size;
 		m_guess->setMaxLength(m_maximum);
 	}
@@ -530,7 +530,7 @@ void Board::guess()
 			m_clock->addWord(item->data(0, Qt::UserRole).toInt());
 			updateScore();
 
-			QList<QList<QPoint> >& solutions = m_solutions[text];
+			QList<QList<QPoint>>& solutions = m_solutions[text];
 			int index = solutions.indexOf(m_positions);
 			if (index != -1) {
 				solutions.move(index, 0);
@@ -580,7 +580,7 @@ void Board::guessChanged()
 		Trie trie(word);
 		Solver solver(trie, m_size, 0);
 		solver.solve(m_letters);
-		QList<QList<QPoint> > solutions = m_solutions.value(word, solver.solutions().value(word));
+		QList<QList<QPoint>> solutions = m_solutions.value(word, solver.solutions().value(word));
 		m_valid = !solutions.isEmpty();
 		if (m_valid) {
 			int index = 0;

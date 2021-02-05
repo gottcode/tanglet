@@ -38,7 +38,7 @@ public:
 		return m_count;
 	}
 
-	QHash<QString, QList<QList<QPoint> > > solutions() const
+	QHash<QString, QList<QList<QPoint>>> solutions() const
 	{
 		return m_solutions;
 	}
@@ -60,7 +60,7 @@ private:
 	bool m_track_positions;
 	QString m_word;
 	QList<QPoint> m_positions;
-	QHash<QString, QList<QList<QPoint> > > m_solutions;
+	QHash<QString, QList<QList<QPoint>>> m_solutions;
 	int m_count;
 
 	struct Cell
@@ -70,7 +70,7 @@ private:
 		QPoint position;
 		bool checked;
 	};
-	QVector<QVector<Cell> > m_cells;
+	QVector<QVector<Cell>> m_cells;
 };
 
 #endif

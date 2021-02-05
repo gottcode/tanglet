@@ -35,7 +35,7 @@ Solver::Solver(const Trie& words, int size, int minimum)
 	, m_count(0)
 {
 	// Create neighbors
-	QList<QList<QPoint> > neighbors;
+	QList<QList<QPoint>> neighbors;
 	const QPoint deltas[] = {
 		QPoint(-1, -1),
 		QPoint(0, -1),
@@ -61,7 +61,7 @@ Solver::Solver(const Trie& words, int size, int minimum)
 	}
 
 	// Create cells
-	m_cells = QVector<QVector<Cell> >(m_size, QVector<Cell>(m_size));
+	m_cells = QVector<QVector<Cell>>(m_size, QVector<Cell>(m_size));
 	for (int r = 0; r < m_size; ++r) {
 		for (int c = 0; c < m_size; ++c) {
 			int index = (r * m_size) + c;
@@ -107,7 +107,7 @@ void Solver::solve(const QStringList& letters)
 int Solver::score(int max) const
 {
 	QList<int> scores;
-	QHashIterator<QString, QList<QList<QPoint> > > i(m_solutions);
+	QHashIterator<QString, QList<QList<QPoint>>> i(m_solutions);
 	while (i.hasNext()) {
 		scores += score(i.next().key());
 	}

@@ -135,7 +135,7 @@ void TrieGenerator::addWord(const QString& word, const QStringList& spellings)
 
 void TrieGenerator::run(QVector<Trie::Node>& nodes, QStringList& spellings) const
 {
-	std::queue< std::pair<const TrieGenerator*, int> > next;
+	std::queue<std::pair<const TrieGenerator*, int>> next;
 	nodes.append(Trie::Node());
 	next.emplace(this, 0);
 
