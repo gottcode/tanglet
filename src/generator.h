@@ -35,7 +35,7 @@ class Generator : public QThread
 	Q_OBJECT
 
 public:
-	Generator(QObject* parent = 0);
+	Generator(QObject* parent = nullptr);
 
 	void cancel();
 	void create(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);

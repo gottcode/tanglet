@@ -161,7 +161,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	area->setWidget(timers_widget);
 	area->setWidgetResizable(true);
 
-	QCommandLinkButton* active_timer = 0;
+	QCommandLinkButton* active_timer = nullptr;
 	QList<TimerDescription> timers;
 	for (int i = Clock::Tanglet; i < Clock::TotalTimers; ++i) {
 		timers.append(i);

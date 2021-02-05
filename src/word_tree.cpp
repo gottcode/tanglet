@@ -32,9 +32,9 @@
 
 WordTree::WordTree(QWidget* parent)
 	: QTreeWidget(parent)
-	, m_active_item(0)
+	, m_active_item(nullptr)
 	, m_hebrew(false)
-	, m_trie(0)
+	, m_trie(nullptr)
 {
 	setColumnCount(3);
 	hideColumn(2);
@@ -105,7 +105,7 @@ QTreeWidgetItem* WordTree::addWord(const QString& word)
 
 void WordTree::removeAll()
 {
-	m_active_item = 0;
+	m_active_item = nullptr;
 	clear();
 	scrollToTop();
 }
@@ -136,7 +136,7 @@ void WordTree::setTrie(const Trie* trie)
 void WordTree::leaveEvent(QEvent* event)
 {
 	QTreeWidget::leaveEvent(event);
-	enterItem(0);
+	enterItem(nullptr);
 }
 
 //-----------------------------------------------------------------------------

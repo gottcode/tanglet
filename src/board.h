@@ -44,7 +44,7 @@ class Board : public QWidget
 	Q_OBJECT
 
 public:
-	Board(QWidget* parent = 0);
+	Board(QWidget* parent = nullptr);
 	~Board();
 
 	bool isFinished() const;

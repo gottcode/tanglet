@@ -27,7 +27,7 @@ class View : public QGraphicsView
 	Q_OBJECT
 
 public:
-	View(QGraphicsScene* scene, QWidget* parent = 0);
+	View(QGraphicsScene* scene, QWidget* parent = nullptr);
 
 signals:
 	void mousePressed();

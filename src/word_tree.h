@@ -29,7 +29,7 @@ class WordTree : public QTreeWidget
 	Q_OBJECT
 
 public:
-	WordTree(QWidget* parent = 0);
+	WordTree(QWidget* parent = nullptr);
 
 	QTreeWidgetItem* addWord(const QString& word);
 	void removeAll();

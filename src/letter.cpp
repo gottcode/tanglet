@@ -37,7 +37,7 @@
 //-----------------------------------------------------------------------------
 
 Letter::Letter(const QFont& font, int size, const QPoint& position)
-	: m_arrow(0)
+	: m_arrow(nullptr)
 	, m_clickable(true)
 	, m_position(position)
 {
@@ -69,7 +69,7 @@ Letter::Letter(const QFont& font, int size, const QPoint& position)
 void Letter::setArrow(qreal angle, int z)
 {
 	delete m_arrow;
-	m_arrow = 0;
+	m_arrow = nullptr;
 	if (angle < 0.0) {
 		return;
 	}

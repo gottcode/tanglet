@@ -29,7 +29,7 @@ class Clock : public QWidget
 	Q_OBJECT
 
 public:
-	Clock(QWidget* parent = 0);
+	Clock(QWidget* parent = nullptr);
 	~Clock();
 
 	virtual QSize sizeHint() const;

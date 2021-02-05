@@ -111,7 +111,7 @@ protected:
 	{
 		m_window->m_state = m_window->m_previous_state;
 		m_window->m_state->enter();
-		m_window->m_previous_state = 0;
+		m_window->m_previous_state = nullptr;
 	}
 
 private:
@@ -361,7 +361,7 @@ namespace
 class AboutDialog : public QDialog
 {
 public:
-	AboutDialog(const QString& title, const QString& filename, QWidget* parent = 0);
+	AboutDialog(const QString& title, const QString& filename, QWidget* parent = nullptr);
 };
 
 AboutDialog::AboutDialog(const QString& title, const QString& filename, QWidget* parent)
@@ -396,8 +396,8 @@ AboutDialog::AboutDialog(const QString& title, const QString& filename, QWidget*
 //-----------------------------------------------------------------------------
 
 Window::Window(const QString& file)
-	: m_pause_action(0)
-	, m_previous_state(0)
+	: m_pause_action(nullptr)
+	, m_previous_state(nullptr)
 {
 	setAcceptDrops(true);
 
@@ -940,7 +940,7 @@ void Window::monitorVisibility(QMenu* menu)
 
 void Window::startGame(const QString& filename)
 {
-	QSettings* game = 0;
+	QSettings* game = nullptr;
 
 	if (filename.isEmpty()) {
 		// Start a new game

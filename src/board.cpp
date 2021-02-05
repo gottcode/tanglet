@@ -64,7 +64,7 @@ Board::Board(QWidget* parent)
 	, m_minimum(0)
 	, m_maximum(0)
 	, m_max_score(0)
-	, m_generator(0)
+	, m_generator(nullptr)
 {
 #ifndef Q_OS_WIN
 	std::random_device rd;
@@ -78,7 +78,7 @@ Board::Board(QWidget* parent)
 	connect(m_generator, &Generator::optimizingStarted, this, &Board::optimizingStarted);
 	connect(m_generator, &Generator::optimizingFinished, this, &Board::optimizingFinished);
 
-	m_view = new View(0, this);
+	m_view = new View(nullptr, this);
 
 	// Create clock and score widgets
 	m_clock = new Clock(this);
@@ -523,7 +523,7 @@ void Board::guess()
 
 		// Create found item
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
-		if (item == 0) {
+		if (!item) {
 			item = m_found->addWord(text);
 			delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).first();
 
@@ -808,7 +808,7 @@ void Board::clearHighlight()
 void Board::selectGuess()
 {
 	QTreeWidgetItem* item = m_found->findItems(m_guess->text(), Qt::MatchExactly, 0).value(0);
-	if (item != 0) {
+	if (item) {
 		m_found->setCurrentItem(item);
 		m_found->scrollToItem(item);
 	} else {

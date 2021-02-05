@@ -33,7 +33,7 @@ class LanguageDialog : public QDialog
 	Q_OBJECT
 
 public:
-	LanguageDialog(QWidget* parent = 0);
+	LanguageDialog(QWidget* parent = nullptr);
 
 	static void restoreDefaults();
 

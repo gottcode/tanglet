@@ -441,7 +441,7 @@ int Clock::TangletTimer::type() const
 
 Clock::Clock(QWidget* parent)
 	: QWidget(parent)
-	, m_timer(0)
+	, m_timer(nullptr)
 {
 	setTimer(Tanglet);
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

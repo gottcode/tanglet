@@ -25,7 +25,7 @@
 class BeveledRect: public QGraphicsItem
 {
 public:
-	BeveledRect(int size, QGraphicsItem* parent = 0);
+	BeveledRect(int size, QGraphicsItem* parent = nullptr);
 
 	QRectF boundingRect() const;
 	void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);

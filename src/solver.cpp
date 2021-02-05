@@ -151,7 +151,7 @@ void Solver::checkCell(Cell& cell)
 	int length = cell.text.length();
 	for (int i = 0; i < length; ++i) {
 		node = m_words->child(cell.text.at(i), node);
-		if (node == 0) {
+		if (!node) {
 			return;
 		}
 	}

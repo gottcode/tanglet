@@ -34,16 +34,16 @@ public:
 	TrieGenerator(const QChar& key = QChar())
 		: m_key(key)
 		, m_word(false)
-		, m_children(0)
-		, m_next(0)
+		, m_children(nullptr)
+		, m_next(nullptr)
 		, m_count(0)
 	{
 	}
 
 	TrieGenerator(const QString& word)
 		: m_word(false)
-		, m_children(0)
-		, m_next(0)
+		, m_children(nullptr)
+		, m_next(nullptr)
 		, m_count(0)
 	{
 		addWord(word, QStringList(word));
@@ -76,8 +76,8 @@ private:
 
 TrieGenerator::TrieGenerator(const QHash<QString, QStringList>& words)
 	: m_word(false)
-	, m_children(0)
-	, m_next(0)
+	, m_children(nullptr)
+	, m_next(nullptr)
 	, m_count(0)
 {
 	QHashIterator<QString, QStringList> i(words);
@@ -92,10 +92,7 @@ TrieGenerator::TrieGenerator(const QHash<QString, QStringList>& words)
 TrieGenerator::~TrieGenerator()
 {
 	delete m_children;
-	m_children = 0;
-
 	delete m_next;
-	m_next = 0;
 }
 
 //-----------------------------------------------------------------------------
@@ -108,7 +105,7 @@ TrieGenerator* TrieGenerator::addChild(const QChar& letter)
 		return m_children;
 	}
 
-	TrieGenerator* previous = 0;
+	TrieGenerator* previous = nullptr;
 	TrieGenerator* current = m_children;
 	while (current && current->m_key != letter) {
 		previous = current;
@@ -229,7 +226,7 @@ const Trie::Node* Trie::child(const QChar& letter, const Node* node) const
 			return &m_nodes[i];
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 //-----------------------------------------------------------------------------
@@ -240,7 +237,7 @@ QStringList Trie::spellings(const QString& word, const QStringList& default_valu
 	int length = word.length();
 	for (int i = 0; i < length; ++i) {
 		node = child(word.at(i), node);
-		if (node == 0) {
+		if (!node) {
 			break;
 		}
 	}
