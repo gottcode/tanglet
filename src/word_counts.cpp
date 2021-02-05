@@ -28,7 +28,8 @@
 //-----------------------------------------------------------------------------
 
 WordCounts::WordCounts(QWidget* parent)
-	: QScrollArea(parent), m_show_max(false)
+	: QScrollArea(parent)
+	, m_show_max(false)
 {
 	setBackgroundRole(QPalette::Mid);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);

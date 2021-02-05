@@ -49,7 +49,9 @@ int ScoresDialog::m_min = 1;
 //-----------------------------------------------------------------------------
 
 ScoresDialog::ScoresDialog(QWidget* parent)
-: QDialog(parent), m_row(-1) {
+	: QDialog(parent)
+	, m_row(-1)
+{
 	setWindowTitle(tr("High Scores"));
 
 	// Load default name
@@ -113,7 +115,8 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-bool ScoresDialog::addScore(int score) {
+bool ScoresDialog::addScore(int score)
+{
 	// Add score
 	m_row = addScore(m_default_name, score, QDateTime::currentDateTime(), QSettings().value("Current/TimerMode", Clock::Tanglet).toInt());
 	if (m_row == -1) {
@@ -140,7 +143,8 @@ bool ScoresDialog::addScore(int score) {
 
 //-----------------------------------------------------------------------------
 
-int ScoresDialog::isHighScore(int score) {
+int ScoresDialog::isHighScore(int score)
+{
 	if (m_max == -1) {
 		m_max = 1;
 		ScoresDialog();
@@ -157,7 +161,8 @@ int ScoresDialog::isHighScore(int score) {
 
 //-----------------------------------------------------------------------------
 
-void ScoresDialog::hideEvent(QHideEvent* event) {
+void ScoresDialog::hideEvent(QHideEvent* event)
+{
 	if (m_username->isVisible()) {
 		editingFinished();
 	}
@@ -166,7 +171,8 @@ void ScoresDialog::hideEvent(QHideEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-void ScoresDialog::keyPressEvent(QKeyEvent* event) {
+void ScoresDialog::keyPressEvent(QKeyEvent* event)
+{
 	if (!m_buttons->button(QDialogButtonBox::Close)->isDefault()) {
 		m_buttons->button(QDialogButtonBox::Close)->setDefault(true);
 		m_buttons->button(QDialogButtonBox::Close)->setFocus();
@@ -178,7 +184,8 @@ void ScoresDialog::keyPressEvent(QKeyEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-void ScoresDialog::editingFinished() {
+void ScoresDialog::editingFinished()
+{
 	// Hide lineedit
 	m_username->hide();
 	m_scores_layout->removeWidget(m_username);
@@ -189,7 +196,11 @@ void ScoresDialog::editingFinished() {
 	// Save scores
 	QStringList values;
 	for (const Score& s : m_scores) {
-		values += QString("%1:%2:%3:%4") .arg(s.name) .arg(s.score) .arg(s.date.toString("yyyy.MM.dd-hh.mm.ss")) .arg(s.timer);
+		values += QString("%1:%2:%3:%4")
+				.arg(s.name)
+				.arg(s.score)
+				.arg(s.date.toString("yyyy.MM.dd-hh.mm.ss"))
+				.arg(s.timer);
 	}
 	QSettings settings;
 	settings.setValue("Scores/DefaultName", m_username->text());
@@ -198,7 +209,8 @@ void ScoresDialog::editingFinished() {
 
 //-----------------------------------------------------------------------------
 
-void ScoresDialog::resetClicked(QAbstractButton* button) {
+void ScoresDialog::resetClicked(QAbstractButton* button)
+{
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
 		if (QMessageBox::question(this, tr("Question"), tr("Clear high scores?"), QMessageBox::No | QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes) {
 			if (m_username->isVisible()) {
@@ -222,7 +234,8 @@ void ScoresDialog::resetClicked(QAbstractButton* button) {
 
 //-----------------------------------------------------------------------------
 
-int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date, int timer) {
+int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date, int timer)
+{
 	if (score == 0) {
 		return -1;
 	}
@@ -252,7 +265,8 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 
 //-----------------------------------------------------------------------------
 
-void ScoresDialog::load() {
+void ScoresDialog::load()
+{
 	QStringList data = QSettings().value("Scores/Values").toStringList();
 	for (const QString& s : data) {
 		QStringList values = s.split(':');
@@ -269,7 +283,8 @@ void ScoresDialog::load() {
 
 //-----------------------------------------------------------------------------
 
-void ScoresDialog::updateItems() {
+void ScoresDialog::updateItems()
+{
 	int count = m_scores.count();
 	for (int r = 0; r < count; ++r) {
 		const Score& score = m_scores.at(r);

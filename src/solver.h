@@ -63,7 +63,8 @@ private:
 	QHash<QString, QList<QList<QPoint> > > m_solutions;
 	int m_count;
 
-	struct Cell {
+	struct Cell
+	{
 		QString text;
 		QVector<Cell*> neighbors;
 		QPoint position;

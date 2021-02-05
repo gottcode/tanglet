@@ -27,7 +27,12 @@
 //-----------------------------------------------------------------------------
 
 Solver::Solver(const Trie& words, int size, int minimum)
-	: m_words(&words), m_node(words.child()), m_size(size), m_minimum(minimum), m_track_positions(true), m_count(0)
+	: m_words(&words)
+	, m_node(words.child())
+	, m_size(size)
+	, m_minimum(minimum)
+	, m_track_positions(true)
+	, m_count(0)
 {
 	// Create neighbors
 	QList<QList<QPoint> > neighbors;

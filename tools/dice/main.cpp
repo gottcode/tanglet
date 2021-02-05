@@ -47,25 +47,25 @@ public:
 namespace std
 {
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-	template <>
-	struct hash<QChar>
+template <>
+struct hash<QChar>
+{
+	size_t operator()(const QChar& k) const
 	{
-		size_t operator()(const QChar& k) const
-		{
-			return qHash(k);
-		}
-	};
+		return qHash(k);
+	}
+};
 #endif
 
 #if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
-	template <>
-	struct hash<QString>
+template <>
+struct hash<QString>
+{
+	size_t operator()(const QString& k) const
 	{
-		size_t operator()(const QString& k) const
-		{
-			return qHash(k);
-		}
-	};
+		return qHash(k);
+	}
+};
 #endif
 }
 
@@ -165,10 +165,10 @@ std::unordered_map<QString, qreal> findLetterFrequency(const std::vector<QString
 			if (probability < 0.001) {
 				total -= i->second;
 				std::cout << QString("Discarded '%1', probability: %2%")
-					.arg(i->first)
-					.arg(probability, 0, 'f')
-					.toStdString()
-					<< std::endl;
+						.arg(i->first)
+						.arg(probability, 0, 'f')
+						.toStdString()
+						<< std::endl;
 				i = letters.erase(i);
 				if (i == letters.end()) {
 					break;
@@ -230,11 +230,11 @@ std::unordered_map<QString, qreal> findLetterFrequency(const std::vector<QString
 			total -= count;
 
 			std::cout << QString("Replaced '%1' with '%2', confidence: %3%")
-				.arg(letter)
-				.arg(letter + bigram[1].toLower())
-				.arg(confidences[letter])
-				.toStdString()
-				<< std::endl;
+					.arg(letter)
+					.arg(letter + bigram[1].toLower())
+					.arg(confidences[letter])
+					.toStdString()
+					<< std::endl;
 		}
 	}
 
@@ -361,16 +361,11 @@ int main(int argc, char** argv)
 		QCommandLineParser parser;
 		parser.setApplicationDescription("Create Tanglet dice from a Tanglet word list.");
 		parser.addHelpOption();
-		parser.addOption(QCommandLineOption({"b", "bigrams"},
-			"Automatically detect bigrams."));
-		parser.addOption(QCommandLineOption({"d", "discard"},
-			"Discard infreqeunt letters."));
-		parser.addOption(QCommandLineOption({"o", "output"},
-			"Place dice in <output> instead of default file.", "output"));
-		parser.addOption(QCommandLineOption({"s", "seed"},
-			"Specify random <seed>.", "seed"));
-		parser.addOption(QCommandLineOption({"v", "verbose"},
-			"Print status messages."));
+		parser.addOption(QCommandLineOption({"b", "bigrams"}, "Automatically detect bigrams."));
+		parser.addOption(QCommandLineOption({"d", "discard"}, "Discard infreqeunt letters."));
+		parser.addOption(QCommandLineOption({"o", "output"}, "Place dice in <output> instead of default file.", "output"));
+		parser.addOption(QCommandLineOption({"s", "seed"}, "Specify random <seed>.", "seed"));
+		parser.addOption(QCommandLineOption({"v", "verbose"}, "Print status messages."));
 		parser.addPositionalArgument("file", "The <file> to analyze for letter frequency.");
 		parser.process(app);
 

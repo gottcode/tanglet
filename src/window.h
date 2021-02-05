@@ -26,66 +26,67 @@ class QLabel;
 class QStackedWidget;
 class Board;
 
-class Window : public QMainWindow {
+class Window : public QMainWindow
+{
 	Q_OBJECT
 
-	public:
-		Window(const QString& file = QString());
+public:
+	Window(const QString& file = QString());
 
-		virtual bool eventFilter(QObject* watched, QEvent* event);
+	virtual bool eventFilter(QObject* watched, QEvent* event);
 
-	protected:
-		virtual void closeEvent(QCloseEvent* event);
-		virtual void dragEnterEvent(QDragEnterEvent* event);
-		virtual void dropEvent(QDropEvent* event);
-		virtual bool event(QEvent* event);
+protected:
+	virtual void closeEvent(QCloseEvent* event);
+	virtual void dragEnterEvent(QDragEnterEvent* event);
+	virtual void dropEvent(QDropEvent* event);
+	virtual bool event(QEvent* event);
 
-	private slots:
-		void about();
-		void aboutHspell();
-		void aboutScowl();
-		void newRoll();
-		void newGame();
-		void chooseGame();
-		void shareGame();
-		bool endGame();
-		void autoPause();
-		void autoResume();
-		void setPaused(bool paused);
-		void showDetails();
-		void showScores();
-		void showLanguage();
-		void showLocale();
-		void showControls();
-		void optimizingStarted();
-		void optimizingFinished();
-		void gameStarted();
-		void gameFinished(int score);
+private slots:
+	void about();
+	void aboutHspell();
+	void aboutScowl();
+	void newRoll();
+	void newGame();
+	void chooseGame();
+	void shareGame();
+	bool endGame();
+	void autoPause();
+	void autoResume();
+	void setPaused(bool paused);
+	void showDetails();
+	void showScores();
+	void showLanguage();
+	void showLocale();
+	void showControls();
+	void optimizingStarted();
+	void optimizingFinished();
+	void gameStarted();
+	void gameFinished(int score);
 
-	private:
-		QString extractGame(const QString& filename) const;
-		void startGame(const QString& filename = QString());
-		void monitorVisibility(QMenu* menu);
+private:
+	QString extractGame(const QString& filename) const;
+	void startGame(const QString& filename = QString());
+	void monitorVisibility(QMenu* menu);
 
-	private:
-		Board* m_board;
-		QStackedWidget* m_contents;
-		QAction* m_details_action;
-		QAction* m_pause_action;
-		QLabel* m_pause_screen;
+private:
+	Board* m_board;
+	QStackedWidget* m_contents;
+	QAction* m_details_action;
+	QAction* m_pause_action;
+	QLabel* m_pause_screen;
 
-		class State;
-		friend class State;
-		class NewGameState;
-		class OpenGameState;
-		class OptimizingState;
-		class PlayState;
-		class AutoPauseState;
-		class PauseState;
-		class FinishState;
-		State* m_state;
-		State* m_previous_state;
-		QHash<QString, State*> m_states;
+	class State;
+	friend class State;
+	class NewGameState;
+	class OpenGameState;
+	class OptimizingState;
+	class PlayState;
+	class AutoPauseState;
+	class PauseState;
+	class FinishState;
+	State* m_state;
+	State* m_previous_state;
+	QHash<QString, State*> m_states;
 };
 
 #endif

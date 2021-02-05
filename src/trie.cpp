@@ -32,12 +32,19 @@ class TrieGenerator
 {
 public:
 	TrieGenerator(const QChar& key = QChar())
-	: m_key(key), m_word(false), m_children(0), m_next(0), m_count(0)
+		: m_key(key)
+		, m_word(false)
+		, m_children(0)
+		, m_next(0)
+		, m_count(0)
 	{
 	}
 
 	TrieGenerator(const QString& word)
-	: m_word(false), m_children(0), m_next(0), m_count(0)
+		: m_word(false)
+		, m_children(0)
+		, m_next(0)
+		, m_count(0)
 	{
 		addWord(word, QStringList(word));
 	}
@@ -68,7 +75,10 @@ private:
 //-----------------------------------------------------------------------------
 
 TrieGenerator::TrieGenerator(const QHash<QString, QStringList>& words)
-: m_word(false), m_children(0), m_next(0), m_count(0)
+	: m_word(false)
+	, m_children(0)
+	, m_next(0)
+	, m_count(0)
 {
 	QHashIterator<QString, QStringList> i(words);
 	while (i.hasNext()) {

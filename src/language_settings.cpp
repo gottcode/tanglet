@@ -27,7 +27,8 @@
 //-----------------------------------------------------------------------------
 
 LanguageSettings::LanguageSettings(const QString& group)
-: m_changed(false) {
+	: m_changed(false)
+{
 	QSettings settings;
 
 	int language = settings.value("Language", QLocale::system().language()).toInt();
@@ -58,14 +59,16 @@ LanguageSettings::LanguageSettings(const QString& group)
 //-----------------------------------------------------------------------------
 
 LanguageSettings::LanguageSettings(int language)
-: m_changed(false) {
+	: m_changed(false)
+{
 	m_language = language;
 	loadDefault();
 }
 
 //-----------------------------------------------------------------------------
 
-LanguageSettings::~LanguageSettings() {
+LanguageSettings::~LanguageSettings()
+{
 	if (m_changed) {
 		QSettings settings;
 
@@ -84,37 +87,43 @@ LanguageSettings::~LanguageSettings() {
 
 //-----------------------------------------------------------------------------
 
-bool LanguageSettings::isChanged() const {
+bool LanguageSettings::isChanged() const
+{
 	return m_changed;
 }
 
 //-----------------------------------------------------------------------------
 
-int LanguageSettings::language() const {
+int LanguageSettings::language() const
+{
 	return m_language;
 }
 
 //-----------------------------------------------------------------------------
 
-QString LanguageSettings::dice() const {
+QString LanguageSettings::dice() const
+{
 	return m_dice;
 }
 
 //-----------------------------------------------------------------------------
 
-QString LanguageSettings::words() const {
+QString LanguageSettings::words() const
+{
 	return m_words;
 }
 
 //-----------------------------------------------------------------------------
 
-QString LanguageSettings::dictionary() const {
+QString LanguageSettings::dictionary() const
+{
 	return m_dictionary;
 }
 
 //-----------------------------------------------------------------------------
 
-void LanguageSettings::setLanguage(int language) {
+void LanguageSettings::setLanguage(int language)
+{
 	if (m_language != language) {
 		m_language = language;
 		m_changed = true;
@@ -123,7 +132,8 @@ void LanguageSettings::setLanguage(int language) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageSettings::setDice(const QString& dice) {
+void LanguageSettings::setDice(const QString& dice)
+{
 	if (m_dice != dice) {
 		m_dice = dice;
 		m_changed = true;
@@ -132,7 +142,8 @@ void LanguageSettings::setDice(const QString& dice) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageSettings::setWords(const QString& words) {
+void LanguageSettings::setWords(const QString& words)
+{
 	if (m_words != words) {
 		m_words = words;
 		m_changed = true;
@@ -141,7 +152,8 @@ void LanguageSettings::setWords(const QString& words) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageSettings::setDictionary(const QString& dictionary) {
+void LanguageSettings::setDictionary(const QString& dictionary)
+{
 	if (m_dictionary != dictionary) {
 		m_dictionary = dictionary;
 		m_changed = true;
@@ -150,7 +162,8 @@ void LanguageSettings::setDictionary(const QString& dictionary) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageSettings::loadDefault() {
+void LanguageSettings::loadDefault()
+{
 	QString iso_code = QLocale(static_cast<QLocale::Language>(m_language)).name().left(2);
 	m_dice = "tanglet:" + iso_code + "/dice";
 	m_words = "tanglet:" + iso_code + "/words";

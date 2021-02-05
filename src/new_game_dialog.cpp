@@ -37,45 +37,50 @@
 
 namespace
 {
-	class TimerDescription
+
+class TimerDescription
+{
+public:
+	TimerDescription(int id)
+		: m_name(Clock::timerToString(id))
+		, m_description(Clock::timerDescription(id))
+		, m_id(id)
 	{
-	public:
-		TimerDescription(int id)
-			: m_name(Clock::timerToString(id)), m_description(Clock::timerDescription(id)), m_id(id)
-		{
-		}
+	}
 
-		QString name() const
-		{
-			return m_name;
-		}
+	QString name() const
+	{
+		return m_name;
+	}
 
-		QString description() const
-		{
-			return m_description;
-		}
+	QString description() const
+	{
+		return m_description;
+	}
 
-		int id() const
-		{
-			return m_id;
-		}
+	int id() const
+	{
+		return m_id;
+	}
 
-		bool operator<(const TimerDescription& timer) const
-		{
-			return m_name.localeAwareCompare(timer.m_name) < 0;
-		}
+	bool operator<(const TimerDescription& timer) const
+	{
+		return m_name.localeAwareCompare(timer.m_name) < 0;
+	}
 
-	private:
-		QString m_name;
-		QString m_description;
-		int m_id;
-	};
+private:
+	QString m_name;
+	QString m_description;
+	int m_id;
+};
+
 }
 
 //-----------------------------------------------------------------------------
 
 NewGameDialog::NewGameDialog(QWidget* parent)
-	: QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint), m_minimum(3)
+	: QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint)
+	, m_minimum(3)
 {
 	setWindowTitle(tr("New Game"));
 
@@ -192,12 +197,13 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-QString NewGameDialog::densityString(int density) {
+QString NewGameDialog::densityString(int density)
+{
 	static QStringList densities = QStringList()
-		<< tr("Low")
-		<< tr("Medium")
-		<< tr("High")
-		<< tr("Random");
+			<< tr("Low")
+			<< tr("Medium")
+			<< tr("High")
+			<< tr("Random");
 	return densities.at(qBound(0, density, densities.count() - 1));
 }
 

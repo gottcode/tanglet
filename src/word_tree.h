@@ -24,34 +24,35 @@ class Trie;
 
 #include <QTreeWidget>
 
-class WordTree : public QTreeWidget {
+class WordTree : public QTreeWidget
+{
 	Q_OBJECT
 
-	public:
-		WordTree(QWidget* parent = 0);
+public:
+	WordTree(QWidget* parent = 0);
 
-		QTreeWidgetItem* addWord(const QString& word);
-		void removeAll();
-		void setDictionary(const QString& url);
-		void setHebrew(bool hebrew);
-		void setTrie(const Trie* trie);
+	QTreeWidgetItem* addWord(const QString& word);
+	void removeAll();
+	void setDictionary(const QString& url);
+	void setHebrew(bool hebrew);
+	void setTrie(const Trie* trie);
 
-	protected:
-		virtual void leaveEvent(QEvent* event);
-		virtual void mouseMoveEvent(QMouseEvent* event);
-		virtual void wheelEvent(QWheelEvent* event);
+protected:
+	virtual void leaveEvent(QEvent* event);
+	virtual void mouseMoveEvent(QMouseEvent* event);
+	virtual void wheelEvent(QWheelEvent* event);
 
-	private slots:
-		void onItemClicked(QTreeWidgetItem* item, int column);
+private slots:
+	void onItemClicked(QTreeWidgetItem* item, int column);
 
-	private:
-		void enterItem(QTreeWidgetItem* item);
+private:
+	void enterItem(QTreeWidgetItem* item);
 
-	private:
-		QTreeWidgetItem* m_active_item;
-		QByteArray m_url;
-		bool m_hebrew;
-		const Trie* m_trie;
+private:
+	QTreeWidgetItem* m_active_item;
+	QByteArray m_url;
+	bool m_hebrew;
+	const Trie* m_trie;
 };
 
 #endif

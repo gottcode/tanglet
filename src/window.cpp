@@ -57,16 +57,25 @@
 
 //-----------------------------------------------------------------------------
 
-class Window::State {
+class Window::State
+{
 public:
 	State(Window* window)
-		: m_window(window) { }
+		: m_window(window)
+	{
+	}
 
 	virtual ~State() { }
 
 	virtual void enter() { }
-	virtual void newGame() { setState("NewGame"); }
-	virtual void openGame() { setState("OpenGame"); }
+	virtual void newGame()
+	{
+		setState("NewGame");
+	}
+	virtual void openGame()
+	{
+		setState("OpenGame");
+	}
 	virtual void optimizingStarted() { }
 	virtual void optimizingFinished() { }
 	virtual void play() { }
@@ -74,25 +83,32 @@ public:
 	virtual void autoResume() { }
 	virtual void pause() { }
 	virtual void resume() { }
-	virtual void finish() { setState("Finish"); }
+	virtual void finish()
+	{
+		setState("Finish");
+	}
 
 protected:
-	void setPaused(bool paused) {
+	void setPaused(bool paused)
+	{
 		m_window->m_board->setPaused(paused);
 		m_window->m_pause_action->setChecked(paused);
 	}
 
-	void setContentsIndex(int index) {
+	void setContentsIndex(int index)
+	{
 		m_window->m_contents->setCurrentIndex(index);
 	}
 
-	void setState(const QString& state) {
+	void setState(const QString& state)
+	{
 		m_window->m_previous_state = m_window->m_state;
 		m_window->m_state = m_window->m_states.value(state);
 		m_window->m_state->enter();
 	}
 
-	void setPreviousState() {
+	void setPreviousState()
+	{
 		m_window->m_state = m_window->m_previous_state;
 		m_window->m_state->enter();
 		m_window->m_previous_state = 0;
@@ -104,21 +120,40 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class Window::NewGameState : public Window::State {
+class Window::NewGameState : public Window::State
+{
 public:
 	NewGameState(Window* window)
-		: State(window) { }
+		: State(window)
+	{
+	}
 
-	void enter() {
+	void enter()
+	{
 		m_next_state = "Play";
 		setPaused(true);
 		setContentsIndex(4);
 	}
 
-	void optimizingStarted() { setState("Optimizing"); }
-	void play() { setState(m_next_state); }
-	void autoPause() { m_next_state = "AutoPause"; }
-	void autoResume() { m_next_state = "Play"; }
+	void optimizingStarted()
+	{
+		setState("Optimizing");
+	}
+
+	void play()
+	{
+		setState(m_next_state);
+	}
+
+	void autoPause()
+	{
+		m_next_state = "AutoPause";
+	}
+
+	void autoResume()
+	{
+		m_next_state = "Play";
+	}
 
 private:
 	QString m_next_state;
@@ -126,21 +161,40 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class Window::OpenGameState : public Window::State {
+class Window::OpenGameState : public Window::State
+{
 public:
 	OpenGameState(Window* window)
-		: State(window) { }
+		: State(window)
+	{
+	}
 
-	void enter() {
+	void enter()
+	{
 		m_next_state = "Play";
 		setPaused(true);
 		setContentsIndex(2);
 	}
 
-	void optimizingStarted() { setState("Optimizing"); }
-	void play() { setState(m_next_state); }
-	void autoPause() { m_next_state = "AutoPause"; }
-	void autoResume() { m_next_state = "Play"; }
+	void optimizingStarted()
+	{
+		setState("Optimizing");
+	}
+
+	void play()
+	{
+		setState(m_next_state);
+	}
+
+	void autoPause()
+	{
+		m_next_state = "AutoPause";
+	}
+
+	void autoResume()
+	{
+		m_next_state = "Play";
+	}
 
 private:
 	QString m_next_state;
@@ -148,52 +202,77 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class Window::OptimizingState : public Window::State {
+class Window::OptimizingState : public Window::State
+{
 public:
 	OptimizingState(Window* window)
-		: State(window) { }
+		: State(window)
+	{
+	}
 
-	void enter() {
+	void enter()
+	{
 		setContentsIndex(5);
 	}
 
-	void optimizingFinished() { setPreviousState(); }
+	void optimizingFinished()
+	{
+		setPreviousState();
+	}
 };
 
 //-----------------------------------------------------------------------------
 
-class Window::PlayState : public Window::State {
+class Window::PlayState : public Window::State
+{
 public:
 	PlayState(Window* window)
-		: State(window) { }
+		: State(window)
+	{
+	}
 
-	void enter() {
+	void enter()
+	{
 		setPaused(false);
 		setContentsIndex(0);
 	}
 
-	void autoPause() { setState("AutoPause"); }
-	void pause() { setState("Pause"); }
+	void autoPause()
+	{
+		setState("AutoPause");
+	}
+
+	void pause()
+	{
+		setState("Pause");
+	}
 };
 
 //-----------------------------------------------------------------------------
 
-class Window::AutoPauseState : public Window::State {
+class Window::AutoPauseState : public Window::State
+{
 public:
 	AutoPauseState(Window* window)
-		: State(window), m_count(0) { }
+		: State(window)
+		, m_count(0)
+	{
+	}
 
-	void enter() {
+	void enter()
+	{
 		setPaused(true);
 		setContentsIndex(1);
 		m_count++;
 	}
 
-	void autoPause() {
+	void autoPause()
+	{
 		m_count++;
 	}
 
-	void autoResume() {
+	void autoResume()
+	{
 		m_count--;
 		if (m_count < 1) {
 			m_count = 0;
@@ -201,11 +280,35 @@ public:
 		}
 	}
 
-	void newGame() { m_count = 0; setState("NewGame"); }
-	void openGame() { m_count = 0; setState("OpenGame"); }
-	void pause() { m_count = 0; setState("Pause"); }
-	void resume() { m_count = 0; setState("Play"); }
-	void finish() { m_count = 0; setState("Finish"); }
+	void newGame()
+	{
+		m_count = 0;
+		setState("NewGame");
+	}
+
+	void openGame()
+	{
+		m_count = 0;
+		setState("OpenGame");
+	}
+
+	void pause()
+	{
+		m_count = 0;
+		setState("Pause");
+	}
+
+	void resume()
+	{
+		m_count = 0;
+		setState("Play");
+	}
+
+	void finish()
+	{
+		m_count = 0;
+		setState("Finish");
+	}
 
 private:
 	int m_count;
@@ -213,27 +316,38 @@ private:
 
 //-----------------------------------------------------------------------------
 
-class Window::PauseState : public Window::State {
+class Window::PauseState : public Window::State
+{
 public:
 	PauseState(Window* window)
-		: State(window) { }
+		: State(window)
+	{
+	}
 
-	void enter() {
+	void enter()
+	{
 		setPaused(true);
 		setContentsIndex(1);
 	}
 
-	void resume() { setState("Play"); }
+	void resume()
+	{
+		setState("Play");
+	}
 };
 
 //-----------------------------------------------------------------------------
 
-class Window::FinishState : public Window::State {
+class Window::FinishState : public Window::State
+{
 public:
 	FinishState(Window* window)
-		: State(window) { }
+		: State(window)
+	{
+	}
 
-	void enter() {
+	void enter()
+	{
 		setPaused(false);
 		setContentsIndex(0);
 	}
@@ -243,44 +357,48 @@ public:
 
 namespace
 {
-	class AboutDialog : public QDialog
-	{
-	public:
-		AboutDialog(const QString& title, const QString& filename, QWidget* parent = 0);
-	};
 
-	AboutDialog::AboutDialog(const QString& title, const QString& filename, QWidget* parent)
-		: QDialog(parent)
-	{
-		setWindowTitle(title);
+class AboutDialog : public QDialog
+{
+public:
+	AboutDialog(const QString& title, const QString& filename, QWidget* parent = 0);
+};
 
-		QTextEdit* text = new QTextEdit(this);
-		text->setWordWrapMode(QTextOption::NoWrap);
-		text->setReadOnly(true);
+AboutDialog::AboutDialog(const QString& title, const QString& filename, QWidget* parent)
+	: QDialog(parent)
+{
+	setWindowTitle(title);
 
-		QFile file(filename);
-		if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			QTextStream stream(&file);
-			text->setHtml("<pre>" + stream.readAll() + "</pre>");
-			file.close();
-		}
+	QTextEdit* text = new QTextEdit(this);
+	text->setWordWrapMode(QTextOption::NoWrap);
+	text->setReadOnly(true);
 
-		QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
-		buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
-		connect(buttons, &QDialogButtonBox::accepted, this, &AboutDialog::accept);
-
-		QVBoxLayout* layout = new QVBoxLayout(this);
-		layout->addWidget(text);
-		layout->addWidget(buttons);
-
-		resize(700, 500);
+	QFile file(filename);
+	if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+		QTextStream stream(&file);
+		text->setHtml("<pre>" + stream.readAll() + "</pre>");
+		file.close();
 	}
+
+	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
+	buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
+	connect(buttons, &QDialogButtonBox::accepted, this, &AboutDialog::accept);
+
+	QVBoxLayout* layout = new QVBoxLayout(this);
+	layout->addWidget(text);
+	layout->addWidget(buttons);
+
+	resize(700, 500);
+}
+
 }
 
 //-----------------------------------------------------------------------------
 
 Window::Window(const QString& file)
-: m_pause_action(0), m_previous_state(0) {
+	: m_pause_action(0)
+	, m_previous_state(0)
+{
 	setAcceptDrops(true);
 
 	// Create states
@@ -425,7 +543,8 @@ Window::Window(const QString& file)
 
 //-----------------------------------------------------------------------------
 
-bool Window::eventFilter(QObject* watched, QEvent* event) {
+bool Window::eventFilter(QObject* watched, QEvent* event)
+{
 	if (watched == m_pause_screen) {
 		if (event->type() == QEvent::MouseButtonPress) {
 			m_state->resume();
@@ -447,14 +566,16 @@ bool Window::eventFilter(QObject* watched, QEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-void Window::closeEvent(QCloseEvent* event) {
+void Window::closeEvent(QCloseEvent* event)
+{
 	QSettings().setValue("Geometry", saveGeometry());
 	QMainWindow::closeEvent(event);
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::dragEnterEvent(QDragEnterEvent* event) {
+void Window::dragEnterEvent(QDragEnterEvent* event)
+{
 	if (!(event->possibleActions() & Qt::CopyAction)) {
 		return;
 	}
@@ -484,7 +605,8 @@ void Window::dragEnterEvent(QDragEnterEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-void Window::dropEvent(QDropEvent* event) {
+void Window::dropEvent(QDropEvent* event)
+{
 	if (!(event->possibleActions() & Qt::CopyAction)) {
 		return;
 	}
@@ -523,7 +645,8 @@ void Window::dropEvent(QDropEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-bool Window::event(QEvent* event) {
+bool Window::event(QEvent* event)
+{
 	if (m_pause_action && m_pause_action->isEnabled()) {
 		switch (event->type()) {
 		case QEvent::WindowDeactivate:
@@ -546,7 +669,8 @@ bool Window::event(QEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-void Window::about() {
+void Window::about()
+{
 	QMessageBox::about(this, tr("About"),
 		QString("<center><p><big><b>%1</b></big><br/>%2<br/><small>%3<br/>%4</small></p><p>%5</p><p>%6</p></center>")
 		.arg(tr("Tanglet %1").arg(QCoreApplication::applicationVersion()),
@@ -560,21 +684,24 @@ void Window::about() {
 
 //-----------------------------------------------------------------------------
 
-void Window::aboutHspell() {
+void Window::aboutHspell()
+{
 	AboutDialog dialog(tr("About Hspell"), ":/hspell-readme", this);
 	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::aboutScowl() {
+void Window::aboutScowl()
+{
 	AboutDialog dialog(tr("About SCOWL"), ":/scowl-readme", this);
 	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::newRoll() {
+void Window::newRoll()
+{
 	if (endGame()) {
 		startGame();
 	}
@@ -582,7 +709,8 @@ void Window::newRoll() {
 
 //-----------------------------------------------------------------------------
 
-void Window::newGame() {
+void Window::newGame()
+{
 	if (endGame()) {
 		NewGameDialog dialog(this);
 		if (dialog.exec() == QDialog::Accepted) {
@@ -594,7 +722,8 @@ void Window::newGame() {
 
 //-----------------------------------------------------------------------------
 
-void Window::chooseGame() {
+void Window::chooseGame()
+{
 	if (endGame()) {
 		QString filename = QFileDialog::getOpenFileName(window(),
 				tr("Import Game"),
@@ -608,7 +737,8 @@ void Window::chooseGame() {
 
 //-----------------------------------------------------------------------------
 
-void Window::shareGame() {
+void Window::shareGame()
+{
 	QString filename = QFileDialog::getSaveFileName(window(),
 			tr("Export Game"),
 			QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
@@ -655,7 +785,8 @@ void Window::shareGame() {
 
 //-----------------------------------------------------------------------------
 
-bool Window::endGame() {
+bool Window::endGame()
+{
 	if (!m_board->isFinished()) {
 		if (QMessageBox::question(this, tr("Question"), tr("End the current game?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes) {
 			m_board->abort();
@@ -668,19 +799,22 @@ bool Window::endGame() {
 
 //-----------------------------------------------------------------------------
 
-void Window::autoPause() {
+void Window::autoPause()
+{
 	m_state->autoPause();
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::autoResume() {
+void Window::autoResume()
+{
 	m_state->autoResume();
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::setPaused(bool paused) {
+void Window::setPaused(bool paused)
+{
 	if (paused) {
 		m_state->pause();
 	} else {
@@ -690,7 +824,8 @@ void Window::setPaused(bool paused) {
 
 //-----------------------------------------------------------------------------
 
-void Window::showDetails() {
+void Window::showDetails()
+{
 	QSettings settings;
 	int size = settings.value("Current/Size").toInt();
 	int density = settings.value("Current/Density").toInt();
@@ -711,7 +846,8 @@ void Window::showDetails() {
 
 //-----------------------------------------------------------------------------
 
-void Window::showScores() {
+void Window::showScores()
+{
 	ScoresDialog scores(this);
 	connect(&scores, &ScoresDialog::scoresReset, m_board, &Board::updateScoreColor);
 	scores.exec();
@@ -719,7 +855,8 @@ void Window::showScores() {
 
 //-----------------------------------------------------------------------------
 
-void Window::showLanguage() {
+void Window::showLanguage()
+{
 	LanguageDialog dialog(this);
 	if (dialog.exec() == QDialog::Accepted) {
 		newGame();
@@ -728,14 +865,16 @@ void Window::showLanguage() {
 
 //-----------------------------------------------------------------------------
 
-void Window::showLocale() {
+void Window::showLocale()
+{
 	LocaleDialog dialog(this);
 	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::showControls() {
+void Window::showControls()
+{
 	QMessageBox::information(this, tr("Controls"), tr(
 		"<p><b><big>Mouse Play:</big></b><br>"
 		"<b>Select a word:</b> Click on the letters of a word.<br>"
@@ -751,26 +890,30 @@ void Window::showControls() {
 
 //-----------------------------------------------------------------------------
 
-void Window::optimizingStarted() {
+void Window::optimizingStarted()
+{
 	m_state->optimizingStarted();
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::optimizingFinished() {
+void Window::optimizingFinished()
+{
 	m_state->optimizingFinished();
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::gameStarted() {
+void Window::gameStarted()
+{
 	m_state->play();
 	m_details_action->setEnabled(true);
 }
 
 //-----------------------------------------------------------------------------
 
-void Window::gameFinished(int score) {
+void Window::gameFinished(int score)
+{
 	m_state->finish();
 	ScoresDialog scores(this);
 	if (scores.addScore(score)) {
@@ -785,7 +928,8 @@ void Window::gameFinished(int score) {
 
 //-----------------------------------------------------------------------------
 
-void Window::monitorVisibility(QMenu* menu) {
+void Window::monitorVisibility(QMenu* menu)
+{
 #ifndef Q_OS_MAC
 	connect(menu, &QMenu::aboutToShow, this, &Window::autoPause);
 	connect(menu, &QMenu::aboutToHide, this, &Window::autoResume);
@@ -794,7 +938,8 @@ void Window::monitorVisibility(QMenu* menu) {
 
 //-----------------------------------------------------------------------------
 
-void Window::startGame(const QString& filename) {
+void Window::startGame(const QString& filename)
+{
 	QSettings* game = 0;
 
 	if (filename.isEmpty()) {
@@ -840,7 +985,8 @@ void Window::startGame(const QString& filename) {
 
 //-----------------------------------------------------------------------------
 
-QString Window::extractGame(const QString& filename) const {
+QString Window::extractGame(const QString& filename) const
+{
 	QString current = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 
 	// Uncompress shared game

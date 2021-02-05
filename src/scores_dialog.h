@@ -28,54 +28,57 @@ class QGridLayout;
 class QLabel;
 class QLineEdit;
 
-class ScoresDialog : public QDialog {
+class ScoresDialog : public QDialog
+{
 	Q_OBJECT
 
-	public:
-		ScoresDialog(QWidget* parent = 0);
+public:
+	ScoresDialog(QWidget* parent = 0);
 
-		bool addScore(int score);
-		static int isHighScore(int score);
+	bool addScore(int score);
+	static int isHighScore(int score);
 
-	signals:
-		void scoresReset();
+signals:
+	void scoresReset();
 
-	protected:
-		void hideEvent(QHideEvent* event);
-		void keyPressEvent(QKeyEvent* event);
+protected:
+	void hideEvent(QHideEvent* event);
+	void keyPressEvent(QKeyEvent* event);
 
-	private slots:
-		void editingFinished();
-		void resetClicked(QAbstractButton* button);
+private slots:
+	void editingFinished();
+	void resetClicked(QAbstractButton* button);
 
-	private:
-		int addScore(const QString& name, int score, const QDateTime& date, int timer);
-		void load();
-		void updateItems();
+private:
+	int addScore(const QString& name, int score, const QDateTime& date, int timer);
+	void load();
+	void updateItems();
 
-	private:
-		QDialogButtonBox* m_buttons;
+private:
+	QDialogButtonBox* m_buttons;
 
-		struct Score {
-			QString name;
-			int score;
-			QDateTime date;
-			int timer;
+	struct Score
+	{
+		QString name;
+		int score;
+		QDateTime date;
+		int timer;
 
-			bool operator<(const Score& s) const {
-				return score < s.score;
-			}
-		};
-		QList<Score> m_scores;
-		QString m_default_name;
+		bool operator<(const Score& s) const
+		{
+			return score < s.score;
+		}
+	};
+	QList<Score> m_scores;
+	QString m_default_name;
 
-		QLabel* m_score_labels[10][5];
-		QGridLayout* m_scores_layout;
-		QLineEdit* m_username;
-		int m_row;
+	QLabel* m_score_labels[10][5];
+	QGridLayout* m_scores_layout;
+	QLineEdit* m_username;
+	int m_row;
 
-		static int m_max;
-		static int m_min;
+	static int m_max;
+	static int m_min;
 };
 
 #endif

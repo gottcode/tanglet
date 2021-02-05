@@ -24,9 +24,9 @@
 //-----------------------------------------------------------------------------
 
 BeveledRect::BeveledRect(int size, QGraphicsItem* parent)
-	: QGraphicsItem(parent),
-	  m_size(size),
-	  m_steps(5)
+	: QGraphicsItem(parent)
+	, m_size(size)
+	, m_steps(5)
 {
 }
 

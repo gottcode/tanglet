@@ -40,87 +40,92 @@
 
 namespace
 {
-	struct State
+
+struct State
+{
+	State(const QList<QStringList>& dice, Solver* solver, int target, std::mt19937* random)
+		: m_dice(dice)
+		, m_solver(solver)
+		, m_target(target)
+		, m_random(random)
 	{
-		State(const QList<QStringList>& dice, Solver* solver, int target, std::mt19937* random)
-			: m_dice(dice), m_solver(solver), m_target(target), m_random(random)
-		{
-		}
+	}
 
-		int delta() const
-		{
-			return m_delta;
-		}
+	int delta() const
+	{
+		return m_delta;
+	}
 
-		QStringList letters() const
-		{
-			return m_letters;
-		}
+	QStringList letters() const
+	{
+		return m_letters;
+	}
 
-		void permute()
-		{
-			if (randomInt(2)) {
-				int index = randomInt(m_dice.count());
-				QStringList& die = m_dice[index];
-				std::shuffle(die.begin(), die.end(), *m_random);
-				m_letters[index] = m_dice.at(index).first();
-			} else {
-				int index1 = randomInt(m_dice.count());
-				int index2 = randomInt(m_dice.count());
+	void permute()
+	{
+		if (randomInt(2)) {
+			int index = randomInt(m_dice.count());
+			QStringList& die = m_dice[index];
+			std::shuffle(die.begin(), die.end(), *m_random);
+			m_letters[index] = m_dice.at(index).first();
+		} else {
+			int index1 = randomInt(m_dice.count());
+			int index2 = randomInt(m_dice.count());
 #if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
-				m_dice.swapItemsAt(index1, index2);
-				m_letters.swapItemsAt(index1, index2);
+			m_dice.swapItemsAt(index1, index2);
+			m_letters.swapItemsAt(index1, index2);
 #else
-				m_dice.swap(index1, index2);
-				m_letters.swap(index1, index2);
+			m_dice.swap(index1, index2);
+			m_letters.swap(index1, index2);
 #endif
-			}
-			solve();
 		}
+		solve();
+	}
 
-		void roll()
-		{
-			std::shuffle(m_dice.begin(), m_dice.end(), *m_random);
-			m_letters.clear();
-			int count = m_dice.count();
-			for (int i = 0; i < count; ++i) {
-				QStringList& die = m_dice[i];
-				std::shuffle(die.begin(), die.end(), *m_random);
-				m_letters += die.first();
-			}
-			solve();
+	void roll()
+	{
+		std::shuffle(m_dice.begin(), m_dice.end(), *m_random);
+		m_letters.clear();
+		int count = m_dice.count();
+		for (int i = 0; i < count; ++i) {
+			QStringList& die = m_dice[i];
+			std::shuffle(die.begin(), die.end(), *m_random);
+			m_letters += die.first();
 		}
+		solve();
+	}
 
-	private:
-		void solve()
-		{
-			m_solver->solve(m_letters);
-			int words = m_solver->count();
-			m_delta = abs(words - m_target);
-		}
+private:
+	void solve()
+	{
+		m_solver->solve(m_letters);
+		int words = m_solver->count();
+		m_delta = abs(words - m_target);
+	}
 
-		int randomInt(int max)
-		{
-			std::uniform_int_distribution<> dis(0, max - 1);
-			return dis(*m_random);
-		}
+	int randomInt(int max)
+	{
+		std::uniform_int_distribution<> dis(0, max - 1);
+		return dis(*m_random);
+	}
 
-	private:
-		QList<QStringList> m_dice;
-		QStringList m_letters;
-		int m_delta;
-		Solver* m_solver;
-		int m_target;
-		std::mt19937* m_random;
-	};
+private:
+	QList<QStringList> m_dice;
+	QStringList m_letters;
+	int m_delta;
+	Solver* m_solver;
+	int m_target;
+	std::mt19937* m_random;
+};
+
 }
 
 //-----------------------------------------------------------------------------
 
-Generator::Generator(QObject* parent) :
-	QThread(parent),
-	m_max_score(0),
-	m_canceled(false)
+Generator::Generator(QObject* parent)
+	: QThread(parent)
+	, m_max_score(0)
+	, m_canceled(false)
 {
 }
 

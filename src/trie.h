@@ -32,7 +32,11 @@ public:
 	struct Node
 	{
 		Node()
-			: m_letter(QChar()), m_word(0), m_children(0), m_word_count(0), m_child_count(0)
+			: m_letter(QChar())
+			, m_word(0)
+			, m_children(0)
+			, m_word_count(0)
+			, m_child_count(0)
 		{
 		}
 

@@ -31,7 +31,11 @@
 //-----------------------------------------------------------------------------
 
 WordTree::WordTree(QWidget* parent)
-: QTreeWidget(parent), m_active_item(0), m_hebrew(false), m_trie(0) {
+	: QTreeWidget(parent)
+	, m_active_item(0)
+	, m_hebrew(false)
+	, m_trie(0)
+{
 	setColumnCount(3);
 	hideColumn(2);
 	header()->setStretchLastSection(false);
@@ -53,7 +57,8 @@ WordTree::WordTree(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-QTreeWidgetItem* WordTree::addWord(const QString& word) {
+QTreeWidgetItem* WordTree::addWord(const QString& word)
+{
 	QTreeWidgetItem* item = new QTreeWidgetItem(this);
 	item->setText(2, word);
 	if (!m_hebrew) {
@@ -98,7 +103,8 @@ QTreeWidgetItem* WordTree::addWord(const QString& word) {
 
 //-----------------------------------------------------------------------------
 
-void WordTree::removeAll() {
+void WordTree::removeAll()
+{
 	m_active_item = 0;
 	clear();
 	scrollToTop();
@@ -106,39 +112,45 @@ void WordTree::removeAll() {
 
 //-----------------------------------------------------------------------------
 
-void WordTree::setDictionary(const QString& url) {
+void WordTree::setDictionary(const QString& url)
+{
 	m_url = QUrl::toPercentEncoding(url, "#$%&+,/:;=?@~");
 }
 
 //-----------------------------------------------------------------------------
 
-void WordTree::setHebrew(bool hebrew) {
+void WordTree::setHebrew(bool hebrew)
+{
 	m_hebrew = hebrew;
 }
 
 //-----------------------------------------------------------------------------
 
-void WordTree::setTrie(const Trie* trie) {
+void WordTree::setTrie(const Trie* trie)
+{
 	m_trie = trie;
 }
 
 //-----------------------------------------------------------------------------
 
-void WordTree::leaveEvent(QEvent* event) {
+void WordTree::leaveEvent(QEvent* event)
+{
 	QTreeWidget::leaveEvent(event);
 	enterItem(0);
 }
 
 //-----------------------------------------------------------------------------
 
-void WordTree::mouseMoveEvent(QMouseEvent* event) {
+void WordTree::mouseMoveEvent(QMouseEvent* event)
+{
 	QTreeWidget::mouseMoveEvent(event);
 	enterItem(itemAt(event->pos()));
 }
 
 //-----------------------------------------------------------------------------
 
-void WordTree::wheelEvent(QWheelEvent* event) {
+void WordTree::wheelEvent(QWheelEvent* event)
+{
 	QTreeWidget::wheelEvent(event);
 #if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
 	enterItem(itemAt(event->position().toPoint()));
@@ -149,7 +161,8 @@ void WordTree::wheelEvent(QWheelEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
+void WordTree::onItemClicked(QTreeWidgetItem* item, int column)
+{
 	if (item && column == 1) {
 		QStringList spellings = item->data(1, Qt::UserRole).toStringList();
 		QString word = spellings.first();
@@ -175,7 +188,8 @@ void WordTree::onItemClicked(QTreeWidgetItem* item, int column) {
 
 //-----------------------------------------------------------------------------
 
-void WordTree::enterItem(QTreeWidgetItem* item) {
+void WordTree::enterItem(QTreeWidgetItem* item)
+{
 	if (m_active_item) {
 		m_active_item->setIcon(1, QIcon(":/empty.png"));
 	}

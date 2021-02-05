@@ -39,81 +39,82 @@ class QToolButton;
 
 #include <random>
 
-class Board : public QWidget {
+class Board : public QWidget
+{
 	Q_OBJECT
 
-	public:
-		Board(QWidget* parent = 0);
-		~Board();
+public:
+	Board(QWidget* parent = 0);
+	~Board();
 
-		bool isFinished() const;
-		void abort();
-		void generate(const QSettings& game);
-		void setPaused(bool pause);
+	bool isFinished() const;
+	void abort();
+	void generate(const QSettings& game);
+	void setPaused(bool pause);
 
-		static QString sizeToString(int size);
+	static QString sizeToString(int size);
 
-	public slots:
-		void setShowMissedWords(bool show);
-		void setShowMaximumScore(QAction* show);
-		void setShowWordCounts(bool show);
-		void updateScoreColor();
+public slots:
+	void setShowMissedWords(bool show);
+	void setShowMaximumScore(QAction* show);
+	void setShowWordCounts(bool show);
+	void updateScoreColor();
 
-	signals:
-		void started();
-		void finished(int score);
-		void optimizingStarted();
-		void optimizingFinished();
-		void pauseAvailable(bool available);
+signals:
+	void started();
+	void finished(int score);
+	void optimizingStarted();
+	void optimizingFinished();
+	void pauseAvailable(bool available);
 
-	private slots:
-		void gameStarted();
-		void clearGuess();
-		void guess();
-		void guessChanged();
-		void finish();
-		void wordSelected();
-		void letterClicked(Letter* letter);
-		void showMaximumWords();
+private slots:
+	void gameStarted();
+	void clearGuess();
+	void guess();
+	void guessChanged();
+	void finish();
+	void wordSelected();
+	void letterClicked(Letter* letter);
+	void showMaximumWords();
 
-	private:
-		void highlightWord(const QList<QPoint>& positions, const QColor& color);
-		void highlightWord();
-		void clearHighlight();
-		void selectGuess();
-		int updateScore();
-		void updateClickableStatus();
-		void updateButtons();
+private:
+	void highlightWord(const QList<QPoint>& positions, const QColor& color);
+	void highlightWord();
+	void clearHighlight();
+	void selectGuess();
+	int updateScore();
+	void updateClickableStatus();
+	void updateButtons();
 
-	private:
-		Clock* m_clock;
-		View* m_view;
-		QLabel* m_score;
-		QVector<QVector<Letter*> > m_cells;
-		QLineEdit* m_guess;
-		QTabWidget* m_tabs;
-		WordTree* m_found;
-		WordTree* m_missed;
-		WordCounts* m_counts;
-		QToolButton* m_clear_button;
-		QToolButton* m_guess_button;
-		QToolButton* m_max_score_details;
+private:
+	Clock* m_clock;
+	View* m_view;
+	QLabel* m_score;
+	QVector<QVector<Letter*> > m_cells;
+	QLineEdit* m_guess;
+	QTabWidget* m_tabs;
+	WordTree* m_found;
+	WordTree* m_missed;
+	WordCounts* m_counts;
+	QToolButton* m_clear_button;
+	QToolButton* m_guess_button;
+	QToolButton* m_max_score_details;
 
-		bool m_paused;
-		bool m_wrong;
-		bool m_valid;
-		int m_score_type;
+	bool m_paused;
+	bool m_wrong;
+	bool m_valid;
+	int m_score_type;
 
-		int m_size;
-		int m_minimum;
-		int m_maximum;
-		int m_max_score;
-		QStringList m_letters;
-		QHash<QString, QList<QList<QPoint> > > m_solutions;
-		QList<QPoint> m_positions;
+	int m_size;
+	int m_minimum;
+	int m_maximum;
+	int m_max_score;
+	QStringList m_letters;
+	QHash<QString, QList<QList<QPoint> > > m_solutions;
+	QList<QPoint> m_positions;
 
-		std::mt19937 m_seed;
-		Generator* m_generator;
+	std::mt19937 m_seed;
+	Generator* m_generator;
 };
 
 #endif

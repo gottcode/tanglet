@@ -55,7 +55,17 @@
 //-----------------------------------------------------------------------------
 
 Board::Board(QWidget* parent)
-: QWidget(parent), m_paused(false), m_wrong(false), m_valid(true), m_score_type(1), m_size(0), m_minimum(0), m_maximum(0), m_max_score(0), m_generator(0) {
+	: QWidget(parent)
+	, m_paused(false)
+	, m_wrong(false)
+	, m_valid(true)
+	, m_score_type(1)
+	, m_size(0)
+	, m_minimum(0)
+	, m_maximum(0)
+	, m_max_score(0)
+	, m_generator(0)
+{
 #ifndef Q_OS_WIN
 	std::random_device rd;
 	m_seed.seed(rd());
@@ -176,7 +186,8 @@ Board::Board(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-Board::~Board() {
+Board::~Board()
+{
 	m_generator->cancel();
 
 	QSettings game;
@@ -213,20 +224,23 @@ Board::~Board() {
 
 //-----------------------------------------------------------------------------
 
-bool Board::isFinished() const {
+bool Board::isFinished() const
+{
 	return m_clock->isFinished();
 }
 
 //-----------------------------------------------------------------------------
 
-void Board::abort() {
+void Board::abort()
+{
 	m_generator->cancel();
 	m_clock->stop();
 }
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(const QSettings& game) {
+void Board::generate(const QSettings& game)
+{
 	// Find values
 	int size = qBound(4, game.value("Size").toInt(), 5);
 	int density = qBound(0, game.value("Density").toInt(), 3);
@@ -277,7 +291,8 @@ void Board::generate(const QSettings& game) {
 
 //-----------------------------------------------------------------------------
 
-void Board::setPaused(bool pause) {
+void Board::setPaused(bool pause)
+{
 	if (isFinished()) {
 		return;
 	}
@@ -293,13 +308,15 @@ void Board::setPaused(bool pause) {
 
 //-----------------------------------------------------------------------------
 
-QString Board::sizeToString(int size) {
+QString Board::sizeToString(int size)
+{
 	return (size == 4) ? tr("Normal") : tr("Large");
 }
 
 //-----------------------------------------------------------------------------
 
-void Board::setShowMaximumScore(QAction* show) {
+void Board::setShowMaximumScore(QAction* show)
+{
 	int score_type = show->data().toInt();
 	QSettings().setValue("ShowMaximumScore", score_type);
 	m_score_type = score_type;
@@ -309,7 +326,8 @@ void Board::setShowMaximumScore(QAction* show) {
 
 //-----------------------------------------------------------------------------
 
-void Board::setShowMissedWords(bool show) {
+void Board::setShowMissedWords(bool show)
+{
 	QSettings().setValue("ShowMissed", show);
 	if (show) {
 		if (m_tabs->count() == 1) {
@@ -326,20 +344,23 @@ void Board::setShowMissedWords(bool show) {
 
 //-----------------------------------------------------------------------------
 
-void Board::setShowWordCounts(bool show) {
+void Board::setShowWordCounts(bool show)
+{
 	QSettings().setValue("ShowWordCounts", show);
 	m_counts->setVisible(show);
 }
 
 //-----------------------------------------------------------------------------
 
-void Board::updateScoreColor() {
+void Board::updateScoreColor()
+{
 	updateScore();
 }
 
 //-----------------------------------------------------------------------------
 
-void Board::gameStarted() {
+void Board::gameStarted()
+{
 	// Load settings
 	QSettings settings;
 	settings.beginGroup("Current");
@@ -469,7 +490,8 @@ void Board::gameStarted() {
 
 //-----------------------------------------------------------------------------
 
-void Board::clearGuess() {
+void Board::clearGuess()
+{
 	m_valid = true;
 	m_wrong = false;
 	m_positions.clear();
@@ -484,7 +506,8 @@ void Board::clearGuess() {
 
 //-----------------------------------------------------------------------------
 
-void Board::guess() {
+void Board::guess()
+{
 	if (!isFinished() && !m_paused) {
 		QString text = m_guess->text().trimmed().toUpper();
 		if (text.isEmpty() || text.length() < m_minimum || text.length() > m_maximum || !m_valid || m_positions.isEmpty() || m_wrong) {
@@ -539,7 +562,8 @@ void Board::guess() {
 
 //-----------------------------------------------------------------------------
 
-void Board::guessChanged() {
+void Board::guessChanged()
+{
 	m_valid = true;
 	m_wrong = false;
 	clearHighlight();
@@ -614,7 +638,8 @@ void Board::guessChanged() {
 
 //-----------------------------------------------------------------------------
 
-void Board::finish() {
+void Board::finish()
+{
 	m_clock->setText((m_missed->topLevelItemCount() == 0 && m_found->topLevelItemCount() > 0) ? tr("Success") : tr("Game Over"));
 
 	clearGuess();
@@ -634,7 +659,8 @@ void Board::finish() {
 
 //-----------------------------------------------------------------------------
 
-void Board::wordSelected() {
+void Board::wordSelected()
+{
 	QList<QTreeWidgetItem*> items;
 	if (m_tabs->currentWidget() == m_missed) {
 		items = m_missed->selectedItems();
@@ -659,8 +685,8 @@ void Board::wordSelected() {
 
 //-----------------------------------------------------------------------------
 
-void Board::letterClicked(Letter* letter) {
-
+void Board::letterClicked(Letter* letter)
+{
 	// Handle adding a letter to the guess
 	if (!m_positions.contains(letter->position())) {
 		QString word = m_guess->text().trimmed().toUpper();
@@ -706,7 +732,8 @@ void Board::letterClicked(Letter* letter) {
 
 //-----------------------------------------------------------------------------
 
-void Board::highlightWord(const QList<QPoint>& positions, const QColor& color) {
+void Board::highlightWord(const QList<QPoint>& positions, const QColor& color)
+{
 	Q_ASSERT(!positions.isEmpty());
 
 	m_cells[positions.at(0).x()][positions.at(0).y()]->setColor(color);
@@ -730,7 +757,8 @@ void Board::highlightWord(const QList<QPoint>& positions, const QColor& color) {
 
 //-----------------------------------------------------------------------------
 
-void Board::highlightWord() {
+void Board::highlightWord()
+{
 	QString guess = m_guess->text();
 	if (guess.isEmpty()) {
 		return;
@@ -762,7 +790,8 @@ void Board::highlightWord() {
 
 //-----------------------------------------------------------------------------
 
-void Board::clearHighlight() {
+void Board::clearHighlight()
+{
 	QColor color = !isFinished() ? Qt::white : QColor("#aaa");
 	for (int c = 0; c < m_size; ++c) {
 		for (int r = 0; r < m_size; ++r) {
@@ -776,7 +805,8 @@ void Board::clearHighlight() {
 
 //-----------------------------------------------------------------------------
 
-void Board::selectGuess() {
+void Board::selectGuess()
+{
 	QTreeWidgetItem* item = m_found->findItems(m_guess->text(), Qt::MatchExactly, 0).value(0);
 	if (item != 0) {
 		m_found->setCurrentItem(item);
@@ -788,7 +818,8 @@ void Board::selectGuess() {
 
 //-----------------------------------------------------------------------------
 
-int Board::updateScore() {
+int Board::updateScore()
+{
 	int score = 0;
 	for (int i = 0; i < m_found->topLevelItemCount(); ++i) {
 		score += m_found->topLevelItem(i)->data(0, Qt::UserRole).toInt();
@@ -833,7 +864,8 @@ int Board::updateScore() {
 
 //-----------------------------------------------------------------------------
 
-void Board::updateClickableStatus() {
+void Board::updateClickableStatus()
+{
 	bool finished = isFinished();
 	bool has_word = !m_positions.isEmpty() && !finished;
 	bool clickable = !has_word && !finished;
@@ -864,7 +896,8 @@ void Board::updateClickableStatus() {
 
 //-----------------------------------------------------------------------------
 
-void Board::updateButtons() {
+void Board::updateButtons()
+{
 	QString text = m_guess->text();
 	bool has_guess = !text.isEmpty();
 	m_clear_button->setEnabled(has_guess);
@@ -873,7 +906,8 @@ void Board::updateButtons() {
 
 //-----------------------------------------------------------------------------
 
-void Board::showMaximumWords() {
+void Board::showMaximumWords()
+{
 	QDialog dialog(window(), Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
 	dialog.setWindowTitle(tr("Details"));
 

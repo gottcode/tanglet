@@ -28,39 +28,40 @@ class QDialogButtonBox;
 class QLineEdit;
 class QPushButton;
 
-class LanguageDialog : public QDialog {
+class LanguageDialog : public QDialog
+{
 	Q_OBJECT
 
-	public:
-		LanguageDialog(QWidget* parent = 0);
+public:
+	LanguageDialog(QWidget* parent = 0);
 
-		static void restoreDefaults();
+	static void restoreDefaults();
 
-	public slots:
-		virtual void accept();
+public slots:
+	virtual void accept();
 
-	private slots:
-		void clicked(QAbstractButton* button);
-		void chooseLanguage(int index);
-		void browseDice();
-		void chooseDice(const QString& dice);
-		void browseWords();
-		void chooseWords(const QString& words);
+private slots:
+	void clicked(QAbstractButton* button);
+	void chooseLanguage(int index);
+	void browseDice();
+	void chooseDice(const QString& dice);
+	void browseWords();
+	void chooseWords(const QString& words);
 
-	private:
-		void setLanguage(int language);
+private:
+	void setLanguage(int language);
 
-	private:
-		QComboBox* m_language;
-		QString m_dice_path;
-		QLineEdit* m_dice;
-		QPushButton* m_choose_dice;
-		QString m_words_path;
-		QLineEdit* m_words;
-		QPushButton* m_choose_words;
-		QLineEdit* m_dictionary;
+private:
+	QComboBox* m_language;
+	QString m_dice_path;
+	QLineEdit* m_dice;
+	QPushButton* m_choose_dice;
+	QString m_words_path;
+	QLineEdit* m_words;
+	QPushButton* m_choose_words;
+	QLineEdit* m_dictionary;
 
-		QDialogButtonBox* m_buttons;
+	QDialogButtonBox* m_buttons;
 };
 
 #endif

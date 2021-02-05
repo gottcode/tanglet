@@ -22,18 +22,19 @@
 
 #include <QGraphicsView>
 
-class View : public QGraphicsView {
+class View : public QGraphicsView
+{
 	Q_OBJECT
 
-	public:
-		View(QGraphicsScene* scene, QWidget* parent = 0);
+public:
+	View(QGraphicsScene* scene, QWidget* parent = 0);
 
-	signals:
-		void mousePressed();
+signals:
+	void mousePressed();
 
-	protected:
-		virtual void mousePressEvent(QMouseEvent* event);
-		virtual void resizeEvent(QResizeEvent* event);
+protected:
+	virtual void mousePressEvent(QMouseEvent* event);
+	virtual void resizeEvent(QResizeEvent* event);
 };
 
 #endif

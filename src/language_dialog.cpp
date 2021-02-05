@@ -40,7 +40,8 @@
 //-----------------------------------------------------------------------------
 
 LanguageDialog::LanguageDialog(QWidget* parent)
-: QDialog(parent) {
+	: QDialog(parent)
+{
 	setWindowTitle(tr("Board Language"));
 
 	LanguageSettings settings;
@@ -124,7 +125,8 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::restoreDefaults() {
+void LanguageDialog::restoreDefaults()
+{
 	QSettings().setValue("Language", -1);
 	LanguageDialog dialog;
 	dialog.m_buttons->button(QDialogButtonBox::RestoreDefaults)->click();
@@ -133,7 +135,8 @@ void LanguageDialog::restoreDefaults() {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::accept() {
+void LanguageDialog::accept()
+{
 	bool changed = false;
 	{
 		LanguageSettings settings;
@@ -152,7 +155,8 @@ void LanguageDialog::accept() {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::clicked(QAbstractButton* button) {
+void LanguageDialog::clicked(QAbstractButton* button)
+{
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
 		QSettings settings;
 		settings.remove("CustomDice");
@@ -164,7 +168,8 @@ void LanguageDialog::clicked(QAbstractButton* button) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::chooseLanguage(int index) {
+void LanguageDialog::chooseLanguage(int index)
+{
 	QSettings settings;
 
 	bool enabled = false;
@@ -194,14 +199,16 @@ void LanguageDialog::chooseLanguage(int index) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::browseDice() {
+void LanguageDialog::browseDice()
+{
 	QString path = QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
 	chooseDice(path);
 }
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::chooseDice(const QString& path) {
+void LanguageDialog::chooseDice(const QString& path)
+{
 	if (!path.isEmpty()) {
 		m_dice_path = QFileInfo(path).canonicalFilePath();
 		m_dice->setText(QDir::toNativeSeparators(m_dice_path));
@@ -210,14 +217,16 @@ void LanguageDialog::chooseDice(const QString& path) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::browseWords() {
+void LanguageDialog::browseWords()
+{
 	QString path = QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
 	chooseWords(path);
 }
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::chooseWords(const QString& path) {
+void LanguageDialog::chooseWords(const QString& path)
+{
 	if (!path.isEmpty()) {
 		m_words_path = QFileInfo(path).canonicalFilePath();
 		m_words->setText(QDir::toNativeSeparators(m_words_path));
@@ -226,7 +235,8 @@ void LanguageDialog::chooseWords(const QString& path) {
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::setLanguage(int language) {
+void LanguageDialog::setLanguage(int language)
+{
 	int index = m_language->findData(language);
 	if (index == -1) {
 		index = m_language->findData(QLocale::English);

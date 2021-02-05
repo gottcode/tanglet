@@ -37,7 +37,10 @@
 //-----------------------------------------------------------------------------
 
 Letter::Letter(const QFont& font, int size, const QPoint& position)
-: m_arrow(0), m_clickable(true), m_position(position) {
+	: m_arrow(0)
+	, m_clickable(true)
+	, m_position(position)
+{
 	QPainterPath path;
 	path.addRoundedRect(0, 0, size, size, 5, 5);
 	setPath(path);
@@ -63,7 +66,8 @@ Letter::Letter(const QFont& font, int size, const QPoint& position)
 
 //-----------------------------------------------------------------------------
 
-void Letter::setArrow(qreal angle, int z) {
+void Letter::setArrow(qreal angle, int z)
+{
 	delete m_arrow;
 	m_arrow = 0;
 	if (angle < 0.0) {
@@ -72,51 +76,51 @@ void Letter::setArrow(qreal angle, int z) {
 
 	QRect rect = sceneBoundingRect().toRect();
 	switch (std::lround(angle / 45.0)) {
-		case 0: // right
-			createSideArrow();
-			m_arrow->moveBy(rect.right() - 8, rect.center().y());
-			break;
+	case 0: // right
+		createSideArrow();
+		m_arrow->moveBy(rect.right() - 8, rect.center().y());
+		break;
 
-		case 1: // top right
-			createCornerArrow();
-			m_arrow->moveBy(rect.right() - 8.5, rect.top() + 8.5);
-			m_arrow->setRotation(270);
-			break;
+	case 1: // top right
+		createCornerArrow();
+		m_arrow->moveBy(rect.right() - 8.5, rect.top() + 8.5);
+		m_arrow->setRotation(270);
+		break;
 
-		case 2: // top
-			createSideArrow();
-			m_arrow->moveBy(rect.center().x(), rect.top() + 8);
-			m_arrow->setRotation(270);
-			break;
+	case 2: // top
+		createSideArrow();
+		m_arrow->moveBy(rect.center().x(), rect.top() + 8);
+		m_arrow->setRotation(270);
+		break;
 
-		case 3: // top left
-			createCornerArrow();
-			m_arrow->moveBy(rect.left() + 8.5, rect.top() + 8.5);
-			m_arrow->setRotation(180);
-			break;
+	case 3: // top left
+		createCornerArrow();
+		m_arrow->moveBy(rect.left() + 8.5, rect.top() + 8.5);
+		m_arrow->setRotation(180);
+		break;
 
-		case 4: // left
-			createSideArrow();
-			m_arrow->moveBy(rect.left() + 8, rect.center().y());
-			m_arrow->setRotation(180);
-			break;
+	case 4: // left
+		createSideArrow();
+		m_arrow->moveBy(rect.left() + 8, rect.center().y());
+		m_arrow->setRotation(180);
+		break;
 
-		case 5: // bottom left
-			createCornerArrow();
-			m_arrow->moveBy(rect.left() + 8.5, rect.bottom() - 8.5);
-			m_arrow->setRotation(90);
-			break;
+	case 5: // bottom left
+		createCornerArrow();
+		m_arrow->moveBy(rect.left() + 8.5, rect.bottom() - 8.5);
+		m_arrow->setRotation(90);
+		break;
 
-		case 6: // bottom
-			createSideArrow();
-			m_arrow->moveBy(rect.center().x(), rect.bottom() - 8);
-			m_arrow->setRotation(90);
-			break;
+	case 6: // bottom
+		createSideArrow();
+		m_arrow->moveBy(rect.center().x(), rect.bottom() - 8);
+		m_arrow->setRotation(90);
+		break;
 
-		case 7: // bottom right
-			createCornerArrow();
-			m_arrow->moveBy(rect.right() - 8.5, rect.bottom() - 8.5);
-			break;
+	case 7: // bottom right
+		createCornerArrow();
+		m_arrow->moveBy(rect.right() - 8.5, rect.bottom() - 8.5);
+		break;
 	};
 
 	m_arrow->setZValue(z + 2);
@@ -124,7 +128,8 @@ void Letter::setArrow(qreal angle, int z) {
 
 //-----------------------------------------------------------------------------
 
-void Letter::setCellColor(const QColor& color) {
+void Letter::setCellColor(const QColor& color)
+{
 	if (color.isValid()) {
 		m_cell->setColor(color, false);
 	} else {
@@ -134,7 +139,8 @@ void Letter::setCellColor(const QColor& color) {
 
 //-----------------------------------------------------------------------------
 
-void Letter::setColor(const QColor& color) {
+void Letter::setColor(const QColor& color)
+{
 	QColor darker = color.darker(106);
 	QColor darkest = color.darker(160);
 
@@ -160,7 +166,8 @@ void Letter::setColor(const QColor& color) {
 
 //-----------------------------------------------------------------------------
 
-void Letter::setClickable(bool clickable) {
+void Letter::setClickable(bool clickable)
+{
 	m_clickable = clickable;
 	if (m_clickable) {
 		setCursor(Qt::PointingHandCursor);
@@ -173,7 +180,8 @@ void Letter::setClickable(bool clickable) {
 
 //-----------------------------------------------------------------------------
 
-void Letter::setText(const QString& text) {
+void Letter::setText(const QString& text)
+{
 	m_text = text;
 	m_item->setText(m_text);
 	m_item->setPos(boundingRect().center() - m_item->boundingRect().center());
@@ -181,7 +189,8 @@ void Letter::setText(const QString& text) {
 
 //-----------------------------------------------------------------------------
 
-void Letter::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+void Letter::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
 	Q_UNUSED(event);
 	if (m_clickable) {
 		emit clicked(this);
@@ -190,13 +199,15 @@ void Letter::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 
 //-----------------------------------------------------------------------------
 
-void Letter::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) {
+void Letter::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event)
+{
 	event->ignore();
 }
 
 //-----------------------------------------------------------------------------
 
-void Letter::createCornerArrow() {
+void Letter::createCornerArrow()
+{
 	QPainterPath path;
 	path.moveTo(0, 0);
 	path.lineTo(22, 22);
@@ -211,7 +222,8 @@ void Letter::createCornerArrow() {
 
 //-----------------------------------------------------------------------------
 
-void Letter::createSideArrow() {
+void Letter::createSideArrow()
+{
 	QPainterPath path;
 	path.moveTo(0, 0);
 	path.lineTo(22, 0);
