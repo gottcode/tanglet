@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2018 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -243,13 +243,8 @@ void Board::generate(const QSettings& game)
 	std::uniform_int_distribution<unsigned int> dist;
 	unsigned int seed = dist(m_seed);
 
-	LanguageSettings settings;
-	int language = game.value("Language", settings.language()).toInt();
-	QString dice = game.value("Dice", settings.dice()).toString();
-	QString words = game.value("Words", settings.words()).toString();
-	QString dictionary = game.value("Dictionary", settings.dictionary()).toString();
-
-	bool is_hebrew = (language == QLocale::Hebrew);
+	const LanguageSettings language(game);
+	const bool is_hebrew = (language.language() == QLocale::Hebrew);
 	m_found->setHebrew(is_hebrew);
 	m_missed->setHebrew(is_hebrew);
 
@@ -262,10 +257,10 @@ void Board::generate(const QSettings& game)
 		settings.setValue("Density", density);
 		settings.setValue("Minimum", minimum);
 		settings.setValue("TimerMode", timer);
-		settings.setValue("Language", language);
-		settings.setValue("Dice", dice);
-		settings.setValue("Words", words);
-		settings.setValue("Dictionary", dictionary);
+		settings.setValue("Language", language.language());
+		settings.setValue("Dice", language.dice());
+		settings.setValue("Words", language.words());
+		settings.setValue("Dictionary", language.dictionary());
 		if (!letters.isEmpty()) {
 			settings.setValue("Letters", letters);
 		}

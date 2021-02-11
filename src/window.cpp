@@ -750,15 +750,23 @@ void Window::shareGame()
 			game.setValue("Game/Dice", settings.value("Current/Dice"));
 			game.setValue("Game/Words", settings.value("Current/Words"));
 
-			if (game.value("Game/Language").toInt() == 0) {
-				QFile file(game.value("Game/Dice").toString());
+			const QString dice = game.value("Current/Dice").toString();
+			if (dice.startsWith("tanglet:")) {
+				game.setValue("Game/Dice", dice);
+			} else {
+				QFile file(dice);
 				if (file.open(QFile::ReadOnly)) {
 					QByteArray data = file.readAll();
 					file.close();
 					game.setValue("Game/Dice", data.toBase64());
 				}
+			}
 
-				file.setFileName(game.value("Game/Words").toString());
+			const QString words = game.value("Current/Words").toString();
+			if (words.startsWith("tanglet:")) {
+				game.setValue("Game/Words", words);
+			} else {
+				QFile file(words);
 				if (file.open(QFile::ReadOnly)) {
 					QByteArray data = file.readAll();
 					file.close();
@@ -992,23 +1000,29 @@ QString Window::extractGame(const QString& filename) const
 	// Extract words and dice
 	QSettings game(current, QSettings::IniFormat);
 
-	if (game.value("Game/Language", -1).toInt() == 0) {
-		const QByteArray dice = QByteArray::fromBase64(game.value("Game/Dice").toByteArray());
-		game.setValue("Game/Dice", current + "-dice");
-		file.setFileName(current + "-dice");
+	const QByteArray dice = game.value("Game/Dice").toByteArray();
+	if (dice.startsWith("tanglet:")) {
+		game.setValue("Game/Dice", dice);
+	} else {
+		game.setValue("Game/Dice", QStringLiteral("%1-dice").arg(current));
+		file.setFileName(QStringLiteral("%1-dice").arg(current));
 		if (!file.open(QFile::WriteOnly)) {
 			return QString();
 		}
-		file.write(dice);
+		file.write(QByteArray::fromBase64(dice));
 		file.close();
+	}
 
-		const QByteArray words = QByteArray::fromBase64(game.value("Game/Words").toByteArray());
-		game.setValue("Game/Words", current + "-words");
-		file.setFileName(current + "-words");
+	const QByteArray words = game.value("Game/Words").toByteArray();
+	if (words.startsWith("tanglet:")) {
+		game.setValue("Game/Words", words);
+	} else {
+		game.setValue("Game/Words", QStringLiteral("%1-words").arg(current));
+		file.setFileName(QStringLiteral("%1-words").arg(current));
 		if (!file.open(QFile::WriteOnly)) {
 			return QString();
 		}
-		file.write(words);
+		file.write(QByteArray::fromBase64(words));
 		file.close();
 	}
 

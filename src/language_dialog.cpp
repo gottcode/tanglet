@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2014 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -31,8 +31,6 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 {
 	setWindowTitle(tr("Board Language"));
 
-	LanguageSettings settings;
-
 	m_language = new QComboBox(this);
 	QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 	for (const QString& iso_code : languages) {
@@ -56,24 +54,27 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	m_language->setCurrentIndex(m_language->count() - 1);
 	connect(m_language, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &LanguageDialog::chooseLanguage);
 
+	QSettings settings;
+	settings.beginGroup("Board");
+
 	m_dice = new QLineEdit(this);
-	m_dice_path = settings.dice();
+	m_dice_path = settings.value("Dice").toString();
 	m_dice->setText(QDir::toNativeSeparators(QFileInfo(m_dice_path).canonicalFilePath()));
 	connect(m_dice, &QLineEdit::textEdited, this, &LanguageDialog::chooseDice);
 	m_choose_dice = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_dice, &QPushButton::clicked, this, &LanguageDialog::browseDice);
 
 	m_words = new QLineEdit(this);
-	m_words_path = settings.words();
+	m_words_path = settings.value("Words").toString();
 	m_words->setText(QDir::toNativeSeparators(QFileInfo(m_words_path).canonicalFilePath()));
 	connect(m_words, &QLineEdit::textEdited, this, &LanguageDialog::chooseWords);
 	m_choose_words = new QPushButton(tr("Choose..."), this);
 	connect(m_choose_words, &QPushButton::clicked, this, &LanguageDialog::browseWords);
 
 	m_dictionary = new QLineEdit(this);
-	m_dictionary->setText(settings.dictionary());
+	m_dictionary->setText(settings.value("Dictionary").toString());
 
-	setLanguage(settings.language());
+	setLanguage(LanguageSettings("Board").language());
 
 	// Creat warning message
 	QLabel* warning = new QLabel(tr("<b>Note:</b> These settings will take effect when you start a new game."), this);
@@ -114,10 +115,52 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 
 void LanguageDialog::restoreDefaults()
 {
-	QSettings().setValue("Language", -1);
-	LanguageDialog dialog;
-	dialog.m_buttons->button(QDialogButtonBox::RestoreDefaults)->click();
-	dialog.accept();
+	QSettings settings;
+	const LanguageSettings language;
+
+	if (settings.contains("Language")) {
+		const int lang = settings.value("Language", language.language()).toInt();
+		if (lang && (lang != language.language())) {
+			settings.setValue("Board/Language", lang);
+		}
+		settings.remove("Language");
+	}
+
+	if (settings.contains("CustomDice")) {
+		settings.setValue("Board/Dice", settings.value("CustomDice"));
+		settings.remove("CustomDice");
+		settings.remove("Dice");
+	} else if (settings.contains("Dice")) {
+		const QString dice = settings.value("Dice").toString();
+		if (dice != language.dice()) {
+			settings.setValue("Board/Dice", dice);
+		}
+		settings.remove("Dice");
+	}
+
+	if (settings.contains("CustomWords")) {
+		settings.setValue("Board/Words", settings.value("CustomWords"));
+		settings.remove("CustomWords");
+		settings.remove("Words");
+	} else if (settings.contains("Words")) {
+		const QString words = settings.value("Words").toString();
+		if (words != language.words()) {
+			settings.setValue("Board/Words", words);
+		}
+		settings.remove("Words");
+	}
+
+	if (settings.contains("CustomDictionary")) {
+		settings.setValue("Board/Dictionary", settings.value("CustomDictionary"));
+		settings.remove("CustomDictionary");
+		settings.remove("Dictionary");
+	} else if (settings.contains("Dictionary")) {
+		const QString dictionary = settings.value("Dictionary").toString();
+		if (dictionary != language.dictionary()) {
+			settings.setValue("Board/Dictionary", dictionary);
+		}
+		settings.remove("Dictionary");
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -125,14 +168,49 @@ void LanguageDialog::restoreDefaults()
 void LanguageDialog::accept()
 {
 	bool changed = false;
-	{
-		LanguageSettings settings;
-		settings.setDice(m_dice_path);
-		settings.setWords(m_words_path);
-		settings.setDictionary(m_dictionary->text());
-		settings.setLanguage(m_language->itemData(m_language->currentIndex()).toInt());
-		changed = settings.isChanged();
+
+	QSettings settings;
+	settings.beginGroup("Board");
+
+	const int language = m_language->itemData(m_language->currentIndex()).toInt();
+	const int default_language = LanguageSettings().language();
+	if (settings.value("Language", default_language) != language) {
+		if (language != default_language) {
+			settings.setValue("Language", language);
+		} else {
+			settings.remove("Language");
+		}
+		changed = true;
 	}
+
+	if (settings.value("Dice") != m_dice_path) {
+		if (!m_dice_path.isEmpty()) {
+			settings.setValue("Dice", m_dice_path);
+		} else {
+			settings.remove("Dice");
+		}
+		changed = true;
+	}
+
+	if (settings.value("Words") != m_words_path) {
+		if (!m_words_path.isEmpty()) {
+			settings.setValue("Words", m_words_path);
+		} else {
+			settings.remove("Words");
+		}
+		changed = true;
+	}
+
+	const QString dictionary = m_dictionary->text();
+	if (settings.value("Dictionary") != dictionary) {
+		if (!dictionary.isEmpty()) {
+			settings.setValue("Dictionary", dictionary);
+		} else {
+			settings.remove("Dictionary");
+		}
+		changed = true;
+	}
+
 	if (changed) {
 		QDialog::accept();
 	} else {
@@ -145,10 +223,9 @@ void LanguageDialog::accept()
 void LanguageDialog::clicked(QAbstractButton* button)
 {
 	if (m_buttons->buttonRole(button) == QDialogButtonBox::ResetRole) {
-		QSettings settings;
-		settings.remove("CustomDice");
-		settings.remove("CustomWords");
-		settings.remove("CustomDictionary");
+		m_dice->clear();
+		m_words->clear();
+		m_dictionary->clear();
 		setLanguage(QLocale::system().language());
 	}
 }
@@ -157,38 +234,21 @@ void LanguageDialog::clicked(QAbstractButton* button)
 
 void LanguageDialog::chooseLanguage(int index)
 {
-	QSettings settings;
-
-	bool enabled = false;
-	int language = m_language->itemData(index).toInt();
-	if (language != 0) {
-		LanguageSettings settings(language);
-		m_dice_path = settings.dice();
-		m_words_path = settings.words();
-		m_dictionary->setText(settings.dictionary());
-	} else {
-		m_dice_path = settings.value("CustomDice", m_dice_path).toString();
-		m_words_path = settings.value("CustomWords", m_words_path).toString();
-		m_dictionary->setText(settings.value("CustomDictionary", m_dictionary->text()).toString());
-		enabled = true;
-	}
-
-	m_dice->setText(QDir::toNativeSeparators(QFileInfo(m_dice_path).canonicalFilePath()));
-	m_dice->setEnabled(enabled);
-	m_choose_dice->setEnabled(enabled);
-
-	m_words->setText(QDir::toNativeSeparators(QFileInfo(m_words_path).canonicalFilePath()));
-	m_words->setEnabled(enabled);
-	m_choose_words->setEnabled(enabled);
-
-	m_dictionary->setEnabled(enabled);
+	LanguageSettings settings(m_language->itemData(index).toInt());
+	m_dice->setPlaceholderText(QDir::toNativeSeparators(QFileInfo(settings.dice()).canonicalFilePath()));
+	m_words->setPlaceholderText(QDir::toNativeSeparators(QFileInfo(settings.words()).canonicalFilePath()));
+	m_dictionary->setPlaceholderText(settings.dictionary());
 }
 
 //-----------------------------------------------------------------------------
 
 void LanguageDialog::browseDice()
 {
-	QString path = QFileDialog::getOpenFileName(this, tr("Choose Dice File"), m_dice->text());
+	QString path = m_dice->text();
+	if (path.isEmpty()) {
+		path = m_dice->placeholderText();
+	}
+	path = QFileDialog::getOpenFileName(this, tr("Choose Dice File"), path);
 	chooseDice(path);
 }
 
@@ -199,6 +259,8 @@ void LanguageDialog::chooseDice(const QString& path)
 	if (!path.isEmpty()) {
 		m_dice_path = QFileInfo(path).canonicalFilePath();
 		m_dice->setText(QDir::toNativeSeparators(m_dice_path));
+	} else {
+		m_dice_path.clear();
 	}
 }
 
@@ -206,7 +268,11 @@ void LanguageDialog::chooseDice(const QString& path)
 
 void LanguageDialog::browseWords()
 {
-	QString path = QFileDialog::getOpenFileName(this, tr("Choose Word List File"), m_words->text());
+	QString path = m_words->text();
+	if (path.isEmpty()) {
+		path = m_words->placeholderText();
+	}
+	path = QFileDialog::getOpenFileName(this, tr("Choose Word List File"), path);
 	chooseWords(path);
 }
 
@@ -217,6 +283,8 @@ void LanguageDialog::chooseWords(const QString& path)
 	if (!path.isEmpty()) {
 		m_words_path = QFileInfo(path).canonicalFilePath();
 		m_words->setText(QDir::toNativeSeparators(m_words_path));
+	} else {
+		m_words_path.clear();
 	}
 }
 

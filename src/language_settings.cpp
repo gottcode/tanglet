@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2010-2020 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2010-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -9,162 +9,106 @@
 #include <QFile>
 #include <QLocale>
 #include <QSettings>
-#include <QTextStream>
 
 //-----------------------------------------------------------------------------
 
-LanguageSettings::LanguageSettings(const QString& group)
-	: m_changed(false)
+LanguageSettings::LanguageSettings()
+	: m_language(QLocale::system().language())
 {
-	QSettings settings;
-
-	int language = settings.value("Language", QLocale::system().language()).toInt();
-	QString dice = settings.value("Dice").toString();
-	QString words = settings.value("Words").toString();
-	QString dictionary = settings.value("Dictionary").toString();
-
-	if (!group.isEmpty()) {
-		settings.beginGroup(group);
-
-		m_language = settings.value("Language", language).toInt();
-		m_dice = settings.value("Dice", dice).toString();
-		m_words = settings.value("Words", words).toString();
-		m_dictionary = settings.value("Dictionary", dictionary).toString();
-	} else {
-		m_language = language;
-		if (language > 0) {
-			loadDefault();
-			m_changed = (m_dice != dice) || (m_words != words) || (m_dictionary != dictionary);
-		} else {
-			m_dice = dice;
-			m_words = words;
-			m_dictionary = dictionary;
-		}
-	}
+	loadDefaults();
 }
 
 //-----------------------------------------------------------------------------
 
 LanguageSettings::LanguageSettings(int language)
-	: m_changed(false)
+	: m_language(language)
 {
-	m_language = language;
-	loadDefault();
+	loadDefaults();
 }
 
 //-----------------------------------------------------------------------------
 
-LanguageSettings::~LanguageSettings()
+LanguageSettings::LanguageSettings(const QSettings& group)
+	: m_language(group.value("Language").toInt())
+	, m_dice(group.value("Dice").toString())
+	, m_words(group.value("Words").toString())
+	, m_dictionary(group.value("Dictionary").toString())
 {
-	if (m_changed) {
-		QSettings settings;
+	loadValues();
+	loadDefaults();
+}
 
-		settings.setValue("Language", m_language);
-		settings.setValue("Dice", m_dice);
-		settings.setValue("Words", m_words);
-		settings.setValue("Dictionary", m_dictionary);
+//-----------------------------------------------------------------------------
 
-		if (m_language == 0)  {
-			settings.setValue("CustomDice", m_dice);
-			settings.setValue("CustomWords", m_words);
-			settings.setValue("CustomDictionary", m_dictionary);
+LanguageSettings::LanguageSettings(const QString& group)
+{
+	QSettings settings;
+	settings.beginGroup(group);
+
+	m_language = settings.value("Language").toInt();
+	m_dice = settings.value("Dice").toString();
+	m_words = settings.value("Words").toString();
+	m_dictionary = settings.value("Dictionary").toString();
+
+	loadValues();
+	loadDefaults();
+}
+
+//-----------------------------------------------------------------------------
+
+void LanguageSettings::loadDefaults()
+{
+	QString iso_code = QLocale(QLocale::Language(m_language)).name().section(QLatin1Char('_'), 0, 0);
+	if (!QFile::exists(QString("tanglet:%1/words").arg(iso_code))) {
+		m_language = QLocale::English;
+		iso_code = "en";
+	}
+
+	if (m_dice.isEmpty()) {
+		m_dice = QString("tanglet:%1/dice").arg(iso_code);
+	}
+
+	if (m_words.isEmpty()) {
+		m_words = QString("tanglet:%1/words").arg(iso_code);
+	}
+
+	if (m_dictionary.isEmpty()) {
+		QFile file(QString("tanglet:%1/dictionary").arg(iso_code));
+		if (file.open(QFile::ReadOnly | QFile::Text)) {
+			m_dictionary = QString::fromUtf8(file.readAll()).simplified();
+			file.close();
 		}
 	}
-}
-
-//-----------------------------------------------------------------------------
-
-bool LanguageSettings::isChanged() const
-{
-	return m_changed;
-}
-
-//-----------------------------------------------------------------------------
-
-int LanguageSettings::language() const
-{
-	return m_language;
-}
-
-//-----------------------------------------------------------------------------
-
-QString LanguageSettings::dice() const
-{
-	return m_dice;
-}
-
-//-----------------------------------------------------------------------------
-
-QString LanguageSettings::words() const
-{
-	return m_words;
-}
-
-//-----------------------------------------------------------------------------
-
-QString LanguageSettings::dictionary() const
-{
-	return m_dictionary;
-}
-
-//-----------------------------------------------------------------------------
-
-void LanguageSettings::setLanguage(int language)
-{
-	if (m_language != language) {
-		m_language = language;
-		m_changed = true;
+	if (m_dictionary.isEmpty()) {
+		m_dictionary = QString("https://%1.wiktionary.org/wiki/%s").arg(iso_code);
 	}
 }
 
 //-----------------------------------------------------------------------------
 
-void LanguageSettings::setDice(const QString& dice)
+void LanguageSettings::loadValues()
 {
-	if (m_dice != dice) {
-		m_dice = dice;
-		m_changed = true;
+	QSettings settings;
+	settings.beginGroup("Board");
+
+	if (!m_language) {
+		m_language = settings.value("Language").toInt();
 	}
-}
-
-//-----------------------------------------------------------------------------
-
-void LanguageSettings::setWords(const QString& words)
-{
-	if (m_words != words) {
-		m_words = words;
-		m_changed = true;
+	if (!m_language) {
+		m_language = QLocale::system().language();
 	}
-}
 
-//-----------------------------------------------------------------------------
-
-void LanguageSettings::setDictionary(const QString& dictionary)
-{
-	if (m_dictionary != dictionary) {
-		m_dictionary = dictionary;
-		m_changed = true;
+	if (m_dice.isEmpty()) {
+		m_dice = settings.value("Dice").toString();
 	}
-}
 
-//-----------------------------------------------------------------------------
-
-void LanguageSettings::loadDefault()
-{
-	QString iso_code = QLocale(static_cast<QLocale::Language>(m_language)).name().left(2);
-	m_dice = "tanglet:" + iso_code + "/dice";
-	m_words = "tanglet:" + iso_code + "/words";
-	QString dictionary;
-	QFile file("tanglet:" + iso_code + "/dictionary");
-	if (file.open(QFile::ReadOnly | QFile::Text)) {
-		QTextStream stream(&file);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-		stream.setCodec("UTF-8");
-#endif
-		dictionary = stream.readLine().simplified();
-		file.close();
+	if (m_words.isEmpty()) {
+		m_words = settings.value("Words").toString();
 	}
-	m_dictionary = !dictionary.isEmpty() ? dictionary : ("http://" + iso_code + ".wiktionary.org/wiki/%s");
+
+	if (m_dictionary.isEmpty()) {
+		m_dictionary = settings.value("Dictionary").toString();
+	}
 }
 
 //-----------------------------------------------------------------------------

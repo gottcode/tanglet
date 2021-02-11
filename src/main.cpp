@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2020 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -46,27 +46,7 @@ int main(int argc, char** argv)
 
 	LocaleDialog::loadTranslator("tanglet_");
 
-	QSettings settings;
-	if (settings.value("Language", -1).toInt() == -1) {
-		int default_count = 0;
-		if (settings.value("Dice", ":/en_US/dice").toString() == ":/en_US/dice") {
-			settings.setValue("Dice", "tanglet:en/dice");
-			default_count++;
-		}
-		if (settings.value("Words", ":/en_US/words").toString() == ":/en_US/words") {
-			settings.setValue("Words", "tanglet:en/words");
-			default_count++;
-		}
-		if (settings.value("Dictionary").toString().isEmpty()) {
-			settings.setValue("Dictionary", "http://en.wiktionary.org/wiki/%s");
-			default_count++;
-		}
-		if (default_count == 3) {
-			LanguageDialog::restoreDefaults();
-		} else {
-			settings.setValue("Language", 0);
-		}
-	}
+	LanguageDialog::restoreDefaults();
 
 	QCommandLineParser parser;
 	parser.setApplicationDescription(QCoreApplication::translate("main", "Word finding game"));
