@@ -35,13 +35,13 @@ public:
 	Timer();
 	virtual ~Timer();
 
-	virtual bool addWord(int score)=0;
+	virtual bool addWord(int score) = 0;
 	virtual bool addIncorrectWord(int score);
 	virtual QColor color();
 	virtual bool isFinished();
-	virtual void start()=0;
+	virtual void start() = 0;
 	virtual void stop();
-	virtual int type() const=0;
+	virtual int type() const = 0;
 	virtual QString update();
 	virtual int width() const;
 
@@ -98,7 +98,7 @@ void Clock::Timer::stop()
 QString Clock::Timer::update()
 {
 	m_time = std::max(m_time - 1, 0);
-	return QTime(0,0,0).addSecs(m_time).toString(tr("m:ss"));
+	return QTime(0, 0, 0).addSecs(m_time).toString(tr("m:ss"));
 }
 
 int Clock::Timer::width() const
@@ -630,8 +630,8 @@ void Clock::paintEvent(QPaintEvent* event)
 	// Draw indent
 	QLinearGradient indent_gradient(0, 0, 0, height());
 	QColor shadow = palette().color(QPalette::Shadow);
-	indent_gradient.setColorAt(0, QColor(shadow.red(),shadow.green(),shadow.blue(),64));
-	indent_gradient.setColorAt(1, QColor(shadow.red(),shadow.green(),shadow.blue(),0));
+	indent_gradient.setColorAt(0, QColor(shadow.red(), shadow.green(), shadow.blue(), 64));
+	indent_gradient.setColorAt(1, QColor(shadow.red(), shadow.green(), shadow.blue(), 0));
 	painter.setBrush(indent_gradient);
 	painter.drawRoundedRect(rect(), 4, 4);
 
@@ -652,7 +652,7 @@ void Clock::paintEvent(QPaintEvent* event)
 	int width = 180 - std::min(180, x);
 	if ((width < 180) && (width > 0)) {
 		// Draw empty space
-		painter.setBrush(QColor(255,255,255,160));
+		painter.setBrush(QColor(255, 255, 255, 160));
 		painter.drawRoundedRect(x + 3, 2, width + 1, rect().height() - 4, 2, 2);
 
 		// Draw dividing line
@@ -667,13 +667,13 @@ void Clock::paintEvent(QPaintEvent* event)
 	path.addText(93 - (fontMetrics().boundingRect(m_text).width() / 2), fontMetrics().ascent() + 3, font(), m_text);
 	painter.setBrush(Qt::black);
 	painter.translate(0.6, 0.6);
-	painter.setPen(QPen(QColor(0,0,0,32), 3));
+	painter.setPen(QPen(QColor(0, 0, 0, 32), 3));
 	painter.drawPath(path);
 	painter.translate(-0.2, -0.2);
-	painter.setPen(QPen(QColor(0,0,0,64), 2));
+	painter.setPen(QPen(QColor(0, 0, 0, 64), 2));
 	painter.drawPath(path);
 	painter.translate(-0.2, -0.2);
-	painter.setPen(QPen(QColor(0,0,0,192), 1));
+	painter.setPen(QPen(QColor(0, 0, 0, 192), 1));
 	painter.drawPath(path);
 	painter.translate(-0.2, -0.2);
 

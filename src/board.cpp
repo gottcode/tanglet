@@ -88,7 +88,7 @@ Board::Board(QWidget* parent)
 
 	m_max_score_details = new QToolButton(this);
 	m_max_score_details->setAutoRaise(true);
-	m_max_score_details->setIconSize(QSize(16,16));
+	m_max_score_details->setIconSize(QSize(16, 16));
 	m_max_score_details->setIcon(QIcon::fromTheme("dialog-information", QIcon(":/dialog-information.png")));
 	m_max_score_details->setToolTip(tr("Details"));
 	connect(m_max_score_details, &QToolButton::clicked, this, &Board::showMaximumWords);
@@ -111,7 +111,7 @@ Board::Board(QWidget* parent)
 
 	m_clear_button = new QToolButton(this);
 	m_clear_button->setAutoRaise(true);
-	m_clear_button->setIconSize(QSize(size,size));
+	m_clear_button->setIconSize(QSize(size, size));
 	QIcon clear_fallback(":/tango/64x64/actions/edit-clear.png");
 	clear_fallback.addFile(":/tango/48x48/actions/edit-clear.png");
 	clear_fallback.addFile(":/tango/32x32/actions/edit-clear.png");
@@ -125,7 +125,7 @@ Board::Board(QWidget* parent)
 
 	m_guess_button = new QToolButton(this);
 	m_guess_button->setAutoRaise(true);
-	m_guess_button->setIconSize(QSize(size,size));
+	m_guess_button->setIconSize(QSize(size, size));
 	QIcon guess_fallback(":/tango/64x64/actions/list-add.png");
 	guess_fallback.addFile(":/tango/48x48/actions/list-add.png");
 	guess_fallback.addFile(":/tango/32x32/actions/list-add.png");
@@ -412,7 +412,7 @@ void Board::gameStarted()
 	// Create cells
 	for (int r = 0; r < m_size; ++r) {
 		for (int c = 0; c < m_size; ++c) {
-			Letter* cell = new Letter(f, cell_size, QPoint(c,r));
+			Letter* cell = new Letter(f, cell_size, QPoint(c, r));
 			cell->setText(m_letters.at((r * m_size) + c));
 			cell->moveBy((c * cell_padding_size) + 6, (r * cell_padding_size) + 6);
 			scene->addItem(cell);

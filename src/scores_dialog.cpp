@@ -34,11 +34,11 @@
 #include <QVBoxLayout>
 
 #if defined(Q_OS_UNIX)
-  #include <pwd.h>
-  #include <unistd.h>
+#include <pwd.h>
+#include <unistd.h>
 #elif defined(Q_OS_WIN)
-  #include <lmcons.h>
-  #include <windows.h>
+#include <lmcons.h>
+#include <windows.h>
 #endif
 
 //-----------------------------------------------------------------------------

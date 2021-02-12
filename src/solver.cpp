@@ -37,14 +37,14 @@ Solver::Solver(const Trie& words, int size, int minimum)
 	// Create neighbors
 	QList<QList<QPoint> > neighbors;
 	const QPoint deltas[] = {
-		QPoint(-1,-1),
-		QPoint(0,-1),
-		QPoint(1,-1),
-		QPoint(-1,0),
-		QPoint(1,0),
-		QPoint(-1,1),
-		QPoint(0,1),
-		QPoint(1,1)
+		QPoint(-1, -1),
+		QPoint(0, -1),
+		QPoint(1, -1),
+		QPoint(-1, 0),
+		QPoint(1, 0),
+		QPoint(-1, 1),
+		QPoint(0, 1),
+		QPoint(1, 1)
 	};
 	for (int r = 0; r < m_size; ++r) {
 		for (int c = 0; c < m_size; ++c) {
@@ -66,7 +66,7 @@ Solver::Solver(const Trie& words, int size, int minimum)
 		for (int c = 0; c < m_size; ++c) {
 			int index = (r * m_size) + c;
 			Cell& cell = m_cells[c][r];
-			cell.position = QPoint(c,r);
+			cell.position = QPoint(c, r);
 			cell.checked = false;
 
 			const auto& n = neighbors.at(index);
@@ -126,7 +126,13 @@ int Solver::score(int max) const
 int Solver::score(const QString& word)
 {
 	Q_ASSERT(word.length() <= 25);
-	static const int scores[24] = { 0,0,1,1,2,3,5,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11 };
+	static const int scores[24] = {
+		 0,  0,  1,  1,  2,
+		 3,  5, 11, 11, 11,
+		11, 11, 11, 11, 11,
+		11, 11, 11, 11, 11,
+		11, 11, 11, 11
+	};
 	return scores[word.length() - 1];
 }
 

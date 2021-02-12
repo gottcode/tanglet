@@ -176,7 +176,7 @@ void Generator::run()
 
 	std::mt19937 random(m_seed);
 	if (m_density == 3) {
-		std::uniform_int_distribution<> gen(0,2);
+		std::uniform_int_distribution<> gen(0, 2);
 		m_density = gen(random);
 	}
 

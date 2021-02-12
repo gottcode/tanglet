@@ -44,7 +44,7 @@ WordTree::WordTree(QWidget* parent)
 	header()->hide();
 	setColumnWidth(1, 22);
 
-	setIconSize(QSize(16,16));
+	setIconSize(QSize(16, 16));
 	setMouseTracking(true);
 	setRootIsDecorated(false);
 	setSortingEnabled(true);
