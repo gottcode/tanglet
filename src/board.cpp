@@ -434,7 +434,7 @@ void Board::gameStarted()
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
 		if (m_missed->findItems(text, Qt::MatchExactly, 2).value(0) && !item) {
 			m_found->addWord(text);
-			delete m_missed->findItems(text, Qt::MatchExactly, 2).first();
+			delete m_missed->findItems(text, Qt::MatchExactly, 2).constFirst();
 			m_counts->findWord(text);
 		}
 	}
@@ -507,7 +507,7 @@ void Board::guess()
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
 		if (!item) {
 			item = m_found->addWord(text);
-			delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).first();
+			delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).constFirst();
 
 			m_clock->addWord(item->data(0, Qt::UserRole).toInt());
 			updateScore();
