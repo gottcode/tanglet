@@ -108,6 +108,9 @@ void Letter::setArrow(qreal angle, int z)
 		createCornerArrow();
 		m_arrow->moveBy(rect.right() - 8.5, rect.bottom() - 8.5);
 		break;
+
+	default:
+		return;
 	};
 
 	m_arrow->setZValue(z + 2);
