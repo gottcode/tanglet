@@ -433,7 +433,7 @@ void Board::gameStarted()
 	for (const QString& text : found) {
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
 		if (m_missed->findItems(text, Qt::MatchExactly, 2).value(0) && !item) {
-			item = m_found->addWord(text);
+			m_found->addWord(text);
 			delete m_missed->findItems(text, Qt::MatchExactly, 2).first();
 			m_counts->findWord(text);
 		}
