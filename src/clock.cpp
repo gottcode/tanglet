@@ -61,13 +61,13 @@ QColor Clock::Timer::color()
 {
 	QColor c;
 	if (m_time > 20) {
-		c = "#37a42b";
+		c = QColor(0x37, 0xa4, 0x2b);
 	} else if (m_time > 10) {
-		c = "#ffaa00";
+		c = QColor(0xff, 0xaa, 0);
 	} else if (m_time > 0) {
-		c = "#bf0000";
+		c = QColor(0xbf, 0, 0);
 	} else {
-		c = "#373737";
+		c = QColor(0x37, 0x37, 0x37);
 	}
 	return c;
 }
@@ -288,7 +288,7 @@ bool Clock::StaminaTimer::addWord(int)
 
 QColor Clock::StaminaTimer::color()
 {
-	return (m_time && m_freeze) ? "#3389ea" : Timer::color();
+	return (m_time && m_freeze) ? QColor(0x33, 0x89, 0xea) : Timer::color();
 }
 
 void Clock::StaminaTimer::start()

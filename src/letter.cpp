@@ -48,7 +48,7 @@ Letter::Letter(const QFont& font, int size, const QPoint& position)
 	m_cell = new BeveledRect(size + 3, this);
 	m_cell->setPos(-1.5, -1.5);
 	m_cell->setFlag(QGraphicsItem::ItemStacksBehindParent);
-	m_cell->setColor("#0057ae");
+	m_cell->setColor(QColor(0, 0x57, 0xae));
 }
 
 //-----------------------------------------------------------------------------
@@ -120,7 +120,7 @@ void Letter::setCellColor(const QColor& color)
 	if (color.isValid()) {
 		m_cell->setColor(color, false);
 	} else {
-		m_cell->setColor("#0057ae");
+		m_cell->setColor(QColor(0, 0x57, 0xae));
 	}
 }
 
@@ -161,7 +161,7 @@ void Letter::setClickable(bool clickable)
 		setColor(Qt::white);
 	} else {
 		unsetCursor();
-		setColor(QColor("#aaa"));
+		setColor(QColor(0xaa, 0xaa, 0xaa));
 	}
 }
 

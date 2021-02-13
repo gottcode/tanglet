@@ -389,7 +389,7 @@ void Board::gameStarted()
 	m_view->fitInView(m_view->sceneRect(), Qt::KeepAspectRatio);
 
 	BeveledRect* rect = new BeveledRect(board_size);
-	rect->setColor("#0057ae");
+	rect->setColor(QColor(0, 0x57, 0xae));
 	scene->addItem(rect);
 
 	// Create cells
@@ -753,12 +753,12 @@ void Board::highlightWord()
 			p.setColor(m_guess->backgroundRole(), Qt::red);
 		} else if (!m_found->findItems(guess, Qt::MatchExactly).isEmpty()) {
 			p.setColor(m_guess->foregroundRole(), Qt::white);
-			p.setColor(m_guess->backgroundRole(), "#ffaa00");
-			highlightWord(m_positions, "#ffaa00");
+			p.setColor(m_guess->backgroundRole(), QColor(0xff, 0xaa, 0));
+			highlightWord(m_positions, QColor(0xff, 0xaa, 0));
 		} else if (m_positions.count() < m_minimum) {
-			highlightWord(m_positions, "#bfd9ff");
+			highlightWord(m_positions, QColor(0xbf, 0xd9, 0xff));
 		} else {
-			highlightWord(m_positions, "#80b3ff");
+			highlightWord(m_positions, QColor(0x80, 0xb3, 0xff));
 		}
 	} else {
 		p.setColor(m_guess->foregroundRole(), Qt::white);
@@ -774,7 +774,7 @@ void Board::highlightWord()
 
 void Board::clearHighlight()
 {
-	QColor color = !isFinished() ? Qt::white : QColor("#aaa");
+	QColor color = !isFinished() ? Qt::white : QColor(0xaa, 0xaa, 0xaa);
 	for (int c = 0; c < m_size; ++c) {
 		for (int r = 0; r < m_size; ++r) {
 			m_cells[c][r]->setColor(color);
