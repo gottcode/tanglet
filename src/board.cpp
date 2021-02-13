@@ -193,7 +193,7 @@ Board::~Board()
 
 		QVariantList positions;
 		QString word;
-		for (const QPoint& position : m_positions) {
+		for (const QPoint& position : qAsConst(m_positions)) {
 			positions.append(position);
 			word.append(m_cells[position.x()][position.y()]->text().toUpper());
 		}
@@ -372,7 +372,8 @@ void Board::gameStarted()
 	f.setPointSize(20);
 	QFontMetrics metrics(f);
 	int letter_size = 0;
-	for (const QStringList& die : m_generator->dice(m_size)) {
+	const auto dice = m_generator->dice(m_size);
+	for (const QStringList& die : dice) {
 		for (const QString& side : die) {
 			letter_size = std::max(letter_size, metrics.boundingRect(side).width());
 		}
@@ -423,13 +424,12 @@ void Board::gameStarted()
 	clearHighlight();
 
 	// Add solutions
-	QList<QString> solutions = m_solutions.keys();
-	for (const QString& solution : solutions) {
-		m_missed->addWord(solution);
+	for (auto i = m_solutions.cbegin(), end = m_solutions.cend(); i != end; ++i) {
+		m_missed->addWord(i.key());
 	}
 
 	// Add found words
-	QStringList found = settings.value("Found").toStringList();
+	const QStringList found = settings.value("Found").toStringList();
 	for (const QString& text : found) {
 		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
 		if (m_missed->findItems(text, Qt::MatchExactly, 2).value(0) && !item) {
@@ -441,7 +441,7 @@ void Board::gameStarted()
 
 	// Add guess
 	m_guess->setText(settings.value("Guess").toString());
-	QVariantList positions = settings.value("GuessPositions").toList();
+	const QVariantList positions = settings.value("GuessPositions").toList();
 	for (const QVariant& position : positions) {
 		m_positions.append(position.toPoint());
 	}
@@ -700,7 +700,7 @@ void Board::letterClicked(Letter* letter)
 		updateClickableStatus();
 
 		QString word;
-		for (const QPoint& position : m_positions) {
+		for (const QPoint& position : qAsConst(m_positions)) {
 			word.append(m_cells[position.x()][position.y()]->text().toUpper());
 		}
 		m_guess->setText(word);
@@ -870,7 +870,7 @@ void Board::updateClickableStatus()
 			}
 		}
 
-		for (const QPoint& position : m_positions) {
+		for (const QPoint& position : qAsConst(m_positions)) {
 			m_cells[position.x()][position.y()]->setClickable(true);
 		}
 	}
@@ -894,8 +894,8 @@ void Board::showMaximumWords()
 	dialog.setWindowTitle(tr("Details"));
 
 	QList<int> scores;
-	for (const QString& word : m_solutions.keys()) {
-		scores.append(Solver::score(word));
+	for (auto i = m_solutions.cbegin(), end = m_solutions.cend(); i != end; ++i) {
+		scores.append(Solver::score(i.key()));
 	}
 	std::sort(scores.begin(), scores.end(), std::greater<int>());
 	scores = scores.mid(0, 30);
@@ -906,7 +906,7 @@ void Board::showMaximumWords()
 	WordTree* words = new WordTree(this);
 	words->setTrie(m_generator->trie());
 	words->setDictionary(m_generator->dictionary());
-	QList<QTreeWidget*> trees = QList<QTreeWidget*>() << m_found << m_missed;
+	const QList<QTreeWidget*> trees{ m_found, m_missed };
 	for (QTreeWidget* tree : trees) {
 		for (int i = 0; i < tree->topLevelItemCount(); ++i) {
 			QTreeWidgetItem* item = tree->topLevelItem(i);

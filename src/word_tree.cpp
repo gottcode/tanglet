@@ -151,7 +151,7 @@ void WordTree::wheelEvent(QWheelEvent* event)
 void WordTree::onItemClicked(QTreeWidgetItem* item, int column)
 {
 	if (item && column == 1) {
-		QStringList spellings = item->data(1, Qt::UserRole).toStringList();
+		const QStringList spellings = item->data(1, Qt::UserRole).toStringList();
 		QString word = spellings.first();
 
 		if (spellings.count() > 1) {

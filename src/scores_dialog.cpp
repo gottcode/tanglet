@@ -182,7 +182,7 @@ void ScoresDialog::editingFinished()
 
 	// Save scores
 	QStringList values;
-	for (const Score& s : m_scores) {
+	for (const Score& s : qAsConst(m_scores)) {
 		values += QString("%1:%2:%3:%4")
 				.arg(s.name)
 				.arg(s.score)
@@ -228,7 +228,7 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 	}
 
 	int row = 0;
-	for (const Score& s : m_scores) {
+	for (const Score& s : qAsConst(m_scores)) {
 		if (score >= s.score && date >= s.date) {
 			break;
 		}
@@ -254,7 +254,7 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 
 void ScoresDialog::load()
 {
-	QStringList data = QSettings().value("Scores/Values").toStringList();
+	const QStringList data = QSettings().value("Scores/Values").toStringList();
 	for (const QString& s : data) {
 		QStringList values = s.split(':');
 		if (values.size() == 3 || values.size() == 4) {

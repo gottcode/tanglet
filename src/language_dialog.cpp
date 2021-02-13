@@ -32,7 +32,7 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	setWindowTitle(tr("Board Language"));
 
 	m_language = new QComboBox(this);
-	QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+	const QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 	for (const QString& iso_code : languages) {
 		QLocale::Language language = QLocale(iso_code).language();
 		QString name = QLocale::languageToString(language);
