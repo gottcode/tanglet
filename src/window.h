@@ -51,7 +51,6 @@ private slots:
 	void gameFinished(int score);
 
 private:
-	QString extractGame(const QString& filename) const;
 	void startGame(const QString& filename = QString());
 	void monitorVisibility(QMenu* menu);
 

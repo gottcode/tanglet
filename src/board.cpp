@@ -226,8 +226,15 @@ void Board::abort()
 
 //-----------------------------------------------------------------------------
 
-void Board::generate(const QSettings& game)
+bool Board::generate(const QSettings& game)
 {
+	constexpr unsigned int TANGLET_FILE_VERSION = 2;
+
+	// Verify version
+	if (game.value("Version").toUInt() > TANGLET_FILE_VERSION) {
+		return false;
+	}
+
 	// Find values
 	int size = qBound(4, game.value("Size").toInt(), 5);
 	int density = qBound(0, game.value("Density").toInt(), 3);
@@ -239,6 +246,11 @@ void Board::generate(const QSettings& game)
 	}
 	int timer = qBound(0, game.value("TimerMode").toInt(), Clock::TotalTimers - 1);
 	QStringList letters = game.value("Letters").toStringList();
+
+	// Verify board size
+	if (game.contains("Version") && ((size * size) != letters.size())) {
+		return false;
+	}
 
 	std::uniform_int_distribution<unsigned int> dist;
 	unsigned int seed = dist(m_seed);
@@ -252,7 +264,7 @@ void Board::generate(const QSettings& game)
 	{
 		QSettings settings;
 		settings.beginGroup("Current");
-		settings.setValue("Version", 2);
+		settings.setValue("Version", TANGLET_FILE_VERSION);
 		settings.setValue("Size", size);
 		settings.setValue("Density", density);
 		settings.setValue("Minimum", minimum);
@@ -269,6 +281,8 @@ void Board::generate(const QSettings& game)
 	// Create new game
 	m_generator->cancel();
 	m_generator->create(density, size, minimum, timer, letters, seed);
+
+	return true;
 }
 
 //-----------------------------------------------------------------------------

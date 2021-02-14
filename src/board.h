@@ -36,7 +36,7 @@ public:
 
 	bool isFinished() const;
 	void abort();
-	void generate(const QSettings& game);
+	bool generate(const QSettings& game);
 	void setPaused(bool pause);
 
 	static QString sizeToString(int size);
