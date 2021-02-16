@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2017 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -113,14 +113,11 @@ int Solver::score(int max) const
 int Solver::score(const QString& word)
 {
 	Q_ASSERT(word.length() <= 25);
-	static const int scores[24] = {
-		 0,  0,  1,  1,  2,
-		 3,  5, 11, 11, 11,
-		11, 11, 11, 11, 11,
-		11, 11, 11, 11, 11,
-		11, 11, 11, 11
+	static constexpr int scores[26] = {
+		 0,  0,  0,  1,  1,  2,  3,  5, 11, 11, 11, 11, 11,
+		11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11
 	};
-	return scores[word.length() - 1];
+	return scores[word.length()];
 }
 
 //-----------------------------------------------------------------------------
