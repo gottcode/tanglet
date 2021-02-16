@@ -140,7 +140,7 @@ std::unordered_map<QString, qreal> findLetterFrequency(const std::vector<QString
 				++chars[c];
 			}
 		}
-		for (auto i = chars.cbegin(); i != chars.cend(); ++i) {
+		for (auto i = chars.cbegin(), end = chars.cend(); i != end; ++i) {
 			letters.emplace(i->first, i->second);
 		}
 	}
@@ -181,12 +181,12 @@ std::unordered_map<QString, qreal> findLetterFrequency(const std::vector<QString
 		// Find letters where bigrams are 99% of occurrences
 		std::unordered_map<QString, QString> replace;
 		std::unordered_map<QString, int> confidences;
-		for (auto i = letters.cbegin(); i != letters.cend(); ++i) {
+		for (auto i = letters.cbegin(), end = letters.cend(); i != end; ++i) {
 			const QString& letter = i->first;
 
 			int letter_count = 0;
 			std::vector<QString> letter_bigrams;
-			for (auto b = bigrams.cbegin(); b != bigrams.cend(); ++b) {
+			for (auto b = bigrams.cbegin(), end_b = bigrams.cend(); b != end_b; ++b) {
 				const QString& bigram = b->first;
 				if (bigram.startsWith(letter)) {
 					letter_bigrams.push_back(bigram);
@@ -205,7 +205,7 @@ std::unordered_map<QString, qreal> findLetterFrequency(const std::vector<QString
 		}
 
 		// Replace letter with bigram
-		for (auto i = replace.cbegin(); i != replace.cend(); ++i) {
+		for (auto i = replace.cbegin(), end = replace.cend(); i != end; ++i) {
 			const QString& letter = i->first;
 			const QString& bigram = i->second;
 			const int count = bigrams[bigram];
@@ -228,7 +228,7 @@ std::unordered_map<QString, qreal> findLetterFrequency(const std::vector<QString
 	// Adjust letter frequencies to be in the range 0-1
 	std::unordered_map<QString, qreal> result;
 	const qreal inverse_total = 1.0 / qreal(total);
-	for (auto i = letters.cbegin(); i != letters.cend(); ++i) {
+	for (auto i = letters.cbegin(), end = letters.cend(); i != end; ++i) {
 		result.emplace(i->first, i->second * inverse_total);
 	}
 	return result;
@@ -243,7 +243,7 @@ std::unordered_map<QString, int> roundLetters(const std::unordered_map<QString, 
 	// Scale letters by dice sides
 	std::unordered_map<QString, qreal> scaled;
 	std::vector<QString> frequent;
-	for (auto i = letters.cbegin(); i != letters.cend(); ++i) {
+	for (auto i = letters.cbegin(), end = letters.cend(); i != end; ++i) {
 		qreal value = i->second * sides;
 		if (value < 1.0) {
 			value = 1.0;
@@ -253,7 +253,7 @@ std::unordered_map<QString, int> roundLetters(const std::unordered_map<QString, 
 
 		// Track letter frequency
 		auto f = frequent.begin();
-		for (; f != frequent.end(); ++f) {
+		for (auto end_f = frequent.end(); f != end_f; ++f) {
 			if (value > scaled[*f]) {
 				break;
 			}
@@ -294,7 +294,7 @@ std::vector<QString> generateDice(const std::unordered_map<QString, qreal>& lett
 	const auto scaled_letters = roundLetters(letters, count);
 	std::vector<QString> single_letters;
 	std::vector<QString> multi_letters;
-	for (auto i = scaled_letters.cbegin(); i != scaled_letters.cend(); ++i) {
+	for (auto i = scaled_letters.cbegin(), end = scaled_letters.cend(); i != end; ++i) {
 		const QString& letter = i->first;
 		const int& value = i->second;
 		if (value == 1) {
