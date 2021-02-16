@@ -83,7 +83,6 @@ private:
 	WordTree* m_found;
 	WordTree* m_missed;
 	WordCounts* m_counts;
-	QToolButton* m_clear_button;
 	QToolButton* m_guess_button;
 	QToolButton* m_max_score_details;
 

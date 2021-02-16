@@ -90,25 +90,12 @@ Board::Board(QWidget* parent)
 	m_guess->setDisabled(true);
 	m_guess->setMaxLength(16);
 	m_guess->installEventFilter(this);
+	m_guess->setClearButtonEnabled(true);
 	connect(m_guess, &QLineEdit::textEdited, this, &Board::guessChanged);
 	connect(m_guess, &QLineEdit::returnPressed, this, &Board::guess);
 	connect(m_view, &View::mousePressed, m_guess, QOverload<>::of(&QLineEdit::setFocus));
 
 	int size = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
-
-	m_clear_button = new QToolButton(this);
-	m_clear_button->setAutoRaise(true);
-	m_clear_button->setIconSize(QSize(size, size));
-	QIcon clear_fallback(":/tango/64x64/actions/edit-clear.png");
-	clear_fallback.addFile(":/tango/48x48/actions/edit-clear.png");
-	clear_fallback.addFile(":/tango/32x32/actions/edit-clear.png");
-	clear_fallback.addFile(":/tango/24x24/actions/edit-clear.png");
-	clear_fallback.addFile(":/tango/22x22/actions/edit-clear.png");
-	clear_fallback.addFile(":/tango/16x16/actions/edit-clear.png");
-	m_clear_button->setIcon(QIcon::fromTheme("edit-clear", clear_fallback));
-	m_clear_button->setToolTip(tr("Clear"));
-	m_clear_button->setEnabled(false);
-	connect(m_clear_button, &QToolButton::clicked, this, &Board::clearGuess);
 
 	m_guess_button = new QToolButton(this);
 	m_guess_button->setAutoRaise(true);
@@ -128,7 +115,6 @@ Board::Board(QWidget* parent)
 	guess_layout->setSpacing(0);
 	guess_layout->addStretch();
 	guess_layout->addWidget(m_guess);
-	guess_layout->addWidget(m_clear_button);
 	guess_layout->addWidget(m_guess_button);
 	guess_layout->addStretch();
 
@@ -425,7 +411,6 @@ void Board::gameStarted()
 	// Clear previous words
 	m_paused = false;
 	emit pauseAvailable(true);
-	m_clear_button->setEnabled(true);
 	m_guess_button->setEnabled(true);
 	m_positions.clear();
 	m_found->removeAll();
@@ -641,7 +626,6 @@ void Board::finish()
 	clearGuess();
 	m_found->setColumnHidden(1, false);
 	m_guess->setDisabled(true);
-	m_clear_button->setDisabled(true);
 	m_guess_button->setDisabled(true);
 	m_guess->setEchoMode(QLineEdit::NoEcho);
 	m_guess->releaseKeyboard();
@@ -896,7 +880,6 @@ void Board::updateButtons()
 {
 	QString text = m_guess->text();
 	bool has_guess = !text.isEmpty();
-	m_clear_button->setEnabled(has_guess);
 	m_guess_button->setEnabled(has_guess && text.length() >= m_minimum && text.length() <= m_maximum && m_valid && !m_positions.isEmpty() && !m_wrong);
 }
 

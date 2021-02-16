@@ -6,13 +6,6 @@
 	<file alias="dialog-information@2x.png">tango/32x32/status/dialog-information.png</file>
 	<file>empty.png</file>
 
-	<file>tango/16x16/actions/edit-clear.png</file>
-	<file>tango/22x22/actions/edit-clear.png</file>
-	<file>tango/24x24/actions/edit-clear.png</file>
-	<file>tango/32x32/actions/edit-clear.png</file>
-	<file>tango/48x48/actions/edit-clear.png</file>
-	<file>tango/64x64/actions/edit-clear.png</file>
-
 	<file>tango/16x16/actions/list-add.png</file>
 	<file>tango/22x22/actions/list-add.png</file>
 	<file>tango/24x24/actions/list-add.png</file>
