@@ -18,7 +18,7 @@ namespace
 class TrieGenerator
 {
 public:
-	TrieGenerator(const QChar& key = QChar())
+	explicit TrieGenerator(const QChar& key = QChar())
 		: m_key(key)
 		, m_word(false)
 		, m_children(nullptr)
@@ -27,7 +27,7 @@ public:
 	{
 	}
 
-	TrieGenerator(const QString& word)
+	explicit TrieGenerator(const QString& word)
 		: m_word(false)
 		, m_children(nullptr)
 		, m_next(nullptr)
@@ -36,7 +36,7 @@ public:
 		addWord(word, QStringList(word));
 	}
 
-	TrieGenerator(const QHash<QString, QStringList>& words);
+	explicit TrieGenerator(const QHash<QString, QStringList>& words);
 
 	~TrieGenerator();
 

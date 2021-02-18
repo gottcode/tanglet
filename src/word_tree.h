@@ -16,7 +16,7 @@ class WordTree : public QTreeWidget
 	Q_OBJECT
 
 public:
-	WordTree(QWidget* parent = nullptr);
+	explicit WordTree(QWidget* parent = nullptr);
 
 	QTreeWidgetItem* addWord(const QString& word);
 	void removeAll();

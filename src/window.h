@@ -18,7 +18,7 @@ class Window : public QMainWindow
 	Q_OBJECT
 
 public:
-	Window(const QString& file = QString());
+	explicit Window(const QString& file = QString());
 
 	bool eventFilter(QObject* watched, QEvent* event) override;
 

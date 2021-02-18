@@ -31,7 +31,7 @@ class Board : public QWidget
 	Q_OBJECT
 
 public:
-	Board(QWidget* parent = nullptr);
+	explicit Board(QWidget* parent = nullptr);
 	~Board();
 
 	bool isFinished() const;

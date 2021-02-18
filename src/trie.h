@@ -50,9 +50,9 @@ public:
 	};
 
 public:
-	Trie();
-	Trie(const QString& word);
-	Trie(const QHash<QString, QStringList>& words);
+	explicit Trie();
+	explicit Trie(const QString& word);
+	explicit Trie(const QHash<QString, QStringList>& words);
 
 	void clear();
 

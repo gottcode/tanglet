@@ -27,7 +27,7 @@ public:
 	 *
 	 * @param parent the parent widget of the dialog
 	 */
-	LocaleDialog(QWidget* parent = nullptr);
+	explicit LocaleDialog(QWidget* parent = nullptr);
 
 	/**
 	 * Load the stored language into the application; defaults to system language.

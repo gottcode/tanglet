@@ -16,7 +16,7 @@ class Clock : public QWidget
 	Q_OBJECT
 
 public:
-	Clock(QWidget* parent = nullptr);
+	explicit Clock(QWidget* parent = nullptr);
 	~Clock();
 
 	QSize sizeHint() const override;

@@ -22,7 +22,7 @@ class Generator : public QThread
 	Q_OBJECT
 
 public:
-	Generator(QObject* parent = nullptr);
+	explicit Generator(QObject* parent = nullptr);
 
 	void cancel();
 	void create(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);

@@ -47,7 +47,7 @@
 class Window::State
 {
 public:
-	State(Window* window)
+	explicit State(Window* window)
 		: m_window(window)
 	{
 	}
@@ -110,7 +110,7 @@ private:
 class Window::NewGameState : public Window::State
 {
 public:
-	NewGameState(Window* window)
+	explicit NewGameState(Window* window)
 		: State(window)
 	{
 	}
@@ -151,7 +151,7 @@ private:
 class Window::OpenGameState : public Window::State
 {
 public:
-	OpenGameState(Window* window)
+	explicit OpenGameState(Window* window)
 		: State(window)
 	{
 	}
@@ -192,7 +192,7 @@ private:
 class Window::OptimizingState : public Window::State
 {
 public:
-	OptimizingState(Window* window)
+	explicit OptimizingState(Window* window)
 		: State(window)
 	{
 	}
@@ -213,7 +213,7 @@ public:
 class Window::PlayState : public Window::State
 {
 public:
-	PlayState(Window* window)
+	explicit PlayState(Window* window)
 		: State(window)
 	{
 	}
@@ -240,7 +240,7 @@ public:
 class Window::AutoPauseState : public Window::State
 {
 public:
-	AutoPauseState(Window* window)
+	explicit AutoPauseState(Window* window)
 		: State(window)
 		, m_count(0)
 	{
@@ -306,7 +306,7 @@ private:
 class Window::PauseState : public Window::State
 {
 public:
-	PauseState(Window* window)
+	explicit PauseState(Window* window)
 		: State(window)
 	{
 	}
@@ -328,7 +328,7 @@ public:
 class Window::FinishState : public Window::State
 {
 public:
-	FinishState(Window* window)
+	explicit FinishState(Window* window)
 		: State(window)
 	{
 	}

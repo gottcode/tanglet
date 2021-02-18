@@ -15,7 +15,7 @@ class WordCounts : public QScrollArea
 	Q_OBJECT
 
 public:
-	WordCounts(QWidget* parent = nullptr);
+	explicit WordCounts(QWidget* parent = nullptr);
 
 	void findWord(const QString& word);
 	void setMaximumsVisible(bool visible);

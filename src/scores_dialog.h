@@ -20,7 +20,7 @@ class ScoresDialog : public QDialog
 	Q_OBJECT
 
 public:
-	ScoresDialog(QWidget* parent = nullptr);
+	explicit ScoresDialog(QWidget* parent = nullptr);
 
 	bool addScore(int score);
 	static int isHighScore(int score);

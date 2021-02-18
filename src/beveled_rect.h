@@ -12,7 +12,7 @@
 class BeveledRect: public QGraphicsItem
 {
 public:
-	BeveledRect(int size, QGraphicsItem* parent = nullptr);
+	explicit BeveledRect(int size, QGraphicsItem* parent = nullptr);
 
 	QRectF boundingRect() const override;
 	void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
