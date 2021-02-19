@@ -47,8 +47,8 @@ private:
 	void addWord(const QString& word, const QStringList& spellings);
 
 	// Uncopyable
-	TrieGenerator(const TrieGenerator&);
-	TrieGenerator& operator=(const TrieGenerator&);
+	TrieGenerator(const TrieGenerator&) = delete;
+	TrieGenerator& operator=(const TrieGenerator&) = delete;
 
 private:
 	QChar m_key;
