@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2020 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -21,8 +21,6 @@
 #include <QStandardPaths>
 #include <QTextStream>
 
-#include <random>
-
 //-----------------------------------------------------------------------------
 
 namespace
@@ -30,7 +28,7 @@ namespace
 
 struct State
 {
-	State(const QList<QStringList>& dice, Solver* solver, int target, std::mt19937* random)
+	State(const QList<QStringList>& dice, Solver* solver, int target, QRandomGenerator* random)
 		: m_dice(dice)
 		, m_solver(solver)
 		, m_target(target)
@@ -50,14 +48,14 @@ struct State
 
 	void permute()
 	{
-		if (randomInt(2)) {
-			int index = randomInt(m_dice.count());
+		if (m_random->bounded(2)) {
+			const int index = m_random->bounded(m_dice.count());
 			QStringList& die = m_dice[index];
 			std::shuffle(die.begin(), die.end(), *m_random);
 			m_letters[index] = m_dice.at(index).first();
 		} else {
-			int index1 = randomInt(m_dice.count());
-			int index2 = randomInt(m_dice.count());
+			const int index1 = m_random->bounded(m_dice.count());
+			const int index2 = m_random->bounded(m_dice.count());
 #if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
 			m_dice.swapItemsAt(index1, index2);
 			m_letters.swapItemsAt(index1, index2);
@@ -90,19 +88,13 @@ private:
 		m_delta = abs(words - m_target);
 	}
 
-	int randomInt(int max)
-	{
-		std::uniform_int_distribution<> dis(0, max - 1);
-		return dis(*m_random);
-	}
-
 private:
 	QList<QStringList> m_dice;
 	QStringList m_letters;
 	int m_delta;
 	Solver* m_solver;
 	int m_target;
-	std::mt19937* m_random;
+	QRandomGenerator* m_random;
 };
 
 }
@@ -111,6 +103,7 @@ private:
 
 Generator::Generator(QObject* parent)
 	: QThread(parent)
+	, m_random(QRandomGenerator::securelySeeded())
 	, m_max_score(0)
 	, m_canceled(false)
 {
@@ -128,7 +121,7 @@ void Generator::cancel()
 
 //-----------------------------------------------------------------------------
 
-void Generator::create(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed)
+void Generator::create(int density, int size, int minimum, int timer, const QStringList& letters)
 {
 	m_density = density;
 	m_size = size;
@@ -136,7 +129,6 @@ void Generator::create(int density, int size, int minimum, int timer, const QStr
 	m_timer = timer;
 	m_max_words = (m_timer != Clock::Allotment) ? -1 : 30;
 	m_letters = letters;
-	m_seed = seed;
 	m_canceled = false;
 	m_max_score = 0;
 	m_solutions.clear();
@@ -161,10 +153,8 @@ void Generator::run()
 		return;
 	}
 
-	std::mt19937 random(m_seed);
 	if (m_density == 3) {
-		std::uniform_int_distribution<> gen(0, 2);
-		m_density = gen(random);
+		m_density = m_random.bounded(0, 3);
 	}
 
 	// Find word range
@@ -189,7 +179,7 @@ void Generator::run()
 
 	// Create board state
 	solver.setTrackPositions(false);
-	State current(dice(m_size), &solver, words_target, &random);
+	State current(dice(m_size), &solver, words_target, &m_random);
 	current.roll();
 	State next = current;
 

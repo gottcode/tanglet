@@ -12,6 +12,7 @@
 #include <QHash>
 #include <QList>
 #include <QPoint>
+#include <QRandomGenerator>
 #include <QStringList>
 #include <QThread>
 
@@ -25,7 +26,7 @@ public:
 	explicit Generator(QObject* parent = nullptr);
 
 	void cancel();
-	void create(int density, int size, int minimum, int timer, const QStringList& letters, unsigned int seed);
+	void create(int density, int size, int minimum, int timer, const QStringList& letters);
 
 	QList<QStringList> dice(int size) const
 	{
@@ -95,6 +96,7 @@ private:
 	QString m_dictionary_url;
 	QList<QStringList> m_dice;
 	QList<QStringList> m_dice_large;
+	QRandomGenerator m_random;
 	Trie m_words;
 	QString m_error;
 
@@ -103,7 +105,6 @@ private:
 	int m_minimum;
 	int m_timer;
 	int m_max_words;
-	unsigned int m_seed;
 	int m_max_score;
 
 	QStringList m_letters;

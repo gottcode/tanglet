@@ -24,8 +24,6 @@ class QSettings;
 class QTabWidget;
 class QToolButton;
 
-#include <random>
-
 class Board : public QWidget
 {
 	Q_OBJECT
@@ -99,7 +97,6 @@ private:
 	QHash<QString, QList<QList<QPoint>>> m_solutions;
 	QList<QPoint> m_positions;
 
-	std::mt19937 m_seed;
 	Generator* m_generator;
 };
 

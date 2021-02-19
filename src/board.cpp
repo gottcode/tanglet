@@ -37,7 +37,6 @@
 #include <QVBoxLayout>
 
 #include <algorithm>
-#include <ctime>
 
 //-----------------------------------------------------------------------------
 
@@ -53,13 +52,6 @@ Board::Board(QWidget* parent)
 	, m_max_score(0)
 	, m_generator(nullptr)
 {
-#ifndef Q_OS_WIN
-	std::random_device rd;
-	m_seed.seed(rd());
-#else
-	m_seed.seed(time(0));
-#endif
-
 	m_generator = new Generator(this);
 	connect(m_generator, &Generator::finished, this, &Board::gameStarted);
 	connect(m_generator, &Generator::optimizingStarted, this, &Board::optimizingStarted);
@@ -238,9 +230,6 @@ bool Board::generate(const QSettings& game)
 		return false;
 	}
 
-	std::uniform_int_distribution<unsigned int> dist;
-	unsigned int seed = dist(m_seed);
-
 	const LanguageSettings language(game);
 	const bool is_hebrew = (language.language() == QLocale::Hebrew);
 	m_found->setHebrew(is_hebrew);
@@ -266,7 +255,7 @@ bool Board::generate(const QSettings& game)
 
 	// Create new game
 	m_generator->cancel();
-	m_generator->create(density, size, minimum, timer, letters, seed);
+	m_generator->create(density, size, minimum, timer, letters);
 
 	return true;
 }
