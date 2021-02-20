@@ -206,10 +206,10 @@ void Trie::checkNodes()
 
 const Trie::Node* Trie::child(const QChar& letter, const Node* node) const
 {
-	int end = node->m_children + node->m_child_count;
-	for (int i = node->m_children; i < end; ++i) {
-		if (m_nodes[i] == letter) {
-			return &m_nodes[i];
+	const auto end = m_nodes.cbegin() + node->m_children + node->m_child_count;
+	for (auto i = m_nodes.cbegin() + node->m_children; i < end; ++i) {
+		if (*i == letter) {
+			return &*i;
 		}
 	}
 	return nullptr;
