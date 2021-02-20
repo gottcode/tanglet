@@ -275,6 +275,8 @@ void Generator::update()
 		int count = 0;
 
 		// Load cached words
+		constexpr quint32 TANGLET_CACHE_MAGICNUMBER = 0x54524945;
+		constexpr quint32 TANGLET_CACHE_VERSION = 2;
 		QString cache_dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/cache";
 		QString cache_file = QCryptographicHash::hash(words_path.toUtf8(), QCryptographicHash::Sha1).toHex();
 		QFileInfo cache_info(cache_dir + "/" + cache_file);
@@ -284,8 +286,8 @@ void Generator::update()
 				QDataStream stream(&file);
 				quint32 magic, version;
 				stream >> magic >> version;
-				if ((magic == 0x54524945) && (version == 1)) {
-					stream.setVersion(QDataStream::Qt_4_6);
+				if ((magic == TANGLET_CACHE_MAGICNUMBER) && (version == TANGLET_CACHE_VERSION)) {
+					stream.setVersion(QDataStream::Qt_5_9);
 					stream >> m_words;
 					count = !m_words.isEmpty() * -1;
 				}
@@ -333,9 +335,9 @@ void Generator::update()
 				QFile file(cache_info.absoluteFilePath());
 				if (file.open(QFile::WriteOnly)) {
 					QDataStream stream(&file);
-					stream << (quint32)0x54524945;
-					stream << (quint32)1;
-					stream.setVersion(QDataStream::Qt_4_6);
+					stream << TANGLET_CACHE_MAGICNUMBER;
+					stream << TANGLET_CACHE_VERSION;
+					stream.setVersion(QDataStream::Qt_5_9);
 					stream << m_words;
 					file.close();
 				}

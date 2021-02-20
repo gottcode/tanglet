@@ -234,8 +234,7 @@ QStringList Trie::spellings(const QString& word, const QStringList& default_valu
 
 QDataStream& operator<<(QDataStream& stream, const Trie& trie)
 {
-	stream << trie.m_nodes;
-	stream << trie.m_spellings;
+	stream << trie.m_nodes << trie.m_spellings.join('\n');
 	return stream;
 }
 
@@ -243,10 +242,11 @@ QDataStream& operator<<(QDataStream& stream, const Trie& trie)
 
 QDataStream& operator>>(QDataStream& stream, Trie& trie)
 {
-	stream >> trie.m_nodes;
+	QString spellings;
+	stream >> trie.m_nodes >> spellings;
 	trie.checkNodes();
 	if (!trie.isEmpty()) {
-		stream >> trie.m_spellings;
+		trie.m_spellings = spellings.split('\n');
 	}
 	return stream;
 }
