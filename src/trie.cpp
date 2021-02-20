@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2014 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -191,11 +191,10 @@ void Trie::clear()
 void Trie::checkNodes()
 {
 	// Verify that no nodes reference outside list
-	int count = m_nodes.size();
-	int start, end;
-	for (int i = 0; i < count; ++i) {
-		start = m_nodes[i].m_children;
-		end = start + m_nodes[i].m_child_count;
+	const quint32 count = m_nodes.size();
+	for (const Node& node : qAsConst(m_nodes)) {
+		const quint32 start = node.m_children;
+		const quint32 end = start + node.m_child_count;
 		if ((start >= count) || (end > count)) {
 			clear();
 			break;
