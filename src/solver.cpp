@@ -100,8 +100,11 @@ int Solver::score(int max) const
 	}
 	std::sort(scores.begin(), scores.end(), std::greater<int>());
 
+	int count = scores.count();
+	if (max != -1) {
+		count = std::min(max, count);
+	}
 	int result = 0;
-	int count = (max == -1) ? scores.count() : max;
 	for (int i = 0; i < count; ++i) {
 		result += scores.at(i);
 	}
