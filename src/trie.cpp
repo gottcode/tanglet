@@ -7,6 +7,7 @@
 #include "trie.h"
 
 #include <QDataStream>
+#include <QTextStream>
 
 #include <queue>
 #include <utility>
@@ -37,7 +38,7 @@ public:
 		addWord(word, QStringList(word));
 	}
 
-	explicit TrieGenerator(const QHash<QString, QStringList>& words);
+	explicit TrieGenerator(const QByteArray& data);
 
 	~TrieGenerator();
 
@@ -62,16 +63,36 @@ private:
 
 //-----------------------------------------------------------------------------
 
-TrieGenerator::TrieGenerator(const QHash<QString, QStringList>& words)
+TrieGenerator::TrieGenerator(const QByteArray& data)
 	: m_word(false)
 	, m_children(nullptr)
 	, m_next(nullptr)
 	, m_count(0)
 {
-	QHashIterator<QString, QStringList> i(words);
-	while (i.hasNext()) {
-		i.next();
-		addWord(i.key(), i.value());
+	QTextStream stream(data);
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
+	stream.setCodec("UTF-8");
+#endif
+	while (!stream.atEnd()) {
+#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+		QStringList spellings = stream.readLine().simplified().split(QChar(' '), Qt::SkipEmptyParts);
+#else
+		QStringList spellings = stream.readLine().simplified().split(QChar(' '), QString::SkipEmptyParts);
+#endif
+		if (spellings.isEmpty()) {
+			continue;
+		}
+
+		QString word = spellings.first().toUpper();
+		if (spellings.count() == 1) {
+			spellings[0] = word.toLower();
+		} else {
+			spellings.removeFirst();
+		}
+
+		if (word.length() >= 3 && word.length() <= 25) {
+			addWord(word, spellings);
+		}
 	}
 }
 
@@ -172,9 +193,9 @@ Trie::Trie(const QString& word)
 
 //-----------------------------------------------------------------------------
 
-Trie::Trie(const QHash<QString, QStringList>& words)
+Trie::Trie(const QByteArray& data)
 {
-	TrieGenerator generator(words);
+	TrieGenerator generator(data);
 	generator.run(m_nodes, m_spellings);
 	checkNodes();
 }

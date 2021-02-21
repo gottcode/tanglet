@@ -272,7 +272,6 @@ void Generator::update()
 	if (words_path != m_words_path) {
 		m_words_path.clear();
 		m_words.clear();
-		int count = 0;
 
 		// Load cached words
 		constexpr quint32 TANGLET_CACHE_MAGICNUMBER = 0x54524945;
@@ -289,48 +288,19 @@ void Generator::update()
 				if ((magic == TANGLET_CACHE_MAGICNUMBER) && (version == TANGLET_CACHE_VERSION)) {
 					stream.setVersion(QDataStream::Qt_5_9);
 					stream >> m_words;
-					count = !m_words.isEmpty() * -1;
 				}
 				file.close();
 			}
 		}
 
 		// Load uncached words
-		if (count == 0) {
+		if (m_words.isEmpty()) {
 			emit optimizingStarted();
 
-			QHash<QString, QStringList> words;
-			QByteArray data = gunzip(words_path);
-			QTextStream stream(data);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-			stream.setCodec("UTF-8");
-#endif
-			while (!stream.atEnd()) {
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
-				QStringList spellings = stream.readLine().simplified().split(QChar(' '), Qt::SkipEmptyParts);
-#else
-				QStringList spellings = stream.readLine().simplified().split(QChar(' '), QString::SkipEmptyParts);
-#endif
-				if (spellings.isEmpty()) {
-					continue;
-				}
-
-				QString word = spellings.first().toUpper();
-				if (spellings.count() == 1) {
-					spellings[0] = word.toLower();
-				} else {
-					spellings.removeFirst();
-				}
-
-				if (word.length() >= 3 && word.length() <= 25) {
-					words[word] = spellings;
-					count++;
-				}
-			}
-			m_words = Trie(words);
+			m_words = Trie(gunzip(words_path));
 
 			// Cache words
-			if (count) {
+			if (!m_words.isEmpty()) {
 				QDir::home().mkpath(cache_dir);
 				QFile file(cache_info.absoluteFilePath());
 				if (file.open(QFile::WriteOnly)) {
@@ -346,7 +316,7 @@ void Generator::update()
 			emit optimizingFinished();
 		}
 
-		if (count) {
+		if (!m_words.isEmpty()) {
 			m_words_path = words_path;
 		} else {
 			return setError(tr("Unable to read word list from file."));

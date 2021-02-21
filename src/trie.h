@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2011 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -52,7 +52,7 @@ public:
 public:
 	explicit Trie();
 	explicit Trie(const QString& word);
-	explicit Trie(const QHash<QString, QStringList>& words);
+	explicit Trie(const QByteArray& data);
 
 	void clear();
 
