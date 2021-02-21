@@ -157,7 +157,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	for (const TimerDescription& timer : timers) {
 		QCommandLinkButton* button = new QCommandLinkButton(timer.name(), timer.description(), timers_widget);
 		button->setMinimumWidth(500);
-		connect(button, &QCommandLinkButton::clicked, [=] { timerChosen(timer.id()); });
+		connect(button, &QCommandLinkButton::clicked, this, [this, timer] { timerChosen(timer.id()); });
 		timers_layout->addWidget(button);
 
 		if (timer.id() == previous_timer) {
