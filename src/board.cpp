@@ -44,7 +44,7 @@ Board::Board(QWidget* parent)
 	: QWidget(parent)
 	, m_paused(false)
 	, m_wrong(false)
-	, m_valid(true)
+	, m_wrong_typed(false)
 	, m_show_counts(1)
 	, m_size(0)
 	, m_minimum(0)
@@ -462,7 +462,7 @@ void Board::gameStarted()
 
 void Board::clearGuess()
 {
-	m_valid = true;
+	m_wrong_typed = false;
 	m_wrong = false;
 	m_positions.clear();
 	clearHighlight();
@@ -480,7 +480,12 @@ void Board::guess()
 {
 	if (!isFinished() && !m_paused) {
 		QString text = m_guess->text().trimmed().toUpper();
-		if (text.isEmpty() || text.length() < m_minimum || text.length() > m_maximum || !m_valid || m_positions.isEmpty() || m_wrong) {
+		if (text.isEmpty()
+				|| (text.length() < m_minimum)
+				|| (text.length() > m_maximum)
+				|| m_positions.isEmpty()
+				|| m_wrong_typed
+				|| m_wrong) {
 			return;
 		}
 		if (!m_solutions.contains(text)) {
@@ -534,7 +539,7 @@ void Board::guess()
 
 void Board::guessChanged()
 {
-	m_valid = true;
+	m_wrong_typed = false;
 	m_wrong = false;
 	clearHighlight();
 	m_found->setCurrentItem(nullptr);
@@ -551,8 +556,8 @@ void Board::guessChanged()
 		Solver solver(trie, m_size, 0);
 		solver.solve(m_letters);
 		QList<QList<QPoint>> solutions = m_solutions.value(word, solver.solutions().value(word));
-		m_valid = !solutions.isEmpty();
-		if (m_valid) {
+		m_wrong_typed = solutions.isEmpty();
+		if (!m_wrong_typed) {
 			int index = 0;
 			int matched = -1;
 			int difference = INT_MAX;
@@ -735,7 +740,7 @@ void Board::highlightWord()
 
 	QPalette p = palette();
 	if (!m_wrong) {
-		if (!m_valid) {
+		if (m_wrong_typed) {
 			p.setColor(m_guess->foregroundRole(), Qt::white);
 			p.setColor(m_guess->backgroundRole(), Qt::red);
 		} else if (!m_found->findItems(guess, Qt::MatchExactly).isEmpty()) {
@@ -845,7 +850,7 @@ void Board::updateClickableStatus()
 		}
 	}
 
-	if (has_word && m_valid) {
+	if (has_word && !m_wrong_typed) {
 		const QPoint& position = m_positions.last();
 		int min_x = std::max(position.x() - 1, 0);
 		int max_x = std::min(position.x() + 2, m_size);
@@ -869,7 +874,12 @@ void Board::updateButtons()
 {
 	QString text = m_guess->text();
 	bool has_guess = !text.isEmpty();
-	m_guess_button->setEnabled(has_guess && text.length() >= m_minimum && text.length() <= m_maximum && m_valid && !m_positions.isEmpty() && !m_wrong);
+	m_guess_button->setEnabled(has_guess
+			&& (text.length() >= m_minimum)
+			&& (text.length() <= m_maximum)
+			&& !m_positions.isEmpty()
+			&& !m_wrong_typed
+			&& !m_wrong);
 }
 
 //-----------------------------------------------------------------------------

@@ -86,7 +86,7 @@ private:
 
 	bool m_paused;
 	bool m_wrong;
-	bool m_valid;
+	bool m_wrong_typed;
 	int m_show_counts;
 
 	int m_size;
