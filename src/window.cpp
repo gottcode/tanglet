@@ -17,16 +17,13 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QApplication>
-#include <QCloseEvent>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFile>
 #include <QFileDialog>
-#include <QFormLayout>
 #include <QLabel>
-#include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -39,8 +36,6 @@
 #include <QTextEdit>
 #include <QTextStream>
 #include <QVBoxLayout>
-
-#include <ctime>
 
 //-----------------------------------------------------------------------------
 

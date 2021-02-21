@@ -6,9 +6,10 @@
 
 #include "trie.h"
 
+#include <QDataStream>
+
 #include <queue>
 #include <utility>
-#include <QDataStream>
 
 //-----------------------------------------------------------------------------
 

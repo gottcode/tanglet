@@ -7,11 +7,12 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+class Board;
+
 #include <QHash>
 #include <QMainWindow>
 class QLabel;
 class QStackedWidget;
-class Board;
 
 class Window : public QMainWindow
 {

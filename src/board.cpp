@@ -20,16 +20,13 @@
 #include <QAction>
 #include <QDialog>
 #include <QDialogButtonBox>
-#include <QEvent>
 #include <QGridLayout>
 #include <QGraphicsScene>
 #include <QHBoxLayout>
-#include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QLineF>
 #include <QMessageBox>
-#include <QPainterPath>
 #include <QSettings>
 #include <QStyle>
 #include <QTabWidget>
