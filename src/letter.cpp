@@ -65,7 +65,7 @@ void Letter::setArrow(qreal angle, int z)
 	switch (std::lround(angle / 45.0)) {
 	case 0: // right
 		createSideArrow();
-		m_arrow->moveBy(rect.right() - 8, rect.center().y());
+		m_arrow->moveBy(rect.right() - 8, rect.center().y() + 0.5);
 		break;
 
 	case 1: // top right
@@ -76,7 +76,7 @@ void Letter::setArrow(qreal angle, int z)
 
 	case 2: // top
 		createSideArrow();
-		m_arrow->moveBy(rect.center().x(), rect.top() + 8);
+		m_arrow->moveBy(rect.center().x() + 0.5, rect.top() + 8);
 		m_arrow->setRotation(270);
 		break;
 
@@ -88,7 +88,7 @@ void Letter::setArrow(qreal angle, int z)
 
 	case 4: // left
 		createSideArrow();
-		m_arrow->moveBy(rect.left() + 8, rect.center().y());
+		m_arrow->moveBy(rect.left() + 8, rect.center().y() + 0.5);
 		m_arrow->setRotation(180);
 		break;
 
@@ -100,7 +100,7 @@ void Letter::setArrow(qreal angle, int z)
 
 	case 6: // bottom
 		createSideArrow();
-		m_arrow->moveBy(rect.center().x(), rect.bottom() - 8);
+		m_arrow->moveBy(rect.center().x() + 0.5, rect.bottom() - 8);
 		m_arrow->setRotation(90);
 		break;
 
