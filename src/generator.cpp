@@ -26,8 +26,18 @@
 namespace
 {
 
+/**
+ * @brief The State class represents a current game being built.
+ */
 struct State
 {
+	/**
+	 * Constructs a state instance.
+	 * @param dice the dice used to fill the board
+	 * @param solver the solve used to check the board for solutions
+	 * @param target the target amount of words
+	 * @param random the random number generator
+	 */
 	State(const QList<QStringList>& dice, Solver* solver, int target, QRandomGenerator* random)
 		: m_dice(dice)
 		, m_solver(solver)
@@ -36,16 +46,25 @@ struct State
 	{
 	}
 
+	/**
+	 * @return how far off the amount of words on the board is from the target amount of words
+	 */
 	int delta() const
 	{
 		return m_delta;
 	}
 
+	/**
+	 * @return the board layout
+	 */
 	QStringList letters() const
 	{
 		return m_letters;
 	}
 
+	/**
+	 * Flips individual dice to tweak the board and searches it for solutions.
+	 */
 	void permute()
 	{
 		if (m_random->bounded(2)) {
@@ -67,6 +86,9 @@ struct State
 		solve();
 	}
 
+	/**
+	 * Rolls the dice to generate a new board and searches it for solutions.
+	 */
 	void roll()
 	{
 		std::shuffle(m_dice.begin(), m_dice.end(), *m_random);
@@ -81,6 +103,10 @@ struct State
 	}
 
 private:
+	/**
+	 * Searches the board for solutions and determines how far off the amount of words is from the
+	 * target amount of words.
+	 */
 	void solve()
 	{
 		m_solver->solve(m_letters);
@@ -89,12 +115,12 @@ private:
 	}
 
 private:
-	QList<QStringList> m_dice;
-	QStringList m_letters;
-	int m_delta;
-	Solver* m_solver;
-	int m_target;
-	QRandomGenerator* m_random;
+	QList<QStringList> m_dice; /**< the dice used to generate a layout */
+	QStringList m_letters; /**< the generated layout */
+	Solver* m_solver; /**< solves the generated layout */
+	int m_target; /**< the target number of words on generated board */
+	int m_delta; /**< how far the actual number of words is from the target */
+	QRandomGenerator* m_random; /**< random number generator */
 };
 
 }

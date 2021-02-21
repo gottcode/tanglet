@@ -25,9 +25,16 @@
 namespace
 {
 
+/**
+ * @brief The TimerDescription class describes a timer.
+ */
 class TimerDescription
 {
 public:
+	/**
+	 * Constructs a timer description.
+	 * @param id the timer mode to load details of
+	 */
 	TimerDescription(int id)
 		: m_name(Clock::timerToString(id))
 		, m_description(Clock::timerDescription(id))
@@ -35,30 +42,44 @@ public:
 	{
 	}
 
+	/**
+	 * @return translated name of timer
+	 */
 	QString name() const
 	{
 		return m_name;
 	}
 
+	/**
+	 * @return translated description of timer
+	 */
 	QString description() const
 	{
 		return m_description;
 	}
 
+	/**
+	 * @return the timer mode represented by this description
+	 */
 	int id() const
 	{
 		return m_id;
 	}
 
+	/**
+	 * Locale-aware sorts the descriptions.
+	 * @param timer the description to compare to
+	 * @return whether this description sorts first
+	 */
 	bool operator<(const TimerDescription& timer) const
 	{
 		return m_name.localeAwareCompare(timer.m_name) < 0;
 	}
 
 private:
-	QString m_name;
-	QString m_description;
-	int m_id;
+	QString m_name; /**< translated name of timer */
+	QString m_description; /**< translated description of timer */
+	int m_id; /**< the timer mode */
 };
 
 }

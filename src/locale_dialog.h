@@ -11,7 +11,7 @@
 class QComboBox;
 
 /**
- * Dialog to set application language.
+ * @brief Dialog to set application language.
  *
  * This class handles setting the application language when the application is
  * launched, as well as allowing the user to choose a different language for
@@ -24,14 +24,12 @@ class LocaleDialog : public QDialog
 public:
 	/**
 	 * Construct a dialog to choose application language.
-	 *
 	 * @param parent the parent widget of the dialog
 	 */
 	explicit LocaleDialog(QWidget* parent = nullptr);
 
 	/**
 	 * Load the stored language into the application; defaults to system language.
-	 *
 	 * @param appname application name to prepend to translation filenames
 	 * @param datadirs locations to search for directory containing translations
 	 */
@@ -39,7 +37,6 @@ public:
 
 	/**
 	 * Fetch native language name for QLocale name.
-	 *
 	 * @param language QLocale name to look up
 	 * @return translated language name
 	 */
@@ -52,7 +49,6 @@ public slots:
 private:
 	/**
 	 * Fetch list of application translations.
-	 *
 	 * @return list of QLocale names
 	 */
 	static QStringList findTranslations();

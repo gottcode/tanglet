@@ -61,15 +61,15 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	m_dice_path = settings.value("Dice").toString();
 	m_dice->setText(QDir::toNativeSeparators(QFileInfo(m_dice_path).canonicalFilePath()));
 	connect(m_dice, &QLineEdit::textEdited, this, &LanguageDialog::chooseDice);
-	m_choose_dice = new QPushButton(tr("Choose..."), this);
-	connect(m_choose_dice, &QPushButton::clicked, this, &LanguageDialog::browseDice);
+	QPushButton* choose_dice = new QPushButton(tr("Choose..."), this);
+	connect(choose_dice, &QPushButton::clicked, this, &LanguageDialog::browseDice);
 
 	m_words = new QLineEdit(this);
 	m_words_path = settings.value("Words").toString();
 	m_words->setText(QDir::toNativeSeparators(QFileInfo(m_words_path).canonicalFilePath()));
 	connect(m_words, &QLineEdit::textEdited, this, &LanguageDialog::chooseWords);
-	m_choose_words = new QPushButton(tr("Choose..."), this);
-	connect(m_choose_words, &QPushButton::clicked, this, &LanguageDialog::browseWords);
+	QPushButton* choose_words = new QPushButton(tr("Choose..."), this);
+	connect(choose_words, &QPushButton::clicked, this, &LanguageDialog::browseWords);
 
 	m_dictionary = new QLineEdit(this);
 	m_dictionary->setText(settings.value("Dictionary").toString());
@@ -94,11 +94,11 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 
 	layout->addWidget(new QLabel(tr("Dice:"), this), 1, 0, Qt::AlignRight | Qt::AlignVCenter);
 	layout->addWidget(m_dice, 1, 1);
-	layout->addWidget(m_choose_dice, 1, 2);
+	layout->addWidget(choose_dice, 1, 2);
 
 	layout->addWidget(new QLabel(tr("Word list:"), this), 2, 0, Qt::AlignRight | Qt::AlignVCenter);
 	layout->addWidget(m_words, 2, 1);
-	layout->addWidget(m_choose_words, 2, 2);
+	layout->addWidget(choose_words, 2, 2);
 
 	layout->addWidget(new QLabel(tr("Dictionary:"), this), 3, 0, Qt::AlignRight | Qt::AlignVCenter);
 	layout->addWidget(m_dictionary, 3, 1, 1, 2);

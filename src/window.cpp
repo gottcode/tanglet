@@ -39,49 +39,114 @@
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Window::State class controls which central widget is shown in the main window.
+ */
 class Window::State
 {
 public:
+	/**
+	 * Constructs a state instance.
+	 * @param window the window to control
+	 */
 	explicit State(Window* window)
 		: m_window(window)
 	{
 	}
 
+	/**
+	 * Destroys a state instance.
+	 */
 	virtual ~State() { }
 
+	/**
+	 * Handle the state being entered.
+	 */
 	virtual void enter() { }
+
+	/**
+	 * Handle request to switch to the new game state.
+	 */
 	virtual void newGame()
 	{
 		setState("NewGame");
 	}
+
+	/**
+	 * Handle request to switch to the open game state.
+	 */
 	virtual void openGame()
 	{
 		setState("OpenGame");
 	}
+
+	/**
+	 * Handle request to switch to the optimizing state.
+	 */
 	virtual void optimizingStarted() { }
+
+	/**
+	 * Handle request to switch back from the optimizing state.
+	 */
 	virtual void optimizingFinished() { }
+
+	/**
+	 * Handle request to switch to the play state.
+	 */
 	virtual void play() { }
+
+	/**
+	 * Handle request to switch to the automatically paused state.
+	 */
 	virtual void autoPause() { }
+
+	/**
+	 * Handle request to switch back from the automatically paused state.
+	 */
 	virtual void autoResume() { }
+
+	/**
+	 * Handle request to switch to the paused state.
+	 */
 	virtual void pause() { }
+
+	/**
+	 * Handle request to switch back from the paused state.
+	 */
 	virtual void resume() { }
+
+	/**
+	 * Handle request to switch to the finished state.
+	 */
 	virtual void finish()
 	{
 		setState("Finish");
 	}
 
 protected:
+	/**
+	 * Pause or resume the game.
+	 * @param paused whether to pause or resume
+	 */
 	void setPaused(bool paused)
 	{
 		m_window->m_board->setPaused(paused);
 		m_window->m_pause_action->setChecked(paused);
 	}
 
+	/**
+	 * Set which widget is shown in the main window.
+	 * @param index
+	 */
 	void setContentsIndex(int index)
 	{
 		m_window->m_contents->setCurrentIndex(index);
 	}
 
+	/**
+	 * Sets the current state of the main window.
+	 * @param state which state to switch to
+	 */
 	void setState(const QString& state)
 	{
 		m_window->m_previous_state = m_window->m_state;
@@ -89,6 +154,9 @@ protected:
 		m_window->m_state->enter();
 	}
 
+	/**
+	 * Restores the previous state of the main window.
+	 */
 	void setPreviousState()
 	{
 		m_window->m_state = m_window->m_previous_state;
@@ -97,11 +165,16 @@ protected:
 	}
 
 private:
-	Window* m_window;
+	Window* m_window; /**< window to control */
 };
 
 //-----------------------------------------------------------------------------
 
+/**
+ * The Window::NewGameState class is a temporary state that shows a load screen while generating a
+ * board before switching to the Play state. It will also show the automatic pause screen and the
+ * optimizing screen if necessary.
+ */
 class Window::NewGameState : public Window::State
 {
 public:
@@ -138,11 +211,16 @@ public:
 	}
 
 private:
-	QString m_next_state;
+	QString m_next_state; /**< state to enter once the game has been started */
 };
 
 //-----------------------------------------------------------------------------
 
+/**
+ * The Window::OpenGameState class is a temporary state that shows a load screen while opening a
+ * board before switching to the Play state. It will also show the automatic pause screen and the
+ * optimizing screen if necessary.
+ */
 class Window::OpenGameState : public Window::State
 {
 public:
@@ -179,11 +257,15 @@ public:
 	}
 
 private:
-	QString m_next_state;
+	QString m_next_state; /**< state to enter once the game has been loaded */
 };
 
 //-----------------------------------------------------------------------------
 
+/**
+ * The Window::OptimizingState class shows the optimizing screen while the word list is being
+ * optimized and then switches back to the previous state.
+ */
 class Window::OptimizingState : public Window::State
 {
 public:
@@ -205,6 +287,10 @@ public:
 
 //-----------------------------------------------------------------------------
 
+/**
+ * The Window::PlayState class shows the play area. It will switch to the automatic pause or regular
+ * pause screen if needed.
+ */
 class Window::PlayState : public Window::State
 {
 public:
@@ -232,6 +318,13 @@ public:
 
 //-----------------------------------------------------------------------------
 
+/**
+ * The Window::AutoPauseState class will show the pause screen until it its reference count of times
+ * called is reduced to 0, at which point it will show the previous state. If any state is requested,
+ * it will switch to that instead.
+ *
+ * This state is used to temporarily pause the game while a menu is shown.
+ */
 class Window::AutoPauseState : public Window::State
 {
 public:
@@ -293,11 +386,15 @@ public:
 	}
 
 private:
-	int m_count;
+	int m_count; /**< reference count of how many times automatic pause has been entered */
 };
 
 //-----------------------------------------------------------------------------
 
+/**
+ * The Window::PauseState class shows the pause screen. It will switch to the play state when
+ * hidden. The base class handles switching to the new or open states when requested.
+ */
 class Window::PauseState : public Window::State
 {
 public:
@@ -320,6 +417,11 @@ public:
 
 //-----------------------------------------------------------------------------
 
+/**
+ * The Window::FinishState class shows the main play area and does not switch to any other state
+ * like pause or automatic pause, because the game is already over. The base class handles switching
+ * to the new or open states when requested.
+ */
 class Window::FinishState : public Window::State
 {
 public:

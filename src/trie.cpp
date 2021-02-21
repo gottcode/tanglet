@@ -17,9 +17,16 @@
 namespace
 {
 
+/**
+ * @brief The TrieGenerator class generates the optimized word list for the trie class.
+ */
 class TrieGenerator
 {
 public:
+	/**
+	 * Constructs a generator instance.
+	 * @param key the letter contained by the generator instance
+	 */
 	explicit TrieGenerator(const QChar& key = QChar())
 		: m_key(key)
 		, m_word(false)
@@ -29,6 +36,10 @@ public:
 	{
 	}
 
+	/**
+	 * Constructs a generator instance.
+	 * @param word a list of letters to build child instances from
+	 */
 	explicit TrieGenerator(const QString& word)
 		: m_word(false)
 		, m_children(nullptr)
@@ -38,14 +49,37 @@ public:
 		addWord(word, QStringList(word));
 	}
 
+	/**
+	 * Constructs a generator instance.
+	 * @param data contents of a word list file including alternate spellings
+	 */
 	explicit TrieGenerator(const QByteArray& data);
 
+	/**
+	 * Destroys the generator.
+	 */
 	~TrieGenerator();
 
+	/**
+	 * Compiles a compressed list of the trie for faster access.
+	 * @param [out] nodes the compressed list of nodes
+	 * @param [out] spellings the list of spellings
+	 */
 	void run(QVector<Trie::Node>& nodes, QStringList& spellings) const;
 
 private:
+	/**
+	 * Fetch a child generator matching a specific letter. Creates one if does not exist yet.
+	 * @param letter the letter to add
+	 * @return the child generator
+	 */
 	TrieGenerator* addChild(const QChar& letter);
+
+	/**
+	 * Adds a word by walking through the letters and fetching the next child of each letter.
+	 * @param word the word to add
+	 * @param spellings alternate spellings of the word to store
+	 */
 	void addWord(const QString& word, const QStringList& spellings);
 
 	// Uncopyable
@@ -53,12 +87,12 @@ private:
 	TrieGenerator& operator=(const TrieGenerator&) = delete;
 
 private:
-	QChar m_key;
-	bool m_word;
-	TrieGenerator* m_children;
-	TrieGenerator* m_next;
-	int m_count;
-	QStringList m_spellings;
+	QChar m_key; /**< letter represented by the generator */
+	bool m_word; /**< is this node a word */
+	TrieGenerator* m_children; /**< first child generator */
+	TrieGenerator* m_next; /**< first sibling generator */
+	int m_count; /**< how many children the generator has */
+	QStringList m_spellings; /**< alternate spellings of word */
 };
 
 //-----------------------------------------------------------------------------

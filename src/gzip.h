@@ -10,7 +10,17 @@
 class QByteArray;
 class QString;
 
+/**
+ * Compress the file located at path with the Gzip algorithm.
+ * @param path file to compress
+ */
 void gzip(const QString& path);
+
+/**
+ * Decompress the file located at path with the Gzip algorithm.
+ * @param path file to decompress
+ * @return uncompressed file contents
+ */
 QByteArray gunzip(const QString& path);
 
 #endif

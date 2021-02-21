@@ -16,30 +16,98 @@
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::Timer class defines how the timer updates for gameplay.
+ */
 class Clock::Timer
 {
 public:
+	/**
+	 * Constructs a timer instance.
+	 */
 	Timer();
+
+	/**
+	 * Destroys the timer.
+	 */
 	virtual ~Timer();
 
+	/**
+	 * Updates timer based on adding a correctly spelled word.
+	 * @param score how much the word is worth
+	 * @return @c true if the time remaining has changed by adding the word
+	 */
 	virtual bool addWord(int score) = 0;
+
+	/**
+	 * Updates timer based on adding an incorrectly spelled word.
+	 * @param score how much the word is worth
+	 * @return @c true if the time remaining has changed by adding the word
+	 */
 	virtual bool addIncorrectWord(int score);
+
+	/**
+	 * @return the current display color of the timer
+	 */
 	virtual QColor color();
+
+	/**
+	 * @return whether the timer has reached its end
+	 */
 	virtual bool isFinished();
+
+	/**
+	 * Resets the timer to its default amount.
+	 */
 	virtual void start() = 0;
+
+	/**
+	 * Stops the timer and resets to @c 0.
+	 */
 	virtual void stop();
+
+	/**
+	 * @return the timer unique ID
+	 */
 	virtual int type() const = 0;
+
+	/**
+	 * Updates the amount of time remaining and the display string of the timer.
+	 * @return the current display string
+	 */
 	virtual QString update();
+
+	/**
+	 * @return how full the timer should be out of a maximum of 180
+	 */
 	virtual int width() const;
 
+	/**
+	 * Loads the timer values.
+	 * @param game where to load the timer values from
+	 */
 	void load(const QSettings& game);
+
+	/**
+	 * Stores the timer values.
+	 * @param game where to save the timer values
+	 */
 	void save(QSettings& game);
 
 protected:
-	int m_time;
+	int m_time; /**< The time remaining on the clock */
 
 private:
+	/**
+	 * Implementation specific handling of loading timer details.
+	 * @param game where to load the timer values from
+	 */
 	virtual void loadDetails(const QSettings& game);
+
+	/**
+	 * Implementation specific handling of saving timer details.
+	 * @param game where to save the timer values
+	 */
 	virtual void saveDetails(QSettings& game);
 };
 
@@ -119,14 +187,39 @@ void Clock::Timer::saveDetails(QSettings&)
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::AllotmentTimer class is a timer that allows 30 guesses.
+ */
 class Clock::AllotmentTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score) override;
-	bool addIncorrectWord(int score) override;
-	void start() override;
 	int type() const override;
+
+	/**
+	 * Reduce guesses remaining when a correct guess is made.
+	 * @return @c true to update display
+	 */
+	bool addWord(int) override;
+
+	/**
+	 * Reduce guesses remaining when an incorrect guess is made.
+	 * @return @c true to update display
+	 */
+	bool addIncorrectWord(int) override;
+
+	/**
+	 * Start with 30 guesses.
+	 */
+	void start() override;
+
+	/**
+	 * @return the time as "X guesses".
+	 */
 	QString update() override;
+
+	/**
+	 * @return the time multiplied by 6 to make it fill the timer display
+	 */
 	int width() const override;
 
 private:
@@ -172,12 +265,24 @@ void Clock::AllotmentTimer::loadDetails(const QSettings&)
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::ClassicTimer class is a timer that only counts down from 3 minutes.
+ */
 class Clock::ClassicTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score) override;
-	void start() override;
 	int type() const override;
+
+	/**
+	 * Ignore as guesses do not impact time remaining.
+	 * @return always returns @c false
+	 */
+	bool addWord(int) override;
+
+	/**
+	 * Start with 3 minutes.
+	 */
+	void start() override;
 };
 
 bool Clock::ClassicTimer::addWord(int)
@@ -200,10 +305,26 @@ int Clock::ClassicTimer::type() const
 class Clock::DisciplineTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score) override;
-	bool addIncorrectWord(int score) override;
-	void start() override;
 	int type() const override;
+
+	/**
+	 * Increase time based on how much a correct guess is worth.
+	 * @param score how much the word is worth
+	 * @return @c true to update display
+	 */
+	bool addWord(int score) override;
+
+	/**
+	 * Decrease time based on how much an incorrect guess is worth.
+	 * @param score how much the word is worth
+	 * @return @c true to update display
+	 */
+	bool addIncorrectWord(int score) override;
+
+	/**
+	 * Start with 30 seconds.
+	 */
+	void start() override;
 };
 
 bool Clock::DisciplineTimer::addWord(int score)
@@ -230,12 +351,28 @@ int Clock::DisciplineTimer::type() const
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::RefillTimer class is a timer that refills on correct guesses.
+ */
 class Clock::RefillTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score) override;
-	void start() override;
 	int type() const override;
+
+	/**
+	 * Refills time back to 30 seconds on a correct guess.
+	 * @return @c true to update display
+	 */
+	bool addWord(int) override;
+
+	/**
+	 * Start with 30 seconds.
+	 */
+	void start() override;
+
+	/**
+	 * @return the time multiplied by 6 to make it fill the timer display
+	 */
 	int width() const override;
 };
 
@@ -262,22 +399,56 @@ int Clock::RefillTimer::width() const
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::StaminaTimer class is a timer that pauses for 5 seconds on correct guesses.
+ */
 class Clock::StaminaTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score) override;
-	QColor color() override;
-	void start() override;
 	int type() const override;
+
+	/**
+	 * Pauses the timer on a correct guess.
+	 * @return @c true to update display
+	 */
+	bool addWord(int) override;
+
+	/**
+	 * @return blue if the timer is paused, otherwise returns the regular timer color
+	 */
+	QColor color() override;
+
+	/**
+	 * Start with 45 seconds.
+	 */
+	void start() override;
+
+	/**
+	 * Reduces the pause if it exists.
+	 * @return the pause remaining or the regular display if the time is not paused
+	 */
 	QString update() override;
+
+	/**
+	 * @return full 180 if paused, or time multiplied by 4 to fill timer display
+	 */
 	int width() const override;
 
 private:
+	/**
+	 * Load how much pause remains.
+	 * @param game where to load how much pause remains
+	 */
 	void loadDetails(const QSettings& game) override;
+
+	/**
+	 * Store how much pause remains.
+	 * @param game where to store how much pause remains
+	 */
 	void saveDetails(QSettings& game) override;
 
 private:
-	int m_freeze;
+	int m_freeze; /**< how much pause is left */
 };
 
 bool Clock::StaminaTimer::addWord(int)
@@ -329,23 +500,61 @@ void Clock::StaminaTimer::saveDetails(QSettings& game)
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::StrikeoutTimer class is a timer that stops after 3 incorrect guesses.
+ */
 class Clock::StrikeoutTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score) override;
-	bool addIncorrectWord(int score) override;
-	void start() override;
-	void stop() override;
 	int type() const override;
+
+	/**
+	 * Ignore adding a correct word as guesses do not impact time remaining.
+	 * @return always returns @c false
+	 */
+	bool addWord(int) override;
+
+	/**
+	 * Decreases amount of strikes remaining.
+	 * @return @c true to update timer display
+	 */
+	bool addIncorrectWord(int score) override;
+
+	/**
+	 * Start with 0 incorrect guesses.
+	 */
+	void start() override;
+
+	/**
+	 * Resets count of incorrect guesses.
+	 */
+	void stop() override;
+
+	/**
+	 * @return how many guesses remain
+	 */
 	QString update() override;
+
+	/**
+	 * @return remaining guesses multipled by 60 to fill timer display
+	 */
 	int width() const override;
 
 private:
+	/**
+	 * Load how many incorrect guesses have happened.
+	 * @param game where to load the count of incorrect guesses
+	 */
 	void loadDetails(const QSettings& game) override;
+
+	/**
+	 * Store how many incorrect guesses have happened.
+	 * @param game where to store count of incorrect guesses
+	 */
 	void saveDetails(QSettings& game) override;
 
 private:
-	int m_strikes;
+	int m_strikes; /**< how many incorrect guesses have been made */
 };
 
 bool Clock::StrikeoutTimer::addWord(int)
@@ -400,12 +609,25 @@ void Clock::StrikeoutTimer::saveDetails(QSettings& game)
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::TangletTimer class is a timer that rewards on correct guesses.
+ */
 class Clock::TangletTimer : public Clock::Timer
 {
 public:
-	bool addWord(int score) override;
-	void start() override;
 	int type() const override;
+
+	/**
+	 * Increase time based on how much a correct guess is worth.
+	 * @param score how much the word is worth
+	 * @return @c true to update display
+	 */
+	bool addWord(int score) override;
+
+	/**
+	 * Start with 30 seconds.
+	 */
+	void start() override;
 };
 
 bool Clock::TangletTimer::addWord(int score)
