@@ -478,60 +478,57 @@ void Board::clearGuess()
 
 void Board::guess()
 {
-	if (!isFinished() && !m_paused) {
-		QString text = m_guess->text().trimmed().toUpper();
-		if (text.isEmpty()
-				|| (text.length() < m_minimum)
-				|| (text.length() > m_maximum)
-				|| m_positions.isEmpty()
-				|| m_wrong_typed
-				|| m_wrong) {
-			return;
+	if (isFinished() || m_paused || m_positions.isEmpty() || m_wrong_typed || m_wrong) {
+		return;
+	}
+
+	const QString text = m_guess->text().trimmed().toUpper();
+	if (text.isEmpty() || (text.length() < m_minimum) || (text.length() > m_maximum)) {
+		return;
+	}
+	if (!m_solutions.contains(text)) {
+		m_wrong = true;
+		highlightWord();
+		updateButtons();
+		m_clock->addIncorrectWord(Solver::score(text));
+		return;
+	}
+
+	// Create found item
+	QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
+	if (!item) {
+		item = m_found->addWord(text);
+		delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).constFirst();
+
+		m_clock->addWord(item->data(0, Qt::UserRole).toInt());
+		updateScore();
+
+		QList<QList<QPoint>>& solutions = m_solutions[text];
+		const int index = solutions.indexOf(m_positions);
+		if (index != -1) {
+			solutions.move(index, 0);
+		} else {
+			solutions.prepend(m_positions);
 		}
-		if (!m_solutions.contains(text)) {
-			m_wrong = true;
-			highlightWord();
-			updateButtons();
-			m_clock->addIncorrectWord(Solver::score(text));
-			return;
+
+		m_counts->findWord(text);
+	}
+	m_found->scrollToItem(item);
+	m_found->setCurrentItem(nullptr);
+
+	// Clear guess
+	clearGuess();
+
+	// Handle finding all of the words
+	if (m_missed->topLevelItemCount() == 0) {
+		// Increase score
+		for (int i = 0; i < m_found->topLevelItemCount(); ++i) {
+			QTreeWidgetItem* item = m_found->topLevelItem(i);
+			item->setData(0, Qt::UserRole, item->data(0, Qt::UserRole).toInt() + 1);
 		}
 
-		// Create found item
-		QTreeWidgetItem* item = m_found->findItems(text, Qt::MatchExactly, 2).value(0);
-		if (!item) {
-			item = m_found->addWord(text);
-			delete m_missed->findItems(item->text(2), Qt::MatchExactly, 2).constFirst();
-
-			m_clock->addWord(item->data(0, Qt::UserRole).toInt());
-			updateScore();
-
-			QList<QList<QPoint>>& solutions = m_solutions[text];
-			int index = solutions.indexOf(m_positions);
-			if (index != -1) {
-				solutions.move(index, 0);
-			} else {
-				solutions.prepend(m_positions);
-			}
-
-			m_counts->findWord(text);
-		}
-		m_found->scrollToItem(item);
-		m_found->setCurrentItem(nullptr);
-
-		// Clear guess
-		clearGuess();
-
-		// Handle finding all of the words
-		if (m_missed->topLevelItemCount() == 0) {
-			// Increase score
-			for (int i = 0; i < m_found->topLevelItemCount(); ++i) {
-				QTreeWidgetItem* item = m_found->topLevelItem(i);
-				item->setData(0, Qt::UserRole, item->data(0, Qt::UserRole).toInt() + 1);
-			}
-
-			// Stop the game
-			m_clock->stop();
-		}
+		// Stop the game
+		m_clock->stop();
 	}
 }
 
