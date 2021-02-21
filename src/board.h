@@ -87,7 +87,7 @@ private:
 	bool m_paused;
 	bool m_wrong;
 	bool m_valid;
-	int m_score_type;
+	int m_show_counts;
 
 	int m_size;
 	int m_minimum;

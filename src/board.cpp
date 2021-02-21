@@ -45,7 +45,7 @@ Board::Board(QWidget* parent)
 	, m_paused(false)
 	, m_wrong(false)
 	, m_valid(true)
-	, m_score_type(1)
+	, m_show_counts(1)
 	, m_size(0)
 	, m_minimum(0)
 	, m_maximum(0)
@@ -290,8 +290,8 @@ void Board::setShowMaximumScore(QAction* show)
 {
 	int score_type = show->data().toInt();
 	QSettings().setValue("ShowMaximumScore", score_type);
-	m_score_type = score_type;
-	m_max_score_details->setVisible(isFinished() && m_score_type && m_clock->timer() == Clock::Allotment);
+	m_show_counts = score_type;
+	m_max_score_details->setVisible(isFinished() && m_show_counts && m_clock->timer() == Clock::Allotment);
 	updateScore();
 }
 
@@ -619,7 +619,7 @@ void Board::finish()
 	m_guess->setEchoMode(QLineEdit::NoEcho);
 	m_guess->releaseKeyboard();
 	m_tabs->setTabEnabled(1, true);
-	m_max_score_details->setVisible(m_score_type && m_clock->timer() == Clock::Allotment);
+	m_max_score_details->setVisible(m_show_counts && m_clock->timer() == Clock::Allotment);
 	emit pauseAvailable(false);
 
 	int score = updateScore();
@@ -794,7 +794,7 @@ int Board::updateScore()
 		score += m_found->topLevelItem(i)->data(0, Qt::UserRole).toInt();
 	}
 
-	if (m_score_type == 2 || (m_score_type == 1 && isFinished())) {
+	if (m_show_counts == 2 || (m_show_counts == 1 && isFinished())) {
 		if (score > 3) {
 			m_score->setText(tr("%1 of %n point(s)", "", m_max_score).arg(score));
 		} else if (score == 3) {
