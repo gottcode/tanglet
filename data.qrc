@@ -1,6 +1,0 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource>
-	<file alias="hspell-readme">data/he/README</file>
-	<file alias="scowl-readme">data/en/README</file>
-</qresource>
-</RCC>

@@ -31,8 +31,6 @@ protected:
 
 private slots:
 	void about();
-	void aboutHspell();
-	void aboutScowl();
 	void newRoll();
 	void newGame();
 	void chooseGame();

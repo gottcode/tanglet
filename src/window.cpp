@@ -337,46 +337,6 @@ public:
 
 //-----------------------------------------------------------------------------
 
-namespace
-{
-
-class AboutDialog : public QDialog
-{
-public:
-	AboutDialog(const QString& title, const QString& filename, QWidget* parent = nullptr);
-};
-
-AboutDialog::AboutDialog(const QString& title, const QString& filename, QWidget* parent)
-	: QDialog(parent)
-{
-	setWindowTitle(title);
-
-	QTextEdit* text = new QTextEdit(this);
-	text->setWordWrapMode(QTextOption::NoWrap);
-	text->setReadOnly(true);
-
-	QFile file(filename);
-	if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-		QTextStream stream(&file);
-		text->setHtml("<pre>" + stream.readAll() + "</pre>");
-		file.close();
-	}
-
-	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
-	buttons->setCenterButtons(style()->styleHint(QStyle::SH_MessageBox_CenterButtons));
-	connect(buttons, &QDialogButtonBox::accepted, this, &AboutDialog::accept);
-
-	QVBoxLayout* layout = new QVBoxLayout(this);
-	layout->addWidget(text);
-	layout->addWidget(buttons);
-
-	resize(700, 500);
-}
-
-}
-
-//-----------------------------------------------------------------------------
-
 Window::Window(const QString& file)
 	: m_pause_action(nullptr)
 	, m_previous_state(nullptr)
@@ -488,12 +448,8 @@ Window::Window(const QString& file)
 	menu->addSeparator();
 	action = menu->addAction(tr("&About"), this, SLOT(about()));
 	action->setMenuRole(QAction::AboutRole);
-	action = menu->addAction(tr("About &Hspell"), this, SLOT(aboutHspell()));
-	action->setMenuRole(QAction::ApplicationSpecificRole);
 	action = menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
 	action->setMenuRole(QAction::AboutQtRole);
-	action = menu->addAction(tr("About &SCOWL"), this, SLOT(aboutScowl()));
-	action->setMenuRole(QAction::ApplicationSpecificRole);
 	monitorVisibility(menu);
 
 	// Load settings
@@ -662,22 +618,6 @@ void Window::about()
 			tr("English word list is based on <a href=\"http://wordlist.sourceforge.net/\">SCOWL</a> by Kevin Atkinson"),
 			tr("Hebrew word list is based on <a href=\"http://hspell.ivrix.org.il/\">Hspell</a> by Nadav Har'El and Dan Kenigsberg"))
 	);
-}
-
-//-----------------------------------------------------------------------------
-
-void Window::aboutHspell()
-{
-	AboutDialog dialog(tr("About Hspell"), ":/hspell-readme", this);
-	dialog.exec();
-}
-
-//-----------------------------------------------------------------------------
-
-void Window::aboutScowl()
-{
-	AboutDialog dialog(tr("About SCOWL"), ":/scowl-readme", this);
-	dialog.exec();
 }
 
 //-----------------------------------------------------------------------------

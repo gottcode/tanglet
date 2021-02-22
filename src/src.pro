@@ -83,7 +83,7 @@ updateqm.CONFIG += no_link target_predeps
 QMAKE_EXTRA_COMPILERS += updateqm
 
 # Install program data
-RESOURCES = ../icons/icons.qrc ../data.qrc
+RESOURCES = ../icons/icons.qrc
 
 macx {
 	ICON = ../icons/tanglet.icns
