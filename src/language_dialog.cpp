@@ -35,12 +35,13 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	const QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 	for (const QString& iso_code : languages) {
 		QLocale::Language language = QLocale(iso_code).language();
-		QString name = QLocale::languageToString(language);
-		QFile file("tanglet:/" + iso_code + "/name");
-		if (file.open(QFile::ReadOnly | QFile::Text)) {
-			QString localized = QString::fromUtf8(file.readAll()).simplified();
-			file.close();
-			name = !localized.isEmpty() ? localized : name;
+		QSettings settings(QString("tanglet:%1/language.ini").arg(iso_code), QSettings::IniFormat);
+#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
+		settings.setIniCodec("UTF-8");
+#endif
+		QString name = settings.value("Language/Name").toString();
+		if (name.isEmpty()) {
+			name = QLocale::languageToString(language);
 		}
 		int i;
 		for (i = 0; i < m_language->count(); ++i) {
