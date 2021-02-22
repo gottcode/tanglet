@@ -7,4 +7,4 @@ equals(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 9) {
 
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = tools resources/words.pro resources/dice.pro src
+SUBDIRS = tools wordlists src
