@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef CLOCK_H
-#define CLOCK_H
+#ifndef TANGLET_CLOCK_H
+#define TANGLET_CLOCK_H
 
 #include <QWidget>
 class QSettings;
@@ -160,4 +160,4 @@ private:
 	Timer* m_timer; /**< the current timer */
 };
 
-#endif
+#endif // TANGLET_CLOCK_H

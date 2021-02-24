@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef GZIP_H
-#define GZIP_H
+#ifndef TANGLET_GZIP_H
+#define TANGLET_GZIP_H
 
 class QByteArray;
 class QString;
@@ -23,4 +23,4 @@ void gzip(const QString& path);
  */
 QByteArray gunzip(const QString& path);
 
-#endif
+#endif // TANGLET_GZIP_H

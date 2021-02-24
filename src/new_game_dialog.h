@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef NEW_GAME_DIALOG_H
-#define NEW_GAME_DIALOG_H
+#ifndef TANGLET_NEW_GAME_DIALOG_H
+#define TANGLET_NEW_GAME_DIALOG_H
 
 #include <QDialog>
 class QComboBox;
@@ -58,4 +58,4 @@ private:
 	int m_minimum; /**< length of the shortest word allowed */
 };
 
-#endif
+#endif // TANGLET_NEW_GAME_DIALOG_H

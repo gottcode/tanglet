@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef WORD_TREE_H
-#define WORD_TREE_H
+#ifndef TANGLET_WORD_TREE_H
+#define TANGLET_WORD_TREE_H
 
 class Trie;
 
@@ -100,4 +100,4 @@ private:
 	const Trie* m_trie; /**< word list to find all spellings of a word */
 };
 
-#endif
+#endif // TANGLET_WORD_TREE_H

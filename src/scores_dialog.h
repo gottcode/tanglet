@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef SCORES_DIALOG
-#define SCORES_DIALOG
+#ifndef TANGLET_SCORES_DIALOG_H
+#define TANGLET_SCORES_DIALOG_H
 
 #include <QDateTime>
 #include <QDialog>
@@ -132,4 +132,4 @@ private:
 	static int m_min; /**< the smallest high score */
 };
 
-#endif
+#endif // TANGLET_SCORES_DIALOG_H

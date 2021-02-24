@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef GENERATOR_H
-#define GENERATOR_H
+#ifndef TANGLET_GENERATOR_H
+#define TANGLET_GENERATOR_H
 
 #include "trie.h"
 
@@ -181,4 +181,4 @@ private:
 	std::atomic<bool> m_canceled; /**< if the generation has been aborted by player */
 };
 
-#endif
+#endif // TANGLET_GENERATOR_H

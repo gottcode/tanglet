@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef BEVELED_RECT_H
-#define BEVELED_RECT_H
+#ifndef TANGLET_BEVELED_RECT_H
+#define TANGLET_BEVELED_RECT_H
 
 #include <QGraphicsItem>
 
@@ -47,4 +47,4 @@ private:
 	QColor m_colors[5]; /**< colors to draw at each depth */
 };
 
-#endif
+#endif // TANGLET_BEVELED_RECT_H

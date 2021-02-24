@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef LANGUAGE_SETTINGS_H
-#define LANGUAGE_SETTINGS_H
+#ifndef TANGLET_LANGUAGE_SETTINGS_H
+#define TANGLET_LANGUAGE_SETTINGS_H
 
 class QSettings;
 
@@ -90,4 +90,4 @@ private:
 	QString m_dictionary; /**< where to define words */
 };
 
-#endif
+#endif // TANGLET_LANGUAGE_SETTINGS_H

@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef LANGUAGE_DIALOG_H
-#define LANGUAGE_DIALOG_H
+#ifndef TANGLET_LANGUAGE_DIALOG_H
+#define TANGLET_LANGUAGE_DIALOG_H
 
 #include <QDialog>
 class QAbstractButton;
@@ -96,4 +96,4 @@ private:
 	QDialogButtonBox* m_buttons; /**< buttons to control dialog */
 };
 
-#endif
+#endif // TANGLET_LANGUAGE_DIALOG_H

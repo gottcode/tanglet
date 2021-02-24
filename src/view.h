@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef VIEW_H
-#define VIEW_H
+#ifndef TANGLET_VIEW_H
+#define TANGLET_VIEW_H
 
 #include <QGraphicsView>
 
@@ -44,4 +44,4 @@ protected:
 	void resizeEvent(QResizeEvent* event) override;
 };
 
-#endif
+#endif // TANGLET_VIEW_H

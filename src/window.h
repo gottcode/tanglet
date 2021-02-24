@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef TANGLET_WINDOW_H
+#define TANGLET_WINDOW_H
 
 class Board;
 
@@ -192,4 +192,4 @@ private:
 	QHash<QString, State*> m_states; /**< available states of the window */
 };
 
-#endif
+#endif // TANGLET_WINDOW_H

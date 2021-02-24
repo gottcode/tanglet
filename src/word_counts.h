@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef WORD_COUNTS_H
-#define WORD_COUNTS_H
+#ifndef TANGLET_WORD_COUNTS_H
+#define TANGLET_WORD_COUNTS_H
 
 #include <QScrollArea>
 class QLabel;
@@ -64,4 +64,4 @@ private:
 	QVector<Group> m_groups; /**< collection of word lengths */
 };
 
-#endif
+#endif // TANGLET_WORD_COUNTS_H

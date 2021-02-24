@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef TANGLET_BOARD_H
+#define TANGLET_BOARD_H
 
 class Clock;
 class Generator;
@@ -237,4 +237,4 @@ private:
 	Generator* m_generator; /**< builds the board layout */
 };
 
-#endif
+#endif // TANGLET_BOARD_H

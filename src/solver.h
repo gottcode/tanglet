@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef SOLVER_H
-#define SOLVER_H
+#ifndef TANGLET_SOLVER_H
+#define TANGLET_SOLVER_H
 
 #include "trie.h"
 
@@ -101,4 +101,4 @@ private:
 	int m_count; /**< how many words have been found */
 };
 
-#endif
+#endif // TANGLET_SOLVER_H

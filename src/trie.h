@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef TRIE_H
-#define TRIE_H
+#ifndef TANGLET_TRIE_H
+#define TANGLET_TRIE_H
 
 #include <QChar>
 #include <QHash>
@@ -170,4 +170,4 @@ QDataStream& operator<<(QDataStream& stream, const Trie::Node& node);
  */
 QDataStream& operator>>(QDataStream& stream, Trie::Node& node);
 
-#endif
+#endif // TANGLET_TRIE_H

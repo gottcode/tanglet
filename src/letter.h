@@ -4,8 +4,8 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef LETTER_H
-#define LETTER_H
+#ifndef TANGLET_LETTER_H
+#define TANGLET_LETTER_H
 
 class BeveledRect;
 
@@ -119,4 +119,4 @@ private:
 	QPoint m_position; /**< where the letter is located in the board layout */
 };
 
-#endif
+#endif // TANGLET_LETTER_H
