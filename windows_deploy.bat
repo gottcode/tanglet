@@ -14,6 +14,7 @@ CD %SRCDIR%
 ECHO Copying data
 MKDIR %APP%\data
 XCOPY /Q /S /Y data %APP%\data >nul
+DEL %APP%\data\data.pro
 
 ECHO Copying translations
 SET TRANSLATIONS=%APP%\translations
