@@ -797,7 +797,7 @@ void Window::shareGame()
 		game.setValue("Language", settings.value("Language"));
 		game.setValue("Dictionary", settings.value("Dictionary"));
 
-		const QString dice = game.value("Dice").toString();
+		const QString dice = settings.value("Dice").toString();
 		if (dice.startsWith("tanglet:")) {
 			game.setValue("Dice", dice);
 		} else {
@@ -807,7 +807,7 @@ void Window::shareGame()
 			}
 		}
 
-		const QString words = game.value("Words").toString();
+		const QString words = settings.value("Words").toString();
 		if (words.startsWith("tanglet:")) {
 			game.setValue("Words", words);
 		} else {
