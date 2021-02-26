@@ -18,6 +18,7 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QSettings>
 #include <QStandardPaths>
 #include <QTextStream>
 
@@ -253,7 +254,9 @@ void Generator::update()
 {
 	m_error.clear();
 
-	LanguageSettings settings("Current");
+	QSettings config;
+	config.beginGroup("Current");
+	LanguageSettings settings(config);
 	m_dictionary_url = settings.dictionary();
 
 	// Load dice

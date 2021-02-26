@@ -75,7 +75,7 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	m_dictionary = new QLineEdit(this);
 	m_dictionary->setText(settings.value("Dictionary").toString());
 
-	setLanguage(LanguageSettings("Board").language());
+	setLanguage(LanguageSettings(settings).language());
 
 	// Creat warning message
 	QLabel* warning = new QLabel(tr("<b>Note:</b> These settings will take effect when you start a new game."), this);

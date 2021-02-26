@@ -40,22 +40,6 @@ LanguageSettings::LanguageSettings(const QSettings& group)
 
 //-----------------------------------------------------------------------------
 
-LanguageSettings::LanguageSettings(const QString& group)
-{
-	QSettings settings;
-	settings.beginGroup(group);
-
-	m_language = settings.value("Language").toInt();
-	m_dice = settings.value("Dice").toString();
-	m_words = settings.value("Words").toString();
-	m_dictionary = settings.value("Dictionary").toString();
-
-	loadValues();
-	loadDefaults();
-}
-
-//-----------------------------------------------------------------------------
-
 void LanguageSettings::loadDefaults()
 {
 	QString iso_code = QLocale(QLocale::Language(m_language)).name().section(QLatin1Char('_'), 0, 0);

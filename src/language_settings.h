@@ -35,12 +35,6 @@ public:
 	explicit LanguageSettings(const QSettings& group);
 
 	/**
-	 * Constructs a language instance.
-	 * @param group which QSettings group has the language settings
-	 */
-	explicit LanguageSettings(const QString& group);
-
-	/**
 	 * @return QLocale::Language value to specify a language
 	 */
 	int language() const
