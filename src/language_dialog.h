@@ -83,7 +83,7 @@ private:
 	 * Sets the placeholder language by language ID instead of index in combobox.
 	 * @param language the language to load the settings from
 	 */
-	void setLanguage(int language);
+	void setLanguage(const QString& language);
 
 private:
 	QComboBox* m_language; /**< the language selector */

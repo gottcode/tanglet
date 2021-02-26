@@ -26,7 +26,7 @@ public:
 	 * Constructs a language instance.
 	 * @param language what language to load defaults for
 	 */
-	explicit LanguageSettings(int language);
+	explicit LanguageSettings(const QString& language);
 
 	/**
 	 * Constructs a language instance.
@@ -35,9 +35,9 @@ public:
 	explicit LanguageSettings(const QSettings& group);
 
 	/**
-	 * @return QLocale::Language value to specify a language
+	 * @return name of QLocale
 	 */
-	int language() const
+	QString language() const
 	{
 		return m_language;
 	}
@@ -78,7 +78,7 @@ private:
 	void loadValues();
 
 private:
-	int m_language; /**< QLocale::Language value to specify a language */
+	QString m_language; /**< name of QLocale */
 	QString m_dice; /**< where to load dice */
 	QString m_words; /**< where to load words */
 	QString m_dictionary; /**< where to define words */

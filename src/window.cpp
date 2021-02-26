@@ -794,7 +794,7 @@ void Window::shareGame()
 		game.setValue("Minimum", settings.value("Minimum"));
 		game.setValue("TimerMode", settings.value("TimerMode"));
 		game.setValue("Letters", settings.value("Letters"));
-		game.setValue("Language", settings.value("Language"));
+		game.setValue("Locale", settings.value("Locale"));
 		game.setValue("Dictionary", settings.value("Dictionary"));
 
 		const QString dice = settings.value("Dice").toString();

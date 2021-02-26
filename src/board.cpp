@@ -203,7 +203,7 @@ void Board::abort()
 
 bool Board::generate(const QSettings& game)
 {
-	constexpr unsigned int TANGLET_FILE_VERSION = 2;
+	constexpr unsigned int TANGLET_FILE_VERSION = 3;
 
 	// Verify version
 	if (game.value("Version").toUInt() > TANGLET_FILE_VERSION) {
@@ -228,7 +228,7 @@ bool Board::generate(const QSettings& game)
 	}
 
 	const LanguageSettings language(game);
-	const bool is_hebrew = (language.language() == QLocale::Hebrew);
+	const bool is_hebrew = (QLocale(language.language()).language() == QLocale::Hebrew);
 	m_found->setHebrew(is_hebrew);
 	m_missed->setHebrew(is_hebrew);
 
@@ -241,7 +241,7 @@ bool Board::generate(const QSettings& game)
 		settings.setValue("Density", density);
 		settings.setValue("Minimum", minimum);
 		settings.setValue("TimerMode", timer);
-		settings.setValue("Language", language.language());
+		settings.setValue("Locale", language.language());
 		settings.setValue("Dice", language.dice());
 		settings.setValue("Words", language.words());
 		settings.setValue("Dictionary", language.dictionary());

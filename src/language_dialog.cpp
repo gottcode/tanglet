@@ -33,15 +33,14 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 
 	m_language = new QComboBox(this);
 	const QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
-	for (const QString& iso_code : languages) {
-		QLocale::Language language = QLocale(iso_code).language();
-		QSettings settings(QString("tanglet:%1/language.ini").arg(iso_code), QSettings::IniFormat);
+	for (const QString& language : languages) {
+		QSettings settings(QString("tanglet:%1/language.ini").arg(language), QSettings::IniFormat);
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 		settings.setIniCodec("UTF-8");
 #endif
 		QString name = settings.value("Language/Name").toString();
 		if (name.isEmpty()) {
-			name = QLocale::languageToString(language);
+			name = QLocale(language).nativeLanguageName();
 		}
 		int i;
 		for (i = 0; i < m_language->count(); ++i) {
@@ -120,9 +119,12 @@ void LanguageDialog::restoreDefaults()
 	const LanguageSettings language;
 
 	if (settings.contains("Language")) {
-		const int lang = settings.value("Language", language.language()).toInt();
-		if (lang && (lang != language.language())) {
-			settings.setValue("Board/Language", lang);
+		const int lang = settings.value("Language").toInt();
+		if (lang) {
+			const QString name = QLocale(QLocale::Language(lang)).name().section('_', 0, 0);
+			if (name != language.language()) {
+				settings.setValue("Board/Locale", name);
+			}
 		}
 		settings.remove("Language");
 	}
@@ -173,13 +175,13 @@ void LanguageDialog::accept()
 	QSettings settings;
 	settings.beginGroup("Board");
 
-	const int language = m_language->itemData(m_language->currentIndex()).toInt();
-	const int default_language = LanguageSettings().language();
-	if (settings.value("Language", default_language) != language) {
+	const QString language = m_language->itemData(m_language->currentIndex()).toString();
+	const QString default_language = LanguageSettings().language();
+	if (settings.value("Locale", default_language).toString() != language) {
 		if (language != default_language) {
-			settings.setValue("Language", language);
+			settings.setValue("Locale", language);
 		} else {
-			settings.remove("Language");
+			settings.remove("Locale");
 		}
 		changed = true;
 	}
@@ -227,7 +229,7 @@ void LanguageDialog::clicked(QAbstractButton* button)
 		m_dice->clear();
 		m_words->clear();
 		m_dictionary->clear();
-		setLanguage(QLocale::system().language());
+		setLanguage(QLocale::system().name());
 	}
 }
 
@@ -235,7 +237,7 @@ void LanguageDialog::clicked(QAbstractButton* button)
 
 void LanguageDialog::chooseLanguage(int index)
 {
-	LanguageSettings settings(m_language->itemData(index).toInt());
+	LanguageSettings settings(m_language->itemData(index).toString());
 	m_dice->setPlaceholderText(QDir::toNativeSeparators(QFileInfo(settings.dice()).canonicalFilePath()));
 	m_words->setPlaceholderText(QDir::toNativeSeparators(QFileInfo(settings.words()).canonicalFilePath()));
 	m_dictionary->setPlaceholderText(settings.dictionary());
@@ -291,11 +293,11 @@ void LanguageDialog::chooseWords(const QString& path)
 
 //-----------------------------------------------------------------------------
 
-void LanguageDialog::setLanguage(int language)
+void LanguageDialog::setLanguage(const QString& language)
 {
 	int index = m_language->findData(language);
 	if (index == -1) {
-		index = m_language->findData(QLocale::English);
+		index = m_language->findData("en");
 	}
 	m_language->setCurrentIndex(index);
 }

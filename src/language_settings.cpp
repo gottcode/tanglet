@@ -13,14 +13,14 @@
 //-----------------------------------------------------------------------------
 
 LanguageSettings::LanguageSettings()
-	: m_language(QLocale::system().language())
+	: m_language(QLocale::system().name())
 {
 	loadDefaults();
 }
 
 //-----------------------------------------------------------------------------
 
-LanguageSettings::LanguageSettings(int language)
+LanguageSettings::LanguageSettings(const QString& language)
 	: m_language(language)
 {
 	loadDefaults();
@@ -29,11 +29,16 @@ LanguageSettings::LanguageSettings(int language)
 //-----------------------------------------------------------------------------
 
 LanguageSettings::LanguageSettings(const QSettings& group)
-	: m_language(group.value("Language").toInt())
+	: m_language(group.value("Locale").toString())
 	, m_dice(group.value("Dice").toString())
 	, m_words(group.value("Words").toString())
 	, m_dictionary(group.value("Dictionary").toString())
 {
+	if (m_language.isEmpty()) {
+		const int language = group.value("Language").toInt();
+		m_language = QLocale(QLocale::Language(language)).name().section('_', 0, 0);
+	}
+
 	loadValues();
 	loadDefaults();
 }
@@ -42,29 +47,30 @@ LanguageSettings::LanguageSettings(const QSettings& group)
 
 void LanguageSettings::loadDefaults()
 {
-	QString iso_code = QLocale(QLocale::Language(m_language)).name().section(QLatin1Char('_'), 0, 0);
-	if (!QFile::exists(QString("tanglet:%1/words").arg(iso_code))) {
-		m_language = QLocale::English;
-		iso_code = "en";
+	if (!QFile::exists(QString("tanglet:%1/words").arg(m_language))) {
+		m_language = m_language.section('_', 0, 0);
+		if (!QFile::exists(QString("tanglet:%1/words").arg(m_language))) {
+			m_language = "en";
+		}
 	}
 
 	if (m_dice.isEmpty()) {
-		m_dice = QString("tanglet:%1/dice").arg(iso_code);
+		m_dice = QString("tanglet:%1/dice").arg(m_language);
 	}
 
 	if (m_words.isEmpty()) {
-		m_words = QString("tanglet:%1/words").arg(iso_code);
+		m_words = QString("tanglet:%1/words").arg(m_language);
 	}
 
 	if (m_dictionary.isEmpty()) {
-		QSettings settings(QString("tanglet:%1/language.ini").arg(iso_code), QSettings::IniFormat);
+		QSettings settings(QString("tanglet:%1/language.ini").arg(m_language), QSettings::IniFormat);
 #if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
 		settings.setIniCodec("UTF-8");
 #endif
 		m_dictionary = settings.value("Language/Dictionary").toString();
 	}
 	if (m_dictionary.isEmpty()) {
-		m_dictionary = QString("https://%1.wiktionary.org/wiki/%s").arg(iso_code);
+		m_dictionary = QString("https://%1.wiktionary.org/wiki/%s").arg(m_language);
 	}
 }
 
@@ -75,11 +81,11 @@ void LanguageSettings::loadValues()
 	QSettings settings;
 	settings.beginGroup("Board");
 
-	if (!m_language) {
-		m_language = settings.value("Language").toInt();
+	if (m_language.isEmpty()) {
+		m_language = settings.value("Locale").toString();
 	}
-	if (!m_language) {
-		m_language = QLocale::system().language();
+	if (m_language.isEmpty()) {
+		m_language = QLocale::system().name();
 	}
 
 	if (m_dice.isEmpty()) {
