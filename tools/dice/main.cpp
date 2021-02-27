@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <random>
 #include <stdexcept>
 #include <unordered_map>
@@ -261,11 +262,15 @@ std::unordered_map<QString, int> roundLetters(const std::unordered_map<QString, 
 		frequent.insert(f, letter);
 	}
 
-	// Round letters
+	// Round letters by 2 digits after decimal
+	std::map<qreal, QString> deltas;
 	std::unordered_map<QString, int> result;
 	int rounded = 0;
 	for (const auto& letter : frequent) {
-		const int value = std::round(scaled[letter]);
+		const int value = std::lround(std::round(scaled[letter] * 10.0) / 10.0);
+		if (value > 1) {
+			deltas[std::abs(value + 0.5 - scaled[letter])] = letter;
+		}
 		result[letter] = value;
 		rounded += value;
 	}
@@ -273,11 +278,16 @@ std::unordered_map<QString, int> roundLetters(const std::unordered_map<QString, 
 		throw Exception("Rounded frequencies are less than dice sides.");
 	}
 
-	// Reduce most frequent letters so that the letter count matches sides
+	// Reduce closest rounded letters so that letter count matches sides
 	rounded -= sides;
+	auto letter = deltas.rbegin();
 	for (int i = 0; i < rounded; ++i) {
-		if (--result[frequent[i]] == 0) {
-			throw Exception("'" + frequent[i] + "' has frequency of 0.");
+		if (--result[letter->second] == 0) {
+			throw Exception("'" + letter->second + "' has frequency of 0.");
+		}
+		++letter;
+		if (letter == deltas.rend()) {
+			throw Exception("Not enough closely rounded frequencies to match sides.");
 		}
 	}
 
