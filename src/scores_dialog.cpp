@@ -47,7 +47,7 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 #if defined(Q_OS_UNIX)
 		passwd* pws = getpwuid(geteuid());
 		if (pws) {
-			m_default_name = QString::fromLocal8Bit(pws->pw_gecos).section(QLatin1Char(','), 0, 0);
+			m_default_name = QString::fromLocal8Bit(pws->pw_gecos).section(',', 0, 0);
 			if (m_default_name.isEmpty()) {
 				m_default_name = QString::fromLocal8Bit(pws->pw_name);
 			}

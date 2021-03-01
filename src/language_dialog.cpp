@@ -186,7 +186,7 @@ void LanguageDialog::accept()
 		changed = true;
 	}
 
-	if (settings.value("Dice") != m_dice_path) {
+	if (settings.value("Dice").toString() != m_dice_path) {
 		if (!m_dice_path.isEmpty()) {
 			settings.setValue("Dice", m_dice_path);
 		} else {
@@ -195,7 +195,7 @@ void LanguageDialog::accept()
 		changed = true;
 	}
 
-	if (settings.value("Words") != m_words_path) {
+	if (settings.value("Words").toString() != m_words_path) {
 		if (!m_words_path.isEmpty()) {
 			settings.setValue("Words", m_words_path);
 		} else {
@@ -205,7 +205,7 @@ void LanguageDialog::accept()
 	}
 
 	const QString dictionary = m_dictionary->text();
-	if (settings.value("Dictionary") != dictionary) {
+	if (settings.value("Dictionary").toString() != dictionary) {
 		if (!dictionary.isEmpty()) {
 			settings.setValue("Dictionary", dictionary);
 		} else {
