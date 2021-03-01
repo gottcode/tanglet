@@ -82,6 +82,7 @@ QString generateSolutionEn(QString string)
 	string.replace(u'Ñ', 'N');
 	string.replace(u'Ó', 'O');
 	string.replace(u'Ö', 'O');
+	string.replace(u'Ø', 'O');
 	string.replace(u'Û', 'U');
 	string.replace(u'Ü', 'U');
 	return string;
