@@ -85,13 +85,10 @@ QMAKE_EXTRA_COMPILERS += updateqm
 # Install program data
 RESOURCES = ../icons/icons.qrc
 
-gamedata = $$files(../data/*)
-gamedata -= ../data/data.pro
-
 macx {
 	ICON = ../icons/tanglet.icns
 
-	GAME_DATA.files = $$gamedata
+	GAME_DATA.files = ../data
 	GAME_DATA.path = Contents/Resources/data/
 
 	QMAKE_BUNDLE_DATA += GAME_DATA
@@ -111,7 +108,7 @@ macx {
 
 	target.path = $$PREFIX/$$BINDIR/
 
-	data.files = $$gamedata
+	data.files = $$files(../data/*)
 	data.path = $$PREFIX/share/tanglet/data/
 
 	icon.files = ../icons/hicolor/*
