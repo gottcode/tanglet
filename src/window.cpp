@@ -949,11 +949,11 @@ void Window::gameStarted()
 
 //-----------------------------------------------------------------------------
 
-void Window::gameFinished(int score)
+void Window::gameFinished(int score, int max_score)
 {
 	m_state->finish();
 	ScoresDialog scores(this);
-	if (scores.addScore(score)) {
+	if (scores.addScore(score, max_score)) {
 		scores.exec();
 	}
 

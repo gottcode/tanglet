@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2015 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -101,8 +101,9 @@ signals:
 	/**
 	 * Emitted when the game has finished.
 	 * @param score how many points the player earned
+	 * @param max_score the maximum score available on the played board
 	 */
-	void finished(int score);
+	void finished(int score, int max_score);
 
 	/**
 	 * Emitted when the word list is being optimized for fast access.

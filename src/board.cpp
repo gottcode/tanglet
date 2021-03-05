@@ -622,7 +622,7 @@ void Board::finish()
 	emit pauseAvailable(false);
 
 	int score = updateScore();
-	emit finished(score);
+	emit finished(score, m_max_score);
 }
 
 //-----------------------------------------------------------------------------

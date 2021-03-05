@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2014 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -41,8 +41,10 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 {
 	setWindowTitle(tr("High Scores"));
 
+	QSettings settings;
+
 	// Load default name
-	m_default_name = QSettings().value("Scores/DefaultName").toString();
+	m_default_name = settings.value("Scores/DefaultName").toString();
 	if (m_default_name.isEmpty()) {
 #if defined(Q_OS_UNIX)
 		passwd* pws = getpwuid(geteuid());
@@ -67,16 +69,24 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	m_scores_layout->setColumnStretch(1, 1);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Name</b>"), this), 0, 1, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Score</b>"), this), 0, 2, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Date</b>"), this), 0, 3, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Timer</b>"), this), 0, 4, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Maximum</b>"), this), 0, 3, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Date</b>"), this), 0, 4, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Timer</b>"), this), 0, 5, Qt::AlignCenter);
 
-	Qt::Alignment alignments[4] = { Qt::AlignLeft, Qt::AlignRight, Qt::AlignRight, Qt::AlignHCenter };
+	Qt::Alignment alignments[6] = {
+		Qt::AlignRight,
+		Qt::AlignLeft,
+		Qt::AlignRight,
+		Qt::AlignRight,
+		Qt::AlignRight,
+		Qt::AlignHCenter
+	};
 	for (int r = 0; r < 10; ++r) {
 		m_score_labels[r][0] = new QLabel(tr("#%1").arg(r + 1), this);
-		m_scores_layout->addWidget(m_score_labels[r][0], r + 1, 0, Qt::AlignRight | Qt::AlignVCenter);
-		for (int c = 1; c < 5; ++c) {
+		m_scores_layout->addWidget(m_score_labels[r][0], r + 1, 0, alignments[0] | Qt::AlignVCenter);
+		for (int c = 1; c < 6; ++c) {
 			m_score_labels[r][c] = new QLabel("-", this);
-			m_scores_layout->addWidget(m_score_labels[r][c], r + 1, c, alignments[c - 1] | Qt::AlignVCenter);
+			m_scores_layout->addWidget(m_score_labels[r][c], r + 1, c, alignments[c] | Qt::AlignVCenter);
 		}
 	}
 
@@ -85,6 +95,14 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	m_username = new QLineEdit(this);
 	m_username->hide();
 	connect(m_username, &QLineEdit::editingFinished, this, &ScoresDialog::editingFinished);
+
+	// Hide maximum scores column if showing maximum scores is set to "Never"
+	if (settings.value("ShowMaximumScore").toInt() == 0) {
+		m_scores_layout->itemAtPosition(0, 3)->widget()->hide();
+		for (int r = 0; r < 10; ++r) {
+			m_score_labels[r][3]->hide();
+		}
+	}
 
 	// Lay out dialog
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::Reset | QDialogButtonBox::Close, Qt::Horizontal, this);
@@ -102,14 +120,14 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 
 //-----------------------------------------------------------------------------
 
-bool ScoresDialog::addScore(int score)
+bool ScoresDialog::addScore(int score, int max_score)
 {
 	// Add score
-	m_row = addScore(m_default_name, score, QDateTime::currentDateTime(), QSettings().value("Current/TimerMode", Clock::Tanglet).toInt());
+	m_row = addScore(m_default_name, score, max_score, QDateTime::currentDateTime(), QSettings().value("Current/TimerMode", Clock::Tanglet).toInt());
 	if (m_row == -1) {
 		return false;
 	}
-	for (int c = 0; c < 5; ++c) {
+	for (int c = 0; c < 6; ++c) {
 		QFont f = m_score_labels[m_row][c]->font();
 		f.setWeight(QFont::Bold);
 		m_score_labels[m_row][c]->setFont(f);
@@ -183,11 +201,12 @@ void ScoresDialog::editingFinished()
 	// Save scores
 	QStringList values;
 	for (const Score& s : qAsConst(m_scores)) {
-		values += QString("%1:%2:%3:%4")
+		values += QString("%1:%2:%3:%4:%5")
 				.arg(s.name)
 				.arg(s.score)
 				.arg(s.date.toString("yyyy.MM.dd-hh.mm.ss"))
-				.arg(s.timer);
+				.arg(s.timer)
+				.arg(s.max_score);
 	}
 	QSettings settings;
 	settings.setValue("Scores/DefaultName", m_username->text());
@@ -206,7 +225,7 @@ void ScoresDialog::resetClicked(QAbstractButton* button)
 			m_scores.clear();
 			m_max = m_min = 1;
 			if (m_row > -1) {
-				for (int c = 0; c < 5; ++c) {
+				for (int c = 0; c < 6; ++c) {
 					QFont f = m_score_labels[m_row][c]->font();
 					f.setWeight(QFont::Normal);
 					m_score_labels[m_row][c]->setFont(f);
@@ -221,7 +240,7 @@ void ScoresDialog::resetClicked(QAbstractButton* button)
 
 //-----------------------------------------------------------------------------
 
-int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date, int timer)
+int ScoresDialog::addScore(const QString& name, int score, int max_score, const QDateTime& date, int timer)
 {
 	if (score == 0) {
 		return -1;
@@ -238,7 +257,7 @@ int ScoresDialog::addScore(const QString& name, int score, const QDateTime& date
 		return -1;
 	}
 
-	Score s = { name, score, date, timer };
+	Score s = { name, score, max_score, date, timer };
 	m_scores.insert(row, s);
 	if (m_scores.count() == 11) {
 		m_scores.removeLast();
@@ -257,12 +276,13 @@ void ScoresDialog::load()
 	const QStringList data = QSettings().value("Scores/Values").toStringList();
 	for (const QString& s : data) {
 		QStringList values = s.split(':');
-		if (values.size() == 3 || values.size() == 4) {
+		if (values.size() >= 3 && values.size() <= 5) {
 			QString name = values[0];
 			int score = values[1].toInt();
+			int max_score = values.value(4, "-1").toInt();
 			QDateTime date = QDateTime::fromString(values[2], "yyyy.MM.dd-hh.mm.ss");
 			int timer = values.value(3, QString::number(Clock::Tanglet)).toInt();
-			addScore(name, score, date, timer);
+			addScore(name, score, max_score, date, timer);
 		}
 	}
 	updateItems();
@@ -277,11 +297,16 @@ void ScoresDialog::updateItems()
 		const Score& score = m_scores.at(r);
 		m_score_labels[r][1]->setText(score.name);
 		m_score_labels[r][2]->setNum(score.score);
-		m_score_labels[r][3]->setText(QLocale().toString(score.date, QLocale::ShortFormat));
-		m_score_labels[r][4]->setText(Clock::timerToString(score.timer));
+		if (score.max_score > -1) {
+			m_score_labels[r][3]->setNum(score.max_score);
+		} else {
+			m_score_labels[r][3]->setText(tr("N/A"));
+		}
+		m_score_labels[r][4]->setText(QLocale().toString(score.date, QLocale::ShortFormat));
+		m_score_labels[r][5]->setText(Clock::timerToString(score.timer));
 	}
 	for (int r = count; r < 10; ++r) {
-		for (int c = 1; c < 5; ++c) {
+		for (int c = 1; c < 6; ++c) {
 			m_score_labels[r][c]->setText("-");
 		}
 	}

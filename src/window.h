@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2015 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -164,8 +164,9 @@ private slots:
 	/**
 	 * Handles game ending and adds to high score board.
 	 * @param score how many points the player earned
+	 * @param max_score the maximum score available on the played board
 	 */
-	void gameFinished(int score);
+	void gameFinished(int score, int max_score);
 
 private:
 	/**
