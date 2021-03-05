@@ -813,7 +813,7 @@ int Board::updateScore()
 
 	QFont f = font();
 	QPalette p = palette();
-	switch (ScoresDialog::isHighScore(score)) {
+	switch (ScoresDialog::isHighScore(score, m_clock->timer())) {
 	case 2:
 		f.setBold(true);
 		p.setColor(m_score->foregroundRole(), Qt::blue);

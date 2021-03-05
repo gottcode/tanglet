@@ -31,8 +31,8 @@
 
 //-----------------------------------------------------------------------------
 
-int ScoresDialog::m_max = -1;
-int ScoresDialog::m_min = 1;
+QVector<int> ScoresDialog::m_max(Clock::TotalTimers, -1);
+QVector<int> ScoresDialog::m_min(Clock::TotalTimers, -1);
 
 //-----------------------------------------------------------------------------
 
@@ -155,16 +155,16 @@ bool ScoresDialog::addScore(int score, int max_score)
 
 //-----------------------------------------------------------------------------
 
-int ScoresDialog::isHighScore(int score)
+int ScoresDialog::isHighScore(int score, int timer)
 {
-	if (m_max == -1) {
-		m_max = 1;
+	if (m_max[timer] == -1) {
+		m_max[timer] = 1;
 		ScoresDialog();
 	}
 
-	if (score >= m_max) {
+	if (score >= m_max[timer]) {
 		return 2;
-	} else if (score >= m_min) {
+	} else if (score >= m_min[timer]) {
 		return 1;
 	} else {
 		return 0;
@@ -272,7 +272,9 @@ void ScoresDialog::resetClicked(QAbstractButton* button)
 				editingFinished();
 			}
 			m_scores.clear();
-			m_max = m_min = 1;
+			for (int timer = 0; timer < Clock::TotalTimers; ++timer) {
+				m_max[timer] = m_min[timer] = 1;
+			}
 			if (m_row > -1) {
 				for (int c = 0; c < 6; ++c) {
 					QFont f = m_score_labels[m_row][c]->font();
@@ -315,8 +317,8 @@ int ScoresDialog::addScore(const QString& name, int score, int max_score, const 
 		m_scores.removeLast();
 	}
 
-	m_max = m_scores.first().score;
-	m_min = (m_scores.count() == 10) ? m_scores.last().score : 1;
+	m_max[timer] = m_scores.first().score;
+	m_min[timer] = (m_scores.count() == 10) ? m_scores.last().score : 1;
 
 	return row;
 }

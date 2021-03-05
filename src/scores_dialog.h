@@ -62,9 +62,10 @@ public:
 	/**
 	 * Checks if a score is a high score.
 	 * @param score the value of the score
+	 * @param timer the timer mode to check for scores
 	 * @return whether the score is a high score, and if it is the highest
 	 */
-	static int isHighScore(int score);
+	static int isHighScore(int score, int timer);
 
 	/**
 	 * Converts the stored scores to the new format.
@@ -137,8 +138,8 @@ private:
 	QLineEdit* m_username; /**< widget for the player to enter their name */
 	int m_row; /**< location of most recently added score */
 
-	static int m_max; /**< the largest high score */
-	static int m_min; /**< the smallest high score */
+	static QVector<int> m_max; /**< the largest high score */
+	static QVector<int> m_min; /**< the smallest high score */
 };
 
 #endif // TANGLET_SCORES_DIALOG_H
