@@ -31,7 +31,6 @@ class ScoresDialog : public QDialog
 		int score; /**< the value of the score */
 		int max_score; /**< the maximum score available on the played board */
 		QDateTime date; /**< when the score was made */
-		int timer; /**< the active timer mode */
 		int size; /**< the size of the board */
 
 		/**
@@ -133,7 +132,7 @@ private:
 	QList<Score> m_scores; /**< the high score data */
 	QString m_default_name; /**< the default name */
 
-	QLabel* m_score_labels[10][7]; /**< the grid[row][column] of labels to display the scores */
+	QLabel* m_score_labels[10][6]; /**< the grid[row][column] of labels to display the scores */
 	QGridLayout* m_scores_layout; /**< the layout for the dialog */
 	QLineEdit* m_username; /**< widget for the player to enter their name */
 	int m_row; /**< location of most recently added score */

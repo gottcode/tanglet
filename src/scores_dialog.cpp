@@ -72,22 +72,20 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	m_scores_layout->addWidget(new QLabel(tr("<b>Score</b>"), this), 0, 2, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Maximum</b>"), this), 0, 3, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Date</b>"), this), 0, 4, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Timer</b>"), this), 0, 5, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Size</b>"), this), 0, 6, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Size</b>"), this), 0, 5, Qt::AlignCenter);
 
-	Qt::Alignment alignments[7] = {
+	Qt::Alignment alignments[6] = {
 		Qt::AlignRight,
 		Qt::AlignLeft,
 		Qt::AlignRight,
 		Qt::AlignRight,
 		Qt::AlignRight,
-		Qt::AlignHCenter,
 		Qt::AlignHCenter
 	};
 	for (int r = 0; r < 10; ++r) {
 		m_score_labels[r][0] = new QLabel(tr("#%1").arg(r + 1), this);
 		m_scores_layout->addWidget(m_score_labels[r][0], r + 1, 0, alignments[0] | Qt::AlignVCenter);
-		for (int c = 1; c < 7; ++c) {
+		for (int c = 1; c < 6; ++c) {
 			m_score_labels[r][c] = new QLabel("-", this);
 			m_scores_layout->addWidget(m_score_labels[r][c], r + 1, c, alignments[c] | Qt::AlignVCenter);
 		}
@@ -136,7 +134,7 @@ bool ScoresDialog::addScore(int score, int max_score)
 	if (m_row == -1) {
 		return false;
 	}
-	for (int c = 0; c < 7; ++c) {
+	for (int c = 0; c < 6; ++c) {
 		QFont f = m_score_labels[m_row][c]->font();
 		f.setWeight(QFont::Bold);
 		m_score_labels[m_row][c]->setFont(f);
@@ -311,7 +309,7 @@ int ScoresDialog::addScore(const QString& name, int score, int max_score, const 
 		return -1;
 	}
 
-	Score s = { name, score, max_score, date, timer, size };
+	Score s = { name, score, max_score, date, size };
 	m_scores.insert(row, s);
 	if (m_scores.count() == 11) {
 		m_scores.removeLast();
@@ -358,15 +356,14 @@ void ScoresDialog::updateItems()
 			m_score_labels[r][3]->setText(tr("N/A"));
 		}
 		m_score_labels[r][4]->setText(QLocale().toString(score.date, QLocale::ShortFormat));
-		m_score_labels[r][5]->setText(Clock::timerToString(score.timer));
 		if (score.size > -1) {
-			m_score_labels[r][6]->setText(Board::sizeToString(score.size));
+			m_score_labels[r][5]->setText(Board::sizeToString(score.size));
 		} else {
-			m_score_labels[r][6]->setText(tr("N/A"));
+			m_score_labels[r][5]->setText(tr("N/A"));
 		}
 	}
 	for (int r = count; r < 10; ++r) {
-		for (int c = 1; c < 7; ++c) {
+		for (int c = 1; c < 6; ++c) {
 			m_score_labels[r][c]->setText("-");
 		}
 	}
