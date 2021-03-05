@@ -61,6 +61,14 @@ class ScoresDialog : public QDialog
 		Page(int timer, QSettings& settings, QWidget* parent);
 
 		/**
+		 * @return whether this score page has any scores
+		 */
+		bool isEmpty() const
+		{
+			return m_scores.isEmpty();
+		}
+
+		/**
 		 * @return the name of the page, used for the tab titles
 		 */
 		QString name() const;

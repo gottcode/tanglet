@@ -270,11 +270,19 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	for (int timer = 0; timer < Clock::TotalTimers; ++timer) {
 		Page* page = new Page(timer, settings, this);
 		m_pages.append(page);
-		addTab(page);
+		if (!page->isEmpty()) {
+			addTab(page);
+		}
+	}
+	if (m_tabs->count() == 0) {
+		addTab(m_pages[Clock::Tanglet]);
 	}
 
 	// Show scores for current timer mode
-	m_tabs->setCurrentWidget(m_pages[settings.value("Board/TimerMode").toInt()]);
+	const int index = m_tabs->indexOf(m_pages[settings.value("Board/TimerMode").toInt()]);
+	if (index != -1) {
+		m_tabs->setCurrentIndex(index);
+	}
 
 	// Lay out dialog
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::Close, Qt::Horizontal, this);
@@ -308,7 +316,16 @@ bool ScoresDialog::addScore(int score, int max_score)
 	}
 
 	// Show tab
+	if (m_tabs->indexOf(m_active_page) == -1) {
+		addTab(m_active_page);
+	}
 	m_tabs->setCurrentWidget(m_active_page);
+
+	Page* tanglet_page = m_pages[Clock::Tanglet];
+	const int index = m_tabs->indexOf(tanglet_page);
+	if ((index != -1) && (m_active_page != tanglet_page) && (tanglet_page->isEmpty())) {
+		m_tabs->removeTab(index);
+	}
 
 	// Show lineedit
 	m_active_page->editStart(m_username);
