@@ -14,6 +14,8 @@ class QDialogButtonBox;
 class QGridLayout;
 class QLabel;
 class QLineEdit;
+class QSettings;
+class QTabWidget;
 
 /**
  * @brief The ScoresDialog class displays the list of high scores.
@@ -42,6 +44,67 @@ class ScoresDialog : public QDialog
 		{
 			return score < s.score;
 		}
+	};
+
+	/**
+	 * @brief The ScoresDialog::Page struct contains a page of high scores.
+	 */
+	class Page : public QWidget
+	{
+	public:
+		/**
+		 * Constructs a page of scores.
+		 * @param timer the time the page represents
+		 * @param settings where to load the scores from
+		 * @param parent the QWidget that manages the page
+		 */
+		Page(int timer, QSettings& settings, QWidget* parent);
+
+		/**
+		 * @return the name of the page, used for the tab titles
+		 */
+		QString name() const;
+
+		/**
+		 * Adds a score to the high score board.
+		 * @param name the player's name
+		 * @param score the value of the score
+		 * @param max_score the maximum score available on the played board
+		 * @param date when the score was made
+		 * @param size the size of the board
+		 * @return the location in the list of scores or -1 if not a high score
+		 */
+		bool addScore(const QString& name, int score, int max_score, const QDateTime& date, int size);
+
+		/**
+		 * Start editing the player name of the most recent score.
+		 * @param playername the widget used to edit the player name
+		 */
+		void editStart(QLineEdit* playername);
+
+		/**
+		 * The player has finished entering their name and the scores are saved.
+		 */
+		void editFinish(QLineEdit* playername);
+
+	private:
+		/**
+		 * Loads the scores from the settings.
+		 * @param settings where to load the scores from
+		 */
+		void load(QSettings& settings);
+
+		/**
+		 * Sets the text of the high scores. Adds the dashed lines for empty scores.
+		 */
+		void updateItems();
+
+	private:
+		const int m_timer; /**< which timer mode this scores page represents */
+		QList<Score> m_scores; /**< the high score data */
+		QLabel* m_score_labels[10][6]; /**< the grid[row][column] of labels to display the scores */
+		QGridLayout* m_scores_layout; /**< the layout for the dialog */
+		int m_row; /**< location of most recently added score */
 	};
 
 public:
@@ -98,45 +161,22 @@ private slots:
 	 */
 	void editingFinished();
 
-	/**
-	 * Resets the board if the player has activated the reset button.
-	 * @param button which button the player activated
-	 */
-	void resetClicked(QAbstractButton* button);
-
 private:
 	/**
-	 * Adds a score to the high score board.
-	 * @param name the player's name
-	 * @param score the value of the score
-	 * @param max_score the maximum score available on the played board
-	 * @param date when the score was made
-	 * @param timer the active timer mode
-	 * @param size the size of the board
-	 * @return the location in the list of scores or -1 if not a high score
+	 * Adds a tab of high scores.
+	 * @param page the widget containing the scores
 	 */
-	int addScore(const QString& name, int score, int max_score, const QDateTime& date, int timer, int size);
-
-	/**
-	 * Loads the scores from the settings.
-	 */
-	void load();
-
-	/**
-	 * Sets the text of the high scores. Adds the dashed lines for empty scores.
-	 */
-	void updateItems();
+	void addTab(Page* page);
 
 private:
 	QDialogButtonBox* m_buttons; /**< buttons to control dialog */
+	QTabWidget* m_tabs; /**< contains the tabs of the pages */
+	QList<Page*> m_pages; /**< the list of pages of scores */
 
-	QList<Score> m_scores; /**< the high score data */
-	QString m_default_name; /**< the default name */
-
-	QLabel* m_score_labels[10][6]; /**< the grid[row][column] of labels to display the scores */
-	QGridLayout* m_scores_layout; /**< the layout for the dialog */
+	Page* m_active_page; /**< the page where a new score is being added */
 	QLineEdit* m_username; /**< widget for the player to enter their name */
-	int m_row; /**< location of most recently added score */
+
+	QString m_default_name; /**< the default name */
 
 	static QVector<int> m_max; /**< the largest high score */
 	static QVector<int> m_min; /**< the smallest high score */
