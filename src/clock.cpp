@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2018 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -821,6 +821,21 @@ QString Clock::timerDescription(int timer)
 			<< tr("Game ends after 3 incorrect guesses.")
 			<< tr("Game ends after 30 guesses.")
 			<< tr("Counts down from 30 seconds and increases or decreases on guesses.");
+	return timers.at(qBound(0, timer, TotalTimers - 1));
+}
+
+//-----------------------------------------------------------------------------
+
+QString Clock::timerScoresGroup(int timer)
+{
+	static QStringList timers = QStringList()
+			<< QStringLiteral("Scores_Tanglet")
+			<< QStringLiteral("Scores_Classic")
+			<< QStringLiteral("Scores_Refill")
+			<< QStringLiteral("Scores_Stamina")
+			<< QStringLiteral("Scores_Strikeout")
+			<< QStringLiteral("Scores_Allotment")
+			<< QStringLiteral("Scores_Discipline");
 	return timers.at(qBound(0, timer, TotalTimers - 1));
 }
 

@@ -6,6 +6,7 @@
 
 #include "language_dialog.h"
 #include "locale_dialog.h"
+#include "scores_dialog.h"
 #include "window.h"
 
 #include <QApplication>
@@ -47,6 +48,8 @@ int main(int argc, char** argv)
 	LocaleDialog::loadTranslator("tanglet_");
 
 	LanguageDialog::restoreDefaults();
+
+	ScoresDialog::migrate();
 
 	QCommandLineParser parser;
 	parser.setApplicationDescription(QCoreApplication::translate("main", "Word finding game"));

@@ -175,6 +175,46 @@ int ScoresDialog::isHighScore(int score)
 
 //-----------------------------------------------------------------------------
 
+void ScoresDialog::migrate()
+{
+	QSettings settings;
+	if (!settings.contains("Scores/Values")) {
+		return;
+	}
+
+	const QStringList data = settings.value("Scores/Values").toStringList();
+	settings.remove("Scores/Values");
+
+	QVector<int> indexes(Clock::TotalTimers, 0);
+
+	for (const QString& s : data) {
+		const QStringList values = s.split(':');
+		if (values.size() < 3 || values.size() > 6) {
+			continue;
+		}
+
+		const QString name = values[0];
+		const int score = values[1].toInt();
+		const int max_score = values.value(4, "-1").toInt();
+		const QDateTime date = QDateTime::fromString(values[2], "yyyy.MM.dd-hh.mm.ss");
+		const int timer = values.value(3, QString::number(Clock::Tanglet)).toInt();
+		const int size = values.value(5, "-1").toInt();
+
+		int& index = indexes[timer];
+		settings.beginWriteArray(Clock::timerScoresGroup(timer));
+		settings.setArrayIndex(index);
+		settings.setValue("Name", name);
+		settings.setValue("Score", score);
+		settings.setValue("Maximum", max_score);
+		settings.setValue("Size", size);
+		settings.setValue("Date", date.toString(Qt::ISODate));
+		settings.endArray();
+		++index;
+	}
+}
+
+//-----------------------------------------------------------------------------
+
 void ScoresDialog::hideEvent(QHideEvent* event)
 {
 	if (m_username->isVisible()) {
@@ -208,19 +248,20 @@ void ScoresDialog::editingFinished()
 	updateItems();
 
 	// Save scores
-	QStringList values;
-	for (const Score& s : qAsConst(m_scores)) {
-		values += QString("%1:%2:%3:%4:%5:%6")
-				.arg(s.name)
-				.arg(s.score)
-				.arg(s.date.toString("yyyy.MM.dd-hh.mm.ss"))
-				.arg(s.timer)
-				.arg(s.max_score)
-				.arg(s.size);
-	}
 	QSettings settings;
 	settings.setValue("Scores/DefaultName", m_username->text());
-	settings.setValue("Scores/Values", values);
+	const int timer = settings.value("Current/TimerMode", Clock::Tanglet).toInt();
+	settings.beginWriteArray(Clock::timerScoresGroup(timer));
+	for (int r = 0, size = m_scores.size(); r < size; ++r) {
+		const Score& score = m_scores[r];
+		settings.setArrayIndex(r);
+		settings.setValue("Name", score.name);
+		settings.setValue("Score", score.score);
+		settings.setValue("Maximum", score.max_score);
+		settings.setValue("Size", score.size);
+		settings.setValue("Date", score.date.toString(Qt::ISODate));
+	}
+	settings.endArray();
 }
 
 //-----------------------------------------------------------------------------
@@ -235,14 +276,17 @@ void ScoresDialog::resetClicked(QAbstractButton* button)
 			m_scores.clear();
 			m_max = m_min = 1;
 			if (m_row > -1) {
-				for (int c = 0; c < 7; ++c) {
+				for (int c = 0; c < 6; ++c) {
 					QFont f = m_score_labels[m_row][c]->font();
 					f.setWeight(QFont::Normal);
 					m_score_labels[m_row][c]->setFont(f);
 				}
 			}
 			updateItems();
-			QSettings().setValue("Scores/Values", QStringList());
+			QSettings settings;
+			for (int timer = 0; timer < Clock::TotalTimers; ++timer) {
+				settings.remove(Clock::timerScoresGroup(timer));
+			}
 			emit scoresReset();
 		}
 	}
@@ -283,19 +327,19 @@ int ScoresDialog::addScore(const QString& name, int score, int max_score, const 
 
 void ScoresDialog::load()
 {
-	const QStringList data = QSettings().value("Scores/Values").toStringList();
-	for (const QString& s : data) {
-		QStringList values = s.split(':');
-		if (values.size() >= 3 && values.size() <= 6) {
-			QString name = values[0];
-			int score = values[1].toInt();
-			int max_score = values.value(4, "-1").toInt();
-			QDateTime date = QDateTime::fromString(values[2], "yyyy.MM.dd-hh.mm.ss");
-			int timer = values.value(3, QString::number(Clock::Tanglet)).toInt();
-			int size = values.value(5, "-1").toInt();
-			addScore(name, score, max_score, date, timer, size);
-		}
+	const int timer = Clock::Tanglet;
+	QSettings settings;
+	const int size = std::min(settings.beginReadArray(Clock::timerScoresGroup(timer)), 10);
+	for (int r = 0; r < size; ++r) {
+		settings.setArrayIndex(r);
+		const QString name = settings.value("Name").toString();
+		const int score = settings.value("Score").toInt();
+		const int max_score = settings.value("Maximum", -1).toInt();
+		const int size = settings.value("Size", -1).toInt();
+		const QDateTime date = settings.value("Date").toDateTime();
+		addScore(name, score, max_score, date, timer, size);
 	}
+	settings.endArray();
 	updateItems();
 }
 

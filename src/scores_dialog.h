@@ -67,6 +67,11 @@ public:
 	 */
 	static int isHighScore(int score);
 
+	/**
+	 * Converts the stored scores to the new format.
+	 */
+	static void migrate();
+
 signals:
 	/**
 	 * The high score list has been cleared.

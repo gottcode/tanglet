@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2011 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -132,6 +132,13 @@ public:
 	 * @return translated description of timer
 	 */
 	static QString timerDescription(int timer);
+
+	/**
+	 * Fetch the QSettings group name of a timer.
+	 * @param timer the timer mode
+	 * @return the QSettings group name of a timer
+	 */
+	static QString timerScoresGroup(int timer);
 
 signals:
 	/**
