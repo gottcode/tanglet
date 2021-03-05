@@ -24,6 +24,18 @@ class ScoresDialog : public QDialog
 {
 	Q_OBJECT
 
+	/** The columns of each scores page. */
+	enum Columns
+	{
+		RankColumn,
+		NameColumn,
+		ScoreColumn,
+		MaxScoreColumn,
+		DateColumn,
+		SizeColumn,
+		TotalColumns
+	};
+
 	/**
 	 * @brief The ScoresDialog::Score struct descibres a high score.
 	 */
@@ -110,7 +122,7 @@ class ScoresDialog : public QDialog
 	private:
 		const int m_timer; /**< which timer mode this scores page represents */
 		QList<Score> m_scores; /**< the high score data */
-		QLabel* m_score_labels[10][6]; /**< the grid[row][column] of labels to display the scores */
+		QLabel* m_score_labels[10][TotalColumns]; /**< the grid[row][column] of labels to display the scores */
 		QGridLayout* m_scores_layout; /**< the layout for the dialog */
 		int m_row; /**< location of most recently added score */
 	};

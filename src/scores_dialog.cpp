@@ -48,24 +48,19 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 	m_scores_layout = new QGridLayout(this);
 	m_scores_layout->setSpacing(12);
 	m_scores_layout->setColumnStretch(1, 1);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Name</b>"), this), 0, 1, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Score</b>"), this), 0, 2, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Maximum</b>"), this), 0, 3, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Date</b>"), this), 0, 4, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel(tr("<b>Size</b>"), this), 0, 5, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Name</b>"), this), 0, NameColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Score</b>"), this), 0, ScoreColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Maximum</b>"), this), 0, MaxScoreColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Date</b>"), this), 0, DateColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Size</b>"), this), 0, SizeColumn, Qt::AlignCenter);
 
-	Qt::Alignment alignments[6] = {
-		Qt::AlignRight,
-		Qt::AlignLeft,
-		Qt::AlignRight,
-		Qt::AlignRight,
-		Qt::AlignRight,
-		Qt::AlignHCenter
-	};
+	QVector<Qt::Alignment> alignments(TotalColumns, Qt::AlignTrailing);
+	alignments[NameColumn] = Qt::AlignLeading;
+	alignments[SizeColumn] = Qt::AlignHCenter;
 	for (int r = 0; r < 10; ++r) {
-		m_score_labels[r][0] = new QLabel(tr("#%1").arg(r + 1), this);
-		m_scores_layout->addWidget(m_score_labels[r][0], r + 1, 0, alignments[0] | Qt::AlignVCenter);
-		for (int c = 1; c < 6; ++c) {
+		m_score_labels[r][RankColumn] = new QLabel(tr("#%1").arg(r + 1), this);
+		m_scores_layout->addWidget(m_score_labels[r][RankColumn], r + 1, 0, alignments[RankColumn] | Qt::AlignVCenter);
+		for (int c = RankColumn + 1; c < TotalColumns; ++c) {
 			m_score_labels[r][c] = new QLabel("-", this);
 			m_scores_layout->addWidget(m_score_labels[r][c], r + 1, c, alignments[c] | Qt::AlignVCenter);
 		}
@@ -76,9 +71,9 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 
 	// Hide maximum scores column if showing maximum scores is set to "Never"
 	if (settings.value("ShowMaximumScore").toInt() == 0) {
-		m_scores_layout->itemAtPosition(0, 3)->widget()->hide();
+		m_scores_layout->itemAtPosition(0, MaxScoreColumn)->widget()->hide();
 		for (int r = 0; r < 10; ++r) {
-			m_score_labels[r][3]->hide();
+			m_score_labels[r][MaxScoreColumn]->hide();
 		}
 	}
 }
@@ -200,31 +195,31 @@ void ScoresDialog::Page::updateItems()
 	// Add scores
 	for (int r = 0; r < size; ++r) {
 		const Score& score = m_scores[r];
-		m_score_labels[r][1]->setText(score.name);
-		m_score_labels[r][2]->setNum(score.score);
+		m_score_labels[r][NameColumn]->setText(score.name);
+		m_score_labels[r][ScoreColumn]->setNum(score.score);
 		if (score.max_score > -1) {
-			m_score_labels[r][3]->setNum(score.max_score);
+			m_score_labels[r][MaxScoreColumn]->setNum(score.max_score);
 		} else {
-			m_score_labels[r][3]->setText(tr("N/A"));
+			m_score_labels[r][MaxScoreColumn]->setText(tr("N/A"));
 		}
-		m_score_labels[r][4]->setText(QLocale().toString(score.date, QLocale::ShortFormat));
+		m_score_labels[r][DateColumn]->setText(QLocale().toString(score.date, QLocale::ShortFormat));
 		if (score.size > -1) {
-			m_score_labels[r][5]->setText(Board::sizeToString(score.size));
+			m_score_labels[r][SizeColumn]->setText(Board::sizeToString(score.size));
 		} else {
-			m_score_labels[r][5]->setText(tr("N/A"));
+			m_score_labels[r][SizeColumn]->setText(tr("N/A"));
 		}
 	}
 
 	// Fill remainder of scores with dashes
 	for (int r = size; r < 10; ++r) {
-		for (int c = 1; c < 6; ++c) {
+		for (int c = RankColumn + 1; c < TotalColumns; ++c) {
 			m_score_labels[r][c]->setText("-");
 		}
 	}
 
 	// Use bold text for new score
 	if (m_row != -1) {
-		for (int c = 0; c < 6; ++c) {
+		for (int c = 0; c < TotalColumns; ++c) {
 			m_score_labels[m_row][c]->setText("<b>" + m_score_labels[m_row][c]->text() + "</b>");
 		}
 	}
