@@ -648,6 +648,53 @@ int Clock::TangletTimer::type() const
 
 //-----------------------------------------------------------------------------
 
+/**
+ * @brief The Clock::UnlimitedTimer class is a timer that does nothing.
+ */
+class Clock::UnlimitedTimer : public Clock::Timer
+{
+public:
+	int type() const override;
+
+	/**
+	 * Ignore adding a correct word as guesses do not impact anything.
+	 * @return always returns @c false
+	 */
+	bool addWord(int) override;
+
+	/**
+	 * Start with 180 seconds to fill display.
+	 */
+	void start() override;
+
+	/**
+	 * @return infinity symbol
+	 */
+	QString update() override;
+};
+
+bool Clock::UnlimitedTimer::addWord(int)
+{
+	return false;
+}
+
+void Clock::UnlimitedTimer::start()
+{
+	m_time = 180;
+}
+
+int Clock::UnlimitedTimer::type() const
+{
+	return Clock::Unlimited;
+}
+
+QString Clock::UnlimitedTimer::update()
+{
+	return "∞";
+}
+
+//-----------------------------------------------------------------------------
+
 Clock::Clock(QWidget* parent)
 	: QWidget(parent)
 	, m_timer(nullptr)
@@ -761,9 +808,6 @@ void Clock::setTimer(int timer)
 		delete m_timer;
 
 		switch (timer) {
-		case Tanglet:
-			m_timer = new TangletTimer;
-			break;
 		case Classic:
 			m_timer = new ClassicTimer;
 			break;
@@ -780,8 +824,14 @@ void Clock::setTimer(int timer)
 			m_timer = new AllotmentTimer;
 			break;
 		case Discipline:
-		default:
 			m_timer = new DisciplineTimer;
+			break;
+		case Unlimited:
+			m_timer = new UnlimitedTimer;
+			break;
+		case Tanglet:
+		default:
+			m_timer = new TangletTimer;
 			break;
 		}
 	}
@@ -805,7 +855,8 @@ QString Clock::timerToString(int timer)
 			<< tr("Stamina")
 			<< tr("Strikeout")
 			<< tr("Allotment")
-			<< tr("Discipline");
+			<< tr("Discipline")
+			<< tr("Unlimited");
 	return timers.at(qBound(0, timer, TotalTimers - 1));
 }
 
@@ -820,7 +871,8 @@ QString Clock::timerDescription(int timer)
 			<< tr("Counts down from 45 seconds and pauses on correct guesses.")
 			<< tr("Game ends after 3 incorrect guesses.")
 			<< tr("Game ends after 30 guesses.")
-			<< tr("Counts down from 30 seconds and increases or decreases on guesses.");
+			<< tr("Counts down from 30 seconds and increases or decreases on guesses.")
+			<< tr("Game ends when all words are found.");
 	return timers.at(qBound(0, timer, TotalTimers - 1));
 }
 
@@ -835,7 +887,8 @@ QString Clock::timerScoresGroup(int timer)
 			<< QStringLiteral("Scores_Stamina")
 			<< QStringLiteral("Scores_Strikeout")
 			<< QStringLiteral("Scores_Allotment")
-			<< QStringLiteral("Scores_Discipline");
+			<< QStringLiteral("Scores_Discipline")
+			<< QStringLiteral("Scores_Unlimited");
 	return timers.at(qBound(0, timer, TotalTimers - 1));
 }
 

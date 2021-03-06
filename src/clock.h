@@ -26,6 +26,7 @@ class Clock : public QWidget
 	class StaminaTimer;
 	class StrikeoutTimer;
 	class TangletTimer;
+	class UnlimitedTimer;
 
 public:
 	/** The different timer modes that control the clock. */
@@ -38,6 +39,7 @@ public:
 		Strikeout,
 		Allotment,
 		Discipline,
+		Unlimited,
 		TotalTimers
 	};
 
