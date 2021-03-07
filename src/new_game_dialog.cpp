@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2010-2017 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2010-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -168,6 +168,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	QVBoxLayout* timers_layout = new QVBoxLayout(timers_widget);
 	area->setWidget(timers_widget);
 	area->setWidgetResizable(true);
+	area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	QCommandLinkButton* active_timer = nullptr;
 	QList<TimerDescription> timers;
@@ -195,7 +196,11 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addWidget(buttons);
 
 	// Show contents
-	QSize size = sizeHint() + QSize(area->verticalScrollBar()->sizeHint().width(), area->frameWidth() * 2);
+	area->setMinimumWidth(timers_widget->sizeHint().width()
+			+ area->verticalScrollBar()->sizeHint().width()
+			+ (area->frameWidth() * 2));
+	QSize size = sizeHint();
+	size.setHeight(size.height() - (area->sizeHint().height() / 3));
 	resize(QSettings().value("NewGameDialog/Size", size).toSize());
 	show();
 	if (active_timer) {
