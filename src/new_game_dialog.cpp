@@ -22,70 +22,6 @@
 
 //-----------------------------------------------------------------------------
 
-namespace
-{
-
-/**
- * @brief The TimerDescription class describes a timer.
- */
-class TimerDescription
-{
-public:
-	/**
-	 * Constructs a timer description.
-	 * @param id the timer mode to load details of
-	 */
-	TimerDescription(int id)
-		: m_name(Clock::timerToString(id))
-		, m_description(Clock::timerDescription(id))
-		, m_id(id)
-	{
-	}
-
-	/**
-	 * @return translated name of timer
-	 */
-	QString name() const
-	{
-		return m_name;
-	}
-
-	/**
-	 * @return translated description of timer
-	 */
-	QString description() const
-	{
-		return m_description;
-	}
-
-	/**
-	 * @return the timer mode represented by this description
-	 */
-	int id() const
-	{
-		return m_id;
-	}
-
-	/**
-	 * Locale-aware sorts the descriptions.
-	 * @param timer the description to compare to
-	 * @return whether this description sorts first
-	 */
-	bool operator<(const TimerDescription& timer) const
-	{
-		return m_name.localeAwareCompare(timer.m_name) < 0;
-	}
-
-private:
-	QString m_name; /**< translated name of timer */
-	QString m_description; /**< translated description of timer */
-	int m_id; /**< the timer mode */
-};
-
-}
-
-//-----------------------------------------------------------------------------
-
 NewGameDialog::NewGameDialog(QWidget* parent)
 	: QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint)
 	, m_minimum(3)
@@ -161,28 +97,33 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	layout->addSpacing(6);
 
 	// Create timer buttons
-	QScrollArea* area = new QScrollArea(this);
-	layout->addWidget(area);
+	m_timers_area = new QScrollArea(this);
+	layout->addWidget(m_timers_area);
 
-	QWidget* timers_widget = new QWidget(area);
+	QWidget* timers_widget = new QWidget(m_timers_area);
 	QVBoxLayout* timers_layout = new QVBoxLayout(timers_widget);
-	area->setWidget(timers_widget);
-	area->setWidgetResizable(true);
-	area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	m_timers_area->setWidget(timers_widget);
+	m_timers_area->setWidgetResizable(true);
+	m_timers_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	QCommandLinkButton* active_timer = nullptr;
-	QList<TimerDescription> timers;
-	for (int i = Clock::Tanglet; i < Clock::TotalTimers; ++i) {
-		timers.append(i);
-	}
-	std::sort(timers.begin(), timers.end());
-	for (const TimerDescription& timer : timers) {
-		QCommandLinkButton* button = new QCommandLinkButton(timer.name(), timer.description(), timers_widget);
-		button->setMinimumWidth(500);
-		connect(button, &QCommandLinkButton::clicked, this, [this, timer] { timerChosen(timer.id()); });
-		timers_layout->addWidget(button);
+	for (int timer = 0; timer < Clock::TotalTimers; ++timer) {
+		const QString name = Clock::timerToString(timer);
 
-		if (timer.id() == previous_timer) {
+		QCommandLinkButton* button = new QCommandLinkButton(name, Clock::timerDescription(timer), timers_widget);
+		button->setMinimumWidth(500);
+		connect(button, &QCommandLinkButton::clicked, this, [this, timer] { timerChosen(timer); });
+
+		int i;
+		for (i = 0; i < m_timers.size(); ++i) {
+			if (m_timers[i]->text().localeAwareCompare(name) >= 0) {
+				break;
+			}
+		}
+		m_timers.insert(i, button);
+		timers_layout->insertWidget(i, button);
+
+		if (timer == previous_timer) {
 			button->setDefault(true);
 			button->setFocus();
 			active_timer = button;
@@ -190,21 +131,22 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	}
 
 	// Create cancel button
-	QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Cancel, Qt::Horizontal, this);
-	connect(buttons, &QDialogButtonBox::rejected, this, &NewGameDialog::reject);
+	m_buttons = new QDialogButtonBox(QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults, Qt::Horizontal, this);
+	connect(m_buttons, &QDialogButtonBox::rejected, this, &NewGameDialog::reject);
+	connect(m_buttons, &QDialogButtonBox::clicked, this, &NewGameDialog::restoreDefaults);
 	layout->addSpacing(6);
-	layout->addWidget(buttons);
+	layout->addWidget(m_buttons);
 
 	// Show contents
-	area->setMinimumWidth(timers_widget->sizeHint().width()
-			+ area->verticalScrollBar()->sizeHint().width()
-			+ (area->frameWidth() * 2));
+	m_timers_area->setMinimumWidth(timers_widget->sizeHint().width()
+			+ m_timers_area->verticalScrollBar()->sizeHint().width()
+			+ (m_timers_area->frameWidth() * 2));
 	QSize size = sizeHint();
-	size.setHeight(size.height() - (area->sizeHint().height() / 3));
+	size.setHeight(size.height() - (m_timers_area->sizeHint().height() / 3));
 	resize(QSettings().value("NewGameDialog/Size", size).toSize());
 	show();
 	if (active_timer) {
-		area->ensureWidgetVisible(active_timer);
+		m_timers_area->ensureWidgetVisible(active_timer);
 	}
 }
 
@@ -253,6 +195,34 @@ void NewGameDialog::timerChosen(int timer)
 	settings.setValue("Board/TimerMode", timer);
 	settings.setValue("NewGameDialog/Size", size());
 	QDialog::accept();
+}
+
+//-----------------------------------------------------------------------------
+
+void NewGameDialog::restoreDefaults(QAbstractButton* button)
+{
+	if (m_buttons->buttonRole(button) != QDialogButtonBox::ResetRole) {
+		return;
+	}
+
+	m_normal_size->setChecked(true);
+	m_density->setCurrentIndex(1);
+	sizeChanged();
+	m_length->setCurrentIndex(0);
+
+	const QString name = Clock::timerToString(Clock::Tanglet);
+	QCommandLinkButton* timer = nullptr;
+	for (QCommandLinkButton* b : qAsConst(m_timers)) {
+		if (b->text() == name) {
+			timer = b;
+			break;
+		}
+	}
+	if (timer) {
+		timer->setDefault(true);
+		timer->setFocus();
+		m_timers_area->ensureWidgetVisible(timer);
+	}
 }
 
 //-----------------------------------------------------------------------------

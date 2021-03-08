@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2010-2011 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2010-2021 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -8,7 +8,11 @@
 #define TANGLET_NEW_GAME_DIALOG_H
 
 #include <QDialog>
+class QAbstractButton;
+class QCommandLinkButton;
 class QComboBox;
+class QDialogButtonBox;
+class QScrollArea;
 class QToolButton;
 
 /**
@@ -50,12 +54,21 @@ private slots:
 	 */
 	void timerChosen(int timer);
 
+	/**
+	 * Checks if the player has activated the restore button and resets if they have.
+	 * @param button which dialog button the player activated
+	 */
+	void restoreDefaults(QAbstractButton* button);
+
 private:
 	QToolButton* m_normal_size; /**< option for a normal board */
 	QToolButton* m_large_size; /**< option for a large board */
 	QComboBox* m_density; /**< option to select the amount of words on the board */
 	QComboBox* m_length; /**< option to select minimum word length */
 	int m_minimum; /**< length of the shortest word allowed */
+	QScrollArea* m_timers_area; /**< scrollarea containing timer buttons */
+	QList<QCommandLinkButton*> m_timers; /**< actions to choose timer mode and start game */
+	QDialogButtonBox* m_buttons; /**< buttons to control dialog */
 };
 
 #endif // TANGLET_NEW_GAME_DIALOG_H
