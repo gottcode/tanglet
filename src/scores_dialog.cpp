@@ -46,7 +46,8 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 
 	// Create score widgets
 	m_scores_layout = new QGridLayout(this);
-	m_scores_layout->setSpacing(12);
+	m_scores_layout->setHorizontalSpacing(18);
+	m_scores_layout->setVerticalSpacing(6);
 	m_scores_layout->setColumnStretch(1, 1);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Rank</b>"), this), 0, RankColumn, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Name</b>"), this), 0, NameColumn, Qt::AlignCenter);
@@ -55,15 +56,19 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 	m_scores_layout->addWidget(new QLabel(tr("<b>Date</b>"), this), 0, DateColumn, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Size</b>"), this), 0, SizeColumn, Qt::AlignCenter);
 
+	QFrame* divider = new QFrame(this);
+	divider->setFrameStyle(QFrame::HLine | QFrame::Sunken);
+	m_scores_layout->addWidget(divider, 1, 0, 1, TotalColumns);
+
 	QVector<Qt::Alignment> alignments(TotalColumns, Qt::AlignTrailing);
 	alignments[NameColumn] = Qt::AlignLeading;
 	alignments[SizeColumn] = Qt::AlignHCenter;
 	for (int r = 0; r < 10; ++r) {
-		m_score_labels[r][RankColumn] = new QLabel(tr("#%1").arg(r + 1), this);
-		m_scores_layout->addWidget(m_score_labels[r][RankColumn], r + 1, 0, alignments[RankColumn] | Qt::AlignVCenter);
+		m_score_labels[r][0] = new QLabel(tr("#%1").arg(r + 1), this);
+		m_scores_layout->addWidget(m_score_labels[r][0], r + 2, 0, alignments[RankColumn] | Qt::AlignVCenter);
 		for (int c = RankColumn + 1; c < TotalColumns; ++c) {
 			m_score_labels[r][c] = new QLabel("-", this);
-			m_scores_layout->addWidget(m_score_labels[r][c], r + 1, c, alignments[c] | Qt::AlignVCenter);
+			m_scores_layout->addWidget(m_score_labels[r][c], r + 2, c, alignments[c] | Qt::AlignVCenter);
 		}
 	}
 
@@ -129,7 +134,7 @@ void ScoresDialog::Page::editStart(QLineEdit* playername)
 	updateItems();
 
 	// Show lineedit
-	m_scores_layout->addWidget(playername, m_row + 1, 1);
+	m_scores_layout->addWidget(playername, m_row + 2, 1);
 	m_score_labels[m_row][1]->hide();
 	playername->setText(m_scores[m_row].name);
 	playername->show();
