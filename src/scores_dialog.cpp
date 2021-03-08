@@ -400,9 +400,7 @@ void ScoresDialog::hideEvent(QHideEvent* event)
 
 void ScoresDialog::keyPressEvent(QKeyEvent* event)
 {
-	if (!m_buttons->button(QDialogButtonBox::Close)->isDefault()) {
-		m_buttons->button(QDialogButtonBox::Close)->setDefault(true);
-		m_buttons->button(QDialogButtonBox::Close)->setFocus();
+	if ((event->key() == Qt::Key_Enter) || (event->key() == Qt::Key_Return)) {
 		event->ignore();
 		return;
 	}
@@ -416,6 +414,9 @@ void ScoresDialog::editingFinished()
 	if (m_active_page) {
 		m_active_page->editFinish(m_username);
 		m_active_page = nullptr;
+
+		m_buttons->button(QDialogButtonBox::Close)->setDefault(true);
+		m_buttons->button(QDialogButtonBox::Close)->setFocus();
 	}
 }
 

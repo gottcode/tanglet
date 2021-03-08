@@ -169,8 +169,8 @@ protected:
 	void hideEvent(QHideEvent* event) override;
 
 	/**
-	 * Override keyPressEvent to focus the close button; dialog only recieves these events if the
-	 * line edit is not focused.
+	 * Override keyPressEvent to ignore return key. Keeps dialog from closing when the player
+	 * presses return after entering their name.
 	 * @param event details of the key press event
 	 */
 	void keyPressEvent(QKeyEvent* event) override;
