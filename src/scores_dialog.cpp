@@ -48,6 +48,7 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 	m_scores_layout = new QGridLayout(this);
 	m_scores_layout->setSpacing(12);
 	m_scores_layout->setColumnStretch(1, 1);
+	m_scores_layout->addWidget(new QLabel(tr("<b>Rank</b>"), this), 0, RankColumn, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Name</b>"), this), 0, NameColumn, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Score</b>"), this), 0, ScoreColumn, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel(tr("<b>Maximum</b>"), this), 0, MaxScoreColumn, Qt::AlignCenter);
