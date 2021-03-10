@@ -8,10 +8,6 @@
         <translation>Ayrıntılar</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation>Temizle</translation>
-    </message>
-    <message>
         <source>Guess</source>
         <translation>Tahmin</translation>
     </message>
@@ -135,6 +131,10 @@
         <translation>Disiplin</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Süre 30 saniyeden başlar ve doğru cevaplar alındığında süre artar.</translation>
     </message>
@@ -161,6 +161,10 @@
     <message>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
         <translation>Süre 30 saniyeden başlar ve tahminin doğruluğuna göre artar veya azalır.</translation>
+    </message>
+    <message>
+        <source>Game ends when all words are found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -280,32 +284,52 @@
         <translation>Yüksek Skorlar</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Name&lt;/b&gt;</source>
-        <translation>&lt;b&gt;İsim&lt;/b&gt;</translation>
+        <source>Rank</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Score&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Skor&lt;/b&gt;</translation>
+        <source>Name</source>
+        <translation>İsim</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Date&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Tarih&lt;/b&gt;</translation>
+        <source>Score</source>
+        <translation>Skor</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Mod&lt;/b&gt;</translation>
+        <source>Maximum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Tarih</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Congratulations!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You beat your top score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Well done!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have a new high score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>#%1</source>
         <translation>#%1</translation>
-    </message>
-    <message>
-        <source>Question</source>
-        <translation>Emin Misiniz?</translation>
-    </message>
-    <message>
-        <source>Clear high scores?</source>
-        <translation>Yüksek skorları silmek istiyor musunuz?</translation>
     </message>
 </context>
 <context>
@@ -435,16 +459,8 @@
         <translation>&amp;Hakkında</translation>
     </message>
     <message>
-        <source>About &amp;Hspell</source>
-        <translation>&amp;Hspell Hakkında</translation>
-    </message>
-    <message>
         <source>About &amp;Qt</source>
         <translation>&amp;Qt Hakkında</translation>
-    </message>
-    <message>
-        <source>About &amp;SCOWL</source>
-        <translation>&amp;SCOWL Hakkında</translation>
     </message>
     <message>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
@@ -473,14 +489,6 @@
     <message>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>Hebrew kelime listesi Nadav Har&apos;El and Dan Kenigsberg&apos;in &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt;&apos;den temel alınmıştır</translation>
-    </message>
-    <message>
-        <source>About Hspell</source>
-        <translation>Hspell Hakkında</translation>
-    </message>
-    <message>
-        <source>About SCOWL</source>
-        <translation>SCOWL Hakkında</translation>
     </message>
     <message>
         <source>Import Game</source>

@@ -8,10 +8,6 @@
         <translation>Išsamiau</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation>Išvalyti</translation>
-    </message>
-    <message>
         <source>Guess</source>
         <translation>Spėti</translation>
     </message>
@@ -151,6 +147,10 @@
         <translation>Disciplinos</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Skaičiuoja atvirkštine tvarka 30 sekundžių, esant teisingiems spėjimams - pridedamas laikas.</translation>
     </message>
@@ -177,6 +177,10 @@
     <message>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
         <translation>Skaičiuoja atvirkštine tvarka 30 sekundžių, priklausomai nuo spėjimų, laikas pridedamas arba atimamas.</translation>
+    </message>
+    <message>
+        <source>Game ends when all words are found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -298,32 +302,52 @@
         <translation>Rekordai</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Name&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Vardas&lt;/b&gt;</translation>
+        <source>Rank</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Score&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Surinkta taškų&lt;/b&gt;</translation>
+        <source>Name</source>
+        <translation>Vardas</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Date&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Data&lt;/b&gt;</translation>
+        <source>Score</source>
+        <translation>Surinkta taškų</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Laikmatis&lt;/b&gt;</translation>
+        <source>Maximum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Congratulations!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You beat your top score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Well done!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have a new high score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>#%1</source>
         <translation>#%1</translation>
-    </message>
-    <message>
-        <source>Question</source>
-        <translation>Klausimas</translation>
-    </message>
-    <message>
-        <source>Clear high scores?</source>
-        <translation>Išvalyti rekordus?</translation>
     </message>
 </context>
 <context>
@@ -453,16 +477,8 @@
         <translation>&amp;Apie</translation>
     </message>
     <message>
-        <source>About &amp;Hspell</source>
-        <translation>Apie &amp;Hspell</translation>
-    </message>
-    <message>
         <source>About &amp;Qt</source>
         <translation>Apie &amp;Qt</translation>
-    </message>
-    <message>
-        <source>About &amp;SCOWL</source>
-        <translation>Apie &amp;SCOWL</translation>
     </message>
     <message>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
@@ -491,14 +507,6 @@
     <message>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>Žodžių sąrašas hebrajų kalba yra paremtas &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; pagal Nadav Har&apos;El ir Dan Kenigsberg</translation>
-    </message>
-    <message>
-        <source>About Hspell</source>
-        <translation>Apie Hspell</translation>
-    </message>
-    <message>
-        <source>About SCOWL</source>
-        <translation>Apie SCOWL</translation>
     </message>
     <message>
         <source>Import Game</source>

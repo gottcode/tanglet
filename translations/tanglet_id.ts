@@ -8,10 +8,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Guess</source>
         <translation type="unfinished"></translation>
     </message>
@@ -135,6 +131,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -160,6 +160,10 @@
     </message>
     <message>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Game ends when all words are found.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -280,31 +284,51 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Name&lt;/b&gt;</source>
+        <source>Rank</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Score&lt;/b&gt;</source>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Date&lt;/b&gt;</source>
+        <source>Score</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Timer&lt;/b&gt;</source>
+        <source>Maximum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Congratulations!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You beat your top score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Well done!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have a new high score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N/A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>#%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Question</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear high scores?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -435,15 +459,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About &amp;Hspell</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>About &amp;Qt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>About &amp;SCOWL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -472,14 +488,6 @@
     </message>
     <message>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>About Hspell</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>About SCOWL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

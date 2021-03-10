@@ -8,10 +8,6 @@
         <translation>Λεπτομέρειες</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation>Εκκαθάριση</translation>
-    </message>
-    <message>
         <source>Guess</source>
         <translation>Εικασία</translation>
     </message>
@@ -143,6 +139,10 @@
         <translation>Πειθαρχία</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Αντίστροφη μέτρηση 30&apos;&apos; κι αύξηση σε περίπτωση σωστής πρόβλεψης.</translation>
     </message>
@@ -169,6 +169,10 @@
     <message>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
         <translation>Αντίστροφη μέτρηση 30&apos;&apos; κι αύξηση ή μείωση, μετά τη πρόβλεψη.</translation>
+    </message>
+    <message>
+        <source>Game ends when all words are found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -289,32 +293,52 @@
         <translation>Μεγαλύτερες Βαθμολογίες</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Name&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Όνομα&lt;/b&gt;</translation>
+        <source>Rank</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Score&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Βαθμολογία&lt;/b&gt;</translation>
+        <source>Name</source>
+        <translation>Όνομα</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Date&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Ημερομηνία&lt;/b&gt;</translation>
+        <source>Score</source>
+        <translation>Βαθμολογία</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Χρόνος&lt;/b&gt;</translation>
+        <source>Maximum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Ημερομηνία</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Congratulations!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You beat your top score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Well done!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have a new high score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>#%1</source>
         <translation>#%1</translation>
-    </message>
-    <message>
-        <source>Question</source>
-        <translation>Ερώτηση</translation>
-    </message>
-    <message>
-        <source>Clear high scores?</source>
-        <translation>Καθαρισμός Μεγαλύτερων Βαθμολογιών</translation>
     </message>
 </context>
 <context>
@@ -444,16 +468,8 @@
         <translation>&amp;Σχετικά</translation>
     </message>
     <message>
-        <source>About &amp;Hspell</source>
-        <translation>Σχετικά &amp;με το HSpell</translation>
-    </message>
-    <message>
         <source>About &amp;Qt</source>
         <translation>Σχετικά &amp;με το Qt</translation>
-    </message>
-    <message>
-        <source>About &amp;SCOWL</source>
-        <translation>Σχετικά &amp;με το SCOWL</translation>
     </message>
     <message>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
@@ -482,14 +498,6 @@
     <message>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>Ο Εβραϊκός κατάλογος λέξεων, βασίστηκε στο &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; των Nadav Har&apos;El και Dan Kenigsberg</translation>
-    </message>
-    <message>
-        <source>About Hspell</source>
-        <translation>Σχετικά με το Hspell</translation>
-    </message>
-    <message>
-        <source>About SCOWL</source>
-        <translation>Σχετικά με το SCOWL</translation>
     </message>
     <message>
         <source>Import Game</source>

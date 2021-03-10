@@ -8,10 +8,6 @@
         <translation>Details</translation>
     </message>
     <message>
-        <source>Clear</source>
-        <translation>Löschen</translation>
-    </message>
-    <message>
         <source>Guess</source>
         <translation>Versuchen</translation>
     </message>
@@ -143,6 +139,10 @@
         <translation>Disziplin</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Zählt von 30 Sekunden abwärts und erhöht bei richtigen Versuchen.</translation>
     </message>
@@ -169,6 +169,10 @@
     <message>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
         <translation>Zählt von 30 Sekunden abwärts und erhöht oder verringert bei Versuchen.</translation>
+    </message>
+    <message>
+        <source>Game ends when all words are found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -289,32 +293,52 @@
         <translation>Highscores</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Name&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Name&lt;/b&gt;</translation>
+        <source>Rank</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;b&gt;Score&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Score&lt;/b&gt;</translation>
+        <source>Name</source>
+        <translation>Name</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Date&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Datum&lt;/b&gt;</translation>
+        <source>Score</source>
+        <translation>Score</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Timer&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Zeitlimit&lt;/b&gt;</translation>
+        <source>Maximum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Congratulations!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You beat your top score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Well done!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have a new high score!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>#%1</source>
         <translation>%1.</translation>
-    </message>
-    <message>
-        <source>Question</source>
-        <translation>Frage</translation>
-    </message>
-    <message>
-        <source>Clear high scores?</source>
-        <translation>Highscores löschen?</translation>
     </message>
 </context>
 <context>
@@ -444,16 +468,8 @@
         <translation>Ü&amp;ber</translation>
     </message>
     <message>
-        <source>About &amp;Hspell</source>
-        <translation>Über &amp;Hspell</translation>
-    </message>
-    <message>
         <source>About &amp;Qt</source>
         <translation>Über &amp;Qt</translation>
-    </message>
-    <message>
-        <source>About &amp;SCOWL</source>
-        <translation>Über &amp;SCOWL</translation>
     </message>
     <message>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
@@ -482,14 +498,6 @@
     <message>
         <source>Hebrew word list is based on &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; by Nadav Har&apos;El and Dan Kenigsberg</source>
         <translation>Hebräische Wortliste basiert auf &lt;a href=&quot;http://hspell.ivrix.org.il/&quot;&gt;Hspell&lt;/a&gt; von Nadav Har&apos;El und Dan Kenigsberg</translation>
-    </message>
-    <message>
-        <source>About Hspell</source>
-        <translation>Über Hspell</translation>
-    </message>
-    <message>
-        <source>About SCOWL</source>
-        <translation>Über SCOWL</translation>
     </message>
     <message>
         <source>Import Game</source>
