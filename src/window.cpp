@@ -886,7 +886,6 @@ void Window::showDetails()
 void Window::showScores()
 {
 	ScoresDialog scores(this);
-	connect(&scores, &ScoresDialog::scoresReset, m_board, &Board::updateScoreColor);
 	scores.exec();
 }
 

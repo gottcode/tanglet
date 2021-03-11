@@ -9,7 +9,6 @@
 
 #include <QDateTime>
 #include <QDialog>
-class QAbstractButton;
 class QDialogButtonBox;
 class QGridLayout;
 class QLabel;
@@ -46,20 +45,10 @@ class ScoresDialog : public QDialog
 		int max_score; /**< the maximum score available on the played board */
 		QDateTime date; /**< when the score was made */
 		int size; /**< the size of the board */
-
-		/**
-		 * Less than comparison used to sort scores.
-		 * @param s score to compare with
-		 * @return if this score is smaller
-		 */
-		bool operator<(const Score& s) const
-		{
-			return score < s.score;
-		}
 	};
 
 	/**
-	 * @brief The ScoresDialog::Page struct contains a page of high scores.
+	 * @brief The ScoresDialog::Page class contains a page of high scores.
 	 */
 	class Page : public QWidget
 	{
@@ -92,7 +81,7 @@ class ScoresDialog : public QDialog
 		 * @param max_score the maximum score available on the played board
 		 * @param date when the score was made
 		 * @param size the size of the board
-		 * @return the location in the list of scores or -1 if not a high score
+		 * @return @c true if the score was added
 		 */
 		bool addScore(const QString& name, int score, int max_score, const QDateTime& date, int size);
 
@@ -154,12 +143,6 @@ public:
 	 * Converts the stored scores to the new format.
 	 */
 	static void migrate();
-
-signals:
-	/**
-	 * The high score list has been cleared.
-	 */
-	void scoresReset();
 
 protected:
 	/**

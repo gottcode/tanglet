@@ -87,11 +87,6 @@ public slots:
 	 */
 	void setShowWordCounts(bool show);
 
-	/**
-	 * Updates the score display based on if it is a high score and if it is the highest score.
-	 */
-	void updateScoreColor();
-
 signals:
 	/**
 	 * Emitted when the game has been generated and is now playable.

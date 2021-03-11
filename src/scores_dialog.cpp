@@ -15,7 +15,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QLocale>
-#include <QMessageBox>
 #include <QPushButton>
 #include <QSettings>
 #include <QStyle>
@@ -42,13 +41,11 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 	, m_timer(timer)
 	, m_row(-1)
 {
-	setWindowTitle(tr("High Scores"));
-
 	// Create score widgets
 	m_scores_layout = new QGridLayout(this);
 	m_scores_layout->setHorizontalSpacing(18);
 	m_scores_layout->setVerticalSpacing(6);
-	m_scores_layout->setColumnStretch(1, 1);
+	m_scores_layout->setColumnStretch(NameColumn, 1);
 	m_scores_layout->addWidget(new QLabel("<b>" + tr("Rank") + "</b>", this), 1, RankColumn, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel("<b>" + tr("Name") + "</b>", this), 1, NameColumn, Qt::AlignCenter);
 	m_scores_layout->addWidget(new QLabel("<b>" + tr("Score") + "</b>", this), 1, ScoreColumn, Qt::AlignCenter);
