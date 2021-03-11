@@ -848,7 +848,7 @@ int Clock::timer() const
 
 QString Clock::timerToString(int timer)
 {
-	static QStringList timers = QStringList()
+	static const QStringList timers = QStringList()
 			<< tr("Tanglet")
 			<< tr("Classic")
 			<< tr("Refill")
@@ -864,7 +864,7 @@ QString Clock::timerToString(int timer)
 
 QString Clock::timerDescription(int timer)
 {
-	static QStringList timers = QStringList()
+	static const QStringList timers = QStringList()
 			<< tr("Counts down from 30 seconds and increases on correct guesses.")
 			<< tr("Counts down from 3 minutes.")
 			<< tr("Counts down from 30 seconds and refills on correct guesses.")
@@ -880,7 +880,7 @@ QString Clock::timerDescription(int timer)
 
 QString Clock::timerScoresGroup(int timer)
 {
-	static QStringList timers = QStringList()
+	static const QStringList timers = QStringList()
 			<< QStringLiteral("Scores_Tanglet")
 			<< QStringLiteral("Scores_Classic")
 			<< QStringLiteral("Scores_Refill")
