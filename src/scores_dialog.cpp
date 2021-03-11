@@ -302,6 +302,7 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addWidget(m_tabs);
 	layout->addWidget(m_buttons);
+	layout->setSizeConstraint(QLayout::SetFixedSize);
 }
 
 //-----------------------------------------------------------------------------
