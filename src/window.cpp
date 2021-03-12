@@ -497,8 +497,8 @@ Window::Window(const QString& file)
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
 	menu->addAction(tr("New &Game..."), this, SLOT(newGame()), tr("Ctrl+Shift+N"));
 	menu->addAction(tr("&New Roll"), this, SLOT(newRoll()), QKeySequence::New);
-	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()));
-	menu->addAction(tr("&Share..."), this, SLOT(shareGame()));
+	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()), QKeySequence::Open);
+	menu->addAction(tr("&Share..."), this, SLOT(shareGame()), QKeySequence::Save);
 	menu->addSeparator();
 	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()));
 	end_action->setEnabled(false);
@@ -512,7 +512,7 @@ Window::Window(const QString& file)
 	menu->addSeparator();
 	m_details_action = menu->addAction(tr("&Details"), this, SLOT(showDetails()));
 	m_details_action->setEnabled(false);
-	menu->addAction(tr("&High Scores"), this, SLOT(showScores()));
+	menu->addAction(tr("&High Scores"), this, SLOT(showScores()), tr("Ctrl+H"));
 	menu->addSeparator();
 	QAction* action = menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
 	action->setMenuRole(QAction::QuitRole);
