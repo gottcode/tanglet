@@ -571,6 +571,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Gioca col mouse:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Seleziona una parola:&lt;/b&gt; Clicca sulle lettere di una parola.&lt;br&gt;&lt;b&gt;Crea una risposta:&lt;/b&gt; Clicca sull&apos;ultima lettera selezionata.&lt;br&gt;&lt;b&gt;Cancella le  lettere:&lt;/b&gt; Clicca sulla prima lettera selezionata.&lt;br&gt;&lt;b&gt;Cancella la parola:&lt;/b&gt; Clicca due volte sulla prima lettera selezionata.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Gioca con la tastiera:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Seleziona una parola:&lt;/b&gt; Scrivi le lettere di una palora.&lt;br&gt;&lt;b&gt;Dai una risposta:&lt;/b&gt; Premi invio.&lt;br&gt;&lt;b&gt;Cancella la word:&lt;/b&gt; Premi Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>

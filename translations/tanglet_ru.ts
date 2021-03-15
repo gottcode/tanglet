@@ -580,6 +580,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Игра мышкой:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Выберите слово:&lt;/b&gt; Нажмите на буквы слова.&lt;br&gt;&lt;b&gt;Угадать:&lt;/b&gt; Нажмите на последнюю выбранную букву.&lt;br&gt;&lt;b&gt;Стереть буквы:&lt;/b&gt; Нажмите на ранее выбранную букву.&lt;br&gt;&lt;b&gt;Очистить слово:&lt;/b&gt; Нажмите дважды на первую выбранную букву.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Игра на клавиатуре:&lt;/b&gt;&lt;br&gt;&lt;b&gt;Выберите слово:&lt;/b&gt; Введите буквы слова.&lt;br&gt;&lt;b&gt;Угадать:&lt;/b&gt; Нажмите Enter.&lt;br&gt;&lt;b&gt;Очистить слово:&lt;/b&gt; Нажмите Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>

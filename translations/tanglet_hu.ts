@@ -562,6 +562,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Egérrel:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Szó kiválasztása:&lt;/b&gt; Kattints a szó betűire.&lt;br&gt;&lt;b&gt;Megfejtés:&lt;/b&gt; Kattints az utolsó kijejölt betűre.&lt;br&gt;&lt;b&gt;Betű törlése:&lt;/b&gt; Kattints a korábban kijelölt betűre.&lt;br&gt;&lt;b&gt;Szó törlése:&lt;/b&gt; Kattints kétszer az első kijelölt betűre.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Billentyűzettel:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Szó kiválasztása:&lt;/b&gt; Írd be a szó betűit.&lt;br&gt;&lt;b&gt;Megfejtés:&lt;/b&gt; Üsd le az Enter billentyűt.&lt;br&gt;&lt;b&gt;Szó törlése:&lt;/b&gt; Üsd le a Ctrl+Backspace billentyűkombinációt.&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>

@@ -147,10 +147,6 @@
         <translation>Disciplinos</translation>
     </message>
     <message>
-        <source>Unlimited</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Skaičiuoja atvirkštine tvarka 30 sekundžių, esant teisingiems spėjimams - pridedamas laikas.</translation>
     </message>
@@ -179,8 +175,12 @@
         <translation>Skaičiuoja atvirkštine tvarka 30 sekundžių, priklausomai nuo spėjimų, laikas pridedamas arba atimamas.</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation>Neribotas</translation>
+    </message>
+    <message>
         <source>Game ends when all words are found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Žaidimas baigiasi, kai yra surasti visi žodžiai.</translation>
     </message>
 </context>
 <context>
@@ -302,10 +302,6 @@
         <translation>Rekordai</translation>
     </message>
     <message>
-        <source>Rank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
         <translation>Vardas</translation>
     </message>
@@ -314,40 +310,44 @@
         <translation>Surinkta taškų</translation>
     </message>
     <message>
-        <source>Maximum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
+        <source>#%1</source>
+        <translation>#%1</translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <translation>Rangas</translation>
+    </message>
+    <message>
+        <source>Maximum</source>
+        <translation>Daugiausia</translation>
+    </message>
+    <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dydis</translation>
     </message>
     <message>
         <source>Congratulations!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sveikiname!</translation>
     </message>
     <message>
         <source>You beat your top score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Jūs sumušėte savo naują rekordą!</translation>
     </message>
     <message>
         <source>Well done!</source>
-        <translation type="unfinished"></translation>
+        <translation>Puikiai padirbėta!</translation>
     </message>
     <message>
         <source>You have a new high score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Jūs pasiekėte naują rekordą!</translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>#%1</source>
-        <translation>#%1</translation>
+        <translation>Nepasiekiama</translation>
     </message>
 </context>
 <context>
@@ -579,6 +579,10 @@
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas pele:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti žodį:&lt;/b&gt; Spustelėti ant žodžio raidžių.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spustelėti ant paskutinės pasirinktos raidės.&lt;br&gt;&lt;b&gt;Ištrinti raides:&lt;/b&gt; Spustelėti ant anksčiau pasirinktos raidės.&lt;br&gt;&lt;b&gt;Išvalyti žodį:&lt;/b&gt; Du kartus spustelėti ant pirmos pasirinktos raidės.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Žaidimas klaviatūra:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pasirinkti žodį:&lt;/b&gt; Rinkti žodžio raides.&lt;br&gt;&lt;b&gt;Spėti:&lt;/b&gt; Spausti įvedimo (Enter) klavišą.&lt;br&gt;&lt;b&gt;Išvalyti žodį:&lt;/b&gt; Spausti Valdymo+Naikinimo (Ctrl+Backspace) klavišą.&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

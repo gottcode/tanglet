@@ -562,6 +562,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Main Menggunakan Tetikus:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pilih perkataan:&lt;/b&gt; Klik pada abjad perkataan.&lt;br&gt;&lt;b&gt;Buat tekaan:&lt;/b&gt; Klik pada abjad terpilih yang terakhir.&lt;br&gt;&lt;b&gt;Padam abjad:&lt;/b&gt; Klik pada abjad terpilih yang awal.&lt;br&gt;&lt;b&gt;Kosongkan perkataan:&lt;/b&gt; Klik dua kali pada abjad terpilih yang pertama.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Main Menggunakan Papan Kekunci:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Pilih perkataan:&lt;/b&gt; Taip abjad perkataan tersebut.&lt;br&gt;&lt;b&gt;Buat tekaan:&lt;/b&gt; Tekan Enter.&lt;br&gt;&lt;b&gt;Kosongkan perkataan:&lt;/b&gt; Tekan Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>

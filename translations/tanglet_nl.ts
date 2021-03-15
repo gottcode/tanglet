@@ -571,6 +571,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Met de muis spelen:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Een woord selecteren:&lt;/b&gt; Klik op de letters van het woord.&lt;br&gt;&lt;b&gt;Een woord raden:&lt;/b&gt; Klik op de laatste letter van het woord.&lt;br&gt;&lt;b&gt;Een letter wissen:&lt;/b&gt; Klik op een eerder geselecteerde letter.&lt;br&gt;&lt;b&gt;Een woord wissen:&lt;/b&gt; Dubbelklik op de eerste letter van het woord.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Met het toetsenbord spelen:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Een woord selecteren:&lt;/b&gt; Typ de letters van het woord.&lt;br&gt;&lt;b&gt;Een woord raden:&lt;/b&gt; Druk op Enter.&lt;br&gt;&lt;b&gt;Een woord wissen:&lt;/b&gt; Druk op Ctrl+Backspace.&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>

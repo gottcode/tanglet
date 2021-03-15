@@ -571,6 +571,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Jogar com o Rato:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Selecionar palavra:&lt;/b&gt; Clicar nas letras de uma palavra.&lt;br&gt;&lt;b&gt;Dar um palpite:&lt;/b&gt; Clicar na última letra selecionada.&lt;br&gt;&lt;b&gt;Limpar letras:&lt;/b&gt; Clicar numa letra selecionada anteriormente.&lt;br&gt;&lt;b&gt;Limpar a palavra:&lt;/b&gt; Clicar 2 vezes na primeira letra selecionada.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Jogar com o Teclado:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Selecionar palavra:&lt;/b&gt; Digitar as letras da palavra.&lt;br&gt;&lt;b&gt;Dar um palpite:&lt;/b&gt; Pressionar a tecla Enter.&lt;br&gt;&lt;b&gt;Limpar a palavra:&lt;/b&gt; Pressionar as teclas Ctrl+Apagar.&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>

@@ -147,10 +147,6 @@
         <translation>Дисципліна</translation>
     </message>
     <message>
-        <source>Unlimited</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Підрахунок ведеться від 30 секунд і збільшується за правильні здогадки.</translation>
     </message>
@@ -177,6 +173,10 @@
     <message>
         <source>Counts down from 30 seconds and increases or decreases on guesses.</source>
         <translation>Підрахунок ведеться від 30 секунд і зростає або зменшується за правильні або неправильні здогадки.</translation>
+    </message>
+    <message>
+        <source>Unlimited</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Game ends when all words are found.</source>
@@ -245,7 +245,7 @@
     </message>
     <message>
         <source>&lt;System Language&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;System Language&gt;</translation>
     </message>
     <message>
         <source>Note</source>
@@ -302,24 +302,28 @@
         <translation>Найвищий рахунок</translation>
     </message>
     <message>
-        <source>Rank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
-        <translation>Назва</translation>
+        <translation>Ім&apos;я</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation>Рахунок</translation>
-    </message>
-    <message>
-        <source>Maximum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>Дата</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>#%1</source>
+        <translation>№%1</translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Size</source>
@@ -344,10 +348,6 @@
     <message>
         <source>N/A</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>#%1</source>
-        <translation>№%1</translation>
     </message>
 </context>
 <context>
@@ -386,7 +386,7 @@
     </message>
     <message>
         <source>Ctrl+Shift+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
         <source>&amp;New Roll</source>
@@ -580,6 +580,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Гра мишею:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Вибрати слово:&lt;/b&gt; Клацання на буквах слова.&lt;br&gt;&lt;b&gt;Зробити припущення:&lt;/b&gt; Клацнути на останній вибраній букві.&lt;br&gt;&lt;b&gt;Викреслити букви:&lt;/b&gt; Клацнути на раніше вибраній букві.&lt;br&gt;&lt;b&gt;Очистити слово:&lt;/b&gt; Двічі клацнути на першій букві.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Гра з клавіатури:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Вибрати слово:&lt;/b&gt; Ввести букви слова.&lt;br&gt;&lt;b&gt;Зробити припущення:&lt;/b&gt; Натиснути клавішу «Enter».&lt;br&gt;&lt;b&gt;Очистити слово:&lt;/b&gt; Натиснути «Ctrl+Backspace».&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>
@@ -619,7 +623,7 @@
     <name>main</name>
     <message>
         <source>Word finding game</source>
-        <translation type="unfinished"></translation>
+        <translation>Гра в пошук слова</translation>
     </message>
     <message>
         <source>A game file to play.</source>

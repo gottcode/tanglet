@@ -571,6 +571,10 @@
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu à la souris :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Cliquer sur les lettres d&apos;un mot.&lt;br&gt;&lt;b&gt;Proposer un mot :&lt;/b&gt; Cliquer sur la dernière lettre sélectionnée.&lt;br&gt;&lt;b&gt;Effacer des lettres :&lt;/b&gt; Cliquer sur une lettre précédemment sélectionnée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Cliquer deux fois sur la première lettre sélectionnée.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Jeu au clavier :&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Sélectionner un mot :&lt;/b&gt; Taper les lettres du mot.&lt;br&gt;&lt;b&gt;Proposer le mot :&lt;/b&gt; Presser Entrée.&lt;br&gt;&lt;b&gt;Effacer le mot :&lt;/b&gt; Presser Ctrl+Retour arrière.&lt;/p&gt;</translation>
     </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordCounts</name>

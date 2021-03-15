@@ -139,10 +139,6 @@
         <translation>Disziplin</translation>
     </message>
     <message>
-        <source>Unlimited</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Zählt von 30 Sekunden abwärts und erhöht bei richtigen Versuchen.</translation>
     </message>
@@ -171,8 +167,12 @@
         <translation>Zählt von 30 Sekunden abwärts und erhöht oder verringert bei Versuchen.</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation>Unbegrenzt</translation>
+    </message>
+    <message>
         <source>Game ends when all words are found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spiel endet, wenn alle Wörter gefunden sind.</translation>
     </message>
 </context>
 <context>
@@ -293,10 +293,6 @@
         <translation>Highscores</translation>
     </message>
     <message>
-        <source>Rank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
         <translation>Name</translation>
     </message>
@@ -305,40 +301,44 @@
         <translation>Score</translation>
     </message>
     <message>
-        <source>Maximum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
+        <source>#%1</source>
+        <translation>%1.</translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <translation>Rang</translation>
+    </message>
+    <message>
+        <source>Maximum</source>
+        <translation>Maximum</translation>
+    </message>
+    <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Größe</translation>
     </message>
     <message>
         <source>Congratulations!</source>
-        <translation type="unfinished"></translation>
+        <translation>Glückwunsch!</translation>
     </message>
     <message>
         <source>You beat your top score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie haben Ihren Highscore geschlagen!</translation>
     </message>
     <message>
         <source>Well done!</source>
-        <translation type="unfinished"></translation>
+        <translation>Gut gemacht!</translation>
     </message>
     <message>
         <source>You have a new high score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie haben einen neuen Highscore!</translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>#%1</source>
-        <translation>%1.</translation>
+        <translation>–</translation>
     </message>
 </context>
 <context>
@@ -570,6 +570,10 @@
     <message>
         <source>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mouse Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Click on the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Click on the last selected letter.&lt;br&gt;&lt;b&gt;Erase letters:&lt;/b&gt; Click on an earlier selected letter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Click twice on the first selected letter.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Keyboard Play:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Select a word:&lt;/b&gt; Type the letters of a word.&lt;br&gt;&lt;b&gt;Make a guess:&lt;/b&gt; Press Enter.&lt;br&gt;&lt;b&gt;Clear the word:&lt;/b&gt; Press Ctrl+Backspace.&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;b&gt;&lt;big&gt;Mit der Maus:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Wort auswählen:&lt;/b&gt; Auf die Buchstaben eines Worts klicken.&lt;br&gt;&lt;b&gt;Einen Versuch machen:&lt;/b&gt; Auf den zuletzt ausgewählten Buchstaben klicken.&lt;br&gt;&lt;b&gt;Buchstaben entfernen:&lt;/b&gt; Auf einen vorher ausgewählten Buchstaben klicken.&lt;br&gt;&lt;b&gt;Wort löschen:&lt;/b&gt; Zweimal auf den ersten ausgewählten Buchstaben klicken.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&lt;big&gt;Mit der Tastatur:&lt;/big&gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;Wort auswählen:&lt;/b&gt; Die Buchstaben eines Worts tippen.&lt;br&gt;&lt;b&gt;Einen Versuch machen:&lt;/b&gt; Eingabetaste drücken.&lt;br&gt;&lt;b&gt;Wort löschen:&lt;/b&gt; Strg+Backspace drücken.&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>Ctrl+H</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
