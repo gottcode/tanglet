@@ -147,10 +147,6 @@
         <translation>Disciplină</translation>
     </message>
     <message>
-        <source>Unlimited</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Numărătoare inversă de la 30 secunde şi reumplere la presupunerile corecte.</translation>
     </message>
@@ -179,8 +175,12 @@
         <translation>Numărătoare inversă de la 30 secunde şi creşte sau scade la presupunerile corecte.</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation>Nelimitat</translation>
+    </message>
+    <message>
         <source>Game ends when all words are found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jocul se termină cînd sînt găsite toate cuvintele.</translation>
     </message>
 </context>
 <context>
@@ -302,10 +302,6 @@
         <translation>Scoruri record</translation>
     </message>
     <message>
-        <source>Rank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
         <translation>Nume</translation>
     </message>
@@ -314,40 +310,44 @@
         <translation>Scor</translation>
     </message>
     <message>
-        <source>Maximum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Date</source>
-        <translation>Dată</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Congratulations!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You beat your top score!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Well done!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have a new high score!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Data</translation>
     </message>
     <message>
         <source>#%1</source>
         <translation>#%1</translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <translation>Rang</translation>
+    </message>
+    <message>
+        <source>Maximum</source>
+        <translation>Maximum</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation>Mărime</translation>
+    </message>
+    <message>
+        <source>Congratulations!</source>
+        <translation>Felicitări!</translation>
+    </message>
+    <message>
+        <source>You beat your top score!</source>
+        <translation>Ţi-ai bătut cel mai bun scor!</translation>
+    </message>
+    <message>
+        <source>Well done!</source>
+        <translation>Felicitări!</translation>
+    </message>
+    <message>
+        <source>You have a new high score!</source>
+        <translation>Ai un nou scor mare!</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation>Indisponibil</translation>
     </message>
 </context>
 <context>
@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+H</translation>
     </message>
 </context>
 <context>

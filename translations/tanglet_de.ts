@@ -377,7 +377,7 @@
     </message>
     <message>
         <source>Ctrl+Shift+N</source>
-        <translation>Ctrl+Shift+N</translation>
+        <translation>Strg+Shift+N</translation>
     </message>
     <message>
         <source>&amp;New Roll</source>
@@ -401,7 +401,7 @@
     </message>
     <message>
         <source>Ctrl+P</source>
-        <translation>Ctrl+P</translation>
+        <translation>Strg+P</translation>
     </message>
     <message>
         <source>&amp;Details</source>
@@ -417,7 +417,7 @@
     </message>
     <message>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation>Strg+Q</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
@@ -573,7 +573,7 @@
     </message>
     <message>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+H</translation>
     </message>
 </context>
 <context>

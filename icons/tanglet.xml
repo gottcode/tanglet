@@ -18,6 +18,7 @@
     <comment xml:lang="ro">Fişier joc Tanglet</comment>
     <comment xml:lang="ru">Файл Игры Tanglet</comment>
     <comment xml:lang="tr">Tanglet Oyun Dosyası</comment>
+    <comment xml:lang="uk">Файл гри Tanglet</comment>
     <glob pattern="*.tanglet"/>
   </mime-type>
 </mime-info>

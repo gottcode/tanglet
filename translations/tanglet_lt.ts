@@ -335,7 +335,7 @@
     </message>
     <message>
         <source>You beat your top score!</source>
-        <translation>Jūs sumušėte savo naują rekordą!</translation>
+        <translation>Jūs sumušėte savo rekordą!</translation>
     </message>
     <message>
         <source>Well done!</source>
@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+H</translation>
     </message>
 </context>
 <context>

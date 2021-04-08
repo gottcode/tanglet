@@ -49,10 +49,10 @@
     </message>
     <message numerus="yes">
         <source>3 of %n point(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>3 з %n очка</numerusform>
+            <numerusform>3 з %n очок</numerusform>
+            <numerusform>3 із %n очок</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -176,11 +176,11 @@
     </message>
     <message>
         <source>Unlimited</source>
-        <translation type="unfinished"></translation>
+        <translation>Необмежений</translation>
     </message>
     <message>
         <source>Game ends when all words are found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Гра закінчується, коли знайдено всі слова.</translation>
     </message>
 </context>
 <context>
@@ -264,11 +264,11 @@
     </message>
     <message>
         <source>Amount of Words:</source>
-        <translation type="unfinished"></translation>
+        <translation>Кількість слів:</translation>
     </message>
     <message>
         <source>Minimum Word Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мінімальна довжина слова:</translation>
     </message>
     <message>
         <source>Low</source>
@@ -284,7 +284,7 @@
     </message>
     <message>
         <source>Random</source>
-        <translation type="unfinished"></translation>
+        <translation>Випадкові</translation>
     </message>
     <message numerus="yes">
         <source>%n letter(s)</source>
@@ -311,7 +311,7 @@
     </message>
     <message>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Дата</translation>
     </message>
     <message>
         <source>#%1</source>
@@ -327,23 +327,23 @@
     </message>
     <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір</translation>
     </message>
     <message>
         <source>Congratulations!</source>
-        <translation type="unfinished"></translation>
+        <translation>Вітаємо!</translation>
     </message>
     <message>
         <source>You beat your top score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ви перемогли ваш найкращий результат!</translation>
     </message>
     <message>
         <source>Well done!</source>
-        <translation type="unfinished"></translation>
+        <translation>Молодець!</translation>
     </message>
     <message>
         <source>You have a new high score!</source>
-        <translation type="unfinished"></translation>
+        <translation>У вас новий високий бал!</translation>
     </message>
     <message>
         <source>N/A</source>
@@ -490,7 +490,7 @@
     </message>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Про</translation>
     </message>
     <message>
         <source>A single player variant of &lt;a href=&quot;http://en.wikipedia.org/wiki/Boggle&quot;&gt;Boggle&lt;/a&gt;</source>
@@ -510,7 +510,7 @@
     </message>
     <message>
         <source>Import Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпорт гри</translation>
     </message>
     <message>
         <source>Tanglet Games (*.tanglet)</source>
@@ -526,7 +526,7 @@
     </message>
     <message>
         <source>Export Game</source>
-        <translation type="unfinished"></translation>
+        <translation>Експорт гри</translation>
     </message>
     <message>
         <source>Question</source>
@@ -542,7 +542,7 @@
     </message>
     <message>
         <source>Board Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір дошки:</translation>
     </message>
     <message>
         <source>Normal</source>
@@ -566,11 +566,11 @@
     </message>
     <message>
         <source>Game Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип гри:</translation>
     </message>
     <message>
         <source>Description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Опис:</translation>
     </message>
     <message>
         <source>Controls</source>
@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+H</translation>
     </message>
 </context>
 <context>
@@ -593,19 +593,19 @@
     </message>
     <message>
         <source>Found:</source>
-        <translation type="unfinished"></translation>
+        <translation>Знайдено:</translation>
     </message>
     <message>
         <source>%1&lt;br&gt;&lt;b&gt;%2&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>%1&lt;br&gt;&lt;b&gt;%2&lt;/b&gt;</translation>
     </message>
     <message>
         <source>%1&lt;br&gt;&lt;b&gt;%2/%3&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>%1&lt;br&gt;&lt;b&gt;%2/%3&lt;/b&gt;</translation>
     </message>
     <message>
         <source>%1&lt;br&gt;%2/%3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1&lt;br&gt;%2/%3</translation>
     </message>
 </context>
 <context>
@@ -627,7 +627,7 @@
     </message>
     <message>
         <source>A game file to play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ігровий файл для відтворення.</translation>
     </message>
 </context>
 </TS>

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Tanglet\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
-"PO-Revision-Date: 2021-03-11 16:33+0000\n"
+"PO-Revision-Date: 2021-03-21 17:53+0000\n"
 "Last-Translator: dsafsadf <heneral@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/gottcode/tanglet/language/"
 "uk/)\n"
@@ -28,7 +28,7 @@ msgstr "Tanglet"
 
 #: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
 msgid "Single player variant of Boggle"
-msgstr ""
+msgstr "Варіант Boggle для одного гравця"
 
 #: ../tanglet.appdata.xml.in:10
 msgid ""
@@ -37,6 +37,10 @@ msgid ""
 "are several timer modes that determine how much time you start with, and if "
 "you get extra time when you find a word."
 msgstr ""
+"Tanglet - це гра для пошуку слова для одного гравця, заснована на Boggle. "
+"Мета гри - перерахувати якомога більше слів до того, як закінчиться час. "
+"Існує кілька режимів таймера, які визначають, скільки часу ви витрачаєте, і "
+"чи отримуєте ви додатковий час, коли знаходите слово."
 
 #: ../tanglet.appdata.xml.in:12
 msgid ""
@@ -46,11 +50,16 @@ msgid ""
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
 msgstr ""
+"Ви можете з’єднати букви по горизонталі, вертикалі чи діагоналі в будь-якому "
+"напрямку, щоб скласти слово, до тих пір, поки букви стоять поруч на дошці. "
+"Однак ви не можете повторно використовувати одні й ті самі літерні клітинки "
+"в одному слові. Крім того, кожне слово має містити принаймні три літери на "
+"звичайній дошці та чотири літери на великій дошці."
 
 #: ../tanglet.desktop.in:4
 msgid "Word Finding Game"
-msgstr ""
+msgstr "Гра в пошук слова"
 
 #: ../tanglet.xml.in.h:1
 msgid "Tanglet Game File"
-msgstr ""
+msgstr "Файл гри Tanglet"
