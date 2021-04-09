@@ -1,3 +1,16 @@
+1.6.0
+-----
+* FIXED: Could not type name in scores dialog.
+* FIXED: Out of bounds errors in solver.
+* Added tabs to high scores.
+* Added unlimited timer mode.
+* Added option to reset new game to defaults.
+* Added support for Qt 6.
+* Optimized reading word list.
+* Refactored code.
+* Translation updates: German, Indonesian, Lithuanian, Polish, Romanian, Turkish, Ukrainian.
+* Word list updates: Brazilian Portuguese, Catalan, English, French, Greek, Polish, Portuguese, Spanish.
+
 1.5.6
 -----
 * FIXED: Did not load locales with underscores.
