@@ -18,7 +18,7 @@ echo -n 'Copying application bundle... '
 mkdir "$APP"
 cp -Rf "$BUNDLE" "$APP/"
 strip "$APP/$BUNDLE/Contents/MacOS/$APP"
-cp COPYING "$APP/License.txt"
+cp LICENSES/GPL-3.0-or-later.txt "$APP/License.txt"
 echo 'Done'
 
 # Create ReadMe
