@@ -97,6 +97,7 @@ QString generateSolutionFr(QString string)
 {
 	string.replace(u'À', 'A');
 	string.replace(u'Â', 'A');
+	string.replace(u'Ä', 'A');
 	string.replace(u'Æ', 'A');
 	string.replace(u'É', 'E');
 	string.replace(u'È', 'E');
@@ -105,8 +106,10 @@ QString generateSolutionFr(QString string)
 	string.replace(u'Î', 'I');
 	string.replace(u'Ï', 'I');
 	string.replace(u'Ô', 'O');
+	string.replace(u'Ö', 'O');
 	string.replace(u'Œ', 'O');
 	string.replace(u'Ù', 'U');
+	string.replace(u'Ú', 'U');
 	string.replace(u'Û', 'U');
 	string.replace(u'Ü', 'U');
 	string.replace(u'Ÿ', 'Y');
