@@ -89,7 +89,7 @@ macx {
 	ICON = ../icons/tanglet.icns
 
 	GAME_DATA.files = ../data
-	GAME_DATA.path = Contents/Resources/data/
+	GAME_DATA.path = Contents/Resources
 
 	QMAKE_BUNDLE_DATA += GAME_DATA
 } else:win32 {
