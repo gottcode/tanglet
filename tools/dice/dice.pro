@@ -1,5 +1,6 @@
 TEMPLATE = app
 QT += core
+CONFIG += c++17
 
 CONFIG(debug, debug|release) {
 	CONFIG += warn_on
