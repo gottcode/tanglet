@@ -77,7 +77,7 @@ Board::Board(QWidget* parent)
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
 	m_guess->setDisabled(true);
-	m_guess->setMaxLength(16);
+	m_guess->setMaxLength(25);
 	m_guess->installEventFilter(this);
 	m_guess->setClearButtonEnabled(true);
 	connect(m_guess, &QLineEdit::textEdited, this, &Board::guessChanged);
@@ -102,10 +102,8 @@ Board::Board(QWidget* parent)
 
 	QHBoxLayout* guess_layout = new QHBoxLayout;
 	guess_layout->setSpacing(0);
-	guess_layout->addStretch();
 	guess_layout->addWidget(m_guess);
 	guess_layout->addWidget(m_guess_button);
-	guess_layout->addStretch();
 
 	// Create word lists
 	m_found = new WordTree(this);
@@ -125,10 +123,13 @@ Board::Board(QWidget* parent)
 	found_layout->addWidget(m_found);
 
 	m_tabs = new QTabWidget(this);
+	m_tabs->setUsesScrollButtons(false);
 	m_tabs->addTab(found_tab, tr("Found"));
 	connect(m_tabs, &QTabWidget::currentChanged, this, &Board::clearGuess);
 
-	int width = guess_layout->sizeHint().width();
+	m_tabs->addTab(m_missed, tr("Missed"));
+	const int width = std::max(guess_layout->sizeHint().width(), m_tabs->minimumSizeHint().width());
+	m_tabs->removeTab(1);
 	m_tabs->setFixedWidth(width);
 
 	m_counts = new WordCounts(this);
