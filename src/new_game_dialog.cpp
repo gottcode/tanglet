@@ -80,7 +80,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 	for (int i = 0; i < 4; ++i) {
 		m_length->addItem("");
 	}
-	connect(m_length, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &NewGameDialog::lengthChanged);
+	connect(m_length, qOverload<int>(&QComboBox::currentIndexChanged), this, &NewGameDialog::lengthChanged);
 	m_minimum = settings.value("Board/Minimum", 3).toInt();
 	if (m_large_size->isChecked()) {
 		--m_minimum;

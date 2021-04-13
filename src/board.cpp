@@ -82,7 +82,7 @@ Board::Board(QWidget* parent)
 	m_guess->setClearButtonEnabled(true);
 	connect(m_guess, &QLineEdit::textEdited, this, &Board::guessChanged);
 	connect(m_guess, &QLineEdit::returnPressed, this, &Board::guess);
-	connect(m_view, &View::mousePressed, m_guess, QOverload<>::of(&QLineEdit::setFocus));
+	connect(m_view, &View::mousePressed, m_guess, qOverload<>(&QLineEdit::setFocus));
 
 	int size = style()->pixelMetric(QStyle::PM_ToolBarIconSize);
 

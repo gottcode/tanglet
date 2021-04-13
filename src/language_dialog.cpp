@@ -52,7 +52,7 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	}
 	m_language->addItem(tr("Custom"), 0);
 	m_language->setCurrentIndex(m_language->count() - 1);
-	connect(m_language, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &LanguageDialog::chooseLanguage);
+	connect(m_language, qOverload<int>(&QComboBox::currentIndexChanged), this, &LanguageDialog::chooseLanguage);
 
 	QSettings settings;
 	settings.beginGroup("Board");
