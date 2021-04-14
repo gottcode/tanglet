@@ -1,4 +1,4 @@
-.TH "TANGLET" "6" "February 2014"
+.TH "TANGLET" "6" "April 2021" "Games"
 
 .SH "NAME"
 tanglet \- word finding game
@@ -6,6 +6,8 @@ tanglet \- word finding game
 .SH "SYNOPSIS"
 .PP
 .B tanglet
+[options]
+.I [file]
 
 .SH "DESCRIPTION"
 .PP
@@ -20,9 +22,100 @@ on the board. However, you can not reuse the same letter cells in a single
 word. Also, each word must be at least three letters on a normal board,
 and four letters on a large board.
 
+.SH GENERAL OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Displays help on commandline options.
+.TP
+.B \-\-help-all
+Displays help including Qt specific options.
+.TP
+.B \-\-version
+Displays version information.
+.TP
+.I file
+A game file to play.
+
+.SH QT-SPECIFIC OPTIONS
+.TP
+.BI "\-\-qmljsdebugger"\ value
+Activates the QML/JS debugger with a specified port. The value must be of
+format
+.IR "port:1234[,block]".
+.I block
+makes
+.B tanglet
+wait for a connection.
+.TP
+.BI "\-\-platform"\ platformName[:options]
+QPA plugin. See QGuiApplication documentation for available options for each
+plugin.
+.TP
+.BI "\-\-platformpluginpath"\ path
+Path to the platform plugins.
+.TP
+.BI "\-\-platformtheme"\ theme
+Platform theme.
+.TP
+.BI "\-\-plugin"\ plugin
+Additional plugins to load, can be specified multiple times.
+.TP
+.BI "\-\-qwindowgeometry"\ geometry
+Window geometry for the main window, using the X11-syntax, like 100x100+50+50.
+.TP
+.BI "\-\-qwindowicon"\ icon
+Default window icon.
+.TP
+.BI "\-\-qwindowtitle"\ title
+Title of the first window.
+.TP
+.B \-\-reverse
+Sets
+.BR "tanglet"'s
+layout direction to Qt::RightToLeft (debugging helper).
+.TP
+.BI "\-\-session"\ session
+Restores
+.B tanglet
+from an earlier session.
+.TP
+.BI "\-\-display"\ display
+Display name, overrides
+.BR "$DISPLAY".
+.TP
+.BI "\-\-name"\ name
+Instance name according to ICCCM 4.1.2.5.
+.TP
+.B \-\-nograb
+Disable mouse grabbing (useful in debuggers).
+.TP
+.B \-\-dograb
+Force mouse grabbing (even when running in a debugger).
+.TP
+.BI "\-\-visual"\ id
+ID of the X11 Visual to use.
+.TP
+.BI "\-\-geometry"\ geometry
+Alias for
+.BR "\-\-windowgeometry".
+.TP
+.BI "\-\-icon"\ icon
+Alias for
+.BR "\-\-windowicon".
+.TP
+.BI "\-\-title"\ title
+Alias for
+.BR "\-\-windowtitle".
+
+.SH REPORTING BUGS
+.PP
+Report bugs to
+.MT tanglet@bugs.gottcode.org
+.ME .
+
 .SH "COPYRIGHT"
 .PP
-Copyright \(co 2014 Graeme Gott
+Copyright \(co 2014-2021 Graeme Gott
 .PP
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,8 +128,15 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 .PP
 You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
+along with this program. If not, see
+.UR http://www.gnu.org/licenses/
+.UE .
+
+.SH SEE ALSO
+.UR https://en.wikipedia.org/wiki/Boggle
+.UE
 
 .SH "AUTHOR"
-.PP
-Graeme Gott <graeme@gottcode.org>.
+.MT graeme@gottcode.org
+Graeme Gott
+.ME .
