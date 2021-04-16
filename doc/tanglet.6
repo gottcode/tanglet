@@ -22,7 +22,7 @@ on the board. However, you can not reuse the same letter cells in a single
 word. Also, each word must be at least three letters on a normal board,
 and four letters on a large board.
 
-.SH GENERAL OPTIONS
+.SH "OPTIONS"
 .TP
 .BR \-h ", " \-\-help
 Displays help on commandline options.
@@ -36,7 +36,7 @@ Displays version information.
 .I file
 A game file to play.
 
-.SH QT-SPECIFIC OPTIONS
+.SH "QT-SPECIFIC OPTIONS"
 .TP
 .BI "\-\-platform"\ platformName[:options]
 QPA plugin. See QGuiApplication documentation for available options for each
@@ -98,23 +98,7 @@ Alias for
 Alias for
 .BR "\-\-windowtitle".
 
-.SH FILES
-.TP
-.I $HOME/.config/GottCode/Tanglet.conf
-Local configuration file for
-.BR "tanglet".
-Normally, it is not needed to change anything in this file, unless you want to
-cheat by changing the highscores ;)
-.TP
-.I *.tanglet
-File compressed with
-.BR gzip (1).
-You can save a game using the menu
-.IR "Game/Export...".
-This file contains only the board configuration, the scores will not be
-exported.
-
-.SH REPORTING BUGS
+.SH "REPORTING BUGS"
 .PP
 Report bugs to
 .MT tanglet@bugs.gottcode.org
