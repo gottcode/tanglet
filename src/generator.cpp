@@ -141,7 +141,7 @@ Generator::Generator(QObject* parent)
 void Generator::cancel()
 {
 	blockSignals(true);
-	m_canceled = true;
+	m_canceled.store(true, std::memory_order_relaxed);
 	wait();
 	blockSignals(false);
 }
@@ -156,7 +156,7 @@ void Generator::create(int density, int size, int minimum, int timer, const QStr
 	m_timer = timer;
 	m_max_words = (m_timer != Clock::Allotment) ? -1 : 30;
 	m_letters = letters;
-	m_canceled = false;
+	m_canceled.store(false, std::memory_order_relaxed);
 	m_max_score = 0;
 	m_solutions.clear();
 	start();
@@ -238,7 +238,7 @@ void Generator::run()
 				loops = 0;
 			}
 		}
-	} while (!m_canceled && (current.delta() > words_range));
+	} while (!m_canceled.load(std::memory_order_relaxed) && (current.delta() > words_range));
 
 	// Store solutions for generated board
 	m_letters = current.letters();
