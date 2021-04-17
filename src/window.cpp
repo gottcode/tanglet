@@ -495,12 +495,12 @@ Window::Window(const QString& file)
 
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
-	menu->addAction(tr("New &Game..."), this, SLOT(newGame()), tr("Ctrl+Shift+N"));
-	menu->addAction(tr("&New Roll"), this, SLOT(newRoll()), QKeySequence::New);
-	menu->addAction(tr("&Choose..."), this, SLOT(chooseGame()), QKeySequence::Open);
-	menu->addAction(tr("&Share..."), this, SLOT(shareGame()), QKeySequence::Save);
+	menu->addAction(tr("New &Game..."), this, &Window::newGame, tr("Ctrl+Shift+N"));
+	menu->addAction(tr("&New Roll"), this, &Window::newRoll, QKeySequence::New);
+	menu->addAction(tr("&Choose..."), this, &Window::chooseGame, QKeySequence::Open);
+	menu->addAction(tr("&Share..."), this, &Window::shareGame, QKeySequence::Save);
 	menu->addSeparator();
-	QAction* end_action = menu->addAction(tr("&End"), this, SLOT(endGame()));
+	QAction* end_action = menu->addAction(tr("&End"), this, &Window::endGame);
 	end_action->setEnabled(false);
 	connect(m_board, &Board::pauseAvailable, end_action, &QAction::setEnabled);
 	m_pause_action = menu->addAction(tr("&Pause"));
@@ -510,11 +510,11 @@ Window::Window(const QString& file)
 	connect(m_pause_action, &QAction::triggered, this, &Window::setPaused);
 	connect(m_board, &Board::pauseAvailable, m_pause_action, &QAction::setEnabled);
 	menu->addSeparator();
-	m_details_action = menu->addAction(tr("&Details"), this, SLOT(showDetails()));
+	m_details_action = menu->addAction(tr("&Details"), this, &Window::showDetails);
 	m_details_action->setEnabled(false);
-	menu->addAction(tr("&High Scores"), this, SLOT(showScores()), tr("Ctrl+H"));
+	menu->addAction(tr("&High Scores"), this, &Window::showScores, tr("Ctrl+H"));
 	menu->addSeparator();
-	QAction* action = menu->addAction(tr("&Quit"), this, SLOT(close()), tr("Ctrl+Q"));
+	QAction* action = menu->addAction(tr("&Quit"), this, &Window::close, tr("Ctrl+Q"));
 	action->setMenuRole(QAction::QuitRole);
 	monitorVisibility(menu);
 
@@ -539,18 +539,18 @@ Window::Window(const QString& file)
 	counts_action->setCheckable(true);
 	counts_action->setChecked(true);
 	connect(counts_action, &QAction::toggled, m_board, &Board::setShowWordCounts);
-	menu->addAction(tr("&Board Language..."), this, SLOT(showLanguage()));
+	menu->addAction(tr("&Board Language..."), this, &Window::showLanguage);
 	menu->addSeparator();
-	menu->addAction(tr("Application &Language..."), this, SLOT(showLocale()));
+	menu->addAction(tr("Application &Language..."), this, &Window::showLocale);
 	monitorVisibility(menu);
 
 	// Create help menu
 	menu = menuBar()->addMenu(tr("&Help"));
-	menu->addAction(tr("&Controls"), this, SLOT(showControls()));
+	menu->addAction(tr("&Controls"), this, &Window::showControls);
 	menu->addSeparator();
-	action = menu->addAction(tr("&About"), this, SLOT(about()));
+	action = menu->addAction(tr("&About"), this, &Window::about);
 	action->setMenuRole(QAction::AboutRole);
-	action = menu->addAction(tr("About &Qt"), qApp, SLOT(aboutQt()));
+	action = menu->addAction(tr("About &Qt"), qApp, &QApplication::aboutQt);
 	action->setMenuRole(QAction::AboutQtRole);
 	monitorVisibility(menu);
 
