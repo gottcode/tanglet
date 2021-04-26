@@ -16,4 +16,5 @@ A word finding game.
 
    introduction
    howtoplay
+   configuration
    credits
