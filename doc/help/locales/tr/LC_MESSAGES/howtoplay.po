@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)  2021 Graeme Gott
+# This file is distributed under the same license as the Tanglet package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tanglet \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-24 10:07-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../howtoplay.rst:2
+msgid "How to Play"
+msgstr ""
+
+#: ../howtoplay.rst:5
+msgid "Using the Mouse"
+msgstr ""
+
+#: ../howtoplay.rst:7
+msgid "**Select a word:** Click on the letters of a word."
+msgstr "**Kelime seçimi:** Kelimenin harflerine tıklanılır."
+
+#: ../howtoplay.rst:9
+msgid "**Make a guess:** Click on the last selected letter."
+msgstr "**Tahmin yürütme:** Son seçilen harfe tıklanılır."
+
+#: ../howtoplay.rst:11
+msgid "**Erase letters:** Click on an earlier selected letter."
+msgstr "**Harfleri silme:** Önceki seçilen harfe tıklanılır."
+
+#: ../howtoplay.rst:13
+msgid "**Clear the word:** Click twice on the first selected letter."
+msgstr "**Kelimeyi silme:** İlk seçilen harfe çift tıklanılır."
+
+#: ../howtoplay.rst:16
+msgid "Using the Keyboard"
+msgstr ""
+
+#: ../howtoplay.rst:18
+msgid "**Select a word:** Type the letters of a word."
+msgstr "**Kelime seçimi:** Kelimenin harfi girilir."
+
+#: ../howtoplay.rst:20
+msgid "**Make a guess:** Press Enter."
+msgstr "**Tahmin yürütme:** Enter'a basılır."
+
+#: ../howtoplay.rst:22
+msgid "**Clear the word:** Press Ctrl+Backspace."
+msgstr "**Kelimeyi silme:** Ctrl+Backspace tuşlarına basılır."
+

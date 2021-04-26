@@ -4,4 +4,4 @@
 
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = tools wordlists src
+SUBDIRS = tools wordlists src doc/help

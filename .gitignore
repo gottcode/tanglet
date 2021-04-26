@@ -3,5 +3,7 @@ build
 tanglet
 /data/*/dice
 /data/*/words
+.doctrees
+*.mo
 *.qm
 *~

@@ -92,7 +92,10 @@ macx {
 	GAME_DATA.files = ../data
 	GAME_DATA.path = Contents/Resources
 
-	QMAKE_BUNDLE_DATA += GAME_DATA
+	USER_MANUAL.files = ../doc/help/html/*
+	USER_MANUAL.path = Contents/Resources/doc
+
+	QMAKE_BUNDLE_DATA += GAME_DATA USER_MANUAL
 } else:win32 {
 	RC_ICONS = ../icons/tanglet.ico
 	QMAKE_TARGET_DESCRIPTION = "Word finding game"
@@ -134,5 +137,8 @@ macx {
 	man.files = ../doc/tanglet.6
 	man.path = $$PREFIX/share/man/man6
 
-	INSTALLS += target icon pixmap mime desktop appdata data qm man
+	usermanual.files = ../doc/help/html/*
+	usermanual.path = $$PREFIX/share/doc/tanglet/
+
+	INSTALLS += target icon pixmap mime desktop appdata data qm man usermanual
 }

@@ -17,6 +17,7 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QApplication>
+#include <QDesktopServices>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QDragEnterEvent>
@@ -546,7 +547,7 @@ Window::Window(const QString& file)
 
 	// Create help menu
 	menu = menuBar()->addMenu(tr("&Help"));
-	menu->addAction(tr("&Controls"), this, &Window::showControls);
+	menu->addAction(tr("&Contents"), this, &Window::showHelp, QKeySequence::HelpContents);
 	menu->addSeparator();
 	action = menu->addAction(tr("&About"), this, &Window::about);
 	action->setMenuRole(QAction::AboutRole);
@@ -909,19 +910,50 @@ void Window::showLocale()
 
 //-----------------------------------------------------------------------------
 
-void Window::showControls()
+void Window::showHelp()
 {
-	QMessageBox::information(this, tr("Controls"), tr(
-		"<p><b><big>Mouse Play:</big></b><br>"
-		"<b>Select a word:</b> Click on the letters of a word.<br>"
-		"<b>Make a guess:</b> Click on the last selected letter.<br>"
-		"<b>Erase letters:</b> Click on an earlier selected letter.<br>"
-		"<b>Clear the word:</b> Click twice on the first selected letter.</p>"
-		"<p><b><big>Keyboard Play:</big></b><br>"
-		"<b>Select a word:</b> Type the letters of a word.<br>"
-		"<b>Make a guess:</b> Press Enter.<br>"
-		"<b>Clear the word:</b> Press Ctrl+Backspace.</p>"
-	));
+	setPaused(true);
+
+	// Find documentation path
+	static QString docdir;
+
+	if (docdir.isEmpty()) {
+		const QString appdir = "doc/" + QCoreApplication::applicationName().toLower();
+		const QStringList paths {
+			QCoreApplication::applicationDirPath() + "/../share/" + appdir, // relocatable Linux
+			QStandardPaths::locate(QStandardPaths::GenericDataLocation, appdir, QStandardPaths::LocateDirectory), // Linux
+			QStandardPaths::locate(QStandardPaths::AppDataLocation, "doc", QStandardPaths::LocateDirectory) // Windows and macOS
+		};
+
+		for (const QString& path : paths) {
+			if (!path.isEmpty() && QFile::exists(path + "/en/index.html")) {
+				docdir = path;
+				break;
+			}
+		}
+	}
+
+	// Find documentation for locale, fall back to English
+	static QString docpath;
+
+	if (docpath.isEmpty() && !docdir.isEmpty()) {
+		QString name = QLocale().name();
+		if (!QFile::exists(docdir + "/" + name + "/index.html")) {
+			name = name.section('_', 0, 0);
+			if (name.isEmpty() || !QFile::exists(docdir + "/" + name + "/index.html")) {
+				name = "en";
+			}
+		}
+		docpath = docdir + "/" + name + "/index.html";
+	}
+
+	// Inform player of missing documentation
+	if (docpath.isEmpty()) {
+		QMessageBox::warning(this, tr("Sorry"), tr("Unable to find documentation."));
+		return;
+	}
+
+	QDesktopServices::openUrl(docpath);
 }
 
 //-----------------------------------------------------------------------------

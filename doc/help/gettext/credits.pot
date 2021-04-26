@@ -1,0 +1,29 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C)  2021 Graeme Gott
+# This file is distributed under the same license as the Tanglet package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tanglet 1.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-26 15:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../credits.rst:2
+msgid "Credits and License"
+msgstr ""
+
+#: ../credits.rst:4
+msgid "Program copyright 2009-2021 Graeme Gott <graeme@gottcode.org>"
+msgstr ""
+
+#: ../credits.rst:6
+msgid "This program is licensed under the terms of the `GNU General Public License <http://www.gnu.org/licenses/gpl.html>`_."
+msgstr ""

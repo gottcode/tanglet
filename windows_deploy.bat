@@ -20,6 +20,11 @@ SET TRANSLATIONS=%APP%\translations
 MKDIR %TRANSLATIONS%
 COPY translations\*.qm %TRANSLATIONS% >nul
 
+ECHO Copying user manual
+SET MANUAL= %APP%\doc
+MKDIR %MANUAL%
+XCOPY /Q /S /Y doc\help\html %MANUAL% >nul
+
 ECHO Copying Qt
 %QTDIR%\bin\windeployqt.exe --verbose 0 --no-opengl-sw --no-system-d3d-compiler --no-svg %APP%\%APP%.exe
 RMDIR /S /Q %APP%\imageformats

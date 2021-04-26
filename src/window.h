@@ -142,9 +142,9 @@ private slots:
 	void showLocale();
 
 	/**
-	 * Shows a dialog describing the gameplay controls.
+	 * Opens the user manual in a web browser.
 	 */
-	void showControls();
+	void showHelp();
 
 	/**
 	 * Inform player that the word list is being optimized.
