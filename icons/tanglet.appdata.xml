@@ -110,19 +110,29 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.6.1" date="2021-05-02">
+      <description>
+        <ul>
+          <li>FIXED: Did not load entire English word list</li>
+          <li>FIXED: Tabs had scroll buttons</li>
+          <li>Added CMake buildsystem for Qt6</li>
+          <li>Word list updates: French</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.0" date="2021-04-09">
       <description>
         <ul>
-          <li>FIXED: Could not type name in scores dialog.</li>
-          <li>FIXED: Out of bounds errors in solver.</li>
-          <li>Added tabs to high scores.</li>
-          <li>Added unlimited timer mode.</li>
-          <li>Added option to reset new game to defaults.</li>
-          <li>Added support for Qt 6.</li>
-          <li>Optimized reading word list.</li>
-          <li>Refactored code.</li>
-          <li>Translation updates: German, Indonesian, Lithuanian, Polish, Romanian, Turkish, Ukrainian.</li>
-          <li>Word list updates: Brazilian Portuguese, Catalan, English, French, Greek, Polish, Portuguese, Spanish.</li>
+          <li>FIXED: Could not type name in scores dialog</li>
+          <li>FIXED: Out of bounds errors in solver</li>
+          <li>Added tabs to high scores</li>
+          <li>Added unlimited timer mode</li>
+          <li>Added option to reset new game to defaults</li>
+          <li>Added support for Qt 6</li>
+          <li>Optimized reading word list</li>
+          <li>Refactored code</li>
+          <li>Translation updates: German, Indonesian, Lithuanian, Polish, Romanian, Turkish, Ukrainian</li>
+          <li>Word list updates: Brazilian Portuguese, Catalan, English, French, Greek, Polish, Portuguese, Spanish</li>
         </ul>
       </description>
     </release>

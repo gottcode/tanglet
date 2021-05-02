@@ -1,3 +1,10 @@
+1.6.1
+-----
+* FIXED: Did not load entire English word list.
+* FIXED: Tabs had scroll buttons.
+* Added CMake buildsystem for Qt6.
+* Word list updates: French.
+
 1.6.0
 -----
 * FIXED: Could not type name in scores dialog.

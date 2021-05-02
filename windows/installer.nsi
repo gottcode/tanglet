@@ -4,7 +4,7 @@
 !define APPNAME "Tanglet"
 !define VERSIONMAJOR 1
 !define VERSIONMINOR 6
-!define VERSIONPATCH 0
+!define VERSIONPATCH 1
 !define APPVERSION "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONPATCH}"
 !define ABOUTURL "https://gottcode.org/tanglet/"
 
@@ -70,7 +70,7 @@ Var StartMenuFolder
 ;Pages
 
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "..\LICENSES\GPL-3.0-or-later.txt"
+!insertmacro MUI_PAGE_LICENSE "..\COPYING"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 !insertmacro MUI_PAGE_INSTFILES
