@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16.0)
 
 # Configure project
-project(tanglet VERSION 1.6.1 LANGUAGES CXX)
+project(tanglet VERSION 1.6.1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
