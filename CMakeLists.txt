@@ -78,6 +78,7 @@ if(UNIX AND NOT APPLE)
 	install(FILES icons/tanglet.xpm DESTINATION ${CMAKE_INSTALL_DATADIR}/pixmaps)
 	install(FILES icons/tanglet.appdata.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
 	install(FILES icons/tanglet.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+	install(FILES icons/tanglet.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/mime/packages)
 elseif(WIN32)
 	# Use Qt6 macro until CMake provides something
 	# https://bugreports.qt.io/browse/QTBUG-87618
