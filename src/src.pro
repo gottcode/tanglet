@@ -115,9 +115,6 @@ macx {
 	icon.files = ../icons/hicolor/*
 	icon.path = $$PREFIX/share/icons/hicolor/
 
-	pixmap.files = ../icons/tanglet.xpm
-	pixmap.path = $$PREFIX/share/pixmaps/
-
 	mime.files = ../icons/tanglet.xml
 	mime.path = $$PREFIX/share/mime/packages/
 
@@ -134,5 +131,5 @@ macx {
 	man.files = ../doc/tanglet.6
 	man.path = $$PREFIX/share/man/man6
 
-	INSTALLS += target icon pixmap mime desktop appdata data qm man
+	INSTALLS += target icon mime desktop appdata data qm man
 }
