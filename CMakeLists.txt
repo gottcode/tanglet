@@ -15,11 +15,13 @@ if(UNIX AND NOT APPLE)
 	include(GNUInstallDirs)
 endif()
 
-add_compile_definitions(
-	QT_STRICT_ITERATORS
-	QT_NO_NARROWING_CONVERSIONS_IN_CONNECT
-	QT_DISABLE_DEPRECATED_BEFORE=0x060000
-)
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	add_compile_definitions(
+		QT_STRICT_ITERATORS
+		QT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+		QT_DISABLE_DEPRECATED_BEFORE=0x060000
+	)
+endif()
 
 # Create translations
 file(GLOB translations_SRCS translations/*.ts)
