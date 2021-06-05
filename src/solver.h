@@ -10,8 +10,8 @@
 #include "trie.h"
 
 #include <QHash>
+#include <QList>
 #include <QPoint>
-#include <QVector>
 
 /**
  * @brief The Solver class finds all of the words on a board.
@@ -24,7 +24,7 @@ class Solver
 	struct Cell
 	{
 		QString text; /**< text of the letter */
-		QVector<Cell*> neighbors; /**< which letters are connected to this one */
+		QList<Cell*> neighbors; /**< which letters are connected to this one */
 		QPoint position; /**< location on the board */
 		bool checked; /**< has it been used while building a word */
 	};
@@ -92,7 +92,7 @@ private:
 	int m_size; /**< how many cells wide is the board */
 	int m_minimum; /**< the shortest allowed word */
 	bool m_track_positions; /**< remember locations of each word when solving */
-	QVector<QVector<Cell>> m_cells; /**< layout of board */
+	QList<QList<Cell>> m_cells; /**< layout of board */
 
 	QString m_word; /**< word currently being assembled */
 	QList<QPoint> m_positions; /**< locations of letters in word being assembled */

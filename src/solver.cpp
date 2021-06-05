@@ -48,7 +48,7 @@ Solver::Solver(const Trie& words, int size, int minimum)
 	}
 
 	// Create cells
-	m_cells = QVector<QVector<Cell>>(m_size, QVector<Cell>(m_size));
+	m_cells = QList<QList<Cell>>(m_size, QList<Cell>(m_size));
 	for (int r = 0; r < m_size; ++r) {
 		for (int c = 0; c < m_size; ++c) {
 			int index = (r * m_size) + c;

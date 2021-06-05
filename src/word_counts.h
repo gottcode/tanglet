@@ -61,7 +61,7 @@ private:
 
 private:
 	bool m_show_max; /**< whether to show the maximum scores available for each length */
-	QVector<Group> m_groups; /**< collection of word lengths */
+	QList<Group> m_groups; /**< collection of word lengths */
 };
 
 #endif // TANGLET_WORD_COUNTS_H

@@ -330,7 +330,7 @@ void Board::gameStarted()
 	m_clock->setTimer(m_generator->timer());
 	if (m_generator->size() != m_size) {
 		m_size = m_generator->size();
-		m_cells = QVector<QVector<Letter*>>(m_size, QVector<Letter*>(m_size));
+		m_cells = QList<QList<Letter*>>(m_size, QList<Letter*>(m_size));
 		m_maximum = m_size * m_size;
 		m_guess->setMaxLength(m_maximum);
 	}

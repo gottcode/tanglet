@@ -31,8 +31,8 @@
 
 //-----------------------------------------------------------------------------
 
-QVector<int> ScoresDialog::m_max(Clock::TotalTimers, -1);
-QVector<int> ScoresDialog::m_min(Clock::TotalTimers, -1);
+QList<int> ScoresDialog::m_max(Clock::TotalTimers, -1);
+QList<int> ScoresDialog::m_min(Clock::TotalTimers, -1);
 
 //-----------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 	divider->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	m_scores_layout->addWidget(divider, 2, 0, 1, TotalColumns);
 
-	QVector<Qt::Alignment> alignments(TotalColumns, Qt::AlignTrailing);
+	QList<Qt::Alignment> alignments(TotalColumns, Qt::AlignTrailing);
 	alignments[NameColumn] = Qt::AlignLeading;
 	alignments[SizeColumn] = Qt::AlignHCenter;
 	for (int r = 0; r < 10; ++r) {
@@ -374,7 +374,7 @@ void ScoresDialog::migrate()
 	const QStringList data = settings.value("Scores/Values").toStringList();
 	settings.remove("Scores/Values");
 
-	QVector<int> indexes(Clock::TotalTimers, 0);
+	QList<int> indexes(Clock::TotalTimers, 0);
 
 	for (const QString& s : data) {
 		const QStringList values = s.split(':');

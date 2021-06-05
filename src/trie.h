@@ -10,7 +10,6 @@
 #include <QChar>
 #include <QHash>
 #include <QStringList>
-#include <QVector>
 class QDataStream;
 
 /**
@@ -134,7 +133,7 @@ private:
 	void checkNodes();
 
 private:
-	QVector<Node> m_nodes; /**< list of nodes */
+	QList<Node> m_nodes; /**< list of nodes */
 	QStringList m_spellings; /**< list of words */
 };
 

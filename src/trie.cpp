@@ -65,7 +65,7 @@ public:
 	 * @param [out] nodes the compressed list of nodes
 	 * @param [out] spellings the list of spellings
 	 */
-	void run(QVector<Trie::Node>& nodes, QStringList& spellings) const;
+	void run(QList<Trie::Node>& nodes, QStringList& spellings) const;
 
 private:
 	/**
@@ -169,7 +169,7 @@ void TrieGenerator::addWord(const QString& word, const QStringList& spellings)
 
 //-----------------------------------------------------------------------------
 
-void TrieGenerator::run(QVector<Trie::Node>& nodes, QStringList& spellings) const
+void TrieGenerator::run(QList<Trie::Node>& nodes, QStringList& spellings) const
 {
 	std::queue<std::pair<const TrieGenerator*, int>> next;
 	nodes.append(Trie::Node());

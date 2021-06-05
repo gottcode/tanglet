@@ -181,8 +181,8 @@ private:
 
 	QString m_default_name; /**< the default name */
 
-	static QVector<int> m_max; /**< the largest high score */
-	static QVector<int> m_min; /**< the smallest high score */
+	static QList<int> m_max; /**< the largest high score */
+	static QList<int> m_min; /**< the smallest high score */
 };
 
 #endif // TANGLET_SCORES_DIALOG_H

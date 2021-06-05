@@ -208,7 +208,7 @@ private:
 	Clock* m_clock; /**< shows the time remaining in the game */
 	View* m_view; /**< game area that shows the letters */
 	QLabel* m_score; /**< shows how many points the player has earned */
-	QVector<QVector<Letter*>> m_cells; /**< contains the letters that make up the board */
+	QList<QList<Letter*>> m_cells; /**< contains the letters that make up the board */
 	QLineEdit* m_guess; /**< allows players to type a guess instead of click on it */
 	QTabWidget* m_tabs; /**< tabs containing the word lists */
 	WordTree* m_found; /**< list of found words */
