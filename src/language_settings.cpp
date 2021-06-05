@@ -64,9 +64,6 @@ void LanguageSettings::loadDefaults()
 
 	if (m_dictionary.isEmpty()) {
 		QSettings settings(QString("tanglet:%1/language.ini").arg(m_language), QSettings::IniFormat);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-		settings.setIniCodec("UTF-8");
-#endif
 		m_dictionary = settings.value("Language/Dictionary").toString();
 	}
 	if (m_dictionary.isEmpty()) {

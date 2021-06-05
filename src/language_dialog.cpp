@@ -35,9 +35,6 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	const QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 	for (const QString& language : languages) {
 		QSettings settings(QString("tanglet:%1/language.ini").arg(language), QSettings::IniFormat);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-		settings.setIniCodec("UTF-8");
-#endif
 		QString name = settings.value("Language/Name").toString();
 		if (name.isEmpty()) {
 			name = QLocale(language).nativeLanguageName();

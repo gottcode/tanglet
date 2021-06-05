@@ -139,11 +139,7 @@ void WordTree::mouseMoveEvent(QMouseEvent* event)
 void WordTree::wheelEvent(QWheelEvent* event)
 {
 	QTreeWidget::wheelEvent(event);
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
 	enterItem(itemAt(event->position().toPoint()));
-#else
-	enterItem(itemAt(event->pos()));
-#endif
 }
 
 //-----------------------------------------------------------------------------

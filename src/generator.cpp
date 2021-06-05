@@ -76,13 +76,8 @@ struct State
 		} else {
 			const int index1 = m_random->bounded(m_dice.count());
 			const int index2 = m_random->bounded(m_dice.count());
-#if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
 			m_dice.swapItemsAt(index1, index2);
 			m_letters.swapItemsAt(index1, index2);
-#else
-			m_dice.swap(index1, index2);
-			m_letters.swap(index1, index2);
-#endif
 		}
 		solve();
 	}
@@ -270,15 +265,8 @@ void Generator::update()
 		QFile file(dice_path);
 		if (file.open(QFile::ReadOnly | QIODevice::Text)) {
 			QTextStream stream(&file);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-			stream.setCodec("UTF-8");
-#endif
 			while (!stream.atEnd()) {
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
 				const QStringList line = stream.readLine().split(',', Qt::SkipEmptyParts);
-#else
-				const QStringList line = stream.readLine().split(',', QString::SkipEmptyParts);
-#endif
 				if (line.count() == 6) {
 					dice.append(line);
 				}

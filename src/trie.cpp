@@ -104,15 +104,8 @@ TrieGenerator::TrieGenerator(const QByteArray& data)
 	, m_count(0)
 {
 	QTextStream stream(data);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-	stream.setCodec("UTF-8");
-#endif
 	while (!stream.atEnd()) {
-#if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
 		QStringList spellings = stream.readLine().simplified().split(QChar(' '), Qt::SkipEmptyParts);
-#else
-		QStringList spellings = stream.readLine().simplified().split(QChar(' '), QString::SkipEmptyParts);
-#endif
 		if (spellings.isEmpty()) {
 			continue;
 		}

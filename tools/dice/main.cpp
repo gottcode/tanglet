@@ -32,31 +32,6 @@ public:
 	explicit Exception(const char* what_arg) : runtime_error(what_arg) { }
 };
 
-namespace std
-{
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-template <>
-struct hash<QChar>
-{
-	size_t operator()(const QChar& k) const
-	{
-		return qHash(k);
-	}
-};
-#endif
-
-#if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
-template <>
-struct hash<QString>
-{
-	size_t operator()(const QString& k) const
-	{
-		return qHash(k);
-	}
-};
-#endif
-}
-
 //-----------------------------------------------------------------------------
 
 std::vector<QString> readWords(const QString& path)
@@ -88,9 +63,6 @@ std::vector<QString> readWords(const QString& path)
 	// Find words
 	std::vector<QString> words;
 	QTextStream stream(&data);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-	stream.setCodec("UTF-8");
-#endif
 	while (!stream.atEnd()) {
 		words.push_back(stream.readLine().trimmed().split(' ').first().toUpper());
 	}
@@ -108,9 +80,6 @@ void saveDice(const QString& path, const std::vector<QString>& small, const std:
 	}
 
 	QTextStream stream(&out);
-#if (QT_VERSION < QT_VERSION_CHECK(6,0,0))
-	stream.setCodec("UTF-8");
-#endif
 
 	for (const QString& line : small) {
 		stream << line << '\n';
