@@ -56,6 +56,7 @@ Comment[ro]=Variantă de joc Boggle într-un singur jucător
 Comment[ru]=Вариант игры в Боггл
 Comment[tr]=Boggle'ın tek oyuncu çeştilemesidir
 Comment[uk]=Варіант Boggle для одного гравця
+TryExec=tanglet
 Exec=tanglet %f
 Icon=tanglet
 Terminal=false
