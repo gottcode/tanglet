@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2022 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -715,7 +715,7 @@ void Window::about()
 		QString("<center><p><big><b>%1</b></big><br/>%2<br/><small>%3<br/>%4</small></p><p>%5</p><p>%6</p></center>")
 		.arg(tr("Tanglet %1").arg(QCoreApplication::applicationVersion()),
 			tr("A single player variant of <a href=\"http://en.wikipedia.org/wiki/Boggle\">Boggle</a>"),
-			tr("Copyright &copy; 2009-%1 Graeme Gott").arg("2021"),
+			tr("Copyright &copy; 2009-%1 Graeme Gott").arg("2022"),
 			tr("Released under the <a href=\"http://www.gnu.org/licenses/gpl.html\">GPL 3</a> license"),
 			tr("English word list is based on <a href=\"http://wordlist.sourceforge.net/\">SCOWL</a> by Kevin Atkinson"),
 			tr("Hebrew word list is based on <a href=\"http://hspell.ivrix.org.il/\">Hspell</a> by Nadav Har'El and Dan Kenigsberg"))
