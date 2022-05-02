@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it" sourcelanguage="en">
+<TS version="2.1" language="it_IT" sourcelanguage="en">
 <context>
     <name>Board</name>
     <message>
@@ -139,10 +139,6 @@
         <translation>Disciplina</translation>
     </message>
     <message>
-        <source>Unlimited</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Conto alla rovescia da 30 secondi e aumenta su risposte corrette.</translation>
     </message>
@@ -171,8 +167,12 @@
         <translation>Conto alla rovescia da 30 secondi e cresce o decresce in base alle risposte.</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation>Illimitato</translation>
+    </message>
+    <message>
         <source>Game ends when all words are found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il gioco termina quando vengono trovate tutte le parole.</translation>
     </message>
 </context>
 <context>
@@ -293,10 +293,6 @@
         <translation>Punteggi massimi</translation>
     </message>
     <message>
-        <source>Rank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
         <translation>Nome</translation>
     </message>
@@ -305,40 +301,44 @@
         <translation>Punteggio</translation>
     </message>
     <message>
-        <source>Maximum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
+        <source>#%1</source>
+        <translation>#%1</translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <translation>Classifica</translation>
+    </message>
+    <message>
+        <source>Maximum</source>
+        <translation>Massimo</translation>
+    </message>
+    <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione</translation>
     </message>
     <message>
         <source>Congratulations!</source>
-        <translation type="unfinished"></translation>
+        <translation>Congratulazioni!</translation>
     </message>
     <message>
         <source>You beat your top score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hai battuto il tuo punteggio più alto!</translation>
     </message>
     <message>
         <source>Well done!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ben fatto!</translation>
     </message>
     <message>
         <source>You have a new high score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hai un nuovo record!</translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>#%1</source>
-        <translation>#%1</translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
@@ -573,7 +573,7 @@
     </message>
     <message>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+H</translation>
     </message>
 </context>
 <context>

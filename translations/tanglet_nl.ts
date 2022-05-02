@@ -139,10 +139,6 @@
         <translation>Vriezen of dooien</translation>
     </message>
     <message>
-        <source>Unlimited</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
         <translation>Begint op 30 seconden, neemt toe bij een goed antwoord.</translation>
     </message>
@@ -171,8 +167,12 @@
         <translation>Begint op 30 seconden, neemt toe of af afhankelijk van het antwoord.</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation>Ongelimiteerd</translation>
+    </message>
+    <message>
         <source>Game ends when all words are found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het spel stopt als alle woorden gevonden zijn.</translation>
     </message>
 </context>
 <context>
@@ -293,10 +293,6 @@
         <translation>Topscores</translation>
     </message>
     <message>
-        <source>Rank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
         <translation>Naam</translation>
     </message>
@@ -305,40 +301,44 @@
         <translation>Score</translation>
     </message>
     <message>
-        <source>Maximum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
+        <source>#%1</source>
+        <translation>%1</translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <translation>Stand</translation>
+    </message>
+    <message>
+        <source>Maximum</source>
+        <translation>Maximum</translation>
+    </message>
+    <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Grootte</translation>
     </message>
     <message>
         <source>Congratulations!</source>
-        <translation type="unfinished"></translation>
+        <translation>Gefeliciteerd</translation>
     </message>
     <message>
         <source>You beat your top score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je bent de nieuwe top score!</translation>
     </message>
     <message>
         <source>Well done!</source>
-        <translation type="unfinished"></translation>
+        <translation>Goed gedaan!</translation>
     </message>
     <message>
         <source>You have a new high score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je hebt een nieuwe top score!</translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>#%1</source>
-        <translation>%1</translation>
+        <translation>N/A</translation>
     </message>
 </context>
 <context>
@@ -573,7 +573,7 @@
     </message>
     <message>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-H</translation>
     </message>
 </context>
 <context>

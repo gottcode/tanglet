@@ -307,7 +307,7 @@
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"></translation>
+        <translation>Оцінка</translation>
     </message>
     <message>
         <source>Date</source>
@@ -319,11 +319,11 @@
     </message>
     <message>
         <source>Rank</source>
-        <translation type="unfinished"></translation>
+        <translation>Ранг</translation>
     </message>
     <message>
         <source>Maximum</source>
-        <translation type="unfinished"></translation>
+        <translation>Максимум</translation>
     </message>
     <message>
         <source>Size</source>
@@ -554,11 +554,11 @@
     </message>
     <message>
         <source>Word Density:</source>
-        <translation type="unfinished"></translation>
+        <translation>Щільність слів:</translation>
     </message>
     <message>
         <source>Word Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Довжина слова:</translation>
     </message>
     <message>
         <source>%1 or more letters</source>
