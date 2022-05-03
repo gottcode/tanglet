@@ -4,7 +4,7 @@
 
 SET SRCDIR=..\tanglet
 SET APP=Tanglet
-SET VERSION=1.6.1.1
+SET VERSION=1.6.2
 
 ECHO Copying executable
 MKDIR %SRCDIR%\%APP%

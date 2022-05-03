@@ -110,6 +110,16 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.6.2" date="2022-05-03">
+      <description>
+        <ul>
+          <li>Switched to Qt 6</li>
+          <li>Removed XPM icon</li>
+          <li>Translation updates: Dutch, Italian, Ukrainian</li>
+          <li>Word list updates: German, Polish</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.1.1" date="2021-05-02">
       <description>
         <ul>

@@ -1,3 +1,10 @@
+1.6.2
+-----
+* Switched to Qt 6.
+* Removed XPM icon.
+* Translation updates: Dutch, Italian, Ukrainian.
+* Word list updates: German, Polish.
+
 1.6.1.1
 -------
 * FIXED: Mimetype not installed with CMake.
