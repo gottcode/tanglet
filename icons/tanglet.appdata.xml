@@ -101,6 +101,7 @@
   <provides>
     <binary>tanglet</binary>
   </provides>
+  <launchable type="desktop-id">tanglet.desktop</launchable>
 
   <kudos>
     <kudo>HiDpiIcon</kudo>
