@@ -68,7 +68,7 @@ public:
 
 	static QString sizeToString(int size);
 
-public slots:
+public Q_SLOTS:
 	/**
 	 * Sets the visibility of the missed words tab.
 	 * @param show whether to show the missed words
@@ -87,7 +87,7 @@ public slots:
 	 */
 	void setShowWordCounts(bool show);
 
-signals:
+Q_SIGNALS:
 	/**
 	 * Emitted when the game has been generated and is now playable.
 	 */
@@ -116,7 +116,7 @@ signals:
 	 */
 	void pauseAvailable(bool available);
 
-private slots:
+private Q_SLOTS:
 	/**
 	 * Fills the contents of the play area (letters, word lists, maximum scores) after the generator
 	 * thread finishes. It also updates the current game in the settings so that it will resume on

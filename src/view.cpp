@@ -27,7 +27,7 @@ View::View(QGraphicsScene* scene, QWidget* parent)
 void View::mousePressEvent(QMouseEvent* event)
 {
 	QGraphicsView::mousePressEvent(event);
-	emit mousePressed();
+	Q_EMIT mousePressed();
 }
 
 //-----------------------------------------------------------------------------

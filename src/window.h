@@ -73,7 +73,7 @@ protected:
 	 */
 	bool event(QEvent* event) override;
 
-private slots:
+private Q_SLOTS:
 	/**
 	 * Shows a dialog with version information and copyright notices.
 	 */

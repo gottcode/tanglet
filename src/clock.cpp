@@ -971,7 +971,7 @@ void Clock::updateTime()
 		m_update->start();
 	} else {
 		m_update->stop();
-		emit finished();
+		Q_EMIT finished();
 	}
 }
 

@@ -158,7 +158,7 @@ protected:
 	 */
 	void keyPressEvent(QKeyEvent* event) override;
 
-private slots:
+private Q_SLOTS:
 	/**
 	 * Enters the score and saves list of scores once the player has finished entering their name.
 	 */

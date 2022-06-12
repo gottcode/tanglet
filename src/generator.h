@@ -129,7 +129,7 @@ public:
 		return m_timer;
 	}
 
-signals:
+Q_SIGNALS:
 	/**
 	 * Emitted when the word list is being optimized for fast access.
 	 */

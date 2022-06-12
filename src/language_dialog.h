@@ -35,13 +35,13 @@ public:
 	 */
 	static void restoreDefaults();
 
-public slots:
+public Q_SLOTS:
 	/**
 	 * Saves the new language settings.
 	 */
 	void accept() override;
 
-private slots:
+private Q_SLOTS:
 	/**
 	 * Checks if the player has activated the clear button and resets if they have.
 	 * @param button which dialog button the player activated

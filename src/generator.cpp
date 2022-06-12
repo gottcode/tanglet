@@ -312,7 +312,7 @@ void Generator::update()
 
 		// Load uncached words
 		if (m_words.isEmpty()) {
-			emit optimizingStarted();
+			Q_EMIT optimizingStarted();
 
 			m_words = Trie(gunzip(words_path));
 
@@ -330,7 +330,7 @@ void Generator::update()
 				}
 			}
 
-			emit optimizingFinished();
+			Q_EMIT optimizingFinished();
 		}
 
 		if (!m_words.isEmpty()) {

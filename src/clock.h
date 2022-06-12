@@ -142,7 +142,7 @@ public:
 	 */
 	static QString timerScoresGroup(int timer);
 
-signals:
+Q_SIGNALS:
 	/**
 	 * Emitted when the clock reaches @c 0.
 	 */
@@ -155,7 +155,7 @@ protected:
 	 */
 	void paintEvent(QPaintEvent* event) override;
 
-private slots:
+private Q_SLOTS:
 	/**
 	 * Calculates the current time remaining. If finished, it calls stop() to clear the time and
 	 * emits the finished() signal to end the game.

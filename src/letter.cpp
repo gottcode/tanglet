@@ -183,7 +183,7 @@ void Letter::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
 	Q_UNUSED(event);
 	if (m_clickable) {
-		emit clicked(this);
+		Q_EMIT clicked(this);
 	}
 }
 

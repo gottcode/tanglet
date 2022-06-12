@@ -78,7 +78,7 @@ public:
 	 */
 	void setText(const QString& text);
 
-signals:
+Q_SIGNALS:
 	/**
 	 * Emitted when player clicks on letter.
 	 * @param letter the letter instance

@@ -77,7 +77,7 @@ protected:
 	 */
 	void wheelEvent(QWheelEvent* event) override;
 
-private slots:
+private Q_SLOTS:
 	/**
 	 * Handles player clicking on an item. If they click on the second column, it opens a web
 	 * browser at the dictionary definition of the clicked item.

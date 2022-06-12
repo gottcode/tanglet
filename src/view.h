@@ -24,7 +24,7 @@ public:
 	 */
 	explicit View(QGraphicsScene* scene, QWidget* parent = nullptr);
 
-signals:
+Q_SIGNALS:
 	/**
 	 * Emitted when the player clicks on the view.
 	 */

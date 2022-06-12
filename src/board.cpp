@@ -390,7 +390,7 @@ void Board::gameStarted()
 
 	// Clear previous words
 	m_paused = false;
-	emit pauseAvailable(true);
+	Q_EMIT pauseAvailable(true);
 	m_guess_button->setEnabled(true);
 	m_positions.clear();
 	m_found->removeAll();
@@ -434,7 +434,7 @@ void Board::gameStarted()
 	}
 
 	// Start game
-	emit started();
+	Q_EMIT started();
 	if (m_missed->topLevelItemCount() > 0) {
 		m_clock->start();
 		if (settings.contains("TimerDetails/Time")) {
@@ -613,10 +613,10 @@ void Board::finish()
 	m_guess->releaseKeyboard();
 	m_tabs->setTabEnabled(1, true);
 	m_max_score_details->setVisible(m_show_counts && m_clock->timer() == Clock::Allotment);
-	emit pauseAvailable(false);
+	Q_EMIT pauseAvailable(false);
 
 	int score = updateScore();
-	emit finished(score, m_max_score);
+	Q_EMIT finished(score, m_max_score);
 }
 
 //-----------------------------------------------------------------------------

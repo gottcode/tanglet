@@ -36,7 +36,7 @@ public:
 	 */
 	static QString densityString(int density);
 
-private slots:
+private Q_SLOTS:
 	/**
 	 * Tracks the length of the shortest allowed word.
 	 * @param length the player selected word length
