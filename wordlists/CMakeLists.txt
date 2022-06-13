@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2021 Graeme Gott <graeme@gottcode.org>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # Program to generate wordlist
 set(wordlist_SRCS ../tools/wordlist/main.cpp)
 qt6_add_executable(wordlist ${wordlist_SRCS})

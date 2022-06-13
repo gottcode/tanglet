@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2021-2022 Graeme Gott <graeme@gottcode.org>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 cmake_minimum_required(VERSION 3.16)
 
 # Configure project
@@ -21,6 +25,10 @@ add_compile_definitions(
 	$<$<CONFIG:DEBUG>:QT_NO_NARROWING_CONVERSIONS_IN_CONNECT>
 	$<$<CONFIG:DEBUG>:QT_DISABLE_DEPRECATED_BEFORE=0x060300>
 )
+
+# Version number
+include(cmake/AddVersionCompileDefinition.cmake)
+add_version_compile_definition(src/main.cpp VERSIONSTR)
 
 # Create translations
 file(GLOB translations_SRCS translations/*.ts)
@@ -62,8 +70,6 @@ target_link_libraries(tanglet PRIVATE
 	Qt6::Widgets
 	ZLIB::ZLIB
 )
-
-target_compile_definitions(tanglet PRIVATE VERSIONSTR="${PROJECT_VERSION}")
 
 # Create word lists
 add_subdirectory(wordlists)
