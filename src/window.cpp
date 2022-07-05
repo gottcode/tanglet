@@ -39,6 +39,10 @@
 
 //-----------------------------------------------------------------------------
 
+QString Window::m_data_path;
+
+//-----------------------------------------------------------------------------
+
 /**
  * @brief The Window::State class controls which central widget is shown in the main window.
  */
@@ -956,7 +960,7 @@ void Window::gameFinished(int score, int max_score)
 		scores.exec();
 	}
 
-	QDir dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+	QDir dir(m_data_path);
 	dir.remove("current");
 	dir.remove("current-dice");
 	dir.remove("current-words");
@@ -996,7 +1000,7 @@ void Window::startGame(const QString& filename)
 		}
 	} else {
 		// Uncompress requested game
-		QString current = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+		QString current = m_data_path;
 		QDir::home().mkpath(current);
 		current += "/current";
 

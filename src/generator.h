@@ -129,6 +129,15 @@ public:
 		return m_timer;
 	}
 
+	/**
+	 * Sets where to store cached tries.
+	 * @param path location of cache
+	 */
+	static void setTriePath(const QString& path)
+	{
+		m_cache_path = path;
+	}
+
 Q_SIGNALS:
 	/**
 	 * Emitted when the word list is being optimized for fast access.
@@ -159,6 +168,8 @@ protected:
 	void run() override;
 
 private:
+	static QString m_cache_path; /**< where to find cached tries */
+
 	QString m_dice_path; /**< where to load the dice */
 	QString m_words_path; /**< where to load the word list */
 	QString m_dictionary_url; /**< where to look up word definitions */

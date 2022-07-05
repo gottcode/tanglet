@@ -59,6 +59,16 @@ ENDLOCAL
 CD ..
 makensis.exe /V0 windows\installer.nsi
 
+ECHO Making portable
+MKDIR %APP%\Data
+COPY COPYING %APP%\COPYING.txt >nul
+
+ECHO Creating compressed file
+CD %APP%
+7z a -mx=9 %APP%_%VERSION%.zip * >nul
+CD ..
+MOVE %APP%\%APP%_%VERSION%.zip . >nul
+
 ECHO Cleaning up
 RMDIR /S /Q %APP%
 DEL windows\dirs.nsh

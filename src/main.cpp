@@ -4,6 +4,7 @@
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
 
+#include "generator.h"
 #include "language_dialog.h"
 #include "locale_dialog.h"
 #include "scores_dialog.h"
@@ -12,7 +13,9 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDir>
+#include <QFileInfo>
 #include <QSettings>
+#include <QStandardPaths>
 
 int main(int argc, char** argv)
 {
@@ -27,6 +30,7 @@ int main(int argc, char** argv)
 	app.setDesktopFileName("tanglet");
 #endif
 
+	// Find application data
 	const QString appdir = app.applicationDirPath();
 	const QStringList datadirs{
 #if defined(Q_OS_MAC)
@@ -39,18 +43,23 @@ int main(int argc, char** argv)
 #endif
 	};
 
-	QStringList paths;
-	for (const QString& datadir : datadirs) {
-		paths.append(datadir + "/data/");
+	// Handle portability
+	QString userdir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+#ifdef Q_OS_MAC
+	const QFileInfo portable(appdir + "/../../../Data");
+#else
+	const QFileInfo portable(appdir + "/Data");
+#endif
+	if (portable.exists() && portable.isWritable()) {
+		userdir = portable.absoluteFilePath();
+		QSettings::setDefaultFormat(QSettings::IniFormat);
+		QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, userdir + "/Settings");
 	}
-	QDir::setSearchPaths("tanglet", paths);
 
+	// Load application language
 	LocaleDialog::loadTranslator("tanglet_", datadirs);
 
-	LanguageDialog::restoreDefaults();
-
-	ScoresDialog::migrate();
-
+	// Handle commandline
 	QCommandLineParser parser;
 	parser.setApplicationDescription(QCoreApplication::translate("main", "Word finding game"));
 	parser.addHelpOption();
@@ -58,6 +67,30 @@ int main(int argc, char** argv)
 	parser.addPositionalArgument("file", QCoreApplication::translate("main", "A game file to play."), "[file]");
 	parser.process(app);
 
+	// Find word lists
+	QStringList paths;
+	for (const QString& datadir : datadirs) {
+		paths.append(datadir + "/data/");
+	}
+	QDir::setSearchPaths("tanglet", paths);
+
+	// Set where to cache tries
+	if (!QFileInfo::exists(userdir + "/Trie") && QFileInfo::exists(userdir + "/cache")) {
+		QDir dir(userdir);
+		dir.rename("cache", "Trie");
+	}
+	Generator::setTriePath(userdir + "/Trie");
+
+	// Set where to store imported games
+	Window::setDataPath(userdir);
+
+	// Load default board language
+	LanguageDialog::restoreDefaults();
+
+	// Convert old scores to new format
+	ScoresDialog::migrate();
+
+	// Create main window
 	QStringList files = parser.positionalArguments();
 	Window window(files.isEmpty() ? QString() : files.front());
 	window.show();

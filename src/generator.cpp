@@ -19,7 +19,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QSettings>
-#include <QStandardPaths>
 #include <QTextStream>
 
 //-----------------------------------------------------------------------------
@@ -120,6 +119,10 @@ private:
 };
 
 }
+
+//-----------------------------------------------------------------------------
+
+QString Generator::m_cache_path;
 
 //-----------------------------------------------------------------------------
 
@@ -293,9 +296,8 @@ void Generator::update()
 		// Load cached words
 		constexpr quint32 TANGLET_CACHE_MAGICNUMBER = 0x54524945;
 		constexpr quint32 TANGLET_CACHE_VERSION = 2;
-		QString cache_dir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/cache";
 		QString cache_file = QCryptographicHash::hash(words_path.toUtf8(), QCryptographicHash::Sha1).toHex();
-		QFileInfo cache_info(cache_dir + "/" + cache_file);
+		QFileInfo cache_info(m_cache_path + "/" + cache_file);
 		if (cache_info.exists() && (cache_info.lastModified() > QFileInfo(words_path).lastModified())) {
 			QFile file(cache_info.absoluteFilePath());
 			if (file.open(QFile::ReadOnly)) {
@@ -318,7 +320,7 @@ void Generator::update()
 
 			// Cache words
 			if (!m_words.isEmpty()) {
-				QDir::home().mkpath(cache_dir);
+				QDir::home().mkpath(m_cache_path);
 				QFile file(cache_info.absoluteFilePath());
 				if (file.open(QFile::WriteOnly)) {
 					QDataStream stream(&file);

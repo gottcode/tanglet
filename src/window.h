@@ -46,6 +46,15 @@ public:
 	 */
 	bool eventFilter(QObject* watched, QEvent* event) override;
 
+	/**
+	 * Set where to store imported games.
+	 * @param path location of imported game
+	 */
+	static void setDataPath(const QString& path)
+	{
+		m_data_path = path;
+	}
+
 protected:
 	/**
 	 * Override closeEvent to save window size and position.
@@ -191,6 +200,8 @@ private:
 	State* m_state; /**< current state of the window */
 	State* m_previous_state; /**< previous state of the window */
 	QHash<QString, State*> m_states; /**< available states of the window */
+
+	static QString m_data_path; /**< location of imported game */
 };
 
 #endif // TANGLET_WINDOW_H
