@@ -94,6 +94,8 @@ add_subdirectory(wordlists)
 
 # Install
 if(UNIX AND NOT APPLE)
+	target_compile_definitions(tanglet PRIVATE DATADIR="${CMAKE_INSTALL_FULL_DATADIR}/tanglet")
+
 	target_sources(tanglet PRIVATE icons/icon.qrc)
 
 	install(TARGETS tanglet RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
