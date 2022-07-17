@@ -132,7 +132,7 @@ endif()
 
 # Install
 if(UNIX AND NOT APPLE)
-	target_compile_definitions(tanglet PRIVATE DATADIR="${CMAKE_INSTALL_FULL_DATADIR}/tanglet")
+	file(RELATIVE_PATH datadir ${CMAKE_INSTALL_FULL_BINDIR} ${CMAKE_INSTALL_FULL_DATADIR}/tanglet)
 
 	target_sources(tanglet PRIVATE icons/icon.qrc)
 
@@ -144,6 +144,8 @@ if(UNIX AND NOT APPLE)
 	install(FILES icons/tanglet.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 	install(FILES icons/tanglet.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/mime/packages)
 elseif(WIN32)
+	set(datadir ".")
+
 	# Use Qt6 macro until CMake provides something
 	# https://bugreports.qt.io/browse/QTBUG-87618
 	set_target_properties(tanglet PROPERTIES
@@ -157,3 +159,5 @@ elseif(WIN32)
 	)
 	_qt_internal_generate_win32_rc_file(tanglet)
 endif()
+
+set_property(SOURCE src/main.cpp APPEND PROPERTY COMPILE_DEFINITIONS TANGLET_DATADIR="${datadir}")

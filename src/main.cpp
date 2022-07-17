@@ -32,16 +32,7 @@ int main(int argc, char** argv)
 
 	// Find application data
 	const QString appdir = app.applicationDirPath();
-	const QStringList datadirs{
-#if defined(Q_OS_MAC)
-		appdir + "/../Resources"
-#elif defined(Q_OS_UNIX)
-		DATADIR,
-		appdir + "/../share/tanglet"
-#else
-		appdir
-#endif
-	};
+	const QString datadir = QDir::cleanPath(appdir + "/" + TANGLET_DATADIR);
 
 	// Handle portability
 	QString userdir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
@@ -57,7 +48,7 @@ int main(int argc, char** argv)
 	}
 
 	// Load application language
-	LocaleDialog::loadTranslator("tanglet_", datadirs);
+	LocaleDialog::loadTranslator("tanglet_", datadir);
 
 	// Handle commandline
 	QCommandLineParser parser;
@@ -68,11 +59,7 @@ int main(int argc, char** argv)
 	parser.process(app);
 
 	// Find word lists
-	QStringList paths;
-	for (const QString& datadir : datadirs) {
-		paths.append(datadir + "/data/");
-	}
-	QDir::setSearchPaths("tanglet", paths);
+	QDir::setSearchPaths("tanglet", { datadir + "/data/" });
 
 	// Set where to cache tries
 	if (!QFileInfo::exists(userdir + "/Trie") && QFileInfo::exists(userdir + "/cache")) {
