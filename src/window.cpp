@@ -499,10 +499,14 @@ Window::Window(const QString& file)
 
 	// Create game menu
 	QMenu* menu = menuBar()->addMenu(tr("&Game"));
-	menu->addAction(tr("New &Game..."), this, &Window::newGame, tr("Ctrl+Shift+N"));
-	menu->addAction(tr("&New Roll"), this, &Window::newRoll, QKeySequence::New);
-	menu->addAction(tr("&Choose..."), this, &Window::chooseGame, QKeySequence::Open);
-	menu->addAction(tr("&Share..."), this, &Window::shareGame, QKeySequence::Save);
+	QAction* action = menu->addAction(tr("New &Game..."), this, &Window::newGame);
+	action->setShortcut(tr("Ctrl+Shift+N"));
+	action = menu->addAction(tr("&New Roll"), this, &Window::newRoll);
+	action->setShortcut(QKeySequence::New);
+	action = menu->addAction(tr("&Choose..."), this, &Window::chooseGame);
+	action->setShortcut(QKeySequence::Open);
+	action = menu->addAction(tr("&Share..."), this, &Window::shareGame);
+	action->setShortcut(QKeySequence::Save);
 	menu->addSeparator();
 	QAction* end_action = menu->addAction(tr("&End"), this, &Window::endGame);
 	end_action->setEnabled(false);
@@ -516,9 +520,11 @@ Window::Window(const QString& file)
 	menu->addSeparator();
 	m_details_action = menu->addAction(tr("&Details"), this, &Window::showDetails);
 	m_details_action->setEnabled(false);
-	menu->addAction(tr("&High Scores"), this, &Window::showScores, tr("Ctrl+H"));
+	action = menu->addAction(tr("&High Scores"), this, &Window::showScores);
+	action->setShortcut(tr("Ctrl+H"));
 	menu->addSeparator();
-	QAction* action = menu->addAction(tr("&Quit"), this, &Window::close, tr("Ctrl+Q"));
+	action = menu->addAction(tr("&Quit"), this, &Window::close);
+	action->setShortcut(tr("Ctrl+Q"));
 	action->setMenuRole(QAction::QuitRole);
 	monitorVisibility(menu);
 
