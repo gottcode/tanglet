@@ -59,7 +59,7 @@ int main(int argc, char** argv)
 	parser.process(app);
 
 	// Find word lists
-	QDir::setSearchPaths("tanglet", { datadir + "/data/" });
+	QDir::setSearchPaths("tanglet", { datadir + "/gamedata/" });
 
 	// Set where to cache tries
 	if (!QFileInfo::exists(userdir + "/Trie") && QFileInfo::exists(userdir + "/cache")) {
