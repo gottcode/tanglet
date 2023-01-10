@@ -1,3 +1,11 @@
+1.6.3
+-----
+* Added portable mode.
+* Improved Linux deployment.
+* Replaced deprecated code.
+* Translation updates: Croatian.
+* Word list updates: German, Polish.
+
 1.6.2
 -----
 * Switched to Qt 6.
