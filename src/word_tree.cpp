@@ -102,6 +102,7 @@ void WordTree::removeAll()
 void WordTree::setDictionary(const QString& url)
 {
 	m_url = QUrl::toPercentEncoding(url, "#$%&+,/:;=?@~");
+	m_url.replace("%25", "%"); // work around Qt's decision to force percent encoding of percent symbol (bug 110446)
 }
 
 //-----------------------------------------------------------------------------
