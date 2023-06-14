@@ -115,6 +115,14 @@
   <content_rating type="oars-1.1"/>
 
   <releases>
+    <release version="1.6.4" date="2023-06-14">
+      <description>
+        <ul>
+          <li>FIXED: Definitions did not load properly</li>
+          <li>Word list updates: Polish</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.3" date="2023-01-10">
       <description>
         <ul>

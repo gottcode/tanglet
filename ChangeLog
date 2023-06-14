@@ -1,3 +1,8 @@
+1.6.4
+-----
+* FIXED: Definitions did not load properly.
+* Word list updates: Polish.
+
 1.6.3
 -----
 * Added portable mode.
