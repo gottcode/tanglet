@@ -74,7 +74,7 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 
 	// Hide maximum scores column if showing maximum scores is set to "Never"
 	if (settings.value("ShowMaximumScore").toInt() == 0) {
-		m_scores_layout->itemAtPosition(0, MaxScoreColumn)->widget()->hide();
+		m_scores_layout->itemAtPosition(1, MaxScoreColumn)->widget()->hide();
 		for (int r = 0; r < 10; ++r) {
 			m_score_labels[r][MaxScoreColumn]->hide();
 		}
