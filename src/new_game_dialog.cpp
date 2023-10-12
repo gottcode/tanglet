@@ -212,7 +212,7 @@ void NewGameDialog::restoreDefaults(QAbstractButton* button)
 
 	const QString name = Clock::timerToString(Clock::Tanglet);
 	QCommandLinkButton* timer = nullptr;
-	for (QCommandLinkButton* b : qAsConst(m_timers)) {
+	for (QCommandLinkButton* b : std::as_const(m_timers)) {
 		if (b->text() == name) {
 			timer = b;
 			break;

@@ -169,7 +169,7 @@ Board::~Board()
 
 		QVariantList positions;
 		QString word;
-		for (const QPoint& position : qAsConst(m_positions)) {
+		for (const QPoint& position : std::as_const(m_positions)) {
 			positions.append(position);
 			word.append(m_cells[position.x()][position.y()]->text().toUpper());
 		}
@@ -680,7 +680,7 @@ void Board::letterClicked(Letter* letter)
 		updateClickableStatus();
 
 		QString word;
-		for (const QPoint& position : qAsConst(m_positions)) {
+		for (const QPoint& position : std::as_const(m_positions)) {
 			word.append(m_cells[position.x()][position.y()]->text().toUpper());
 		}
 		m_guess->setText(word);
@@ -850,7 +850,7 @@ void Board::updateClickableStatus()
 			}
 		}
 
-		for (const QPoint& position : qAsConst(m_positions)) {
+		for (const QPoint& position : std::as_const(m_positions)) {
 			m_cells[position.x()][position.y()]->setClickable(true);
 		}
 	}

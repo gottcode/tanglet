@@ -241,7 +241,7 @@ void Trie::checkNodes()
 {
 	// Verify that no nodes reference outside list
 	const quint32 count = m_nodes.size();
-	for (const Node& node : qAsConst(m_nodes)) {
+	for (const Node& node : std::as_const(m_nodes)) {
 		const quint32 start = node.m_children;
 		const quint32 end = start + node.m_child_count;
 		if ((start >= count) || (end > count)) {
