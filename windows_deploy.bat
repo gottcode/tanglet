@@ -22,8 +22,11 @@ MKDIR %APP%\gamedata
 XCOPY /Q /S /Y gamedata %APP%\gamedata >nul
 
 ECHO Copying Qt
-%QTDIR%\bin\windeployqt.exe --verbose 0 --no-opengl-sw --no-system-d3d-compiler --no-svg %APP%\%APP%.exe
-RMDIR /S /Q %APP%\imageformats
+windeployqt.exe --verbose 0 --release --compiler-runtime^
+ --no-opengl-sw --no-system-dxc-compiler --no-system-d3d-compiler^
+ --no-svg^
+ --skip-plugin-types imageformats^
+ %APP%\%APP%.exe
 
 ECHO Creating ReadMe
 TYPE README >> %APP%\ReadMe.txt
