@@ -46,12 +46,12 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 	m_scores_layout->setHorizontalSpacing(18);
 	m_scores_layout->setVerticalSpacing(6);
 	m_scores_layout->setColumnStretch(NameColumn, 1);
-	m_scores_layout->addWidget(new QLabel("<b>" + tr("Rank") + "</b>", this), 1, RankColumn, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel("<b>" + tr("Name") + "</b>", this), 1, NameColumn, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel("<b>" + tr("Score") + "</b>", this), 1, ScoreColumn, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel("<b>" + tr("Maximum") + "</b>", this), 1, MaxScoreColumn, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel("<b>" + tr("Date") + "</b>", this), 1, DateColumn, Qt::AlignCenter);
-	m_scores_layout->addWidget(new QLabel("<b>" + tr("Size") + "</b>", this), 1, SizeColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel("<b>" + ScoresDialog::tr("Rank") + "</b>", this), 1, RankColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel("<b>" + ScoresDialog::tr("Name") + "</b>", this), 1, NameColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel("<b>" + ScoresDialog::tr("Score") + "</b>", this), 1, ScoreColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel("<b>" + ScoresDialog::tr("Maximum") + "</b>", this), 1, MaxScoreColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel("<b>" + ScoresDialog::tr("Date") + "</b>", this), 1, DateColumn, Qt::AlignCenter);
+	m_scores_layout->addWidget(new QLabel("<b>" + ScoresDialog::tr("Size") + "</b>", this), 1, SizeColumn, Qt::AlignCenter);
 
 	QFrame* divider = new QFrame(this);
 	divider->setFrameStyle(QFrame::HLine | QFrame::Sunken);
@@ -61,7 +61,7 @@ ScoresDialog::Page::Page(int timer, QSettings& settings, QWidget* parent)
 	alignments[NameColumn] = Qt::AlignLeading;
 	alignments[SizeColumn] = Qt::AlignHCenter;
 	for (int r = 0; r < 10; ++r) {
-		m_score_labels[r][0] = new QLabel(tr("#%1").arg(r + 1), this);
+		m_score_labels[r][0] = new QLabel(ScoresDialog::tr("#%1").arg(r + 1), this);
 		m_scores_layout->addWidget(m_score_labels[r][0], r + 3, 0, alignments[RankColumn] | Qt::AlignVCenter);
 		for (int c = RankColumn + 1; c < TotalColumns; ++c) {
 			m_score_labels[r][c] = new QLabel("-", this);
@@ -131,9 +131,9 @@ void ScoresDialog::Page::editStart(QLineEdit* playername)
 	QLabel* label = new QLabel(this);
 	label->setAlignment(Qt::AlignCenter);
 	if (m_row == 0) {
-		label->setText(QString("<big>🎉</big> %1<br>%2").arg(tr("Congratulations!"), tr("You beat your top score!")));
+		label->setText(QString("<big>🎉</big> %1<br>%2").arg(ScoresDialog::tr("Congratulations!"), ScoresDialog::tr("You beat your top score!")));
 	} else {
-		label->setText(QString("<big>🙌</big> %1<br>%2").arg(tr("Well done!"), tr("You have a new high score!")));
+		label->setText(QString("<big>🙌</big> %1<br>%2").arg(ScoresDialog::tr("Well done!"), ScoresDialog::tr("You have a new high score!")));
 	}
 	m_scores_layout->addWidget(label, 0, 0, 1, TotalColumns);
 
@@ -213,13 +213,13 @@ void ScoresDialog::Page::updateItems()
 		if (score.max_score > -1) {
 			m_score_labels[r][MaxScoreColumn]->setNum(score.max_score);
 		} else {
-			m_score_labels[r][MaxScoreColumn]->setText(tr("N/A"));
+			m_score_labels[r][MaxScoreColumn]->setText(ScoresDialog::tr("N/A"));
 		}
 		m_score_labels[r][DateColumn]->setText(QLocale().toString(score.date, QLocale::ShortFormat));
 		if (score.size > -1) {
 			m_score_labels[r][SizeColumn]->setText(Board::sizeToString(score.size));
 		} else {
-			m_score_labels[r][SizeColumn]->setText(tr("N/A"));
+			m_score_labels[r][SizeColumn]->setText(ScoresDialog::tr("N/A"));
 		}
 	}
 
