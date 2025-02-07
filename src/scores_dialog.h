@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2025 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -45,6 +45,33 @@ class ScoresDialog : public QDialog
 		int max_score; /**< the maximum score available on the played board */
 		QDateTime date; /**< when the score was made */
 		int size; /**< the size of the board */
+
+		/**
+		 * Constructs a score.
+		 * @param n the player's name
+		 * @param sc the value of the score
+		 * @param max the maximum score available on the played board
+		 * @param dt when the score was made
+		 * @param sz the the size of the board
+		 */
+		Score(const QString& n = QString(), int sc = 0, int max = 0, const QDateTime& dt = QDateTime(), int sz = 0)
+			: score(sc)
+			, max_score(max)
+			, date(dt)
+			, size(sz)
+		{
+			setName(n);
+		}
+
+		/**
+		 * Sets the player name for the score.
+		 * @param text the player name
+		 */
+		void setName(const QString& text)
+		{
+			name = text.simplified();
+			name.remove('\0');
+		}
 	};
 
 	/**

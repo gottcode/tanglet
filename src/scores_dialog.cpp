@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2025 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -109,8 +109,7 @@ bool ScoresDialog::Page::addScore(const QString& name, int score, int max_score,
 		return false;
 	}
 
-	Score s = { name, score, max_score, date, size };
-	m_scores.insert(m_row, s);
+	m_scores.insert(m_row, Score(name, score, max_score, date, size));
 	if (m_scores.size() == 11) {
 		m_scores.removeLast();
 	}
@@ -155,7 +154,7 @@ void ScoresDialog::Page::editFinish(QLineEdit* playername)
 	Q_ASSERT(m_row != -1);
 
 	// Set player name
-	m_scores[m_row].name = playername->text();
+	m_scores[m_row].setName(playername->text());
 	m_score_labels[m_row][1]->setText("<b>" + m_scores[m_row].name + "</b>");
 
 	// Hide lineedit
@@ -165,7 +164,7 @@ void ScoresDialog::Page::editFinish(QLineEdit* playername)
 
 	// Save scores
 	QSettings settings;
-	settings.setValue("Scores/DefaultName", playername->text());
+	settings.setValue("Scores/DefaultName", m_scores[m_row].name);
 	settings.beginWriteArray(Clock::timerScoresGroup(m_timer));
 	for (int r = 0, size = m_scores.size(); r < size; ++r) {
 		const Score& score = m_scores[r];
