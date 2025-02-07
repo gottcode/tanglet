@@ -262,7 +262,7 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 		TCHAR buffer[UNLEN + 1];
 		DWORD count = UNLEN + 1;
 		if (GetUserName(buffer, &count)) {
-			m_default_name = QString::fromWCharArray(buffer, count);
+			m_default_name = QString::fromWCharArray(buffer, count - 1);
 		}
 #endif
 	}
