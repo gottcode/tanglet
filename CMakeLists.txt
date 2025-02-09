@@ -32,6 +32,25 @@ add_version_compile_definition(src/main.cpp VERSIONSTR)
 
 # Create program
 qt_add_executable(tanglet
+	# Headers
+	src/beveled_rect.h
+	src/board.h
+	src/clock.h
+	src/generator.h
+	src/gzip.h
+	src/language_dialog.h
+	src/language_settings.h
+	src/letter.h
+	src/locale_dialog.h
+	src/new_game_dialog.h
+	src/scores_dialog.h
+	src/solver.h
+	src/trie.h
+	src/view.h
+	src/window.h
+	src/word_counts.h
+	src/word_tree.h
+	# Sources
 	src/beveled_rect.cpp
 	src/board.cpp
 	src/clock.cpp
@@ -39,8 +58,8 @@ qt_add_executable(tanglet
 	src/gzip.cpp
 	src/language_dialog.cpp
 	src/language_settings.cpp
-	src/locale_dialog.cpp
 	src/letter.cpp
+	src/locale_dialog.cpp
 	src/new_game_dialog.cpp
 	src/main.cpp
 	src/scores_dialog.cpp
@@ -50,6 +69,7 @@ qt_add_executable(tanglet
 	src/window.cpp
 	src/word_counts.cpp
 	src/word_tree.cpp
+	# Resources
 	icons/icons.qrc
 	${translations_QM}
 )
