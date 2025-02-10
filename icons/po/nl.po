@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Graeme Gott
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # RobertBorst <webmaster@fam-borst.nl>, 2016
 msgid ""
@@ -11,48 +11,39 @@ msgstr ""
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2017-09-21 13:56+0000\n"
 "Last-Translator: RobertBorst <webmaster@fam-borst.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/gottcode/tanglet/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/gottcode/tanglet/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr "Eenpersoonsversie van Boggle"
 
-#: ../tanglet.appdata.xml.in:10
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
-"the game is to list as many words as you can before the time runs out. There "
-"are several timer modes that determine how much time you start with, and if "
-"you get extra time when you find a word."
-msgstr ""
-"Tanglet is een eenpersoonsversie van een woordzoekspel gebaseerd op Boggle. "
-"Het doel van het spel is om zo veel mogelijk woorden op te schrijven voordat "
-"de tijd voorbij is. Er zijn verschillende tijdmodi die bepalen met hoe veel "
-"tijd je begint of wat voor een tijdbonus je krijgt als je een woord vind."
+"the game is to list as many words as you can before the time runs out. There"
+" are several timer modes that determine how much time you start with, and if"
+" you get extra time when you find a word."
+msgstr "Tanglet is een eenpersoonsversie van een woordzoekspel gebaseerd op Boggle. Het doel van het spel is om zo veel mogelijk woorden op te schrijven voordat de tijd voorbij is. Er zijn verschillende tijdmodi die bepalen met hoe veel tijd je begint of wat voor een tijdbonus je krijgt als je een woord vind."
 
-#: ../tanglet.appdata.xml.in:12
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
 "on the board. However, you can not reuse the same letter cells in a single "
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
-msgstr ""
-"Je kunt letters horizontaal, verticaal of diagonaal met elkaar verbinden om "
-"een woord te maken mits de letters naast elkaar liggen op het bord. Je kunt "
-"het letterblokje niet meer dan een keer gebruiken. Verder moet ieder woord "
-"minstens 3 letters zijn op een normaal bord en 4 op een groot bord"
+msgstr "Je kunt letters horizontaal, verticaal of diagonaal met elkaar verbinden om een woord te maken mits de letters naast elkaar liggen op het bord. Je kunt het letterblokje niet meer dan een keer gebruiken. Verder moet ieder woord minstens 3 letters zijn op een normaal bord en 4 op een groot bord."
 
-#: ../tanglet.desktop.in:4
+#: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Woordzoek spel"
 

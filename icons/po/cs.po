@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Graeme Gott
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # fri, 2014-2015
 msgid ""
@@ -11,49 +11,39 @@ msgstr ""
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2017-09-23 20:29+0000\n"
 "Last-Translator: fri\n"
-"Language-Team: Czech (http://www.transifex.com/gottcode/tanglet/language/"
-"cs/)\n"
-"Language: cs\n"
+"Language-Team: Czech (http://www.transifex.com/gottcode/tanglet/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr "Varianta hry Boggle pro jednoho hráče"
 
-#: ../tanglet.appdata.xml.in:10
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
-"the game is to list as many words as you can before the time runs out. There "
-"are several timer modes that determine how much time you start with, and if "
-"you get extra time when you find a word."
-msgstr ""
-"Tanglet je hra o hledání slov postavená na Boogle. Předmětem hry je "
-"sestavení seznamu tolika slov, kolik můžete, předtím než uplyne čas. Pro "
-"časomíru je tu několik režimů, jež určují, kolik času máte na začátku, a "
-"jestli dostanete, když najdete slovo, nějaký čas navíc. "
+"the game is to list as many words as you can before the time runs out. There"
+" are several timer modes that determine how much time you start with, and if"
+" you get extra time when you find a word."
+msgstr "Tanglet je hra o hledání slov postavená na Boogle. Předmětem hry je sestavení seznamu tolika slov, kolik můžete, předtím než uplyne čas. Pro časomíru je tu několik režimů, jež určují, kolik času máte na začátku, a jestli dostanete, když najdete slovo, nějaký čas navíc."
 
-#: ../tanglet.appdata.xml.in:12
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
 "on the board. However, you can not reuse the same letter cells in a single "
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
-msgstr ""
-"Písmena můžete v kterémkoli směru, abyste udělali slovo, spojovat vodorovně, "
-"svisle nebo úhlopříčně tak dlouho, dokud jsou písmena na hrací desce vedle "
-"sebe. Nicméně nemůžete v jednom slově znovu použít to samé písmeno, když už "
-"jste je použili. Každé slovo také musí sestávat z alespoň tří písmen na "
-"obyčejné desce a ze čtyř na velké desce."
+msgstr "Písmena můžete v kterémkoli směru, abyste udělali slovo, spojovat vodorovně, svisle nebo úhlopříčně tak dlouho, dokud jsou písmena na hrací desce vedle sebe. Nicméně nemůžete v jednom slově znovu použít to samé písmeno, když už jste je použili. Každé slovo také musí sestávat z alespoň tří písmen na obyčejné desce a ze čtyř na velké desce."
 
-#: ../tanglet.desktop.in:4
+#: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Hra o hledání slov"
 

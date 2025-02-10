@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Graeme Gott
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Rui <xymarior@yandex.com>, 2018
 msgid ""
@@ -11,50 +11,39 @@ msgstr ""
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2018-04-26 03:57+0000\n"
 "Last-Translator: Rui <xymarior@yandex.com>\n"
-"Language-Team: Portuguese (Portugal) (http://www.transifex.com/gottcode/"
-"tanglet/language/pt_PT/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/gottcode/tanglet/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr "Uma variante do jogo Parole"
 
-#: ../tanglet.appdata.xml.in:10
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
-"the game is to list as many words as you can before the time runs out. There "
-"are several timer modes that determine how much time you start with, and if "
-"you get extra time when you find a word."
-msgstr ""
-"O Tanglet é um jogo de um só jogador para encontrar palavras, baseado no "
-"jogo Parole. O objetivo do jogo é encontrar o máximo de palavras possível "
-"antes do tempo se esgotar. Existem vários modos de temporizador que "
-"determinam o tempo com que se começa e se se obtém tempo extra quando se "
-"encontra uma palavra."
+"the game is to list as many words as you can before the time runs out. There"
+" are several timer modes that determine how much time you start with, and if"
+" you get extra time when you find a word."
+msgstr "O Tanglet é um jogo de um só jogador para encontrar palavras, baseado no jogo Parole. O objetivo do jogo é encontrar o máximo de palavras possível antes do tempo se esgotar. Existem vários modos de temporizador que determinam o tempo com que se começa e se se obtém tempo extra quando se encontra uma palavra."
 
-#: ../tanglet.appdata.xml.in:12
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
 "on the board. However, you can not reuse the same letter cells in a single "
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
-msgstr ""
-"Pode-se juntar letras na horizontal, vertical e diagonal em qualquer direção "
-"para formar uma palavra, desde que as letras estejam logo na casa seguinte "
-"do tabuleiro. No entanto, não se pode tornar a usar uma letra de uma casa já "
-"selecionada numa só palavra. Além disso, cada palavra tem de ter pelo menos "
-"3 letras num tabuleiro normal, e 4 letras num tabuleiro grande."
+msgstr "Pode-se juntar letras na horizontal, vertical e diagonal em qualquer direção para formar uma palavra, desde que as letras estejam logo na casa seguinte do tabuleiro. No entanto, não se pode tornar a usar uma letra de uma casa já selecionada numa só palavra. Além disso, cada palavra tem de ter pelo menos 3 letras num tabuleiro normal, e 4 letras num tabuleiro grande."
 
-#: ../tanglet.desktop.in:4
+#: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Jogo de Descobrir Palavras"
 

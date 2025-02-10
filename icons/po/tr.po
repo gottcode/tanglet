@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Graeme Gott
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # abc Def <hdogan1974@gmail.com>, 2020
 msgid ""
@@ -11,49 +11,39 @@ msgstr ""
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2020-05-05 12:10+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/gottcode/tanglet/language/"
-"tr/)\n"
-"Language: tr\n"
+"Language-Team: Turkish (http://www.transifex.com/gottcode/tanglet/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr "Boggle'ın tek oyuncu çeştilemesidir"
 
-#: ../tanglet.appdata.xml.in:10
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
-"the game is to list as many words as you can before the time runs out. There "
-"are several timer modes that determine how much time you start with, and if "
-"you get extra time when you find a word."
-msgstr ""
-"Tanglet, Boggle tabanlı tek oyuncu kelime bulma oyunudur. Oyunun amacı, süre "
-"dolmadan önce olabildiğince fazla kelime listelemektir. Ne kadar zamanla "
-"başlayacağınızı ve bir kelime bulduğunuzda fazladan zamanınız olup "
-"olmadığını belirleyen birkaç zamanlayıcı modları vardır."
+"the game is to list as many words as you can before the time runs out. There"
+" are several timer modes that determine how much time you start with, and if"
+" you get extra time when you find a word."
+msgstr "Tanglet, Boggle tabanlı tek oyuncu kelime bulma oyunudur. Oyunun amacı, süre dolmadan önce olabildiğince fazla kelime listelemektir. Ne kadar zamanla başlayacağınızı ve bir kelime bulduğunuzda fazladan zamanınız olup olmadığını belirleyen birkaç zamanlayıcı modları vardır."
 
-#: ../tanglet.appdata.xml.in:12
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
 "on the board. However, you can not reuse the same letter cells in a single "
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
-msgstr ""
-"Harfler tahtada yan yana olduğu sürece, sözcük oluşturmak için harfleri "
-"yatay, dikey veya çapraz olarak herhangi bir yönde birleştirebilirsiniz. "
-"Ancak, aynı harf hücrelerini tek bir sözcükte yeniden kullanamazsınız. "
-"Ayrıca, her kelime normal bir tahtada en az üç harf ve büyük bir tahtada "
-"dört harf olmalıdır. "
+msgstr "Harfler tahtada yan yana olduğu sürece, sözcük oluşturmak için harfleri yatay, dikey veya çapraz olarak herhangi bir yönde birleştirebilirsiniz. Ancak, aynı harf hücrelerini tek bir sözcükte yeniden kullanamazsınız. Ayrıca, her kelime normal bir tahtada en az üç harf ve büyük bir tahtada dört harf olmalıdır."
 
-#: ../tanglet.desktop.in:4
+#: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Kelime bulma oyunu"
 

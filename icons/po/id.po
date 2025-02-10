@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Graeme Gott
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mazbrili Abu Ibrahim <mazbrili@yahoo.com>, 2020
 msgid ""
@@ -11,50 +11,39 @@ msgstr ""
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2020-05-18 07:39+0000\n"
 "Last-Translator: Mazbrili Abu Ibrahim <mazbrili@yahoo.com>\n"
-"Language-Team: Indonesian (http://www.transifex.com/gottcode/tanglet/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/gottcode/tanglet/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr "Varian pemain tunggal dari permainan Boggle"
 
-#: ../tanglet.appdata.xml.in:10
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
-"the game is to list as many words as you can before the time runs out. There "
-"are several timer modes that determine how much time you start with, and if "
-"you get extra time when you find a word."
-msgstr ""
-"Tanglet adalah game pencarian kata pemain tunggal berdasarkan Boggle.Tujuan "
-"permainan ini adalah untuk membuat daftar kata-kata sebanyak yang Anda bisa "
-"sebelum waktu habis. Ada beberapa mode pengatur waktu yang menentukan berapa "
-"banyak waktu Anda memulai, dan jika Anda mendapatkan waktu tambahan saat "
-"Anda menemukan kata."
+"the game is to list as many words as you can before the time runs out. There"
+" are several timer modes that determine how much time you start with, and if"
+" you get extra time when you find a word."
+msgstr "Tanglet adalah game pencarian kata pemain tunggal berdasarkan Boggle.Tujuan permainan ini adalah untuk membuat daftar kata-kata sebanyak yang Anda bisa sebelum waktu habis. Ada beberapa mode pengatur waktu yang menentukan berapa banyak waktu Anda memulai, dan jika Anda mendapatkan waktu tambahan saat Anda menemukan kata."
 
-#: ../tanglet.appdata.xml.in:12
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
 "on the board. However, you can not reuse the same letter cells in a single "
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
-msgstr ""
-"Anda dapat menggabungkan huruf secara horizontal, vertikal, atau diagonal ke "
-"arah mana pun untuk membuat kata, sehingga selama huruf-huruf tersebut "
-"bersebelahan di papan tulis. Namun, Anda tidak dapat menggunakan kembali sel "
-"huruf yang sama dalam satu kata. Juga, setiap kata harus setidaknya tiga "
-"huruf pada papan normal, dan empat huruf pada papan besar."
+msgstr "Anda dapat menggabungkan huruf secara horizontal, vertikal, atau diagonal ke arah mana pun untuk membuat kata, sehingga selama huruf-huruf tersebut bersebelahan di papan tulis. Namun, Anda tidak dapat menggunakan kembali sel huruf yang sama dalam satu kata. Juga, setiap kata harus setidaknya tiga huruf pada papan normal, dan empat huruf pada papan besar."
 
-#: ../tanglet.desktop.in:4
+#: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Permainan Pencarian Kata"
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Graeme Gott
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Oprea Nicolae <jaff2002@yahoo.com>, 2015
 msgid ""
@@ -11,52 +11,39 @@ msgstr ""
 "POT-Creation-Date: 2015-05-07 13:46+0000\n"
 "PO-Revision-Date: 2017-09-23 20:29+0000\n"
 "Last-Translator: Oprea Nicolae <jaff2002@yahoo.com>\n"
-"Language-Team: Romanian (http://www.transifex.com/gottcode/tanglet/language/"
-"ro/)\n"
-"Language: ro\n"
+"Language-Team: Romanian (http://www.transifex.com/gottcode/tanglet/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: ../tanglet.appdata.xml.in:6 ../tanglet.desktop.in:3
+#: ../tanglet.appdata.xml.in.h:1 ../tanglet.desktop.in.h:1
 msgid "Tanglet"
 msgstr "Tanglet"
 
-#: ../tanglet.appdata.xml.in:7 ../tanglet.desktop.in:5
+#: ../tanglet.appdata.xml.in.h:2 ../tanglet.desktop.in.h:3
 msgid "Single player variant of Boggle"
 msgstr "Variantă de joc Boggle într-un singur jucător"
 
-#: ../tanglet.appdata.xml.in:10
+#: ../tanglet.appdata.xml.in.h:3
 msgid ""
 "Tanglet is a single player word finding game based on Boggle. The object of "
-"the game is to list as many words as you can before the time runs out. There "
-"are several timer modes that determine how much time you start with, and if "
-"you get extra time when you find a word."
-msgstr ""
-"Tanglet este un joc de găsit cuvinte, într-un singur jucător, bazat pe "
-"Boggle. Obiectivul jocului este de a lista cît mai multe cuvinte înainte de "
-"expirarea timpului. Există mai multe moduri de temporizare care determină cu "
-"cît de mult timp începeţi, şi dacă aveţi timp suplimentar atunci cînd găsiţi "
-"un cuvînt."
+"the game is to list as many words as you can before the time runs out. There"
+" are several timer modes that determine how much time you start with, and if"
+" you get extra time when you find a word."
+msgstr "Tanglet este un joc de găsit cuvinte, într-un singur jucător, bazat pe Boggle. Obiectivul jocului este de a lista cît mai multe cuvinte înainte de expirarea timpului. Există mai multe moduri de temporizare care determină cu cît de mult timp începeţi, şi dacă aveţi timp suplimentar atunci cînd găsiţi un cuvînt."
 
-#: ../tanglet.appdata.xml.in:12
+#: ../tanglet.appdata.xml.in.h:4
 msgid ""
 "You can join letters horizontally, vertically, or diagonally in any "
 "direction to make a word, so as long as the letters are next to each other "
 "on the board. However, you can not reuse the same letter cells in a single "
 "word. Also, each word must be at least three letters on a normal board, and "
 "four letters on a large board."
-msgstr ""
-"Puteţi alătura litere orizontal, vertical, sau în diagonală, în orice "
-"direcţie pentru a face un cuvînt, atîta timp cît literele sînt una lîngă "
-"alta pe tablă. Cu toate acestea, nu aveţi posibilitatea să reutilizaţi "
-"aceleaşi celule literă într-un singur cuvînt. De asemenea, fiecare cuvînt "
-"trebuie să fie de cel puţin trei litere pe o tablă obişnuită şi patru litere "
-"pe o tablă mare."
+msgstr "Puteţi alătura litere orizontal, vertical, sau în diagonală, în orice direcţie pentru a face un cuvînt, atîta timp cît literele sînt una lîngă alta pe tablă. Cu toate acestea, nu aveţi posibilitatea să reutilizaţi aceleaşi celule literă într-un singur cuvînt. De asemenea, fiecare cuvînt trebuie să fie de cel puţin trei litere pe o tablă obişnuită şi patru litere pe o tablă mare."
 
-#: ../tanglet.desktop.in:4
+#: ../tanglet.desktop.in.h:2
 msgid "Word Finding Game"
 msgstr "Joc de găsire a cuvintelor"
 
