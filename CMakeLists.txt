@@ -192,9 +192,9 @@ else()
 	install(FILES ${translations_QM} DESTINATION ${CMAKE_INSTALL_DATADIR}/tanglet/translations)
 	install(FILES doc/tanglet.6 DESTINATION ${CMAKE_INSTALL_MANDIR}/man6 COMPONENT doc)
 	install(DIRECTORY icons/hicolor DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
-	install(FILES icons/tanglet.appdata.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
-	install(FILES icons/tanglet.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
-	install(FILES icons/tanglet.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/mime/packages)
+
+	include(cmake/TranslateMetainfo.cmake)
+	process_and_install_metainfo(Tanglet ${CMAKE_SOURCE_DIR}/icons/po)
 endif()
 
 set_property(SOURCE src/main.cpp APPEND PROPERTY COMPILE_DEFINITIONS TANGLET_DATADIR="${datadir}")

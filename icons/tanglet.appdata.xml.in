@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>tanglet.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+
+  <name>Tanglet</name>
+  <summary>Single player variant of Boggle</summary>
+  <description>
+    <p>Tanglet is a single player word finding game based on Boggle. The object of the game is to list as many words as you can before the time runs out. There are several timer modes that determine how much time you start with, and if you get extra time when you find a word.</p>
+    <p>You can join letters horizontally, vertically, or diagonally in any direction to make a word, so as long as the letters are next to each other on the board. However, you can not reuse the same letter cells in a single word. Also, each word must be at least three letters on a normal board, and four letters on a large board.</p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://gottcode.org/tanglet/screenshots/appdata.png</image>
+    </screenshot>
+  </screenshots>
+
+  <url type="homepage">https://gottcode.org/tanglet/</url>
+  <url type="bugtracker">https://gottcode.org/tanglet/bugs/</url>
+  <url type="donation">https://gottcode.org/tip/</url>
+  <url type="translate">https://www.transifex.com/gottcode/tanglet/</url>
+
+  <developer id="org.gottcode">
+    <name translatable="no">Graeme Gott</name>
+  </developer>
+  <update_contact>graeme@gottcode.org</update_contact>
+
+  <translation type="qt">tanglet</translation>
+
+  <provides>
+    <binary>tanglet</binary>
+    <mediatype>application/x-tanglet</mediatype>
+  </provides>
+  <launchable type="desktop-id">tanglet.desktop</launchable>
+  <icon type="stock">tanglet</icon>
+
+  <categories>
+    <category>Game</category>
+    <category>LogicGame</category>
+  </categories>
+
+  <kudos>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
+
+  <content_rating type="oars-1.1"/>
+
+  <releases>
+    <release version="1.6.6" date="2025-01-06">
+      <description>
+        <ul>
+          <li>Use native icons in Windows</li>
+          <li>Improved deployment</li>
+          <li>Word list updates: Polish</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.5" date="2024-01-16">
+      <description>
+        <ul>
+          <li>FIXED: Crashed when never showing maximum score</li>
+          <li>Replaced deprecated code</li>
+          <li>Word list updates: Polish</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.4" date="2023-06-14">
+      <description>
+        <ul>
+          <li>FIXED: Definitions did not load properly</li>
+          <li>Word list updates: Polish</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.3" date="2023-01-10">
+      <description>
+        <ul>
+          <li>Added portable mode</li>
+          <li>Improved Linux deployment</li>
+          <li>Replaced deprecated code</li>
+          <li>Translation updates: Croatian</li>
+          <li>Word list updates: German, Polish</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.2" date="2022-05-03">
+      <description>
+        <ul>
+          <li>Switched to Qt 6</li>
+          <li>Removed XPM icon</li>
+          <li>Translation updates: Dutch, Italian, Ukrainian</li>
+          <li>Word list updates: German, Polish</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.1.1" date="2021-05-02">
+      <description>
+        <ul>
+          <li>FIXED: Mimetype not installed with CMake</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.1" date="2021-05-02">
+      <description>
+        <ul>
+          <li>FIXED: Did not load entire English word list</li>
+          <li>FIXED: Tabs had scroll buttons</li>
+          <li>Added CMake buildsystem for Qt6</li>
+          <li>Word list updates: French</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.0" date="2021-04-09">
+      <description>
+        <ul>
+          <li>FIXED: Could not type name in scores dialog</li>
+          <li>FIXED: Out of bounds errors in solver</li>
+          <li>Added tabs to high scores</li>
+          <li>Added unlimited timer mode</li>
+          <li>Added option to reset new game to defaults</li>
+          <li>Added support for Qt 6</li>
+          <li>Optimized reading word list</li>
+          <li>Refactored code</li>
+          <li>Translation updates: German, Indonesian, Lithuanian, Polish, Romanian, Turkish, Ukrainian</li>
+          <li>Word list updates: Brazilian Portuguese, Catalan, English, French, Greek, Polish, Portuguese, Spanish</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.5.6" date="2020-04-20">
+      <description>
+        <ul>
+          <li>FIXED: Did not load locales with underscores</li>
+          <li>Added Russian word list</li>
+          <li>Translation updates: Italian</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.5.5" date="2020-02-19">
+      <description>
+        <ul>
+          <li>FIXED: Compile failure with Qt 5.14</li>
+          <li>Replaced deprecated code</li>
+          <li>Updated German word list</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.5.4" date="2019-08-07">
+      <description>
+        <ul>
+          <li>FIXED: Window icon didn't work in Wayland</li>
+          <li>Improved loading locales</li>
+          <li>Improved Windows deployment</li>
+          <li>Replaced deprecated code</li>
+          <li>Translation updates: French, Greek, Russian</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.5.3" date="2018-07-20">
+      <description>
+        <ul>
+          <li>FIXED: Automatic high DPI support</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.5.2" date="2018-05-29">
+      <description>
+        <ul>
+          <li>FIXED: Race condition when checking for canceled games</li>
+          <li>FIXED: Crash if window closed while optimizing word list</li>
+          <li>Replaced deprecated code</li>
+          <li>Extra warnings only shown in debug build</li>
+          <li>Improved Linux deployment</li>
+          <li>Improved macOS deployment</li>
+          <li>Improved Windows deployment</li>
+          <li>Translation updates: Portuguese</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</component>
