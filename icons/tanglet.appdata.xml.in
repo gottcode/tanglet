@@ -34,12 +34,6 @@
     <mediatype>application/x-tanglet</mediatype>
   </provides>
   <launchable type="desktop-id">tanglet.desktop</launchable>
-  <icon type="stock">tanglet</icon>
-
-  <categories>
-    <category>Game</category>
-    <category>LogicGame</category>
-  </categories>
 
   <kudos>
     <kudo>HiDpiIcon</kudo>
