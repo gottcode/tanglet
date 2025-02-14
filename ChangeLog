@@ -1,3 +1,9 @@
+1.6.7
+-----
+* Improved code for building translations.
+* FIXED: High score name had NULL at end in Windows.
+* FIXED: Did not show all translations in high scores.
+
 1.6.6
 -----
 * Use native icons in Windows.
