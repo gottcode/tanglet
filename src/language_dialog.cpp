@@ -34,10 +34,13 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 	m_language = new QComboBox(this);
 	const QStringList languages = QDir("tanglet:").entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 	for (const QString& language : languages) {
-		QSettings settings(QString("tanglet:%1/language.ini").arg(language), QSettings::IniFormat);
+		const QSettings settings(QString("tanglet:%1/language.ini").arg(language), QSettings::IniFormat);
 		QString name = settings.value("Language/Name").toString();
 		if (name.isEmpty()) {
 			name = QLocale(language).nativeLanguageName();
+			if (name.isEmpty()) {
+				continue;
+			}
 		}
 		int i;
 		for (i = 0; i < m_language->count(); ++i) {
