@@ -34,11 +34,6 @@ LanguageSettings::LanguageSettings(const QSettings& group)
 	, m_words(group.value("Words").toString())
 	, m_dictionary(group.value("Dictionary").toString())
 {
-	if (m_language.isEmpty()) {
-		const int language = group.value("Language").toInt();
-		m_language = QLocale(QLocale::Language(language)).name().section('_', 0, 0);
-	}
-
 	loadValues();
 	loadDefaults();
 }
