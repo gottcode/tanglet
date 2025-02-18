@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2009-2021 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2009-2025 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -226,7 +226,7 @@ void LanguageDialog::clicked(QAbstractButton* button)
 		m_dice->clear();
 		m_words->clear();
 		m_dictionary->clear();
-		setLanguage(QLocale::system().name());
+		setLanguage(LanguageSettings().language());
 	}
 }
 

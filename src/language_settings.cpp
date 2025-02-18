@@ -1,5 +1,5 @@
 /*
-	SPDX-FileCopyrightText: 2010-2021 Graeme Gott <graeme@gottcode.org>
+	SPDX-FileCopyrightText: 2010-2025 Graeme Gott <graeme@gottcode.org>
 
 	SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------
 
 LanguageSettings::LanguageSettings()
-	: m_language(QLocale::system().name())
+	: m_language(QLocale().name())
 {
 	loadDefaults();
 }
@@ -82,7 +82,7 @@ void LanguageSettings::loadValues()
 		m_language = settings.value("Locale").toString();
 	}
 	if (m_language.isEmpty()) {
-		m_language = QLocale::system().name();
+		m_language = QLocale().name();
 	}
 
 	if (m_dice.isEmpty()) {
