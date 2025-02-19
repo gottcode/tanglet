@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 # Configure project
-project(tanglet VERSION 1.6.7 LANGUAGES CXX)
+project(tanglet VERSION 1.6.8 LANGUAGES CXX)
 
 set(project_copyright "2009-2025 Graeme Gott")
 

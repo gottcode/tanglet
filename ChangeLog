@@ -1,3 +1,10 @@
+1.6.8
+-----
+* FIXED: Could choose empty language as game language.
+* FIXED: Game language dialog defaulted to English.
+* FIXED: Game language did not follow application language.
+* Word list updates: Polish.
+
 1.6.7
 -----
 * Improved code for building translations.
