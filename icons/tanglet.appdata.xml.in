@@ -20,7 +20,7 @@
   <url type="homepage">https://gottcode.org/tanglet/</url>
   <url type="bugtracker">https://gottcode.org/tanglet/bugs/</url>
   <url type="donation">https://gottcode.org/tip/</url>
-  <url type="translate">https://www.transifex.com/gottcode/tanglet/</url>
+  <url type="translate">https://app.transifex.com/gottcode/tanglet/</url>
 
   <developer id="org.gottcode">
     <name translatable="no">Graeme Gott</name>
