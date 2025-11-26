@@ -138,7 +138,6 @@ Board::Board(QWidget* parent)
 	// Lay out board
 	QGridLayout* layout = new QGridLayout(this);
 	layout->setColumnStretch(1, 1);
-	layout->setColumnStretch(1, 1);
 	layout->setRowStretch(1, 1);
 	layout->addWidget(m_tabs, 0, 0, 3, 1);
 	layout->addWidget(m_clock, 0, 1, Qt::AlignCenter);
