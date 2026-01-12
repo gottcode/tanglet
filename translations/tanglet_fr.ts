@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Success</source>
-        <translation>Succès</translation>
+        <translation>Réussi</translation>
     </message>
     <message>
         <source>Game Over</source>
@@ -44,12 +44,14 @@
         <translation>
             <numerusform>%1 sur %n point</numerusform>
             <numerusform>%1 sur %n points</numerusform>
+            <numerusform>%1 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 sur %n point</numerusform>
+            <numerusform>3 sur %n points</numerusform>
             <numerusform>3 sur %n points</numerusform>
         </translation>
     </message>
@@ -58,12 +60,14 @@
         <translation>
             <numerusform>2 sur %n point</numerusform>
             <numerusform>2 sur %n points</numerusform>
+            <numerusform>2 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 sur %n point</numerusform>
+            <numerusform>1 sur %n points</numerusform>
             <numerusform>1 sur %n points</numerusform>
         </translation>
     </message>
@@ -72,12 +76,14 @@
         <translation>
             <numerusform>0 sur %n point</numerusform>
             <numerusform>0 sur %n points</numerusform>
+            <numerusform>0 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
+            <numerusform>%n points</numerusform>
             <numerusform>%n points</numerusform>
         </translation>
     </message>
@@ -97,6 +103,7 @@
         <translation>
             <numerusform>%n proposition</numerusform>
             <numerusform>%n propositions</numerusform>
+            <numerusform>%n propositions</numerusform>
         </translation>
     </message>
     <message>
@@ -108,6 +115,7 @@
         <translation>
             <numerusform>%n blâme</numerusform>
             <numerusform>%n blâmes</numerusform>
+            <numerusform>%n coups</numerusform>
         </translation>
     </message>
     <message>
@@ -128,7 +136,7 @@
     </message>
     <message>
         <source>Strikeout</source>
-        <translation>Trois Blâmes</translation>
+        <translation>Trois blâmes</translation>
     </message>
     <message>
         <source>Allotment</source>
@@ -137,10 +145,6 @@
     <message>
         <source>Discipline</source>
         <translation>Discipline</translation>
-    </message>
-    <message>
-        <source>Unlimited</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Counts down from 30 seconds and increases on correct guesses.</source>
@@ -171,8 +175,12 @@
         <translation>Minuterie de 30 secondes, rallongée ou réduite selon la justesse des propositions.</translation>
     </message>
     <message>
+        <source>Unlimited</source>
+        <translation>Illimité</translation>
+    </message>
+    <message>
         <source>Game ends when all words are found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le jeu se termine une fois tous les mots trouvés.</translation>
     </message>
 </context>
 <context>
@@ -283,6 +291,7 @@
         <translation>
             <numerusform>%n lettre</numerusform>
             <numerusform>%n lettres</numerusform>
+            <numerusform>%n lettres</numerusform>
         </translation>
     </message>
 </context>
@@ -293,52 +302,52 @@
         <translation>Plamarès</translation>
     </message>
     <message>
-        <source>Rank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
         <source>Score</source>
-        <translation>Score</translation>
-    </message>
-    <message>
-        <source>Maximum</source>
-        <translation type="unfinished"></translation>
+        <translation>Résultat</translation>
     </message>
     <message>
         <source>Date</source>
         <translation>Date</translation>
     </message>
     <message>
+        <source>#%1</source>
+        <translation>n°%1</translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <translation>Rang</translation>
+    </message>
+    <message>
+        <source>Maximum</source>
+        <translation>Maximum</translation>
+    </message>
+    <message>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Taille</translation>
     </message>
     <message>
         <source>Congratulations!</source>
-        <translation type="unfinished"></translation>
+        <translation>Félicitations ! </translation>
     </message>
     <message>
         <source>You beat your top score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez battu votre propre score ! </translation>
     </message>
     <message>
         <source>Well done!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bien joué ! </translation>
     </message>
     <message>
         <source>You have a new high score!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous détenez le plus haut score ! </translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>#%1</source>
-        <translation>n°%1</translation>
+        <translation>N. A.</translation>
     </message>
 </context>
 <context>
@@ -373,7 +382,7 @@
     </message>
     <message>
         <source>New &amp;Game...</source>
-        <translation>Nouvelle &amp;partie…</translation>
+        <translation>&amp;Nouvelle partie…</translation>
     </message>
     <message>
         <source>Ctrl+Shift+N</source>
@@ -385,11 +394,11 @@
     </message>
     <message>
         <source>&amp;Choose...</source>
-        <translation>&amp;Choisir…</translation>
+        <translation>&amp;Importer…</translation>
     </message>
     <message>
         <source>&amp;Share...</source>
-        <translation>Parta&amp;ger…</translation>
+        <translation>P&amp;artager…</translation>
     </message>
     <message>
         <source>&amp;End</source>
@@ -409,7 +418,7 @@
     </message>
     <message>
         <source>&amp;High Scores</source>
-        <translation>&amp;Palmarès</translation>
+        <translation>Pa&amp;lmarès</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
@@ -573,7 +582,7 @@
     </message>
     <message>
         <source>Ctrl+H</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+H</translation>
     </message>
 </context>
 <context>
@@ -605,6 +614,7 @@
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
+            <numerusform>%n points</numerusform>
             <numerusform>%n points</numerusform>
         </translation>
     </message>
