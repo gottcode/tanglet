@@ -182,8 +182,8 @@ void ScoresDialog::Page::editFinish(QLineEdit* playername)
 
 void ScoresDialog::Page::load(QSettings& settings)
 {
-	const int size = std::min(settings.beginReadArray(Clock::timerScoresGroup(m_timer)), 10);
-	for (int r = 0; r < size; ++r) {
+	const int rows = std::min(settings.beginReadArray(Clock::timerScoresGroup(m_timer)), 10);
+	for (int r = 0; r < rows; ++r) {
 		settings.setArrayIndex(r);
 		const QString name = settings.value("Name").toString();
 		const int score = settings.value("Score").toInt();

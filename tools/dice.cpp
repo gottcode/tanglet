@@ -137,8 +137,8 @@ std::unordered_map<QString, qreal> findLetterFrequency(const std::vector<QString
 	if (use_bigrams) {
 		// Find counts of bigrams
 		std::unordered_map<QString, int> bigrams;
-		QString bigram(2, '\0');
 		for (const auto& word : words) {
+			QString bigram(2, '\0');
 			bigram[0] = word[0];
 			for (int i = 1, end = word.length(); i < end; ++i) {
 				const QChar c = word[i];

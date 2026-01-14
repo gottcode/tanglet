@@ -1010,22 +1010,22 @@ void Window::startGame(const QString& filename)
 		QDir::home().mkpath(current);
 		current += "/current";
 
-		QByteArray data = gunzip(filename);
+		const QByteArray game_data = gunzip(filename);
 		QFile file(current);
 		if (!file.open(QFile::WriteOnly)) {
 			QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
 			return;
 		}
-		file.write(data);
+		file.write(game_data);
 		file.close();
 
 		QSettings game(current, QSettings::IniFormat);
 		game.beginGroup("Game");
 
 		// Extract dice
-		data = game.value("Dice").toByteArray();
-		if (data.startsWith("tanglet:")) {
-			game.setValue("Dice", data);
+		const QByteArray dice_data = game.value("Dice").toByteArray();
+		if (dice_data.startsWith("tanglet:")) {
+			game.setValue("Dice", dice_data);
 		} else {
 			const QString dice = QString("%1-dice").arg(current);
 			game.setValue("Dice", dice);
@@ -1034,14 +1034,14 @@ void Window::startGame(const QString& filename)
 				QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
 				return;
 			}
-			file.write(QByteArray::fromBase64(data));
+			file.write(QByteArray::fromBase64(dice_data));
 			file.close();
 		}
 
 		// Extract words
-		data = game.value("Words").toByteArray();
-		if (data.startsWith("tanglet:")) {
-			game.setValue("Words", data);
+		const QByteArray words_data = game.value("Words").toByteArray();
+		if (words_data.startsWith("tanglet:")) {
+			game.setValue("Words", words_data);
 		} else {
 			const QString words = QString("%1-words").arg(current);
 			game.setValue("Words", words);
@@ -1050,10 +1050,9 @@ void Window::startGame(const QString& filename)
 				QMessageBox::warning(this, tr("Error"), tr("Unable to start requested game."));
 				return;
 			}
-			file.write(QByteArray::fromBase64(data));
+			file.write(QByteArray::fromBase64(words_data));
 			file.close();
 		}
-		data.clear();
 
 		// Start requested game
 		settings.remove("Current");

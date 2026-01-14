@@ -94,9 +94,9 @@ void Solver::solve(const QStringList& letters)
 int Solver::score(int max) const
 {
 	QList<int> scores;
-	QHashIterator<QString, QList<QList<QPoint>>> i(m_solutions);
-	while (i.hasNext()) {
-		scores += score(i.next().key());
+	QHashIterator<QString, QList<QList<QPoint>>> solution(m_solutions);
+	while (solution.hasNext()) {
+		scores += score(solution.next().key());
 	}
 	std::sort(scores.begin(), scores.end(), std::greater<int>());
 

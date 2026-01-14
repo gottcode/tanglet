@@ -513,8 +513,8 @@ void Board::guess()
 	if (m_missed->topLevelItemCount() == 0) {
 		// Increase score
 		for (int i = 0; i < m_found->topLevelItemCount(); ++i) {
-			QTreeWidgetItem* item = m_found->topLevelItem(i);
-			item->setData(0, Qt::UserRole, item->data(0, Qt::UserRole).toInt() + 1);
+			QTreeWidgetItem* found_item = m_found->topLevelItem(i);
+			found_item->setData(0, Qt::UserRole, found_item->data(0, Qt::UserRole).toInt() + 1);
 		}
 
 		// Stop the game
@@ -533,9 +533,9 @@ void Board::guessChanged()
 
 	QString word = m_guess->text().trimmed().toUpper();
 	if (!word.isEmpty()) {
-		int pos = m_guess->cursorPosition();
+		int cursor_pos = m_guess->cursorPosition();
 		m_guess->setText(word);
-		m_guess->setCursorPosition(pos);
+		m_guess->setCursorPosition(cursor_pos);
 		QTreeWidgetItem* item = m_found->findItems(word, Qt::MatchStartsWith, 2).value(0);
 		m_found->scrollToItem(item, QAbstractItemView::PositionAtTop);
 
@@ -838,11 +838,11 @@ void Board::updateClickableStatus()
 	}
 
 	if (has_word && !m_wrong_typed) {
-		const QPoint& position = m_positions.last();
-		int min_x = std::max(position.x() - 1, 0);
-		int max_x = std::min(position.x() + 2, m_size);
-		int min_y = std::max(position.y() - 1, 0);
-		int max_y = std::min(position.y() + 2, m_size);
+		const QPoint& last_position = m_positions.last();
+		int min_x = std::max(last_position.x() - 1, 0);
+		int max_x = std::min(last_position.x() + 2, m_size);
+		int min_y = std::max(last_position.y() - 1, 0);
+		int max_y = std::min(last_position.y() + 2, m_size);
 		for (int y = min_y; y < max_y; ++y) {
 			for (int x = min_x; x < max_x; ++x) {
 				m_cells[x][y]->setClickable(true);
