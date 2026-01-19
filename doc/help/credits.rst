@@ -1,5 +1,5 @@
 Credits and License
-===================
+*******************
 
 Program copyright 2009-2021 Graeme Gott <graeme@gottcode.org>
 
