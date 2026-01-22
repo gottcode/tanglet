@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 # General information about the project.
-project = 'Tetzle'
+project = 'Tanglet'
 copyright = ' 2026 Graeme Gott'
 author = 'Graeme Gott'
 
