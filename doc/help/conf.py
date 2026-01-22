@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 # General information about the project.
-project = 'Tanglet'
-copyright = ' 2021 Graeme Gott'
+project = 'Tetzle'
+copyright = ' 2026 Graeme Gott'
 author = 'Graeme Gott'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -27,9 +27,9 @@ author = 'Graeme Gott'
 # built documents.
 #
 # The short X.Y version.
-version = '1.6'
+version = '3.0'
 # The full version, including alpha/beta/rc tags.
-release = '1.6.0'
+release = '3.0.3'
 
 
 # -- General configuration ---------------------------------------------------
@@ -37,7 +37,7 @@ release = '1.6.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = [ 'sphinxcontrib.email' ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = []
@@ -70,7 +70,7 @@ html_style = '../../alabaster.css'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-html_title = 'Tanglet'
+html_title = 'Tetzle'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -98,3 +98,6 @@ html_copy_source = False
 
 # If true, Sphinx will add “permalinks” for each heading and description environment.
 html_permalinks = False
+
+# Setting to display email adresses as obfuscated mailto links, needs sphinxcontrib-email
+email_automode = True
