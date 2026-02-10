@@ -2,7 +2,7 @@
 
 APP='Tanglet'
 BUNDLE="$APP.app"
-VERSION='1.6.8'
+VERSION='1.6.9'
 
 # Locate deployment script
 BIN_DIR=$(pwd)
