@@ -1,0 +1,144 @@
+<!-- SPDX-FileCopyrightText: 2026 Graeme Gott <graeme@gottcode.org> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:e="http://projectmallard.org/experimental/"
+      type="guide"
+      id="introduction">
+
+  <info>
+    <link type="topic" xref="index#introduction"/>
+    <title type="link">Introduction</title>
+    <title type="text">Introduction</title>
+    <revision pkgversion="1.7" version="0.1" date="2026-02-12" status="incomplete"/>
+    <desc>
+      Introduction to <app>Tanglet</app>.
+    </desc>
+    <credit type="author">
+      <name>Graeme Gott</name>
+      <email>graeme@gottcode.org</email>
+    </credit>
+    <credit type="author">
+      <name>Mario Blättermann</name>
+      <email>mario.blaettermann@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+
+  <title>Introduction</title>
+
+<section  id="starting">
+<title>Starting the game</title>
+
+  <p>You can start the game using the application menu of your desktop
+    environment. Open the application menu and choose <guiseq><gui>Games</gui>
+    <gui>Tanglet</gui></guiseq> or open a quick start prompt using <keyseq>
+    <key>Alt</key><key>F2</key></keyseq> and start typing <code>tanglet</code>,
+    then click on the application name found.</p>
+
+  <p>When <app>Tanglet</app> starts, two board sizes are available, 4x4 and 5x5.
+    Click on one of them to apply. In the drop-down list right to <gui>Amount
+    Of Words</gui>, you can choose between more or less words contained in the
+    board. Try out how it results in the created word counts in the board, in
+    many cases, with a 5x5 board, you get more than 1000 contained words. The
+    other drop-down list <gui>Minimum Word Length</gui> lets you choose between
+    acceptable character counts. The minimally configurable word length depends
+    on the board let's say 5, then words with 4 letters, which actually exists,
+    won't be accepted by <app>Tanglet</app>.</p>
+
+  <p>Finally you can choose between different game modes:</p>
+
+  <!-- ==== Figure ==== -->
+  <figure>
+    <desc>Game modes</desc>
+    <media type="image" src="../figures/tanglet_change_modes.png" mime="image/png" style="right">
+    <p>Change game modes.</p>
+    </media>
+  </figure>
+  <!-- ==== End of Figure ==== -->
+
+  <p>The following modes are available:</p>
+    <list>
+      <item><p><gui>Allotment</gui> – Game ends after 30 guesses.</p></item>
+      <item><p><gui>Classic</gui> – Counts fown from 3 minutes.</p></item>
+      <item><p><gui>Discipline</gui> – Counts down from 30 seconds and
+          increases on correct guesses.</p></item>
+      <item><p><gui>Refill</gui> – Counts down from 30 seconds and refills on
+          correct guesses.</p></item>
+      <item><p><gui>Stamina</gui> – Counts down from 45 seconds and pauses on
+          correct guesses.</p></item>
+      <item><p><gui>Strikeout</gui> – Game ends after 3 incorrect
+          guesses.</p></item>
+      <item><p><gui>Tanglet</gui> – Counts down from 30 seconds and increases
+          or decreases on guesses.</p></item>
+      <item><p><gui>Unlimited</gui> – Game ends when all words are found.</p></item>
+    </list>
+</section>
+
+<section id="menubar">
+  <title>Menu bar overview</title>
+
+  <section id="game_menu">
+  <title><gui>Game</gui> menu</title>
+
+   <list>
+    <item><p><gui>New Game</gui> – Starts a new game. If a previous game is
+        still running, you will asked for confirmation to stop that
+        game.</p></item>
+    <item><p><gui>New Roll</gui> – Starts a new game in the same mode as the
+        currently running one. Again, you will asked for confirmation to stop
+        that game.</p></item>
+    <item><p><gui>Choose…</gui> – Lets you start a game which has been saved
+        previously. A file chooser dialog will be opened where you can search
+        for the desired game file.</p></item>
+    <item><p><gui>Share</gui> – Lets you save the game in a file. A file
+        chooser dialog will be opened where you can choose for a file name and
+        directory. Although it is possible, keep the <gui>File type</gui> entry
+        unchanged. We don't recommend to save files with another extension than
+        <code>.tanglet</code>.</p></item>
+    <item><p><gui>End</gui> – End the game. You will asked for confirmation to
+        stop the game.</p></item>
+    <item><p><gui>Pause</gui> – Pause the game. Probably you need this for
+        time-limited games. When pausing a game, the whole window content
+        disappears. After clicking anywhere in the window, the pause ends and
+        the content comes back. Note, also when the window losts the focus, the
+        window content disappears.</p></item>
+    <item><p><gui>Details</gui> – Shows details about the running game, such as
+        the board size, the word density and length, the game type and a short
+        description of that game.</p></item>
+    <item><p><gui>High Scores</gui> – Shows the High Scores. The initial view
+        shows the High Scores for the type of the currently running game. To
+        view the High Scores for the other game types, click on the vertical
+        tab bar on the left.</p></item>
+    <item><p><gui>Quit</gui> – Quits the game and the application.</p></item>
+   </list>
+</section>
+
+<section id="settings_menu">
+  <title><gui>Settings</gui> menu</title>
+
+  <p>See <link xref="configuration"></link> about how to use the entries of the
+     <gui>Settings</gui> menu.</p>
+</section>
+
+<section id="help_menu">
+  <title><gui>Help</gui> menu</title>
+    <list>
+      <item><p><gui>Controls</gui> – Shows a brief summary of the usage. In
+          fact, the same as described in the <link xref="howtoplay"></link>
+          page.</p></item>
+      <item><p><gui>User manual</gui> – Opens this user manual in your
+          configured standard browser. The opened application is out of the
+          scope of <app>Tanglet</app>; if you like to use a different browser
+          or HTML viewer, you need to configure this in the settings of your
+          desktop environment.</p></item>
+      <item><p><gui>About</gui> – Shows a brief summary, including the version
+          number of <app>Tanglet</app>.</p></item>
+      <item><p><gui>About Qt</gui> – Shows a description of
+          <link href="https://www.qt.io/">Qt</link>, which is the code base of
+          <app>Tanglet</app>.</p></item>
+    </list>
+</section>
+</section>
+</page>

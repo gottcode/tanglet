@@ -1,0 +1,45 @@
+<!-- SPDX-FileCopyrightText: 2026 Graeme Gott <graeme@gottcode.org> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:e="http://projectmallard.org/experimental/"
+      type="guide"
+      id="credits">
+
+    <info>
+        <link type="seealso" xref="index"/>
+        <title type="link">Credits</title>
+        <title type="text">Credits</title>
+        <revision pkgversion="1.7" version="0.1" date="2026-02-12" status="incomplete"/>
+        <desc>
+            Licensing conditions of <app>Tanglet</app>.
+        </desc>
+        <credit type="author">
+            <name>Graeme Gott</name>
+            <email>graeme@gottcode.org</email>
+        </credit>
+        <credit type="author">
+            <name>Mario Blättermann</name>
+            <email>mario.blaettermann@gmail.com</email>
+        </credit>
+        <license>
+            <p>Creative Commons Share Alike 4.0</p>
+        </license>
+    </info>
+
+    <title>Credits and License</title>
+
+    <p>Program copyright 2009-2026 <link href="mailto:graeme@gottcode.org">Graeme Gott</link></p>
+
+    <p>User manual written by <link href="mailto:graeme@gottcode.org">Graeme
+       Gott</link> and <link href="mailto:mario.blaettermann@gmail.com">Mario Blättermann</link></p>
+
+    <p>For a list of contributors, see
+        <link href="https://github.com/gottcode/tanglet/graphs/contributors">here</link>.</p>
+
+    <p>This program is licensed under the terms of the
+       <link href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</link>.</p>
+
+    <p>This manual is licensed under the terms of the
+       <link href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Share Alike 4.0</link>.</p>
+
+</page>

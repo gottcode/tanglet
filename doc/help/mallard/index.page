@@ -1,0 +1,53 @@
+<!-- SPDX-FileCopyrightText: 2026 Graeme Gott <graeme@gottcode.org> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:e="http://projectmallard.org/experimental/"
+      type="index"
+      id="index">
+
+  <info>
+
+    <title type="link">Tanglet</title>
+    <title type="text">Tanglet</title>
+    <revision pkgversion="1.7" version="0.1" date="2026-02-12" status="incomplete"/>
+    <credit type="author">
+      <name>Graeme Gott</name>
+      <email>graeme@gottcode.org</email>
+    </credit>
+    <credit type="author">
+      <name>Mario Blättermann</name>
+      <email>mario.blaettermann@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>    
+  </info>
+
+  <title>Tanglet user manual</title>
+  <section>
+  <p><app>Tanglet</app> is a single player word finding game based on
+    <link href="https://en.wikipedia.org/wiki/Boggle">Boggle</link>. The object of the game is to
+    list as many words as you can before the time runs out. There are several timer
+    modes that determine how much time you start with, and if you get extra time
+    when you find a word.</p>
+
+  <p>You can join letters horizontally, vertically, or diagonally in any direction
+    to make a word, so as long as the letters are next to each other on the board.
+    However, you can not reuse the same letter cells in a single word. Also, each
+    word must be at least three letters on a normal board, and four letters on a
+    large board.</p>
+</section>
+  <section id="introduction" style="2column">
+    <title>Introduction</title>
+  </section>
+
+  <section id="howtoplay" style="2column">
+    <title>How to Play</title>
+  </section>
+
+  <section id="configuration" style="2column">
+    <title>Configuration</title>
+  </section>
+
+
+</page>
