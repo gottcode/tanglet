@@ -1,0 +1,74 @@
+<!-- SPDX-FileCopyrightText: 2026 Graeme Gott <graeme@gottcode.org> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:e="http://projectmallard.org/experimental/"
+      type="guide"
+      id="files">
+
+  <info>
+    <link type="guide" xref="index#references"/>
+    <title type="link">Files</title>
+    <title type="text">Files used by <app>Tanglet</app>.</title>
+    <revision pkgversion="1.7" version="0.1" date="2026-02-16" status="incomplete"/>
+    <desc>
+      Information about configuration files and exported games.
+    </desc>
+    <credit type="author">
+      <name>Graeme Gott</name>
+      <email>graeme@gottcode.org</email>
+    </credit>
+    <credit type="author">
+      <name>Mario Blättermann</name>
+      <email>mario.blaettermann@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+
+  <title>Files</title>
+   <note style="warning">
+     <p>The files used by <app>Tanglet</app> are not intended for manual
+       editing. Do not do so unless you know exactly what you are doing.</p>
+   </note>
+   <section>
+     <title>User configuration file</title>
+       <p>The user configuration is located in the
+       <file>~/.config/Gottcode/Tanglet.conf</file> file. The folder
+       <file>~/.config/Gottcode/</file> is shared with other
+       <link href="https://gottcode.org/">Gottcode</link> games, therefore,
+       make sure you don't mix anything up. As mentioned above, the file is
+       not intended to be edited manually. However, if you actually want to
+       edit it, your game scores could be lost. Be aware of this.</p>
+    </section>
+    <section>
+     <title>Saved Games</title>
+        <p>A game you save using <guiseq><gui>Game</gui><gui>Save…</gui></guiseq>
+          is a text file, compressed with <cmd>gzip</cmd>. If you are curious
+          enough, you can unpack such a file using the following command:</p>
+         <code>
+           $ rename tanglet gz <var>savedgame</var>.tanglet &amp;&amp; gunzip <var>savedgame</var>.gz
+         </code>
+    <section id="structure">
+       <title>File structure</title>
+        <p>The first four lines after <code>[Game]</code> mirror the <link xref="configuration">settings of the board language</link>.</p>
+        <p>Seven more lines follow:</p>
+           <list>
+            <item><p><code>Letters</code> – The letters shown in the board.
+                </p></item>
+            <!-- Really…? Or the application language settings? -->
+            <item><p><code>Locale</code> – The configured Locale for the board.
+                </p></item>
+            <item><p><code>Minimum</code> – Minimum word length.</p></item>
+            <item><p><code>Size</code> – Size of the board.</p></item>
+            <item><p><code>TimerMode</code> – Timer mode, depending on the
+                initially chosen game.</p></item>
+            <!-- What is "Version" here? -->
+            <item><p><code>Version</code> – TBD.</p></item>
+            <item><p><code>Words</code> – The used wordlist</p></item>
+           </list>
+         <p>We don't recommend to change anything here. It can easily happen
+           that the file becomes unusable.</p>
+     </section>
+     </section>
+</page>

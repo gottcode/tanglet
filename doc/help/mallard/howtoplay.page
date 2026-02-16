@@ -1,0 +1,140 @@
+<!-- SPDX-FileCopyrightText: 2026 Graeme Gott <graeme@gottcode.org> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:e="http://projectmallard.org/experimental/"
+      type="guide"
+      id="howtoplay">
+
+   <info>
+   <link type="guide" xref="index#howtoplay"/>
+      <title type="link">How to Play</title>
+      <title type="text">How to Play</title>
+      <revision pkgversion="1.7" version="0.1" date="2026-02-16" status="incomplete"/>
+      <desc>
+         How to play <app>Tanglet</app>.
+      </desc>
+      <credit type="author">
+         <name>Graeme Gott</name>
+         <email>graeme@gottcode.org</email>
+      </credit>
+      <credit type="author">
+         <name>Mario Blättermann</name>
+         <email>mario.blaettermann@gmail.com</email>
+      </credit>
+      <license>
+         <p>Creative Commons Share Alike 4.0</p>
+      </license>
+   </info>
+
+  <title>How to Play</title>
+  <section>
+    <title>Mouse and Keyboard Controls</title>
+   <table frame="all" rules="all">
+     <tr>
+        <td><p>Action</p></td>
+        <td><p>Using the mouse</p></td>
+        <td><p>Using the keyboard</p></td>
+     </tr>
+     <!-- Get an empty table row as separator -->
+     <tr>
+        <td><p></p></td>  <td><p></p></td>  <td><p></p></td>
+     </tr>
+     <tr>
+        <td><p>Select a word</p></td>
+        <td><p>Click on the letters of a word.</p></td>
+        <td><p>Type the letters of a word.</p></td>
+     </tr>
+     <tr>
+        <td><p>Make a guess</p></td>
+        <td><p>Click on the last selected letter.</p></td>
+        <td><p>Press <key>Enter</key>.</p></td>
+     </tr>
+     <tr>
+        <td><p>Erase letters</p></td>
+        <td><p>Click on an earlier selected letter.</p></td>
+        <td><p>Press <key>Backspace</key>.</p></td>
+     </tr>
+     <tr>
+        <td><p>Clear the word</p></td>
+        <td><p>Click twice on the first selected letter.</p></td>
+        <td><p>Press <keyseq><key>Ctrl</key><key>Backspace</key></keyseq>.</p></td>
+     </tr>
+   </table>
+ </section>
+ <section>
+   <title>Activating a Word</title>
+
+   <p>If you found a word, click on te first letter. Now you will see around
+     this field the letters you can choose from to continue the word; all other
+     fields are grayed out.</p>
+   <p>While entering the letters, the word will be displayed above the word
+     list on the left.</p>
+
+
+   <!-- ==== Figure ==== -->
+   <figure>
+     <desc>The board with an activated word</desc>
+     <media type="image" src="../figures/tanglet_board.png" mime="image/png" style="right">
+       <!-- <p>The board with an activated word.</p> -->
+     </media>
+   </figure>
+   <!-- ==== End of Figure ==== -->
+
+   <p>Once you found a word you think it's valid, double-click on the last
+     activated letter or press <key>Return</key>. If <app>Tanglet</app> accepts
+     it, it will be displayed in the list tab <gui>Found</gui> left to the
+     board.</p>
+   <p>In case you find the word <em>again</em> (also in a different letter
+     sequence on the board), it will be highlighted in this list.</p>
+   <p>If the word can be extended with one or more letters to form a new one,
+     click on it to display it again on the board, and you can click on the
+     white fields to add more letters to create a new word. Note, you earn
+     points for the <em>whole</em> new word, not only for the newly added
+     letters!</p>
+   <p>If you activate letters using the keyboard or you accidentally press a
+     key with a letter which is not reachable from the current word end, or
+     even doesn't exist on the board, the whole board will be grayed out and
+     the field above the word list will be displayed with a red
+     background.</p>
+   <!-- I remember, there was such an icon in previous versions... -->
+   <!-- When you hover the mouse pointer over one of the accepted words in
+       the list, a clickable book icon will be displayed, which leads you to
+       the appropriate entry in Wiktionary. -->
+   <p>When the game ends and if you have achieved a place among the top ten in
+     the chosen game mode, the <gui>High Scores</gui> list appears. Under
+     <gui>Name</gui>, your name (taken from your user account) is already
+     entered, but highlighted. If you like to use a different name, or anyone
+     else has played the game, you can change the name directly, or leave it
+     as-is. In either case, finally click on <gui>Close</gui>.</p>
+   <p>You can close the game at any time. When closing the game without it has
+     ended, the same game at the same score will be opened when
+     <app>Tanglet</app> starts next time.</p>
+  </section>
+
+  <section>
+   <title>Show missed words</title>
+    <p>The wordlist has a tab <gui>Missed</gui>, which is inactive during the
+     game play. When the game is over, you can click on it to see the words
+     which you haven't found.</p>
+   </section>
+   <section>
+    <title>Show high scores</title>
+     <p>Choose <guiseq><gui>Game</gui><gui>Show High Scores</gui></guiseq> to
+       open the High Scores list. To switch between the various game modes, use
+       the vertical tab bar on the left.</p>
+   </section>
+   <section>
+     <title>Export or import a game</title>
+     <p>To export a game, choose
+       <guiseq><gui>Game</gui><gui>Share…</gui></guiseq>. A file saver dialog
+       opens where you can type a file name and specify a location where the
+       file will be saved. Note, the saved file contains only the game
+       properties itself, not your found words or earned points. See also
+       <link xref="files#structure">the explanation of the file structure</link>.
+     </p>
+     <p>Vice versa, you can choose
+       <guiseq><gui>Game</gui><gui>Choose…</gui></guiseq>. A file chooser
+       dialog opens where you can navigate to the desired file and
+       open it.</p>
+   </section>
+</page>

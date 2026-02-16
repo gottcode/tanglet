@@ -1,29 +1,31 @@
-# SOME DESCRIPTIVE TITLE.
+# German translation of the Tanglet user manual
 # Copyright (C)  2021 Graeme Gott
 # This file is distributed under the same license as the Tanglet package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
-#, fuzzy
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Tanglet \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-24 10:07-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2021-04-27 19:30+0200\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.0\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.04.0\n"
 
 #: ../howtoplay.rst:2
 msgid "How to Play"
-msgstr ""
+msgstr "Spielweise"
 
 #: ../howtoplay.rst:5
 msgid "Using the Mouse"
-msgstr ""
+msgstr "Mit der Maus"
 
 #: ../howtoplay.rst:7
 msgid "**Select a word:** Click on the letters of a word."
@@ -31,19 +33,22 @@ msgstr "**Wort auswählen:** Auf die Buchstaben eines Worts klicken."
 
 #: ../howtoplay.rst:9
 msgid "**Make a guess:** Click on the last selected letter."
-msgstr "**Einen Versuch machen:** Auf den zuletzt ausgewählten Buchstaben klicken."
+msgstr ""
+"**Einen Versuch machen:** Auf den zuletzt ausgewählten Buchstaben klicken."
 
 #: ../howtoplay.rst:11
 msgid "**Erase letters:** Click on an earlier selected letter."
-msgstr "**Buchstaben entfernen:** Auf einen vorher ausgewählten Buchstaben klicken."
+msgstr ""
+"**Buchstaben entfernen:** Auf einen vorher ausgewählten Buchstaben klicken."
 
 #: ../howtoplay.rst:13
 msgid "**Clear the word:** Click twice on the first selected letter."
-msgstr "**Wort löschen:** Zweimal auf den ersten ausgewählten Buchstaben klicken."
+msgstr ""
+"**Wort löschen:** Zweimal auf den ersten ausgewählten Buchstaben klicken."
 
 #: ../howtoplay.rst:16
 msgid "Using the Keyboard"
-msgstr ""
+msgstr "Mit der Tastatur"
 
 #: ../howtoplay.rst:18
 msgid "**Select a word:** Type the letters of a word."

@@ -1,9 +1,9 @@
 Tanglet User Manual
-===================
+*******************
 
 Tanglet |release|
 
-Copyright © 2009-2021 Graeme Gott
+Copyright © 2009-2026 :email:`Graeme Gott <graeme@gottcode.org>`
 
 Abstract
 --------
