@@ -6,12 +6,12 @@
       id="configuration">
 
   <info>
-    <link type="topic" xref="index#configuration"/>
+    <link type="guide" xref="index#configuration"/>
     <title type="link">Configuration</title>
     <title type="text">Configuration</title>
-    <revision pkgversion="1.7" version="0.1" date="2026-02-12" status="incomplete"/>
+    <revision pkgversion="1.7" version="0.1" date="2026-02-16" status="incomplete"/>
     <desc>
-      How to configure <app>Tanglet</app>.
+      How to configure the game.
     </desc>
     <credit type="author">
       <name>Graeme Gott</name>
@@ -34,6 +34,14 @@
   <p><gui>Show Maximum Score</gui> – you can choose between three options for
     the status line at the bottom of the window:</p>
 
+  <!-- ==== Figure ==== -->
+  <figure>
+    <desc>Listed maximum scores</desc>
+    <media type="image" src="../figures/tanglet_toggle_maximum_score_display.png" mime="image/png" style="right">
+    </media>
+  </figure>
+  <!-- ==== End of Figure ==== -->
+
   <list>
 
     <item><p><gui>Never</gui> – You see word lengths and the count of words
@@ -50,6 +58,14 @@
 
   <p>The visibility of the word count status bar can be toggled with
     <gui>Show Word Counts</gui>.</p>
+
+  <!-- ==== Figure ==== -->
+  <figure>
+    <desc>Word count status</desc>
+    <media type="image" src="../figures/tanglet_word_counts.png" mime="image/png" style="right">
+    </media>
+  </figure>
+  <!-- ==== End of Figure ==== -->
 
   <p><gui>Show Missed Words</gui> – In addition to the list of found words on
     the left, an extra tab named <gui>Missed</gui> will de displayed. This tab
@@ -83,16 +99,17 @@
      drop-down menu. Again, your changes will be applied after the next start
      of <app>Tanglet</app>.</p>
 
+   <!-- This is my workaround for taking the English screenshots -->
   <note style="advanced">
-    <p>Maybe the following command is known to you for opening an application
-       with different language settings:</p>
+    <p>Not all translated captions come from <app>Tanglet</app> itself. Because
+      some of them are provided by the underlying <app>Qt</app> libraries, it
+      might happen that some captions are still displayed in the system
+      language. Maybe the following command is known to you for opening an
+      application with different language settings:</p>
 
-       <code>
-
-       export LC_ALL=C &amp;&amp; tanglet
-       </code>
-    <p>This doesn't work correctly in <app>Tanglet</app>. To change the user
-      interface language, we recommend to use the configuration option
-      described above.</p>
+      <code style="console">
+       $ export LC_ALL=C &amp;&amp; tanglet
+      </code>
+    <p>This helps in such cases to switch completely to the desired language.</p>
   </note>
 </page>

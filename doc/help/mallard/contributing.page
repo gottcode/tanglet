@@ -1,0 +1,67 @@
+<!-- SPDX-FileCopyrightText: 2026 Graeme Gott <graeme@gottcode.org> -->
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:e="http://projectmallard.org/experimental/"
+      type="guide"
+      id="contributing">
+
+  <info>
+    <link type="guide" xref="index#references"/>
+    <title type="link">Contributing</title>
+    <title type="text">Contributing</title>
+    <revision pkgversion="1.7" version="0.1" date="2026-02-16" status="incomplete"/>
+    <desc>
+      Contributing to the development of <app>Tanglet</app>.
+    </desc>
+    <credit type="author">
+      <name>Graeme Gott</name>
+      <email>graeme@gottcode.org</email>
+    </credit>
+    <credit type="author">
+      <name>Mario Blättermann</name>
+      <email>mario.blaettermann@gmail.com</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+
+  <title>Contributing</title>
+  <p>The <app>Tanglet</app> development is maintained in a
+    <link href="https://github.com/gottcode/tanglet/">Github repository</link>.
+  </p>
+  <section id="code">
+    <title>Contributing with code</title>
+    <p>If you have a Github account, feel free to fork the project, apply and
+      commit your changes and open a Pull Request. This is the preferred way.</p>
+  </section>
+  <section id="issues">
+    <title>Issue tickets</title>
+    <p>You found a bug, like to request a new feature or have any other
+      suggestion? Please got to
+      <link href="https://github.com/gottcode/tanglet/issues">our issue tracker
+      </link> and open a new one by clicking on <gui>New issue</gui> in the top
+      right corner of the page. This also applies for the documentation, if
+      parts are confusing or missing, or for wrong translations. Regarding
+      incomplete translations: Don't treat it as a bug worth to be filed. Our
+      translators don't always have as much time as needed, so translations may
+      be incomplete.</p>
+  </section>
+  <section id="translations">
+     <title>Translations</title>
+     <p><app>Tanglet</app> is available in various languages. The appropriate
+       <file>.ts</file> and <file>.po</file> files are maintained at
+       <link href="https://explore.transifex.com/gottcode/tanglet/">Transifex</link>.
+       If you like to contribute to translations, register or sign in there,
+       join a translation team or create a new one for your desired language,
+       if needed.</p>
+     <p>For the translations itself, Transifex offers a web-based editor. If
+       you prefer to work on the files directly, you can also download and edit
+       them locally in your preferred tool.</p>
+     <p>Although <app>Tanglet</app> is not part of any integrated desktop
+       environment, please always try to follow the basic rules of well-known
+       translation teams for your language, for example, those of the
+       <link href="https://l10n.kde.org/teams-list.php">KDE</link> or
+       <link href="https://l10n.gnome.org/teams/">GNOME</link> teams.</p>
+  </section>
+</page>
