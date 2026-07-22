@@ -482,7 +482,7 @@
     </message>
     <message>
         <source>Copyright &amp;copy; 2009-%1 Graeme Gott</source>
-        <translation>Autorska prava &amp;copy; 2009 – %1 Graeme Gott</translation>
+        <translation>Autorska prava &amp;copy; 2009. – %1. Graeme Gott</translation>
     </message>
     <message>
         <source>Tanglet %1</source>

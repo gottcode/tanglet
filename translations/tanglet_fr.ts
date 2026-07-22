@@ -44,14 +44,12 @@
         <translation>
             <numerusform>%1 sur %n point</numerusform>
             <numerusform>%1 sur %n points</numerusform>
-            <numerusform>%1 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>3 of %n point(s)</source>
         <translation>
             <numerusform>3 sur %n point</numerusform>
-            <numerusform>3 sur %n points</numerusform>
             <numerusform>3 sur %n points</numerusform>
         </translation>
     </message>
@@ -60,14 +58,12 @@
         <translation>
             <numerusform>2 sur %n point</numerusform>
             <numerusform>2 sur %n points</numerusform>
-            <numerusform>2 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>1 of %n point(s)</source>
         <translation>
             <numerusform>1 sur %n point</numerusform>
-            <numerusform>1 sur %n points</numerusform>
             <numerusform>1 sur %n points</numerusform>
         </translation>
     </message>
@@ -76,14 +72,12 @@
         <translation>
             <numerusform>0 sur %n point</numerusform>
             <numerusform>0 sur %n points</numerusform>
-            <numerusform>0 sur %n points</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
-            <numerusform>%n points</numerusform>
             <numerusform>%n points</numerusform>
         </translation>
     </message>
@@ -103,7 +97,6 @@
         <translation>
             <numerusform>%n proposition</numerusform>
             <numerusform>%n propositions</numerusform>
-            <numerusform>%n propositions</numerusform>
         </translation>
     </message>
     <message>
@@ -115,7 +108,6 @@
         <translation>
             <numerusform>%n blâme</numerusform>
             <numerusform>%n blâmes</numerusform>
-            <numerusform>%n coups</numerusform>
         </translation>
     </message>
     <message>
@@ -290,7 +282,6 @@
         <source>%n letter(s)</source>
         <translation>
             <numerusform>%n lettre</numerusform>
-            <numerusform>%n lettres</numerusform>
             <numerusform>%n lettres</numerusform>
         </translation>
     </message>
@@ -614,7 +605,6 @@
         <source>%n point(s)</source>
         <translation>
             <numerusform>%n point</numerusform>
-            <numerusform>%n points</numerusform>
             <numerusform>%n points</numerusform>
         </translation>
     </message>
