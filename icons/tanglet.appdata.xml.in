@@ -21,6 +21,7 @@
   <url type="bugtracker">https://gottcode.org/tanglet/bugs/</url>
   <url type="donation">https://gottcode.org/tip/</url>
   <url type="translate">https://app.transifex.com/gottcode/tanglet/</url>
+  <url type="vcs-browser">https://codeberg.org/gottcode/tanglet</url>
 
   <developer id="org.gottcode">
     <name translatable="no">Graeme Gott</name>
