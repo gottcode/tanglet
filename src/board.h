@@ -18,6 +18,8 @@ class WordTree;
 #include <QList>
 #include <QPoint>
 #include <QWidget>
+class QGridLayout;
+class QHBoxLayout;
 class QLabel;
 class QLineEdit;
 class QSettings;
@@ -116,6 +118,12 @@ Q_SIGNALS:
 	 */
 	void pauseAvailable(bool available);
 
+protected:
+	/**
+	 * Changes the layout depending on the current orientation.
+	 */
+	void resizeEvent(QResizeEvent* event) override;
+
 private Q_SLOTS:
 	/**
 	 * Fills the contents of the play area (letters, word lists, maximum scores) after the generator
@@ -187,6 +195,11 @@ private:
 	void selectGuess();
 
 	/**
+	 * Lays out the board depending on the current orientation.
+	 */
+	void layoutBoard();
+
+	/**
 	 * Calculates the current score by adding up the values in the found word list. It updates the
 	 * display of the score as well as the display of the maximum scores for each word length.
 	 * @return the value of the score
@@ -216,7 +229,10 @@ private:
 	WordCounts* m_counts; /**< displays counts of words */
 	QToolButton* m_guess_button; /**< allows player to make a guess when typing */
 	QToolButton* m_max_score_details; /**< displays the words used to make the maximum score with Allotment timer */
+	QGridLayout* m_layout; /**< main layout */
+	QHBoxLayout* m_score_layout; /**< layout for score */
 
+	bool m_landscape; /**< layout orientation */
 	bool m_paused; /**< is the game currently paused */
 	bool m_wrong; /**< is the clicked guess wrong (will color positions on board) */
 	bool m_wrong_typed; /**< is the typed guess wrong (no positions on board to color) */

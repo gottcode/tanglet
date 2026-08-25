@@ -39,6 +39,7 @@
 
 Board::Board(QWidget* parent)
 	: QWidget(parent)
+	, m_landscape(true)
 	, m_paused(false)
 	, m_wrong(false)
 	, m_wrong_typed(false)
@@ -69,10 +70,10 @@ Board::Board(QWidget* parent)
 	m_max_score_details->setToolTip(tr("Details"));
 	connect(m_max_score_details, &QToolButton::clicked, this, &Board::showMaximumWords);
 
-	QHBoxLayout* score_layout = new QHBoxLayout;
-	score_layout->setContentsMargins(0, 0, 0, 0);
-	score_layout->addWidget(m_score);
-	score_layout->addWidget(m_max_score_details);
+	m_score_layout = new QHBoxLayout;
+	m_score_layout->setContentsMargins(0, 0, 0, 0);
+	m_score_layout->addWidget(m_score);
+	m_score_layout->addWidget(m_max_score_details);
 
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
@@ -136,14 +137,8 @@ Board::Board(QWidget* parent)
 	m_counts->setMinimumWidth(width);
 
 	// Lay out board
-	QGridLayout* layout = new QGridLayout(this);
-	layout->setColumnStretch(1, 1);
-	layout->setRowStretch(1, 1);
-	layout->addWidget(m_tabs, 0, 0, 3, 1);
-	layout->addWidget(m_clock, 0, 1, Qt::AlignCenter);
-	layout->addWidget(m_view, 1, 1);
-	layout->addLayout(score_layout, 2, 1, Qt::AlignCenter);
-	layout->addWidget(m_counts, 3, 0, 1, 2);
+	m_layout = new QGridLayout(this);
+	layoutBoard();
 }
 
 //-----------------------------------------------------------------------------
@@ -189,6 +184,55 @@ Board::~Board()
 bool Board::isFinished() const
 {
 	return m_clock->isFinished();
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::layoutBoard()
+{
+	if (m_landscape) {
+		m_layout->setColumnStretch(1, 1);
+		m_layout->setRowStretch(1, 1);
+		m_layout->addWidget(m_tabs, 0, 0, 3, 1);
+		m_layout->addWidget(m_clock, 0, 1, Qt::AlignCenter);
+		m_layout->addWidget(m_view, 1, 1);
+		m_layout->addLayout(m_score_layout, 2, 1, Qt::AlignCenter);
+		m_layout->addWidget(m_counts, 3, 0, 1, 2);
+	} else {
+		m_layout->setRowStretch(1, 15);
+		m_layout->setRowStretch(2, 10);
+		m_layout->addWidget(m_clock, 0, 0, Qt::AlignCenter);
+		m_layout->addWidget(m_view, 1, 0);
+		m_layout->addWidget(m_tabs, 2, 0, Qt::AlignCenter);
+		m_layout->addLayout(m_score_layout, 3, 0, Qt::AlignCenter);
+		m_layout->addWidget(m_counts, 4, 0);
+	}
+}
+
+//-----------------------------------------------------------------------------
+
+void Board::resizeEvent(QResizeEvent* event)
+{
+	QWidget::resizeEvent(event);
+
+	bool landscape = width() > height();
+	if (landscape == m_landscape)
+		return;
+
+	for (int i = 0; i < m_layout->columnCount(); ++i) {
+		m_layout->setColumnStretch(i, 0);
+	}
+	for (int i = 0; i < m_layout->rowCount(); ++i) {
+		m_layout->setRowStretch(i, 0);
+	}
+	m_layout->removeWidget(m_tabs);
+	m_layout->removeWidget(m_clock);
+	m_layout->removeWidget(m_view);
+	m_layout->removeItem(m_score_layout);
+	m_layout->removeWidget(m_counts);
+
+	m_landscape = landscape;
+	layoutBoard();
 }
 
 //-----------------------------------------------------------------------------
