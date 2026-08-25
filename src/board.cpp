@@ -198,14 +198,16 @@ void Board::layoutBoard()
 		m_layout->addWidget(m_view, 1, 1);
 		m_layout->addLayout(m_score_layout, 2, 1, Qt::AlignCenter);
 		m_layout->addWidget(m_counts, 3, 0, 1, 2);
+		m_tabs->setMaximumWidth(m_tabs->minimumWidth());
 	} else {
 		m_layout->setRowStretch(1, 15);
 		m_layout->setRowStretch(2, 10);
 		m_layout->addWidget(m_clock, 0, 0, Qt::AlignCenter);
 		m_layout->addWidget(m_view, 1, 0);
-		m_layout->addWidget(m_tabs, 2, 0, Qt::AlignCenter);
+		m_layout->addWidget(m_tabs, 2, 0);
 		m_layout->addLayout(m_score_layout, 3, 0, Qt::AlignCenter);
 		m_layout->addWidget(m_counts, 4, 0);
+		m_tabs->setMaximumWidth(QWIDGETSIZE_MAX);
 	}
 }
 
