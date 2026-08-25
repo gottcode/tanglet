@@ -111,7 +111,7 @@ NewGameDialog::NewGameDialog(QWidget* parent)
 		const QString name = Clock::timerToString(timer);
 
 		QCommandLinkButton* button = new QCommandLinkButton(name, Clock::timerDescription(timer), timers_widget);
-		button->setMinimumWidth(500);
+		button->setMinimumWidth(300);
 		connect(button, &QCommandLinkButton::clicked, this, [this, timer] { timerChosen(timer); });
 
 		int i;
