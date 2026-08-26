@@ -16,6 +16,7 @@
 #include <QLineEdit>
 #include <QLocale>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QSettings>
 #include <QStyle>
 #include <QTabWidget>
@@ -298,10 +299,16 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	m_buttons->button(QDialogButtonBox::Close)->setFocus();
 	connect(m_buttons, &QDialogButtonBox::rejected, this, &ScoresDialog::reject);
 
+	// Put content in scroll area to support small-width screens and to
+	// avoid dialog resizing
+	auto* scrollArea = new QScrollArea(this);
+	scrollArea->setFrameShape(QFrame::NoFrame);
+	scrollArea->setWidgetResizable(true);
+	scrollArea->setWidget(m_tabs);
+
 	QVBoxLayout* layout = new QVBoxLayout(this);
-	layout->addWidget(m_tabs);
+	layout->addWidget(scrollArea);
 	layout->addWidget(m_buttons);
-	layout->setSizeConstraint(QLayout::SetFixedSize);
 }
 
 //-----------------------------------------------------------------------------
