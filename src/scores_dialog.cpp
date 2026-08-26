@@ -303,6 +303,7 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	// avoid dialog resizing
 	auto* scrollArea = new QScrollArea(this);
 	scrollArea->setFrameShape(QFrame::NoFrame);
+	scrollArea->setMinimumSize(300, 300);
 	scrollArea->setWidgetResizable(true);
 	scrollArea->setWidget(m_tabs);
 
