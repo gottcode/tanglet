@@ -78,6 +78,8 @@ LanguageDialog::LanguageDialog(QWidget* parent)
 
 	// Creat warning message
 	QLabel* warning = new QLabel(tr("<b>Note:</b> These settings will take effect when you start a new game."), this);
+	warning->setWordWrap(true);
+	warning->setMaximumWidth(300);
 
 	// Create buttons
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal, this);
