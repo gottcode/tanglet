@@ -299,16 +299,15 @@ ScoresDialog::ScoresDialog(QWidget* parent)
 	m_buttons->button(QDialogButtonBox::Close)->setFocus();
 	connect(m_buttons, &QDialogButtonBox::rejected, this, &ScoresDialog::reject);
 
-	// Put content in scroll area to support small-width screens and to
-	// avoid dialog resizing
-	auto* scrollArea = new QScrollArea(this);
-	scrollArea->setFrameShape(QFrame::NoFrame);
-	scrollArea->setMinimumSize(300, 300);
-	scrollArea->setWidgetResizable(true);
-	scrollArea->setWidget(m_tabs);
+	// Put content in scroll area to support small-width screens and to avoid dialog resizing
+	QScrollArea* scroll_area = new QScrollArea(this);
+	scroll_area->setFrameShape(QFrame::NoFrame);
+	scroll_area->setMinimumSize(300, 300);
+	scroll_area->setWidgetResizable(true);
+	scroll_area->setWidget(m_tabs);
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
-	layout->addWidget(scrollArea);
+	layout->addWidget(scroll_area);
 	layout->addWidget(m_buttons);
 }
 
