@@ -77,6 +77,7 @@ Board::Board(QWidget* parent)
 
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
+	m_view->setFocusProxy(m_guess);
 	m_guess->setDisabled(true);
 	m_guess->setMaxLength(25);
 	m_guess->installEventFilter(this);
