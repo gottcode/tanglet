@@ -78,6 +78,9 @@ Board::Board(QWidget* parent)
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
 	m_view->setFocusProxy(m_guess);
+	Qt::InputMethodHints hints = m_guess->inputMethodHints();
+	hints.setFlag(Qt::ImhNoPredictiveText, true);
+	m_guess->setInputMethodHints(hints);
 	m_guess->setDisabled(true);
 	m_guess->setMaxLength(25);
 	m_guess->installEventFilter(this);
