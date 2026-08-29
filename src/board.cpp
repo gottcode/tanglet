@@ -22,12 +22,14 @@
 #include <QDialogButtonBox>
 #include <QGridLayout>
 #include <QGraphicsScene>
+#include <QGuiApplication>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QLineF>
 #include <QMessageBox>
 #include <QSettings>
+#include <QScreen>
 #include <QStyle>
 #include <QTabWidget>
 #include <QToolButton>
@@ -40,6 +42,7 @@
 Board::Board(QWidget* parent)
 	: QWidget(parent)
 	, m_landscape(true)
+	, m_mobile(false)
 	, m_paused(false)
 	, m_wrong(false)
 	, m_wrong_typed(false)
@@ -50,6 +53,13 @@ Board::Board(QWidget* parent)
 	, m_max_score(0)
 	, m_generator(nullptr)
 {
+	// Check if running on phone
+	if (QGuiApplication::primaryScreen()) {
+		QSizeF screenSize = QGuiApplication::primaryScreen()->physicalSize();
+		double inches = std::hypot(screenSize.width(), screenSize.height()) / 25.4;
+		m_mobile = inches < 10;
+	}
+
 	m_generator = new Generator(this);
 	connect(m_generator, &Generator::finished, this, &Board::gameStarted);
 	connect(m_generator, &Generator::optimizingStarted, this, &Board::optimizingStarted);
@@ -77,7 +87,9 @@ Board::Board(QWidget* parent)
 
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
-	m_view->setFocusProxy(m_guess);
+	if (!m_mobile) {
+		m_view->setFocusProxy(m_guess);
+	}
 	Qt::InputMethodHints hints = m_guess->inputMethodHints();
 	hints.setFlag(Qt::ImhNoPredictiveText, true);
 	m_guess->setInputMethodHints(hints);
@@ -318,7 +330,7 @@ void Board::setPaused(bool pause)
 	m_guess->setDisabled(m_paused);
 	m_clock->setPaused(m_paused);
 
-	if (!m_paused) {
+	if (!m_paused && !m_mobile) {
 		m_guess->setFocus();
 	}
 }
@@ -413,7 +425,9 @@ void Board::gameStarted()
 	delete m_view->scene();
 	QGraphicsScene* scene = new QGraphicsScene(0, 0, board_size, board_size, this);
 	m_view->setScene(scene);
-	m_view->setMinimumSize(board_size + 4, board_size + 4);
+	if (!m_mobile) {
+		m_view->setMinimumSize(board_size + 4, board_size + 4);
+	}
 	m_view->fitInView(m_view->sceneRect(), Qt::KeepAspectRatio);
 
 	BeveledRect* rect = new BeveledRect(board_size);
@@ -447,7 +461,9 @@ void Board::gameStarted()
 	m_guess->setEnabled(true);
 	m_guess->clear();
 	m_guess->setEchoMode(QLineEdit::Normal);
-	m_guess->setFocus();
+	if (!m_mobile) {
+		m_guess->setFocus();
+	}
 	clearHighlight();
 
 	// Add solutions
@@ -509,7 +525,9 @@ void Board::clearGuess()
 	m_guess->clear();
 	m_found->setCurrentItem(nullptr);
 	m_missed->setCurrentItem(nullptr);
-	m_guess->setFocus();
+	if (!m_mobile) {
+		m_guess->setFocus();
+	}
 	updateButtons();
 }
 
