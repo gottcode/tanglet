@@ -226,3 +226,5 @@ void NewGameDialog::restoreDefaults(QAbstractButton* button)
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_new_game_dialog.cpp"

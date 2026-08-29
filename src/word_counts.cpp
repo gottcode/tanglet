@@ -125,3 +125,5 @@ void WordCounts::updateString()
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_word_counts.cpp"

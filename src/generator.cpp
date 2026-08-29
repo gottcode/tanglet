@@ -356,3 +356,5 @@ void Generator::setError(const QString& error)
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_generator.cpp"

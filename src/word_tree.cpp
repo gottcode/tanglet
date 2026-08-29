@@ -184,3 +184,5 @@ void WordTree::enterItem(QTreeWidgetItem* item)
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_word_tree.cpp"

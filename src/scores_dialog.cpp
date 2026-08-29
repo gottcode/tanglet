@@ -455,3 +455,5 @@ void ScoresDialog::addTab(Page* page)
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_scores_dialog.cpp"

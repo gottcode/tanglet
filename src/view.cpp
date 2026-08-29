@@ -39,3 +39,5 @@ void View::resizeEvent(QResizeEvent* event)
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_view.cpp"

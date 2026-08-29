@@ -304,3 +304,5 @@ void LanguageDialog::setLanguage(const QString& language)
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_language_dialog.cpp"

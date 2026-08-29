@@ -1067,3 +1067,5 @@ void Window::startGame(const QString& filename)
 }
 
 //-----------------------------------------------------------------------------
+
+#include "moc_window.cpp"
