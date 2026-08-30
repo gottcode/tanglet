@@ -56,8 +56,9 @@ Board::Board(QWidget* parent)
 	, m_generator(nullptr)
 {
 	// Check if primary input method is touch
-	if (!QInputDevice::devices().empty() && QInputDevice::devices().at(0)->type() == QInputDevice::DeviceType::TouchScreen)
+	if (!QInputDevice::devices().empty() && QInputDevice::devices().at(0)->type() == QInputDevice::DeviceType::TouchScreen) {
 		m_touch_input = true;
+	}
 
 	// Check if primary screen has mobile form factor
 	if (QGuiApplication::primaryScreen()) {
@@ -239,8 +240,9 @@ void Board::resizeEvent(QResizeEvent* event)
 	QWidget::resizeEvent(event);
 
 	bool landscape = width() > height();
-	if (landscape == m_landscape)
+	if (landscape == m_landscape) {
 		return;
+	}
 
 	for (int i = 0; i < m_layout->columnCount(); ++i) {
 		m_layout->setColumnStretch(i, 0);
