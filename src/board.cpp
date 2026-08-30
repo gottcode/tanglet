@@ -24,6 +24,7 @@
 #include <QGraphicsScene>
 #include <QGuiApplication>
 #include <QHBoxLayout>
+#include <QInputDevice>
 #include <QLabel>
 #include <QLineEdit>
 #include <QLineF>
@@ -42,8 +43,9 @@
 Board::Board(QWidget* parent)
 	: QWidget(parent)
 	, m_landscape(true)
-	, m_mobile(false)
+	, m_mobile_form_factor(false)
 	, m_paused(false)
+	, m_touch_input(false)
 	, m_wrong(false)
 	, m_wrong_typed(false)
 	, m_show_counts(1)
@@ -53,11 +55,15 @@ Board::Board(QWidget* parent)
 	, m_max_score(0)
 	, m_generator(nullptr)
 {
-	// Check if running on phone
+	// Check if primary input method is touch
+	if (!QInputDevice::devices().empty() && QInputDevice::devices().at(0)->type() == QInputDevice::DeviceType::TouchScreen)
+		m_touch_input = true;
+
+	// Check if primary screen has mobile form factor
 	if (QGuiApplication::primaryScreen()) {
 		QSizeF screenSize = QGuiApplication::primaryScreen()->physicalSize();
 		double inches = std::hypot(screenSize.width(), screenSize.height()) / 25.4;
-		m_mobile = inches < 10;
+		m_mobile_form_factor = inches < 10;
 	}
 
 	m_generator = new Generator(this);
@@ -87,7 +93,7 @@ Board::Board(QWidget* parent)
 
 	// Create guess widgets
 	m_guess = new QLineEdit(this);
-	if (!m_mobile) {
+	if (!m_touch_input) {
 		m_view->setFocusProxy(m_guess);
 	}
 	Qt::InputMethodHints hints = m_guess->inputMethodHints();
@@ -330,7 +336,7 @@ void Board::setPaused(bool pause)
 	m_guess->setDisabled(m_paused);
 	m_clock->setPaused(m_paused);
 
-	if (!m_paused && !m_mobile) {
+	if (!m_paused && !m_touch_input) {
 		m_guess->setFocus();
 	}
 }
@@ -425,7 +431,7 @@ void Board::gameStarted()
 	delete m_view->scene();
 	QGraphicsScene* scene = new QGraphicsScene(0, 0, board_size, board_size, this);
 	m_view->setScene(scene);
-	if (!m_mobile) {
+	if (!m_mobile_form_factor) {
 		m_view->setMinimumSize(board_size + 4, board_size + 4);
 	}
 	m_view->fitInView(m_view->sceneRect(), Qt::KeepAspectRatio);
@@ -461,7 +467,7 @@ void Board::gameStarted()
 	m_guess->setEnabled(true);
 	m_guess->clear();
 	m_guess->setEchoMode(QLineEdit::Normal);
-	if (!m_mobile) {
+	if (!m_touch_input) {
 		m_guess->setFocus();
 	}
 	clearHighlight();
@@ -525,7 +531,7 @@ void Board::clearGuess()
 	m_guess->clear();
 	m_found->setCurrentItem(nullptr);
 	m_missed->setCurrentItem(nullptr);
-	if (!m_mobile) {
+	if (!m_touch_input) {
 		m_guess->setFocus();
 	}
 	updateButtons();

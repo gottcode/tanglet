@@ -233,8 +233,9 @@ private:
 	QHBoxLayout* m_score_layout; /**< layout for score */
 
 	bool m_landscape; /**< layout orientation */
-	bool m_mobile; /**< running on phone */
+	bool m_mobile_form_factor; /**< primary screen has mobile form factor */
 	bool m_paused; /**< is the game currently paused */
+	bool m_touch_input; /**< main input method is touch */
 	bool m_wrong; /**< is the clicked guess wrong (will color positions on board) */
 	bool m_wrong_typed; /**< is the typed guess wrong (no positions on board to color) */
 	int m_show_counts; /**< are maximum scores for each word length shown */
